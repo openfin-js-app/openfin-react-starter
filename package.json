@@ -31,6 +31,8 @@
     "css-loader": "0.28.7",
     "dotenv": "4.0.0",
     "dotenv-expand": "4.2.0",
+    "enzyme": "^3.4.1",
+    "enzyme-adapter-react-16": "^1.2.0",
     "eslint": "4.10.0",
     "eslint-config-react-app": "^2.1.0",
     "eslint-loader": "1.9.0",
@@ -44,7 +46,7 @@
     "fs-extra": "3.0.1",
     "history": "^4.7.2",
     "html-webpack-plugin": "2.29.0",
-    "jest": "20.0.4",
+    "jest": "21.2.1",
     "morgan": "^1.9.0",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
@@ -83,18 +85,20 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx,mjs}"
+      "src/**/*.{ts,tsx,js,jsx,mjs}"
     ],
     "setupFiles": [
-      "<rootDir>/config/polyfills.js"
+      "<rootDir>/config/polyfills.js",
+      "<rootDir>/config/jest/setupTests.js"
     ],
     "testMatch": [
-      "<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
-      "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}"
+      "<rootDir>/src/**/__tests__/**/*.{ts,tsx,js,jsx,mjs}",
+      "<rootDir>/src/**/?(*.)(spec|test).{ts,tsx,js,jsx,mjs}"
     ],
-    "testEnvironment": "node",
+    "testEnvironment": "jsdom",
     "testURL": "http://localhost",
     "transform": {
+      "^.+\\.(tsx|ts)$": "ts-jest",
       "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest",
       "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
       "^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
@@ -106,6 +110,8 @@
       "^react-native$": "react-native-web"
     },
     "moduleFileExtensions": [
+      "ts",
+      "tsx",
       "web.js",
       "js",
       "json",
