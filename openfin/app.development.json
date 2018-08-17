@@ -1,0 +1,25 @@
+{
+  "startup_app":{
+    "name":"Openfin starter [dev]",
+    "url":"http://localhost:3000/index.html",
+    "uuid":"openfin_react_ts_starter_development",
+    "applicationIcon":"http://localhost:3000/favicon.ico",
+    "autoShow":true,
+    "saveWindowsSate":true,
+    "frame":true,
+    "defaultCentered":true,
+    "defaultWidth":728,
+    "defaultHeight":450
+  },
+  "runtime":{
+    "arguments":"--v=1 --remote-debugging-port=9090 --enable-crash-reporting",
+    "version":"community"
+  },
+  "shortcut":{
+    "company":"Albert Leigh Corp",
+    "description":"Openfin starter of dev profile",
+    "icon":"http://localhost:3000/favicon.ico",
+    "name":"Openfin starter kit [dev]",
+    "diagnostics-shortcut":true
+  }
+}
