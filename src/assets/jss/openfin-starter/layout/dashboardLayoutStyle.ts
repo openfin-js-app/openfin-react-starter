@@ -57,10 +57,10 @@ const appStyle:any = (theme:any) => ({
     },
     content:{
         position:'relative',
-        top:appbarHeight,
-        left:'0px',
-        right:'0px',
-        bottom:'0px',
+        marginTop:"0px",
+        padding:"0px",
+        height:"100%",
+        overflowX:'hidden',
     },
     container:{
         position:'absolute',
