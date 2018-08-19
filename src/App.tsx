@@ -1,21 +1,45 @@
 import * as React from 'react';
+import { Router, Route, Switch, Redirect } from 'react-router-dom';
 
-import './app.css';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+import Button from '@material-ui/core/Button';
+
+import indexRoutes, {RouteCompItem, RouteItem } from './routes/index';
+
+import hist from './utils/history';
+import dashboardRoutes from "./routes/Dashboard";
 
 const appLog = require('./assets/svg/app.svg') as string;
+
+const theme = createMuiTheme({
+    typography:{
+        htmlFontSize: 10,
+        fontSize: 8,
+    }
+});
 
 class App extends React.Component<any,any>{
     render(){
         return (
-            <div className="App">
-                <header className="App-header">
-                    <img src={appLog} className="App-logo" alt="logo" />
-                    <h1 className="App-title">Welcome to React</h1>
-                </header>
-                <p className="App-intro">
-                    To get started, edit <code>src/App.js</code> and save to reload.
-                </p>
-            </div>
+            <React.Fragment>
+                <CssBaseline/>
+                <Router history={hist}>
+                    <MuiThemeProvider theme={theme}>
+                        <Switch>
+                            {
+                                indexRoutes.map((prop:any,key)=>{
+                                    if (prop.redirect)
+                                        return <Redirect from={prop.path} to={prop.to} key={key}/>;
+                                    return <Route path={prop.path} component={prop.component} key={key}/>;
+
+                                })
+                            }
+                        </Switch>
+                    </MuiThemeProvider>
+                </Router>
+            </React.Fragment>
         );
     }
 }
