@@ -35,7 +35,7 @@ const defaultFont = {
     lineHeight: "1.5em"
 };
 
-const primaryColor = "#9c27b0";
+const primaryColor = "#23a4fb";
 const warningColor = "#ff9800";
 const dangerColor = "#f44336";
 const successColor = "#4caf50";
@@ -109,10 +109,10 @@ const cardHeader = {
 
 const defaultBoxShadow = {
     border: "0",
-    borderRadius: "3px",
+    borderRadius: "0px",
     boxShadow:
         "0 10px 20px -12px rgba(0, 0, 0, 0.42), 0 3px 20px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2)",
-    padding: "10px 0",
+    padding: "0 0",
     transition: "all 150ms ease 0s"
 };
 

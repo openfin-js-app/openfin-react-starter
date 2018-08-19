@@ -41,7 +41,7 @@ const headerStyle:any = (theme:any) =>({
         minHeight:appbarHeight,
     },
     menuBtn:{
-        transform:`scale(${appbarHeight}/40)`,
+        transform:`scale(${appbarHeight/40})`,
         backgroundColor:"transparent",
         "-webkit-app-region":"no-drag",
         color:"inherit",

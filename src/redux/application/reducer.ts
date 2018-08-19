@@ -93,7 +93,7 @@ export default handleActions({
     }),
     [APPLICATION_DRAWER_TOGGLE]:(state,action)=>({
         ...state,
-        drawOpen:!state.drawerOpen
+        drawerOpen:!state.drawerOpen
     }),
     [APPLICATION_NEW_SNACKBAR]:(state,action)=>{
         let option:ApplicationNewSnackbarOption = action.payload as ApplicationNewSnackbarOption;

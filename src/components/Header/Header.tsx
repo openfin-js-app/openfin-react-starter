@@ -27,10 +27,6 @@ class HeaderComp extends React.Component<any,any>{
             onSwitchToLaunchBar, onMinimize, onMaximize, onClose,
         } = this.props;
 
-        const appBarClasses = cx({
-            [""+classes[color]]:color
-        });
-
         function makeBrand(props:any) {
             let name = null;
             props.routes.forEach((prop:any, key:number):any => {
@@ -41,7 +37,7 @@ class HeaderComp extends React.Component<any,any>{
             return name;
         }
 
-        return(<AppBar className={classes.appBar + appBarClasses} draggable = {false}>
+        return(<AppBar className={cx(classes.appBar, classes[color])} draggable = {false}>
             <Toolbar className={classes.container}>
                 <div className={classes.flex}>
                     {handleDrawerToggle?

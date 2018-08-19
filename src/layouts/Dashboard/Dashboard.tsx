@@ -117,12 +117,12 @@ export default connect(
     }),
     dispatch => ({
         actions:{
-            handleDrawerToggle: ()=>(dispatch(applicationDrawerToggle())),
-            handleSnackbarClose: (event,reason) => (dispatch(applicationCloseSnackbar({event,reason}))),
-            handleSnackbarCloseBtnClick: () => (dispatch(applicationSetSnackbarStatus({open:false}))),
-            handleSnackbarExited: () => (dispatch(applicationProcessSnackbarQueue())),
+            handleDrawerToggle: ()=> {dispatch(applicationDrawerToggle());},
+            handleSnackbarClose: (event,reason) => {dispatch(applicationCloseSnackbar({event,reason}))},
+            handleSnackbarCloseBtnClick: () => {dispatch(applicationSetSnackbarStatus({open:false}))},
+            handleSnackbarExited: () => {dispatch(applicationProcessSnackbarQueue())},
             // openfin
-            handleSwitchToLaunchBar:()=>(dispatch(applicationLaunchBarToggle({}))),
+            handleSwitchToLaunchBar:()=>{dispatch(applicationLaunchBarToggle({}))},
             handleMinimize: ()=>{dispatch(Window.actions.minimize({}))},
             handleMaximize: ()=>{dispatch(applicationToogleWindowState())},
             handleClose:()=>{dispatch(Window.actions.close({force:false}))},

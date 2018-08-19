@@ -29,6 +29,83 @@ const theme = createMuiTheme({
             main:'#ff2e58',
         },
     },
+    overrides:{
+        MuiButton:{
+            root:{
+                color:'white',
+            },
+            contained:{
+                padding:'0px 5px',
+                minWidth:'50px',
+                minHeight:'20px',
+                color:'white',
+            },
+            containedPrimary:{
+                color:'white',
+            },
+            containedSecondary:{
+                color:'white',
+            },
+            sizeSmall:{
+                padding:'0px 5px',
+                minWidth:'40px',
+                minHeight:'16px',
+            },
+            sizeLarge:{
+                padding:'0px 5px',
+                minWidth:'60px',
+                minHeight:'25px',
+            },
+        },
+        MuiChip:{
+            root:{
+                height:'20px',
+            },
+            avatar:{
+                width:'20px',
+                height:'20px',
+                fontSize:'0.5rem',
+            },
+        },
+        MuiInputAdornment:{
+            positionEnd:{
+                "& $p":{
+                    fontSize:'0.6rem',
+                },
+            },
+        },
+        MuiListItem:{
+            gutters:{
+                paddingTop:'0px',
+                paddingBottom:'0px',
+                "& $img":{
+                    height:'24px',
+                    width:'24px',
+                    marginRight:'16px',
+                    userSelect:'none',
+                }
+            }
+        },
+        MuiSnackbarContent:{
+            root:{
+                color:'white',
+            }
+        },
+        MuiTabs:{
+            root:{
+                minHeight:'24px',
+            }
+        },
+        MuiTab:{
+            root:{
+                minHeight:'24px',
+            },
+            labelContainer:{
+                paddingTop:'0px',
+                paddingBottom:'0px',
+            }
+        },
+    }
 });
 
 class App extends React.Component<any,any>{
