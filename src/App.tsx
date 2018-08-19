@@ -17,7 +17,18 @@ const theme = createMuiTheme({
     typography:{
         htmlFontSize: 10,
         fontSize: 8,
-    }
+    },
+    palette:{
+        primary:{
+            main:'#23a4fb',
+        },
+        secondary:{
+            main:'#b2b9c2',
+        },
+        error:{
+            main:'#ff2e58',
+        },
+    },
 });
 
 class App extends React.Component<any,any>{

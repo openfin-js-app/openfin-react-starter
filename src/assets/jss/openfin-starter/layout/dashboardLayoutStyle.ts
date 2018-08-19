@@ -62,6 +62,13 @@ const appStyle:any = (theme:any) => ({
         right:'0px',
         bottom:'0px',
     },
+    container:{
+        position:'absolute',
+        top:appbarHeight,
+        left:"0px",
+        right:"0px",
+        bottom:"0px",
+    },
     snackbarCloseBtn:{
         width: theme.spacing.unit * 4,
         height: theme.spacing.unit * 4,

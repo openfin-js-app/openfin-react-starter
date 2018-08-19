@@ -34,7 +34,11 @@ class SidebarComp extends React.Component<any,any>{
                     const whiteFontClasses = cx({
                         [" "+classes.whiteFont]:activeRoute(prop.path,this.props)
                     });
-                    return(<NavLink to={prop.path}>
+                    return(<NavLink
+                        to={prop.path} key={key}
+                        className={classes.item}
+                        activeClassName={"active"}
+                    >
                         <ListItem button className={classes.itemLink + listItemClasses}>
                             <ListItemIcon className={classes.itemIcon + whiteFontClasses}>
                                 <prop.icon/>
