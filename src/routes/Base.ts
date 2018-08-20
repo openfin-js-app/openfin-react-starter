@@ -16,5 +16,5 @@ export interface RouteRedirectItem {
     redirect:boolean,
     path:string,
     to:string,
-    navbarname:string,
+    navbarName:string,
 }
