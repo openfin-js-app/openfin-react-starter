@@ -1,6 +1,7 @@
 import { RouteItem } from './Base';
 import Loading from '../layouts/Loading/Loading';
 import Dashboard from '../layouts/Dashboard/Dashboard';
+import ChildWindow from '../layouts/ChildWindow/ChildWindow';
 import LaunchBar from '../layouts/LaunchBar/LaunchBar';
 
 export * from './Base';
@@ -15,6 +16,10 @@ const indexRoutes:RouteItem[] = [
     {
         path:'/dashboard',
         component: Dashboard,
+    },
+    {
+        path:'/childWindow',
+        component: ChildWindow,
     },
     {
         path:'/launchBar',
