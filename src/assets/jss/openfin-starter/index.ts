@@ -8,3 +8,4 @@ export {default as snackbarContentCompStyle} from './comp/snackbarContentCompSty
 export {default as reportViewStyle} from './view/reportViewStyle';
 // layout styles
 export {default as dashboardLayoutStyle } from './layout/dashboardLayoutStyle';
+export {default as launchBarLayoutStyle } from './layout/launchBarLayoutStyle';

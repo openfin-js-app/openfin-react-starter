@@ -1,6 +1,7 @@
 import { RouteItem } from './Base';
 import Loading from '../layouts/Loading/Loading';
 import Dashboard from '../layouts/Dashboard/Dashboard';
+import LaunchBar from '../layouts/LaunchBar/LaunchBar';
 
 export * from './Base';
 
@@ -14,6 +15,10 @@ const indexRoutes:RouteItem[] = [
     {
         path:'/dashboard',
         component: Dashboard,
+    },
+    {
+        path:'/launchBar',
+        component: LaunchBar,
     },
     {
         redirect: true, path:'/',
