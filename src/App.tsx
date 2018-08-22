@@ -4,14 +4,9 @@ import { Router, Route, Switch, Redirect } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
-import Button from '@material-ui/core/Button';
-
 import indexRoutes, {RouteCompItem, RouteItem } from './routes/index';
 
 import hist from './utils/history';
-import dashboardRoutes from "./routes/Dashboard";
-
-const appLog = require('./assets/svg/app.svg') as string;
 
 const theme = createMuiTheme({
     typography:{

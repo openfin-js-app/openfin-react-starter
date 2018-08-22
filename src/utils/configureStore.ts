@@ -9,12 +9,14 @@ declare const window:any;
 
 export default ()=>{
 
+    const openfinMiddleware = createOpenfinMiddleware(window.fin);
     const sagaMiddleware = createSagaMiddleware();
     const devtools = window['devToolsExtension']?window['devToolsExtension']():(f:any):any => (f);
 
     const middleware = compose(
         applyMiddleware(
             sagaMiddleware,
+            openfinMiddleware,
         ),
         devtools
     );
