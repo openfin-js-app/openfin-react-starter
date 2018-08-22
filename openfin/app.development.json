@@ -6,6 +6,7 @@
     "applicationIcon":"http://localhost:3000/favicon.ico",
     "autoShow":true,
     "saveWindowsSate":true,
+    "resizable":true,
     "frame":false,
     "defaultCentered":true,
     "defaultWidth":728,
