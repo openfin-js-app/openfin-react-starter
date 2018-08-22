@@ -14,5 +14,5 @@ export default (el:any,rawPlatform:string) =>{
         cls = 'unknown';
     }
 
-    el.classList.add('platform-${cls}');
+    el.classList.add(`platform-${cls}`);
 }
