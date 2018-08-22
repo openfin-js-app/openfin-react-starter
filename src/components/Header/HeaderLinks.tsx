@@ -61,7 +61,7 @@ class HeaderLinksComp extends React.Component<any,any>{
                     aria-label="Close"
                     onClick={onClose}
             >
-                <Remove/>
+                <Clear/>
             </Button>
         </React.Fragment>);
     }

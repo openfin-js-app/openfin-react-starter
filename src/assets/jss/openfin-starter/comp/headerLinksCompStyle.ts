@@ -13,6 +13,7 @@ import {
 const headerLinkStyle:any = (theme:any) => ({
     menuBtn:{
         transform:`scale(${appbarHeight/40 * 0.8})`,
+        "-webkit-app-region":"no-drag",
     },
     info:{
         backgroundColor: infoColor,
