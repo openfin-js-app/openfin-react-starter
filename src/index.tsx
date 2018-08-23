@@ -26,7 +26,7 @@ if (process.env.REACT_APP_SHARED_REDUX_STORE === 'true'){
     }
     setPlatformClass(document.body,window.navigator.platform);
     ReactDOM.render(
-        <Provider store = {window.store}>
+        <Provider store = {window.opener?window.opener.store:window.store}>
             <App/>
         </Provider>
         ,
