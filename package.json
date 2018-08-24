@@ -85,6 +85,7 @@
     "start-openfin": "node scripts/start.openfin.js",
     "build": "rimraf build && node scripts/build.js",
     "server": "node scripts/server.js",
+    "server-openfin": "node scripts/server.openfin.js",
     "test": "node scripts/test.js --env=jsdom"
   },
   "jest": {
