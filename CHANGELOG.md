@@ -1,3 +1,2 @@
-## [0.10.0] 2018-08-13
-- First commit
-- Support minimum basic handlers
+## [0.10.5] 2018-08-24
+- First initial stable commit
