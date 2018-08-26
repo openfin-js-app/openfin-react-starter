@@ -2,6 +2,7 @@ import AccessibilityIcon from '@material-ui/icons/Accessibility';
 import BusinessIcon from '@material-ui/icons/Business';
 import ChatIcon from '@material-ui/icons/Chat';
 import ReportIcon from '@material-ui/icons/Report';
+import SettingsIcon from '@material-ui/icons/Settings';
 
 import { RouteItem } from './Base';
 
@@ -9,6 +10,7 @@ import Accessibility from '../views/Accessibility/Accessibility';
 import ViewOne from '../views/ViewOne/ViewOne';
 import ViewTwo from "../views/ViewTwo/ViewTwo";
 import ReportView from "../views/ReportView/ReportView";
+import ConfigView from '../views/ConfigView/ConfigView';
 
 const dashboardRoutes:RouteItem[]=[
     {
@@ -31,6 +33,13 @@ const dashboardRoutes:RouteItem[]=[
         navbarName:"View two [ViewTwo]",
         icon: ChatIcon,
         component: ViewTwo,
+    },
+    {
+        path:'/dashboard/config',
+        sidebarName:"Configuration",
+        navbarName:"App configuration",
+        icon: SettingsIcon,
+        component: ConfigView,
     },
     {
         path:'/dashboard/report',
