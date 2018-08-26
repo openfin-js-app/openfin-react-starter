@@ -7,7 +7,10 @@ const configViewStyle:any = (theme:any)=>({
         padding:'0px 30px 0px 30px',
     },
     configContainer:{
-        height:'calc( 100% - 39px)',
+        height:'calc( 100% - 39px )',
+        '& .splitter-layout':{
+            height:'calc( 100% - 39px )',
+        }
     },
     configLeftSection:{
         height:'100%',

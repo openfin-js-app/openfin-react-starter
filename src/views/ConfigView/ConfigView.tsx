@@ -63,49 +63,53 @@ class ConfigView extends React.Component<any,any>{
                     fullWidth
                     margin={'dense'}
                 />
-                <div className={classes.configContainer}>
-                    <SplitterLayout primaryMinSize={200} secondaryMinSize={600} secondaryInitialSize={800}>
-                        <div className={classes.configLeftSection}>
-                            <Scrollbars>
-                                <List>
-                                    {tabs.map((oneTab:ConfigTab,index:number)=>{
-                                        return(
-                                            <ListItem button className={cx('active')} key={index} dense={true}>
-                                                <ListItemIcon>
-                                                    {oneTab._svgUrl?<img src={oneTab._svgUrl}/>:<oneTab._icon/>}
-                                                </ListItemIcon>
-                                                <ListItemText
-                                                    primary={oneTab._label}
-                                                />
-                                                {currentTab==index?
-                                                    <ListItemSecondaryAction>
-                                                        <CheckIcon/>
-                                                    </ListItemSecondaryAction>
-                                                :null}
-                                            </ListItem>
-                                        );
-                                    })}
-                                </List>
-                            </Scrollbars>
-                        </div>
-                        <Scrollbars>
-                            <div className={classes.configMainSection}>
-                                <GridList cellHeight={50} className={classes.configMainGridList} cols={12}>
-                                    {tabs[currentTab]._fields.map((oneField:ConfigField,index:number)=>(
-                                        <GridListTile key={index} cols={oneField._cols || 3} rows={oneField._rows || 1}>
-                                            <ConfigFieldComp
-                                                value={config[tabName][oneField._name]}
-                                                {...oneField}
+            </div>
+            <div className={classes.configContainer}>
+                <SplitterLayout primaryMinSize={200} secondaryMinSize={600} secondaryInitialSize={800}>
+                    <div className={classes.configLeftSection}>
+                        <Scrollbars
+                            renderThumbVertical={props => <div className={"dark-thumb-vertical"} {...props}/>}
+                        >
+                            <List>
+                                {tabs.map((oneTab:ConfigTab,index:number)=>{
+                                    return(
+                                        <ListItem button className={cx('active')} key={index} dense={true}>
+                                            <ListItemIcon>
+                                                {oneTab._svgUrl?<img src={oneTab._svgUrl}/>:<oneTab._icon/>}
+                                            </ListItemIcon>
+                                            <ListItemText
+                                                primary={oneTab._label}
                                             />
-                                        </GridListTile>
-                                    ))}
-                                </GridList>
-                            </div>
-                            <ReactJson src={config} theme={'monokai'}/>
-                            <div style={{marginBottom:'100px'}}/>
+                                            {currentTab==index?
+                                                <ListItemSecondaryAction>
+                                                    <CheckIcon/>
+                                                </ListItemSecondaryAction>
+                                                :null}
+                                        </ListItem>
+                                    );
+                                })}
+                            </List>
                         </Scrollbars>
-                    </SplitterLayout>
-                </div>
+                    </div>
+                    <Scrollbars
+                        renderThumbVertical={props => <div className={"dark-thumb-vertical"} {...props}/>}
+                    >
+                        <div className={classes.configMainSection}>
+                            <GridList cellHeight={50} className={classes.configMainGridList} cols={12}>
+                                {tabs[currentTab]._fields.map((oneField:ConfigField,index:number)=>(
+                                    <GridListTile key={index} cols={oneField._cols || 3} rows={oneField._rows || 1}>
+                                        <ConfigFieldComp
+                                            value={config[tabName][oneField._name]}
+                                            {...oneField}
+                                        />
+                                    </GridListTile>
+                                ))}
+                            </GridList>
+                        </div>
+                        <ReactJson src={config} theme={'monokai'}/>
+                        <div style={{marginBottom:'100px'}}/>
+                    </Scrollbars>
+                </SplitterLayout>
             </div>
         </React.Fragment>);
     }
