@@ -14,6 +14,10 @@ const theme = createMuiTheme({
         fontSize: 8,
     },
     palette:{
+        type:'dark',
+        background:{
+            default:'#303030'
+        },
         primary:{
             main:'#23a4fb',
         },
