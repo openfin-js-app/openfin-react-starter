@@ -39,9 +39,12 @@ export default handleActions({
     [CONFIG_UPDATE_ONE_FIELD]:(state,action)=>{
         const {name,value} = action.payload;
         let result = {...state};
-        let paths = name.splite('.');
+        let paths = name.split('.');
         if (paths.length == 2){
-            result[paths[0]][paths[1]] = value;
+            result[paths[0]]={
+                ...result[paths[0]],
+                [paths[1]]:value,
+            }
         }
         return result;
     }

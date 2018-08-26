@@ -5,7 +5,7 @@ import { ConfigTab, ConfigField, FieldType } from './types';
 
 import SettingIcon from '@material-ui/icons/Settings';
 
-const controls = require('../../assets/svg/support/controls.svg') as string;
+const controls = require('../../assets/svg/support/controls_dark.svg') as string;
 
 const configTabs:ConfigTab[]=[
     {

@@ -16,6 +16,12 @@ import { configFieldCompStyle as style } from '../../assets/jss/openfin-starter'
 
 class ConfigFieldComp extends React.Component<any,any>{
 
+    handleTextFieldChange = event =>{
+        if (this.props.onChange){
+            this.props.onChange(event.target.value);
+        }
+    };
+
     render(){
 
         const {
@@ -40,6 +46,7 @@ class ConfigFieldComp extends React.Component<any,any>{
                     id={`config_field_${shortid.generate()}`}
                     label={_label}
                     value={value}
+                    onChange={this.handleTextFieldChange}
                     {..._props}
                 />);
             default:

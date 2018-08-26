@@ -27,6 +27,8 @@ import {configViewStyle as style} from '../../assets/jss/openfin-starter';
 
 import { ConfigTab, ConfigField } from '../../redux/config/types';
 
+import { configUpdateOneField } from '../../redux'
+
 class ConfigView extends React.Component<any,any>{
 
     state = {
@@ -38,6 +40,10 @@ class ConfigView extends React.Component<any,any>{
         const {
             classes,
             config,
+            actions:{
+                handleUpdateOneField,
+                handleUpdateOneIntField,
+            }
         } = this.props;
 
         const {currentTab} = this.state;
@@ -100,6 +106,7 @@ class ConfigView extends React.Component<any,any>{
                                     <GridListTile key={index} cols={oneField._cols || 3} rows={oneField._rows || 1}>
                                         <ConfigFieldComp
                                             value={config[tabName][oneField._name]}
+                                            onChange={handleUpdateOneIntField(tabName,oneField._name)}
                                             {...oneField}
                                         />
                                     </GridListTile>
@@ -121,7 +128,18 @@ export default connect(
     }),
     dispatch => ({
         actions:{
-
+            handleUpdateOneField: (tabName:string, fieldName:string)=>(value)=>{
+                dispatch(configUpdateOneField({
+                    name:`${tabName}.${fieldName}`,
+                    value,
+                }))
+            },
+            handleUpdateOneIntField: (tabName:string, fieldName:string)=>(value)=>{
+                dispatch(configUpdateOneField({
+                    name:`${tabName}.${fieldName}`,
+                    value: parseInt(value),
+                }))
+            }
         }
     })
 )(withStyles(style)(ConfigView));
