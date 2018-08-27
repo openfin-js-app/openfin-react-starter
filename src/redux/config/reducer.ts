@@ -1,6 +1,12 @@
 import { handleActions, Action } from 'redux-actions';
 
-import { CONFIG_RESET, CONFIG_UPDATE_ONE_FIELD, CONFIG_UPDATE_NEW_WINDOW_POSITION } from './actions';
+import {
+    CONFIG_RESET, CONFIG_UPDATE_ONE_FIELD,
+
+    CONFIG_UPDATE_NEW_WINDOW_POSITION_ADD_DELTA,
+    CONFIG_UPDATE_NEW_WINDOW_POSITION_RESET_TOP,
+    CONFIG_UPDATE_NEW_WINDOW_POSITION_RESET_LEFT,
+} from './actions';
 import { ConfigTab, ConfigField, FieldType, ConfigState } from './types';
 import configTabs from './constant';
 
@@ -48,7 +54,7 @@ export default handleActions({
         }
         return result;
     },
-    [CONFIG_UPDATE_NEW_WINDOW_POSITION]:(state,action)=>{
+    [CONFIG_UPDATE_NEW_WINDOW_POSITION_ADD_DELTA]:(state,action)=>{
         const applicationConfig = state.application;
 
         return {
@@ -60,4 +66,18 @@ export default handleActions({
             }
         };
     },
+    [CONFIG_UPDATE_NEW_WINDOW_POSITION_RESET_TOP]:(state,action)=>({
+        ...state,
+        application:{
+            ...state.application,
+            newWinTop: parseInt(process.env.REACT_APP_NEW_WINDOW_TOP),
+        }
+    }),
+    [CONFIG_UPDATE_NEW_WINDOW_POSITION_RESET_LEFT]:(state,action)=>({
+        ...state,
+        application:{
+            ...state.application,
+            newWinLeft: parseInt(process.env.REACT_APP_NEW_WINDOW_LEFT),
+        }
+    }),
 },defaultState);

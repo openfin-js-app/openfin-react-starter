@@ -24,7 +24,7 @@ const configTabs:ConfigTab[]=[
                 _type:FieldType.NUMBER,
                 _label:'New Window Top',
                 _name:'newWinTop',
-                _defaultValue:10,
+                _defaultValue:parseInt(process.env.REACT_APP_NEW_WINDOW_TOP),
                 _props:{
                     InputProps:{
                         endAdornment:<InputAdornment position={'end'}>Pixel</InputAdornment>
@@ -35,7 +35,7 @@ const configTabs:ConfigTab[]=[
                 _type:FieldType.NUMBER,
                 _label:'New Window Left',
                 _name:'newWinLeft',
-                _defaultValue:600,
+                _defaultValue:parseInt(process.env.REACT_APP_NEW_WINDOW_LEFT),
                 _props:{
                     InputProps:{
                         endAdornment:<InputAdornment position={'end'}>Pixel</InputAdornment>
@@ -46,7 +46,7 @@ const configTabs:ConfigTab[]=[
                 _type:FieldType.NUMBER,
                 _label:'New Window Width',
                 _name:'newWinWidth',
-                _defaultValue:640,
+                _defaultValue:parseInt(process.env.REACT_APP_NEW_WINDOW_WIDTH),
                 _props:{
                     InputProps:{
                         endAdornment:<InputAdornment position={'end'}>Pixel</InputAdornment>
@@ -57,7 +57,7 @@ const configTabs:ConfigTab[]=[
                 _type:FieldType.NUMBER,
                 _label:'New Window Height',
                 _name:'newWinHeight',
-                _defaultValue:320,
+                _defaultValue:parseInt(process.env.REACT_APP_NEW_WINDOW_HEIGHT),
                 _props:{
                     InputProps:{
                         endAdornment:<InputAdornment position={'end'}>Pixel</InputAdornment>
@@ -68,7 +68,7 @@ const configTabs:ConfigTab[]=[
                 _type:FieldType.NUMBER,
                 _label:'New Window Delta Left',
                 _name:'newWindDeltaLeft',
-                _defaultValue:20,
+                _defaultValue:parseInt(process.env.REACT_APP_NEW_WINDOW_DELTA_LEFT),
                 _props:{
                     InputProps:{
                         endAdornment:<InputAdornment position={'end'}>Pixel</InputAdornment>
@@ -79,7 +79,7 @@ const configTabs:ConfigTab[]=[
                 _type:FieldType.NUMBER,
                 _label:'New Window Delta Height',
                 _name:'newWindDeltaHeight',
-                _defaultValue:20,
+                _defaultValue:parseInt(process.env.REACT_APP_NEW_WINDOW_DELTA_HEIGHT),
                 _props:{
                     InputProps:{
                         endAdornment:<InputAdornment position={'end'}>Pixel</InputAdornment>
