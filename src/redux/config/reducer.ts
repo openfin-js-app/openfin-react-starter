@@ -1,6 +1,6 @@
 import { handleActions, Action } from 'redux-actions';
 
-import { CONFIG_RESET, CONFIG_UPDATE_ONE_FIELD } from './actions';
+import { CONFIG_RESET, CONFIG_UPDATE_ONE_FIELD, CONFIG_UPDATE_NEW_WINDOW_POSITION } from './actions';
 import { ConfigTab, ConfigField, FieldType, ConfigState } from './types';
 import configTabs from './constant';
 
@@ -47,5 +47,17 @@ export default handleActions({
             }
         }
         return result;
-    }
+    },
+    [CONFIG_UPDATE_NEW_WINDOW_POSITION]:(state,action)=>{
+        const applicationConfig = state.application;
+
+        return {
+            ...state,
+            application:{
+                ...state.application,
+                newWinTop: applicationConfig.newWinTop+ applicationConfig.newWindDeltaHeight,
+                newWinLeft: applicationConfig.newWinLeft+ applicationConfig.newWindDeltaLeft,
+            }
+        };
+    },
 },defaultState);

@@ -137,7 +137,7 @@ export default connect(
             handleUpdateOneIntField: (tabName:string, fieldName:string)=>(value)=>{
                 dispatch(configUpdateOneField({
                     name:`${tabName}.${fieldName}`,
-                    value: parseInt(value),
+                    value: value?parseInt(value):0,
                 }))
             }
         }

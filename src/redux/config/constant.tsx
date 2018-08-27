@@ -35,7 +35,7 @@ const configTabs:ConfigTab[]=[
                 _type:FieldType.NUMBER,
                 _label:'New Window Left',
                 _name:'newWinLeft',
-                _defaultValue:300,
+                _defaultValue:600,
                 _props:{
                     InputProps:{
                         endAdornment:<InputAdornment position={'end'}>Pixel</InputAdornment>
@@ -46,7 +46,7 @@ const configTabs:ConfigTab[]=[
                 _type:FieldType.NUMBER,
                 _label:'New Window Width',
                 _name:'newWinWidth',
-                _defaultValue:10,
+                _defaultValue:640,
                 _props:{
                     InputProps:{
                         endAdornment:<InputAdornment position={'end'}>Pixel</InputAdornment>
@@ -57,7 +57,7 @@ const configTabs:ConfigTab[]=[
                 _type:FieldType.NUMBER,
                 _label:'New Window Height',
                 _name:'newWinHeight',
-                _defaultValue:300,
+                _defaultValue:320,
                 _props:{
                     InputProps:{
                         endAdornment:<InputAdornment position={'end'}>Pixel</InputAdornment>
@@ -68,7 +68,7 @@ const configTabs:ConfigTab[]=[
                 _type:FieldType.NUMBER,
                 _label:'New Window Delta Left',
                 _name:'newWindDeltaLeft',
-                _defaultValue:10,
+                _defaultValue:20,
                 _props:{
                     InputProps:{
                         endAdornment:<InputAdornment position={'end'}>Pixel</InputAdornment>
@@ -77,9 +77,9 @@ const configTabs:ConfigTab[]=[
             },
             {
                 _type:FieldType.NUMBER,
-                _label:'New Window Delta Right',
-                _name:'newWindDeltaRight',
-                _defaultValue:10,
+                _label:'New Window Delta Height',
+                _name:'newWindDeltaHeight',
+                _defaultValue:20,
                 _props:{
                     InputProps:{
                         endAdornment:<InputAdornment position={'end'}>Pixel</InputAdornment>
