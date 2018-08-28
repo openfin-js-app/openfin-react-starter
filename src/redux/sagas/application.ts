@@ -261,7 +261,7 @@ function* applicationLaunchBarToggleCollapse() {
 
 }
 
-function* applicationLaucnhNewWindow(action) {
+function* applicationLaunchNewWindow(action) {
     const appJson = action.payload;
     const defaultWidth = yield select(getNewWindowWidth);
     const defaultHeight = yield select(getNewWindowHeight);
@@ -287,5 +287,5 @@ export default function* (){
     yield takeLatest(APPLICATION_CLOSE_SNACKBAR,applicationCloseSnackBar);
     yield takeLatest(APPLICATION_LAUNCH_BAR_TOGGLE,applicationLaunchBarToggle);
     yield takeLatest(APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE,applicationLaunchBarToggleCollapse);
-    yield takeLatest(APPLICATION_LAUNCH_NEW_WINDOW,applicationLaucnhNewWindow);
+    yield takeLatest(APPLICATION_LAUNCH_NEW_WINDOW,applicationLaunchNewWindow);
 }
