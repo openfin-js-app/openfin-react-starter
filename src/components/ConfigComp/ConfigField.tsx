@@ -44,6 +44,7 @@ class ConfigFieldComp extends React.Component<any,any>{
                     type={"number"}
                     className={classes.numberField}
                     id={`config_field_${shortid.generate()}`}
+                    error={value?false:true}
                     label={_label}
                     value={value}
                     onChange={this.handleTextFieldChange}
