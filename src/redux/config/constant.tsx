@@ -1,0 +1,182 @@
+import * as React from 'react';
+import InputAdornment from '@material-ui/core/InputAdornment';
+
+import { ConfigTab, ConfigField, FieldType } from './types';
+
+import SettingIcon from '@material-ui/icons/Settings';
+
+import ConfigJson from '../../views/ConfigView/ConfigJson';
+
+const controls = require('../../assets/svg/support/controls_dark.svg') as string;
+const listChecked = require('../../assets/svg/other/list-checked-dark.svg') as string;
+
+const configTabs:ConfigTab[]=[
+    {
+        _order: 0 ,
+        _label: 'Application',
+        _name:'application',
+        _svgUrl: controls,
+        _icon: SettingIcon,
+        _fields:[
+            {
+                _type:FieldType.SUBHEADING,
+                _label:'New Window Position',
+                _cols: 12,
+            },
+            {
+                _type:FieldType.NUMBER,
+                _label:'New Window Top',
+                _name:'newWinTop',
+                _defaultValue:parseInt(process.env.REACT_APP_NEW_WINDOW_TOP),
+                _props:{
+                    InputProps:{
+                        endAdornment:<InputAdornment position={'end'}>Pixel</InputAdornment>
+                    }
+                }
+            },
+            {
+                _type:FieldType.NUMBER,
+                _label:'New Window Left',
+                _name:'newWinLeft',
+                _defaultValue:parseInt(process.env.REACT_APP_NEW_WINDOW_LEFT),
+                _props:{
+                    InputProps:{
+                        endAdornment:<InputAdornment position={'end'}>Pixel</InputAdornment>
+                    }
+                }
+            },
+            {
+                _type:FieldType.NUMBER,
+                _label:'New Window Width',
+                _name:'newWinWidth',
+                _defaultValue:parseInt(process.env.REACT_APP_NEW_WINDOW_WIDTH),
+                _props:{
+                    InputProps:{
+                        endAdornment:<InputAdornment position={'end'}>Pixel</InputAdornment>
+                    }
+                }
+            },
+            {
+                _type:FieldType.NUMBER,
+                _label:'New Window Height',
+                _name:'newWinHeight',
+                _defaultValue:parseInt(process.env.REACT_APP_NEW_WINDOW_HEIGHT),
+                _props:{
+                    InputProps:{
+                        endAdornment:<InputAdornment position={'end'}>Pixel</InputAdornment>
+                    }
+                }
+            },
+            {
+                _type:FieldType.NUMBER,
+                _label:'New Window Delta Left',
+                _name:'newWindDeltaLeft',
+                _defaultValue:parseInt(process.env.REACT_APP_NEW_WINDOW_DELTA_LEFT),
+                _props:{
+                    InputProps:{
+                        endAdornment:<InputAdornment position={'end'}>Pixel</InputAdornment>
+                    }
+                }
+            },
+            {
+                _type:FieldType.NUMBER,
+                _label:'New Window Delta Height',
+                _name:'newWindDeltaHeight',
+                _defaultValue:parseInt(process.env.REACT_APP_NEW_WINDOW_DELTA_HEIGHT),
+                _props:{
+                    InputProps:{
+                        endAdornment:<InputAdornment position={'end'}>Pixel</InputAdornment>
+                    }
+                }
+            },
+        ]
+    },
+    {
+        _order: 1 ,
+        _label: 'Sample',
+        _name:'sample',
+        _svgUrl: listChecked,
+        _icon: SettingIcon,
+        _fields:[
+            {
+                _type:FieldType.SUBHEADING,
+                _label:'Sample value',
+                _cols: 12,
+            },
+            {
+                _type:FieldType.SUBHEADING,
+                _label:'STRING',
+                _cols: 4,
+            },
+            {
+                _type:FieldType.STRING,
+                _label:'String value',
+                _name:'strValue',
+                _defaultValue:"",
+                _cols: 8,
+            },
+            {
+                _type:FieldType.SUBHEADING,
+                _label:'CURRENCY',
+                _cols: 4,
+            },
+            {
+                _type:FieldType.CURRENCY,
+                _label:'Currency value',
+                _name:'crrValue',
+                _defaultValue:123456789,
+                _cols: 8,
+            },
+            {
+                _type:FieldType.SUBHEADING,
+                _label:'DATE',
+                _cols: 4,
+            },
+            {
+                _type:FieldType.DATE,
+                _label:'Date value',
+                _name:'dateValue',
+                _defaultValue:new Date(),
+                _cols: 8,
+            },
+            {
+                _type:FieldType.SUBHEADING,
+                _label:'TIME',
+                _cols: 4,
+            },
+            {
+                _type:FieldType.TIME,
+                _label:'Time value',
+                _name:'timeValue',
+                _defaultValue:new Date(),
+                _cols: 8,
+            },
+            {
+                _type:FieldType.SUBHEADING,
+                _label:'DATETIME',
+                _cols: 4,
+            },
+            {
+                _type:FieldType.DATETIME,
+                _label:'Datetime value',
+                _name:'datetimeValue',
+                _defaultValue:new Date(),
+                _cols: 8,
+            },
+            {
+                _type:FieldType.SUBHEADING,
+                _label:'Custom field',
+                _cols: 12,
+            },
+            {
+                _type:FieldType.CUSTOM_FIELD,
+                _label:'Custom value',
+                _custom:<ConfigJson/>,
+                _cols:12,
+                _rows:6,
+            }
+        ]
+    }
+];
+
+export default configTabs;

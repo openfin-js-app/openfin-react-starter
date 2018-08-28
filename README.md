@@ -11,9 +11,10 @@ Openfin react starer in ts
 * Support general primary/success/error/info/warning snackbar
 * Support spawn a child window
 * Version tag injected via dotenv
+* Support general app config
 
 [LICENSE]: ./LICENSE.md
 [CHANGELOG]: ./CHANGELOG.md
 
-[version-badge]: https://img.shields.io/badge/version-0.10.5-blue.svg
+[version-badge]: https://img.shields.io/badge/version-0.10.6-blue.svg
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg

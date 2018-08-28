@@ -14,6 +14,10 @@ const theme = createMuiTheme({
         fontSize: 8,
     },
     palette:{
+        type:'dark',
+        background:{
+            default:'#303030'
+        },
         primary:{
             main:'#23a4fb',
         },
@@ -71,11 +75,11 @@ const theme = createMuiTheme({
         },
         MuiListItem:{
             gutters:{
-                paddingTop:'0px',
-                paddingBottom:'0px',
+                paddingTop:'2px',
+                paddingBottom:'2px',
                 "& $img":{
-                    height:'24px',
-                    width:'24px',
+                    height:'20px',
+                    width:'20px',
                     marginRight:'16px',
                     userSelect:'none',
                 }

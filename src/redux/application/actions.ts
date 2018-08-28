@@ -28,5 +28,7 @@ export const applicationCloseSnackbar = createAction(APPLICATION_CLOSE_SNACKBAR,
 
 export const APPLICATION_LAUNCH_BAR_TOGGLE = 'APPLICATION_LAUNCH_BAR_TOGGLE';
 export const APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE = 'APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE';
+export const APPLICATION_LAUNCH_NEW_WINDOW = 'APPLICATION_LAUNCH_NEW_WINDOW';
 export const applicationLaunchBarToggle = createAction(APPLICATION_LAUNCH_BAR_TOGGLE,(option)=>(option));
 export const applicationLaunchBarToggleCollapse = createAction(APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE,(option)=>(option));
+export const applicationLaunchNewWindow = createAction(APPLICATION_LAUNCH_NEW_WINDOW,(option)=>(option));

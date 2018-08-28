@@ -31,10 +31,17 @@ import {
     applicationProcessSnackbarQueue,
     APPLICATION_LAUNCH_BAR_TOGGLE,
     APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE,
+    APPLICATION_LAUNCH_NEW_WINDOW,
 } from '../application/actions';
+
+import { configUpdateNewWindowPosition } from '../config/actions';
 
 const getLaunchBarCollapse = state => state.application.launchBarCollapse;
 const getWindowState = state => state.application.windowState;
+const getNewWindowTop = state => state.config.application.newWinTop;
+const getNewWindowLeft = state => state.config.application.newWinLeft;
+const getNewWindowWidth = state => state.config.application.newWinWidth;
+const getNewWindowHeight = state => state.config.application.newWinHeight;
 
 function* applicationLoading() {
 
@@ -254,6 +261,24 @@ function* applicationLaunchBarToggleCollapse() {
 
 }
 
+function* applicationLaunchNewWindow(action) {
+    const appJson = action.payload;
+    const defaultWidth = yield select(getNewWindowWidth);
+    const defaultHeight = yield select(getNewWindowHeight);
+    const defaultTop = yield select(getNewWindowTop);
+    const defaultLeft = yield select(getNewWindowLeft);
+
+    if(!appJson.defaultWidth){ appJson.defaultWidth = defaultWidth}
+    if(!appJson.defaultHeight){ appJson.defaultHeight = defaultHeight}
+    if(!appJson.defaultTop){ appJson.defaultTop = defaultTop}
+    if(!appJson.defaultLeft){ appJson.defaultLeft = defaultLeft}
+
+    yield put.resolve(Window.actions.newWindow(appJson));
+
+    yield put(configUpdateNewWindowPosition());
+
+}
+
 export default function* (){
     yield takeLatest(APPLICATION_STARTED,applicationLoading);
     yield takeLatest(Event.actionDicts.windowEventDictByName['close-requested'].type,applicationExit);
@@ -262,4 +287,5 @@ export default function* (){
     yield takeLatest(APPLICATION_CLOSE_SNACKBAR,applicationCloseSnackBar);
     yield takeLatest(APPLICATION_LAUNCH_BAR_TOGGLE,applicationLaunchBarToggle);
     yield takeLatest(APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE,applicationLaunchBarToggleCollapse);
+    yield takeLatest(APPLICATION_LAUNCH_NEW_WINDOW,applicationLaunchNewWindow);
 }

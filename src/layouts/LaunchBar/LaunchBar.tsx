@@ -23,7 +23,7 @@ import { launchBarLayoutStyle as style } from '../../assets/jss/openfin-starter'
 const appLogo = require('../../assets/svg/app.svg') as string;
 
 import {
-    applicationLaunchBarToggle, applicationLaunchBarToggleCollapse
+    applicationLaunchBarToggle, applicationLaunchBarToggleCollapse, applicationLaunchNewWindow,
 } from '../../redux';
 
 import { launchBarItems } from './LaunchBarData';
@@ -130,7 +130,7 @@ export default connect(
     }),
     dispatch => ({
         actions:{
-            handleLaunchBarItemBtnClick:(appJson)=>()=>{dispatch(Window.actions.newWindow(appJson))},
+            handleLaunchBarItemBtnClick:(appJson)=>()=>{dispatch(applicationLaunchNewWindow(appJson))},
             handleSwitchToMainWindow:()=>{dispatch(applicationLaunchBarToggle({}))},
             handleToggleCollapse:()=>{dispatch(applicationLaunchBarToggleCollapse({}))},
             handleMinimize:()=>{dispatch(Window.actions.minimize({}))},

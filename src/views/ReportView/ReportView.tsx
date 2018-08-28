@@ -18,7 +18,9 @@ class ReportView extends React.Component<any,any>{
         } = this.props;
 
         return(<div className={classes.root}>
-            <Scrollbars>
+            <Scrollbars
+                renderThumbVertical={props => <div className={"dark-thumb-vertical"} {...props}/>}
+            >
                 <div className={classes.mainContainer}>
                     <Typography variant={"title"} gutterBottom>
                         Openfin {version} - {username} @ {computerName}
