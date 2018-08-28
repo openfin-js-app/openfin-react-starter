@@ -2,6 +2,7 @@ import { handleActions, Action } from 'redux-actions';
 
 import {
     CONFIG_RESET, CONFIG_UPDATE_ONE_FIELD,
+    CONFIG_UPDATE_GLOBAL_FILTER_STR,
 
     CONFIG_UPDATE_NEW_WINDOW_POSITION_ADD_DELTA,
     CONFIG_UPDATE_NEW_WINDOW_POSITION_RESET_TOP,
@@ -53,6 +54,13 @@ export default handleActions({
             }
         }
         return result;
+    },
+    [CONFIG_UPDATE_GLOBAL_FILTER_STR]:(state,action)=>{
+        const { configGlobalFilterString } = action.payload;
+        return{
+            ...state,
+            configGlobalFilterString,
+        };
     },
     [CONFIG_UPDATE_NEW_WINDOW_POSITION_ADD_DELTA]:(state,action)=>{
         const applicationConfig = state.application;
