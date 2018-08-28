@@ -6,6 +6,7 @@ import { ConfigTab, ConfigField, FieldType } from './types';
 import SettingIcon from '@material-ui/icons/Settings';
 
 const controls = require('../../assets/svg/support/controls_dark.svg') as string;
+const listChecked = require('../../assets/svg/other/list-checked-dark.svg') as string;
 
 const configTabs:ConfigTab[]=[
     {
@@ -85,6 +86,41 @@ const configTabs:ConfigTab[]=[
                         endAdornment:<InputAdornment position={'end'}>Pixel</InputAdornment>
                     }
                 }
+            },
+        ]
+    },
+    {
+        _order: 1 ,
+        _label: 'Sample',
+        _name:'sample',
+        _svgUrl: listChecked,
+        _icon: SettingIcon,
+        _fields:[
+            {
+                _type:FieldType.SUBHEADING,
+                _label:'Sample value',
+                _cols: 12,
+            },
+            {
+                _type:FieldType.DATE,
+                _label:'Date value',
+                _name:'dateValue',
+                _defaultValue:new Date(),
+                _cols: 8,
+            },
+            {
+                _type:FieldType.TIME,
+                _label:'Time value',
+                _name:'timeValue',
+                _defaultValue:new Date(),
+                _cols: 8,
+            },
+            {
+                _type:FieldType.DATETIME,
+                _label:'Datetime value',
+                _name:'datetimeValue',
+                _defaultValue:new Date(),
+                _cols: 8,
             },
         ]
     }

@@ -35,6 +35,12 @@ class ConfigView extends React.Component<any,any>{
         currentTab:0,
     };
 
+    handleTabItemClick(currentTab){
+        return function () {
+            this.setState({currentTab})
+        }.bind(this);
+    }
+
     render(){
 
         const {
@@ -42,7 +48,6 @@ class ConfigView extends React.Component<any,any>{
             config,
             actions:{
                 handleUpdateOneField,
-                handleUpdateOneIntField,
             }
         } = this.props;
 
@@ -79,7 +84,9 @@ class ConfigView extends React.Component<any,any>{
                             <List>
                                 {tabs.map((oneTab:ConfigTab,index:number)=>{
                                     return(
-                                        <ListItem button className={cx('active')} key={index} dense={true}>
+                                        <ListItem button className={cx('active')} key={index} dense={true}
+                                                  onClick={this.handleTabItemClick(index)}
+                                        >
                                             <ListItemIcon>
                                                 {oneTab._svgUrl?<img src={oneTab._svgUrl}/>:<oneTab._icon/>}
                                             </ListItemIcon>
@@ -101,12 +108,12 @@ class ConfigView extends React.Component<any,any>{
                         renderThumbVertical={props => <div className={"dark-thumb-vertical"} {...props}/>}
                     >
                         <div className={classes.configMainSection}>
-                            <GridList cellHeight={50} className={classes.configMainGridList} cols={12}>
+                            <GridList cellHeight={52} className={classes.configMainGridList} cols={12}>
                                 {tabs[currentTab]._fields.map((oneField:ConfigField,index:number)=>(
                                     <GridListTile key={index} cols={oneField._cols || 3} rows={oneField._rows || 1}>
                                         <ConfigFieldComp
                                             value={config[tabName][oneField._name]}
-                                            onChange={handleUpdateOneIntField(tabName,oneField._name)}
+                                            onChange={handleUpdateOneField(tabName,oneField._name)}
                                             {...oneField}
                                         />
                                     </GridListTile>
@@ -132,12 +139,6 @@ export default connect(
                 dispatch(configUpdateOneField({
                     name:`${tabName}.${fieldName}`,
                     value,
-                }))
-            },
-            handleUpdateOneIntField: (tabName:string, fieldName:string)=>(value)=>{
-                dispatch(configUpdateOneField({
-                    name:`${tabName}.${fieldName}`,
-                    value: value?parseInt(value):'',
                 }))
             }
         }
