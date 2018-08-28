@@ -20,12 +20,47 @@ import {FieldType, ConfigField } from '../../redux/config/types';
 import { withStyles } from '@material-ui/core/styles';
 import { configFieldCompStyle as style } from '../../assets/jss/openfin-starter';
 
+const NumberFormat = require('react-number-format');
+
+function NumberFormatCustom(props) {
+    const { inputRef, onChange, ...other } = props;
+
+    return (
+        <NumberFormat
+            {...other}
+            getInputRef={inputRef}
+            onValueChange={values => {
+                onChange({
+                    target: {
+                        value: values.value,
+                    },
+                });
+            }}
+            thousandSeparator
+            prefix="$"
+        />
+    );
+}
+
 class ConfigFieldComp extends React.Component<any,any>{
 
     handleTextFieldChange = event =>{
         if (this.props.onChange){
+            this.props.onChange(event.target.value);
+        }
+    };
+
+    handleTextFieldIntChange = event =>{
+        if (this.props.onChange){
             let value = event.target.value;
             this.props.onChange(value?parseInt(value):'');
+        }
+    };
+
+    handleTextFieldFloatChange = event =>{
+        if (this.props.onChange){
+            let value = event.target.value;
+            this.props.onChange(value?parseFloat(value):'');
         }
     };
 
@@ -41,6 +76,7 @@ class ConfigFieldComp extends React.Component<any,any>{
             classes,
             _type, _label, _props, _custom,
             value,
+            ...other
         } = this.props;
 
         switch (_type){
@@ -49,9 +85,34 @@ class ConfigFieldComp extends React.Component<any,any>{
                     {_label}
                 </Typography>);
             case FieldType.SUBHEADING:
-                return (<Typography variant={'subheading'} gutterBottom>
+                return (<Typography className={classes.subheadingField} variant={'subheading'} gutterBottom>
                     {_label}
                 </Typography>);
+            case FieldType.CUSTOM_FIELD:
+                return (_custom);
+            case FieldType.CURRENCY:
+                return (
+                    <TextField
+                        label={_label}
+                        value={value}
+                        onChange={this.handleTextFieldFloatChange}
+                        id={`config_field_${shortid.generate()}`}
+                        InputProps={{inputComponent:NumberFormatCustom}}
+                        margin={"dense"}
+                        {..._props}
+                    />
+                );
+            case FieldType.STRING:
+                return (
+                    <TextField
+                        id={`config_field_${shortid.generate()}`}
+                        label={_label}
+                        value={value}
+                        onChange={this.handleTextFieldChange}
+                        margin={"dense"}
+                        {..._props}
+                    />
+                );
             case FieldType.NUMBER:
                 return(<TextField
                     type={"number"}
@@ -60,7 +121,8 @@ class ConfigFieldComp extends React.Component<any,any>{
                     error={value?false:true}
                     label={_label}
                     value={value}
-                    onChange={this.handleTextFieldChange}
+                    onChange={this.handleTextFieldIntChange}
+                    margin={"dense"}
                     {..._props}
                 />);
             case FieldType.DATE:
@@ -76,6 +138,7 @@ class ConfigFieldComp extends React.Component<any,any>{
                             onChange={this.handleDateChange}
                             disableOpenOnEnter
                             animateYearScrolling={false}
+                            margin={"dense"}
                             {..._props}
                         />
                     </MuiPickersUtilsProvider>
@@ -89,6 +152,7 @@ class ConfigFieldComp extends React.Component<any,any>{
                             label={_label}
                             value={value}
                             onChange={this.handleDateChange}
+                            margin={"dense"}
                             {..._props}
                         />
                     </MuiPickersUtilsProvider>
@@ -103,10 +167,12 @@ class ConfigFieldComp extends React.Component<any,any>{
                             value={value}
                             onChange={this.handleDateChange}
                             disableOpenOnEnter
+                            margin={"dense"}
                             {..._props}
                         />
                     </MuiPickersUtilsProvider>
                 );
+            case FieldType.BODY1:
             default:
                 return (<Typography variant={"body1"} gutterBottom align={"right"}>
                     {_label}

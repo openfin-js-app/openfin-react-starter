@@ -120,7 +120,7 @@ class ConfigView extends React.Component<any,any>{
                                 ))}
                             </GridList>
                         </div>
-                        <ReactJson src={config} theme={'monokai'}/>
+                        {/*<ReactJson src={config} theme={'monokai'}/>*/}
                         <div style={{marginBottom:'100px'}}/>
                     </Scrollbars>
                 </SplitterLayout>

@@ -11,6 +11,7 @@ export enum FieldType{
     CURRENCY = 7,
     TITLE = 8,
     SUBHEADING = 9,
+    BODY1 = 10,
 }
 
 export interface ConfigField {

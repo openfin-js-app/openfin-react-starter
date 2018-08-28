@@ -20,7 +20,7 @@ function buildDefaultState(configTabs: ConfigTab[]):ConfigState{
         result[oneTab._name]={};
         oneTab._fields.forEach(oneField =>{
             oneTab._fieldLabels = oneTab._fieldLabels+oneField._label;
-            if(oneField._name && oneField._defaultValue){
+            if(oneField._name && (oneField._defaultValue || oneField._defaultValue==="")){
                 result[oneTab._name][oneField._name]=oneField._defaultValue;
             }
         })
