@@ -7,10 +7,10 @@ import './assets/css/main.css';
 
 import setPlatformClass from './utils/setPlatformClass';
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
-import {applicationStarted} from "./redux";
+import * as serviceWorker from './serviceWorker';
 
 import configureStore from './utils/configureStore';
+import {applicationStarted} from "./redux";
 
 declare const window:any;
 
@@ -48,4 +48,4 @@ if (process.env.REACT_APP_SHARED_REDUX_STORE === 'true'){
     );
 }
 
-registerServiceWorker();
+serviceWorker.unregister();

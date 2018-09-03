@@ -21,7 +21,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import CheckIcon from '@material-ui/icons/Check';
 
 import { withStyles } from '@material-ui/core/styles';
-import * as cx from 'classnames';
+import cx from 'classnames';
 
 import {ConfigField as ConfigFieldComp} from '../../components';
 

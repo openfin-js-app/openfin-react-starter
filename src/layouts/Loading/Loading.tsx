@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Particles from 'react-particles-js';
 import { connect } from 'react-redux';
-import * as cx from 'classnames';
+import cx from 'classnames';
 
 import {withStyles, StyleRules} from '@material-ui/core/styles';
 

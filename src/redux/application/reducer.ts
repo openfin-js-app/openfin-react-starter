@@ -132,4 +132,4 @@ export default handleActions({
         ...state,
         launchBarCollapse:!state.launchBarCollapse,
     })
-},defaultState);
+} as any,defaultState);
