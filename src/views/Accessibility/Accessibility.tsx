@@ -3,12 +3,9 @@ import * as shortid from 'shortid';
 import { connect, DispatchProp } from 'react-redux';
 
 import Button from '@material-ui/core/Button';
-import Snackbar from '@material-ui/core/Snackbar';
 import Typography from '@material-ui/core/Typography';
 
 import { WithStyles, withStyles, createStyles } from '@material-ui/core/styles';
-
-import { Applcation, Window } from '@albertli/redux-openfin';
 
 import { applicationNewSnackbar, applicationLaunchNewWindow } from '../../redux';
 

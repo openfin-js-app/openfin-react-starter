@@ -155,10 +155,8 @@
       "<rootDir>/src"
     ],
     "globals": {
-      "window": true,
-      "document": true
     },
-    "testEnvironment": "node",
+    "testEnvironment": "jsdom",
     "testURL": "http://localhost",
     "transform": {
       "^.+\\.tsx?$": "ts-jest",
