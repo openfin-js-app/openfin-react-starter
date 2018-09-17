@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AccessibilityView render and fire actions when clicked 1`] = `
+Array [
+  Object {
+    "payload": Object {
+      "autoShow": true,
+      "callback": [Function],
+      "frame": false,
+      "name": "openfin-react-starter-child-accessibility-U_TMCRJXX",
+      "resizable": true,
+      "state": "normal",
+      "url": "/childWindow/report",
+    },
+    "type": "APPLICATION_LAUNCH_NEW_WINDOW",
+  },
+  Object {
+    "payload": Object {
+      "autoShow": true,
+      "callback": [Function],
+      "frame": true,
+      "name": "openfin-react-starter-child-google-pg9QE8jfug",
+      "resizable": true,
+      "state": "normal",
+      "url": "https://www.google.com/",
+    },
+    "type": "APPLICATION_LAUNCH_NEW_WINDOW",
+  },
+  Object {
+    "payload": Object {
+      "message": "Message to primary snackbar",
+      "variant": "primary",
+    },
+    "type": "APPLICATION_NEW_SNACKBAR",
+  },
+  Object {
+    "payload": Object {
+      "message": "Message to warning snackbar",
+      "variant": "warning",
+    },
+    "type": "APPLICATION_NEW_SNACKBAR",
+  },
+]
+`;
