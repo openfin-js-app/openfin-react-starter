@@ -31,55 +31,7 @@ interface Props extends WithStyles<typeof style>, DispatchProp<any>{
     },
 }
 
-@connect(
-    (state:any)=>({
-
-    }),
-    dispatch => ({
-        actions:{
-            onOpenNewSelf:()=>{
-                dispatch(applicationLaunchNewWindow({
-                    name:`openfin-react-starter-child-accessibility-${shortid.generate()}`,
-                    url:'/childWindow/report',
-                    frame:false,
-                    resizable:true,
-                    state:'normal',
-                    autoShow:true,
-                    callback:(window:any)=>{
-                        console.log('onOpenNewSelf::callback', window);
-                    }
-                }));
-            },
-            onOpenGoogle:()=>{
-                dispatch(applicationLaunchNewWindow({
-                    name:`openfin-react-starter-child-google-${shortid.generate()}`,
-                    url:'https://www.google.com/',
-                    frame:true,
-                    resizable:true,
-                    state:'normal',
-                    autoShow:true,
-                    callback:(window:any)=>{
-                        console.log('onOpenGoogle::callback', window);
-                    }
-                }));
-            },
-            handleOpenPrimarySnackBar:()=>{
-                dispatch(applicationNewSnackbar({
-                    message:'Message to primary snackbar',
-                    variant:'primary',
-                }))
-            },
-            handleOpenSecondarySnackBar:()=>{
-                dispatch(applicationNewSnackbar({
-                    message:'Message to warning snackbar',
-                    variant:'warning',
-                }))
-            },
-        }
-    })
-)
-@(withStyles(style)as any)
-export default class AccessibilityView extends React.Component<Props, any>{
+class AccessibilityView extends React.Component<Props, any>{
     render():any{
 
         const {
@@ -128,3 +80,51 @@ export default class AccessibilityView extends React.Component<Props, any>{
         )
     }
 }
+
+export default connect(
+    (state:any)=>({
+
+    }),
+    dispatch => ({
+        actions:{
+            onOpenNewSelf:()=>{
+                dispatch(applicationLaunchNewWindow({
+                    name:`openfin-react-starter-child-accessibility-${shortid.generate()}`,
+                    url:'/childWindow/report',
+                    frame:false,
+                    resizable:true,
+                    state:'normal',
+                    autoShow:true,
+                    callback:(window:any)=>{
+                        console.log('onOpenNewSelf::callback', window);
+                    }
+                }));
+            },
+            onOpenGoogle:()=>{
+                dispatch(applicationLaunchNewWindow({
+                    name:`openfin-react-starter-child-google-${shortid.generate()}`,
+                    url:'https://www.google.com/',
+                    frame:true,
+                    resizable:true,
+                    state:'normal',
+                    autoShow:true,
+                    callback:(window:any)=>{
+                        console.log('onOpenGoogle::callback', window);
+                    }
+                }));
+            },
+            handleOpenPrimarySnackBar:()=>{
+                dispatch(applicationNewSnackbar({
+                    message:'Message to primary snackbar',
+                    variant:'primary',
+                }))
+            },
+            handleOpenSecondarySnackBar:()=>{
+                dispatch(applicationNewSnackbar({
+                    message:'Message to warning snackbar',
+                    variant:'warning',
+                }))
+            },
+        }
+    })
+)(withStyles(style)(AccessibilityView))
