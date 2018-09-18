@@ -37,6 +37,6 @@ describe('AccessibilityView',()=>{
                props.onClick();
            }
        });
-       expect(store.getActions()).toMatchSnapshot();
+       expect(store.getActions()).toHaveLength(4);
    })
 });
