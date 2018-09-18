@@ -86,7 +86,7 @@
     "react-dev-utils": "6.0.0-next.a671462c",
     "react-dom": "^16.5.0",
     "react-json-view": "^1.19.1",
-    "react-number-format": "^3.5.1",
+    "react-number-format": "^3.6.0",
     "react-particles-js": "^2.3.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
@@ -154,8 +154,7 @@
     "roots": [
       "<rootDir>/src"
     ],
-    "globals": {
-    },
+    "globals": {},
     "testEnvironment": "jsdom",
     "testURL": "http://localhost",
     "transform": {

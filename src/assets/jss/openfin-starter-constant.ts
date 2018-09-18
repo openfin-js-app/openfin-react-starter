@@ -155,7 +155,7 @@ const cardLink = {
 };
 
 export {
-    //variables
+    // variables
     drawerWidth,
     appbarHeight,
     transition,

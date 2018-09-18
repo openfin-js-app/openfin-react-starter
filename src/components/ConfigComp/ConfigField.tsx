@@ -8,19 +8,14 @@ import DatePicker from 'material-ui-pickers/DatePicker';
 import DateTimePicker from 'material-ui-pickers/DateTimePicker';
 
 import Typography from '@material-ui/core/Typography';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 
-import {FieldType, ConfigField } from '../../redux/config/types';
+import { FieldType } from '../../redux/config/types';
 
 import { withStyles } from '@material-ui/core/styles';
 import { configFieldCompStyle as style } from '../../assets/jss/openfin-starter';
 
-const NumberFormat = require('react-number-format');
+import NumberFormat from 'react-number-format';
 
 function NumberFormatCustom(props) {
     const { inputRef, onChange, ...other } = props;
@@ -52,14 +47,14 @@ class ConfigFieldComp extends React.Component<any,any>{
 
     handleTextFieldIntChange = event =>{
         if (this.props.onChange){
-            let value = event.target.value;
-            this.props.onChange(value?parseInt(value):'');
+            const value = event.target.value;
+            this.props.onChange(value?parseInt(value,10):'');
         }
     };
 
     handleTextFieldFloatChange = event =>{
         if (this.props.onChange){
-            let value = event.target.value;
+            const value = event.target.value;
             this.props.onChange(value?parseFloat(value):'');
         }
     };

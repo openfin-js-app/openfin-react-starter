@@ -4,14 +4,14 @@ import { Router, Route, Switch, Redirect } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
-import indexRoutes, {RouteCompItem, RouteItem } from './routes/index';
+import indexRoutes from './routes/index';
 
 import hist from './utils/history';
 
 const theme = createMuiTheme({
     typography:{
-        htmlFontSize: 10,
         fontSize: 8,
+        htmlFontSize: 10,
     },
     palette:{
         type:'dark',
