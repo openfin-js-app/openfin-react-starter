@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Particles from 'react-particles-js';
 import { connect } from 'react-redux';
-import cx from 'classnames';
 
 import {withStyles, StyleRules} from '@material-ui/core/styles';
 
@@ -109,7 +108,7 @@ class LoadingComponent extends React.Component<any,any>{
             <div className={classes.container}>
                 <img src={appLogo} className={classes.appLogoImg} />
                 <div className={classes.appName}>Openfin react starter</div>
-                <div className={classes.versionStr}>{process.env['REACT_APP_VERSION']}</div>
+                <div className={classes.versionStr}>{process.env.REACT_APP_VERSION}</div>
                 <LoadingBar/>
                 <img src={companyLogo} className={classes.companyLogImg} />
                 <Particles

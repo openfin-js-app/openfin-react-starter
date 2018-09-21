@@ -71,7 +71,7 @@ class SidebarComp extends React.Component<any,any>{
                     className={cx(classes.releaseTypo, classes.whiteFont)}
                     variant={"caption"} gutterBottom align={"right"}
                 >
-                    {process.env['REACT_APP_VERSION']}
+                    {process.env.REACT_APP_VERSION}
                 </Typography>
             </Drawer>
         </React.Fragment>);
