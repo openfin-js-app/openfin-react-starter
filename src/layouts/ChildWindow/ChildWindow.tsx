@@ -12,7 +12,7 @@ import {withStyles} from '@material-ui/core/styles';
 
 import { Window } from '@albertli/redux-openfin';
 
-import { RouteItem, RouteCompItem, RouteRedirectItem } from '../../routes';
+import { RouteItem, IRouteCompItem, IRouteRedirectItem } from '../../routes';
 import childWindowRoutes from '../../routes/ChildWindow';
 
 import {Header} from '../../components';

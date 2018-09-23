@@ -8,11 +8,11 @@ import {
     CONFIG_UPDATE_NEW_WINDOW_POSITION_RESET_TOP,
     CONFIG_UPDATE_NEW_WINDOW_POSITION_RESET_LEFT,
 } from './actions';
-import { ConfigTab, ConfigField, FieldType, ConfigState } from './types';
+import { IConfigTab, IConfigField, FieldType, IConfigState } from './types';
 import configTabs from './constant';
 
-function buildDefaultState(configTabs: ConfigTab[]):ConfigState{
-    let result:ConfigState = {
+function buildDefaultState(configTabs: IConfigTab[]):IConfigState{
+    const result:IConfigState = {
         configGlobalFilterString:'',
         _tabs:configTabs,
     };
@@ -29,7 +29,7 @@ function buildDefaultState(configTabs: ConfigTab[]):ConfigState{
     return result;
 }
 
-const defaultState:ConfigState = buildDefaultState(configTabs);
+const defaultState:IConfigState = buildDefaultState(configTabs);
 
 export default handleActions({
     [CONFIG_RESET]:(state,action)=>{
@@ -45,9 +45,9 @@ export default handleActions({
     },
     [CONFIG_UPDATE_ONE_FIELD]:(state,action)=>{
         const {name,value} = action.payload;
-        let result = {...state};
-        let paths = name.split('.');
-        if (paths.length == 2){
+        const result = {...state};
+        const paths = name.split('.');
+        if (paths.length === 2){
             result[paths[0]]={
                 ...result[paths[0]],
                 [paths[1]]:value,
@@ -78,14 +78,14 @@ export default handleActions({
         ...state,
         application:{
             ...state.application,
-            newWinTop: parseInt(process.env.REACT_APP_NEW_WINDOW_TOP),
+            newWinTop: parseInt(process.env.REACT_APP_NEW_WINDOW_TOP,10),
         }
     }),
     [CONFIG_UPDATE_NEW_WINDOW_POSITION_RESET_LEFT]:(state,action)=>({
         ...state,
         application:{
             ...state.application,
-            newWinLeft: parseInt(process.env.REACT_APP_NEW_WINDOW_LEFT),
+            newWinLeft: parseInt(process.env.REACT_APP_NEW_WINDOW_LEFT,10),
         }
     }),
 },defaultState);

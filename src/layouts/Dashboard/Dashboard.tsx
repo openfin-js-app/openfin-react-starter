@@ -18,7 +18,7 @@ import {
     applicationCloseSnackbar, applicationLaunchBarToggle,
 } from '../../redux';
 
-import { RouteItem, RouteCompItem, RouteRedirectItem } from '../../routes';
+import { RouteItem, IRouteCompItem, IRouteRedirectItem } from '../../routes';
 import dashboardRoutes from '../../routes/Dashboard';
 import { Sidebar, Header, SnackbarContent } from '../../components';
 

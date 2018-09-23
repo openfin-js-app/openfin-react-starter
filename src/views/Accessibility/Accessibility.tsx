@@ -22,7 +22,7 @@ const style = createStyles({
     simple: buttonStyle.simple,
 });
 
-interface Props extends WithStyles<typeof style>, DispatchProp<any>{
+interface IProps extends WithStyles<typeof style>, DispatchProp<any>{
     actions:{
         onOpenNewSelf:any,
         onOpenGoogle:any,
@@ -31,7 +31,7 @@ interface Props extends WithStyles<typeof style>, DispatchProp<any>{
     },
 }
 
-class AccessibilityView extends React.Component<Props, any>{
+class AccessibilityView extends React.Component<IProps, any>{
     render():any{
 
         const {

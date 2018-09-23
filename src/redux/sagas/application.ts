@@ -6,12 +6,12 @@ import hist from '../../utils/history';
 
 import { launchBarItems } from '../../layouts/LaunchBar/LaunchBarData';
 
-const ENABLE_LOADING_VIEW=process.env['REACT_APP_ENABLE_LOADING_VIEW'].toLowerCase() === 'true';
+const ENABLE_LOADING_VIEW=process.env.REACT_APP_ENABLE_LOADING_VIEW.toLowerCase() === 'true';
 
-const LOADING_BANNER_WIDTH = parseInt(process.env['REACT_APP_LOADING_BANNER_WIDTH']);
-const LOADING_BANNER_HEIGHT = parseInt(process.env['REACT_APP_LOADING_BANNER_HEIGHT']);
-const DEFAULT_WIDTH = parseInt(process.env['REACT_APP_DEFAULT_APP_WIDTH']);
-const DEFAULT_HEIGHT = parseInt(process.env['REACT_APP_DEFAULT_APP_HEIGHT']);
+const LOADING_BANNER_WIDTH = parseInt(process.env.REACT_APP_LOADING_BANNER_WIDTH, 10);
+const LOADING_BANNER_HEIGHT = parseInt(process.env.REACT_APP_LOADING_BANNER_HEIGHT, 10);
+const DEFAULT_WIDTH = parseInt(process.env.REACT_APP_DEFAULT_APP_WIDTH, 10);
+const DEFAULT_HEIGHT = parseInt(process.env.REACT_APP_DEFAULT_APP_HEIGHT, 10);
 
 const previousBaseWindow={
     url:null,
@@ -94,8 +94,8 @@ function* applicationLoading() {
 
     if (ENABLE_LOADING_VIEW && currentIsLoadingView){
         // after the sagas loaded, redirect to default page/view
-        if (process.env['REACT_APP_DEFAULT_VIEW_URL'] && process.env['REACT_APP_DEFAULT_VIEW_URL'].length > 0){
-            hist.push(process.env['REACT_APP_DEFAULT_VIEW_URL']);
+        if (process.env.REACT_APP_DEFAULT_VIEW_URL && process.env.REACT_APP_DEFAULT_VIEW_URL.length > 0){
+            hist.push(process.env.REACT_APP_DEFAULT_VIEW_URL);
             yield put.resolve(Window.actions.updateOptions({
                 options:{
                     resizable:true,
@@ -185,11 +185,11 @@ function* applicationLaunchBarToggle(){
 
     yield put.resolve(Window.actions.getBounds({}));
 
-    let getBoundsAction = yield take(Window.actions.GET_BOUNDS_RES);
-    let getBoundsActionPayload = getBoundsAction.payload;
+    const getBoundsAction = yield take(Window.actions.GET_BOUNDS_RES);
+    const getBoundsActionPayload = getBoundsAction.payload;
 
     if (window.location.href.toLowerCase().endsWith('launchbar')){
-        //switch to main panel
+        // switch to main panel
         yield put.resolve(Window.actions.updateOptions({
             options:{
                 resizable:true
@@ -240,8 +240,8 @@ function* applicationLaunchBarToggleCollapse() {
     const launchBarCollapse = yield select(getLaunchBarCollapse);
 
     yield put.resolve(Window.actions.getBounds({}));
-    let getBoundsAction = yield take(Window.actions.GET_BOUNDS_RES);
-    let getBoundsActionPayload = getBoundsAction.payload;
+    const getBoundsAction = yield take(Window.actions.GET_BOUNDS_RES);
+    const getBoundsActionPayload = getBoundsAction.payload;
 
     if (launchBarCollapse){
         yield put.resolve(Window.actions.setBounds({

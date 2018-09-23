@@ -1,5 +1,5 @@
 import { createAction, ActionFunctionAny, Action } from 'redux-actions';
-import { ApplicationNewSnackbarOption, ApplicationSetSnackbarStatusOption, ApplicationCloseSnackbarOption } from './types';
+import { IApplicationNewSnackbarOption, IApplicationSetSnackbarStatusOption, IApplicationCloseSnackBarOption } from './types';
 
 export const APPLICATION_STARTED:string = 'APPLICATION_STARTED';
 export const APPLICATION_READY:string = 'APPLICATION_READY';
@@ -18,8 +18,8 @@ export const APPLICATION_SET_SNACKBAR_STATUS='APPLICATION_SET_SNACKBAR_STATUS';
 export const APPLICATION_PROCESS_SNACKBAR_QUEUE='APPLICATION_PROCESS_SNACKBAR_QUEUE';
 export const APPLICATION_CLOSE_SNACKBAR='APPLICATION_CLOSE_SNACKBAR';
 
-export const applicationNewSnackbar = createAction(APPLICATION_NEW_SNACKBAR, (option:ApplicationNewSnackbarOption)=>(option));
-export const applicationSetSnackbarStatus = createAction(APPLICATION_SET_SNACKBAR_STATUS, (option:ApplicationSetSnackbarStatusOption)=>(option));
+export const applicationNewSnackbar = createAction(APPLICATION_NEW_SNACKBAR, (option:IApplicationNewSnackbarOption)=>(option));
+export const applicationSetSnackbarStatus = createAction(APPLICATION_SET_SNACKBAR_STATUS, (option:IApplicationSetSnackbarStatusOption)=>(option));
 export const applicationProcessSnackbarQueue = createAction(APPLICATION_PROCESS_SNACKBAR_QUEUE);
 export const applicationCloseSnackbar = createAction(APPLICATION_CLOSE_SNACKBAR, (option)=>(option));
 

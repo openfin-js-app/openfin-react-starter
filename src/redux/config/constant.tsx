@@ -1,7 +1,7 @@
 import * as React from 'react';
 import InputAdornment from '@material-ui/core/InputAdornment';
 
-import { ConfigTab, ConfigField, FieldType } from './types';
+import { IConfigTab, IConfigField, FieldType } from './types';
 
 import SettingIcon from '@material-ui/icons/Settings';
 
@@ -10,7 +10,7 @@ import ConfigJson from '../../views/ConfigView/ConfigJson';
 const controls = require('../../assets/svg/support/controls_dark.svg') as string;
 const listChecked = require('../../assets/svg/other/list-checked-dark.svg') as string;
 
-const configTabs:ConfigTab[]=[
+const configTabs:IConfigTab[]=[
     {
         _order: 0 ,
         _label: 'Application',
@@ -27,7 +27,7 @@ const configTabs:ConfigTab[]=[
                 _type:FieldType.NUMBER,
                 _label:'New Window Top',
                 _name:'newWinTop',
-                _defaultValue:parseInt(process.env.REACT_APP_NEW_WINDOW_TOP),
+                _defaultValue:parseInt(process.env.REACT_APP_NEW_WINDOW_TOP,10),
                 _props:{
                     InputProps:{
                         endAdornment:<InputAdornment position={'end'}>Pixel</InputAdornment>
@@ -38,7 +38,7 @@ const configTabs:ConfigTab[]=[
                 _type:FieldType.NUMBER,
                 _label:'New Window Left',
                 _name:'newWinLeft',
-                _defaultValue:parseInt(process.env.REACT_APP_NEW_WINDOW_LEFT),
+                _defaultValue:parseInt(process.env.REACT_APP_NEW_WINDOW_LEFT,10),
                 _props:{
                     InputProps:{
                         endAdornment:<InputAdornment position={'end'}>Pixel</InputAdornment>
@@ -49,7 +49,7 @@ const configTabs:ConfigTab[]=[
                 _type:FieldType.NUMBER,
                 _label:'New Window Width',
                 _name:'newWinWidth',
-                _defaultValue:parseInt(process.env.REACT_APP_NEW_WINDOW_WIDTH),
+                _defaultValue:parseInt(process.env.REACT_APP_NEW_WINDOW_WIDTH,10),
                 _props:{
                     InputProps:{
                         endAdornment:<InputAdornment position={'end'}>Pixel</InputAdornment>
@@ -60,7 +60,7 @@ const configTabs:ConfigTab[]=[
                 _type:FieldType.NUMBER,
                 _label:'New Window Height',
                 _name:'newWinHeight',
-                _defaultValue:parseInt(process.env.REACT_APP_NEW_WINDOW_HEIGHT),
+                _defaultValue:parseInt(process.env.REACT_APP_NEW_WINDOW_HEIGHT,10),
                 _props:{
                     InputProps:{
                         endAdornment:<InputAdornment position={'end'}>Pixel</InputAdornment>
@@ -71,7 +71,7 @@ const configTabs:ConfigTab[]=[
                 _type:FieldType.NUMBER,
                 _label:'New Window Delta Left',
                 _name:'newWindDeltaLeft',
-                _defaultValue:parseInt(process.env.REACT_APP_NEW_WINDOW_DELTA_LEFT),
+                _defaultValue:parseInt(process.env.REACT_APP_NEW_WINDOW_DELTA_LEFT,10),
                 _props:{
                     InputProps:{
                         endAdornment:<InputAdornment position={'end'}>Pixel</InputAdornment>
@@ -82,7 +82,7 @@ const configTabs:ConfigTab[]=[
                 _type:FieldType.NUMBER,
                 _label:'New Window Delta Height',
                 _name:'newWindDeltaHeight',
-                _defaultValue:parseInt(process.env.REACT_APP_NEW_WINDOW_DELTA_HEIGHT),
+                _defaultValue:parseInt(process.env.REACT_APP_NEW_WINDOW_DELTA_HEIGHT,10),
                 _props:{
                     InputProps:{
                         endAdornment:<InputAdornment position={'end'}>Pixel</InputAdornment>

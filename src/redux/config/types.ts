@@ -14,7 +14,7 @@ export enum FieldType{
     BODY1 = 10,
 }
 
-export interface ConfigField {
+export interface IConfigField {
     _type:FieldType;
     _label:string;
     _name?:string;
@@ -27,21 +27,21 @@ export interface ConfigField {
     [key:number]:any;
 }
 
-export interface ConfigTab {
+export interface IConfigTab {
     _order?:number;
     _label:string;
     _name:string;
     _svgUrl:string;
     _icon?:React.ComponentType<SvgIconProps>;
-    _fields:ConfigField[];
+    _fields:IConfigField[];
     _fieldLabels?:string;
     [key:string]:any;
     [key:number]:any;
 }
 
-export interface ConfigState {
+export interface IConfigState {
     configGlobalFilterString:string;
-    _tabs:ConfigTab[];
+    _tabs:IConfigTab[];
     [key:string]:any;
     [key:number]:any;
 }

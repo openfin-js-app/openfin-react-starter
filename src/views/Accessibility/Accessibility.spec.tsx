@@ -32,7 +32,7 @@ describe('AccessibilityView',()=>{
        const wrapper = mount(<Accessibility store={store}/>);
        expect(wrapper.find(Button)).toHaveLength(10);
        wrapper.find(Button).forEach((button)=>{
-           let props = button.props();
+           const props = button.props();
            if ( typeof props.onClick === 'function'){
                props.onClick();
            }

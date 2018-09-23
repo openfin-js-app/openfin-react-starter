@@ -2,9 +2,9 @@ import { handleActions, Action } from 'redux-actions';
 import { System, Window } from '@albertli/redux-openfin';
 
 import {
-    ApplicationNewSnackbarOption,
-    ApplicationSetSnackbarStatusOption,
-    SnackBarMsg, ApplicationState,
+    IApplicationNewSnackbarOption,
+    IApplicationSetSnackbarStatusOption,
+    ISnackBarMsg, IApplicationState,
 } from './types';
 
 import {
@@ -16,7 +16,7 @@ import {
     APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE,
 } from './actions';
 
-const defaultState:Partial<ApplicationState>={
+const defaultState:Partial<IApplicationState>={
     username:'',
     computerName:'',
     deviceId:null,
@@ -96,7 +96,7 @@ export default handleActions({
         drawerOpen:!state.drawerOpen
     }),
     [APPLICATION_NEW_SNACKBAR]:(state,action)=>{
-        const option:ApplicationNewSnackbarOption = action.payload as ApplicationNewSnackbarOption;
+        const option:IApplicationNewSnackbarOption = action.payload as IApplicationNewSnackbarOption;
         const newMsgQueue = state.snackBarMsgQueue.concat([{
             message:option.message,
             key: new Date().getTime(),
@@ -122,7 +122,7 @@ export default handleActions({
         }
     },
     [APPLICATION_SET_SNACKBAR_STATUS]:(state,action)=>{
-        const option:ApplicationSetSnackbarStatusOption = action.payload as ApplicationSetSnackbarStatusOption;
+        const option:IApplicationSetSnackbarStatusOption = action.payload as IApplicationSetSnackbarStatusOption;
         return {
             ...state,
             snackBarOpen:option.open,

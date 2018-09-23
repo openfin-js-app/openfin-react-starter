@@ -12,9 +12,9 @@ function* watchAndLog(){
 
 export default function* rootSaga(){
 
-    let sagas = [applicationSaga(),configSaga(),];
+    const sagas = [applicationSaga(),configSaga(),];
 
-    if(process.env['REACT_APP_LOG_ACTION']=='true'){
+    if(process.env.REACT_APP_LOG_ACTION === 'true'){
         sagas.unshift(watchAndLog());
     }
 
