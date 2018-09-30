@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import * as cx from 'classnames';
+import cx from 'classnames';
 
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -18,7 +18,7 @@ import {
     applicationCloseSnackbar, applicationLaunchBarToggle,
 } from '../../redux';
 
-import { RouteItem, RouteCompItem, RouteRedirectItem } from '../../routes';
+import { RouteItem, IRouteCompItem, IRouteRedirectItem } from '../../routes';
 import dashboardRoutes from '../../routes/Dashboard';
 import { Sidebar, Header, SnackbarContent } from '../../components';
 

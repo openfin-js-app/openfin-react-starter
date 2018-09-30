@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {SvgIconProps} from '@material-ui/core/SvgIcon'
 
-export type RouteItem = (RouteCompItem|RouteRedirectItem);
+export type RouteItem = (IRouteCompItem|IRouteRedirectItem);
 
-export interface RouteCompItem {
+export interface IRouteCompItem {
     path:string,
     sidebarName?:string,
     navbarName?:string,
@@ -12,7 +12,7 @@ export interface RouteCompItem {
     [key:string]:any,
 }
 
-export interface RouteRedirectItem {
+export interface IRouteRedirectItem {
     redirect:boolean,
     path:string,
     to:string,

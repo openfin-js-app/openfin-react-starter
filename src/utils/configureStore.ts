@@ -11,7 +11,7 @@ export default ()=>{
 
     const openfinMiddleware = createOpenfinMiddleware(window.fin);
     const sagaMiddleware = createSagaMiddleware();
-    const devtools = window['devToolsExtension']?window['devToolsExtension']():(f:any):any => (f);
+    const devtools = window.devToolsExtension?window.devToolsExtension():(f:any):any => (f);
 
     const middleware = compose(
         applyMiddleware(

@@ -2,7 +2,6 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Scrollbars } from 'react-custom-scrollbars';
 import SplitterLayout from 'react-splitter-layout';
-import ReactJson from 'react-json-view';
 
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -10,7 +9,6 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import ListSubheader from '@material-ui/core/ListSubheader';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
@@ -21,13 +19,13 @@ import SearchIcon from '@material-ui/icons/Search';
 import CheckIcon from '@material-ui/icons/Check';
 
 import { withStyles } from '@material-ui/core/styles';
-import * as cx from 'classnames';
+import cx from 'classnames';
 
 import {ConfigField as ConfigFieldComp} from '../../components';
 
 import {configViewStyle as style} from '../../assets/jss/openfin-starter';
 
-import { ConfigTab, ConfigField } from '../../redux/config/types';
+import { IConfigTab, IConfigField } from '../../redux/config/types';
 
 import { configUpdateOneField, configUpdateGlobalFilterStr } from '../../redux'
 
@@ -56,7 +54,7 @@ class ConfigView extends React.Component<any,any>{
 
         const {currentTab} = this.state;
 
-        const tabs:ConfigTab[] = config._tabs;
+        const tabs:IConfigTab[] = config._tabs;
         const tabName = tabs[currentTab]._name;
 
         const tabShownCnt = tabs.filter(
@@ -94,7 +92,7 @@ class ConfigView extends React.Component<any,any>{
                         >
                             <List>
                                 {tabShownCnt>0?
-                                    tabs.map((oneTab:ConfigTab,index:number)=>{
+                                    tabs.map((oneTab:IConfigTab, index:number)=>{
                                         if (globalFilterString===''|| oneTab._fieldLabels.toLowerCase().indexOf(globalFilterString.toLowerCase())>-1){
                                             return(
                                                 <ListItem button className={cx('active')} key={index} dense={true}
@@ -106,7 +104,7 @@ class ConfigView extends React.Component<any,any>{
                                                     <ListItemText
                                                         primary={oneTab._label}
                                                     />
-                                                    {currentTab==index?
+                                                    {currentTab===index?
                                                         <ListItemSecondaryAction>
                                                             <CheckIcon/>
                                                         </ListItemSecondaryAction>
@@ -132,7 +130,7 @@ class ConfigView extends React.Component<any,any>{
                         <div className={classes.configMainSection}>
                             <GridList cellHeight={52} className={classes.configMainGridList} cols={12}>
                                 {filedShownCnt>0?
-                                    tabs[currentTab]._fields.map((oneField:ConfigField,index:number)=>(
+                                    tabs[currentTab]._fields.map((oneField:IConfigField, index:number)=>(
                                         globalFilterString === '' || oneField._label.toLowerCase().indexOf(globalFilterString.toLowerCase())>-1?
                                         <GridListTile key={index} cols={oneField._cols || 3} rows={oneField._rows || 1}>
                                             <ConfigFieldComp
@@ -150,7 +148,6 @@ class ConfigView extends React.Component<any,any>{
                                 }
                             </GridList>
                         </div>
-                        {/*<ReactJson src={config} theme={'monokai'}/>*/}
                         <div style={{marginBottom:'100px'}}/>
                     </Scrollbars>
                 </SplitterLayout>

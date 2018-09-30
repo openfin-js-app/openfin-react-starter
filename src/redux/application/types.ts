@@ -1,24 +1,24 @@
-export interface ApplicationNewSnackbarOption {
+export interface IApplicationNewSnackbarOption {
     message:string;
     variant?:'primary'|'success'|'warning'|'error'|'info';
 }
 
-export interface ApplicationSetSnackbarStatusOption {
+export interface IApplicationSetSnackbarStatusOption {
     open:boolean;
 }
 
-export interface ApplicationCloseSnackbarOption {
+export interface IApplicationCloseSnackBarOption {
     event?:any;
     reason:string;
 }
 
-export interface SnackBarMsg {
+export interface ISnackBarMsg {
     key:number;
     message:string;
     variant:'primary'|'success'|'warning'|'error'|'info';
 }
 
-export interface ApplicationState {
+export interface IApplicationState {
     username:string;
     computerName:string;
     deviceId:string;
@@ -27,8 +27,8 @@ export interface ApplicationState {
     drawerOpen:boolean;
     launchBarCollapse:boolean;
     snackBarOpen:boolean;
-    snackBarMsgInfo:Partial<SnackBarMsg>;
-    snackBarMsgQueue:Partial<SnackBarMsg>[];
+    snackBarMsgInfo:Partial<ISnackBarMsg>;
+    snackBarMsgQueue:Array<Partial<ISnackBarMsg>>;
     openfinVersion:string;
     openfinHostSpec:any;
     windowsState:string;

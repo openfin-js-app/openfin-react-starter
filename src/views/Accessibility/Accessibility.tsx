@@ -1,20 +1,17 @@
 import * as React from 'react';
 import * as shortid from 'shortid';
-import { connect } from 'react-redux';
+import { connect, DispatchProp } from 'react-redux';
 
 import Button from '@material-ui/core/Button';
-import Snackbar from '@material-ui/core/Snackbar';
 import Typography from '@material-ui/core/Typography';
 
-import { withStyles } from '@material-ui/core/styles';
-
-import { Applcation, Window } from '@albertli/redux-openfin';
+import { WithStyles, withStyles, createStyles } from '@material-ui/core/styles';
 
 import { applicationNewSnackbar, applicationLaunchNewWindow } from '../../redux';
 
 import { buttonStyle } from '../../assets/jss/openfin-starter';
 
-const style = {
+const style = createStyles({
     primary: buttonStyle.primary,
     info: buttonStyle.info,
     success: buttonStyle.success,
@@ -23,10 +20,19 @@ const style = {
     rose: buttonStyle.rose,
     white: buttonStyle.white,
     simple: buttonStyle.simple,
-};
+});
 
-class AccessbilityView extends React.Component<any,any>{
-    render(){
+interface IProps extends WithStyles<typeof style>, DispatchProp<any>{
+    actions:{
+        onOpenNewSelf:any,
+        onOpenGoogle:any,
+        handleOpenPrimarySnackBar:any,
+        handleOpenSecondarySnackBar:any,
+    },
+}
+
+class AccessibilityView extends React.Component<IProps, any>{
+    render():any{
 
         const {
             classes,
@@ -69,7 +75,6 @@ class AccessbilityView extends React.Component<any,any>{
                 >Danger</Button>
                 <Button size={"small"} variant={"contained"} className={classes.rose}
                 >Rose</Button>
-
 
             </React.Fragment>
         )
@@ -122,4 +127,4 @@ export default connect(
             },
         }
     })
-)(withStyles(style)(AccessbilityView));
+)(withStyles(style)(AccessibilityView))

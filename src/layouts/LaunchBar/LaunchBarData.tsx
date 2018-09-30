@@ -1,32 +1,23 @@
 import AccessibilityIcon from '@material-ui/icons/Accessibility';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
-import AddIcon from '@material-ui/icons/Add';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import BackupIcon from '@material-ui/icons/Backup';
 import BugReportIcon from '@material-ui/icons/BugReport';
 import LanguageIcon from '@material-ui/icons/Language';
 import ReportIcon from '@material-ui/icons/Report';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
-import CropDinIcon from '@material-ui/icons/CropDin';
-import ClearIcon from '@material-ui/icons/Clear';
-import RemoveIcon from '@material-ui/icons/Remove';
-import ZoomOutMapIcon from '@material-ui/icons/ZoomOutMap';
 
-const appLogo = require('../../assets/svg/app.svg') as string;
-const companyLogo = require('../../assets/svg/company.svg') as string;
 const svgNumberOne = require('../../assets/svg/other/number-1.svg') as string;
 const svgNumberTwo = require('../../assets/svg/other/number-2.svg') as string;
 const googleSearch = require('../../assets/svg/other/google-search.svg') as string;
 
-export interface LaunchBarItemType {
+export interface IlaunchBarItemType {
     icon:any,
     disabled:boolean,
     svg:string,
     appJson:any,
 }
 
-export const sampleItems:LaunchBarItemType[]=[
+export const sampleItems:IlaunchBarItemType[]=[
     {
         icon:AccessibilityIcon,
         disabled:false,
@@ -109,7 +100,7 @@ export const sampleItems:LaunchBarItemType[]=[
     },
 ];
 
-export const disabledItems:LaunchBarItemType[]=[
+export const disabledItems:IlaunchBarItemType[]=[
     {
         icon:AccountBoxIcon,
         disabled:true,

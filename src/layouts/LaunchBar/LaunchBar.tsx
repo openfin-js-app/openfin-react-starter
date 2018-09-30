@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import * as cx from 'classnames';
+import cx from 'classnames';
 import { Scrollbars } from 'react-custom-scrollbars';
 
 import { withStyles, StyleRules } from '@material-ui/core/styles';
@@ -44,9 +44,9 @@ class LaunchBarComp extends React.Component<any,any>{
 
         const collapse = launchBarCollapse;
 
-        const _launchBarItems = launchBarItems;
+        // const _launchBarItems = launchBarItems;
 
-        const buttonContainerWidth = _launchBarItems.length<10?_launchBarItems.length*64:576;
+        const buttonContainerWidth = launchBarItems.length<10?launchBarItems.length*64:576;
 
         return (
             <span>
@@ -64,7 +64,7 @@ class LaunchBarComp extends React.Component<any,any>{
                                 width:`${buttonContainerWidth}px`,
                             }}
                         >
-                            {_launchBarItems.map((item,index)=>{
+                            {launchBarItems.map((item,index)=>{
                                 if (item.icon){
                                     return <IconButton key={index}
                                        className={classes.baseButton}

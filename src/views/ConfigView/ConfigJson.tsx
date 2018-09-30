@@ -21,9 +21,9 @@ export default connect(
     (state:any) => ({
         config:state.config
     }),
-    dispatch => {
+    dispatch => ({
         actions:{
 
         }
-    }
+     })
 )(ConfigJsonView);

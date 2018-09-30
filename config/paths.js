@@ -3,22 +3,23 @@
 const path = require('path');
 const fs = require('fs');
 const url = require('url');
+const findMonorepo = require('react-dev-utils/workspaceUtils').findMonorepo;
 
 // Make sure any symlinks in the project folder are resolved:
-// https://github.com/facebookincubator/create-react-app/issues/637
+// https://github.com/facebook/create-react-app/issues/637
 const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
 const envPublicUrl = process.env.PUBLIC_URL;
 
-function ensureSlash(path, needsSlash) {
-  const hasSlash = path.endsWith('/');
+function ensureSlash(inputPath, needsSlash) {
+  const hasSlash = inputPath.endsWith('/');
   if (hasSlash && !needsSlash) {
-    return path.substr(path, path.length - 1);
+    return inputPath.substr(0, inputPath.length - 1);
   } else if (!hasSlash && needsSlash) {
-    return `${path}/`;
+    return `${inputPath}/`;
   } else {
-    return path;
+    return inputPath;
   }
 }
 
@@ -38,20 +39,59 @@ function getServedPath(appPackageJson) {
   return ensureSlash(servedUrl, true);
 }
 
+const hasTSConfig = fs.existsSync(resolveApp('tsconfig.json'));
+const hasTSConfigProd = fs.existsSync(resolveApp('tsconfig.prod.json'));
+const hasTSLint = fs.existsSync(resolveApp('tslint.json'));
+const hasTSLintProd = fs.existsSync(resolveApp('tslint.prod.json'));
+const isTypeScript = hasTSConfig;
+
 // config after eject: we're in ./config/
 module.exports = {
   dotenv: resolveApp('.env'),
+  appPath: resolveApp('.'),
   appBuild: resolveApp('build'),
   appOpenfin:resolveApp('openfin'),
   appScript:resolveApp('scripts'),
   appPublic: resolveApp('public'),
   appHtml: resolveApp('public/index.html'),
-  appIndexJs: resolveApp('src/index.tsx'),
+  appIndexJs: isTypeScript
+      ? resolveApp('src/index.tsx')
+      : resolveApp('src/index.js'),
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),
-  yarnLockFile: resolveApp('yarn.lock'),
-  testsSetup: resolveApp('src/setupTests.js'),
+  testsSetup: isTypeScript
+      ? resolveApp('src/setupTests.ts')
+      : resolveApp('src/setupTests.js'),
   appNodeModules: resolveApp('node_modules'),
+  appTSConfig: resolveApp('tsconfig.json'),
+  appTSConfigProd: resolveApp('tsconfig.prod.json'),
+  appTSLint: resolveApp('tslint.json'),
+  appTSLintProd: resolveApp('tslint.prod.json'),
   publicUrl: getPublicUrl(resolveApp('package.json')),
   servedPath: getServedPath(resolveApp('package.json')),
 };
+
+let checkForMonorepo = true;
+
+
+
+module.exports.srcPaths = [module.exports.appSrc];
+
+module.exports.isTypeScript = isTypeScript;
+module.exports.useTSConfigProd = isTypeScript && hasTSConfigProd;
+module.exports.useTSLint = isTypeScript && hasTSLint;
+module.exports.useTSLintProd = isTypeScript && hasTSLintProd;
+
+module.exports.useYarn = fs.existsSync(
+  path.join(module.exports.appPath, 'yarn.lock')
+);
+
+if (checkForMonorepo) {
+  // if app is in a monorepo (lerna or yarn workspace), treat other packages in
+  // the monorepo as if they are app source
+  const mono = findMonorepo(appDirectory);
+  if (mono.isAppIncluded) {
+    Array.prototype.push.apply(module.exports.srcPaths, mono.pkgs);
+  }
+  module.exports.useYarn = module.exports.useYarn || mono.isYarnWs;
+}

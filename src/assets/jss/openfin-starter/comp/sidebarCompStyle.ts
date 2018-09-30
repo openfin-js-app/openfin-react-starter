@@ -29,7 +29,7 @@ const sidebarStyle:any = (theme:any) => ({
         position:"absolute",
         zIndex:"1",
         borderBottom:`4px solid ${primaryColor}`,
-        height: "calc(100% - 13px)",
+        height: "calc(100% - 15px)",
         width: "100%",
         display:"block",
         top:"0",
@@ -144,7 +144,7 @@ const sidebarStyle:any = (theme:any) => ({
     },
     sidebarWrapper: {
         position: "relative",
-        height: "calc(100vh - 75px)",
+        height: "calc(100% - 75px)",
         overflow: "auto",
         width: drawerWidth,
         zIndex: "4",

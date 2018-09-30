@@ -2,9 +2,9 @@ import { handleActions, Action } from 'redux-actions';
 import { System, Window } from '@albertli/redux-openfin';
 
 import {
-    ApplicationNewSnackbarOption,
-    ApplicationSetSnackbarStatusOption,
-    SnackBarMsg, ApplicationState,
+    IApplicationNewSnackbarOption,
+    IApplicationSetSnackbarStatusOption,
+    ISnackBarMsg, IApplicationState,
 } from './types';
 
 import {
@@ -16,7 +16,7 @@ import {
     APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE,
 } from './actions';
 
-const defaultState:Partial<ApplicationState>={
+const defaultState:Partial<IApplicationState>={
     username:'',
     computerName:'',
     deviceId:null,
@@ -96,8 +96,8 @@ export default handleActions({
         drawerOpen:!state.drawerOpen
     }),
     [APPLICATION_NEW_SNACKBAR]:(state,action)=>{
-        let option:ApplicationNewSnackbarOption = action.payload as ApplicationNewSnackbarOption;
-        let newMsgQueue = state.snackBarMsgQueue.concat([{
+        const option:IApplicationNewSnackbarOption = action.payload as IApplicationNewSnackbarOption;
+        const newMsgQueue = state.snackBarMsgQueue.concat([{
             message:option.message,
             key: new Date().getTime(),
             variant:option.variant,
@@ -109,8 +109,8 @@ export default handleActions({
     },
     [APPLICATION_PROCESS_SNACKBAR_QUEUE]:(state,action)=>{
         if (state.snackBarMsgQueue.length > 0){
-            let newMsg = state.snackBarMsgQueue[0];
-            let newMsgQueue = state.snackBarMsgQueue.slice(1);
+            const newMsg = state.snackBarMsgQueue[0];
+            const newMsgQueue = state.snackBarMsgQueue.slice(1);
             return {
                 ...state,
                 snackBarOpen:true,
@@ -122,7 +122,7 @@ export default handleActions({
         }
     },
     [APPLICATION_SET_SNACKBAR_STATUS]:(state,action)=>{
-        let option:ApplicationSetSnackbarStatusOption = action.payload as ApplicationSetSnackbarStatusOption;
+        const option:IApplicationSetSnackbarStatusOption = action.payload as IApplicationSetSnackbarStatusOption;
         return {
             ...state,
             snackBarOpen:option.open,
@@ -132,4 +132,4 @@ export default handleActions({
         ...state,
         launchBarCollapse:!state.launchBarCollapse,
     })
-},defaultState);
+} as any,defaultState);

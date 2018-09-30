@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
-import * as cx from 'classnames';
+import cx from 'classnames';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -71,7 +71,7 @@ class SidebarComp extends React.Component<any,any>{
                     className={cx(classes.releaseTypo, classes.whiteFont)}
                     variant={"caption"} gutterBottom align={"right"}
                 >
-                    {process.env['REACT_APP_VERSION']}
+                    {process.env.REACT_APP_VERSION}
                 </Typography>
             </Drawer>
         </React.Fragment>);

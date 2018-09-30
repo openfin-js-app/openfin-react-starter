@@ -20,8 +20,8 @@ function* configUpdateNewWindowPosition() {
     const newWinLeft = yield select(getNewWindowLeft);
 
     yield put.resolve(System.actions.getMonitorInfo({}));
-    let monitorInfoAction = yield take(System.actions.GET_MONITOR_INFO_RES);
-    let virtualScreen = monitorInfoAction.payload.virtualScreen;
+    const monitorInfoAction = yield take(System.actions.GET_MONITOR_INFO_RES);
+    const virtualScreen = monitorInfoAction.payload.virtualScreen;
 
     console.log("configUpdateNewWindowPosition",monitorInfoAction,virtualScreen);
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import * as cx from 'classnames';
+import cx from 'classnames';
 
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -12,7 +12,7 @@ import {withStyles} from '@material-ui/core/styles';
 
 import { Window } from '@albertli/redux-openfin';
 
-import { RouteItem, RouteCompItem, RouteRedirectItem } from '../../routes';
+import { RouteItem, IRouteCompItem, IRouteRedirectItem } from '../../routes';
 import childWindowRoutes from '../../routes/ChildWindow';
 
 import {Header} from '../../components';
