@@ -2,7 +2,7 @@ import green from '@material-ui/core/colors/green';
 import amber from '@material-ui/core/colors/amber';
 
 import {
-    primaryColor, warningColor, dangerColor, successColor, infoColor,
+    primaryColor, warningColor, dangerColor, successColor, infoColor, roseColor
 } from '../../openfin-starter-constant';
 
 const snackbarContent = (theme:any) =>({
@@ -16,10 +16,13 @@ const snackbarContent = (theme:any) =>({
         backgroundColor:theme.palette.error.dark,
     },
     info:{
-        backgroundColor:theme.palette.primary,
+        backgroundColor:infoColor,
     },
     warning:{
         backgroundColor:amber[700],
+    },
+    rose:{
+        backgroundColor:roseColor,
     },
     icon:{
         fontSize:20,

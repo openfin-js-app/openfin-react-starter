@@ -1,7 +1,6 @@
 import * as React from 'react';
 import cx from 'classnames';
 
-import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 import IconButton from '@material-ui/core/IconButton';
 
@@ -11,6 +10,7 @@ import ErrorIcon from '@material-ui/icons/Error';
 import InfoIcon from '@material-ui/icons/Info';
 import CloseIcon from '@material-ui/icons/Close';
 import WarningIcon from '@material-ui/icons/Warning';
+import FaceIcon from '@material-ui/icons/Face'
 
 import {withStyles} from '@material-ui/core/styles';
 import { snackbarContentCompStyle as style } from '../../assets/jss/openfin-starter';
@@ -21,6 +21,7 @@ const variantIcon ={
     warning: WarningIcon,
     error: ErrorIcon,
     info: InfoIcon,
+    rose: FaceIcon,
 };
 
 class MySnackbarContentComp extends React.Component<any,any>{

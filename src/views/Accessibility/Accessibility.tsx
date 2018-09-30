@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { MouseEventHandler, MouseEvent } from "react";
 import * as shortid from 'shortid';
 import { connect, DispatchProp } from 'react-redux';
 
@@ -24,21 +25,22 @@ const style = createStyles({
 
 interface IProps extends WithStyles<typeof style>, DispatchProp<any>{
     actions:{
-        onOpenNewSelf:any,
-        onOpenGoogle:any,
-        handleOpenPrimarySnackBar:any,
-        handleOpenSecondarySnackBar:any,
+        onOpenNewSelf:MouseEventHandler<any>,
+        onOpenGoogle:MouseEventHandler<any>,
+        handleOpenPrimarySnackBar:MouseEventHandler<any>,
+        handleOpenSecondarySnackBar:MouseEventHandler<any>,
+        handleOpenSnackBar:(name:string)=>MouseEventHandler<any>,
     },
 }
 
-class AccessibilityView extends React.Component<IProps, any>{
+class AccessibilityView extends React.Component<IProps, {}>{
     render():any{
 
         const {
             classes,
             actions:{
                 onOpenNewSelf,onOpenGoogle,
-                handleOpenPrimarySnackBar, handleOpenSecondarySnackBar,
+                handleOpenSnackBar,
             }
         } = this.props;
 
@@ -55,25 +57,25 @@ class AccessibilityView extends React.Component<IProps, any>{
                 <Button size={"large"} variant={"contained"} color={"secondary"} onClick={onOpenGoogle}
                 >Google</Button>
 
-
-                <Button size={"large"} variant={"contained"} color={"primary"} onClick={handleOpenPrimarySnackBar}
-                >Snackbar 1</Button>
-                <Button size={"large"} variant={"contained"} color={"secondary"} onClick={handleOpenSecondarySnackBar}
-                >Snackbar 2</Button>
-
                 <hr/>
 
                 <Button size={"small"} variant={"contained"} className={classes.primary}
+                        onClick={handleOpenSnackBar('primary')}
                 >Primary</Button>
                 <Button size={"small"} variant={"contained"} className={classes.info}
+                        onClick={handleOpenSnackBar('info')}
                 >Info</Button>
                 <Button size={"small"} variant={"contained"} className={classes.success}
+                        onClick={handleOpenSnackBar('success')}
                 >Success</Button>
                 <Button size={"small"} variant={"contained"} className={classes.warning}
+                        onClick={handleOpenSnackBar('warning')}
                 >Warning</Button>
                 <Button size={"small"} variant={"contained"} className={classes.danger}
+                        onClick={handleOpenSnackBar('error')}
                 >Danger</Button>
                 <Button size={"small"} variant={"contained"} className={classes.rose}
+                        onClick={handleOpenSnackBar('rose')}
                 >Rose</Button>
 
             </React.Fragment>
@@ -113,16 +115,10 @@ export default connect(
                     }
                 }));
             },
-            handleOpenPrimarySnackBar:()=>{
+            handleOpenSnackBar:(name)=>(event:MouseEvent<any>)=>{
                 dispatch(applicationNewSnackbar({
-                    message:'Message to primary snackbar',
-                    variant:'primary',
-                }))
-            },
-            handleOpenSecondarySnackBar:()=>{
-                dispatch(applicationNewSnackbar({
-                    message:'Message to warning snackbar',
-                    variant:'warning',
+                    message:`Message to ${name} snackbar`,
+                    variant:name,
                 }))
             },
         }

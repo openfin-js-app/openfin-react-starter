@@ -1,6 +1,6 @@
 export interface IApplicationNewSnackbarOption {
     message:string;
-    variant?:'primary'|'success'|'warning'|'error'|'info';
+    variant?:'primary'|'success'|'warning'|'error'|'info'|'rose';
 }
 
 export interface IApplicationSetSnackbarStatusOption {
