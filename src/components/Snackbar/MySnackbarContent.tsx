@@ -1,7 +1,9 @@
 import * as React from 'react';
+import { MouseEventHandler } from "react";
 import cx from 'classnames';
 
 import SnackbarContent from '@material-ui/core/SnackbarContent';
+import {SnackbarContentProps} from "@material-ui/core/SnackbarContent/SnackbarContent";
 import IconButton from '@material-ui/core/IconButton';
 
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
@@ -12,7 +14,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import WarningIcon from '@material-ui/icons/Warning';
 import FaceIcon from '@material-ui/icons/Face'
 
-import {withStyles} from '@material-ui/core/styles';
+import { WithStyles, withStyles} from '@material-ui/core/styles';
 import { snackbarContentCompStyle as style } from '../../assets/jss/openfin-starter';
 
 const variantIcon ={
@@ -24,7 +26,17 @@ const variantIcon ={
     rose: FaceIcon,
 };
 
-class MySnackbarContentComp extends React.Component<any,any>{
+interface IMySnackbarContentProps{
+    classes?:any,
+    className?:string,
+    message:string,
+    onClose:MouseEventHandler<any>,
+    variant:string,
+}
+
+type Props = IMySnackbarContentProps & WithStyles<typeof style> & SnackbarContentProps
+
+class MySnackbarContentComp extends React.Component<Props,{}>{
     render(){
 
         const {
