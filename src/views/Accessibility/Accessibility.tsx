@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { MouseEventHandler, MouseEvent } from "react";
 import * as shortid from 'shortid';
-import { connect, DispatchProp } from 'react-redux';
+import { connect } from 'react-redux';
 
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
@@ -23,7 +23,7 @@ const style = createStyles({
     simple: buttonStyle.simple,
 });
 
-interface IProps extends WithStyles<typeof style>, DispatchProp<any>{
+interface IProps extends WithStyles<typeof style>{
     actions:{
         onOpenNewSelf:MouseEventHandler<any>,
         onOpenGoogle:MouseEventHandler<any>,

@@ -18,7 +18,7 @@ import Typography from '@material-ui/core/Typography';
 import SearchIcon from '@material-ui/icons/Search';
 import CheckIcon from '@material-ui/icons/Check';
 
-import { withStyles } from '@material-ui/core/styles';
+import { WithStyles, withStyles } from '@material-ui/core/styles';
 import cx from 'classnames';
 
 import {ConfigField as ConfigFieldComp} from '../../components';
@@ -29,7 +29,22 @@ import { IConfigTab, IConfigField } from '../../redux/config/types';
 
 import { configUpdateOneField, configUpdateGlobalFilterStr } from '../../redux'
 
-class ConfigView extends React.Component<any,any>{
+import {IConfigState} from '../../redux/config/types';
+
+interface IProps extends WithStyles<typeof style>{
+    config:IConfigState,
+    globalFilterString:string,
+    actions:{
+        handleGlobalFilterStrChange:React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+        handleUpdateOneField:( tabName:string, fieldName:string )=>(value:any)=>void,
+    }
+}
+
+interface IState {
+    currentTab:number,
+}
+
+class ConfigView extends React.Component<IProps,IState>{
 
     state = {
         currentTab:0,
