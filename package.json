@@ -70,7 +70,7 @@
     "identity-obj-proxy": "3.0.0",
     "jest": "^23.6.0",
     "loader-utils": "^1.1.0",
-    "material-ui-pickers": "^1.0.0-rc.13",
+    "material-ui-pickers": "^1.0.0-rc.15",
     "mini-css-extract-plugin": "^0.4.0",
     "moment": "^2.22.2",
     "morgan": "^1.9.0",
