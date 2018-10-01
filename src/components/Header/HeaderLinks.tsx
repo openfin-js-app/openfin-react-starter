@@ -1,7 +1,8 @@
 import * as React from 'react';
+import { MouseEventHandler } from "react";
 import cx from 'classnames';
 
-import { withStyles } from '@material-ui/core';
+import { WithStyles, withStyles } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 
 import Remove from '@material-ui/icons/Remove';
@@ -12,8 +13,15 @@ import OpenInNew from '@material-ui/icons/OpenInNew';
 
 import { headerLinksCompStyle as style } from '../../assets/jss/openfin-starter'
 
+interface IProps extends WithStyles<typeof style> {
+    windowState:string,
+    onSwitchToLaunchBar:MouseEventHandler<any>,
+    onMinimize:MouseEventHandler<any>,
+    onMaximize:MouseEventHandler<any>,
+    onClose:MouseEventHandler<any>,
+}
 
-class HeaderLinksComp extends React.Component<any,any>{
+class HeaderLinksComp extends React.Component<IProps,{}>{
 
     render(){
 
