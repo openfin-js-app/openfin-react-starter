@@ -5,11 +5,20 @@ import { Scrollbars } from 'react-custom-scrollbars';
 
 import Typography from '@material-ui/core/Typography';
 
-import { withStyles } from '@material-ui/core/styles';
+import { WithStyles, withStyles } from '@material-ui/core/styles';
 
 import { reportViewStyle as style } from '../../assets/jss/openfin-starter';
 
-class ReportView extends React.Component<any,any>{
+interface IProps extends WithStyles<typeof style>{
+    username:string,
+    computerName:string,
+    deviceId:string,
+    deviceUserId:string,
+    version:string,
+    hostSpec:any,
+}
+
+class ReportView extends React.Component<IProps,{}>{
     render (){
         const {
             classes,
