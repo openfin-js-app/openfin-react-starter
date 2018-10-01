@@ -2,7 +2,7 @@ import * as React from 'react';
 import { NavLink } from 'react-router-dom';
 import cx from 'classnames';
 
-import { withStyles } from '@material-ui/core/styles';
+import { WithStyles, withStyles } from '@material-ui/core/styles';
 
 import Drawer from "@material-ui/core/Drawer";
 import Typography from "@material-ui/core/Typography";
@@ -13,21 +13,31 @@ import ListItemText from "@material-ui/core/ListItemText";
 
 import { sidebarCompStyle as style } from '../../assets/jss/openfin-starter'
 
-class SidebarComp extends React.Component<any,any>{
+import {RouteItem, IRouteCompItem} from '../../routes';
+
+interface IProps extends WithStyles<typeof style>{
+    open:boolean,
+    routes:RouteItem[],
+    color:string,
+    image:string,
+}
+
+class SidebarComp extends React.Component<IProps,{}>{
     render(){
 
         function activeRoute(routeName:string, props:any){
-            return props.location.pathname.indexOf(routeName) > -1 ? true : false;
+            return props.location.pathname.indexOf(routeName) > -1;
         }
 
         const {
-            classes, open, handleDrawerToggle, routes, color, image
+            classes, open, routes, color, image
         } = this.props;
 
         const links = (
             <List className={classes.list}>
-                {routes.map((prop:any, key:number)=>{
+                {routes.map((prop:RouteItem, key:number)=>{
                     if (prop.redirect) return null;
+                    prop = prop as IRouteCompItem;
                     const listItemClasses = cx({
                        [" "+classes[color]]:activeRoute(prop.path,this.props)
                     });

@@ -69,7 +69,6 @@ class DashbardLayout extends React.Component<any,any>{
                     open={drawerOpen}
                     color={"primary"}
                     image={'/img/sidebar-1.jpg'}
-                    handleDrawerToggle={handleDrawerToggle}
                     {...rest}
                 />
                 <div className={cx(
