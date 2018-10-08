@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import cx from 'classnames';
 import { Scrollbars } from 'react-custom-scrollbars';
 
-import { withStyles, StyleRules } from '@material-ui/core/styles';
+import { WithStyles, withStyles, StyleRules } from '@material-ui/core/styles';
 
 import { Window } from '@albertli/redux-openfin';
 
@@ -23,12 +23,26 @@ import { launchBarLayoutStyle as style } from '../../assets/jss/openfin-starter'
 const appLogo = require('../../assets/svg/app.svg') as string;
 
 import {
+    // actions
     applicationLaunchBarToggle, applicationLaunchBarToggleCollapse, applicationLaunchNewWindow,
+    // types
+    IRootState,
 } from '../../redux';
 
 import { launchBarItems } from './LaunchBarData';
 
-class LaunchBarComp extends React.Component<any,any>{
+interface IProps extends WithStyles<typeof style>{
+    launchBarCollapse:boolean,
+    actions:{
+        handleLaunchBarItemBtnClick: (appJson:any)=>()=>void,
+        handleSwitchToMainWindow: ()=>void,
+        handleToggleCollapse: ()=>void,
+        handleMinimize: ()=>void,
+        handleClose: ()=>void,
+    }
+}
+
+class LaunchBarComp extends React.Component<IProps,{}>{
     render(){
 
         const {
@@ -125,7 +139,7 @@ class LaunchBarComp extends React.Component<any,any>{
 }
 
 export default connect(
-    (state:any)=>({
+    (state:IRootState)=>({
         launchBarCollapse:state.application.launchBarCollapse,
     }),
     dispatch => ({
