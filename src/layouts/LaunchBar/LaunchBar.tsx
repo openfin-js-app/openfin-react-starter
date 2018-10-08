@@ -145,8 +145,8 @@ export default connect(
     dispatch => ({
         actions:{
             handleLaunchBarItemBtnClick:(appJson)=>()=>{dispatch(applicationLaunchNewWindow(appJson))},
-            handleSwitchToMainWindow:()=>{dispatch(applicationLaunchBarToggle({}))},
-            handleToggleCollapse:()=>{dispatch(applicationLaunchBarToggleCollapse({}))},
+            handleSwitchToMainWindow:()=>{dispatch(applicationLaunchBarToggle())},
+            handleToggleCollapse:()=>{dispatch(applicationLaunchBarToggleCollapse())},
             handleMinimize:()=>{dispatch(Window.actions.minimize({}))},
             handleClose:()=>{dispatch(Window.actions.close({force:false}))},
         }

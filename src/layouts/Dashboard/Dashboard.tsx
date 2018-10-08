@@ -137,7 +137,7 @@ export default connect(
             handleSnackbarCloseBtnClick: () => {dispatch(applicationSetSnackbarStatus({open:false}))},
             handleSnackbarExited: () => {dispatch(applicationProcessSnackbarQueue())},
             // openfin
-            handleSwitchToLaunchBar:()=>{dispatch(applicationLaunchBarToggle({}))},
+            handleSwitchToLaunchBar:()=>{dispatch(applicationLaunchBarToggle())},
             handleMinimize: ()=>{dispatch(Window.actions.minimize({}))},
             handleMaximize: ()=>{dispatch(applicationToogleWindowState())},
             handleClose:()=>{dispatch(Window.actions.close({force:false}))},
