@@ -4,21 +4,20 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import cx from 'classnames';
 
 import Snackbar from '@material-ui/core/Snackbar';
-import IconButton from '@material-ui/core/IconButton';
 
-import CloseIcon from '@material-ui/icons/Close';
-
-import { withStyles } from '@material-ui/core/styles';
+import { WithStyles, withStyles } from '@material-ui/core/styles';
 
 import { Window } from '@albertli/redux-openfin';
 
 import {
+    // acitons
     applicationDrawerToggle, applicationToogleWindowState,
     applicationSetSnackbarStatus, applicationProcessSnackbarQueue,
     applicationCloseSnackbar, applicationLaunchBarToggle,
+    // types
+    IState,ISnackBarMsg,
 } from '../../redux';
 
-import { RouteItem, IRouteCompItem, IRouteRedirectItem } from '../../routes';
 import dashboardRoutes from '../../routes/Dashboard';
 import { Sidebar, Header, SnackbarContent } from '../../components';
 
@@ -35,7 +34,24 @@ const switchRoutes = (
     </Switch>
 );
 
-class DashbardLayout extends React.Component<any,any>{
+interface IProps extends WithStyles<typeof style>{
+    drawerOpen:boolean,
+    snackBarOpen:boolean,
+    snackBarMsgInfo:Partial<ISnackBarMsg>,
+    windowsState:string,
+    actions:{
+        handleDrawerToggle: ()=> void,
+        handleSnackbarClose: (event:any,reason:string)=> void,
+        handleSnackbarCloseBtnClick: ()=> void,
+        handleSnackbarExited: ()=> void,
+        handleSwitchToLaunchBar: ()=> void,
+        handleMinimize: ()=> void,
+        handleMaximize: ()=> void,
+        handleClose: ()=> void,
+    }
+}
+
+class DashbardLayout extends React.Component<IProps,{}>{
     render(){
 
         const {
@@ -108,7 +124,7 @@ class DashbardLayout extends React.Component<any,any>{
 }
 
 export default connect(
-    (state:any)=>({
+    (state:IState)=>({
         drawerOpen:state.application.drawerOpen,
         snackBarOpen:state.application.snackBarOpen,
         snackBarMsgInfo:state.application.snackBarMsgInfo,
