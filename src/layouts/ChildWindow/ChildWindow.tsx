@@ -3,22 +3,14 @@ import { connect } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import cx from 'classnames';
 
-import Snackbar from '@material-ui/core/Snackbar';
-import IconButton from '@material-ui/core/IconButton';
+import { WithStyles ,withStyles} from '@material-ui/core/styles';
 
-import CloseIcon from '@material-ui/icons/Close';
 
-import {withStyles} from '@material-ui/core/styles';
-
-import { Window } from '@albertli/redux-openfin';
-
-import { RouteItem, IRouteCompItem, IRouteRedirectItem } from '../../routes';
 import childWindowRoutes from '../../routes/ChildWindow';
 
 import {Header} from '../../components';
 
 import { dashboardLayoutStyle as style } from '../../assets/jss/openfin-starter';
-import dashboardRoutes from "../../routes/Dashboard";
 
 declare const window:any;
 
@@ -33,7 +25,15 @@ const switchRoutes = (
     </Switch>
 );
 
-class ChildWindowLayout extends React.Component<any,any>{
+interface IProps extends WithStyles<typeof style>{
+
+}
+
+interface IState {
+    windowState:string,
+}
+
+class ChildWindowLayout extends React.Component<IProps,IState>{
 
     state={
         windowState:'normal',
