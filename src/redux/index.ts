@@ -10,7 +10,7 @@ export * from './application/types';
 export * from './config/actions';
 export * from './config/types';
 
-export interface IState {
+export interface IRootState {
     application:IApplicationState,
     config:IConfigState,
 }

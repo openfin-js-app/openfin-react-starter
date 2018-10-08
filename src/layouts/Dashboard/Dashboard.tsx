@@ -15,7 +15,7 @@ import {
     applicationSetSnackbarStatus, applicationProcessSnackbarQueue,
     applicationCloseSnackbar, applicationLaunchBarToggle,
     // types
-    IState,ISnackBarMsg,
+    IRootState,ISnackBarMsg,
 } from '../../redux';
 
 import dashboardRoutes from '../../routes/Dashboard';
@@ -124,7 +124,7 @@ class DashbardLayout extends React.Component<IProps,{}>{
 }
 
 export default connect(
-    (state:IState)=>({
+    (state:IRootState)=>({
         drawerOpen:state.application.drawerOpen,
         snackBarOpen:state.application.snackBarOpen,
         snackBarMsgInfo:state.application.snackBarMsgInfo,
