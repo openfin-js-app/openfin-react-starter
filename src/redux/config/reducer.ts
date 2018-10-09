@@ -8,7 +8,10 @@ import {
     CONFIG_UPDATE_NEW_WINDOW_POSITION_RESET_TOP,
     CONFIG_UPDATE_NEW_WINDOW_POSITION_RESET_LEFT,
 } from './actions';
-import { IConfigTab, IConfigField, FieldType, IConfigState } from './types';
+import {
+    IConfigTab, IConfigField, FieldType,
+    IConfigResetOption, IConfigUpdateOneFieldOption, IConfigUpdateGlobalFilterStrOption, IConfigState
+} from './types';
 import configTabs from './constant';
 
 function buildDefaultState(configTabs: IConfigTab[]):IConfigState{
@@ -33,7 +36,7 @@ const defaultState:IConfigState = buildDefaultState(configTabs);
 
 export default handleActions({
     [CONFIG_RESET]:(state,action)=>{
-      const {tabName} = action.payload;
+      const {tabName} = action.payload as IConfigResetOption;
       if(tabName){
           return {
               ...state,
@@ -44,7 +47,7 @@ export default handleActions({
       }
     },
     [CONFIG_UPDATE_ONE_FIELD]:(state,action)=>{
-        const {name,value} = action.payload;
+        const {name,value} = action.payload as any;
         const result = {...state};
         const paths = name.split('.');
         if (paths.length === 2){
@@ -56,7 +59,7 @@ export default handleActions({
         return result;
     },
     [CONFIG_UPDATE_GLOBAL_FILTER_STR]:(state,action)=>{
-        const { configGlobalFilterString } = action.payload;
+        const { configGlobalFilterString } = action.payload as IConfigUpdateGlobalFilterStrOption;
         return{
             ...state,
             configGlobalFilterString,
