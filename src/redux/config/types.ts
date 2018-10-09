@@ -42,6 +42,19 @@ export interface IConfigTab {
     [key:number]:any;
 }
 
+export interface IConfigResetOption {
+    tabName?:string
+}
+
+export interface IConfigUpdateOneFieldOption {
+    name:string,
+    value:any,
+}
+
+export interface IConfigUpdateGlobalFilterStrOption {
+    configGlobalFilterString:string,
+}
+
 export interface IConfigState {
     configGlobalFilterString:string;
     _tabs:IConfigTab[];
