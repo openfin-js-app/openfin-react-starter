@@ -85,11 +85,11 @@ class ConfigFieldComp extends React.Component<IProps,{}>{
 
         switch (_type){
             case FieldType.TITLE:
-                return (<Typography variant={'title'} gutterBottom>
+                return (<Typography variant={'h5'} gutterBottom>
                     {_label}
                 </Typography>);
             case FieldType.SUBHEADING:
-                return (<Typography className={classes.subheadingField} variant={'subheading'} gutterBottom>
+                return (<Typography className={classes.subheadingField} variant={'subtitle1'} gutterBottom>
                     {_label}
                 </Typography>);
             case FieldType.CUSTOM_FIELD:

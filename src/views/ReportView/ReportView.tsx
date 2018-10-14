@@ -31,10 +31,10 @@ class ReportView extends React.Component<IProps,{}>{
                 renderThumbVertical={props => <div className={"dark-thumb-vertical"} {...props}/>}
             >
                 <div className={classes.mainContainer}>
-                    <Typography variant={"title"} gutterBottom>
+                    <Typography variant={"subtitle1"} gutterBottom>
                         Openfin {version} - {username} @ {computerName}
                     </Typography>
-                    <Typography variant={"body2"}>
+                    <Typography variant={"body1"}>
                         DeviceId:{deviceId}
                     </Typography>
                     <Typography variant={"body2"}>

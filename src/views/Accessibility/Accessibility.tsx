@@ -47,7 +47,7 @@ class AccessibilityView extends React.Component<IProps, {}>{
         return(
             <React.Fragment>
                 <Typography
-                    variant={"title"} gutterBottom
+                    variant={"h5"} gutterBottom
                 >
                     Accessibility view works
                 </Typography>
