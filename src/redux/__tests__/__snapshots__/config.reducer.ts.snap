@@ -1,0 +1,1794 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Config reducer CONFIG_RESET reduced correctly - all 1`] = `
+Object {
+  "_tabs": Array [
+    Object {
+      "_fieldLabels": "New Window PositionNew Window TopNew Window LeftNew Window WidthNew Window HeightNew Window Delta LeftNew Window Delta Height",
+      "_fields": Array [
+        Object {
+          "_cols": 12,
+          "_label": "New Window Position",
+          "_type": 9,
+        },
+        Object {
+          "_defaultValue": 10,
+          "_label": "New Window Top",
+          "_name": "newWinTop",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 300,
+          "_label": "New Window Left",
+          "_name": "newWinLeft",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 640,
+          "_label": "New Window Width",
+          "_name": "newWinWidth",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 320,
+          "_label": "New Window Height",
+          "_name": "newWinHeight",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 20,
+          "_label": "New Window Delta Left",
+          "_name": "newWindDeltaLeft",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 20,
+          "_label": "New Window Delta Height",
+          "_name": "newWindDeltaHeight",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+      ],
+      "_icon": [Function],
+      "_label": "Application",
+      "_name": "application",
+      "_order": 0,
+      "_svgUrl": Object {
+        "ReactComponent": [Function],
+        "__esModule": true,
+        "default": "controls_dark.svg",
+      },
+    },
+    Object {
+      "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
+      "_fields": Array [
+        Object {
+          "_cols": 12,
+          "_label": "Sample value",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "STRING",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": "",
+          "_label": "String value",
+          "_name": "strValue",
+          "_type": 2,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "CURRENCY",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": 123456789,
+          "_label": "Currency value",
+          "_name": "crrValue",
+          "_type": 7,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "DATE",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": 2018-10-13T20:53:41.000Z,
+          "_label": "Date value",
+          "_name": "dateValue",
+          "_type": 4,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "TIME",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": 2018-10-13T20:53:41.000Z,
+          "_label": "Time value",
+          "_name": "timeValue",
+          "_type": 5,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "DATETIME",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": 2018-10-13T20:53:41.000Z,
+          "_label": "Datetime value",
+          "_name": "datetimeValue",
+          "_type": 3,
+        },
+        Object {
+          "_cols": 12,
+          "_label": "Custom field",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 12,
+          "_custom": <Connect(ConfigJsonView) />,
+          "_label": "Custom value",
+          "_rows": 6,
+          "_type": 1,
+        },
+      ],
+      "_icon": [Function],
+      "_label": "Sample",
+      "_name": "sample",
+      "_order": 1,
+      "_svgUrl": Object {
+        "ReactComponent": [Function],
+        "__esModule": true,
+        "default": "list-checked-dark.svg",
+      },
+    },
+  ],
+  "application": Object {
+    "newWinHeight": 320,
+    "newWinLeft": 300,
+    "newWinTop": 10,
+    "newWinWidth": 640,
+    "newWindDeltaHeight": 20,
+    "newWindDeltaLeft": 20,
+  },
+  "configGlobalFilterString": "",
+  "sample": Object {
+    "crrValue": 123456789,
+    "dateValue": 2018-10-13T20:53:41.000Z,
+    "datetimeValue": 2018-10-13T20:53:41.000Z,
+    "strValue": "",
+    "timeValue": 2018-10-13T20:53:41.000Z,
+  },
+}
+`;
+
+exports[`Config reducer CONFIG_RESET reduced correctly - application 1`] = `
+Object {
+  "_tabs": Array [
+    Object {
+      "_fieldLabels": "New Window PositionNew Window TopNew Window LeftNew Window WidthNew Window HeightNew Window Delta LeftNew Window Delta Height",
+      "_fields": Array [
+        Object {
+          "_cols": 12,
+          "_label": "New Window Position",
+          "_type": 9,
+        },
+        Object {
+          "_defaultValue": 10,
+          "_label": "New Window Top",
+          "_name": "newWinTop",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 300,
+          "_label": "New Window Left",
+          "_name": "newWinLeft",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 640,
+          "_label": "New Window Width",
+          "_name": "newWinWidth",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 320,
+          "_label": "New Window Height",
+          "_name": "newWinHeight",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 20,
+          "_label": "New Window Delta Left",
+          "_name": "newWindDeltaLeft",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 20,
+          "_label": "New Window Delta Height",
+          "_name": "newWindDeltaHeight",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+      ],
+      "_icon": [Function],
+      "_label": "Application",
+      "_name": "application",
+      "_order": 0,
+      "_svgUrl": Object {
+        "ReactComponent": [Function],
+        "__esModule": true,
+        "default": "controls_dark.svg",
+      },
+    },
+    Object {
+      "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
+      "_fields": Array [
+        Object {
+          "_cols": 12,
+          "_label": "Sample value",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "STRING",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": "",
+          "_label": "String value",
+          "_name": "strValue",
+          "_type": 2,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "CURRENCY",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": 123456789,
+          "_label": "Currency value",
+          "_name": "crrValue",
+          "_type": 7,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "DATE",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": 2018-10-13T20:53:41.000Z,
+          "_label": "Date value",
+          "_name": "dateValue",
+          "_type": 4,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "TIME",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": 2018-10-13T20:53:41.000Z,
+          "_label": "Time value",
+          "_name": "timeValue",
+          "_type": 5,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "DATETIME",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": 2018-10-13T20:53:41.000Z,
+          "_label": "Datetime value",
+          "_name": "datetimeValue",
+          "_type": 3,
+        },
+        Object {
+          "_cols": 12,
+          "_label": "Custom field",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 12,
+          "_custom": <Connect(ConfigJsonView) />,
+          "_label": "Custom value",
+          "_rows": 6,
+          "_type": 1,
+        },
+      ],
+      "_icon": [Function],
+      "_label": "Sample",
+      "_name": "sample",
+      "_order": 1,
+      "_svgUrl": Object {
+        "ReactComponent": [Function],
+        "__esModule": true,
+        "default": "list-checked-dark.svg",
+      },
+    },
+  ],
+  "application": Object {
+    "newWinHeight": 320,
+    "newWinLeft": 300,
+    "newWinTop": 10,
+    "newWinWidth": 640,
+    "newWindDeltaHeight": 20,
+    "newWindDeltaLeft": 20,
+  },
+  "configGlobalFilterString": "",
+  "sample": Object {
+    "crrValue": 123456789,
+    "dateValue": 2018-10-13T20:53:41.000Z,
+    "datetimeValue": 2018-10-13T20:53:41.000Z,
+    "strValue": "",
+    "timeValue": 2018-10-13T20:53:41.000Z,
+  },
+  "tabName": Object {
+    "newWinHeight": 320,
+    "newWinLeft": 300,
+    "newWinTop": 10,
+    "newWinWidth": 640,
+    "newWindDeltaHeight": 20,
+    "newWindDeltaLeft": 20,
+  },
+}
+`;
+
+exports[`Config reducer CONFIG_UPDATE_GLOBAL_FILTER_STR reduced correctly 1`] = `
+Object {
+  "_tabs": Array [
+    Object {
+      "_fieldLabels": "New Window PositionNew Window TopNew Window LeftNew Window WidthNew Window HeightNew Window Delta LeftNew Window Delta Height",
+      "_fields": Array [
+        Object {
+          "_cols": 12,
+          "_label": "New Window Position",
+          "_type": 9,
+        },
+        Object {
+          "_defaultValue": 10,
+          "_label": "New Window Top",
+          "_name": "newWinTop",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 300,
+          "_label": "New Window Left",
+          "_name": "newWinLeft",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 640,
+          "_label": "New Window Width",
+          "_name": "newWinWidth",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 320,
+          "_label": "New Window Height",
+          "_name": "newWinHeight",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 20,
+          "_label": "New Window Delta Left",
+          "_name": "newWindDeltaLeft",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 20,
+          "_label": "New Window Delta Height",
+          "_name": "newWindDeltaHeight",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+      ],
+      "_icon": [Function],
+      "_label": "Application",
+      "_name": "application",
+      "_order": 0,
+      "_svgUrl": Object {
+        "ReactComponent": [Function],
+        "__esModule": true,
+        "default": "controls_dark.svg",
+      },
+    },
+    Object {
+      "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
+      "_fields": Array [
+        Object {
+          "_cols": 12,
+          "_label": "Sample value",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "STRING",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": "",
+          "_label": "String value",
+          "_name": "strValue",
+          "_type": 2,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "CURRENCY",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": 123456789,
+          "_label": "Currency value",
+          "_name": "crrValue",
+          "_type": 7,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "DATE",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": 2018-10-13T20:53:41.000Z,
+          "_label": "Date value",
+          "_name": "dateValue",
+          "_type": 4,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "TIME",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": 2018-10-13T20:53:41.000Z,
+          "_label": "Time value",
+          "_name": "timeValue",
+          "_type": 5,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "DATETIME",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": 2018-10-13T20:53:41.000Z,
+          "_label": "Datetime value",
+          "_name": "datetimeValue",
+          "_type": 3,
+        },
+        Object {
+          "_cols": 12,
+          "_label": "Custom field",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 12,
+          "_custom": <Connect(ConfigJsonView) />,
+          "_label": "Custom value",
+          "_rows": 6,
+          "_type": 1,
+        },
+      ],
+      "_icon": [Function],
+      "_label": "Sample",
+      "_name": "sample",
+      "_order": 1,
+      "_svgUrl": Object {
+        "ReactComponent": [Function],
+        "__esModule": true,
+        "default": "list-checked-dark.svg",
+      },
+    },
+  ],
+  "application": Object {
+    "newWinHeight": 320,
+    "newWinLeft": 300,
+    "newWinTop": 10,
+    "newWinWidth": 640,
+    "newWindDeltaHeight": 20,
+    "newWindDeltaLeft": 20,
+  },
+  "configGlobalFilterString": "configGlobalFilterString",
+  "sample": Object {
+    "crrValue": 123456789,
+    "dateValue": 2018-10-13T20:53:41.000Z,
+    "datetimeValue": 2018-10-13T20:53:41.000Z,
+    "strValue": "",
+    "timeValue": 2018-10-13T20:53:41.000Z,
+  },
+}
+`;
+
+exports[`Config reducer CONFIG_UPDATE_NEW_WINDOW_POSITION_ADD_DELTA reduced correctly 1`] = `
+Object {
+  "_tabs": Array [
+    Object {
+      "_fieldLabels": "New Window PositionNew Window TopNew Window LeftNew Window WidthNew Window HeightNew Window Delta LeftNew Window Delta Height",
+      "_fields": Array [
+        Object {
+          "_cols": 12,
+          "_label": "New Window Position",
+          "_type": 9,
+        },
+        Object {
+          "_defaultValue": 10,
+          "_label": "New Window Top",
+          "_name": "newWinTop",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 300,
+          "_label": "New Window Left",
+          "_name": "newWinLeft",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 640,
+          "_label": "New Window Width",
+          "_name": "newWinWidth",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 320,
+          "_label": "New Window Height",
+          "_name": "newWinHeight",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 20,
+          "_label": "New Window Delta Left",
+          "_name": "newWindDeltaLeft",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 20,
+          "_label": "New Window Delta Height",
+          "_name": "newWindDeltaHeight",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+      ],
+      "_icon": [Function],
+      "_label": "Application",
+      "_name": "application",
+      "_order": 0,
+      "_svgUrl": Object {
+        "ReactComponent": [Function],
+        "__esModule": true,
+        "default": "controls_dark.svg",
+      },
+    },
+    Object {
+      "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
+      "_fields": Array [
+        Object {
+          "_cols": 12,
+          "_label": "Sample value",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "STRING",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": "",
+          "_label": "String value",
+          "_name": "strValue",
+          "_type": 2,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "CURRENCY",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": 123456789,
+          "_label": "Currency value",
+          "_name": "crrValue",
+          "_type": 7,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "DATE",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": 2018-10-13T20:53:41.000Z,
+          "_label": "Date value",
+          "_name": "dateValue",
+          "_type": 4,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "TIME",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": 2018-10-13T20:53:41.000Z,
+          "_label": "Time value",
+          "_name": "timeValue",
+          "_type": 5,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "DATETIME",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": 2018-10-13T20:53:41.000Z,
+          "_label": "Datetime value",
+          "_name": "datetimeValue",
+          "_type": 3,
+        },
+        Object {
+          "_cols": 12,
+          "_label": "Custom field",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 12,
+          "_custom": <Connect(ConfigJsonView) />,
+          "_label": "Custom value",
+          "_rows": 6,
+          "_type": 1,
+        },
+      ],
+      "_icon": [Function],
+      "_label": "Sample",
+      "_name": "sample",
+      "_order": 1,
+      "_svgUrl": Object {
+        "ReactComponent": [Function],
+        "__esModule": true,
+        "default": "list-checked-dark.svg",
+      },
+    },
+  ],
+  "application": Object {
+    "newWinHeight": 320,
+    "newWinLeft": 320,
+    "newWinTop": 30,
+    "newWinWidth": 640,
+    "newWindDeltaHeight": 20,
+    "newWindDeltaLeft": 20,
+  },
+  "configGlobalFilterString": "",
+  "sample": Object {
+    "crrValue": 123456789,
+    "dateValue": 2018-10-13T20:53:41.000Z,
+    "datetimeValue": 2018-10-13T20:53:41.000Z,
+    "strValue": "",
+    "timeValue": 2018-10-13T20:53:41.000Z,
+  },
+}
+`;
+
+exports[`Config reducer CONFIG_UPDATE_NEW_WINDOW_POSITION_RESET_LEFT reduced correctly 1`] = `
+Object {
+  "_tabs": Array [
+    Object {
+      "_fieldLabels": "New Window PositionNew Window TopNew Window LeftNew Window WidthNew Window HeightNew Window Delta LeftNew Window Delta Height",
+      "_fields": Array [
+        Object {
+          "_cols": 12,
+          "_label": "New Window Position",
+          "_type": 9,
+        },
+        Object {
+          "_defaultValue": 10,
+          "_label": "New Window Top",
+          "_name": "newWinTop",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 300,
+          "_label": "New Window Left",
+          "_name": "newWinLeft",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 640,
+          "_label": "New Window Width",
+          "_name": "newWinWidth",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 320,
+          "_label": "New Window Height",
+          "_name": "newWinHeight",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 20,
+          "_label": "New Window Delta Left",
+          "_name": "newWindDeltaLeft",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 20,
+          "_label": "New Window Delta Height",
+          "_name": "newWindDeltaHeight",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+      ],
+      "_icon": [Function],
+      "_label": "Application",
+      "_name": "application",
+      "_order": 0,
+      "_svgUrl": Object {
+        "ReactComponent": [Function],
+        "__esModule": true,
+        "default": "controls_dark.svg",
+      },
+    },
+    Object {
+      "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
+      "_fields": Array [
+        Object {
+          "_cols": 12,
+          "_label": "Sample value",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "STRING",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": "",
+          "_label": "String value",
+          "_name": "strValue",
+          "_type": 2,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "CURRENCY",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": 123456789,
+          "_label": "Currency value",
+          "_name": "crrValue",
+          "_type": 7,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "DATE",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": 2018-10-13T20:53:41.000Z,
+          "_label": "Date value",
+          "_name": "dateValue",
+          "_type": 4,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "TIME",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": 2018-10-13T20:53:41.000Z,
+          "_label": "Time value",
+          "_name": "timeValue",
+          "_type": 5,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "DATETIME",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": 2018-10-13T20:53:41.000Z,
+          "_label": "Datetime value",
+          "_name": "datetimeValue",
+          "_type": 3,
+        },
+        Object {
+          "_cols": 12,
+          "_label": "Custom field",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 12,
+          "_custom": <Connect(ConfigJsonView) />,
+          "_label": "Custom value",
+          "_rows": 6,
+          "_type": 1,
+        },
+      ],
+      "_icon": [Function],
+      "_label": "Sample",
+      "_name": "sample",
+      "_order": 1,
+      "_svgUrl": Object {
+        "ReactComponent": [Function],
+        "__esModule": true,
+        "default": "list-checked-dark.svg",
+      },
+    },
+  ],
+  "application": Object {
+    "newWinHeight": 320,
+    "newWinLeft": 300,
+    "newWinTop": 10,
+    "newWinWidth": 640,
+    "newWindDeltaHeight": 20,
+    "newWindDeltaLeft": 20,
+  },
+  "configGlobalFilterString": "",
+  "sample": Object {
+    "crrValue": 123456789,
+    "dateValue": 2018-10-13T20:53:41.000Z,
+    "datetimeValue": 2018-10-13T20:53:41.000Z,
+    "strValue": "",
+    "timeValue": 2018-10-13T20:53:41.000Z,
+  },
+}
+`;
+
+exports[`Config reducer CONFIG_UPDATE_NEW_WINDOW_POSITION_RESET_TOP reduced correctly 1`] = `
+Object {
+  "_tabs": Array [
+    Object {
+      "_fieldLabels": "New Window PositionNew Window TopNew Window LeftNew Window WidthNew Window HeightNew Window Delta LeftNew Window Delta Height",
+      "_fields": Array [
+        Object {
+          "_cols": 12,
+          "_label": "New Window Position",
+          "_type": 9,
+        },
+        Object {
+          "_defaultValue": 10,
+          "_label": "New Window Top",
+          "_name": "newWinTop",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 300,
+          "_label": "New Window Left",
+          "_name": "newWinLeft",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 640,
+          "_label": "New Window Width",
+          "_name": "newWinWidth",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 320,
+          "_label": "New Window Height",
+          "_name": "newWinHeight",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 20,
+          "_label": "New Window Delta Left",
+          "_name": "newWindDeltaLeft",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 20,
+          "_label": "New Window Delta Height",
+          "_name": "newWindDeltaHeight",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+      ],
+      "_icon": [Function],
+      "_label": "Application",
+      "_name": "application",
+      "_order": 0,
+      "_svgUrl": Object {
+        "ReactComponent": [Function],
+        "__esModule": true,
+        "default": "controls_dark.svg",
+      },
+    },
+    Object {
+      "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
+      "_fields": Array [
+        Object {
+          "_cols": 12,
+          "_label": "Sample value",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "STRING",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": "",
+          "_label": "String value",
+          "_name": "strValue",
+          "_type": 2,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "CURRENCY",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": 123456789,
+          "_label": "Currency value",
+          "_name": "crrValue",
+          "_type": 7,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "DATE",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": 2018-10-13T20:53:41.000Z,
+          "_label": "Date value",
+          "_name": "dateValue",
+          "_type": 4,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "TIME",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": 2018-10-13T20:53:41.000Z,
+          "_label": "Time value",
+          "_name": "timeValue",
+          "_type": 5,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "DATETIME",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": 2018-10-13T20:53:41.000Z,
+          "_label": "Datetime value",
+          "_name": "datetimeValue",
+          "_type": 3,
+        },
+        Object {
+          "_cols": 12,
+          "_label": "Custom field",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 12,
+          "_custom": <Connect(ConfigJsonView) />,
+          "_label": "Custom value",
+          "_rows": 6,
+          "_type": 1,
+        },
+      ],
+      "_icon": [Function],
+      "_label": "Sample",
+      "_name": "sample",
+      "_order": 1,
+      "_svgUrl": Object {
+        "ReactComponent": [Function],
+        "__esModule": true,
+        "default": "list-checked-dark.svg",
+      },
+    },
+  ],
+  "application": Object {
+    "newWinHeight": 320,
+    "newWinLeft": 300,
+    "newWinTop": 10,
+    "newWinWidth": 640,
+    "newWindDeltaHeight": 20,
+    "newWindDeltaLeft": 20,
+  },
+  "configGlobalFilterString": "",
+  "sample": Object {
+    "crrValue": 123456789,
+    "dateValue": 2018-10-13T20:53:41.000Z,
+    "datetimeValue": 2018-10-13T20:53:41.000Z,
+    "strValue": "",
+    "timeValue": 2018-10-13T20:53:41.000Z,
+  },
+}
+`;
+
+exports[`Config reducer CONFIG_UPDATE_ONE_FIELD reduced correctly - invalid 1`] = `
+Object {
+  "_tabs": Array [
+    Object {
+      "_fieldLabels": "New Window PositionNew Window TopNew Window LeftNew Window WidthNew Window HeightNew Window Delta LeftNew Window Delta Height",
+      "_fields": Array [
+        Object {
+          "_cols": 12,
+          "_label": "New Window Position",
+          "_type": 9,
+        },
+        Object {
+          "_defaultValue": 10,
+          "_label": "New Window Top",
+          "_name": "newWinTop",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 300,
+          "_label": "New Window Left",
+          "_name": "newWinLeft",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 640,
+          "_label": "New Window Width",
+          "_name": "newWinWidth",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 320,
+          "_label": "New Window Height",
+          "_name": "newWinHeight",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 20,
+          "_label": "New Window Delta Left",
+          "_name": "newWindDeltaLeft",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 20,
+          "_label": "New Window Delta Height",
+          "_name": "newWindDeltaHeight",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+      ],
+      "_icon": [Function],
+      "_label": "Application",
+      "_name": "application",
+      "_order": 0,
+      "_svgUrl": Object {
+        "ReactComponent": [Function],
+        "__esModule": true,
+        "default": "controls_dark.svg",
+      },
+    },
+    Object {
+      "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
+      "_fields": Array [
+        Object {
+          "_cols": 12,
+          "_label": "Sample value",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "STRING",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": "",
+          "_label": "String value",
+          "_name": "strValue",
+          "_type": 2,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "CURRENCY",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": 123456789,
+          "_label": "Currency value",
+          "_name": "crrValue",
+          "_type": 7,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "DATE",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": 2018-10-13T20:53:41.000Z,
+          "_label": "Date value",
+          "_name": "dateValue",
+          "_type": 4,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "TIME",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": 2018-10-13T20:53:41.000Z,
+          "_label": "Time value",
+          "_name": "timeValue",
+          "_type": 5,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "DATETIME",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": 2018-10-13T20:53:41.000Z,
+          "_label": "Datetime value",
+          "_name": "datetimeValue",
+          "_type": 3,
+        },
+        Object {
+          "_cols": 12,
+          "_label": "Custom field",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 12,
+          "_custom": <Connect(ConfigJsonView) />,
+          "_label": "Custom value",
+          "_rows": 6,
+          "_type": 1,
+        },
+      ],
+      "_icon": [Function],
+      "_label": "Sample",
+      "_name": "sample",
+      "_order": 1,
+      "_svgUrl": Object {
+        "ReactComponent": [Function],
+        "__esModule": true,
+        "default": "list-checked-dark.svg",
+      },
+    },
+  ],
+  "application": Object {
+    "newWinHeight": 320,
+    "newWinLeft": 300,
+    "newWinTop": 10,
+    "newWinWidth": 640,
+    "newWindDeltaHeight": 20,
+    "newWindDeltaLeft": 20,
+  },
+  "configGlobalFilterString": "",
+  "sample": Object {
+    "crrValue": 123456789,
+    "dateValue": 2018-10-13T20:53:41.000Z,
+    "datetimeValue": 2018-10-13T20:53:41.000Z,
+    "strValue": "",
+    "timeValue": 2018-10-13T20:53:41.000Z,
+  },
+}
+`;
+
+exports[`Config reducer CONFIG_UPDATE_ONE_FIELD reduced correctly - valid 1`] = `
+Object {
+  "_tabs": Array [
+    Object {
+      "_fieldLabels": "New Window PositionNew Window TopNew Window LeftNew Window WidthNew Window HeightNew Window Delta LeftNew Window Delta Height",
+      "_fields": Array [
+        Object {
+          "_cols": 12,
+          "_label": "New Window Position",
+          "_type": 9,
+        },
+        Object {
+          "_defaultValue": 10,
+          "_label": "New Window Top",
+          "_name": "newWinTop",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 300,
+          "_label": "New Window Left",
+          "_name": "newWinLeft",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 640,
+          "_label": "New Window Width",
+          "_name": "newWinWidth",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 320,
+          "_label": "New Window Height",
+          "_name": "newWinHeight",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 20,
+          "_label": "New Window Delta Left",
+          "_name": "newWindDeltaLeft",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 20,
+          "_label": "New Window Delta Height",
+          "_name": "newWindDeltaHeight",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(InputAdornment)
+                position="end"
+              >
+                Pixel
+              </WithStyles(InputAdornment)>,
+            },
+          },
+          "_type": 6,
+        },
+      ],
+      "_icon": [Function],
+      "_label": "Application",
+      "_name": "application",
+      "_order": 0,
+      "_svgUrl": Object {
+        "ReactComponent": [Function],
+        "__esModule": true,
+        "default": "controls_dark.svg",
+      },
+    },
+    Object {
+      "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
+      "_fields": Array [
+        Object {
+          "_cols": 12,
+          "_label": "Sample value",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "STRING",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": "",
+          "_label": "String value",
+          "_name": "strValue",
+          "_type": 2,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "CURRENCY",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": 123456789,
+          "_label": "Currency value",
+          "_name": "crrValue",
+          "_type": 7,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "DATE",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": 2018-10-13T20:53:41.000Z,
+          "_label": "Date value",
+          "_name": "dateValue",
+          "_type": 4,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "TIME",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": 2018-10-13T20:53:41.000Z,
+          "_label": "Time value",
+          "_name": "timeValue",
+          "_type": 5,
+        },
+        Object {
+          "_cols": 4,
+          "_label": "DATETIME",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 8,
+          "_defaultValue": 2018-10-13T20:53:41.000Z,
+          "_label": "Datetime value",
+          "_name": "datetimeValue",
+          "_type": 3,
+        },
+        Object {
+          "_cols": 12,
+          "_label": "Custom field",
+          "_type": 9,
+        },
+        Object {
+          "_cols": 12,
+          "_custom": <Connect(ConfigJsonView) />,
+          "_label": "Custom value",
+          "_rows": 6,
+          "_type": 1,
+        },
+      ],
+      "_icon": [Function],
+      "_label": "Sample",
+      "_name": "sample",
+      "_order": 1,
+      "_svgUrl": Object {
+        "ReactComponent": [Function],
+        "__esModule": true,
+        "default": "list-checked-dark.svg",
+      },
+    },
+  ],
+  "application": Object {
+    "newWinHeight": 320,
+    "newWinLeft": 300,
+    "newWinTop": 10,
+    "newWinWidth": 640,
+    "newWindDeltaHeight": 20,
+    "newWindDeltaLeft": 20,
+  },
+  "configGlobalFilterString": "",
+  "sample": Object {
+    "crrValue": 123456789,
+    "dateValue": 2018-10-13T20:53:41.000Z,
+    "datetimeValue": 2018-10-13T20:53:41.000Z,
+    "name": "sampleVal",
+    "strValue": "",
+    "timeValue": 2018-10-13T20:53:41.000Z,
+  },
+}
+`;

@@ -10,6 +10,10 @@ import ConfigJson from '../../views/ConfigView/ConfigJson';
 const controls = require('../../assets/svg/support/controls_dark.svg') as string;
 const listChecked = require('../../assets/svg/other/list-checked-dark.svg') as string;
 
+function _getSampleDate() {
+    return process.env.NODE_ENV === 'test'? new Date(2018,9,13,16,53,41): new Date();
+}
+
 const configTabs:IConfigTab[]=[
     {
         _order: 0 ,
@@ -136,7 +140,7 @@ const configTabs:IConfigTab[]=[
                 _type:FieldType.DATE,
                 _label:'Date value',
                 _name:'dateValue',
-                _defaultValue:new Date(),
+                _defaultValue:_getSampleDate(),
                 _cols: 8,
             },
             {
@@ -148,7 +152,7 @@ const configTabs:IConfigTab[]=[
                 _type:FieldType.TIME,
                 _label:'Time value',
                 _name:'timeValue',
-                _defaultValue:new Date(),
+                _defaultValue:_getSampleDate(),
                 _cols: 8,
             },
             {
@@ -160,7 +164,7 @@ const configTabs:IConfigTab[]=[
                 _type:FieldType.DATETIME,
                 _label:'Datetime value',
                 _name:'datetimeValue',
-                _defaultValue:new Date(),
+                _defaultValue:_getSampleDate(),
                 _cols: 8,
             },
             {
