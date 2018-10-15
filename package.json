@@ -69,6 +69,8 @@
     "html-webpack-plugin": "3.2.0",
     "identity-obj-proxy": "3.0.0",
     "jest": "^23.6.0",
+    "jest-environment-jsdom": "^23.4.0",
+    "jest-environment-jsdom-global": "^1.1.0",
     "loader-utils": "^1.1.0",
     "material-ui-pickers": "^1.0.0-rc.15",
     "mini-css-extract-plugin": "^0.4.0",
@@ -95,6 +97,7 @@
     "redux-actions": "^2.6.1",
     "redux-mock-store": "^1.5.3",
     "redux-saga": "^0.16.0",
+    "redux-saga-test-plan": "^3.7.0",
     "resolve": "1.6.0",
     "rimraf": "^2.6.2",
     "sass-loader": "7.0.1",
@@ -122,7 +125,7 @@
     "build": "rimraf build && node scripts/build.js",
     "serve": "node scripts/server.js",
     "serve-openfin": "node scripts/server.openfin.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js"
   },
   "browserslist": {
     "development": [
@@ -155,7 +158,7 @@
       "<rootDir>/src"
     ],
     "globals": {},
-    "testEnvironment": "jsdom",
+    "testEnvironment": "jest-environment-jsdom-global",
     "testURL": "http://localhost",
     "transform": {
       "^.+\\.tsx?$": "ts-jest",
