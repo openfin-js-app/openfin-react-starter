@@ -28,15 +28,15 @@ describe('AccessibilityView',()=>{
         shallow = createShallow();
     });
 
-    it('render and fire actions when clicked',()=>{
+    it('render and fire 8 actions when 8 btn clicked',()=>{
        const wrapper = mount(<Accessibility store={store}/>);
-       expect(wrapper.find(Button)).toHaveLength(10);
+       expect(wrapper.find(Button)).toHaveLength(8);
        wrapper.find(Button).forEach((button)=>{
            const props = button.props();
            if ( typeof props.onClick === 'function'){
                props.onClick();
            }
        });
-       expect(store.getActions()).toHaveLength(4);
+       expect(store.getActions()).toHaveLength(8);
    })
 });

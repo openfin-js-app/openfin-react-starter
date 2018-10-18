@@ -5,15 +5,15 @@ import {
     configUpdateNewWindowPositionAddDelta,
     configUpdateNewWindowPositionResetLeft,
     configUpdateNewWindowPositionResetTop,
-} from '../config/actions';
+} from '..';
 import {System, Window} from "@albertli/redux-openfin";
 
-const getNewWindowTop = state => state.config.application.newWinTop;
-const getNewWindowLeft = state => state.config.application.newWinLeft;
-const getNewWindowWidth = state => state.config.application.newWinWidth;
-const getNewWindowHeight = state => state.config.application.newWinHeight;
+export const getNewWindowTop = state => state.config.application.newWinTop;
+export const getNewWindowLeft = state => state.config.application.newWinLeft;
+export const getNewWindowWidth = state => state.config.application.newWinWidth;
+export const getNewWindowHeight = state => state.config.application.newWinHeight;
 
-function* configUpdateNewWindowPosition() {
+export function* handleConfigUpdateNewWindowPosition() {
     const newWinWidth = yield select(getNewWindowWidth);
     const newWinHeight = yield select(getNewWindowHeight);
     const newWinTop = yield select(getNewWindowTop);
@@ -23,7 +23,7 @@ function* configUpdateNewWindowPosition() {
     const monitorInfoAction = yield take(System.actions.GET_MONITOR_INFO_RES);
     const virtualScreen = monitorInfoAction.payload.virtualScreen;
 
-    console.log("configUpdateNewWindowPosition",monitorInfoAction,virtualScreen);
+    // console.log("configUpdateNewWindowPosition",monitorInfoAction,virtualScreen);
 
     if (
         ((newWinLeft+newWinWidth)<virtualScreen.right) &&
@@ -34,7 +34,7 @@ function* configUpdateNewWindowPosition() {
         if ((newWinLeft+newWinWidth)>=virtualScreen.right){
             yield put.resolve(configUpdateNewWindowPositionResetLeft());
         }
-        if ((newWinTop+newWinHeight)<virtualScreen.bottom){
+        if ((newWinTop+newWinHeight)>=virtualScreen.bottom){
             yield put.resolve(configUpdateNewWindowPositionResetTop());
         }
     }
@@ -42,5 +42,5 @@ function* configUpdateNewWindowPosition() {
 }
 
 export default function* () {
-    yield takeLatest(CONFIG_UPDATE_NEW_WINDOW_POSITION,configUpdateNewWindowPosition);
+    yield takeLatest(CONFIG_UPDATE_NEW_WINDOW_POSITION,handleConfigUpdateNewWindowPosition);
 }

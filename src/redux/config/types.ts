@@ -1,5 +1,8 @@
 import { SvgIconProps } from '@material-ui/core/SvgIcon';
 import { TextFieldProps } from '@material-ui/core/TextField';
+import {TimePickerModalProps} from "material-ui-pickers/TimePicker/TimePickerModal";
+import {DatePickerModalProps} from "material-ui-pickers/DatePicker/DatePickerModal";
+
 
 export enum FieldType{
     CUSTOM_FIELD = 1,
@@ -21,7 +24,7 @@ export interface IConfigField {
     _defaultValue?:any;
     _cols?:number;
     _rows?:number;
-    _props?:TextFieldProps;
+    _props?:TextFieldProps|TimePickerModalProps|DatePickerModalProps;
     _custom?:any;
     [key:string]:any;
     [key:number]:any;
@@ -37,6 +40,19 @@ export interface IConfigTab {
     _fieldLabels?:string;
     [key:string]:any;
     [key:number]:any;
+}
+
+export interface IConfigResetOption {
+    tabName?:string
+}
+
+export interface IConfigUpdateOneFieldOption {
+    name:string,
+    value:any,
+}
+
+export interface IConfigUpdateGlobalFilterStrOption {
+    configGlobalFilterString:string,
 }
 
 export interface IConfigState {

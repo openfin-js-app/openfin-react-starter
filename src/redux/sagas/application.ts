@@ -32,18 +32,18 @@ import {
     APPLICATION_LAUNCH_BAR_TOGGLE,
     APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE,
     APPLICATION_LAUNCH_NEW_WINDOW,
-} from '../application/actions';
+} from '..';
 
-import { configUpdateNewWindowPosition } from '../config/actions';
+import { configUpdateNewWindowPosition } from '..';
 
-const getLaunchBarCollapse = state => state.application.launchBarCollapse;
-const getWindowState = state => state.application.windowState;
-const getNewWindowTop = state => state.config.application.newWinTop;
-const getNewWindowLeft = state => state.config.application.newWinLeft;
-const getNewWindowWidth = state => state.config.application.newWinWidth;
-const getNewWindowHeight = state => state.config.application.newWinHeight;
+export const getLaunchBarCollapse = state => state.application.launchBarCollapse;
+export const getWindowState = state => state.application.windowState;
+export const getNewWindowTop = state => state.config.application.newWinTop;
+export const getNewWindowLeft = state => state.config.application.newWinLeft;
+export const getNewWindowWidth = state => state.config.application.newWinWidth;
+export const getNewWindowHeight = state => state.config.application.newWinHeight;
 
-function* applicationLoading() {
+export function* handleApplicationLoading() {
 
     const currentIsLoadingView =
         (new URL(window.location.href).pathname.indexOf('loading')>-1) ||
@@ -95,7 +95,9 @@ function* applicationLoading() {
     if (ENABLE_LOADING_VIEW && currentIsLoadingView){
         // after the sagas loaded, redirect to default page/view
         if (process.env.REACT_APP_DEFAULT_VIEW_URL && process.env.REACT_APP_DEFAULT_VIEW_URL.length > 0){
-            hist.push(process.env.REACT_APP_DEFAULT_VIEW_URL);
+            if (process.env.NODE_ENV !== 'test'){
+                hist.push(process.env.REACT_APP_DEFAULT_VIEW_URL);
+            }
             yield put.resolve(Window.actions.updateOptions({
                 options:{
                     resizable:true,
@@ -134,15 +136,16 @@ function* applicationLoading() {
                     height:64,
                 }));
             }
-
-            hist.push('/launchBar');
+            if (process.env.NODE_ENV !== 'test'){
+                hist.push('/launchBar');
+            }
 
         }
 
     }
 }
 
-function* applicationExit() {
+export function* handleApplicationExit() {
     // -------------------------------start of app codes -----------------------------------------------
 
     // do something cleaning up before shutdonw~
@@ -153,7 +156,7 @@ function* applicationExit() {
     yield put.resolve(Window.actions.close({force:true}));
 }
 
-function* applicationAddNewSnackBar() {
+export function* handleApplicationAddNewSnackBar() {
     const state = yield select();
     if(state.snackBarOpen){
         yield put(applicationSetSnackbarStatus({open:false}));
@@ -162,7 +165,7 @@ function* applicationAddNewSnackBar() {
     }
 }
 
-function* applicationCloseSnackBar(action) {
+export function* handleApplicationCloseSnackBar(action) {
     const {event, reason} = action.payload;
     if(reason!=='clickaway'){
         return;
@@ -171,7 +174,7 @@ function* applicationCloseSnackBar(action) {
     }
 }
 
-function* toggleWindowState(){
+export function* handleToggleWindowState(){
     const windowState = yield select(getWindowState);
     if (windowState === 'maximized'){
         yield put(Window.actions.restore({}));
@@ -180,7 +183,7 @@ function* toggleWindowState(){
     }
 }
 
-function* applicationLaunchBarToggle(){
+export function* handleApplicationLaunchBarToggle(){
     const launchBarCollapse = yield select(getLaunchBarCollapse);
 
     yield put.resolve(Window.actions.getBounds({}));
@@ -201,7 +204,9 @@ function* applicationLaunchBarToggle(){
             width:previousBaseWindow.width,
             height:previousBaseWindow.height,
         }));
-        hist.push(previousBaseWindow.url);
+        if (process.env.NODE_ENV !== 'test'){
+            hist.push(previousBaseWindow.url);
+        }
     }else{
         // switch to launchBar
         yield put.resolve(Window.actions.updateOptions({
@@ -230,13 +235,14 @@ function* applicationLaunchBarToggle(){
                 height:64,
             }));
         }
-
-        hist.push('/launchBar');
+        if (process.env.NODE_ENV !== 'test'){
+            hist.push('/launchBar');
+        }
 
     }
 }
 
-function* applicationLaunchBarToggleCollapse() {
+export function* handleApplicationLaunchBarToggleCollapse() {
     const launchBarCollapse = yield select(getLaunchBarCollapse);
 
     yield put.resolve(Window.actions.getBounds({}));
@@ -261,7 +267,7 @@ function* applicationLaunchBarToggleCollapse() {
 
 }
 
-function* applicationLaunchNewWindow(action) {
+export function* handleApplicationLaunchNewWindow(action) {
     const appJson = action.payload;
     const defaultWidth = yield select(getNewWindowWidth);
     const defaultHeight = yield select(getNewWindowHeight);
@@ -280,12 +286,12 @@ function* applicationLaunchNewWindow(action) {
 }
 
 export default function* (){
-    yield takeLatest(APPLICATION_STARTED,applicationLoading);
-    yield takeLatest(Event.actionDicts.windowEventDictByName['close-requested'].type,applicationExit);
-    yield takeLatest(APPLICATION_TOGGLE_WINDOW_STATE,toggleWindowState);
-    yield takeLatest(APPLICATION_NEW_SNACKBAR,applicationAddNewSnackBar);
-    yield takeLatest(APPLICATION_CLOSE_SNACKBAR,applicationCloseSnackBar);
-    yield takeLatest(APPLICATION_LAUNCH_BAR_TOGGLE,applicationLaunchBarToggle);
-    yield takeLatest(APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE,applicationLaunchBarToggleCollapse);
-    yield takeLatest(APPLICATION_LAUNCH_NEW_WINDOW,applicationLaunchNewWindow);
+    yield takeLatest(APPLICATION_STARTED,handleApplicationLoading);
+    yield takeLatest(Event.actionDicts.windowEventDictByName['close-requested'].type,handleApplicationExit);
+    yield takeLatest(APPLICATION_TOGGLE_WINDOW_STATE,handleToggleWindowState);
+    yield takeLatest(APPLICATION_NEW_SNACKBAR,handleApplicationAddNewSnackBar);
+    yield takeLatest(APPLICATION_CLOSE_SNACKBAR,handleApplicationCloseSnackBar);
+    yield takeLatest(APPLICATION_LAUNCH_BAR_TOGGLE,handleApplicationLaunchBarToggle);
+    yield takeLatest(APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE,handleApplicationLaunchBarToggleCollapse);
+    yield takeLatest(APPLICATION_LAUNCH_NEW_WINDOW,handleApplicationLaunchNewWindow);
 }

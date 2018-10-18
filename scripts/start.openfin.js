@@ -17,13 +17,13 @@ const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 3000;
 async function startWebpackDevServer() {
     const webDevServer = spawn('node',[paths.appScript+'/start.js']);
     webDevServer.stdout.on('data',(data)=>{
-        log(chalk.bgGreen(Buffer.from(data,'binary').toString()));
+        log(chalk.cyan(Buffer.from(data,'binary').toString()));
     });
     webDevServer.stderr.on('data',(data)=>{
-        log(chalk.bgRed(Buffer.from(data,'binary').toString()));
+        log(chalk.magenta(Buffer.from(data,'binary').toString()));
     });
     webDevServer.on('close',(data)=>{
-        log(chalk.bgYellow(Buffer.from(data,'binary').toString()));
+        log(chalk.yellow(Buffer.from(data,'binary').toString()));
     });
 }
 startWebpackDevServer();

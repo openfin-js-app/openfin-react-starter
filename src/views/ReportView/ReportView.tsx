@@ -5,11 +5,20 @@ import { Scrollbars } from 'react-custom-scrollbars';
 
 import Typography from '@material-ui/core/Typography';
 
-import { withStyles } from '@material-ui/core/styles';
+import { WithStyles, withStyles } from '@material-ui/core/styles';
 
 import { reportViewStyle as style } from '../../assets/jss/openfin-starter';
 
-class ReportView extends React.Component<any,any>{
+interface IProps extends WithStyles<typeof style>{
+    username:string,
+    computerName:string,
+    deviceId:string,
+    deviceUserId:string,
+    version:string,
+    hostSpec:any,
+}
+
+class ReportView extends React.Component<IProps,{}>{
     render (){
         const {
             classes,
@@ -22,10 +31,10 @@ class ReportView extends React.Component<any,any>{
                 renderThumbVertical={props => <div className={"dark-thumb-vertical"} {...props}/>}
             >
                 <div className={classes.mainContainer}>
-                    <Typography variant={"title"} gutterBottom>
+                    <Typography variant={"subtitle1"} gutterBottom>
                         Openfin {version} - {username} @ {computerName}
                     </Typography>
-                    <Typography variant={"body2"}>
+                    <Typography variant={"body1"}>
                         DeviceId:{deviceId}
                     </Typography>
                     <Typography variant={"body2"}>

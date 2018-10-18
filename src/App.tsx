@@ -10,6 +10,7 @@ import hist from './utils/history';
 
 const theme = createMuiTheme({
     typography:{
+        useNextVariants:true,
         fontSize: 8,
         htmlFontSize: 10,
     },

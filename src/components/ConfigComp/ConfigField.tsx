@@ -12,7 +12,7 @@ import TextField from '@material-ui/core/TextField';
 
 import { FieldType } from '../../redux/config/types';
 
-import { withStyles } from '@material-ui/core/styles';
+import { WithStyles, withStyles } from '@material-ui/core/styles';
 import { configFieldCompStyle as style } from '../../assets/jss/openfin-starter';
 
 import NumberFormat from 'react-number-format';
@@ -37,7 +37,17 @@ function NumberFormatCustom(props) {
     );
 }
 
-class ConfigFieldComp extends React.Component<any,any>{
+interface IProps extends WithStyles<typeof style>{
+    _type:FieldType,
+    _label:string,
+    _props?:any,
+    _custom?:any,
+    value:any,
+    onChange?:(value:any)=>void
+}
+
+
+class ConfigFieldComp extends React.Component<IProps,{}>{
 
     handleTextFieldChange = event =>{
         if (this.props.onChange){
@@ -70,17 +80,16 @@ class ConfigFieldComp extends React.Component<any,any>{
         const {
             classes,
             _type, _label, _props, _custom,
-            value,
-            ...other
+            value
         } = this.props;
 
         switch (_type){
             case FieldType.TITLE:
-                return (<Typography variant={'title'} gutterBottom>
+                return (<Typography variant={'h5'} gutterBottom>
                     {_label}
                 </Typography>);
             case FieldType.SUBHEADING:
-                return (<Typography className={classes.subheadingField} variant={'subheading'} gutterBottom>
+                return (<Typography className={classes.subheadingField} variant={'subtitle1'} gutterBottom>
                     {_label}
                 </Typography>);
             case FieldType.CUSTOM_FIELD:
@@ -173,10 +182,6 @@ class ConfigFieldComp extends React.Component<any,any>{
                     {_label}
                 </Typography>)
         }
-
-        return (<React.Fragment>
-            Config field comp works
-        </React.Fragment>);
     }
 }
 

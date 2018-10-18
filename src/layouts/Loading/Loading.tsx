@@ -2,7 +2,7 @@ import * as React from 'react';
 import Particles from 'react-particles-js';
 import { connect } from 'react-redux';
 
-import {withStyles, StyleRules} from '@material-ui/core/styles';
+import { withStyles, WithStyles } from '@material-ui/core/styles';
 
 import LinearProgress from '@material-ui/core/LinearProgress';
 
@@ -100,7 +100,11 @@ const style:any={
 
 const LoadingBar = withStyles(style)(LoadingBarComponent);
 
-class LoadingComponent extends React.Component<any,any>{
+interface IProps extends WithStyles<typeof style> {
+    loading:boolean,
+}
+
+class LoadingComponent extends React.Component<IProps,{}>{
     render(){
         const {classes} = this.props;
 

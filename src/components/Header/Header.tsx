@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cx from 'classnames';
 
-import {withStyles} from '@material-ui/core/styles';
+import { WithStyles, withStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
@@ -11,11 +11,29 @@ import ChevronLeft from '@material-ui/icons/ChevronLeft';
 
 import HeaderLinks from './HeaderLinks';
 
+import {MouseEventHandler} from "react";
+
 import { headerCompStyle as style } from '../../assets/jss/openfin-starter';
+import {RouteItem} from '../../routes';
 
 const appLogo = require('../../assets/svg/app.svg') as string;
 
-class HeaderComp extends React.Component<any,any>{
+interface IProps extends WithStyles<any> {
+    routes:RouteItem[],
+    color:string,
+    open?:boolean,
+    windowState:string,
+    handleDrawerToggle:MouseEventHandler<any>,
+    onSwitchToLaunchBar:MouseEventHandler<any>,
+    onMinimize:MouseEventHandler<any>,
+    onMaximize:MouseEventHandler<any>,
+    onClose:MouseEventHandler<any>,
+    // todo: maybe should use,  import {RouteComponentProps} from "react-router"; but feel like it did not work the moment i tried......
+    [key:string]:any,
+    [key:number]:any,
+}
+
+class HeaderComp extends React.Component<IProps,{}>{
 
     render(){
 
@@ -27,7 +45,7 @@ class HeaderComp extends React.Component<any,any>{
 
         function makeBrand(props:any) {
             let name = null;
-            props.routes.forEach((prop:any, key:number):any => {
+            props.routes.forEach((prop:RouteItem):any => {
                 if (prop.path === props.location.pathname){
                     name = prop.navbarName;
                 }

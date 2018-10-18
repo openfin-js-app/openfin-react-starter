@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export default class ViewOne extends React.Component<any,any>{
+export default class ViewOne extends React.Component<{},{}>{
     render(){
         return(
             <React.Fragment>
