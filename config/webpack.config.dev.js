@@ -190,7 +190,7 @@ module.exports = {
                         loader: require.resolve('eslint-loader'),
                     },
                 ],
-                include: paths.srcPaths,
+                include: paths.appSrc,
                 exclude: [/[/\\\\]node_modules[/\\\\]/],
             },
 

@@ -263,7 +263,7 @@ module.exports = {
             loader: require.resolve('eslint-loader'),
           },
         ],
-        include: paths.srcPaths,
+        include: paths.appSrc,
         exclude: [/[/\\\\]node_modules[/\\\\]/],
       },
       {
@@ -285,7 +285,7 @@ module.exports = {
           // The preset includes JSX, Flow, and some ESnext features.
           {
             test: /\.(tsx?|js|jsx|mjs)$/,
-            include: paths.srcPaths,
+            include: paths.appSrc,
             exclude: [/[/\\\\]node_modules[/\\\\]/],
             use:[
                 // This loader parallelizes code compilation, it is optional but
@@ -323,12 +323,12 @@ module.exports = {
           // Unlike the application JS, we only compile the standard ES features.
           {
             test: /\.(js)|(tsx?)$/,
+            exclude: /@babel(?:\/|\\{1,2})runtime/,
             use: [
                 // This loader parallelizes code compilation, it is optional but
                 // improves compile time on larger projects
                 require.resolve('thread-loader'),
                 {
-                    exclude: /@babel(?:\/|\\{1,2})runtime/,
                     loader: require.resolve('babel-loader'),
                     options: {
                         babelrc: false,
@@ -336,7 +336,6 @@ module.exports = {
                         compact: false,
                         presets: [
                             require.resolve('babel-preset-react-app/dependencies'),
-                            { helpers: true },
                         ],
                         cacheDirectory: true,
                         // Save disk space when time isn't as important

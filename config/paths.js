@@ -71,7 +71,6 @@ module.exports = {
     publicUrl: getPublicUrl(resolveApp('package.json')),
     servedPath: getServedPath(resolveApp('package.json')),
     // for typescript etc
-    srcPaths : [module.exports.appSrc],
     isTypeScript,
     useTSConfigProd:isTypeScript && hasTSConfigProd,
     useTSLint:isTypeScript && hasTSLint,
