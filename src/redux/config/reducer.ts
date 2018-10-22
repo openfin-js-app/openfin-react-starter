@@ -14,7 +14,7 @@ import {
 } from './types';
 import configTabs from './constant';
 
-function buildDefaultState(configTabs: IConfigTab[]):IConfigState{
+export function buildDefaultState(configTabs: IConfigTab[]):IConfigState{
     const result:IConfigState = {
         configGlobalFilterString:'',
         _tabs:configTabs,
@@ -32,7 +32,7 @@ function buildDefaultState(configTabs: IConfigTab[]):IConfigState{
     return result;
 }
 
-const defaultState:IConfigState = buildDefaultState(configTabs);
+export const defaultState:IConfigState = buildDefaultState(configTabs);
 
 export default handleActions({
     [CONFIG_RESET]:(state,action)=>{
