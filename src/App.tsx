@@ -67,6 +67,11 @@ const theme = createMuiTheme({
                 fontSize:'0.5rem',
             },
         },
+        MuiIconButton:{
+            root:{
+                padding: '0px 0px',
+            }
+        },
         MuiInputAdornment:{
             positionEnd:{
                 "& $p":{
