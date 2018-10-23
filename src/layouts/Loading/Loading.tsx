@@ -98,7 +98,7 @@ const style:any={
     },
 };
 
-const LoadingBar = withStyles(style)(LoadingBarComponent);
+export const LoadingBar = withStyles(style)(LoadingBarComponent);
 
 interface IProps extends WithStyles<typeof style> {
     loading:boolean,
