@@ -41,6 +41,7 @@ class ChildWindowLayout extends React.Component<IProps,IState>{
 
     componentDidMount(){
         this.getCurrentWindow().setAsForeground();
+        this.updateWindowState();
     }
 
     getCurrentWindow= ()=>{
@@ -84,8 +85,6 @@ class ChildWindowLayout extends React.Component<IProps,IState>{
         } = this.props;
 
         const {windowState} = this.state;
-
-        this.updateWindowState();
 
         return(
             <React.Fragment>
