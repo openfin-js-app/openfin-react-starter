@@ -3,9 +3,6 @@ import { createShallow, createMount } from '@material-ui/core/test-utils';
 import configurestore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router';
 
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-
 import ChildWindow from './ChildWindow';
 import ViewOne from '../../views/ViewOne/ViewOne';
 import { Header } from '../../components';
