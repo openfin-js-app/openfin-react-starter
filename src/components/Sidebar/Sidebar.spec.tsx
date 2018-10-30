@@ -24,8 +24,6 @@ describe('Sidebar comp',()=>{
 
     it('renders correctly by default',()=>{
 
-        const onClose = jest.fn()
-
         const wrapper = shallow(<Sidebar
             open={true}
             routes={[]}
