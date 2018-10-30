@@ -16,7 +16,7 @@ import {
     APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE,
 } from './actions';
 
-const defaultState:Partial<IApplicationState>={
+export const defaultState:Partial<IApplicationState>={
     username:'',
     computerName:'',
     deviceId:null,
