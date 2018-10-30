@@ -23,7 +23,7 @@ interface IProps extends WithStyles<any> {
     color:string,
     open?:boolean,
     windowState:string,
-    handleDrawerToggle:MouseEventHandler<any>,
+    handleDrawerToggle?:MouseEventHandler<any>,
     onSwitchToLaunchBar:MouseEventHandler<any>,
     onMinimize:MouseEventHandler<any>,
     onMaximize:MouseEventHandler<any>,

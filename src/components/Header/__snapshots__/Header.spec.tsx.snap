@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header comp renders correctly when sidebar closed 1`] = `
+<WithStyles(AppBar)
+  className="HeaderComp-appBar-1 HeaderComp-primary-7"
+  draggable={false}
+>
+  <WithStyles(Toolbar)
+    className="HeaderComp-container-2"
+  >
+    <div
+      className="HeaderComp-flex-3"
+    >
+      <img
+        className="HeaderComp-companyLogImg-5"
+        src={
+          Object {
+            "ReactComponent": [Function],
+            "__esModule": true,
+            "default": "app.svg",
+          }
+        }
+      />
+      <WithStyles(Button)
+        className="HeaderComp-title-6"
+        href="#"
+      >
+        App name| null
+      </WithStyles(Button)>
+    </div>
+    <WithStyles(HeaderLinksComp)
+      onClose={[MockFunction]}
+      onMaximize={[MockFunction]}
+      onMinimize={[MockFunction]}
+      onSwitchToLaunchBar={[MockFunction]}
+      windowState="normal"
+    />
+  </WithStyles(Toolbar)>
+</WithStyles(AppBar)>
+`;
+
+exports[`Header comp renders correctly when sidebar opened 1`] = `
+<WithStyles(AppBar)
+  className="HeaderComp-appBar-1 HeaderComp-primary-7"
+  draggable={false}
+>
+  <WithStyles(Toolbar)
+    className="HeaderComp-container-2"
+  >
+    <div
+      className="HeaderComp-flex-3"
+    >
+      <img
+        className="HeaderComp-companyLogImg-5"
+        src={
+          Object {
+            "ReactComponent": [Function],
+            "__esModule": true,
+            "default": "app.svg",
+          }
+        }
+      />
+      <WithStyles(Button)
+        className="HeaderComp-title-6"
+        href="#"
+      >
+        App name| null
+      </WithStyles(Button)>
+    </div>
+    <WithStyles(HeaderLinksComp)
+      onClose={[MockFunction]}
+      onMaximize={[MockFunction]}
+      onMinimize={[MockFunction]}
+      onSwitchToLaunchBar={[MockFunction]}
+      windowState="normal"
+    />
+  </WithStyles(Toolbar)>
+</WithStyles(AppBar)>
+`;

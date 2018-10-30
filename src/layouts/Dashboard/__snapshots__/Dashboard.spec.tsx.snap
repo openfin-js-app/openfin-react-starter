@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Dashboard render SnackbarContent and could be closed correctly 1`] = `
+exports[`Dashboard layout render SnackbarContent and could be closed correctly 1`] = `
 Array [
   Object {
     "type": "APPLICATION_DRAWER_TOGGLE",
@@ -37,7 +37,7 @@ Array [
 ]
 `;
 
-exports[`Dashboard render in normal state correctly by default 1`] = `
+exports[`Dashboard layout render in normal state correctly by default 1`] = `
 Array [
   Object {
     "type": "APPLICATION_DRAWER_TOGGLE",

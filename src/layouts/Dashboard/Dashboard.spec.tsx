@@ -31,7 +31,7 @@ const initialState = {
 
 declare const window:any;
 
-describe('Dashboard',()=>{
+describe('Dashboard layout',()=>{
 
     let shallow;
     let mount;
