@@ -20,7 +20,7 @@ import ZoomOutMapIcon from '@material-ui/icons/ZoomOutMap';
 
 import { launchBarLayoutStyle as style } from '../../assets/jss/openfin-starter';
 
-const appLogo = require('../../assets/svg/app.svg') as string;
+import appLogo from '../../assets/svg/app.svg';
 
 import {
     // actions

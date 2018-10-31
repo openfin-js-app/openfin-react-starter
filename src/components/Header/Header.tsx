@@ -16,7 +16,7 @@ import {MouseEventHandler} from "react";
 import { headerCompStyle as style } from '../../assets/jss/openfin-starter';
 import {RouteItem} from '../../routes';
 
-const appLogo = require('../../assets/svg/app.svg') as string;
+import appLogo from'../../assets/svg/app.svg';
 
 interface IProps extends WithStyles<any> {
     routes:RouteItem[],
