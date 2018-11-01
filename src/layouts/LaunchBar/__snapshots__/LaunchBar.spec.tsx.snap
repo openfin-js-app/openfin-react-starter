@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LaunchBar Layout render correctly and launch all non-disabled windows 1`] = `
+Array [
+  Object {
+    "payload": Object {
+      "autoShow": true,
+      "callback": [Function],
+      "frame": false,
+      "name": "openfin-react-starter-child-accessibility",
+      "resizable": true,
+      "state": "normal",
+      "url": "/childWindow/accessibility",
+    },
+    "type": "APPLICATION_LAUNCH_NEW_WINDOW",
+  },
+  Object {
+    "payload": Object {
+      "autoShow": true,
+      "callback": [Function],
+      "frame": false,
+      "name": "openfin-react-starter-child-view-one",
+      "resizable": true,
+      "state": "normal",
+      "url": "/childWindow/view-one",
+    },
+    "type": "APPLICATION_LAUNCH_NEW_WINDOW",
+  },
+  Object {
+    "payload": Object {
+      "autoShow": true,
+      "callback": [Function],
+      "frame": false,
+      "name": "openfin-react-starter-child-view-two",
+      "resizable": true,
+      "state": "normal",
+      "url": "/childWindow/view-two",
+    },
+    "type": "APPLICATION_LAUNCH_NEW_WINDOW",
+  },
+  Object {
+    "payload": Object {
+      "autoShow": true,
+      "callback": [Function],
+      "frame": false,
+      "name": "openfin-react-starter-child-report",
+      "resizable": true,
+      "state": "normal",
+      "url": "/childWindow/report",
+    },
+    "type": "APPLICATION_LAUNCH_NEW_WINDOW",
+  },
+  Object {
+    "payload": Object {
+      "autoShow": true,
+      "callback": [Function],
+      "frame": true,
+      "name": "openfin-react-starter-child-google",
+      "resizable": true,
+      "state": "normal",
+      "url": "https://www.google.com/",
+    },
+    "type": "APPLICATION_LAUNCH_NEW_WINDOW",
+  },
+]
+`;
+
+exports[`LaunchBar Layout trigger all control panel btns 1`] = `
+Array [
+  Object {
+    "type": "APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE",
+  },
+  Object {
+    "error": false,
+    "payload": Object {
+      "callback": [Function],
+      "errorCallback": [Function],
+    },
+    "type": "REDUX_OPENFIN::MINIMIZE",
+  },
+  Object {
+    "type": "APPLICATION_LAUNCH_BAR_TOGGLE",
+  },
+  Object {
+    "error": false,
+    "payload": Object {
+      "callback": [Function],
+      "errorCallback": [Function],
+      "force": false,
+    },
+    "type": "REDUX_OPENFIN::CLOSE",
+  },
+]
+`;

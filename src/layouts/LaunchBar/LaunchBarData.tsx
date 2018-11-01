@@ -6,9 +6,9 @@ import BugReportIcon from '@material-ui/icons/BugReport';
 import LanguageIcon from '@material-ui/icons/Language';
 import ReportIcon from '@material-ui/icons/Report';
 
-const svgNumberOne = require('../../assets/svg/other/number-1.svg') as string;
-const svgNumberTwo = require('../../assets/svg/other/number-2.svg') as string;
-const googleSearch = require('../../assets/svg/other/google-search.svg') as string;
+import svgNumberOne from'../../assets/svg/other/number-1.svg';
+import svgNumberTwo from'../../assets/svg/other/number-2.svg';
+import googleSearch from'../../assets/svg/other/google-search.svg';
 
 export interface IlaunchBarItemType {
     icon:any,

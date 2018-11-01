@@ -6,8 +6,8 @@ import { withStyles, WithStyles } from '@material-ui/core/styles';
 
 import LinearProgress from '@material-ui/core/LinearProgress';
 
-const appLogo = require('../../assets/svg/app.svg') as string;
-const companyLogo = require('../../assets/svg/company.svg') as string;
+import appLogo from'../../assets/svg/app.svg';
+import companyLogo from'../../assets/svg/company.svg';
 
 class LoadingBarComponent extends React.Component<any,any>{
 
@@ -98,7 +98,7 @@ const style:any={
     },
 };
 
-const LoadingBar = withStyles(style)(LoadingBarComponent);
+export const LoadingBar = withStyles(style)(LoadingBarComponent);
 
 interface IProps extends WithStyles<typeof style> {
     loading:boolean,

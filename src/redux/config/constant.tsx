@@ -7,8 +7,8 @@ import SettingIcon from '@material-ui/icons/Settings';
 
 import ConfigJson from '../../views/ConfigView/ConfigJson';
 
-const controls = require('../../assets/svg/support/controls_dark.svg') as string;
-const listChecked = require('../../assets/svg/other/list-checked-dark.svg') as string;
+import controls from'../../assets/svg/support/controls_dark.svg';
+import listChecked from'../../assets/svg/other/list-checked-dark.svg';
 
 function _getSampleDate() {
     return process.env.NODE_ENV === 'test'? new Date(2018,9,13,16,53,41): new Date();

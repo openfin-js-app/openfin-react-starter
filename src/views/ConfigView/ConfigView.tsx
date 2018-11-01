@@ -25,11 +25,11 @@ import {ConfigField as ConfigFieldComp} from '../../components';
 
 import {configViewStyle as style} from '../../assets/jss/openfin-starter';
 
-import { IConfigTab, IConfigField } from '../../redux/config/types';
-
-import { configUpdateOneField, configUpdateGlobalFilterStr } from '../../redux'
-
-import {IConfigState} from '../../redux/config/types';
+import {
+    IConfigTab, IConfigField,
+    configUpdateOneField, configUpdateGlobalFilterStr,
+    IConfigState
+} from '../../redux';
 
 interface IProps extends WithStyles<typeof style>{
     config:IConfigState,

@@ -106,11 +106,7 @@ Object {
       "_label": "Application",
       "_name": "application",
       "_order": 0,
-      "_svgUrl": Object {
-        "ReactComponent": [Function],
-        "__esModule": true,
-        "default": "controls_dark.svg",
-      },
+      "_svgUrl": "controls_dark.svg",
     },
     Object {
       "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
@@ -197,11 +193,7 @@ Object {
       "_label": "Sample",
       "_name": "sample",
       "_order": 1,
-      "_svgUrl": Object {
-        "ReactComponent": [Function],
-        "__esModule": true,
-        "default": "list-checked-dark.svg",
-      },
+      "_svgUrl": "list-checked-dark.svg",
     },
   ],
   "application": Object {
@@ -329,11 +321,7 @@ Object {
       "_label": "Application",
       "_name": "application",
       "_order": 0,
-      "_svgUrl": Object {
-        "ReactComponent": [Function],
-        "__esModule": true,
-        "default": "controls_dark.svg",
-      },
+      "_svgUrl": "controls_dark.svg",
     },
     Object {
       "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
@@ -420,11 +408,7 @@ Object {
       "_label": "Sample",
       "_name": "sample",
       "_order": 1,
-      "_svgUrl": Object {
-        "ReactComponent": [Function],
-        "__esModule": true,
-        "default": "list-checked-dark.svg",
-      },
+      "_svgUrl": "list-checked-dark.svg",
     },
   ],
   "application": Object {
@@ -560,11 +544,7 @@ Object {
       "_label": "Application",
       "_name": "application",
       "_order": 0,
-      "_svgUrl": Object {
-        "ReactComponent": [Function],
-        "__esModule": true,
-        "default": "controls_dark.svg",
-      },
+      "_svgUrl": "controls_dark.svg",
     },
     Object {
       "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
@@ -651,11 +631,7 @@ Object {
       "_label": "Sample",
       "_name": "sample",
       "_order": 1,
-      "_svgUrl": Object {
-        "ReactComponent": [Function],
-        "__esModule": true,
-        "default": "list-checked-dark.svg",
-      },
+      "_svgUrl": "list-checked-dark.svg",
     },
   ],
   "application": Object {
@@ -783,11 +759,7 @@ Object {
       "_label": "Application",
       "_name": "application",
       "_order": 0,
-      "_svgUrl": Object {
-        "ReactComponent": [Function],
-        "__esModule": true,
-        "default": "controls_dark.svg",
-      },
+      "_svgUrl": "controls_dark.svg",
     },
     Object {
       "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
@@ -874,11 +846,7 @@ Object {
       "_label": "Sample",
       "_name": "sample",
       "_order": 1,
-      "_svgUrl": Object {
-        "ReactComponent": [Function],
-        "__esModule": true,
-        "default": "list-checked-dark.svg",
-      },
+      "_svgUrl": "list-checked-dark.svg",
     },
   ],
   "application": Object {
@@ -1006,11 +974,7 @@ Object {
       "_label": "Application",
       "_name": "application",
       "_order": 0,
-      "_svgUrl": Object {
-        "ReactComponent": [Function],
-        "__esModule": true,
-        "default": "controls_dark.svg",
-      },
+      "_svgUrl": "controls_dark.svg",
     },
     Object {
       "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
@@ -1097,11 +1061,7 @@ Object {
       "_label": "Sample",
       "_name": "sample",
       "_order": 1,
-      "_svgUrl": Object {
-        "ReactComponent": [Function],
-        "__esModule": true,
-        "default": "list-checked-dark.svg",
-      },
+      "_svgUrl": "list-checked-dark.svg",
     },
   ],
   "application": Object {
@@ -1229,11 +1189,7 @@ Object {
       "_label": "Application",
       "_name": "application",
       "_order": 0,
-      "_svgUrl": Object {
-        "ReactComponent": [Function],
-        "__esModule": true,
-        "default": "controls_dark.svg",
-      },
+      "_svgUrl": "controls_dark.svg",
     },
     Object {
       "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
@@ -1320,11 +1276,7 @@ Object {
       "_label": "Sample",
       "_name": "sample",
       "_order": 1,
-      "_svgUrl": Object {
-        "ReactComponent": [Function],
-        "__esModule": true,
-        "default": "list-checked-dark.svg",
-      },
+      "_svgUrl": "list-checked-dark.svg",
     },
   ],
   "application": Object {
@@ -1452,11 +1404,7 @@ Object {
       "_label": "Application",
       "_name": "application",
       "_order": 0,
-      "_svgUrl": Object {
-        "ReactComponent": [Function],
-        "__esModule": true,
-        "default": "controls_dark.svg",
-      },
+      "_svgUrl": "controls_dark.svg",
     },
     Object {
       "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
@@ -1543,11 +1491,7 @@ Object {
       "_label": "Sample",
       "_name": "sample",
       "_order": 1,
-      "_svgUrl": Object {
-        "ReactComponent": [Function],
-        "__esModule": true,
-        "default": "list-checked-dark.svg",
-      },
+      "_svgUrl": "list-checked-dark.svg",
     },
   ],
   "application": Object {
@@ -1675,11 +1619,7 @@ Object {
       "_label": "Application",
       "_name": "application",
       "_order": 0,
-      "_svgUrl": Object {
-        "ReactComponent": [Function],
-        "__esModule": true,
-        "default": "controls_dark.svg",
-      },
+      "_svgUrl": "controls_dark.svg",
     },
     Object {
       "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
@@ -1766,11 +1706,7 @@ Object {
       "_label": "Sample",
       "_name": "sample",
       "_order": 1,
-      "_svgUrl": Object {
-        "ReactComponent": [Function],
-        "__esModule": true,
-        "default": "list-checked-dark.svg",
-      },
+      "_svgUrl": "list-checked-dark.svg",
     },
   ],
   "application": Object {
