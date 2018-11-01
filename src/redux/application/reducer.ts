@@ -1,5 +1,5 @@
 import { handleActions, Action } from 'redux-actions';
-import { System, Window } from '@albertli/redux-openfin';
+import { System, Window } from '@albertli90/redux-openfin';
 
 import {
     IApplicationNewSnackbarOption,
@@ -49,12 +49,12 @@ export default handleActions({
     },
     [System.actions.GET_ENVIRONMENT_VARIABLE_RES]:(state,action)=>{
         const {env,value} = action.payload as any;
-        if (env==='username'){
+        if (env.toLowerCase()==='username'){
             return {
                 ...state,
                 username:value,
             }
-        }else if (env === 'computername'){
+        }else if ((env.toLowerCase() === 'computername' || env.toLowerCase() === 'hostname') && value){
             return {
                 ...state,
                 computerName:value,

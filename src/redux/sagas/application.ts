@@ -1,6 +1,6 @@
 import { buffers, delay } from 'redux-saga';
 import { all, call, put, take, takeLatest, takeEvery, fork, select, actionChannel } from 'redux-saga/effects';
-import { System, Event, Window } from '@albertli/redux-openfin';
+import { System, Event, Window } from '@albertli90/redux-openfin';
 
 import hist from '../../utils/history';
 
@@ -76,9 +76,11 @@ export function* handleApplicationLoading() {
         take(System.actions.GET_DEVICE_ID_RES),
         put.resolve(System.actions.getDeviceUserId({})),
         take(System.actions.GET_DEVICE_USER_ID_RES),
-        put.resolve(System.actions.getEnvironmentVariable({env:'username'})),
+        put.resolve(System.actions.getEnvironmentVariable({env:'USERNAME'})),
         take(System.actions.GET_ENVIRONMENT_VARIABLE_RES),
         put.resolve(System.actions.getEnvironmentVariable({env:'computername'})),
+        take(System.actions.GET_ENVIRONMENT_VARIABLE_RES),
+        put.resolve(System.actions.getEnvironmentVariable({env:'HOSTNAME'})),
         take(System.actions.GET_ENVIRONMENT_VARIABLE_RES),
         put.resolve(System.actions.getVersion({})),
         take(System.actions.GET_VERSION_RES),

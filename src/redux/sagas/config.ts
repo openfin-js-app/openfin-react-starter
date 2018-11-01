@@ -6,7 +6,7 @@ import {
     configUpdateNewWindowPositionResetLeft,
     configUpdateNewWindowPositionResetTop,
 } from '..';
-import {System, Window} from "@albertli/redux-openfin";
+import {System, Window} from "@albertli90/redux-openfin";
 
 export const getNewWindowTop = state => state.config.application.newWinTop;
 export const getNewWindowLeft = state => state.config.application.newWinLeft;

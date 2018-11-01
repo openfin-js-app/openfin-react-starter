@@ -7,7 +7,7 @@ import {
     configUpdateNewWindowPositionResetLeft,
     configUpdateNewWindowPositionResetTop,
 } from '..';
-import {System, Window} from "@albertli/redux-openfin";
+import {System, Window} from "@albertli90/redux-openfin";
 
 import {
     // selectors
