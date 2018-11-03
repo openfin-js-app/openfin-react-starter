@@ -33,7 +33,7 @@ describe('Root saga',()=>{
            const watchAll = rootSaga();
            const effect = watchAll.next().value;
 
-           expect(effect['ALL']).toHaveLength(3);
+           expect(effect.ALL).toHaveLength(3);
        });
 
        it ('watchAndLogSaga',()=>{
