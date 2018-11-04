@@ -72,8 +72,8 @@ export function* handleApplicationLoading() {
     }
 
     yield all([
-        put.resolve(System.actions.getDeviceId({})),
-        take(System.actions.GET_DEVICE_ID_RES),
+        put.resolve(System.actions.getMachineId({})),
+        take(System.actions.GET_MACHINE_ID_RES),
         put.resolve(System.actions.getDeviceUserId({})),
         take(System.actions.GET_DEVICE_USER_ID_RES),
         put.resolve(System.actions.getEnvironmentVariable({env:'USERNAME'})),

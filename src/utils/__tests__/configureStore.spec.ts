@@ -1,4 +1,4 @@
-import { BrowserAdapter } from '@albertli/openfin-browser-adapter';
+import { BrowserAdapter } from '@albertli90/openfin-browser-adapter';
 import configureStore from '../configureStore';
 
 declare const window:any;

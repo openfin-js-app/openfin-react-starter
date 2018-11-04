@@ -19,7 +19,7 @@ import {
 export const defaultState:Partial<IApplicationState>={
     username:'',
     computerName:'',
-    deviceId:null,
+    machineId:null,
     deviceUserId:null,
     loading:true,
     drawerOpen:true,
@@ -33,11 +33,11 @@ export const defaultState:Partial<IApplicationState>={
 };
 
 export default handleActions({
-    [System.actions.GET_DEVICE_ID_RES]:(state,action)=>{
+    [System.actions.GET_MACHINE_ID_RES]:(state,action)=>{
         const {id} = action.payload as any;
         return {
             ...state,
-            deviceId:id
+            machineId:id
         };
     },
     [System.actions.GET_DEVICE_USER_ID_RES]:(state,action)=>{

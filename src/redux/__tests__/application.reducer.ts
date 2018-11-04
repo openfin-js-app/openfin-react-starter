@@ -4,8 +4,8 @@ import reducer from '../application/reducer';
 
 describe('Application reducer',()=>{
 
-    it('System.actions.GET_DEVICE_ID_RES reduced correctly',()=>{
-        const action:any = {type:System.actions.GET_DEVICE_ID_RES, payload:{id:'id'}};
+    it('System.actions.GET_MACHINE_ID_RES reduced correctly',()=>{
+        const action:any = {type:System.actions.GET_MACHINE_ID_RES, payload:{id:'id'}};
         expect(reducer(undefined,action)).toMatchSnapshot();
     });
 

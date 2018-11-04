@@ -54,6 +54,27 @@ const previousBaseWindow={
     height:null,
 };
 
+const loadingAllActions = [
+    put.resolve(System.actions.getMachineId({})),
+    take(System.actions.GET_MACHINE_ID_RES),
+    put.resolve(System.actions.getDeviceUserId({})),
+    take(System.actions.GET_DEVICE_USER_ID_RES),
+    put.resolve(System.actions.getEnvironmentVariable({env:'USERNAME'})),
+    take(System.actions.GET_ENVIRONMENT_VARIABLE_RES),
+    put.resolve(System.actions.getEnvironmentVariable({env:'computername'})),
+    take(System.actions.GET_ENVIRONMENT_VARIABLE_RES),
+    put.resolve(System.actions.getEnvironmentVariable({env:'HOSTNAME'})),
+    take(System.actions.GET_ENVIRONMENT_VARIABLE_RES),
+    put.resolve(System.actions.getVersion({})),
+    take(System.actions.GET_VERSION_RES),
+    put.resolve(System.actions.getHostSpecs({})),
+    take(System.actions.GET_HOST_SPECS_RES),
+    put.resolve(Window.actions.getState({})),
+    take(Window.actions.GET_STATE_RES),
+    // delay for loading view render, could be removed
+    call(delay,5000),
+];
+
 declare const jsdom:any;
 
 describe('Application saga',()=>{
@@ -67,26 +88,7 @@ describe('Application saga',()=>{
                 .next()
                 .put.resolve(Window.actions.setAsForeground({}))
                 .next()
-                .all([
-                    put.resolve(System.actions.getDeviceId({})),
-                    take(System.actions.GET_DEVICE_ID_RES),
-                    put.resolve(System.actions.getDeviceUserId({})),
-                    take(System.actions.GET_DEVICE_USER_ID_RES),
-                    put.resolve(System.actions.getEnvironmentVariable({env:'USERNAME'})),
-                    take(System.actions.GET_ENVIRONMENT_VARIABLE_RES),
-                    put.resolve(System.actions.getEnvironmentVariable({env:'computername'})),
-                    take(System.actions.GET_ENVIRONMENT_VARIABLE_RES),
-                    put.resolve(System.actions.getEnvironmentVariable({env:'HOSTNAME'})),
-                    take(System.actions.GET_ENVIRONMENT_VARIABLE_RES),
-                    put.resolve(System.actions.getVersion({})),
-                    take(System.actions.GET_VERSION_RES),
-                    put.resolve(System.actions.getHostSpecs({})),
-                    take(System.actions.GET_HOST_SPECS_RES),
-                    put.resolve(Window.actions.getState({})),
-                    take(Window.actions.GET_STATE_RES),
-                    // delay for loading view render, could be removed
-                    call(delay,5000),
-                ])
+                .all(loadingAllActions)
                 .next()
                 .put.resolve(applicationReady())
                 .next()
@@ -121,26 +123,7 @@ describe('Application saga',()=>{
                     height: LOADING_BANNER_HEIGHT,
                 }))
                 .next()
-                .all([
-                    put.resolve(System.actions.getDeviceId({})),
-                    take(System.actions.GET_DEVICE_ID_RES),
-                    put.resolve(System.actions.getDeviceUserId({})),
-                    take(System.actions.GET_DEVICE_USER_ID_RES),
-                    put.resolve(System.actions.getEnvironmentVariable({env:'USERNAME'})),
-                    take(System.actions.GET_ENVIRONMENT_VARIABLE_RES),
-                    put.resolve(System.actions.getEnvironmentVariable({env:'computername'})),
-                    take(System.actions.GET_ENVIRONMENT_VARIABLE_RES),
-                    put.resolve(System.actions.getEnvironmentVariable({env:'HOSTNAME'})),
-                    take(System.actions.GET_ENVIRONMENT_VARIABLE_RES),
-                    put.resolve(System.actions.getVersion({})),
-                    take(System.actions.GET_VERSION_RES),
-                    put.resolve(System.actions.getHostSpecs({})),
-                    take(System.actions.GET_HOST_SPECS_RES),
-                    put.resolve(Window.actions.getState({})),
-                    take(Window.actions.GET_STATE_RES),
-                    // delay for loading view render, could be removed
-                    call(delay,5000),
-                ])
+                .all(loadingAllActions)
                 .next()
                 .put.resolve(applicationReady())
                 .next()
@@ -194,26 +177,7 @@ describe('Application saga',()=>{
                     height: LOADING_BANNER_HEIGHT,
                 }))
                 .next()
-                .all([
-                    put.resolve(System.actions.getDeviceId({})),
-                    take(System.actions.GET_DEVICE_ID_RES),
-                    put.resolve(System.actions.getDeviceUserId({})),
-                    take(System.actions.GET_DEVICE_USER_ID_RES),
-                    put.resolve(System.actions.getEnvironmentVariable({env:'USERNAME'})),
-                    take(System.actions.GET_ENVIRONMENT_VARIABLE_RES),
-                    put.resolve(System.actions.getEnvironmentVariable({env:'computername'})),
-                    take(System.actions.GET_ENVIRONMENT_VARIABLE_RES),
-                    put.resolve(System.actions.getEnvironmentVariable({env:'HOSTNAME'})),
-                    take(System.actions.GET_ENVIRONMENT_VARIABLE_RES),
-                    put.resolve(System.actions.getVersion({})),
-                    take(System.actions.GET_VERSION_RES),
-                    put.resolve(System.actions.getHostSpecs({})),
-                    take(System.actions.GET_HOST_SPECS_RES),
-                    put.resolve(Window.actions.getState({})),
-                    take(Window.actions.GET_STATE_RES),
-                    // delay for loading view render, could be removed
-                    call(delay,5000),
-                ])
+                .all(loadingAllActions)
                 .next()
                 .put.resolve(applicationReady())
                 .next()
@@ -269,26 +233,7 @@ describe('Application saga',()=>{
                     height: LOADING_BANNER_HEIGHT,
                 }))
                 .next()
-                .all([
-                    put.resolve(System.actions.getDeviceId({})),
-                    take(System.actions.GET_DEVICE_ID_RES),
-                    put.resolve(System.actions.getDeviceUserId({})),
-                    take(System.actions.GET_DEVICE_USER_ID_RES),
-                    put.resolve(System.actions.getEnvironmentVariable({env:'USERNAME'})),
-                    take(System.actions.GET_ENVIRONMENT_VARIABLE_RES),
-                    put.resolve(System.actions.getEnvironmentVariable({env:'computername'})),
-                    take(System.actions.GET_ENVIRONMENT_VARIABLE_RES),
-                    put.resolve(System.actions.getEnvironmentVariable({env:'HOSTNAME'})),
-                    take(System.actions.GET_ENVIRONMENT_VARIABLE_RES),
-                    put.resolve(System.actions.getVersion({})),
-                    take(System.actions.GET_VERSION_RES),
-                    put.resolve(System.actions.getHostSpecs({})),
-                    take(System.actions.GET_HOST_SPECS_RES),
-                    put.resolve(Window.actions.getState({})),
-                    take(Window.actions.GET_STATE_RES),
-                    // delay for loading view render, could be removed
-                    call(delay,5000),
-                ])
+                .all(loadingAllActions)
                 .next()
                 .put.resolve(applicationReady())
                 .next()
