@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+process.env.REACT_APP_ENV = 'production';
 process.env.BABEL_ENV = 'production';
 process.env.NODE_ENV = 'production';
 

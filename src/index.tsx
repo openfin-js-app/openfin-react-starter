@@ -15,7 +15,7 @@ import {applicationStarted} from "./redux";
 declare const window:any;
 
 if(!window.fin){
-    window.fin = new BrowserAdapter({userSocket:false});
+    window.fin = new BrowserAdapter({silentMode:false});
 }
 
 if (process.env.REACT_APP_SHARED_REDUX_STORE === 'true'){

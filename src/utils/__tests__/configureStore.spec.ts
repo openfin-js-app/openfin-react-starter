@@ -7,7 +7,7 @@ declare const window:any;
 describe('ConfigStore util', ()=>{
 
     beforeAll(()=>{
-        window.fin = new BrowserAdapter({userSocket:false});
+        window.fin = new BrowserAdapter({silentMode:process.env.REACT_APP_ENV==='test'});
     })
 
     it('default generator works with devToolsExtension',()=>{
