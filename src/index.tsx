@@ -10,7 +10,9 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import configureStore from './utils/configureStore';
-import {applicationStarted} from "./redux";
+import {
+    applicationStarted,
+} from "./redux";
 
 declare const window:any;
 
@@ -18,34 +20,21 @@ if(!window.fin){
     window.fin = new BrowserAdapter({silentMode:false});
 }
 
-if (process.env.REACT_APP_SHARED_REDUX_STORE === 'true'){
-    if(window.store == null && window.opener == null){
-        const store = configureStore();
-        window.store=store;
-        store.dispatch(applicationStarted());
-    }
-    setPlatformClass(document.body,window.navigator.platform);
-    ReactDOM.render(
-        <Provider store = {window.opener?window.opener.store:window.store}>
-            <App/>
-        </Provider>
-        ,
-        document.getElementById('root')
-    );
-}else{
+if(window.store == null && window.opener == null){
     const store = configureStore();
     window.store=store;
     store.dispatch(applicationStarted());
-
-    setPlatformClass(document.body,window.navigator.platform);
-
-    ReactDOM.render(
-        <Provider store = {window.store}>
-            <App/>
-        </Provider>
-        ,
-        document.getElementById('root')
-    );
+}else{
+    const store = configureStore(window.opener.store.getState());
+    window.store=store;
 }
+setPlatformClass(document.body,window.navigator.platform);
+ReactDOM.render(
+    <Provider store = {window.opener?window.opener.store:window.store}>
+        <App/>
+    </Provider>
+    ,
+    document.getElementById('root')
+);
 
 serviceWorker.unregister();

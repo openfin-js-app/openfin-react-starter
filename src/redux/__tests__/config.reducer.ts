@@ -1,5 +1,7 @@
 import * as Actions from '../config/actions';
-import reducer from '../config/reducer';
+import reducerCreator from '../config/reducer';
+
+const reducer = reducerCreator();
 
 describe('Config reducer',()=>{
 

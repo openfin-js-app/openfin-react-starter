@@ -1,6 +1,8 @@
 import { System, Window } from '@albertli90/redux-openfin';
 import * as Actions from '../application/actions';
-import reducer from '../application/reducer';
+import reducerCreater from '../application/reducer';
+
+const reducer = reducerCreater();
 
 describe('Application reducer',()=>{
 

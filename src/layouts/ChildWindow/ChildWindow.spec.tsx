@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Provider } from 'react-redux';
 import { createShallow, createMount } from '@material-ui/core/test-utils';
 import configurestore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router';
@@ -6,13 +7,12 @@ import { MemoryRouter } from 'react-router';
 import ChildWindow from './ChildWindow';
 import ViewOne from '../../views/ViewOne/ViewOne';
 import { Header } from '../../components';
+import { rootDefaultState } from '../../redux'
 
 const mockStore = configurestore();
-const initialState = {
 
-};
 
-const store = mockStore(initialState);
+const store = mockStore(rootDefaultState);
 
 declare const window:any;
 
@@ -59,9 +59,11 @@ describe('ChildWindow layout',()=>{
         };
 
         const wrapper = mount(
-            <MemoryRouter initialEntries={['/childWindow/view-one']}>
-                <ChildWindow store={store} location={{pathname:'/childWindow/view-one'}}/>
-            </MemoryRouter>
+            <Provider store={store}>
+                <MemoryRouter initialEntries={['/childWindow/view-one']}>
+                    <ChildWindow store={store} location={{pathname:'/childWindow/view-one'}}/>
+                </MemoryRouter>
+            </Provider>
         );
         expect(wrapper.find(ViewOne)).toHaveLength(1);
         expect(wrapper.find(ChildWindow)).toHaveLength(1);
@@ -96,9 +98,11 @@ describe('ChildWindow layout',()=>{
         };
 
         const wrapper = mount(
-            <MemoryRouter initialEntries={['/childWindow/view-one']}>
-                <ChildWindow store={store} location={{pathname:'/childWindow/view-one'}}/>
-            </MemoryRouter>
+            <Provider store={store}>
+                <MemoryRouter initialEntries={['/childWindow/view-one']}>
+                    <ChildWindow store={store} location={{pathname:'/childWindow/view-one'}}/>
+                </MemoryRouter>
+            </Provider>
         );
         expect(wrapper.find(ViewOne)).toHaveLength(1);
         expect(wrapper.find(ChildWindow)).toHaveLength(1);
@@ -134,9 +138,11 @@ describe('ChildWindow layout',()=>{
         };
 
         const wrapper = mount(
-            <MemoryRouter initialEntries={['/childWindow/view-one']}>
-                <ChildWindow store={store} location={{pathname:'/childWindow/view-one'}}/>
-            </MemoryRouter>
+            <Provider store={store}>
+                <MemoryRouter initialEntries={['/childWindow/view-one']}>
+                    <ChildWindow store={store} location={{pathname:'/childWindow/view-one'}}/>
+                </MemoryRouter>
+            </Provider>
         );
         expect(wrapper.find(ViewOne)).toHaveLength(1);
         expect(wrapper.find(ChildWindow)).toHaveLength(1);
@@ -171,9 +177,11 @@ describe('ChildWindow layout',()=>{
         };
 
         const wrapper = mount(
-            <MemoryRouter initialEntries={['/childWindow/view-one']}>
-                <ChildWindow store={store} location={{pathname:'/childWindow/view-one'}}/>
-            </MemoryRouter>
+            <Provider store={store}>
+                <MemoryRouter initialEntries={['/childWindow/view-one']}>
+                    <ChildWindow store={store} location={{pathname:'/childWindow/view-one'}}/>
+                </MemoryRouter>
+            </Provider>
         );
         expect(wrapper.find(ViewOne)).toHaveLength(1);
         expect(wrapper.find(ChildWindow)).toHaveLength(1);
