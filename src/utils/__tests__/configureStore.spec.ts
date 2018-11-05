@@ -1,3 +1,4 @@
+import { ChannelType } from '@albertli90/redux-openfin/init';
 import { BrowserAdapter } from '@albertli90/openfin-browser-adapter';
 import configureStore from '../configureStore';
 
@@ -14,7 +15,11 @@ describe('ConfigStore util', ()=>{
 
         window.devToolsExtension=()=>((f:any):any => (f));
 
-        const store = configureStore();
+        const store = configureStore(
+            ChannelType.STANDALONE,
+            "app-name-test-client-id",
+            [],
+        );
         expect(store).toBeTruthy();
     });
 
@@ -22,7 +27,11 @@ describe('ConfigStore util', ()=>{
 
         delete window.devToolsExtension;
 
-        const store = configureStore();
+        const store = configureStore(
+            ChannelType.STANDALONE,
+            "app-name-test-client-id",
+            [],
+        );
         expect(store).toBeTruthy();
     });
 
