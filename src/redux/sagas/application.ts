@@ -43,51 +43,101 @@ export const getNewWindowLeft = state => state.config.application.newWinLeft;
 export const getNewWindowWidth = state => state.config.application.newWinWidth;
 export const getNewWindowHeight = state => state.config.application.newWinHeight;
 
+export function* handleRedirectToLoadingView(monitorRect) {
+    yield call(Window.asyncs.updateOptions,Window.actions.updateOptions({
+        options:{resizable:false}
+    }));
+
+    yield call(Window.asyncs.setBounds,Window.actions.setBounds({
+        left:(monitorRect.right - monitorRect.left)/2 - LOADING_BANNER_WIDTH/2,
+        top:(monitorRect.bottom - monitorRect.top)/2 - LOADING_BANNER_HEIGHT/2,
+        width:LOADING_BANNER_WIDTH,
+        height: LOADING_BANNER_HEIGHT,
+    }));
+}
+
+export function* handleRedirectFromLoadingView(monitorRect) {
+    // after the sagas loaded, redirect to default page/view
+    if (process.env.REACT_APP_DEFAULT_VIEW_URL && process.env.REACT_APP_DEFAULT_VIEW_URL.length > 0){
+        if (process.env.NODE_ENV !== 'test'){
+            hist.push(process.env.REACT_APP_DEFAULT_VIEW_URL);
+        }
+        yield call(Window.asyncs.updateOptions,Window.actions.updateOptions({
+            options:{
+                resizable:true,
+            }
+        }));
+
+        yield call(Window.asyncs.setBounds,Window.actions.setBounds({
+            left:(monitorRect.right - monitorRect.left)/2 - DEFAULT_WIDTH/2,
+            top:(monitorRect.bottom - monitorRect.top)/2 - DEFAULT_HEIGHT/2,
+            width:DEFAULT_WIDTH,
+            height: DEFAULT_HEIGHT,
+        }));
+
+    }else{
+        // switch to launchBar
+        const launchBarCollapse = yield select(getLaunchBarCollapse);
+
+        yield call(Window.asyncs.updateOptions,Window.actions.updateOptions({
+            options:{resizable:false}
+        }));
+
+        previousBaseWindow.url='/dashboard/view-one';
+        previousBaseWindow.top=(monitorRect.bottom - monitorRect.top)/2 - DEFAULT_HEIGHT/2;
+        previousBaseWindow.left=(monitorRect.right - monitorRect.left)/2 - DEFAULT_WIDTH/2;
+        previousBaseWindow.width=DEFAULT_WIDTH;
+        previousBaseWindow.height=DEFAULT_HEIGHT;
+
+        if(launchBarCollapse){
+            yield call(Window.asyncs.setBounds,Window.actions.setBounds({
+                left:(monitorRect.right - monitorRect.left)/2,
+                top:(monitorRect.bottom - monitorRect.top)/4,
+                width:88,
+                height:64,
+            }));
+        }else{
+            yield call(Window.asyncs.setBounds,Window.actions.setBounds({
+                left:(monitorRect.right - monitorRect.left)/2,
+                top:(monitorRect.bottom - monitorRect.top)/4,
+                width:launchBarItems.length<10?launchBarItems.length*64+88:664,
+                height:64,
+            }));
+        }
+        if (process.env.NODE_ENV !== 'test'){
+            hist.push('/launchBar');
+        }
+
+    }
+}
+
 export function* handleApplicationLoading() {
 
     const currentIsLoadingView =
         (new URL(window.location.href).pathname.indexOf('loading')>-1) ||
         (new URL(window.location.href).pathname.indexOf('index.html')>-1);
 
-    let monitorInfoAction:any;
-    let monitorRect;
 
-    yield put.resolve(Window.actions.setAsForeground({}));
+    const monitorInfoAction = yield call(System.asyncs.getMonitorInfo,System.actions.getMonitorInfo({}));
+    const monitorRect = monitorInfoAction.payload.primaryMonitor.monitorRect;
+
+    yield call(Window.asyncs.setAsForeground,Window.actions.setAsForeground({}));
 
     if (ENABLE_LOADING_VIEW && currentIsLoadingView){
-        yield put.resolve(System.actions.getMonitorInfo({}));
-        monitorInfoAction = yield take(System.actions.GET_MONITOR_INFO_RES);
-        monitorRect = monitorInfoAction.payload.primaryMonitor.monitorRect;
-
-        yield  put.resolve(Window.actions.updateOptions({
-            options:{resizable:false}
-        }));
-
-        yield put.resolve(Window.actions.setBounds({
-            left:(monitorRect.right - monitorRect.left)/2 - LOADING_BANNER_WIDTH/2,
-            top:(monitorRect.bottom - monitorRect.top)/2 - LOADING_BANNER_HEIGHT/2,
-            width:LOADING_BANNER_WIDTH,
-            height: LOADING_BANNER_HEIGHT,
-        }));
+        yield* handleRedirectToLoadingView(monitorRect) as any;
     }
 
     yield all([
-        put.resolve(System.actions.getMachineId({})),
-        take(System.actions.GET_MACHINE_ID_RES),
+        call(System.asyncs.getMachineId,System.actions.getMachineId({})),
+        // getDeviceUserId might fail, thus use flux syntax........
         put.resolve(System.actions.getDeviceUserId({})),
         take(System.actions.GET_DEVICE_USER_ID_RES),
-        put.resolve(System.actions.getEnvironmentVariable({env:'USERNAME'})),
-        take(System.actions.GET_ENVIRONMENT_VARIABLE_RES),
-        put.resolve(System.actions.getEnvironmentVariable({env:'computername'})),
-        take(System.actions.GET_ENVIRONMENT_VARIABLE_RES),
-        put.resolve(System.actions.getEnvironmentVariable({env:'HOSTNAME'})),
-        take(System.actions.GET_ENVIRONMENT_VARIABLE_RES),
-        put.resolve(System.actions.getVersion({})),
-        take(System.actions.GET_VERSION_RES),
-        put.resolve(System.actions.getHostSpecs({})),
-        take(System.actions.GET_HOST_SPECS_RES),
-        put.resolve(Window.actions.getState({})),
-        take(Window.actions.GET_STATE_RES),
+        call(System.asyncs.getEnvironmentVariable,System.actions.getEnvironmentVariable({env:'USERNAME'})),
+        call(System.asyncs.getEnvironmentVariable,System.actions.getEnvironmentVariable({env:'computername'})),
+        call(System.asyncs.getEnvironmentVariable,System.actions.getEnvironmentVariable({env:'HOSTNAME'})),
+        call(System.asyncs.getVersion,System.actions.getVersion({})),
+        call(System.asyncs.getHostSpecs,System.actions.getHostSpecs({})),
+        call(Window.asyncs.getState,Window.actions.getState({})),
         // delay for loading view render, could be removed
         call(delay,5000),
     ]);
@@ -95,55 +145,7 @@ export function* handleApplicationLoading() {
     yield put.resolve(applicationReady());
 
     if (ENABLE_LOADING_VIEW && currentIsLoadingView){
-        // after the sagas loaded, redirect to default page/view
-        if (process.env.REACT_APP_DEFAULT_VIEW_URL && process.env.REACT_APP_DEFAULT_VIEW_URL.length > 0){
-            if (process.env.NODE_ENV !== 'test'){
-                hist.push(process.env.REACT_APP_DEFAULT_VIEW_URL);
-            }
-            yield put.resolve(Window.actions.updateOptions({
-                options:{
-                    resizable:true,
-                }
-            }));
-            yield put.resolve(Window.actions.setBounds({
-                left:(monitorRect.right - monitorRect.left)/2 - DEFAULT_WIDTH/2,
-                top:(monitorRect.bottom - monitorRect.top)/2 - DEFAULT_HEIGHT/2,
-                width:DEFAULT_WIDTH,
-                height: DEFAULT_HEIGHT,
-            }));
-        }else{
-            // switch to launchBar
-            const launchBarCollapse = yield select(getLaunchBarCollapse);
-            yield  put.resolve(Window.actions.updateOptions({
-                options:{resizable:false}
-            }));
-            previousBaseWindow.url='/dashboard/view-one';
-            previousBaseWindow.top=(monitorRect.bottom - monitorRect.top)/2 - DEFAULT_HEIGHT/2;
-            previousBaseWindow.left=(monitorRect.right - monitorRect.left)/2 - DEFAULT_WIDTH/2;
-            previousBaseWindow.width=DEFAULT_WIDTH;
-            previousBaseWindow.height=DEFAULT_HEIGHT;
-
-            if(launchBarCollapse){
-                yield put.resolve(Window.actions.setBounds({
-                    left:(monitorRect.right - monitorRect.left)/2,
-                    top:(monitorRect.bottom - monitorRect.top)/4,
-                    width:88,
-                    height:64,
-                }));
-            }else{
-                yield put.resolve(Window.actions.setBounds({
-                    left:(monitorRect.right - monitorRect.left)/2,
-                    top:(monitorRect.bottom - monitorRect.top)/4,
-                    width:launchBarItems.length<10?launchBarItems.length*64+88:664,
-                    height:64,
-                }));
-            }
-            if (process.env.NODE_ENV !== 'test'){
-                hist.push('/launchBar');
-            }
-
-        }
-
+        yield* handleRedirectFromLoadingView(monitorRect) as any;
     }
 }
 
