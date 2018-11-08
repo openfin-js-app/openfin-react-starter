@@ -16,7 +16,8 @@ export default (
 )=>{
 
     const openfinMiddleware = createOpenfinMiddleware(window.fin,{
-        channelType,channelClientId,sharedActions
+        channelType,channelClientId,sharedActions,
+        channelRandomSuffix:process.env.NODE_ENV === 'development'
     });
     const sagaMiddleware = createSagaMiddleware();
     const devtools = window.devToolsExtension?window.devToolsExtension():(f:any):any => (f);
