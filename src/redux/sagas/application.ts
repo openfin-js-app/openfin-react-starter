@@ -181,28 +181,26 @@ export function* handleApplicationCloseSnackBar(action) {
 export function* handleToggleWindowState(){
     const windowState = yield select(getWindowState);
     if (windowState === 'maximized'){
-        yield put(Window.actions.restore({}));
+        yield call(Window.asyncs.restore,Window.actions.restore({}));
     }else if (windowState === 'normal'){
-        yield put(Window.actions.maximize({}));
+        yield call(Window.asyncs.maximize,Window.actions.maximize({}));
     }
 }
 
 export function* handleApplicationLaunchBarToggle(){
+
     const launchBarCollapse = yield select(getLaunchBarCollapse);
-
-    yield put.resolve(Window.actions.getBounds({}));
-
-    const getBoundsAction = yield take(Window.actions.GET_BOUNDS_RES);
+    const getBoundsAction = yield call(Window.asyncs.getBounds,Window.actions.getBounds({}));
     const getBoundsActionPayload = getBoundsAction.payload;
 
     if (window.location.href.toLowerCase().endsWith('launchbar')){
         // switch to main panel
-        yield put.resolve(Window.actions.updateOptions({
+        yield call(Window.asyncs.updateOptions,Window.actions.updateOptions({
             options:{
                 resizable:true
             }
         }));
-        yield put.resolve(Window.actions.setBounds({
+        yield call(Window.asyncs.setBounds,Window.actions.setBounds({
             left:previousBaseWindow.left,
             top:previousBaseWindow.top,
             width:previousBaseWindow.width,
@@ -213,7 +211,7 @@ export function* handleApplicationLaunchBarToggle(){
         }
     }else{
         // switch to launchBar
-        yield put.resolve(Window.actions.updateOptions({
+        yield call(Window.asyncs.updateOptions,Window.actions.updateOptions({
             options:{
                 resizable:false
             }
@@ -225,14 +223,14 @@ export function* handleApplicationLaunchBarToggle(){
         previousBaseWindow.height = getBoundsActionPayload.height;
 
         if (launchBarCollapse){
-            yield put.resolve(Window.actions.setBounds({
+            yield call(Window.asyncs.setBounds,Window.actions.setBounds({
                 left:getBoundsActionPayload.left,
                 top:getBoundsActionPayload.top,
                 width:88,
                 height:64,
             }));
         }else{
-            yield put.resolve(Window.actions.setBounds({
+            yield call(Window.asyncs.setBounds,Window.actions.setBounds({
                 left:getBoundsActionPayload.left,
                 top:getBoundsActionPayload.top,
                 width:launchBarItems.length<10? launchBarItems.length*64+88:664,
@@ -249,19 +247,18 @@ export function* handleApplicationLaunchBarToggle(){
 export function* handleApplicationLaunchBarToggleCollapse() {
     const launchBarCollapse = yield select(getLaunchBarCollapse);
 
-    yield put.resolve(Window.actions.getBounds({}));
-    const getBoundsAction = yield take(Window.actions.GET_BOUNDS_RES);
+    const getBoundsAction = yield call(Window.asyncs.getBounds,Window.actions.getBounds({}));
     const getBoundsActionPayload = getBoundsAction.payload;
 
     if (launchBarCollapse){
-        yield put.resolve(Window.actions.setBounds({
+        yield call(Window.asyncs.setBounds,Window.actions.setBounds({
             left:getBoundsActionPayload.left,
             top:getBoundsActionPayload.top,
             width:88,
             height:64,
         }));
     }else{
-        yield put.resolve(Window.actions.setBounds({
+        yield call(Window.asyncs.setBounds,Window.actions.setBounds({
             left:getBoundsActionPayload.left,
             top:getBoundsActionPayload.top,
             width:launchBarItems.length<10? launchBarItems.length*64+88:664,
@@ -283,7 +280,7 @@ export function* handleApplicationLaunchNewWindow(action) {
     if(!appJson.defaultTop){ appJson.defaultTop = defaultTop}
     if(!appJson.defaultLeft){ appJson.defaultLeft = defaultLeft}
 
-    yield put.resolve(Window.actions.newWindow(appJson));
+    yield call(Window.asyncs.newWindow,Window.actions.newWindow(appJson));
 
     yield put(configUpdateNewWindowPosition());
 

@@ -312,7 +312,7 @@ describe('Application saga',()=>{
                 .next()
                 .select(getWindowState)
                 .next('maximized')
-                .put(Window.actions.restore({}))
+                .call(Window.asyncs.restore,Window.actions.restore({}))
                 .next()
                 .isDone();
         });
@@ -322,7 +322,7 @@ describe('Application saga',()=>{
                 .next()
                 .select(getWindowState)
                 .next('normal')
-                .put(Window.actions.maximize({}))
+                .call(Window.asyncs.maximize,Window.actions.maximize({}))
                 .next()
                 .isDone();
         });
@@ -346,17 +346,15 @@ describe('Application saga',()=>{
                 .next()
                 .select(getLaunchBarCollapse)
                 .next(true)
-                .put.resolve(Window.actions.getBounds({}))
-                .next()
-                .take(Window.actions.GET_BOUNDS_RES)
+                .call(Window.asyncs.getBounds,Window.actions.getBounds({}))
                 .next({payload:getBoundsActionPayload})
-                .put.resolve(Window.actions.updateOptions({
+                .call(Window.asyncs.updateOptions,Window.actions.updateOptions({
                     options:{
                         resizable:true
                     }
                 }))
                 .next()
-                .put.resolve(Window.actions.setBounds({
+                .call(Window.asyncs.setBounds,Window.actions.setBounds({
                     left:previousBaseWindow.left,
                     top:previousBaseWindow.top,
                     width:previousBaseWindow.width,
@@ -373,17 +371,15 @@ describe('Application saga',()=>{
                 .next()
                 .select(getLaunchBarCollapse)
                 .next(true)
-                .put.resolve(Window.actions.getBounds({}))
-                .next()
-                .take(Window.actions.GET_BOUNDS_RES)
+                .call(Window.asyncs.getBounds,Window.actions.getBounds({}))
                 .next({payload:getBoundsActionPayload})
-                .put.resolve(Window.actions.updateOptions({
+                .call(Window.asyncs.updateOptions,Window.actions.updateOptions({
                     options:{
                         resizable:false
                     }
                 }))
                 .next()
-                .put.resolve(Window.actions.setBounds({
+                .call(Window.asyncs.setBounds,Window.actions.setBounds({
                     left:getBoundsActionPayload.left,
                     top:getBoundsActionPayload.top,
                     width:88,
@@ -400,17 +396,15 @@ describe('Application saga',()=>{
                 .next()
                 .select(getLaunchBarCollapse)
                 .next(false)
-                .put.resolve(Window.actions.getBounds({}))
-                .next()
-                .take(Window.actions.GET_BOUNDS_RES)
+                .call(Window.asyncs.getBounds,Window.actions.getBounds({}))
                 .next({payload:getBoundsActionPayload})
-                .put.resolve(Window.actions.updateOptions({
+                .call(Window.asyncs.updateOptions,Window.actions.updateOptions({
                     options:{
                         resizable:false
                     }
                 }))
                 .next()
-                .put.resolve(Window.actions.setBounds({
+                .call(Window.asyncs.setBounds,Window.actions.setBounds({
                     left:getBoundsActionPayload.left,
                     top:getBoundsActionPayload.top,
                     width:launchBarItems.length<10? launchBarItems.length*64+88:664,
@@ -437,11 +431,9 @@ describe('Application saga',()=>{
                 .next()
                 .select(getLaunchBarCollapse)
                 .next(false)
-                .put.resolve(Window.actions.getBounds({}))
-                .next()
-                .take(Window.actions.GET_BOUNDS_RES)
+                .call(Window.asyncs.getBounds,Window.actions.getBounds({}))
                 .next({payload:getBoundsActionPayload})
-                .put.resolve(Window.actions.setBounds({
+                .call(Window.asyncs.setBounds,Window.actions.setBounds({
                     left:getBoundsActionPayload.left,
                     top:getBoundsActionPayload.top,
                     width:launchBarItems.length<10? launchBarItems.length*64+88:664,
@@ -456,11 +448,9 @@ describe('Application saga',()=>{
                 .next()
                 .select(getLaunchBarCollapse)
                 .next(true)
-                .put.resolve(Window.actions.getBounds({}))
-                .next()
-                .take(Window.actions.GET_BOUNDS_RES)
+                .call(Window.asyncs.getBounds,Window.actions.getBounds({}))
                 .next({payload:getBoundsActionPayload})
-                .put.resolve(Window.actions.setBounds({
+                .call(Window.asyncs.setBounds,Window.actions.setBounds({
                     left:getBoundsActionPayload.left,
                     top:getBoundsActionPayload.top,
                     width:88,
@@ -491,7 +481,7 @@ describe('Application saga',()=>{
                 .next(defaultTop)
                 .select(getNewWindowLeft)
                 .next(defaultLeft)
-                .put.resolve(Window.actions.newWindow(appJson))
+                .call(Window.asyncs.newWindow,Window.actions.newWindow(appJson))
                 .next()
                 .put(configUpdateNewWindowPosition())
                 .next()
@@ -512,7 +502,7 @@ describe('Application saga',()=>{
                 .next(defaultTop)
                 .select(getNewWindowLeft)
                 .next(defaultLeft)
-                .put.resolve(Window.actions.newWindow(expectedAppJson))
+                .call(Window.asyncs.newWindow,Window.actions.newWindow(expectedAppJson))
                 .next()
                 .put(configUpdateNewWindowPosition())
                 .next()
