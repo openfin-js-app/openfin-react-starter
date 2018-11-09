@@ -1,6 +1,7 @@
 import { all, takeEvery, select, fork } from 'redux-saga/effects';
 
 import applicationSaga from './application';
+import clientSaga from './client';
 import configSaga from './config';
 
 export function* handleLogAllActions(action) {
@@ -14,7 +15,7 @@ export function* watchAndLogSaga(){
 
 export default function* rootSaga(){
 
-    const sagas = [applicationSaga(),configSaga(),];
+    const sagas = [applicationSaga(),configSaga(), clientSaga()];
 
     if(process.env.REACT_APP_LOG_ACTION === 'true'){
         sagas.unshift(watchAndLogSaga());

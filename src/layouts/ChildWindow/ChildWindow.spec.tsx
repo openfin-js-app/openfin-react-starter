@@ -6,11 +6,11 @@ import { MemoryRouter } from 'react-router';
 
 import ChildWindow from './ChildWindow';
 import ViewOne from '../../views/ViewOne/ViewOne';
-import { Header } from '../../components';
+import {Header, SnackbarContent} from '../../components';
 import { rootDefaultState } from '../../redux'
+import Snackbar from "@material-ui/core/Snackbar";
 
 const mockStore = configurestore();
-
 
 const store = mockStore(rootDefaultState);
 
@@ -34,30 +34,8 @@ describe('ChildWindow layout',()=>{
         shallow = createShallow();
     });
 
-    it('render correctly on normal window state',()=>{
-        let lastWindowState = 'normal';
-        const currentWindow = {
-            setAsForeground:jest.fn(),
-            getState:jest.fn((cb)=>(cb(lastWindowState))),
-            minimize:jest.fn(()=>{
-                lastWindowState = 'minimized'
-            }),
-            restore:jest.fn(()=>{
-                lastWindowState = 'normal'
-            }),
-            maximize:jest.fn(()=>{
-                lastWindowState = 'maximized'
-            }),
-        };
-
-        window.fin={
-            desktop:{
-                Window:{
-                    getCurrent: ()=> currentWindow
-                }
-            }
-        };
-
+    it ('render in normal state correctly by default',()=>{
+        const store = mockStore(rootDefaultState);
         const wrapper = mount(
             <Provider store={store}>
                 <MemoryRouter initialEntries={['/childWindow/view-one']}>
@@ -67,128 +45,57 @@ describe('ChildWindow layout',()=>{
         );
         expect(wrapper.find(ViewOne)).toHaveLength(1);
         expect(wrapper.find(ChildWindow)).toHaveLength(1);
-        expect(wrapper.find(Header)).toHaveLength(1);
-        wrapper.find(Header).props().onMaximize();
-        expect(currentWindow.maximize).toHaveBeenCalled();
-        expect(currentWindow.getState).toHaveBeenCalled();
-    });
-
-    it('could be minimized',()=>{
-        let lastWindowState = 'normal';
-        const currentWindow = {
-            setAsForeground:jest.fn(),
-            getState:jest.fn((cb)=>(cb(lastWindowState))),
-            minimize:jest.fn(()=>{
-                lastWindowState = 'minimized'
-            }),
-            restore:jest.fn(()=>{
-                lastWindowState = 'normal'
-            }),
-            maximize:jest.fn(()=>{
-                lastWindowState = 'maximized'
-            }),
-        };
-
-        window.fin={
-            desktop:{
-                Window:{
-                    getCurrent: ()=> currentWindow
-                }
-            }
-        };
-
-        const wrapper = mount(
-            <Provider store={store}>
-                <MemoryRouter initialEntries={['/childWindow/view-one']}>
-                    <ChildWindow store={store} location={{pathname:'/childWindow/view-one'}}/>
-                </MemoryRouter>
-            </Provider>
-        );
-        expect(wrapper.find(ViewOne)).toHaveLength(1);
-        expect(wrapper.find(ChildWindow)).toHaveLength(1);
-        expect(wrapper.find(Header)).toHaveLength(1);
         wrapper.find(Header).props().onMinimize();
-        expect(currentWindow.minimize).toHaveBeenCalled();
-        expect(currentWindow.getState).toHaveBeenCalled();
-    });
-
-    it('could be closed',()=>{
-        let lastWindowState = 'normal';
-        const currentWindow = {
-            setAsForeground:jest.fn(),
-            getState:jest.fn((cb)=>(cb(lastWindowState))),
-            minimize:jest.fn(()=>{
-                lastWindowState = 'minimized'
-            }),
-            restore:jest.fn(()=>{
-                lastWindowState = 'normal'
-            }),
-            maximize:jest.fn(()=>{
-                lastWindowState = 'maximized'
-            }),
-            close:jest.fn(),
-        };
-
-        window.fin={
-            desktop:{
-                Window:{
-                    getCurrent: ()=> currentWindow
-                }
-            }
-        };
-
-        const wrapper = mount(
-            <Provider store={store}>
-                <MemoryRouter initialEntries={['/childWindow/view-one']}>
-                    <ChildWindow store={store} location={{pathname:'/childWindow/view-one'}}/>
-                </MemoryRouter>
-            </Provider>
-        );
-        expect(wrapper.find(ViewOne)).toHaveLength(1);
-        expect(wrapper.find(ChildWindow)).toHaveLength(1);
-        expect(wrapper.find(Header)).toHaveLength(1);
-        wrapper.find(Header).props().onClose();
-        expect(currentWindow.close).toHaveBeenCalled();
-        expect(currentWindow.getState).toHaveBeenCalled();
-    });
-
-    it('render correctly on maximized window state',()=>{
-        let lastWindowState = 'maximized';
-        const currentWindow = {
-            setAsForeground:jest.fn(),
-            getState:jest.fn((cb)=>(cb(lastWindowState))),
-            minimize:jest.fn(()=>{
-                lastWindowState = 'minimized'
-            }),
-            restore:jest.fn(()=>{
-                lastWindowState = 'normal'
-            }),
-            maximize:jest.fn(()=>{
-                lastWindowState = 'maximized'
-            }),
-        };
-
-        window.fin={
-            desktop:{
-                Window:{
-                    getCurrent: ()=> currentWindow
-                }
-            }
-        };
-
-        const wrapper = mount(
-            <Provider store={store}>
-                <MemoryRouter initialEntries={['/childWindow/view-one']}>
-                    <ChildWindow store={store} location={{pathname:'/childWindow/view-one'}}/>
-                </MemoryRouter>
-            </Provider>
-        );
-        expect(wrapper.find(ViewOne)).toHaveLength(1);
-        expect(wrapper.find(ChildWindow)).toHaveLength(1);
-        expect(wrapper.find(Header)).toHaveLength(1);
         wrapper.find(Header).props().onMaximize();
-        expect(currentWindow.restore).toHaveBeenCalled();
-        expect(currentWindow.getState).toHaveBeenCalled();
-    });
+        wrapper.find(Header).props().onClose();
+        expect(wrapper.find(Snackbar)).toHaveLength(1);
+        wrapper.find(Snackbar).props().onClose();
+        wrapper.find(Snackbar).props().onExited();
+
+        expect(store.getActions()).toMatchSnapshot();
+    })
+
+    it('render SnackbarContent and could be closed correctly',()=>{
+        const store = mockStore({
+            application:{
+                username:'',
+                computerName:'',
+                machineId:null,
+                deviceUserId:null,
+                loading:true,
+                drawerOpen:true,
+                launchBarCollapse:false,
+                snackBarOpen:true,
+                snackBarMsgInfo:{
+                    variant:'primary',
+                    message:'message',
+                },
+                snackBarMsgQueue:[],
+                openfinVersion:'n/a',
+                openfinHostSpec:{},
+                windowsState:'normal',
+            },
+            client:{
+                count:0,
+            }
+        });
+        const wrapper = mount(
+            <Provider store={store}>
+                <MemoryRouter initialEntries={['/childWindow/view-one']}>
+                    <ChildWindow store={store} location={{pathname:'/childWindow/view-one'}}/>
+                </MemoryRouter>
+            </Provider>
+        );
+        expect(wrapper.find(ViewOne)).toHaveLength(1);
+        expect(wrapper.find(ChildWindow)).toHaveLength(1);
+        wrapper.find(Header).props().onMinimize();
+        wrapper.find(Header).props().onMaximize();
+        wrapper.find(Header).props().onClose();
+        // SnackbarContent events
+        expect(wrapper.find(SnackbarContent)).toHaveLength(1);
+        wrapper.find(SnackbarContent).props().onClose();
+
+        expect(store.getActions()).toMatchSnapshot();
+    })
 
 });
