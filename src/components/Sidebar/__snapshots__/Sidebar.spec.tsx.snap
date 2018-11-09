@@ -23,7 +23,7 @@ exports[`Sidebar comp renders correctly by default 1`] = `
       align="right"
       className="SidebarComp-releaseTypo-9 SidebarComp-whiteFont-8"
       gutterBottom={true}
-      variant="caption"
+      variant="body2"
     >
       0.20.0-beta
     </WithStyles(Typography)>

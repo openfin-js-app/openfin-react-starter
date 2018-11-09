@@ -1,5 +1,5 @@
 import { testSaga } from 'redux-saga-test-plan';
-import {put, select, take, takeLatest,} from 'redux-saga/effects';
+import {call, put, select, take, takeLatest,} from 'redux-saga/effects';
 
 import {
     CONFIG_UPDATE_NEW_WINDOW_POSITION,
@@ -42,9 +42,7 @@ describe('Config saga',()=>{
                 .next(newWinTop)
                 .select(getNewWindowLeft)
                 .next(newWinLeft)
-                .put.resolve(System.actions.getMonitorInfo({}))
-                .next()
-                .take(System.actions.GET_MONITOR_INFO_RES)
+                .call(System.asyncs.getMonitorInfo,System.actions.getMonitorInfo({}))
                 .next({payload:{ virtualScreen }})
                 .put.resolve(configUpdateNewWindowPositionAddDelta())
                 .next()
@@ -68,9 +66,7 @@ describe('Config saga',()=>{
                 .next(newWinTop)
                 .select(getNewWindowLeft)
                 .next(newWinLeft)
-                .put.resolve(System.actions.getMonitorInfo({}))
-                .next()
-                .take(System.actions.GET_MONITOR_INFO_RES)
+                .call(System.asyncs.getMonitorInfo,System.actions.getMonitorInfo({}))
                 .next({payload:{ virtualScreen }})
                 .put.resolve(configUpdateNewWindowPositionResetLeft())
                 .next()
@@ -94,9 +90,7 @@ describe('Config saga',()=>{
                 .next(newWinTop)
                 .select(getNewWindowLeft)
                 .next(newWinLeft)
-                .put.resolve(System.actions.getMonitorInfo({}))
-                .next()
-                .take(System.actions.GET_MONITOR_INFO_RES)
+                .call(System.asyncs.getMonitorInfo,System.actions.getMonitorInfo({}))
                 .next({payload:{ virtualScreen }})
                 .put.resolve(configUpdateNewWindowPositionResetTop())
                 .next()

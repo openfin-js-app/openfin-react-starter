@@ -1,4 +1,4 @@
-import {put, select, take, takeLatest,} from 'redux-saga/effects';
+import {put, call, select, take, takeLatest,} from 'redux-saga/effects';
 
 import {
     CONFIG_UPDATE_NEW_WINDOW_POSITION,
@@ -19,8 +19,7 @@ export function* handleConfigUpdateNewWindowPosition() {
     const newWinTop = yield select(getNewWindowTop);
     const newWinLeft = yield select(getNewWindowLeft);
 
-    yield put.resolve(System.actions.getMonitorInfo({}));
-    const monitorInfoAction = yield take(System.actions.GET_MONITOR_INFO_RES);
+    const monitorInfoAction = yield call(System.asyncs.getMonitorInfo,System.actions.getMonitorInfo({}));
     const virtualScreen = monitorInfoAction.payload.virtualScreen;
 
     // console.log("configUpdateNewWindowPosition",monitorInfoAction,virtualScreen);

@@ -15,7 +15,7 @@ describe('Client saga',()=>{
 
     describe('handleTakingClientSetValue saga',()=>{
         it('recieving a msg',()=>{
-            let payload = {};
+            const payload = {};
             window[SHARED_ACTION_ORIGIN_TAG] = 'channelClientId';
             payload[SHARED_ACTION_ORIGIN_TAG] = 'channelClientId';
             testSaga(handleTakingClientSetValue,{payload})
@@ -29,7 +29,7 @@ describe('Client saga',()=>{
         });
 
         it('sending a msg',()=>{
-            let payload = {};
+            const payload = {};
             window[SHARED_ACTION_ORIGIN_TAG] = 'channelClientId';
             payload[SHARED_ACTION_ORIGIN_TAG] = 'anotherChannelClientId';
             testSaga(handleTakingClientSetValue,{payload})
