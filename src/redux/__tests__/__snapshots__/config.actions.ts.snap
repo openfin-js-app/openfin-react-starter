@@ -1,5 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Config actions configDoUpdateOneField created and dispatched correctly 1`] = `
+Array [
+  Object {
+    "payload": Object {
+      "fieldName": "fieldName",
+      "tabName": "tabName",
+      "value": "value",
+    },
+    "type": "CONFIG_DO_UPDATE_ONE_FIELD",
+  },
+]
+`;
+
+exports[`Config actions configDoUpdateOneFieldInDexie created and dispatched correctly 1`] = `
+Array [
+  Object {
+    "payload": Object {
+      "fieldName": "fieldName",
+      "tabName": "tabName",
+      "value": "value",
+    },
+    "type": "CONFIG_DO_UPDATE_ONE_FIELD_IN_DEXIE",
+  },
+]
+`;
+
+exports[`Config actions configLoadFromDexie created and dispatched correctly 1`] = `
+Array [
+  Object {
+    "type": "CONFIG_LOAD_FROM_DEXIE",
+  },
+]
+`;
+
 exports[`Config actions configReset created and dispatched correctly 1`] = `
 Array [
   Object {

@@ -31,13 +31,14 @@ import {
     getNewWindowHeight,
     // sub sagas
     handleApplicationLoading,
+    handleApplicationChildLoading,
     handleApplicationExit,
     handleToggleWindowState,
     handleApplicationAddNewSnackBar,
     handleApplicationCloseSnackBar,
     handleApplicationLaunchBarToggle,
     handleApplicationLaunchBarToggleCollapse,
-    handleApplicationLaunchNewWindow, getNewWindowWidth, handleApplicationChildLoading,
+    handleApplicationLaunchNewWindow, getNewWindowWidth,
 } from '../sagas/application';
 
 import applicationSaga from '../sagas/application';
@@ -248,6 +249,22 @@ describe('Application saga',()=>{
         });
 
     });
+
+    describe('handleApplicationChildLoading saga',()=>{
+
+        it('basically works',()=>{
+            testSaga(handleApplicationChildLoading)
+                .next()
+                .all([
+                    put.resolve(configLoadFromDexie()),
+                ])
+                .next()
+                .put.resolve(applicationReady())
+                .next()
+                .isDone();
+        })
+
+    })
 
     describe('handleApplicationExit saga', ()=>{
         it('basically works',()=>{

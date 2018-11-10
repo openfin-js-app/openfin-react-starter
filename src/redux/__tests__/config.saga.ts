@@ -1,4 +1,6 @@
-import { testSaga } from 'redux-saga-test-plan';
+import { delay } from 'redux-saga';
+import { testSaga,expectSaga } from 'redux-saga-test-plan';
+import * as matchers from 'redux-saga-test-plan/matchers'
 import {call, put, select, take, takeEvery, takeLatest,} from 'redux-saga/effects';
 
 import {
@@ -23,11 +25,57 @@ import {
 } from '../sagas/config';
 
 import configSaga from '../sagas/config';
-import {CONFIG_DO_UPDATE_ONE_FIELD_IN_DEXIE, CONFIG_LOAD_FROM_DEXIE, CONFIG_UPDATE_ONE_FIELD} from "..";
+import {
+    CONFIG_DO_UPDATE_ONE_FIELD_IN_DEXIE, CONFIG_LOAD_FROM_DEXIE, CONFIG_UPDATE_ONE_FIELD,
+    configDoUpdateOneField
+} from "..";
+import {findAll,saveOrUpdateOneByTabNameFieldName} from "../../dexie/configDao";
+import {configDoUpdateOneFieldInDexie} from "../index";
 
 jest.mock('../../dexie/db');
 
 describe('Config saga',()=>{
+
+    describe('handleConfigLoadFromDexie saga',()=>{
+        it('it basically works',()=>{
+
+            testSaga(handleConfigLoadFromDexie)
+                .next()
+                .call(findAll)
+                .next([{tabName:'tabName',fieldName:'fieldName',value:'value'}])
+                .put(configDoUpdateOneField({
+                    tabName:'tabName',fieldName:'fieldName',value:'value'
+                }))
+                .next()
+                .isDone();
+        })
+    });
+
+    describe('handleConfigUpdateOneField saga',()=>{
+        it('it basically works',()=>{
+
+            testSaga(handleConfigUpdateOneField,{payload:{name:'tabName.fieldName',value:'value'}})
+                .next()
+                .put.resolve(configDoUpdateOneField({
+                    tabName:'tabName',fieldName:'fieldName',value:'value'
+                }))
+                .next()
+                .put(configDoUpdateOneFieldInDexie({
+                    tabName:'tabName',fieldName:'fieldName',value:'value'
+                }))
+                .next()
+                .isDone();
+        })
+    });
+
+    describe('handleConfigUpdateOneFieldInDexie saga',()=>{
+        it('it basically works',()=>{
+            expectSaga(handleConfigUpdateOneFieldInDexie,{payload:{tabName:'tabName',fieldName:'fieldName',value:'value'}})
+                .call(saveOrUpdateOneByTabNameFieldName,'tabName','fieldName','value')
+                .delay(800)
+                .run();
+        })
+    });
 
     describe('handleConfigUpdateNewWindowPosition saga',()=>{
         it('add delta to new win pos',()=>{
