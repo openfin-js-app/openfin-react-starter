@@ -16,6 +16,7 @@ import {
     APPLICATION_LAUNCH_BAR_TOGGLE,
     APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE,
     APPLICATION_LAUNCH_NEW_WINDOW,
+    configLoadFromDexie,
 } from '..';
 
 import { configUpdateNewWindowPosition } from '..';
@@ -36,10 +37,11 @@ import {
     handleApplicationCloseSnackBar,
     handleApplicationLaunchBarToggle,
     handleApplicationLaunchBarToggleCollapse,
-    handleApplicationLaunchNewWindow, getNewWindowWidth,
+    handleApplicationLaunchNewWindow, getNewWindowWidth, handleApplicationChildLoading,
 } from '../sagas/application';
 
 import applicationSaga from '../sagas/application';
+import {APPLICATION_CHILD_STARTED} from "../index";
 
 const LOADING_BANNER_WIDTH = parseInt(process.env.REACT_APP_LOADING_BANNER_WIDTH, 10);
 const LOADING_BANNER_HEIGHT = parseInt(process.env.REACT_APP_LOADING_BANNER_HEIGHT, 10);
@@ -55,6 +57,7 @@ const previousBaseWindow={
 };
 
 const loadingAllActions = [
+    put.resolve(configLoadFromDexie()),
     call(System.asyncs.getMachineId,System.actions.getMachineId({})),
     // getDeviceUserId might fail, thus use flux syntax........
     put.resolve(System.actions.getDeviceUserId({})),
@@ -515,6 +518,8 @@ describe('Application saga',()=>{
         testSaga(applicationSaga)
             .next()
             .takeLatestEffect(APPLICATION_STARTED,handleApplicationLoading)
+            .next()
+            .takeLatestEffect(APPLICATION_CHILD_STARTED,handleApplicationChildLoading)
             .next()
             .takeLatestEffect(Event.actionDicts.windowEventDictByName['close-requested'].type,handleApplicationExit)
             .next()

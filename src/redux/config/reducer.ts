@@ -1,7 +1,7 @@
 import { handleActions, Action } from 'redux-actions';
 
 import {
-    CONFIG_RESET, CONFIG_UPDATE_ONE_FIELD,
+    CONFIG_RESET,CONFIG_DO_UPDATE_ONE_FIELD,
     CONFIG_UPDATE_GLOBAL_FILTER_STR,
 
     CONFIG_UPDATE_NEW_WINDOW_POSITION_ADD_DELTA,
@@ -10,7 +10,7 @@ import {
 } from './actions';
 import {
     IConfigTab, IConfigField, FieldType,
-    IConfigResetOption, IConfigUpdateOneFieldOption, IConfigUpdateGlobalFilterStrOption, IConfigState
+    IConfigResetOption, IConfigDoUpdateOneFieldOption, IConfigUpdateGlobalFilterStrOption, IConfigState
 } from './types';
 import configTabs from './constant';
 
@@ -36,17 +36,7 @@ export const defaultState:IConfigState = buildDefaultState(configTabs);
 
 export default (parentWindowState?:IConfigState)=>{
 
-    let initState:Partial<IConfigState>;
-
-    // if (parentWindowState){
-    //     initState ={
-    //         // todo to be populated..........
-    //         },
-    //     }
-    //
-    // }else{
-        initState = defaultState;
-    // }
+    const initState:Partial<IConfigState> = defaultState;
 
     return handleActions({
         [CONFIG_RESET]:(state,action)=>{
@@ -60,17 +50,15 @@ export default (parentWindowState?:IConfigState)=>{
                 return defaultState;
             }
         },
-        [CONFIG_UPDATE_ONE_FIELD]:(state,action)=>{
-            const {name,value} = action.payload as any;
-            const result = {...state};
-            const paths = name.split('.');
-            if (paths.length === 2){
-                result[paths[0]]={
-                    ...result[paths[0]],
-                    [paths[1]]:value,
+        [CONFIG_DO_UPDATE_ONE_FIELD]:(state,action)=>{
+            const {tabName, fieldName, value} = action.payload as IConfigDoUpdateOneFieldOption;
+            return {
+                ...state,
+                [tabName]:{
+                    ...state[tabName],
+                    [fieldName]:value,
                 }
-            }
-            return result;
+            };
         },
         [CONFIG_UPDATE_GLOBAL_FILTER_STR]:(state,action)=>{
             const { configGlobalFilterString } = action.payload as IConfigUpdateGlobalFilterStrOption;

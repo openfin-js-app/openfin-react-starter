@@ -1722,7 +1722,6 @@ Object {
     "crrValue": 123456789,
     "dateValue": 2018-10-13T20:53:41.000Z,
     "datetimeValue": 2018-10-13T20:53:41.000Z,
-    "name": "sampleVal",
     "strValue": "",
     "timeValue": 2018-10-13T20:53:41.000Z,
   },

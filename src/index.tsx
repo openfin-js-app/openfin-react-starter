@@ -15,6 +15,7 @@ import configureStore from './utils/configureStore';
 import {
     CLIENT_SET_VALUE,
     applicationStarted,
+    applicationChildStarted,
 } from "./redux";
 
 declare const window:any;
@@ -49,6 +50,7 @@ if(window.store == null && window.opener == null){
         window.opener.store.getState()
     );
     window.store=store;
+    store.dispatch(applicationChildStarted());
 }
 setPlatformClass(document.body,window.navigator.platform);
 ReactDOM.render(

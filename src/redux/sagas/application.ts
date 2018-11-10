@@ -6,6 +6,23 @@ import hist from '../../utils/history';
 
 import { launchBarItems } from '../../layouts/LaunchBar/LaunchBarData';
 
+import {
+    APPLICATION_STARTED,
+    APPLICATION_CHILD_STARTED,
+    APPLICATION_NEW_SNACKBAR,
+    APPLICATION_CLOSE_SNACKBAR,
+    APPLICATION_TOGGLE_WINDOW_STATE,
+    applicationReady,
+    applicationSetSnackbarStatus,
+    applicationProcessSnackbarQueue,
+    APPLICATION_LAUNCH_BAR_TOGGLE,
+    APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE,
+    APPLICATION_LAUNCH_NEW_WINDOW,
+    configLoadFromDexie,
+} from '..';
+
+import { configUpdateNewWindowPosition } from '..';
+
 const ENABLE_LOADING_VIEW=process.env.REACT_APP_ENABLE_LOADING_VIEW.toLowerCase() === 'true';
 
 const LOADING_BANNER_WIDTH = parseInt(process.env.REACT_APP_LOADING_BANNER_WIDTH, 10);
@@ -20,21 +37,6 @@ const previousBaseWindow={
     width:null,
     height:null,
 };
-
-import {
-    APPLICATION_STARTED,
-    APPLICATION_NEW_SNACKBAR,
-    APPLICATION_CLOSE_SNACKBAR,
-    APPLICATION_TOGGLE_WINDOW_STATE,
-    applicationReady,
-    applicationSetSnackbarStatus,
-    applicationProcessSnackbarQueue,
-    APPLICATION_LAUNCH_BAR_TOGGLE,
-    APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE,
-    APPLICATION_LAUNCH_NEW_WINDOW,
-} from '..';
-
-import { configUpdateNewWindowPosition } from '..';
 
 export const getLaunchBarCollapse = state => state.application.launchBarCollapse;
 export const getWindowState = state => state.application.windowState;
@@ -128,6 +130,7 @@ export function* handleApplicationLoading() {
     }
 
     yield all([
+        put.resolve(configLoadFromDexie()),
         call(System.asyncs.getMachineId,System.actions.getMachineId({})),
         // getDeviceUserId might fail, thus use flux syntax........
         put.resolve(System.actions.getDeviceUserId({})),
@@ -147,6 +150,13 @@ export function* handleApplicationLoading() {
     if (ENABLE_LOADING_VIEW && currentIsLoadingView){
         yield* handleRedirectFromLoadingView(monitorRect) as any;
     }
+}
+
+export function* handleApplicationChildLoading() {
+    yield all([
+        put.resolve(configLoadFromDexie()),
+    ]);
+    yield put.resolve(applicationReady());
 }
 
 export function* handleApplicationExit() {
@@ -288,6 +298,7 @@ export function* handleApplicationLaunchNewWindow(action) {
 
 export default function* (){
     yield takeLatest(APPLICATION_STARTED,handleApplicationLoading);
+    yield takeLatest(APPLICATION_CHILD_STARTED,handleApplicationChildLoading);
     yield takeLatest(Event.actionDicts.windowEventDictByName['close-requested'].type,handleApplicationExit);
     yield takeLatest(APPLICATION_TOGGLE_WINDOW_STATE,handleToggleWindowState);
     yield takeLatest(APPLICATION_NEW_SNACKBAR,handleApplicationAddNewSnackBar);

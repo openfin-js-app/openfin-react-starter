@@ -8,6 +8,8 @@ import configSaga from '../sagas/config';
 import rootSaga from '../sagas';
 import { watchAndLogSaga, handleLogAllActions } from '../sagas';
 
+jest.mock('../../dexie/db');
+
 describe('Root saga',()=>{
 
    it('Default watchAll',()=>{
