@@ -14,7 +14,7 @@ export async function saveOrUpdateOneByTabNameFieldName(tabName:string, fieldNam
         const founds:IConfigDexie[] = await configs
             .where({tabName,fieldName})
             .toArray();
-        console.log('configDao::saveOrUpdateOneByTabNameFieldName',founds.length,founds,tabName,fieldName,value);
+        // console.log('configDao::saveOrUpdateOneByTabNameFieldName',founds.length,founds,tabName,fieldName,value);
         if (founds.length === 0){
             one = {tabName,fieldName,value};
             const id = await configs.put(one);
