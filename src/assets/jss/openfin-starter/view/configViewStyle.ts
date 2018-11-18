@@ -10,6 +10,7 @@ const configViewStyle:any = (theme:any)=>({
         height:'calc( 100% - 39px )',
         '& .splitter-layout':{
             height:'calc( 100% - 39px )',
+            right:'4px',
         }
     },
     configLeftSection:{

@@ -79,7 +79,7 @@ class DashbardLayout extends React.Component<IProps,{}>{
                 onClose = {handleClose}
                 {...rest}
             />
-            <div className={cx(classes.wrapper, classes.wrapperPrimary)}>
+            <div className={cx(classes.wrapper, 'primary-top-to-bottom')}>
                 <Sidebar
                     routes={dashboardRoutes}
                     open={drawerOpen}

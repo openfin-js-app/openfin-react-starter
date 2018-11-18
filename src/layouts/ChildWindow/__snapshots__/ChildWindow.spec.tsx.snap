@@ -4,18 +4,12 @@ exports[`ChildWindow layout render SnackbarContent and could be closed correctly
 Array [
   Object {
     "error": false,
-    "payload": Object {
-      "callback": [Function],
-      "errorCallback": [Function],
-    },
+    "payload": Object {},
     "type": "REDUX_OPENFIN::SET_AS_FOREGROUND",
   },
   Object {
     "error": false,
-    "payload": Object {
-      "callback": [Function],
-      "errorCallback": [Function],
-    },
+    "payload": Object {},
     "type": "REDUX_OPENFIN::MINIMIZE",
   },
   Object {
@@ -24,8 +18,6 @@ Array [
   Object {
     "error": false,
     "payload": Object {
-      "callback": [Function],
-      "errorCallback": [Function],
       "force": false,
     },
     "type": "REDUX_OPENFIN::CLOSE",
@@ -43,18 +35,12 @@ exports[`ChildWindow layout render in normal state correctly by default 1`] = `
 Array [
   Object {
     "error": false,
-    "payload": Object {
-      "callback": [Function],
-      "errorCallback": [Function],
-    },
+    "payload": Object {},
     "type": "REDUX_OPENFIN::SET_AS_FOREGROUND",
   },
   Object {
     "error": false,
-    "payload": Object {
-      "callback": [Function],
-      "errorCallback": [Function],
-    },
+    "payload": Object {},
     "type": "REDUX_OPENFIN::MINIMIZE",
   },
   Object {
@@ -63,8 +49,6 @@ Array [
   Object {
     "error": false,
     "payload": Object {
-      "callback": [Function],
-      "errorCallback": [Function],
       "force": false,
     },
     "type": "REDUX_OPENFIN::CLOSE",
