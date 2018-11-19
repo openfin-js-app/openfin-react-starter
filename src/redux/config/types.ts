@@ -42,12 +42,25 @@ export interface IConfigTab {
     [key:number]:any;
 }
 
+export interface IConfigDexie {
+    id?:number,
+    tabName:string,
+    fieldName:string,
+    value:any,
+}
+
 export interface IConfigResetOption {
     tabName?:string
 }
 
 export interface IConfigUpdateOneFieldOption {
     name:string,
+    value:any,
+}
+
+export interface IConfigDoUpdateOneFieldOption {
+    tabName:string,
+    fieldName:string,
     value:any,
 }
 

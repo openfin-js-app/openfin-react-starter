@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Provider } from 'react-redux';
 import { createShallow, createMount } from '@material-ui/core/test-utils';
 import Button from '@material-ui/core/Button';
 import configurestore from 'redux-mock-store';
@@ -15,7 +16,7 @@ const initialState = {
     application:{
         username:'',
         computerName:'',
-        deviceId:null,
+        machineId:null,
         deviceUserId:null,
         loading:true,
         drawerOpen:true,
@@ -26,6 +27,9 @@ const initialState = {
         openfinVersion:'n/a',
         openfinHostSpec:{},
         windowsState:'normal',
+    },
+    client:{
+        count:0,
     }
 };
 
@@ -51,9 +55,14 @@ describe('Dashboard layout',()=>{
 
     it('render in normal state correctly by default',()=>{
         const store = mockStore(initialState);
-        const wrapper = mount(<MemoryRouter initialEntries={['/dashboard/view-one']}>
-            <Dashboard store={store} location={{pathname:'/dashboard/view-one'}}/>
-        </MemoryRouter>);
+        const wrapper = mount(
+            <Provider store={store}>
+                <MemoryRouter initialEntries={['/dashboard/view-one']}>
+                    <Dashboard store={store} location={{pathname:'/dashboard/view-one'}}/>
+                </MemoryRouter>
+            </Provider>
+
+        );
         expect(wrapper.find(ViewOne)).toHaveLength(1);
         expect(wrapper.find(Dashboard)).toHaveLength(1);
         wrapper.find(Header).props().handleDrawerToggle();
@@ -70,10 +79,11 @@ describe('Dashboard layout',()=>{
     })
 
     it('render SnackbarContent and could be closed correctly',()=>{
-        const store = mockStore({application:{
+        const store = mockStore({
+            application:{
                 username:'',
                 computerName:'',
-                deviceId:null,
+                machineId:null,
                 deviceUserId:null,
                 loading:true,
                 drawerOpen:true,
@@ -87,10 +97,18 @@ describe('Dashboard layout',()=>{
                 openfinVersion:'n/a',
                 openfinHostSpec:{},
                 windowsState:'normal',
-            }});
-        const wrapper = mount(<MemoryRouter initialEntries={['/dashboard/view-one']}>
-            <Dashboard store={store} location={{pathname:'/dashboard/view-one'}}/>
-        </MemoryRouter>);
+            },
+            client:{
+                count:0,
+            }
+        });
+        const wrapper = mount(
+            <Provider store={store}>
+                <MemoryRouter initialEntries={['/dashboard/view-one']}>
+                    <Dashboard store={store} location={{pathname:'/dashboard/view-one'}}/>
+                </MemoryRouter>
+            </Provider>
+        );
         expect(wrapper.find(ViewOne)).toHaveLength(1);
         expect(wrapper.find(Dashboard)).toHaveLength(1);
         wrapper.find(Header).props().handleDrawerToggle();

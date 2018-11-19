@@ -5,7 +5,7 @@ import { Scrollbars } from 'react-custom-scrollbars';
 
 import { WithStyles, withStyles, StyleRules } from '@material-ui/core/styles';
 
-import { Window } from '@albertli/redux-openfin';
+import { Window } from '@albertli90/redux-openfin';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';

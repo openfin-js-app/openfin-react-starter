@@ -1,11 +1,13 @@
-import { System, Window } from '@albertli/redux-openfin';
+import { System, Window } from '@albertli90/redux-openfin';
 import * as Actions from '../application/actions';
-import reducer from '../application/reducer';
+import reducerCreater from '../application/reducer';
+
+const reducer = reducerCreater();
 
 describe('Application reducer',()=>{
 
-    it('System.actions.GET_DEVICE_ID_RES reduced correctly',()=>{
-        const action:any = {type:System.actions.GET_DEVICE_ID_RES, payload:{id:'id'}};
+    it('System.actions.GET_MACHINE_ID_RES reduced correctly',()=>{
+        const action:any = {type:System.actions.GET_MACHINE_ID_RES, payload:{id:'id'}};
         expect(reducer(undefined,action)).toMatchSnapshot();
     });
 

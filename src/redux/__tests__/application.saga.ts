@@ -1,7 +1,7 @@
 import { testSaga } from 'redux-saga-test-plan';
 import { delay } from 'redux-saga';
 import { all, call, put, take, takeLatest, takeEvery, fork, select, actionChannel } from 'redux-saga/effects';
-import { System, Event, Window } from '@albertli/redux-openfin';
+import { System, Event, Window } from '@albertli90/redux-openfin';
 
 import { launchBarItems } from '../../layouts/LaunchBar/LaunchBarData';
 
@@ -16,6 +16,7 @@ import {
     APPLICATION_LAUNCH_BAR_TOGGLE,
     APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE,
     APPLICATION_LAUNCH_NEW_WINDOW,
+    configLoadFromDexie,
 } from '..';
 
 import { configUpdateNewWindowPosition } from '..';
@@ -30,6 +31,7 @@ import {
     getNewWindowHeight,
     // sub sagas
     handleApplicationLoading,
+    handleApplicationChildLoading,
     handleApplicationExit,
     handleToggleWindowState,
     handleApplicationAddNewSnackBar,
@@ -40,6 +42,7 @@ import {
 } from '../sagas/application';
 
 import applicationSaga from '../sagas/application';
+import {APPLICATION_CHILD_STARTED} from "../index";
 
 const LOADING_BANNER_WIDTH = parseInt(process.env.REACT_APP_LOADING_BANNER_WIDTH, 10);
 const LOADING_BANNER_HEIGHT = parseInt(process.env.REACT_APP_LOADING_BANNER_HEIGHT, 10);
@@ -54,6 +57,22 @@ const previousBaseWindow={
     height:null,
 };
 
+const loadingAllActions = [
+    put.resolve(configLoadFromDexie()),
+    call(System.asyncs.getMachineId,System.actions.getMachineId({})),
+    // getDeviceUserId might fail, thus use flux syntax........
+    put.resolve(System.actions.getDeviceUserId({})),
+    take(System.actions.GET_DEVICE_USER_ID_RES),
+    call(System.asyncs.getEnvironmentVariable,System.actions.getEnvironmentVariable({env:'USERNAME'})),
+    call(System.asyncs.getEnvironmentVariable,System.actions.getEnvironmentVariable({env:'computername'})),
+    call(System.asyncs.getEnvironmentVariable,System.actions.getEnvironmentVariable({env:'HOSTNAME'})),
+    call(System.asyncs.getVersion,System.actions.getVersion({})),
+    call(System.asyncs.getHostSpecs,System.actions.getHostSpecs({})),
+    call(Window.asyncs.getState,Window.actions.getState({})),
+    // delay for loading view render, could be removed
+    call(delay,5000),
+];
+
 declare const jsdom:any;
 
 describe('Application saga',()=>{
@@ -61,30 +80,18 @@ describe('Application saga',()=>{
     describe('handleApplicationLoading saga',()=>{
 
         it('current view is not loadingView',()=>{
+            const monitorRect = { left:0, right:800, top:0, bottom:600 };
+
             jsdom.reconfigure({url:'http://localhost/some-other-url'});
             expect(window.location.href.toLowerCase()).toBe('http://localhost/some-other-url');
+
             testSaga(handleApplicationLoading)
                 .next()
-                .put.resolve(Window.actions.setAsForeground({}))
+                .call(System.asyncs.getMonitorInfo,System.actions.getMonitorInfo({}))
+                .next({payload:{primaryMonitor:{monitorRect}}})
+                .call(Window.asyncs.setAsForeground,Window.actions.setAsForeground({}))
                 .next()
-                .all([
-                    put.resolve(System.actions.getDeviceId({})),
-                    take(System.actions.GET_DEVICE_ID_RES),
-                    put.resolve(System.actions.getDeviceUserId({})),
-                    take(System.actions.GET_DEVICE_USER_ID_RES),
-                    put.resolve(System.actions.getEnvironmentVariable({env:'username'})),
-                    take(System.actions.GET_ENVIRONMENT_VARIABLE_RES),
-                    put.resolve(System.actions.getEnvironmentVariable({env:'computername'})),
-                    take(System.actions.GET_ENVIRONMENT_VARIABLE_RES),
-                    put.resolve(System.actions.getVersion({})),
-                    take(System.actions.GET_VERSION_RES),
-                    put.resolve(System.actions.getHostSpecs({})),
-                    take(System.actions.GET_HOST_SPECS_RES),
-                    put.resolve(Window.actions.getState({})),
-                    take(Window.actions.GET_STATE_RES),
-                    // delay for loading view render, could be removed
-                    call(delay,5000),
-                ])
+                .all(loadingAllActions)
                 .next()
                 .put.resolve(applicationReady())
                 .next()
@@ -102,51 +109,32 @@ describe('Application saga',()=>{
 
             testSaga(handleApplicationLoading)
                 .next()
-                .put.resolve(Window.actions.setAsForeground({}))
-                .next()
-                .put.resolve(System.actions.getMonitorInfo({}))
-                .next()
-                .take(System.actions.GET_MONITOR_INFO_RES)
+                .call(System.asyncs.getMonitorInfo,System.actions.getMonitorInfo({}))
                 .next({payload:{primaryMonitor:{monitorRect}}})
-                .put.resolve(Window.actions.updateOptions({
+                .call(Window.asyncs.setAsForeground,Window.actions.setAsForeground({}))
+                .next()
+                .call(Window.asyncs.updateOptions,Window.actions.updateOptions({
                     options:{resizable:false}
                 }))
                 .next()
-                .put.resolve(Window.actions.setBounds({
+                .call(Window.asyncs.setBounds,Window.actions.setBounds({
                     left:(monitorRect.right - monitorRect.left)/2 - LOADING_BANNER_WIDTH/2,
                     top:(monitorRect.bottom - monitorRect.top)/2 - LOADING_BANNER_HEIGHT/2,
                     width:LOADING_BANNER_WIDTH,
                     height: LOADING_BANNER_HEIGHT,
                 }))
                 .next()
-                .all([
-                    put.resolve(System.actions.getDeviceId({})),
-                    take(System.actions.GET_DEVICE_ID_RES),
-                    put.resolve(System.actions.getDeviceUserId({})),
-                    take(System.actions.GET_DEVICE_USER_ID_RES),
-                    put.resolve(System.actions.getEnvironmentVariable({env:'username'})),
-                    take(System.actions.GET_ENVIRONMENT_VARIABLE_RES),
-                    put.resolve(System.actions.getEnvironmentVariable({env:'computername'})),
-                    take(System.actions.GET_ENVIRONMENT_VARIABLE_RES),
-                    put.resolve(System.actions.getVersion({})),
-                    take(System.actions.GET_VERSION_RES),
-                    put.resolve(System.actions.getHostSpecs({})),
-                    take(System.actions.GET_HOST_SPECS_RES),
-                    put.resolve(Window.actions.getState({})),
-                    take(Window.actions.GET_STATE_RES),
-                    // delay for loading view render, could be removed
-                    call(delay,5000),
-                ])
+                .all(loadingAllActions)
                 .next()
                 .put.resolve(applicationReady())
                 .next()
-                .put.resolve(Window.actions.updateOptions({
+                .call(Window.asyncs.updateOptions,Window.actions.updateOptions({
                     options:{
                         resizable:true,
                     }
                 }))
                 .next()
-                .put.resolve(Window.actions.setBounds({
+                .call(Window.asyncs.setBounds,Window.actions.setBounds({
                     left:(monitorRect.right - monitorRect.left)/2 - DEFAULT_WIDTH/2,
                     top:(monitorRect.bottom - monitorRect.top)/2 - DEFAULT_HEIGHT/2,
                     width:DEFAULT_WIDTH,
@@ -173,53 +161,32 @@ describe('Application saga',()=>{
 
             testSaga(handleApplicationLoading)
                 .next()
-                .put.resolve(Window.actions.setAsForeground({}))
-                .next()
-                .put.resolve(System.actions.getMonitorInfo({}))
-                .next()
-                .take(System.actions.GET_MONITOR_INFO_RES)
+                .call(System.asyncs.getMonitorInfo,System.actions.getMonitorInfo({}))
                 .next({payload:{primaryMonitor:{monitorRect}}})
-                .put.resolve(Window.actions.updateOptions({
+                .call(Window.asyncs.setAsForeground,Window.actions.setAsForeground({}))
+                .next()
+                .call(Window.asyncs.updateOptions,Window.actions.updateOptions({
                     options:{resizable:false}
                 }))
                 .next()
-                    .put.resolve(Window.actions.setBounds({
+                .call(Window.asyncs.setBounds,Window.actions.setBounds({
                     left:(monitorRect.right - monitorRect.left)/2 - LOADING_BANNER_WIDTH/2,
                     top:(monitorRect.bottom - monitorRect.top)/2 - LOADING_BANNER_HEIGHT/2,
                     width:LOADING_BANNER_WIDTH,
                     height: LOADING_BANNER_HEIGHT,
                 }))
                 .next()
-                .all([
-                    put.resolve(System.actions.getDeviceId({})),
-                    take(System.actions.GET_DEVICE_ID_RES),
-                    put.resolve(System.actions.getDeviceUserId({})),
-                    take(System.actions.GET_DEVICE_USER_ID_RES),
-                    put.resolve(System.actions.getEnvironmentVariable({env:'username'})),
-                    take(System.actions.GET_ENVIRONMENT_VARIABLE_RES),
-                    put.resolve(System.actions.getEnvironmentVariable({env:'computername'})),
-                    take(System.actions.GET_ENVIRONMENT_VARIABLE_RES),
-                    put.resolve(System.actions.getVersion({})),
-                    take(System.actions.GET_VERSION_RES),
-                    put.resolve(System.actions.getHostSpecs({})),
-                    take(System.actions.GET_HOST_SPECS_RES),
-                    put.resolve(Window.actions.getState({})),
-                    take(Window.actions.GET_STATE_RES),
-                    // delay for loading view render, could be removed
-                    call(delay,5000),
-                ])
+                .all(loadingAllActions)
                 .next()
                 .put.resolve(applicationReady())
                 .next()
                 .select(getLaunchBarCollapse)
                 .next(true)
-                .put.resolve(Window.actions.updateOptions({
-                    options:{
-                        resizable:false,
-                    }
+                .call(Window.asyncs.updateOptions,Window.actions.updateOptions({
+                    options:{resizable:false}
                 }))
                 .next()
-                .put.resolve(Window.actions.setBounds({
+                .call(Window.asyncs.setBounds,Window.actions.setBounds({
                     left:(monitorRect.right - monitorRect.left)/2,
                     top:(monitorRect.bottom - monitorRect.top)/4,
                     width:88,
@@ -246,53 +213,32 @@ describe('Application saga',()=>{
 
             testSaga(handleApplicationLoading)
                 .next()
-                .put.resolve(Window.actions.setAsForeground({}))
-                .next()
-                .put.resolve(System.actions.getMonitorInfo({}))
-                .next()
-                .take(System.actions.GET_MONITOR_INFO_RES)
+                .call(System.asyncs.getMonitorInfo,System.actions.getMonitorInfo({}))
                 .next({payload:{primaryMonitor:{monitorRect}}})
-                    .put.resolve(Window.actions.updateOptions({
+                .call(Window.asyncs.setAsForeground,Window.actions.setAsForeground({}))
+                .next()
+                .call(Window.asyncs.updateOptions,Window.actions.updateOptions({
                     options:{resizable:false}
                 }))
                 .next()
-                .put.resolve(Window.actions.setBounds({
+                .call(Window.asyncs.setBounds,Window.actions.setBounds({
                     left:(monitorRect.right - monitorRect.left)/2 - LOADING_BANNER_WIDTH/2,
                     top:(monitorRect.bottom - monitorRect.top)/2 - LOADING_BANNER_HEIGHT/2,
                     width:LOADING_BANNER_WIDTH,
                     height: LOADING_BANNER_HEIGHT,
                 }))
                 .next()
-                .all([
-                    put.resolve(System.actions.getDeviceId({})),
-                    take(System.actions.GET_DEVICE_ID_RES),
-                    put.resolve(System.actions.getDeviceUserId({})),
-                    take(System.actions.GET_DEVICE_USER_ID_RES),
-                    put.resolve(System.actions.getEnvironmentVariable({env:'username'})),
-                    take(System.actions.GET_ENVIRONMENT_VARIABLE_RES),
-                    put.resolve(System.actions.getEnvironmentVariable({env:'computername'})),
-                    take(System.actions.GET_ENVIRONMENT_VARIABLE_RES),
-                    put.resolve(System.actions.getVersion({})),
-                    take(System.actions.GET_VERSION_RES),
-                    put.resolve(System.actions.getHostSpecs({})),
-                    take(System.actions.GET_HOST_SPECS_RES),
-                    put.resolve(Window.actions.getState({})),
-                    take(Window.actions.GET_STATE_RES),
-                    // delay for loading view render, could be removed
-                    call(delay,5000),
-                ])
+                .all(loadingAllActions)
                 .next()
                 .put.resolve(applicationReady())
                 .next()
                 .select(getLaunchBarCollapse)
                 .next(false)
-                .put.resolve(Window.actions.updateOptions({
-                    options:{
-                        resizable:false,
-                    }
+                .call(Window.asyncs.updateOptions,Window.actions.updateOptions({
+                    options:{resizable:false}
                 }))
                 .next()
-                .put.resolve(Window.actions.setBounds({
+                .call(Window.asyncs.setBounds,Window.actions.setBounds({
                     left:(monitorRect.right - monitorRect.left)/2,
                     top:(monitorRect.bottom - monitorRect.top)/4,
                     width:launchBarItems.length<10?launchBarItems.length*64+88:664,
@@ -303,6 +249,22 @@ describe('Application saga',()=>{
         });
 
     });
+
+    describe('handleApplicationChildLoading saga',()=>{
+
+        it('basically works',()=>{
+            testSaga(handleApplicationChildLoading)
+                .next()
+                .all([
+                    put.resolve(configLoadFromDexie()),
+                ])
+                .next()
+                .put.resolve(applicationReady())
+                .next()
+                .isDone();
+        })
+
+    })
 
     describe('handleApplicationExit saga', ()=>{
         it('basically works',()=>{
@@ -370,7 +332,7 @@ describe('Application saga',()=>{
                 .next()
                 .select(getWindowState)
                 .next('maximized')
-                .put(Window.actions.restore({}))
+                .call(Window.asyncs.restore,Window.actions.restore({}))
                 .next()
                 .isDone();
         });
@@ -380,7 +342,7 @@ describe('Application saga',()=>{
                 .next()
                 .select(getWindowState)
                 .next('normal')
-                .put(Window.actions.maximize({}))
+                .call(Window.asyncs.maximize,Window.actions.maximize({}))
                 .next()
                 .isDone();
         });
@@ -404,17 +366,15 @@ describe('Application saga',()=>{
                 .next()
                 .select(getLaunchBarCollapse)
                 .next(true)
-                .put.resolve(Window.actions.getBounds({}))
-                .next()
-                .take(Window.actions.GET_BOUNDS_RES)
+                .call(Window.asyncs.getBounds,Window.actions.getBounds({}))
                 .next({payload:getBoundsActionPayload})
-                .put.resolve(Window.actions.updateOptions({
+                .call(Window.asyncs.updateOptions,Window.actions.updateOptions({
                     options:{
                         resizable:true
                     }
                 }))
                 .next()
-                .put.resolve(Window.actions.setBounds({
+                .call(Window.asyncs.setBounds,Window.actions.setBounds({
                     left:previousBaseWindow.left,
                     top:previousBaseWindow.top,
                     width:previousBaseWindow.width,
@@ -431,17 +391,15 @@ describe('Application saga',()=>{
                 .next()
                 .select(getLaunchBarCollapse)
                 .next(true)
-                .put.resolve(Window.actions.getBounds({}))
-                .next()
-                .take(Window.actions.GET_BOUNDS_RES)
+                .call(Window.asyncs.getBounds,Window.actions.getBounds({}))
                 .next({payload:getBoundsActionPayload})
-                .put.resolve(Window.actions.updateOptions({
+                .call(Window.asyncs.updateOptions,Window.actions.updateOptions({
                     options:{
                         resizable:false
                     }
                 }))
                 .next()
-                .put.resolve(Window.actions.setBounds({
+                .call(Window.asyncs.setBounds,Window.actions.setBounds({
                     left:getBoundsActionPayload.left,
                     top:getBoundsActionPayload.top,
                     width:88,
@@ -458,17 +416,15 @@ describe('Application saga',()=>{
                 .next()
                 .select(getLaunchBarCollapse)
                 .next(false)
-                .put.resolve(Window.actions.getBounds({}))
-                .next()
-                .take(Window.actions.GET_BOUNDS_RES)
+                .call(Window.asyncs.getBounds,Window.actions.getBounds({}))
                 .next({payload:getBoundsActionPayload})
-                .put.resolve(Window.actions.updateOptions({
+                .call(Window.asyncs.updateOptions,Window.actions.updateOptions({
                     options:{
                         resizable:false
                     }
                 }))
                 .next()
-                .put.resolve(Window.actions.setBounds({
+                .call(Window.asyncs.setBounds,Window.actions.setBounds({
                     left:getBoundsActionPayload.left,
                     top:getBoundsActionPayload.top,
                     width:launchBarItems.length<10? launchBarItems.length*64+88:664,
@@ -495,11 +451,9 @@ describe('Application saga',()=>{
                 .next()
                 .select(getLaunchBarCollapse)
                 .next(false)
-                .put.resolve(Window.actions.getBounds({}))
-                .next()
-                .take(Window.actions.GET_BOUNDS_RES)
+                .call(Window.asyncs.getBounds,Window.actions.getBounds({}))
                 .next({payload:getBoundsActionPayload})
-                .put.resolve(Window.actions.setBounds({
+                .call(Window.asyncs.setBounds,Window.actions.setBounds({
                     left:getBoundsActionPayload.left,
                     top:getBoundsActionPayload.top,
                     width:launchBarItems.length<10? launchBarItems.length*64+88:664,
@@ -514,11 +468,9 @@ describe('Application saga',()=>{
                 .next()
                 .select(getLaunchBarCollapse)
                 .next(true)
-                .put.resolve(Window.actions.getBounds({}))
-                .next()
-                .take(Window.actions.GET_BOUNDS_RES)
+                .call(Window.asyncs.getBounds,Window.actions.getBounds({}))
                 .next({payload:getBoundsActionPayload})
-                .put.resolve(Window.actions.setBounds({
+                .call(Window.asyncs.setBounds,Window.actions.setBounds({
                     left:getBoundsActionPayload.left,
                     top:getBoundsActionPayload.top,
                     width:88,
@@ -549,7 +501,7 @@ describe('Application saga',()=>{
                 .next(defaultTop)
                 .select(getNewWindowLeft)
                 .next(defaultLeft)
-                .put.resolve(Window.actions.newWindow(appJson))
+                .call(Window.asyncs.newWindow,Window.actions.newWindow(appJson))
                 .next()
                 .put(configUpdateNewWindowPosition())
                 .next()
@@ -570,7 +522,7 @@ describe('Application saga',()=>{
                 .next(defaultTop)
                 .select(getNewWindowLeft)
                 .next(defaultLeft)
-                .put.resolve(Window.actions.newWindow(expectedAppJson))
+                .call(Window.asyncs.newWindow,Window.actions.newWindow(expectedAppJson))
                 .next()
                 .put(configUpdateNewWindowPosition())
                 .next()
@@ -583,6 +535,8 @@ describe('Application saga',()=>{
         testSaga(applicationSaga)
             .next()
             .takeLatestEffect(APPLICATION_STARTED,handleApplicationLoading)
+            .next()
+            .takeLatestEffect(APPLICATION_CHILD_STARTED,handleApplicationChildLoading)
             .next()
             .takeLatestEffect(Event.actionDicts.windowEventDictByName['close-requested'].type,handleApplicationExit)
             .next()

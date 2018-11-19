@@ -1,5 +1,7 @@
-import { testSaga } from 'redux-saga-test-plan';
-import {put, select, take, takeLatest,} from 'redux-saga/effects';
+import { delay } from 'redux-saga';
+import { testSaga,expectSaga } from 'redux-saga-test-plan';
+import * as matchers from 'redux-saga-test-plan/matchers'
+import {call, put, select, take, takeEvery, takeLatest,} from 'redux-saga/effects';
 
 import {
     CONFIG_UPDATE_NEW_WINDOW_POSITION,
@@ -7,7 +9,7 @@ import {
     configUpdateNewWindowPositionResetLeft,
     configUpdateNewWindowPositionResetTop,
 } from '..';
-import {System, Window} from "@albertli/redux-openfin";
+import {System, Window} from "@albertli90/redux-openfin";
 
 import {
     // selectors
@@ -16,12 +18,64 @@ import {
     getNewWindowWidth,
     getNewWindowHeight,
     // sub sagas
-    handleConfigUpdateNewWindowPosition
+    handleConfigUpdateNewWindowPosition,
+    handleConfigLoadFromDexie,
+    handleConfigUpdateOneField,
+    handleConfigUpdateOneFieldInDexie
 } from '../sagas/config';
 
 import configSaga from '../sagas/config';
+import {
+    CONFIG_DO_UPDATE_ONE_FIELD_IN_DEXIE, CONFIG_LOAD_FROM_DEXIE, CONFIG_UPDATE_ONE_FIELD,
+    configDoUpdateOneField
+} from "..";
+import {findAll,saveOrUpdateOneByTabNameFieldName} from "../../dexie/configDao";
+import {configDoUpdateOneFieldInDexie} from "../index";
+
+jest.mock('../../dexie/db');
 
 describe('Config saga',()=>{
+
+    describe('handleConfigLoadFromDexie saga',()=>{
+        it('it basically works',()=>{
+
+            testSaga(handleConfigLoadFromDexie)
+                .next()
+                .call(findAll)
+                .next([{tabName:'tabName',fieldName:'fieldName',value:'value'}])
+                .put(configDoUpdateOneField({
+                    tabName:'tabName',fieldName:'fieldName',value:'value'
+                }))
+                .next()
+                .isDone();
+        })
+    });
+
+    describe('handleConfigUpdateOneField saga',()=>{
+        it('it basically works',()=>{
+
+            testSaga(handleConfigUpdateOneField,{payload:{name:'tabName.fieldName',value:'value'}})
+                .next()
+                .put.resolve(configDoUpdateOneField({
+                    tabName:'tabName',fieldName:'fieldName',value:'value'
+                }))
+                .next()
+                .put(configDoUpdateOneFieldInDexie({
+                    tabName:'tabName',fieldName:'fieldName',value:'value'
+                }))
+                .next()
+                .isDone();
+        })
+    });
+
+    describe('handleConfigUpdateOneFieldInDexie saga',()=>{
+        it('it basically works',()=>{
+            expectSaga(handleConfigUpdateOneFieldInDexie,{payload:{tabName:'tabName',fieldName:'fieldName',value:'value'}})
+                .call(saveOrUpdateOneByTabNameFieldName,'tabName','fieldName','value')
+                .delay(800)
+                .run();
+        })
+    });
 
     describe('handleConfigUpdateNewWindowPosition saga',()=>{
         it('add delta to new win pos',()=>{
@@ -42,9 +96,7 @@ describe('Config saga',()=>{
                 .next(newWinTop)
                 .select(getNewWindowLeft)
                 .next(newWinLeft)
-                .put.resolve(System.actions.getMonitorInfo({}))
-                .next()
-                .take(System.actions.GET_MONITOR_INFO_RES)
+                .call(System.asyncs.getMonitorInfo,System.actions.getMonitorInfo({}))
                 .next({payload:{ virtualScreen }})
                 .put.resolve(configUpdateNewWindowPositionAddDelta())
                 .next()
@@ -68,9 +120,7 @@ describe('Config saga',()=>{
                 .next(newWinTop)
                 .select(getNewWindowLeft)
                 .next(newWinLeft)
-                .put.resolve(System.actions.getMonitorInfo({}))
-                .next()
-                .take(System.actions.GET_MONITOR_INFO_RES)
+                .call(System.asyncs.getMonitorInfo,System.actions.getMonitorInfo({}))
                 .next({payload:{ virtualScreen }})
                 .put.resolve(configUpdateNewWindowPositionResetLeft())
                 .next()
@@ -94,9 +144,7 @@ describe('Config saga',()=>{
                 .next(newWinTop)
                 .select(getNewWindowLeft)
                 .next(newWinLeft)
-                .put.resolve(System.actions.getMonitorInfo({}))
-                .next()
-                .take(System.actions.GET_MONITOR_INFO_RES)
+                .call(System.asyncs.getMonitorInfo,System.actions.getMonitorInfo({}))
                 .next({payload:{ virtualScreen }})
                 .put.resolve(configUpdateNewWindowPositionResetTop())
                 .next()
@@ -106,6 +154,12 @@ describe('Config saga',()=>{
 
     it('default function register all event',()=>{
         testSaga(configSaga)
+            .next()
+            .takeEveryEffect(CONFIG_LOAD_FROM_DEXIE, handleConfigLoadFromDexie)
+            .next()
+            .takeEveryEffect(CONFIG_UPDATE_ONE_FIELD, handleConfigUpdateOneField)
+            .next()
+            .takeLatestEffect(CONFIG_DO_UPDATE_ONE_FIELD_IN_DEXIE, handleConfigUpdateOneFieldInDexie)
             .next()
             .takeLatestEffect(CONFIG_UPDATE_NEW_WINDOW_POSITION,handleConfigUpdateNewWindowPosition)
             .next()

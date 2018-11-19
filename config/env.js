@@ -7,21 +7,21 @@ const paths = require('./paths');
 // Make sure that including paths.js after env.js will read .env variables.
 delete require.cache[require.resolve('./paths')];
 
-const NODE_ENV = process.env.NODE_ENV;
-if (!NODE_ENV) {
+const REACT_APP_ENV = process.env.REACT_APP_ENV;
+if (!REACT_APP_ENV) {
     throw new Error(
-        'The NODE_ENV environment variable is required but was not specified.'
+        'The REACT_APP_ENV environment variable is required but was not specified.'
     );
 }
 
 // https://github.com/bkeepers/dotenv#what-other-env-files-can-i-use
 var dotenvFiles = [
-    `${paths.dotenv}.${NODE_ENV}.local`,
-    `${paths.dotenv}.${NODE_ENV}`,
+    `${paths.dotenv}.${REACT_APP_ENV}.local`,
+    `${paths.dotenv}.${REACT_APP_ENV}`,
     // Don't include `.env.local` for `test` environment
     // since normally you expect tests to produce the same
     // results for everyone
-    NODE_ENV !== 'test' && `${paths.dotenv}.local`,
+    REACT_APP_ENV !== 'test' && `${paths.dotenv}.local`,
     paths.dotenv,
 ].filter(Boolean);
 

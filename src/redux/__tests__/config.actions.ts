@@ -17,9 +17,9 @@ describe('Config actions',()=>{
         expect(store.getActions()).toMatchSnapshot();
     });
 
-    it('configUpdateOneField created and dispatched correctly',()=>{
-        store.dispatch(Actions.configUpdateOneField({
-            name:'name', value:'value',
+    it('configDoUpdateOneField created and dispatched correctly',()=>{
+        store.dispatch(Actions.configDoUpdateOneField({
+            tabName:'tabName', fieldName:'fieldName', value:'value',
         }));
         expect(store.getActions()).toMatchSnapshot();
     });
@@ -27,6 +27,25 @@ describe('Config actions',()=>{
     it('configUpdateGlobalFilterStr created and dispatched correctly',()=>{
         store.dispatch(Actions.configUpdateGlobalFilterStr({
             configGlobalFilterString:'configGlobalFilterString',
+        }));
+        expect(store.getActions()).toMatchSnapshot();
+    });
+
+    it('configLoadFromDexie created and dispatched correctly',()=>{
+        store.dispatch(Actions.configLoadFromDexie());
+        expect(store.getActions()).toMatchSnapshot();
+    });
+
+    it('configDoUpdateOneFieldInDexie created and dispatched correctly',()=>{
+        store.dispatch(Actions.configDoUpdateOneFieldInDexie({
+            tabName:'tabName', fieldName:'fieldName', value:'value',
+        }));
+        expect(store.getActions()).toMatchSnapshot();
+    });
+
+    it('configUpdateOneField created and dispatched correctly',()=>{
+        store.dispatch(Actions.configUpdateOneField({
+            name:'name', value:'value',
         }));
         expect(store.getActions()).toMatchSnapshot();
     });

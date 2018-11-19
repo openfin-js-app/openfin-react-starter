@@ -1,5 +1,7 @@
 import * as Actions from '../config/actions';
-import reducer from '../config/reducer';
+import reducerCreator from '../config/reducer';
+
+const reducer = reducerCreator();
 
 describe('Config reducer',()=>{
 
@@ -15,18 +17,9 @@ describe('Config reducer',()=>{
         expect(reducer(undefined,action)).toMatchSnapshot();
     });
 
-    it('CONFIG_UPDATE_ONE_FIELD reduced correctly - valid',()=>{
-        const action:any = Actions.configUpdateOneField({
-            name:'sample.name',
-            value:'sampleVal',
-        });
-        expect(reducer(undefined,action)).toMatchSnapshot();
-    });
-
-    it('CONFIG_UPDATE_ONE_FIELD reduced correctly - invalid',()=>{
-        const action:any = Actions.configUpdateOneField({
-            name:'sample_name',
-            value:'sampleVal',
+    it('CONFIG_DO_UPDATE_ONE_FIELD reduced correctly - valid',()=>{
+        const action:any = Actions.configDoUpdateOneField({
+            tabName:'tabName', fieldName:'fieldName', value:'value',
         });
         expect(reducer(undefined,action)).toMatchSnapshot();
     });

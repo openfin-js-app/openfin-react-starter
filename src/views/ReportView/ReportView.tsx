@@ -12,7 +12,7 @@ import { reportViewStyle as style } from '../../assets/jss/openfin-starter';
 interface IProps extends WithStyles<typeof style>{
     username:string,
     computerName:string,
-    deviceId:string,
+    machineId:string,
     deviceUserId:string,
     version:string,
     hostSpec:any,
@@ -22,7 +22,7 @@ class ReportView extends React.Component<IProps,{}>{
     render (){
         const {
             classes,
-            username, computerName, deviceId, deviceUserId,
+            username, computerName, machineId, deviceUserId,
             version, hostSpec,
         } = this.props;
 
@@ -35,7 +35,7 @@ class ReportView extends React.Component<IProps,{}>{
                         Openfin {version} - {username} @ {computerName}
                     </Typography>
                     <Typography variant={"body1"}>
-                        DeviceId:{deviceId}
+                        MachineId:{machineId}
                     </Typography>
                     <Typography variant={"body2"}>
                         DeviceUserId:{deviceUserId}
@@ -51,7 +51,7 @@ export default connect(
     (state:any)=>({
         username:state.application.username,
         computerName:state.application.computerName,
-        deviceId:state.application.deviceId,
+        machineId:state.application.machineId,
         deviceUserId:state.application.deviceUserId,
         version:state.application.openfinVersion,
         hostSpec:state.application.openfinHostSpec,

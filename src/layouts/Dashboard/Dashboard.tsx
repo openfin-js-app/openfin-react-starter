@@ -7,7 +7,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 
 import { WithStyles, withStyles } from '@material-ui/core/styles';
 
-import { Window } from '@albertli/redux-openfin';
+import { Window } from '@albertli90/redux-openfin';
 
 import {
     // acitons
@@ -79,7 +79,7 @@ class DashbardLayout extends React.Component<IProps,{}>{
                 onClose = {handleClose}
                 {...rest}
             />
-            <div className={cx(classes.wrapper, classes.wrapperPrimary)}>
+            <div className={cx(classes.wrapper, 'primary-top-to-bottom')}>
                 <Sidebar
                     routes={dashboardRoutes}
                     open={drawerOpen}

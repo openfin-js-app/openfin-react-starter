@@ -58,7 +58,7 @@ const appStyle:any = (theme:any) => ({
     content:{
         position:'relative',
         marginTop:"0px",
-        padding:"0px",
+        padding:"0px 4px",
         height:"100%",
         overflowX:'hidden',
     },

@@ -20,6 +20,7 @@
   "rules": {
     "curly": false,
     "no-console": false,
+    "no-construct":false,
     "no-shadowed-variable": false,
     "no-var-requires": false,
     "member-access": false,

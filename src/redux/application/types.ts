@@ -21,7 +21,7 @@ export interface ISnackBarMsg {
 export interface IApplicationState {
     username:string;
     computerName:string;
-    deviceId:string;
+    machineId:string;
     deviceUserId:string;
     loading:boolean;
     drawerOpen:boolean;

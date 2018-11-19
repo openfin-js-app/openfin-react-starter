@@ -15,6 +15,7 @@ import {
 const sidebarStyle:any = (theme:any) => ({
     drawerPaper:{
         border:"none",
+        backgroundColor:'transparent',
         position:"fixed",
         top: appbarHeight +4,
         bottom:0,
@@ -23,12 +24,11 @@ const sidebarStyle:any = (theme:any) => ({
         ...boxShadow,
         width:drawerWidth,
         height:"100%",
-        borderLeft:`4px solid ${primaryColor}`,
+        borderLeft:`4px solid transparent`,
     },
     background:{
         position:"absolute",
         zIndex:"1",
-        borderBottom:`4px solid ${primaryColor}`,
         height: "calc(100% - 15px)",
         width: "100%",
         display:"block",
@@ -146,7 +146,7 @@ const sidebarStyle:any = (theme:any) => ({
         position: "relative",
         height: "calc(100% - 75px)",
         overflow: "auto",
-        width: drawerWidth,
+        width: drawerWidth-4,
         zIndex: "4",
         overflowScrolling: "touch"
     },

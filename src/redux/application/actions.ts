@@ -2,11 +2,13 @@ import { createAction, ActionFunctionAny, Action } from 'redux-actions';
 import { IApplicationNewSnackbarOption, IApplicationSetSnackbarStatusOption, IApplicationCloseSnackBarOption } from './types';
 
 export const APPLICATION_STARTED:string = 'APPLICATION_STARTED';
+export const APPLICATION_CHILD_STARTED:string = 'APPLICATION_CHILD_STARTED';
 export const APPLICATION_READY:string = 'APPLICATION_READY';
 export const APPLICATION_DRAWER_TOGGLE:string = 'APPLICATION_DRAWER_TOGGLE';
 export const APPLICATION_TOGGLE_WINDOW_STATE:string = 'APPLICATION_TOGGLE_WINDOW_STATE';
 
 export const applicationStarted:ActionFunctionAny<Action<void>> = createAction(APPLICATION_STARTED);
+export const applicationChildStarted:ActionFunctionAny<Action<void>> = createAction(APPLICATION_CHILD_STARTED);
 export const applicationReady:ActionFunctionAny<Action<void>> = createAction(APPLICATION_READY);
 export const applicationDrawerToggle:ActionFunctionAny<Action<void>> = createAction(APPLICATION_DRAWER_TOGGLE);
 export const applicationToogleWindowState:ActionFunctionAny<Action<void>> = createAction(APPLICATION_TOGGLE_WINDOW_STATE);

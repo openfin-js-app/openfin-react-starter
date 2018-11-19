@@ -17,6 +17,11 @@ describe('Application actions',()=>{
         expect(store.getActions()).toMatchSnapshot();
     });
 
+    it('applicationChildStarted created and dispatched correctly',()=>{
+        store.dispatch(Actions.applicationChildStarted());
+        expect(store.getActions()).toMatchSnapshot();
+    });
+
     it('applicationReady created and dispatched correctly',()=>{
         store.dispatch(Actions.applicationReady());
         expect(store.getActions()).toMatchSnapshot();

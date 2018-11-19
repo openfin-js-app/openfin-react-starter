@@ -79,7 +79,7 @@ class SidebarComp extends React.Component<IProps,{}>{
                 ):null}
                 <Typography
                     className={cx(classes.releaseTypo, classes.whiteFont)}
-                    variant={"caption"} gutterBottom align={"right"}
+                    variant={"body2"} gutterBottom align={"right"}
                 >
                     {process.env.REACT_APP_VERSION}
                 </Typography>

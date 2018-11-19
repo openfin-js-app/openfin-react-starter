@@ -10,10 +10,7 @@ Array [
   },
   Object {
     "error": false,
-    "payload": Object {
-      "callback": [Function],
-      "errorCallback": [Function],
-    },
+    "payload": Object {},
     "type": "REDUX_OPENFIN::MINIMIZE",
   },
   Object {
@@ -22,8 +19,6 @@ Array [
   Object {
     "error": false,
     "payload": Object {
-      "callback": [Function],
-      "errorCallback": [Function],
       "force": false,
     },
     "type": "REDUX_OPENFIN::CLOSE",
@@ -47,10 +42,7 @@ Array [
   },
   Object {
     "error": false,
-    "payload": Object {
-      "callback": [Function],
-      "errorCallback": [Function],
-    },
+    "payload": Object {},
     "type": "REDUX_OPENFIN::MINIMIZE",
   },
   Object {
@@ -59,8 +51,6 @@ Array [
   Object {
     "error": false,
     "payload": Object {
-      "callback": [Function],
-      "errorCallback": [Function],
       "force": false,
     },
     "type": "REDUX_OPENFIN::CLOSE",
