@@ -5,13 +5,15 @@ Openfin react starer in ts
 
 * Based on create-react-app structure
 * Integrate Jest and Enzyme test framework
-* Integrate Material-UI@ 1.5.0
+* Integrate Material-UI@3.5.1
 * Support basic frameless window features: move, minimize, maximize, close and resize
 * Support general sidebar
 * Support general primary/success/error/info/warning snackbar
 * Support spawn a child window
 * Version tag injected via dotenv
 * Support general app config
+* Support cross window redux-action communication
+* Support IndexDB based client side config
 
 ```text
 .
@@ -22,13 +24,13 @@ Openfin react starer in ts
 │   │   ├── babelTransform.js
 │   │   ├── cssTransform.js
 │   │   ├── fileTransform.js
-│   │   ├── graphqlTransform.js
 │   │   └── setupTests.js
 │   ├── paths.js
 │   ├── polyfills.js
 │   ├── webpack.config.dev.js
 │   ├── webpack.config.prod.js
 │   └── webpackDevServer.config.js
+├── custom.d.ts
 ├── LICENSE.md
 ├── openfin
 │   ├── app.development.json
@@ -60,6 +62,7 @@ Openfin react starer in ts
 │   ├── start.openfin.js
 │   └── test.js
 ├── src
+│   ├── App.spec.tsx
 │   ├── App.tsx
 │   ├── assets
 │   │   ├── css
@@ -93,29 +96,68 @@ Openfin react starer in ts
 │   │           ├── controls_dark.svg
 │   │           └── controls.svg
 │   ├── components
+│   │   ├── client
+│   │   │   └── ClientCounter.tsx
 │   │   ├── ConfigComp
-│   │   │   └── ConfigField.tsx
+│   │   │   ├── ConfigField.spec.tsx
+│   │   │   ├── ConfigField.tsx
+│   │   │   └── __snapshots__
+│   │   │       └── ConfigField.spec.tsx.snap
 │   │   ├── Header
+│   │   │   ├── HeaderLinks.spec.tsx
 │   │   │   ├── HeaderLinks.tsx
-│   │   │   └── Header.tsx
+│   │   │   ├── Header.spec.tsx
+│   │   │   ├── Header.tsx
+│   │   │   └── __snapshots__
+│   │   │       ├── HeaderLinks.spec.tsx.snap
+│   │   │       └── Header.spec.tsx.snap
 │   │   ├── index.ts
 │   │   ├── Sidebar
-│   │   │   └── Sidebar.tsx
+│   │   │   ├── Sidebar.spec.tsx
+│   │   │   ├── Sidebar.tsx
+│   │   │   └── __snapshots__
+│   │   │       └── Sidebar.spec.tsx.snap
 │   │   └── Snackbar
-│   │       └── MySnackbarContent.tsx
+│   │       ├── MySnackbarContent.spec.tsx
+│   │       ├── MySnackbarContent.tsx
+│   │       └── __snapshots__
+│   │           └── MySnackbarContent.spec.tsx.snap
+│   ├── dexie
+│   │   ├── configDao.spec.ts
+│   │   ├── configDao.ts
+│   │   ├── db.spec.ts
+│   │   ├── db.ts
+│   │   ├── __mocks__
+│   │   │   └── db.ts
+│   │   └── __snapshots__
+│   │       └── configDao.spec.ts.snap
 │   ├── index.tsx
 │   ├── layouts
 │   │   ├── ChildWindow
-│   │   │   └── ChildWindow.tsx
+│   │   │   ├── ChildWindow.spec.tsx
+│   │   │   ├── ChildWindow.tsx
+│   │   │   └── __snapshots__
+│   │   │       └── ChildWindow.spec.tsx.snap
 │   │   ├── Dashboard
-│   │   │   └── Dashboard.tsx
+│   │   │   ├── Dashboard.spec.tsx
+│   │   │   ├── Dashboard.tsx
+│   │   │   └── __snapshots__
+│   │   │       └── Dashboard.spec.tsx.snap
 │   │   ├── LaunchBar
 │   │   │   ├── LaunchBarData.tsx
-│   │   │   └── LaunchBar.tsx
+│   │   │   ├── LaunchBar.spec.tsx
+│   │   │   ├── LaunchBar.tsx
+│   │   │   └── __snapshots__
+│   │   │       └── LaunchBar.spec.tsx.snap
 │   │   └── Loading
+│   │       ├── Loading.spec.tsx
 │   │       └── Loading.tsx
 │   ├── redux
 │   │   ├── application
+│   │   │   ├── actions.ts
+│   │   │   ├── reducer.ts
+│   │   │   └── types.ts
+│   │   ├── client
 │   │   │   ├── actions.ts
 │   │   │   ├── reducer.ts
 │   │   │   └── types.ts
@@ -125,10 +167,25 @@ Openfin react starer in ts
 │   │   │   ├── reducer.ts
 │   │   │   └── types.ts
 │   │   ├── index.ts
-│   │   └── sagas
-│   │       ├── application.ts
-│   │       ├── config.ts
-│   │       └── index.ts
+│   │   ├── sagas
+│   │   │   ├── application.ts
+│   │   │   ├── client.ts
+│   │   │   ├── config.ts
+│   │   │   └── index.ts
+│   │   └── __tests__
+│   │       ├── application.actions.ts
+│   │       ├── application.reducer.ts
+│   │       ├── application.saga.ts
+│   │       ├── client.saga.ts
+│   │       ├── config.actions.ts
+│   │       ├── config.reducer.ts
+│   │       ├── config.saga.ts
+│   │       ├── index.saga.ts
+│   │       └── __snapshots__
+│   │           ├── application.actions.ts.snap
+│   │           ├── application.reducer.ts.snap
+│   │           ├── config.actions.ts.snap
+│   │           └── config.reducer.ts.snap
 │   ├── routes
 │   │   ├── Base.ts
 │   │   ├── ChildWindow.ts
@@ -140,29 +197,42 @@ Openfin react starer in ts
 │   │   ├── configureStore.ts
 │   │   ├── history.ts
 │   │   ├── noop.ts
-│   │   └── setPlatformClass.ts
+│   │   ├── setPlatformClass.ts
+│   │   └── __tests__
+│   │       ├── configureStore.spec.ts
+│   │       ├── noop.spec.ts
+│   │       └── setPlatformClass.spec.ts
 │   └── views
 │       ├── Accessibility
 │       │   ├── Accessibility.spec.tsx
 │       │   └── Accessibility.tsx
 │       ├── ConfigView
+│       │   ├── ConfigJson.spec.tsx
 │       │   ├── ConfigJson.tsx
+│       │   ├── ConfigView.spec.tsx
 │       │   └── ConfigView.tsx
 │       ├── ReportView
+│       │   ├── ReportView.spec.tsx
 │       │   └── ReportView.tsx
 │       ├── ViewOne
+│       │   ├── __snapshots__
+│       │   │   └── ViewOne.spec.tsx.snap
+│       │   ├── ViewOne.spec.tsx
 │       │   └── ViewOne.tsx
 │       └── ViewTwo
+│           ├── __snapshots__
+│           │   └── ViewTwo.spec.tsx.snap
+│           ├── ViewTwo.spec.tsx
 │           └── ViewTwo.tsx
 ├── tsconfig.json
 └── tslint.json
 
-39 directories, 103 files
+56 directories, 153 files
 
 ```
 
 [LICENSE]: ./LICENSE.md
 [CHANGELOG]: ./CHANGELOG.md
 
-[version-badge]: https://img.shields.io/badge/version-0.10.6-blue.svg
+[version-badge]: https://img.shields.io/badge/version-0.20.10-blue.svg
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg
