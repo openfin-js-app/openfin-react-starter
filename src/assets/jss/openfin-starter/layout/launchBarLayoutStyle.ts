@@ -56,6 +56,7 @@ const launchBarStyle:any = (theme:any) => ({
         width:'16px',
         height:'16px',
         minHeight:'16px',
+        borderRadius:'4px',
         '& $svg':{
             width:'16px',
             height:'16px',
