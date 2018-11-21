@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 
 import { WithStyles, withStyles, createStyles } from '@material-ui/core/styles';
 
-import { applicationNewSnackbar, applicationLaunchNewWindow } from '../../redux';
+import { applicationNewSnackbar, applicationLaunchNewWindow } from '../../reduxs';
 
 import { buttonStyle } from '../../assets/jss/openfin-starter';
 

@@ -1,6 +1,6 @@
 import Dexie from 'dexie';
 
-import { IConfigDexie } from '../redux';
+import { IConfigDexie } from '../reduxs';
 
 class OpenfinReactDatabase extends Dexie{
     configs:Dexie.Table<IConfigDexie,number>;

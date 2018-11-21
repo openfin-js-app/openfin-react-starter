@@ -4,7 +4,7 @@ import indexedDB from 'fake-indexeddb';
 Dexie.dependencies.indexedDB = indexedDB;
 Dexie.dependencies.IDBKeyRange = require('fake-indexeddb/lib/FDBKeyRange');
 
-import { IConfigDexie } from '../../redux';
+import { IConfigDexie } from '../../reduxs';
 
 class OpenfinReactDatabase extends Dexie{
     configs:Dexie.Table<IConfigDexie,number>;

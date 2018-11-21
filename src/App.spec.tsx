@@ -5,7 +5,7 @@ import configurestore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router-dom';
 import toJson from 'enzyme-to-json';
 
-import { rootDefaultState } from './redux';
+import { rootDefaultState } from './reduxs';
 
 import App from './App';
 

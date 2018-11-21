@@ -4,7 +4,7 @@ import configurestore from 'redux-mock-store';
 
 import ConfigJson from './ConfigJson';
 
-import { defaultState } from '../../redux/config/reducer';
+import { defaultState } from '../../reduxs/config/reducer';
 
 const mockStore = configurestore();
 const initialState = {

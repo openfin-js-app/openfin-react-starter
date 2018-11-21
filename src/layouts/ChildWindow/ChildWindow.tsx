@@ -13,7 +13,7 @@ import {
     applicationCloseSnackbar,
     // types
     IRootState,ISnackBarMsg,
-} from '../../redux';
+} from '../../reduxs';
 
 
 import childWindowRoutes from '../../routes/ChildWindow';

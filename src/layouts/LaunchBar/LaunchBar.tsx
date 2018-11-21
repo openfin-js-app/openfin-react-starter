@@ -27,7 +27,7 @@ import {
     applicationLaunchBarToggle, applicationLaunchBarToggleCollapse, applicationLaunchNewWindow,
     // types
     IRootState,
-} from '../../redux';
+} from '../../reduxs';
 
 import { launchBarItems } from './LaunchBarData';
 
