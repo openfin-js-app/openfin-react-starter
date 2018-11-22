@@ -22,7 +22,7 @@ interface IProps extends WithStyles<any> {
     routes:RouteItem[],
     color:string,
     open?:boolean,
-    windowState:string,
+    windowsState:string,
     handleDrawerToggle?:MouseEventHandler<any>,
     onSwitchToLaunchBar:MouseEventHandler<any>,
     onMinimize:MouseEventHandler<any>,
@@ -38,7 +38,7 @@ class HeaderComp extends React.Component<IProps,{}>{
     render(){
 
         const {
-            classes, color, windowState,
+            classes, color, windowsState,
             handleDrawerToggle,
             onSwitchToLaunchBar, onMinimize, onMaximize, onClose,
         } = this.props;
@@ -73,7 +73,7 @@ class HeaderComp extends React.Component<IProps,{}>{
                     </Button>
                 </div>
                 <HeaderLinks
-                    windowState={windowState}
+                    windowsState={windowsState}
                     onSwitchToLaunchBar={onSwitchToLaunchBar}
                     onMinimize={onMinimize}
                     onMaximize={onMaximize}

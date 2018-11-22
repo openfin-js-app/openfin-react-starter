@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@albertli90/openfin-browser-adapter": "^0.20.11",
-    "@albertli90/redux-openfin": "^0.20.10",
+    "@albertli90/redux-openfin": "^0.20.11",
     "@babel/core": "7.1.2",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/plugin-proposal-decorators": "^7.1.2",

@@ -27,7 +27,6 @@ exports[`Header comp renders correctly when sidebar closed 1`] = `
       onMaximize={[MockFunction]}
       onMinimize={[MockFunction]}
       onSwitchToLaunchBar={[MockFunction]}
-      windowState="normal"
     />
   </WithStyles(Toolbar)>
 </WithStyles(AppBar)>
@@ -60,7 +59,6 @@ exports[`Header comp renders correctly when sidebar opened 1`] = `
       onMaximize={[MockFunction]}
       onMinimize={[MockFunction]}
       onSwitchToLaunchBar={[MockFunction]}
-      windowState="normal"
     />
   </WithStyles(Toolbar)>
 </WithStyles(AppBar)>

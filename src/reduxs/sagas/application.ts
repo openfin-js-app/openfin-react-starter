@@ -39,7 +39,7 @@ const previousBaseWindow={
 };
 
 export const getLaunchBarCollapse = state => state.application.launchBarCollapse;
-export const getWindowState = state => state.application.windowState;
+export const getWindowsState = state => state.application.windowsState;
 export const getNewWindowTop = state => state.config.application.newWinTop;
 export const getNewWindowLeft = state => state.config.application.newWinLeft;
 export const getNewWindowWidth = state => state.config.application.newWinWidth;
@@ -189,7 +189,7 @@ export function* handleApplicationCloseSnackBar(action) {
 }
 
 export function* handleToggleWindowState(){
-    const windowState = yield select(getWindowState);
+    const windowState = yield select(getWindowsState);
     if (windowState === 'maximized'){
         yield call(Window.asyncs.restore,Window.actions.restore({}));
     }else if (windowState === 'normal'){

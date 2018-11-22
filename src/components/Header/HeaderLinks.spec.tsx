@@ -25,7 +25,7 @@ describe('HeaderLinks comp',()=>{
     it('renders correctly by default',()=>{
 
         const wrapper = shallow(<HeaderLinks
-            windowState={'normal'}
+            windowsState={'normal'}
             onSwitchToLaunchBar={jest.fn()}
             onMinimize={jest.fn()}
             onMaximize={jest.fn()}

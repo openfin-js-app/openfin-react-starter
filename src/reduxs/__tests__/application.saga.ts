@@ -25,7 +25,7 @@ import { configUpdateNewWindowPosition } from '..';
 import {
     // selectors
     getLaunchBarCollapse,
-    getWindowState,
+    getWindowsState,
     getNewWindowTop,
     getNewWindowLeft,
     getNewWindowHeight,
@@ -330,7 +330,7 @@ describe('Application saga',()=>{
         it('windowState equals maximized',()=>{
             testSaga(handleToggleWindowState)
                 .next()
-                .select(getWindowState)
+                .select(getWindowsState)
                 .next('maximized')
                 .call(Window.asyncs.restore,Window.actions.restore({}))
                 .next()
@@ -340,7 +340,7 @@ describe('Application saga',()=>{
         it('windowState equals normal',()=>{
             testSaga(handleToggleWindowState)
                 .next()
-                .select(getWindowState)
+                .select(getWindowsState)
                 .next('normal')
                 .call(Window.asyncs.maximize,Window.actions.maximize({}))
                 .next()
