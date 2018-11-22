@@ -99,7 +99,15 @@ describe('Application saga',()=>{
         });
 
         it('current is loadingView and redirect to default view url',()=>{
+
             const monitorRect = { left:0, right:800, top:0, bottom:600 };
+
+            const WINDOW_WIDTH              = monitorRect.right - monitorRect.left;
+            const WINDOW_HEIGHT             = monitorRect.bottom - monitorRect.top;
+            const _LOADING_BANNER_WIDTH     = Math.min( LOADING_BANNER_WIDTH, WINDOW_WIDTH * 0.6387 );
+            const _LOADING_BANNER_HEIGHT    = Math.min( LOADING_BANNER_HEIGHT, WINDOW_HEIGHT * 0.324074 );
+            const _DEFAULT_WIDTH            = Math.min( DEFAULT_WIDTH, WINDOW_WIDTH * 0.80 );
+            const _DEFAULT_HEIGHT           = Math.min( DEFAULT_HEIGHT, WINDOW_HEIGHT * 0.648148 );
 
             jsdom.reconfigure({url:'http://localhost/loading'});
             expect(window.location.href.toLowerCase()).toBe('http://localhost/loading');
@@ -118,10 +126,10 @@ describe('Application saga',()=>{
                 }))
                 .next()
                 .call(Window.asyncs.setBounds,Window.actions.setBounds({
-                    left:(monitorRect.right - monitorRect.left)/2 - LOADING_BANNER_WIDTH/2,
-                    top:(monitorRect.bottom - monitorRect.top)/2 - LOADING_BANNER_HEIGHT/2,
-                    width:LOADING_BANNER_WIDTH,
-                    height: LOADING_BANNER_HEIGHT,
+                    left:(monitorRect.right - monitorRect.left)/2 - _LOADING_BANNER_WIDTH/2,
+                    top:(monitorRect.bottom - monitorRect.top)/2 - _LOADING_BANNER_HEIGHT/2,
+                    width:_LOADING_BANNER_WIDTH,
+                    height: _LOADING_BANNER_HEIGHT,
                 }))
                 .next()
                 .all(loadingAllActions)
@@ -135,10 +143,10 @@ describe('Application saga',()=>{
                 }))
                 .next()
                 .call(Window.asyncs.setBounds,Window.actions.setBounds({
-                    left:(monitorRect.right - monitorRect.left)/2 - DEFAULT_WIDTH/2,
-                    top:(monitorRect.bottom - monitorRect.top)/2 - DEFAULT_HEIGHT/2,
-                    width:DEFAULT_WIDTH,
-                    height: DEFAULT_HEIGHT,
+                    left:(monitorRect.right - monitorRect.left)/2 - _DEFAULT_WIDTH/2,
+                    top:(monitorRect.bottom - monitorRect.top)/2 - _DEFAULT_HEIGHT/2,
+                    width:_DEFAULT_WIDTH,
+                    height: _DEFAULT_HEIGHT,
                 }))
                 .next()
                 .isDone();
@@ -147,6 +155,13 @@ describe('Application saga',()=>{
         it('current is loadingView and redirect to collapsed launchBar',()=>{
             const monitorRect = { left:0, right:800, top:0, bottom:600 };
 
+            const WINDOW_WIDTH              = monitorRect.right - monitorRect.left;
+            const WINDOW_HEIGHT             = monitorRect.bottom - monitorRect.top;
+            const _LOADING_BANNER_WIDTH     = Math.min( LOADING_BANNER_WIDTH, WINDOW_WIDTH * 0.6387 );
+            const _LOADING_BANNER_HEIGHT    = Math.min( LOADING_BANNER_HEIGHT, WINDOW_HEIGHT * 0.324074 );
+            const _DEFAULT_WIDTH            = Math.min( DEFAULT_WIDTH, WINDOW_WIDTH * 0.80 );
+            const _DEFAULT_HEIGHT           = Math.min( DEFAULT_HEIGHT, WINDOW_HEIGHT * 0.648148 );
+
             jsdom.reconfigure({url:'http://localhost/loading'});
             expect(window.location.href.toLowerCase()).toBe('http://localhost/loading');
 
@@ -154,10 +169,10 @@ describe('Application saga',()=>{
             expect(process.env.REACT_APP_DEFAULT_VIEW_URL && process.env.REACT_APP_DEFAULT_VIEW_URL.length > 0).toBeFalsy();
 
             previousBaseWindow.url='/dashboard/view-one';
-            previousBaseWindow.top=(monitorRect.bottom - monitorRect.top)/2 - DEFAULT_HEIGHT/2;
-            previousBaseWindow.left=(monitorRect.right - monitorRect.left)/2 - DEFAULT_WIDTH/2;
-            previousBaseWindow.width=DEFAULT_WIDTH;
-            previousBaseWindow.height=DEFAULT_HEIGHT;
+            previousBaseWindow.top=(monitorRect.bottom - monitorRect.top)/2 - _DEFAULT_HEIGHT/2;
+            previousBaseWindow.left=(monitorRect.right - monitorRect.left)/2 - _DEFAULT_WIDTH/2;
+            previousBaseWindow.width=_DEFAULT_WIDTH;
+            previousBaseWindow.height=_DEFAULT_HEIGHT;
 
             testSaga(handleApplicationLoading)
                 .next()
@@ -170,10 +185,10 @@ describe('Application saga',()=>{
                 }))
                 .next()
                 .call(Window.asyncs.setBounds,Window.actions.setBounds({
-                    left:(monitorRect.right - monitorRect.left)/2 - LOADING_BANNER_WIDTH/2,
-                    top:(monitorRect.bottom - monitorRect.top)/2 - LOADING_BANNER_HEIGHT/2,
-                    width:LOADING_BANNER_WIDTH,
-                    height: LOADING_BANNER_HEIGHT,
+                    left:(monitorRect.right - monitorRect.left)/2 - _LOADING_BANNER_WIDTH/2,
+                    top:(monitorRect.bottom - monitorRect.top)/2 - _LOADING_BANNER_HEIGHT/2,
+                    width:_LOADING_BANNER_WIDTH,
+                    height: _LOADING_BANNER_HEIGHT,
                 }))
                 .next()
                 .all(loadingAllActions)
@@ -197,7 +212,15 @@ describe('Application saga',()=>{
         });
 
         it('current is loadingView and redirect to non-collapsed launchBar',()=>{
+
             const monitorRect = { left:0, right:800, top:0, bottom:600 };
+
+            const WINDOW_WIDTH              = monitorRect.right - monitorRect.left;
+            const WINDOW_HEIGHT             = monitorRect.bottom - monitorRect.top;
+            const _LOADING_BANNER_WIDTH     = Math.min( LOADING_BANNER_WIDTH, WINDOW_WIDTH * 0.6387 );
+            const _LOADING_BANNER_HEIGHT    = Math.min( LOADING_BANNER_HEIGHT, WINDOW_HEIGHT * 0.324074 );
+            const _DEFAULT_WIDTH            = Math.min( DEFAULT_WIDTH, WINDOW_WIDTH * 0.80 );
+            const _DEFAULT_HEIGHT           = Math.min( DEFAULT_HEIGHT, WINDOW_HEIGHT * 0.648148 );
 
             jsdom.reconfigure({url:'http://localhost/loading'});
             expect(window.location.href.toLowerCase()).toBe('http://localhost/loading');
@@ -206,10 +229,10 @@ describe('Application saga',()=>{
             expect(process.env.REACT_APP_DEFAULT_VIEW_URL && process.env.REACT_APP_DEFAULT_VIEW_URL.length > 0).toBeFalsy();
 
             previousBaseWindow.url='/dashboard/view-one';
-            previousBaseWindow.top=(monitorRect.bottom - monitorRect.top)/2 - DEFAULT_HEIGHT/2;
-            previousBaseWindow.left=(monitorRect.right - monitorRect.left)/2 - DEFAULT_WIDTH/2;
-            previousBaseWindow.width=DEFAULT_WIDTH;
-            previousBaseWindow.height=DEFAULT_HEIGHT;
+            previousBaseWindow.top=(monitorRect.bottom - monitorRect.top)/2 - _DEFAULT_HEIGHT/2;
+            previousBaseWindow.left=(monitorRect.right - monitorRect.left)/2 - _DEFAULT_WIDTH/2;
+            previousBaseWindow.width=_DEFAULT_WIDTH;
+            previousBaseWindow.height=_DEFAULT_HEIGHT;
 
             testSaga(handleApplicationLoading)
                 .next()
@@ -222,10 +245,10 @@ describe('Application saga',()=>{
                 }))
                 .next()
                 .call(Window.asyncs.setBounds,Window.actions.setBounds({
-                    left:(monitorRect.right - monitorRect.left)/2 - LOADING_BANNER_WIDTH/2,
-                    top:(monitorRect.bottom - monitorRect.top)/2 - LOADING_BANNER_HEIGHT/2,
-                    width:LOADING_BANNER_WIDTH,
-                    height: LOADING_BANNER_HEIGHT,
+                    left:(monitorRect.right - monitorRect.left)/2 - _LOADING_BANNER_WIDTH/2,
+                    top:(monitorRect.bottom - monitorRect.top)/2 - _LOADING_BANNER_HEIGHT/2,
+                    width:_LOADING_BANNER_WIDTH,
+                    height: _LOADING_BANNER_HEIGHT,
                 }))
                 .next()
                 .all(loadingAllActions)

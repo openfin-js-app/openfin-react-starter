@@ -46,19 +46,31 @@ export const getNewWindowWidth = state => state.config.application.newWinWidth;
 export const getNewWindowHeight = state => state.config.application.newWinHeight;
 
 export function* handleRedirectToLoadingView(monitorRect) {
+
+    const WINDOW_WIDTH  = monitorRect.right - monitorRect.left;
+    const WINDOW_HEIGHT = monitorRect.bottom - monitorRect.top;
+    const _LOADING_BANNER_WIDTH     = Math.min( LOADING_BANNER_WIDTH, WINDOW_WIDTH * 0.6387 );
+    const _LOADING_BANNER_HEIGHT    = Math.min( LOADING_BANNER_HEIGHT, WINDOW_HEIGHT * 0.324074 );
+
     yield call(Window.asyncs.updateOptions,Window.actions.updateOptions({
         options:{resizable:false}
     }));
 
     yield call(Window.asyncs.setBounds,Window.actions.setBounds({
-        left:(monitorRect.right - monitorRect.left)/2 - LOADING_BANNER_WIDTH/2,
-        top:(monitorRect.bottom - monitorRect.top)/2 - LOADING_BANNER_HEIGHT/2,
-        width:LOADING_BANNER_WIDTH,
-        height: LOADING_BANNER_HEIGHT,
+        left:(monitorRect.right - monitorRect.left)/2 - _LOADING_BANNER_WIDTH/2,
+        top:(monitorRect.bottom - monitorRect.top)/2 - _LOADING_BANNER_HEIGHT/2,
+        width:_LOADING_BANNER_WIDTH,
+        height: _LOADING_BANNER_HEIGHT,
     }));
 }
 
 export function* handleRedirectFromLoadingView(monitorRect) {
+
+    const WINDOW_WIDTH      = monitorRect.right - monitorRect.left;
+    const WINDOW_HEIGHT     = monitorRect.bottom - monitorRect.top;
+    const _DEFAULT_WIDTH    = Math.min( DEFAULT_WIDTH, WINDOW_WIDTH * 0.80 );
+    const _DEFAULT_HEIGHT   = Math.min( DEFAULT_HEIGHT, WINDOW_HEIGHT * 0.648148 );
+
     // after the sagas loaded, redirect to default page/view
     if (process.env.REACT_APP_DEFAULT_VIEW_URL && process.env.REACT_APP_DEFAULT_VIEW_URL.length > 0){
         if (process.env.NODE_ENV !== 'test'){
@@ -71,10 +83,10 @@ export function* handleRedirectFromLoadingView(monitorRect) {
         }));
 
         yield call(Window.asyncs.setBounds,Window.actions.setBounds({
-            left:(monitorRect.right - monitorRect.left)/2 - DEFAULT_WIDTH/2,
-            top:(monitorRect.bottom - monitorRect.top)/2 - DEFAULT_HEIGHT/2,
-            width:DEFAULT_WIDTH,
-            height: DEFAULT_HEIGHT,
+            left:(monitorRect.right - monitorRect.left)/2 - _DEFAULT_WIDTH/2,
+            top:(monitorRect.bottom - monitorRect.top)/2 - _DEFAULT_HEIGHT/2,
+            width:_DEFAULT_WIDTH,
+            height: _DEFAULT_HEIGHT,
         }));
 
     }else{
@@ -86,10 +98,10 @@ export function* handleRedirectFromLoadingView(monitorRect) {
         }));
 
         previousBaseWindow.url='/dashboard/view-one';
-        previousBaseWindow.top=(monitorRect.bottom - monitorRect.top)/2 - DEFAULT_HEIGHT/2;
-        previousBaseWindow.left=(monitorRect.right - monitorRect.left)/2 - DEFAULT_WIDTH/2;
-        previousBaseWindow.width=DEFAULT_WIDTH;
-        previousBaseWindow.height=DEFAULT_HEIGHT;
+        previousBaseWindow.top=(monitorRect.bottom - monitorRect.top)/2 - _DEFAULT_HEIGHT/2;
+        previousBaseWindow.left=(monitorRect.right - monitorRect.left)/2 - _DEFAULT_WIDTH/2;
+        previousBaseWindow.width=_DEFAULT_WIDTH;
+        previousBaseWindow.height=_DEFAULT_HEIGHT;
 
         if(launchBarCollapse){
             yield call(Window.asyncs.setBounds,Window.actions.setBounds({
