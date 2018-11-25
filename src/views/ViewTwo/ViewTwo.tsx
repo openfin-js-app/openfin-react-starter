@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import {
     IRootState,
     clientSetValue,
-} from '../../redux';
+} from '../../reduxs';
 
 import {
     ClientCounter

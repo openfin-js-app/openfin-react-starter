@@ -3,8 +3,8 @@ import createSagaMiddleware from 'redux-saga';
 import { createOpenfinMiddleware } from '@albertli90/redux-openfin';
 import { ChannelType } from '@albertli90/redux-openfin/init';
 
-import rootReducer, {IRootState} from '../redux';
-import rootSaga from '../redux/sagas';
+import rootReducer, {IRootState} from '../reduxs';
+import rootSaga from '../reduxs/sagas';
 
 declare const window:any;
 

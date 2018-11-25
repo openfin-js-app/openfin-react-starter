@@ -16,7 +16,7 @@ import {
     applicationCloseSnackbar, applicationLaunchBarToggle,
     // types
     IRootState,ISnackBarMsg,
-} from '../../redux';
+} from '../../reduxs';
 
 import dashboardRoutes from '../../routes/Dashboard';
 import { Sidebar, Header, SnackbarContent } from '../../components';

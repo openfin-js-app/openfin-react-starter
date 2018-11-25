@@ -100,7 +100,7 @@ export default (parentWindowState?:Partial<IApplicationState>)=>{
             const payload = action.payload as any;
             return {
                 ...state,
-                windowState:payload.state,
+                windowsState:payload.state,
             };
 
         },

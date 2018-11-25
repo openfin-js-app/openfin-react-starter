@@ -1,6 +1,6 @@
 import db from './db';
 
-import { IConfigDexie } from '../redux';
+import { IConfigDexie } from '../reduxs';
 
 
 export async function findAll():Promise<IConfigDexie[]>{

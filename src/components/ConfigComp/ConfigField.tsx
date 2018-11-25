@@ -10,7 +10,7 @@ import DateTimePicker from 'material-ui-pickers/DateTimePicker';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 
-import { FieldType } from '../../redux/config/types';
+import { FieldType } from '../../reduxs';
 
 import { WithStyles, withStyles } from '@material-ui/core/styles';
 import { configFieldCompStyle as style } from '../../assets/jss/openfin-starter';

@@ -8,7 +8,7 @@ import DateTimePicker from 'material-ui-pickers/DateTimePicker';
 
 import TextField from '@material-ui/core/TextField';
 
-import { FieldType } from '../../redux/config/types';
+import { FieldType } from '../../reduxs/config/types';
 
 import ConfigField from './ConfigField';
 

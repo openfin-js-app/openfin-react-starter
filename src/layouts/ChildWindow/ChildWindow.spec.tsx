@@ -7,7 +7,7 @@ import { MemoryRouter } from 'react-router';
 import ChildWindow from './ChildWindow';
 import ViewOne from '../../views/ViewOne/ViewOne';
 import {Header, SnackbarContent} from '../../components';
-import { rootDefaultState } from '../../redux'
+import { rootDefaultState } from '../../reduxs'
 import Snackbar from "@material-ui/core/Snackbar";
 
 const mockStore = configurestore();

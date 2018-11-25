@@ -25,7 +25,7 @@ exports[`Sidebar comp renders correctly by default 1`] = `
       gutterBottom={true}
       variant="body2"
     >
-      0.20.1-beta
+      0.20.15
     </WithStyles(Typography)>
   </WithStyles(Drawer)>
 </Fragment>

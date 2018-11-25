@@ -16,7 +16,7 @@ import {
     CLIENT_SET_VALUE,
     applicationStarted,
     applicationChildStarted,
-} from "./redux";
+} from "./reduxs";
 
 declare const window:any;
 

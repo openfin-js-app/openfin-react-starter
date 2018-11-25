@@ -29,7 +29,7 @@ import {
     IConfigTab, IConfigField,
     configUpdateOneField, configUpdateGlobalFilterStr,
     IConfigState
-} from '../../redux';
+} from '../../reduxs';
 
 interface IProps extends WithStyles<typeof style>{
     config:IConfigState,

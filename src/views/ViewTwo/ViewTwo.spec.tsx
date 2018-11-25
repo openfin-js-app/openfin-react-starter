@@ -6,7 +6,7 @@ import configurestore from 'redux-mock-store';
 
 import ViewTwo from './ViewTwo';
 
-import {rootDefaultState} from '../../redux';
+import {rootDefaultState} from '../../reduxs';
 
 const mockStore = configurestore();
 

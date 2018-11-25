@@ -266,7 +266,6 @@ Object {
   "snackBarMsgQueue": Array [],
   "snackBarOpen": false,
   "username": "",
-  "windowState": "windowState",
-  "windowsState": "normal",
+  "windowsState": "windowState",
 }
 `;

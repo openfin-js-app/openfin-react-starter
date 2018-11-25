@@ -14,7 +14,7 @@ import OpenInNew from '@material-ui/icons/OpenInNew';
 import { headerLinksCompStyle as style } from '../../assets/jss/openfin-starter'
 
 interface IProps extends WithStyles<typeof style> {
-    windowState:string,
+    windowsState:string,
     onSwitchToLaunchBar:MouseEventHandler<any>,
     onMinimize:MouseEventHandler<any>,
     onMaximize:MouseEventHandler<any>,
@@ -26,7 +26,7 @@ class HeaderLinksComp extends React.Component<IProps,{}>{
     render(){
 
         const {
-            classes, windowState,
+            classes, windowsState,
             onSwitchToLaunchBar,
             onMinimize, onMaximize, onClose
         } = this.props;
@@ -60,7 +60,7 @@ class HeaderLinksComp extends React.Component<IProps,{}>{
                     aria-label="Maximize"
                     onClick={onMaximize}
             >
-                {windowState==='normal'?<CropDin/>:<AspectRatio/>}
+                {windowsState==='normal'?<CropDin/>:<AspectRatio/>}
             </Button>
             <Button className={cx(classes.menuBtn,classes.danger)}
                     variant="fab"
