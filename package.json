@@ -1,10 +1,10 @@
 {
   "name": "openfin-react-starter",
-  "version": "0.20.15",
+  "version": "0.30.10",
   "private": true,
   "dependencies": {
     "@albertli90/openfin-browser-adapter": "^0.20.11",
-    "@albertli90/redux-openfin": "^0.20.11",
+    "@albertli90/redux-openfin": "^0.30.1-beta",
     "@babel/core": "7.1.2",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/plugin-proposal-decorators": "^7.1.2",

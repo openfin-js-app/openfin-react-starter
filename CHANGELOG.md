@@ -1,3 +1,6 @@
+## [0.30.10] 2018-11-22
+- Support snap & dock
+
 ## [0.20.15] 2018-11-22
 - Fix building bugs on windows platform
 
