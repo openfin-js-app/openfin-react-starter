@@ -114,6 +114,17 @@ export default (parentWindowState?:Partial<IApplicationState>)=>{
             };
 
         },
+        [Window.actions.GET_BOUNDS_RES]:(state,action)=>{
+            const payload = action.payload as any;
+            return {
+                ...state,
+                winTop:payload.top,
+                winLeft:payload.left,
+                winWidth:payload.width,
+                winHeight:payload.height,
+            };
+
+        },
         [Event.actionDicts.windowEventDictByName['bounds-changing'].type]:(state,action)=>{
             const payload = action.payload as any;
             return {

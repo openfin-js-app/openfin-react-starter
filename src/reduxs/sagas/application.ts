@@ -168,6 +168,7 @@ export function* handleApplicationLoading() {
 
 export function* handleApplicationChildLoading() {
     yield all([
+        call(Window.asyncs.getBounds,Window.actions.getBounds({})),
         put.resolve(configLoadFromDexie()),
     ]);
     yield put.resolve(applicationReady());

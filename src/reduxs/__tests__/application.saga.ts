@@ -282,6 +282,7 @@ describe('Application saga',()=>{
             testSaga(handleApplicationChildLoading)
                 .next()
                 .all([
+                    call(Window.asyncs.getBounds,Window.actions.getBounds({})),
                     put.resolve(configLoadFromDexie()),
                 ])
                 .next()
