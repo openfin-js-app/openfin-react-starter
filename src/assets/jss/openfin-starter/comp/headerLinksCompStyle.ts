@@ -7,6 +7,7 @@ import {
     infoColor,
     successColor,
     warningColor,
+    roseColor,
     defaultBoxShadow,
 } from '../../openfin-starter-constant';
 
@@ -14,6 +15,9 @@ const headerLinkStyle:any = (theme:any) => ({
     menuBtn:{
         transform:`scale(${appbarHeight/40 * 0.8})`,
         "-webkit-app-region":"no-drag",
+        "& span svg":{
+            fontSize: `${appbarHeight/26*36}px`,
+        }
     },
     info:{
         backgroundColor: infoColor,
@@ -29,6 +33,12 @@ const headerLinkStyle:any = (theme:any) => ({
     },
     warning:{
         backgroundColor: warningColor,
+        color: '#ffffff',
+        ...defaultBoxShadow,
+        borderRadius:"4px",
+    },
+    rose:{
+        backgroundColor: roseColor,
         color: '#ffffff',
         ...defaultBoxShadow,
         borderRadius:"4px",

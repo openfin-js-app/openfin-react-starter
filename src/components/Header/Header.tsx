@@ -23,8 +23,10 @@ interface IProps extends WithStyles<any> {
     color:string,
     open?:boolean,
     windowsState:string,
+    docked?:boolean,
     handleDrawerToggle?:MouseEventHandler<any>,
-    onSwitchToLaunchBar:MouseEventHandler<any>,
+    onSwitchToLaunchBar?:MouseEventHandler<any>,
+    onUndock?:MouseEventHandler<any>,
     onMinimize:MouseEventHandler<any>,
     onMaximize:MouseEventHandler<any>,
     onClose:MouseEventHandler<any>,
@@ -39,8 +41,8 @@ class HeaderComp extends React.Component<IProps,{}>{
 
         const {
             classes, color, windowsState,
-            handleDrawerToggle,
-            onSwitchToLaunchBar, onMinimize, onMaximize, onClose,
+            handleDrawerToggle, docked,
+            onSwitchToLaunchBar, onUndock, onMinimize, onMaximize, onClose,
         } = this.props;
 
         function makeBrand(props:any) {
@@ -74,7 +76,9 @@ class HeaderComp extends React.Component<IProps,{}>{
                 </div>
                 <HeaderLinks
                     windowsState={windowsState}
+                    docked = {docked}
                     onSwitchToLaunchBar={onSwitchToLaunchBar}
+                    onUndock={onUndock}
                     onMinimize={onMinimize}
                     onMaximize={onMaximize}
                     onClose={onClose}

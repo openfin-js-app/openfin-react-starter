@@ -1,6 +1,6 @@
 import { buffers, delay } from 'redux-saga';
 import { all, call, put, take, takeLatest, takeEvery, fork, select, actionChannel } from 'redux-saga/effects';
-import { System, Event, Window } from '@albertli90/redux-openfin';
+import { Docking ,System, Event, Window } from '@albertli90/redux-openfin';
 
 import hist from '../../utils/history';
 
@@ -12,6 +12,7 @@ import {
     APPLICATION_NEW_SNACKBAR,
     APPLICATION_CLOSE_SNACKBAR,
     APPLICATION_TOGGLE_WINDOW_STATE,
+    applicationNewSnackbar,
     applicationReady,
     applicationSetSnackbarStatus,
     applicationProcessSnackbarQueue,
@@ -22,6 +23,7 @@ import {
 } from '..';
 
 import { configUpdateNewWindowPosition } from '..';
+import { DockWindowResPayload, UnDockWindowResPayload } from "@albertli90/redux-openfin/docking/DockingType";
 
 const ENABLE_LOADING_VIEW=process.env.REACT_APP_ENABLE_LOADING_VIEW.toLowerCase() === 'true';
 
@@ -308,6 +310,25 @@ export function* handleApplicationLaunchNewWindow(action) {
 
 }
 
+export function* handleApplicationWindowDocked(action){
+    const {windowName} = action.payload as DockWindowResPayload;
+
+    yield put(applicationNewSnackbar({
+        message:`${windowName} joined group`,
+        variant:'rose'
+    }))
+}
+
+export function* handleApplicationWindowUndocked(action){
+    const {windowName} = action.payload as UnDockWindowResPayload;
+
+    yield put(applicationNewSnackbar({
+        message:`${windowName} left group`,
+        variant:'rose'
+    }))
+}
+
+
 export default function* (){
     yield takeLatest(APPLICATION_STARTED,handleApplicationLoading);
     yield takeLatest(APPLICATION_CHILD_STARTED,handleApplicationChildLoading);
@@ -318,4 +339,6 @@ export default function* (){
     yield takeLatest(APPLICATION_LAUNCH_BAR_TOGGLE,handleApplicationLaunchBarToggle);
     yield takeLatest(APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE,handleApplicationLaunchBarToggleCollapse);
     yield takeLatest(APPLICATION_LAUNCH_NEW_WINDOW,handleApplicationLaunchNewWindow);
+    yield takeEvery(Docking.actions.DOCK_WINDOW_RES,handleApplicationWindowDocked);
+    yield takeEvery(Docking.actions.UNDOCK_WINDOW_RES,handleApplicationWindowUndocked);
 }

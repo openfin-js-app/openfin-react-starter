@@ -17,7 +17,11 @@ export default (
 
     const openfinMiddleware = createOpenfinMiddleware(window.fin,{
         channelType,channelClientId,sharedActions,
-        channelRandomSuffix:process.env.NODE_ENV === 'development'
+        channelRandomSuffix:process.env.NODE_ENV === 'development',
+        autoDocking:process.env.REACT_APP_ENABLE_AUTO_DOCKING === 'true',
+        dockingOptions:{
+            range: 120,
+        }
     });
     const sagaMiddleware = createSagaMiddleware();
     const devtools = window.devToolsExtension?window.devToolsExtension():(f:any):any => (f);

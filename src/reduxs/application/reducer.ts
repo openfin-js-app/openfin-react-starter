@@ -1,5 +1,5 @@
 import { handleActions, Action } from 'redux-actions';
-import { System, Window } from '@albertli90/redux-openfin';
+import { Docking, System, Window, Event } from '@albertli90/redux-openfin';
 
 import {
     IApplicationNewSnackbarOption,
@@ -22,6 +22,11 @@ export const defaultState:Partial<IApplicationState>={
     machineId:null,
     deviceUserId:null,
     loading:true,
+    docked:false,
+    winTop:0,
+    winLeft:0,
+    winWidth:0,
+    winHeight:0,
     drawerOpen:true,
     launchBarCollapse:false,
     snackBarOpen:false,
@@ -38,6 +43,11 @@ export default (parentWindowState?:Partial<IApplicationState>)=>{
     if (parentWindowState){
         initState ={
             ...parentWindowState,
+            docked:false,
+            winTop:0,
+            winLeft:0,
+            winWidth:0,
+            winHeight:0,
             snackBarMsgInfo:{},
             snackBarMsgQueue:[],
             openfinHostSpec:{
@@ -103,6 +113,31 @@ export default (parentWindowState?:Partial<IApplicationState>)=>{
                 windowsState:payload.state,
             };
 
+        },
+        [Event.actionDicts.windowEventDictByName['bounds-changing'].type]:(state,action)=>{
+            const payload = action.payload as any;
+            return {
+                ...state,
+                winTop:payload.top,
+                winLeft:payload.left,
+                winWidth:payload.width,
+                winHeight:payload.height,
+            };
+
+        },
+        [Docking.actions.DOCK_WINDOW_RES]:(state,action)=>{
+            const {windowName} = action.payload;
+            return {
+                ...state,
+                docked:window.name === windowName? true: state.docked,
+            }
+        },
+        [Docking.actions.UNDOCK_WINDOW_RES]:(state,action)=>{
+            const {windowName} = action.payload;
+            return {
+                ...state,
+                docked:window.name === windowName? false: state.docked,
+            }
         },
         [APPLICATION_READY]:(state,action)=>({
             ...state,

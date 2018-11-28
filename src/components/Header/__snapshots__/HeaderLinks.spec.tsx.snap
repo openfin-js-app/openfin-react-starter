@@ -34,7 +34,7 @@ exports[`HeaderLinks comp renders correctly by default 1`] = `
   </WithStyles(Button)>
   <WithStyles(Button)
     aria-label="Close"
-    className="HeaderLinksComp-menuBtn-1 HeaderLinksComp-danger-5"
+    className="HeaderLinksComp-menuBtn-1 HeaderLinksComp-danger-6"
     color="inherit"
     mini={true}
     onClick={[MockFunction]}

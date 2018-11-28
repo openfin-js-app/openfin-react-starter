@@ -1,7 +1,7 @@
 import { testSaga } from 'redux-saga-test-plan';
 import { delay } from 'redux-saga';
 import { all, call, put, take, takeLatest, takeEvery, fork, select, actionChannel } from 'redux-saga/effects';
-import { System, Event, Window } from '@albertli90/redux-openfin';
+import {System, Event, Window, Docking} from '@albertli90/redux-openfin';
 
 import { launchBarItems } from '../../layouts/LaunchBar/LaunchBarData';
 
@@ -29,6 +29,7 @@ import {
     getNewWindowTop,
     getNewWindowLeft,
     getNewWindowHeight,
+    getNewWindowWidth,
     // sub sagas
     handleApplicationLoading,
     handleApplicationChildLoading,
@@ -38,7 +39,9 @@ import {
     handleApplicationCloseSnackBar,
     handleApplicationLaunchBarToggle,
     handleApplicationLaunchBarToggleCollapse,
-    handleApplicationLaunchNewWindow, getNewWindowWidth,
+    handleApplicationLaunchNewWindow,
+    handleApplicationWindowDocked,
+    handleApplicationWindowUndocked,
 } from '../sagas/application';
 
 import applicationSaga from '../sagas/application';
@@ -574,6 +577,10 @@ describe('Application saga',()=>{
             .takeLatestEffect(APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE,handleApplicationLaunchBarToggleCollapse)
             .next()
             .takeLatestEffect(APPLICATION_LAUNCH_NEW_WINDOW,handleApplicationLaunchNewWindow)
+            .next()
+            .takeEveryEffect(Docking.actions.DOCK_WINDOW_RES,handleApplicationWindowDocked)
+            .next()
+            .takeEveryEffect(Docking.actions.UNDOCK_WINDOW_RES,handleApplicationWindowUndocked)
             .next()
             .isDone();
     })

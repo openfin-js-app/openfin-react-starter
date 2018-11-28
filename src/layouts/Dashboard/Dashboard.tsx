@@ -73,6 +73,7 @@ class DashbardLayout extends React.Component<IProps,{}>{
                 handleDrawerToggle={handleDrawerToggle}
                 open={drawerOpen}
                 color={'primary'}
+                docked={false}
                 onSwitchToLaunchBar={handleSwitchToLaunchBar}
                 onMinimize={handleMinimize}
                 onMaximize={handleMaximize}

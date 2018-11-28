@@ -24,6 +24,11 @@ export interface IApplicationState {
     machineId:string;
     deviceUserId:string;
     loading:boolean;
+    docked:boolean;
+    winTop:number;
+    winLeft:number;
+    winWidth:number;
+    winHeight:number;
     drawerOpen:boolean;
     launchBarCollapse:boolean;
     snackBarOpen:boolean;
