@@ -23,7 +23,6 @@ import {
 } from '..';
 
 import { configUpdateNewWindowPosition } from '..';
-import { DockWindowResPayload, UnDockWindowResPayload } from "@albertli90/redux-openfin/docking/DockingType";
 
 const ENABLE_LOADING_VIEW=process.env.REACT_APP_ENABLE_LOADING_VIEW.toLowerCase() === 'true';
 
