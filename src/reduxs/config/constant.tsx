@@ -7,7 +7,10 @@ import SettingIcon from '@material-ui/icons/Settings';
 
 import ConfigJson from '../../views/ConfigView/ConfigJson';
 
+import { ConfigAboutField } from '../../components';
+
 import controls from'../../assets/svg/support/controls_dark.svg';
+import infomationSvg from '../../assets/svg/support/information-dark.svg';
 import listChecked from'../../assets/svg/other/list-checked-dark.svg';
 
 function _getSampleDate() {
@@ -97,6 +100,22 @@ const configTabs:IConfigTab[]=[
     },
     {
         _order: 1 ,
+        _label: 'About',
+        _name:'about',
+        _svgUrl: infomationSvg,
+        _icon: SettingIcon,
+        _fields:[
+            {
+                _type:FieldType.CUSTOM_FIELD,
+                _label:'About openfin starter',
+                _custom:<ConfigAboutField/>,
+                _cols:12,
+                _rows:12,
+            }
+        ]
+    },
+    {
+        _order: 2,
         _label: 'Sample',
         _name:'sample',
         _svgUrl: listChecked,
