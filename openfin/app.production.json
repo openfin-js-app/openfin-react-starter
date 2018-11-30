@@ -12,8 +12,8 @@
     "defaultHeight":450
   },
   "runtime":{
-    "arguments":"--v=1 --remote-debugging-port=9090 --enable-crash-reporting",
-    "version":"community"
+    "version":"9.61.36.36",
+    "arguments":"--v=1 --remote-debugging-port=9090 --enable-crash-reporting"
   },
   "shortcut":{
     "company":"Albert Leigh Corp",
