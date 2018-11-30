@@ -136,19 +136,24 @@ export default (parentWindowState?:Partial<IApplicationState>)=>{
             };
 
         },
-        [Docking.actions.DOCK_WINDOW_RES]:(state,action)=>{
-            const {windowName} = action.payload;
-            return {
-                ...state,
-                docked:window.name === windowName? true: state.docked,
+        [Event.actionDicts.windowEventDictByName['group-changed'].type]:(state,action)=>{
+            const {
+                sourceWindowName, targetWindowName, memeberOf, reason
+            } = action.payload;
+
+            if (reason === Docking.types.GroupEventReason.JOIN && sourceWindowName === window.name){
+                return {
+                    ...state,
+                    docked:true,
+                }
+            }else if(reason === Docking.types.GroupEventReason.LEAVE && sourceWindowName === window.name){
+                return {
+                    ...state,
+                    docked:false,
+                }
             }
-        },
-        [Docking.actions.UNDOCK_WINDOW_RES]:(state,action)=>{
-            const {windowName} = action.payload;
-            return {
-                ...state,
-                docked:window.name === windowName? false: state.docked,
-            }
+
+            return state;
         },
         [APPLICATION_READY]:(state,action)=>({
             ...state,

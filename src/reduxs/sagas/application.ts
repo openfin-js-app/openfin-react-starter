@@ -311,24 +311,41 @@ export function* handleApplicationLaunchNewWindow(action) {
 
 }
 
-export function* handleApplicationWindowDocked(action){
-    const {windowName} = action.payload as DockWindowResPayload;
+export function* handleGroupChanged(action){
+    const {
+        sourceWindowName, targetWindowName, memeberOf, reason
+    } = action.payload;
 
-    yield put(applicationNewSnackbar({
-        message:`${windowName} joined group`,
-        variant:'rose'
-    }))
+
+    if (reason === Docking.types.GroupEventReason.JOIN){
+        if(sourceWindowName === window.name){
+            yield put(applicationNewSnackbar({
+                message:'Joined group',
+                variant:'primary'
+            }))
+        }else if (targetWindowName === window.name){
+            yield put(applicationNewSnackbar({
+                message:'Been joined',
+                variant:'rose'
+            }))
+        }
+    }else if (reason === Docking.types.GroupEventReason.LEAVE){
+        if (sourceWindowName === window.name){
+            yield put(applicationNewSnackbar({
+                message:'Left group',
+                variant:'primary'
+            }))
+        }
+    }else if (reason === Docking.types.GroupEventReason.DISBAND){
+        if(sourceWindowName === window.name){
+            yield put(applicationNewSnackbar({
+                message:'Got disbanded',
+                variant:'rose'
+            }))
+        }
+    }
+
 }
-
-export function* handleApplicationWindowUndocked(action){
-    const {windowName} = action.payload as UnDockWindowResPayload;
-
-    yield put(applicationNewSnackbar({
-        message:`${windowName} left group`,
-        variant:'rose'
-    }))
-}
-
 
 export default function* (){
     yield takeLatest(APPLICATION_STARTED,handleApplicationLoading);
@@ -340,6 +357,5 @@ export default function* (){
     yield takeLatest(APPLICATION_LAUNCH_BAR_TOGGLE,handleApplicationLaunchBarToggle);
     yield takeLatest(APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE,handleApplicationLaunchBarToggleCollapse);
     yield takeLatest(APPLICATION_LAUNCH_NEW_WINDOW,handleApplicationLaunchNewWindow);
-    yield takeEvery(Docking.actions.DOCK_WINDOW_RES,handleApplicationWindowDocked);
-    yield takeEvery(Docking.actions.UNDOCK_WINDOW_RES,handleApplicationWindowUndocked);
+    yield takeEvery(Event.actionDicts.windowEventDictByName['group-changed'].type,handleGroupChanged);
 }

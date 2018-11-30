@@ -20,7 +20,6 @@ export default (
         channelRandomSuffix:process.env.NODE_ENV === 'development',
         autoDocking:process.env.REACT_APP_ENABLE_AUTO_DOCKING === 'true',
         dockingOptions:{
-            range: 120,
         }
     });
     const sagaMiddleware = createSagaMiddleware();

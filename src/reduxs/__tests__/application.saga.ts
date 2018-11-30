@@ -40,8 +40,7 @@ import {
     handleApplicationLaunchBarToggle,
     handleApplicationLaunchBarToggleCollapse,
     handleApplicationLaunchNewWindow,
-    handleApplicationWindowDocked,
-    handleApplicationWindowUndocked,
+    handleGroupChanged,
 } from '../sagas/application';
 
 import applicationSaga from '../sagas/application';
@@ -579,9 +578,7 @@ describe('Application saga',()=>{
             .next()
             .takeLatestEffect(APPLICATION_LAUNCH_NEW_WINDOW,handleApplicationLaunchNewWindow)
             .next()
-            .takeEveryEffect(Docking.actions.DOCK_WINDOW_RES,handleApplicationWindowDocked)
-            .next()
-            .takeEveryEffect(Docking.actions.UNDOCK_WINDOW_RES,handleApplicationWindowUndocked)
+            .takeEveryEffect(Event.actionDicts.windowEventDictByName['group-changed'].type,handleGroupChanged)
             .next()
             .isDone();
     })
