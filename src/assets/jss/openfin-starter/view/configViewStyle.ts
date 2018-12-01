@@ -1,4 +1,6 @@
-const configViewStyle:any = (theme:any)=>({
+import { Theme, createStyles } from '@material-ui/core/styles';
+
+const configViewStyle:any = (theme:Theme)=> createStyles({
     root:{
         width:'100%',
         height:'100%',

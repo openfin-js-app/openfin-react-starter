@@ -5,7 +5,7 @@ import reducerCreator, {defaultState} from '../application/reducer';
 
 describe('Application reducer',()=>{
 
-    describe('With parent state', function () {
+    describe('With parent state', () => {
 
         let reducer
 
@@ -42,7 +42,7 @@ describe('Application reducer',()=>{
 
     });
 
-    describe('With out parent state', function () {
+    describe('With out parent state', () => {
 
         let reducer
 

@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 
 import ConfigAboutField from './ConfigAboutField';
 
-describe('ConfigAboutField comp', function () {
+describe('ConfigAboutField comp',  () => {
 
     let shallow;
     let mount;
@@ -31,7 +31,7 @@ describe('ConfigAboutField comp', function () {
 
     it('function correctly',()=>{
 
-        let oldLocation = window.location;
+        const oldLocation = window.location;
 
         delete window.location;
         window.location = {} as any;

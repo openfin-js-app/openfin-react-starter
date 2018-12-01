@@ -1,3 +1,4 @@
+import { Theme, createStyles } from '@material-ui/core/styles';
 import {
     appbarHeight,
     defaultFont,
@@ -11,7 +12,7 @@ import {
     defaultBoxShadow,
 } from '../../openfin-starter-constant';
 
-const headerLinkStyle:any = (theme:any) => ({
+const headerLinkStyle:any = (theme:Theme) => createStyles({
     menuBtn:{
         transform:`scale(${appbarHeight/40 * 0.8})`,
         "-webkit-app-region":"no-drag",
