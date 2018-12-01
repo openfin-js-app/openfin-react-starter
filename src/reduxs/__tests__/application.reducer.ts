@@ -1,6 +1,6 @@
 import {Docking, Event, System, Window} from '@albertli90/redux-openfin';
 import * as Actions from '../application/actions';
-import reducerCreater, {defaultState} from '../application/reducer';
+import reducerCreator, {defaultState} from '../application/reducer';
 
 
 describe('Application reducer',()=>{
@@ -10,7 +10,7 @@ describe('Application reducer',()=>{
         let reducer
 
         beforeAll(()=>{
-            reducer = reducerCreater(defaultState);
+            reducer = reducerCreator(defaultState);
         })
 
 
@@ -47,7 +47,7 @@ describe('Application reducer',()=>{
         let reducer
 
         beforeAll(()=>{
-            reducer = reducerCreater();
+            reducer = reducerCreator();
         })
 
         it('System.actions.GET_MACHINE_ID_RES reduced correctly',()=>{
