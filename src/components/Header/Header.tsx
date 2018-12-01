@@ -5,6 +5,7 @@ import { WithStyles, withStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
+import Fab from '@material-ui/core/Fab';
 
 import Menu from '@material-ui/icons/Menu';
 import ChevronLeft from '@material-ui/icons/ChevronLeft';
@@ -59,16 +60,15 @@ class HeaderComp extends React.Component<IProps,{}>{
             <Toolbar className={classes.container}>
                 <div className={classes.flex}>
                     {handleDrawerToggle?
-                        <Button
+                        <Fab
                             className={classes.menuBtn}
-                            variant={"fab"}
-                            mini
                             color={"inherit"}
                             aria-label={"open drawer"}
                             onClick={handleDrawerToggle}
                         >
-                            {this.props.open?<ChevronLeft/>:<Menu/>}
-                    </Button>:null}
+                                {this.props.open?<ChevronLeft/>:<Menu/>}
+                        </Fab>
+                    :null}
                     <img src={appLogo} className={classes.companyLogImg}/>
                     <Button href={"#"} className={classes.title}>
                         {"App name| "+ makeBrand(this.props)}

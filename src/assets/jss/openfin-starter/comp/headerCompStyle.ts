@@ -43,11 +43,12 @@ const headerStyle:any = (theme:Theme) =>createStyles({
         minHeight:appbarHeight,
     },
     menuBtn:{
-        transform:`scale(${appbarHeight/40})`,
+        marginRight:'4px',
         backgroundColor:"transparent",
         "-webkit-app-region":"no-drag",
         color:"inherit",
         height:appbarHeight,
+        minHeight:appbarHeight,
         width:appbarHeight,
         boxShadow:"none",
         "&:hover,&:focus":{

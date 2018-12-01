@@ -2,45 +2,37 @@
 
 exports[`HeaderLinks comp renders correctly by default 1`] = `
 <Fragment>
-  <WithStyles(Button)
+  <WithStyles(Fab)
     aria-label="Switch to launch bar"
     className="HeaderLinksComp-menuBtn-1 HeaderLinksComp-info-2"
     color="inherit"
-    mini={true}
     onClick={[MockFunction]}
-    variant="fab"
   >
     <pure(OpenInNewIcon) />
-  </WithStyles(Button)>
-  <WithStyles(Button)
+  </WithStyles(Fab)>
+  <WithStyles(Fab)
     aria-label="Minimize"
     className="HeaderLinksComp-menuBtn-1 HeaderLinksComp-success-3"
     color="inherit"
-    mini={true}
     onClick={[MockFunction]}
-    variant="fab"
   >
     <pure(RemoveIcon) />
-  </WithStyles(Button)>
-  <WithStyles(Button)
+  </WithStyles(Fab)>
+  <WithStyles(Fab)
     aria-label="Maximize"
     className="HeaderLinksComp-menuBtn-1 HeaderLinksComp-warning-4"
     color="inherit"
-    mini={true}
     onClick={[MockFunction]}
-    variant="fab"
   >
     <pure(CropDinIcon) />
-  </WithStyles(Button)>
-  <WithStyles(Button)
+  </WithStyles(Fab)>
+  <WithStyles(Fab)
     aria-label="Close"
     className="HeaderLinksComp-menuBtn-1 HeaderLinksComp-danger-6"
     color="inherit"
-    mini={true}
     onClick={[MockFunction]}
-    variant="fab"
   >
     <pure(ClearIcon) />
-  </WithStyles(Button)>
+  </WithStyles(Fab)>
 </Fragment>
 `;

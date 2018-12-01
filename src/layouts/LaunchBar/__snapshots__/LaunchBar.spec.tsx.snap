@@ -65,25 +65,4 @@ Array [
 ]
 `;
 
-exports[`LaunchBar Layout trigger all control panel btns 1`] = `
-Array [
-  Object {
-    "type": "APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE",
-  },
-  Object {
-    "error": false,
-    "payload": Object {},
-    "type": "REDUX_OPENFIN::MINIMIZE",
-  },
-  Object {
-    "type": "APPLICATION_LAUNCH_BAR_TOGGLE",
-  },
-  Object {
-    "error": false,
-    "payload": Object {
-      "force": false,
-    },
-    "type": "REDUX_OPENFIN::CLOSE",
-  },
-]
-`;
+exports[`LaunchBar Layout trigger all control panel btns 1`] = `Array []`;

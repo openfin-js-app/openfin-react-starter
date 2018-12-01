@@ -10,6 +10,7 @@ import { Window } from '@albertli90/redux-openfin';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
+import Fab from '@material-ui/core/Fab';
 import IconButton from '@material-ui/core/IconButton';
 
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
@@ -99,37 +100,37 @@ class LaunchBarComp extends React.Component<IProps,{}>{
                             })}
                         </Scrollbars>
                         <div className={classes.controlPanelContainer}>
-                            <Button
+                            <Fab
                                 className={cx(classes.controlBtn, classes.controlBtnInfo)}
-                                variant={'fab'} mini color={'secondary'} aria-label={'collapse'}
+                                color='secondary' aria-label={'collapse'}
                                 onClick={handleToggleCollapse}
                             >
                                 {collapse?
                                     <ArrowForwardIcon/>:
                                     <ArrowBackIcon/>
                                 }
-                            </Button>
-                            <Button
+                            </Fab>
+                            <Fab
                                 className={cx(classes.controlBtn, classes.controlBtnSuccess)}
-                                variant={'fab'} mini color={'secondary'} aria-label={'minimize'}
+                                color='secondary' aria-label={'minimize'}
                                 onClick={handleMinimize}
                             >
                                 <RemoveIcon/>
-                            </Button>
-                            <Button
+                            </Fab>
+                            <Fab
                                 className={cx(classes.controlBtn, classes.controlBtnWarning)}
-                                variant={'fab'} mini color={'secondary'} aria-label={'expand'}
+                                color='secondary' aria-label={'expand'}
                                 onClick={handleSwitchToMainWindow}
                             >
                                 <ZoomOutMapIcon/>
-                            </Button>
-                            <Button
+                            </Fab>
+                            <Fab
                                 className={cx(classes.controlBtn, classes.controlBtnDanger)}
-                                variant={'fab'} mini color={'secondary'} aria-label={'close'}
+                                color='secondary' aria-label={'close'}
                                 onClick={handleClose}
                             >
                                 <ClearIcon/>
-                            </Button>
+                            </Fab>
                         </div>
                     </Toolbar>
                 </AppBar>
