@@ -328,20 +328,22 @@ export function* handleGroupChanged(action){
                 variant:'rose'
             }))
         }
-    }else if (reason === Docking.types.GroupEventReason.LEAVE){
-        if (sourceWindowName === window.name){
-            yield put(applicationNewSnackbar({
-                message:'Left group',
-                variant:'primary'
-            }))
-        }
-    }else if (reason === Docking.types.GroupEventReason.DISBAND){
-        if(sourceWindowName === window.name){
-            yield put(applicationNewSnackbar({
-                message:'Got disbanded',
-                variant:'rose'
-            }))
-        }
+    }else if (
+        reason === Docking.types.GroupEventReason.LEAVE &&
+        sourceWindowName === window.name
+    ){
+        yield put(applicationNewSnackbar({
+            message:'Left group',
+            variant:'primary'
+        }))
+    }else if (
+        reason === Docking.types.GroupEventReason.DISBAND &&
+        sourceWindowName === window.name
+    ){
+        yield put(applicationNewSnackbar({
+            message:'Got disbanded',
+            variant:'rose'
+        }))
     }
 
 }
