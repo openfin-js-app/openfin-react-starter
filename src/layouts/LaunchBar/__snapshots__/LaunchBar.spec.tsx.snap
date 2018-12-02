@@ -5,8 +5,9 @@ Array [
   Object {
     "payload": Object {
       "autoShow": true,
-      "callback": [Function],
       "frame": false,
+      "minHeight": 170,
+      "minWidth": 520,
       "name": "openfin-react-starter-child-accessibility",
       "resizable": true,
       "state": "normal",
@@ -17,8 +18,9 @@ Array [
   Object {
     "payload": Object {
       "autoShow": true,
-      "callback": [Function],
       "frame": false,
+      "minHeight": 100,
+      "minWidth": 415,
       "name": "openfin-react-starter-child-view-one",
       "resizable": true,
       "state": "normal",
@@ -29,8 +31,9 @@ Array [
   Object {
     "payload": Object {
       "autoShow": true,
-      "callback": [Function],
       "frame": false,
+      "minHeight": 100,
+      "minWidth": 415,
       "name": "openfin-react-starter-child-view-two",
       "resizable": true,
       "state": "normal",
@@ -41,8 +44,9 @@ Array [
   Object {
     "payload": Object {
       "autoShow": true,
-      "callback": [Function],
       "frame": false,
+      "minHeight": 100,
+      "minWidth": 430,
       "name": "openfin-react-starter-child-report",
       "resizable": true,
       "state": "normal",

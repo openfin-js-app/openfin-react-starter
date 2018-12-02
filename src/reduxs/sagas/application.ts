@@ -221,23 +221,23 @@ export function* handleApplicationLaunchBarToggle(){
         // switch to main panel
         yield call(Window.asyncs.updateOptions,Window.actions.updateOptions({
             options:{
-                resizable:true
+                resizable:true,
             }
         }));
         yield call(Window.asyncs.setBounds,Window.actions.setBounds({
-            left:previousBaseWindow.left,
-            top:previousBaseWindow.top,
-            width:previousBaseWindow.width,
-            height:previousBaseWindow.height,
+            left:previousBaseWindow.left?previousBaseWindow.left:parseInt(process.env.REACT_APP_NEW_WINDOW_LEFT,10),
+            top:previousBaseWindow.top?previousBaseWindow.top:parseInt(process.env.REACT_APP_NEW_WINDOW_TOP,10),
+            width:previousBaseWindow.width?previousBaseWindow.width:parseInt(process.env.REACT_APP_NEW_WINDOW_WIDTH,10),
+            height:previousBaseWindow.height?previousBaseWindow.height:parseInt(process.env.REACT_APP_NEW_WINDOW_HEIGHT,10),
         }));
         if (process.env.NODE_ENV !== 'test'){
-            hist.push(previousBaseWindow.url);
+            hist.push(previousBaseWindow.url?previousBaseWindow.url:process.env.REACT_APP_DEFAULT_DASHBOARD_VIEW_URL);
         }
     }else{
         // switch to launchBar
         yield call(Window.asyncs.updateOptions,Window.actions.updateOptions({
             options:{
-                resizable:false
+                resizable:false,
             }
         }));
         previousBaseWindow.url = (new URL(window.location.href)).pathname;

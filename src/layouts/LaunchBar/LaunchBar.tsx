@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import cx from 'classnames';
 import { Scrollbars } from 'react-custom-scrollbars';
 
-import { WithStyles, withStyles, StyleRules } from '@material-ui/core/styles';
+import { WithStyles, withStyles } from '@material-ui/core/styles';
 
 import { Window } from '@albertli90/redux-openfin';
 
