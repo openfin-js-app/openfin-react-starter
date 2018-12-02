@@ -47,6 +47,7 @@ export interface IConfigDexie {
     tabName:string,
     fieldName:string,
     value:any,
+    version?:number,
 }
 
 export interface IConfigResetOption {

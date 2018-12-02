@@ -29,7 +29,7 @@ import {
     CONFIG_DO_UPDATE_ONE_FIELD_IN_DEXIE, CONFIG_LOAD_FROM_DEXIE, CONFIG_UPDATE_ONE_FIELD,
     configDoUpdateOneField
 } from "..";
-import {findAll,saveOrUpdateOneByTabNameFieldName} from "../../dexie/configDao";
+import {findAllOfCurrentVersion,saveOrUpdateOneByTabNameFieldName} from "../../dexie/configDao";
 import {configDoUpdateOneFieldInDexie} from "../index";
 
 jest.mock('../../dexie/db');
@@ -41,7 +41,7 @@ describe('Config saga',()=>{
 
             testSaga(handleConfigLoadFromDexie)
                 .next()
-                .call(findAll)
+                .call(findAllOfCurrentVersion)
                 .next([{tabName:'tabName',fieldName:'fieldName',value:'value'}])
                 .put(configDoUpdateOneField({
                     tabName:'tabName',fieldName:'fieldName',value:'value'

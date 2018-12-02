@@ -10,6 +10,9 @@ class OpenfinReactDatabase extends Dexie{
         this.version(1).stores({
             configs:'++id,tabName,fieldName'
         })
+        this.version(2).stores({
+            configs:'++id,tabName,fieldName,version'
+        })
     }
 }
 
