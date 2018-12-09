@@ -3,7 +3,7 @@
   "version": "0.30.10",
   "private": true,
   "dependencies": {
-    "@albertli90/openfin-browser-adapter": "^0.30.2-beta",
+    "@albertli90/openfin-browser-adapter": "^0.30.4-beta",
     "@albertli90/redux-openfin": "^0.30.4-beta",
     "@babel/core": "7.1.2",
     "@babel/plugin-proposal-class-properties": "^7.1.0",

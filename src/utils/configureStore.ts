@@ -9,15 +9,14 @@ import rootSaga from '../reduxs/sagas';
 declare const window:any;
 
 export default (
-        channelType:ChannelType,
-        channelClientId:string,
         sharedActions:string[],
         parentState?:IRootState
 )=>{
 
     const openfinMiddleware = createOpenfinMiddleware(window.fin,{
-        channelType,channelClientId,sharedActions,
-        channelRandomSuffix:process.env.NODE_ENV === 'development',
+        finUuid:process.env.REACT_APP_FIN_UUID,
+        sharedActions,
+        // channelRandomSuffix:process.env.NODE_ENV === 'development',
         autoDocking:process.env.REACT_APP_ENABLE_AUTO_DOCKING === 'true',
         dockingOptions:{
         }
