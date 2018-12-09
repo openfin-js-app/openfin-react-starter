@@ -111,6 +111,7 @@ module.exports = {
   // In production, we only want to load the polyfills and the app code.
   entry: [require.resolve('./polyfills'), paths.appIndexJs],
   output: {
+    globalObject: "this",
     // The build folder.
     path: paths.appBuild,
     // Generated JS file names (with nested folders).
@@ -517,6 +518,7 @@ module.exports = {
                 ? paths.appTSLint
                 : undefined,
         watch: paths.appSrc,
+        memoryLimit:2048,
     }),
   ].filter(Boolean),
   // Some libraries import Node modules but don't use them in the browser.
