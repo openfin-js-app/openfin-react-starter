@@ -14,9 +14,12 @@ import {
     APPLICATION_SET_SNACKBAR_STATUS,
     APPLICATION_PROCESS_SNACKBAR_QUEUE,
     APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE,
+    APPLICATION_NETWORK_ONLINE,
+    APPLICATION_NETWORK_OFFLINE,
 } from './actions';
 
 export const defaultState:Partial<IApplicationState>={
+    offline:false,
     username:'',
     computerName:'',
     machineId:null,
@@ -53,6 +56,7 @@ export default (parentWindowState?:Partial<IApplicationState>)=>{
             openfinHostSpec:{
                 ...parentWindowState.openfinHostSpec,
             },
+            windowsState:'normal',
         }
 
     }else{
@@ -199,6 +203,14 @@ export default (parentWindowState?:Partial<IApplicationState>)=>{
         [APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE]:(state,action)=>({
             ...state,
             launchBarCollapse:!state.launchBarCollapse,
-        })
+        }),
+        [APPLICATION_NETWORK_ONLINE]:(state,action)=>({
+            ...state,
+            offline:false,
+        }),
+        [APPLICATION_NETWORK_OFFLINE]:(state,action)=>({
+            ...state,
+            offline:true,
+        }),
     } as any,initState);
 }

@@ -14,6 +14,8 @@ import {
     CLIENT_SET_VALUE,
     applicationStarted,
     applicationChildStarted,
+    applicationNetworkOnline,
+    applicationNetworkOffline,
 } from "./reduxs";
 
 declare const window:any;
@@ -53,3 +55,11 @@ ReactDOM.render(
 );
 
 serviceWorker.unregister();
+
+
+window.addEventListener('online',()=>{
+    window.store.dispatch(applicationNetworkOnline());
+})
+window.addEventListener('offline',()=>{
+    window.store.dispatch(applicationNetworkOffline());
+})

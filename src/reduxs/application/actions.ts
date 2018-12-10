@@ -39,3 +39,9 @@ export const applicationLaunchBarToggle:ActionFunctionAny<Action<void>> = create
 export const applicationLaunchBarToggleCollapse:ActionFunctionAny<Action<void>> = createAction(APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE);
 export const applicationLaunchNewWindow:ActionFunctionAny<Action<any>>
     = createAction(APPLICATION_LAUNCH_NEW_WINDOW,(appJson:any)=>(appJson));
+
+// network
+export const APPLICATION_NETWORK_ONLINE = 'APPLICATION_NETWORK_ONLINE';
+export const applicationNetworkOnline:ActionFunctionAny<Action<void>> = createAction(APPLICATION_NETWORK_ONLINE);
+export const APPLICATION_NETWORK_OFFLINE = 'APPLICATION_NETWORK_OFF_LINE';
+export const applicationNetworkOffline:ActionFunctionAny<Action<void>> = createAction(APPLICATION_NETWORK_OFFLINE);

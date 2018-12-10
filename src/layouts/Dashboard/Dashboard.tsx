@@ -19,7 +19,7 @@ import {
 } from '../../reduxs';
 
 import dashboardRoutes from '../../routes/Dashboard';
-import { Sidebar, Header, SnackbarContent } from '../../components';
+import { Sidebar, Header, SnackbarContent, OfflineOverlay } from '../../components';
 
 import { dashboardLayoutStyle as style } from '../../assets/jss/openfin-starter';
 
@@ -35,6 +35,7 @@ const switchRoutes = (
 );
 
 interface IProps extends WithStyles<typeof style>{
+    offline:boolean,
     drawerOpen:boolean,
     snackBarOpen:boolean,
     snackBarMsgInfo:Partial<ISnackBarMsg>,
@@ -48,6 +49,7 @@ interface IProps extends WithStyles<typeof style>{
         handleMinimize: ()=> void,
         handleMaximize: ()=> void,
         handleClose: ()=> void,
+        handleDirectClose: ()=> void,
     }
 }
 
@@ -56,12 +58,12 @@ class DashbardLayout extends React.Component<IProps,{}>{
 
         const {
             classes,
-            drawerOpen,
+            offline,drawerOpen,
             snackBarOpen, snackBarMsgInfo, windowsState,
             actions:{
                 handleDrawerToggle,
                 handleSnackbarClose, handleSnackbarCloseBtnClick, handleSnackbarExited,
-                handleSwitchToLaunchBar, handleMinimize, handleMaximize, handleClose,
+                handleSwitchToLaunchBar, handleMinimize, handleMaximize, handleClose, handleDirectClose,
             },
             ...rest
         } = this.props;
@@ -120,12 +122,20 @@ class DashbardLayout extends React.Component<IProps,{}>{
                     message={snackBarMsgInfo.message}
                 />
             </Snackbar>
+            {
+                offline?
+                    <OfflineOverlay
+                        onClose={handleDirectClose}
+                    />
+                    :null
+            }
         </React.Fragment>);
     }
 }
 
 export default connect(
     (state:IRootState)=>({
+        offline:state.application.offline,
         drawerOpen:state.application.drawerOpen,
         snackBarOpen:state.application.snackBarOpen,
         snackBarMsgInfo:state.application.snackBarMsgInfo,
@@ -142,6 +152,7 @@ export default connect(
             handleMinimize: ()=>{dispatch(Window.actions.minimize({}))},
             handleMaximize: ()=>{dispatch(applicationToogleWindowState())},
             handleClose:()=>{dispatch(Window.actions.close({force:false}))},
+            handleDirectClose:()=>{dispatch(Window.actions.close({force:true}))},
         }
     })
 )(withStyles(style)(DashbardLayout));

@@ -19,22 +19,23 @@ export interface ISnackBarMsg {
 }
 
 export interface IApplicationState {
-    username:string;
-    computerName:string;
-    machineId:string;
-    deviceUserId:string;
-    loading:boolean;
-    docked:boolean;
-    winTop:number;
-    winLeft:number;
-    winWidth:number;
-    winHeight:number;
-    drawerOpen:boolean;
-    launchBarCollapse:boolean;
-    snackBarOpen:boolean;
-    snackBarMsgInfo:Partial<ISnackBarMsg>;
-    snackBarMsgQueue:Array<Partial<ISnackBarMsg>>;
-    openfinVersion:string;
-    openfinHostSpec:any;
-    windowsState:string;
+    offline:boolean,
+    username:string,
+    computerName:string,
+    machineId:string,
+    deviceUserId:string,
+    loading:boolean,
+    docked:boolean,
+    winTop:number,
+    winLeft:number,
+    winWidth:number,
+    winHeight:number,
+    drawerOpen:boolean,
+    launchBarCollapse:boolean,
+    snackBarOpen:boolean,
+    snackBarMsgInfo:Partial<ISnackBarMsg>,
+    snackBarMsgQueue:Array<Partial<ISnackBarMsg>>,
+    openfinVersion:string,
+    openfinHostSpec:any,
+    windowsState:string,
 }
