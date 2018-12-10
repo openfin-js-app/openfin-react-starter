@@ -213,6 +213,16 @@ describe('Application reducer',()=>{
             expect(reducer(undefined,action)).toMatchSnapshot();
         });
 
+        it('APPLICATION_NETWORK_ONLINE reduced correctly - empty',()=>{
+            const action:any = Actions.applicationNetworkOnline();
+            expect(reducer(undefined,action)).toMatchSnapshot();
+        });
+
+        it('APPLICATION_NETWORK_OFFLINE reduced correctly - empty',()=>{
+            const action:any = Actions.applicationNetworkOffline();
+            expect(reducer(undefined,action)).toMatchSnapshot();
+        });
+
     });
 
 });

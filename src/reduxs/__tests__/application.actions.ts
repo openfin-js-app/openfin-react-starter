@@ -87,4 +87,14 @@ describe('Application actions',()=>{
         expect(store.getActions()).toMatchSnapshot();
     });
 
+    it('applicationNetworkOnline created and dispatched correctly',()=>{
+        store.dispatch(Actions.applicationNetworkOnline({}));
+        expect(store.getActions()).toMatchSnapshot();
+    });
+
+    it('applicationNetworkOffline created and dispatched correctly',()=>{
+        store.dispatch(Actions.applicationNetworkOffline({}));
+        expect(store.getActions()).toMatchSnapshot();
+    });
+
 });
