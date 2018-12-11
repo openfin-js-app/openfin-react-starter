@@ -131,7 +131,7 @@ class ConfigView extends React.Component<IProps,IState>{
                                         }
                                     }):
                                     <Paper>
-                                        <Typography component={"p"}>
+                                        <Typography variant='body2'>
                                             Not found ...
                                         </Typography>
                                     </Paper>
@@ -156,7 +156,7 @@ class ConfigView extends React.Component<IProps,IState>{
                                         </GridListTile>:null
                                     )):
                                     <Paper style={{width:'100%'}}>
-                                        <Typography component={"p"}>
+                                        <Typography variant='body2'>
                                             Not found ...
                                         </Typography>
                                     </Paper>

@@ -1,7 +1,9 @@
 // component styles
 export {default as buttonStyle} from './comp/buttonStyle';
 export {default as configFieldCompStyle} from './comp/configFieldCompStyle';
+export {default as configAboutFieldStyle} from './comp/configAboutFieldStyle';
 export {default as headerCompStyle} from './comp/headerCompStyle';
+export {default as offlineOverlayStyle} from './comp/offlineOverlayStyle';
 export {default as headerLinksCompStyle} from './comp/headerLinksCompStyle';
 export {default as sidebarCompStyle} from './comp/sidebarCompStyle';
 export {default as snackbarContentCompStyle} from './comp/snackbarContentCompStyle';

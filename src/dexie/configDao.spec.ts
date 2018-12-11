@@ -1,4 +1,4 @@
-import { findAll, saveOrUpdateOneByTabNameFieldName } from './configDao';
+import { CONFIG_VERSION, findAll, findAllOfCurrentVersion, saveOrUpdateOneByTabNameFieldName } from './configDao';
 import db from './db';
 
 jest.mock('./db');
@@ -7,6 +7,11 @@ describe('ConfigDao',()=>{
 
     it('findAll async',async ()=>{
         const founds = await findAll();
+        expect(founds).toMatchSnapshot();
+    })
+
+    it('findAllOfCurrentVersion async',async ()=>{
+        const founds = await findAllOfCurrentVersion();
         expect(founds).toMatchSnapshot();
     })
 
@@ -22,11 +27,24 @@ describe('ConfigDao',()=>{
         beforeAll(()=>{
             const configs = db.table('configs');
             configs.put({
-                tabName:'tabName', fieldName:'fieldName', value:'value',
+                tabName:'tabName', fieldName:'fieldName', value:'value', version:CONFIG_VERSION-1,
             });
             configs.put({
-                tabName:'tabName', fieldName:'fieldName', value:'value',
+                tabName:'tabName', fieldName:'fieldName', value:'value', version:CONFIG_VERSION,
             });
+            configs.put({
+                tabName:'tabName', fieldName:'fieldName', value:'value', version:CONFIG_VERSION,
+            });
+        })
+
+        it('findAll async with preset',async ()=>{
+            const founds = await findAll();
+            expect(founds).toMatchSnapshot();
+        })
+
+        it('findAllOfCurrentVersion async with preset',async ()=>{
+            const founds = await findAllOfCurrentVersion();
+            expect(founds).toMatchSnapshot();
         })
 
         it('saveOrUpdateOneByTabNameFieldName async with preset',async ()=>{

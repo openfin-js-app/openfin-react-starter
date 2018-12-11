@@ -109,6 +109,23 @@ Object {
       "_svgUrl": "controls_dark.svg",
     },
     Object {
+      "_fieldLabels": "About openfin starter",
+      "_fields": Array [
+        Object {
+          "_cols": 12,
+          "_custom": <WithStyles(ConfigAboutField) />,
+          "_label": "About openfin starter",
+          "_rows": 12,
+          "_type": 1,
+        },
+      ],
+      "_icon": [Function],
+      "_label": "About",
+      "_name": "about",
+      "_order": 1,
+      "_svgUrl": "information-dark.svg",
+    },
+    Object {
       "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
       "_fields": Array [
         Object {
@@ -192,10 +209,11 @@ Object {
       "_icon": [Function],
       "_label": "Sample",
       "_name": "sample",
-      "_order": 1,
+      "_order": 2,
       "_svgUrl": "list-checked-dark.svg",
     },
   ],
+  "about": Object {},
   "application": Object {
     "newWinHeight": 320,
     "newWinLeft": 300,
@@ -327,6 +345,23 @@ Object {
       "_svgUrl": "controls_dark.svg",
     },
     Object {
+      "_fieldLabels": "About openfin starter",
+      "_fields": Array [
+        Object {
+          "_cols": 12,
+          "_custom": <WithStyles(ConfigAboutField) />,
+          "_label": "About openfin starter",
+          "_rows": 12,
+          "_type": 1,
+        },
+      ],
+      "_icon": [Function],
+      "_label": "About",
+      "_name": "about",
+      "_order": 1,
+      "_svgUrl": "information-dark.svg",
+    },
+    Object {
       "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
       "_fields": Array [
         Object {
@@ -410,10 +445,11 @@ Object {
       "_icon": [Function],
       "_label": "Sample",
       "_name": "sample",
-      "_order": 1,
+      "_order": 2,
       "_svgUrl": "list-checked-dark.svg",
     },
   ],
+  "about": Object {},
   "application": Object {
     "newWinHeight": 320,
     "newWinLeft": 300,
@@ -542,6 +578,23 @@ Object {
       "_svgUrl": "controls_dark.svg",
     },
     Object {
+      "_fieldLabels": "About openfin starter",
+      "_fields": Array [
+        Object {
+          "_cols": 12,
+          "_custom": <WithStyles(ConfigAboutField) />,
+          "_label": "About openfin starter",
+          "_rows": 12,
+          "_type": 1,
+        },
+      ],
+      "_icon": [Function],
+      "_label": "About",
+      "_name": "about",
+      "_order": 1,
+      "_svgUrl": "information-dark.svg",
+    },
+    Object {
       "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
       "_fields": Array [
         Object {
@@ -625,10 +678,11 @@ Object {
       "_icon": [Function],
       "_label": "Sample",
       "_name": "sample",
-      "_order": 1,
+      "_order": 2,
       "_svgUrl": "list-checked-dark.svg",
     },
   ],
+  "about": Object {},
   "application": Object {
     "newWinHeight": 320,
     "newWinLeft": 300,
@@ -765,6 +819,23 @@ Object {
       "_svgUrl": "controls_dark.svg",
     },
     Object {
+      "_fieldLabels": "About openfin starter",
+      "_fields": Array [
+        Object {
+          "_cols": 12,
+          "_custom": <WithStyles(ConfigAboutField) />,
+          "_label": "About openfin starter",
+          "_rows": 12,
+          "_type": 1,
+        },
+      ],
+      "_icon": [Function],
+      "_label": "About",
+      "_name": "about",
+      "_order": 1,
+      "_svgUrl": "information-dark.svg",
+    },
+    Object {
       "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
       "_fields": Array [
         Object {
@@ -848,10 +919,11 @@ Object {
       "_icon": [Function],
       "_label": "Sample",
       "_name": "sample",
-      "_order": 1,
+      "_order": 2,
       "_svgUrl": "list-checked-dark.svg",
     },
   ],
+  "about": Object {},
   "application": Object {
     "newWinHeight": 320,
     "newWinLeft": 300,
@@ -980,6 +1052,23 @@ Object {
       "_svgUrl": "controls_dark.svg",
     },
     Object {
+      "_fieldLabels": "About openfin starter",
+      "_fields": Array [
+        Object {
+          "_cols": 12,
+          "_custom": <WithStyles(ConfigAboutField) />,
+          "_label": "About openfin starter",
+          "_rows": 12,
+          "_type": 1,
+        },
+      ],
+      "_icon": [Function],
+      "_label": "About",
+      "_name": "about",
+      "_order": 1,
+      "_svgUrl": "information-dark.svg",
+    },
+    Object {
       "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
       "_fields": Array [
         Object {
@@ -1063,10 +1152,11 @@ Object {
       "_icon": [Function],
       "_label": "Sample",
       "_name": "sample",
-      "_order": 1,
+      "_order": 2,
       "_svgUrl": "list-checked-dark.svg",
     },
   ],
+  "about": Object {},
   "application": Object {
     "newWinHeight": 320,
     "newWinLeft": 320,
@@ -1195,6 +1285,23 @@ Object {
       "_svgUrl": "controls_dark.svg",
     },
     Object {
+      "_fieldLabels": "About openfin starter",
+      "_fields": Array [
+        Object {
+          "_cols": 12,
+          "_custom": <WithStyles(ConfigAboutField) />,
+          "_label": "About openfin starter",
+          "_rows": 12,
+          "_type": 1,
+        },
+      ],
+      "_icon": [Function],
+      "_label": "About",
+      "_name": "about",
+      "_order": 1,
+      "_svgUrl": "information-dark.svg",
+    },
+    Object {
       "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
       "_fields": Array [
         Object {
@@ -1278,10 +1385,11 @@ Object {
       "_icon": [Function],
       "_label": "Sample",
       "_name": "sample",
-      "_order": 1,
+      "_order": 2,
       "_svgUrl": "list-checked-dark.svg",
     },
   ],
+  "about": Object {},
   "application": Object {
     "newWinHeight": 320,
     "newWinLeft": 300,
@@ -1410,6 +1518,23 @@ Object {
       "_svgUrl": "controls_dark.svg",
     },
     Object {
+      "_fieldLabels": "About openfin starter",
+      "_fields": Array [
+        Object {
+          "_cols": 12,
+          "_custom": <WithStyles(ConfigAboutField) />,
+          "_label": "About openfin starter",
+          "_rows": 12,
+          "_type": 1,
+        },
+      ],
+      "_icon": [Function],
+      "_label": "About",
+      "_name": "about",
+      "_order": 1,
+      "_svgUrl": "information-dark.svg",
+    },
+    Object {
       "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
       "_fields": Array [
         Object {
@@ -1493,10 +1618,11 @@ Object {
       "_icon": [Function],
       "_label": "Sample",
       "_name": "sample",
-      "_order": 1,
+      "_order": 2,
       "_svgUrl": "list-checked-dark.svg",
     },
   ],
+  "about": Object {},
   "application": Object {
     "newWinHeight": 320,
     "newWinLeft": 300,

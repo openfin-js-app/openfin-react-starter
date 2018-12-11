@@ -1,3 +1,5 @@
+import { Theme, createStyles } from '@material-ui/core/styles';
+
 import {
     appbarHeight,
     drawerWidth,
@@ -12,7 +14,7 @@ import {
     dangerColor,
 } from '../../openfin-starter-constant';
 
-const sidebarStyle:any = (theme:any) => ({
+const sidebarStyle:any = (theme:Theme) => createStyles({
     drawerPaper:{
         border:"none",
         backgroundColor:'transparent',
@@ -20,7 +22,7 @@ const sidebarStyle:any = (theme:any) => ({
         top: appbarHeight +4,
         bottom:0,
         left:"0",
-        zIndex: "1",
+        zIndex: 1,
         ...boxShadow,
         width:drawerWidth,
         height:"100%",
@@ -28,7 +30,7 @@ const sidebarStyle:any = (theme:any) => ({
     },
     background:{
         position:"absolute",
-        zIndex:"1",
+        zIndex:1,
         height: "calc(100% - 15px)",
         width: "100%",
         display:"block",
@@ -38,13 +40,13 @@ const sidebarStyle:any = (theme:any) => ({
         backgroundPosition:"center center",
         "&:after":{
             position:"absolute",
-            zIndex:"3",
+            zIndex:3,
             width: "100%",
             height:"100%",
             content:'""',
             display:"block",
             background:"#000",
-            opacity:".8",
+            opacity:0.8,
         }
     },
     list:{
@@ -147,7 +149,7 @@ const sidebarStyle:any = (theme:any) => ({
         height: "calc(100% - 75px)",
         overflow: "auto",
         width: drawerWidth-4,
-        zIndex: "4",
+        zIndex: 4,
         overflowScrolling: "touch"
     },
 });

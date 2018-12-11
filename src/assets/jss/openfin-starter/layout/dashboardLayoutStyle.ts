@@ -1,9 +1,11 @@
+import { Theme, createStyles } from '@material-ui/core/styles';
+
 import {
     primaryColor, infoColor, warningColor, dangerColor, successColor,
     drawerWidth, appbarHeight, container,
 } from '../../openfin-starter-constant';
 
-const appStyle:any = (theme:any) => ({
+const appStyle:any = (theme:Theme) => createStyles({
     wrapper:{
         position:"relative",
         top:"0",

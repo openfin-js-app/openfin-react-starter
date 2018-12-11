@@ -29,9 +29,8 @@ export const sampleItems:IlaunchBarItemType[]=[
             resizable:true,
             state:'normal',
             autoShow:true,
-            callback:(window:any)=>{
-                console.log('onOpenNewSelf::callback', window);
-            }
+            minWidth:520,
+            minHeight:170,
         },
     },
     {
@@ -45,9 +44,8 @@ export const sampleItems:IlaunchBarItemType[]=[
             resizable:true,
             state:'normal',
             autoShow:true,
-            callback:(window:any)=>{
-                console.log('onOpenNewSelf::callback', window);
-            }
+            minWidth:415,
+            minHeight:100,
         },
     },
     {
@@ -61,9 +59,8 @@ export const sampleItems:IlaunchBarItemType[]=[
             resizable:true,
             state:'normal',
             autoShow:true,
-            callback:(window:any)=>{
-                console.log('onOpenNewSelf::callback', window);
-            }
+            minWidth:415,
+            minHeight:100,
         },
     },
     {
@@ -77,9 +74,8 @@ export const sampleItems:IlaunchBarItemType[]=[
             resizable:true,
             state:'normal',
             autoShow:true,
-            callback:(window:any)=>{
-                console.log('onOpenNewSelf::callback', window);
-            }
+            minWidth:430,
+            minHeight:100,
         },
     },
     {

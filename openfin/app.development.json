@@ -10,7 +10,9 @@
     "frame":false,
     "defaultCentered":true,
     "defaultWidth":728,
-    "defaultHeight":450
+    "defaultHeight":450,
+    "minWidth":88,
+    "minHeight":64
   },
   "runtime":{
     "version":"9.61.36.36",

@@ -1,6 +1,6 @@
 import { buffers, delay } from 'redux-saga';
 import { all, call, put, take, takeLatest, takeEvery, fork, select, actionChannel } from 'redux-saga/effects';
-import { System, Event, Window } from '@albertli90/redux-openfin';
+import { Docking ,System, Event, Window } from '@albertli90/redux-openfin';
 
 import hist from '../../utils/history';
 
@@ -12,6 +12,7 @@ import {
     APPLICATION_NEW_SNACKBAR,
     APPLICATION_CLOSE_SNACKBAR,
     APPLICATION_TOGGLE_WINDOW_STATE,
+    applicationNewSnackbar,
     applicationReady,
     applicationSetSnackbarStatus,
     applicationProcessSnackbarQueue,
@@ -166,6 +167,7 @@ export function* handleApplicationLoading() {
 
 export function* handleApplicationChildLoading() {
     yield all([
+        call(Window.asyncs.getBounds,Window.actions.getBounds({})),
         put.resolve(configLoadFromDexie()),
     ]);
     yield put.resolve(applicationReady());
@@ -219,23 +221,23 @@ export function* handleApplicationLaunchBarToggle(){
         // switch to main panel
         yield call(Window.asyncs.updateOptions,Window.actions.updateOptions({
             options:{
-                resizable:true
+                resizable:true,
             }
         }));
         yield call(Window.asyncs.setBounds,Window.actions.setBounds({
-            left:previousBaseWindow.left,
-            top:previousBaseWindow.top,
-            width:previousBaseWindow.width,
-            height:previousBaseWindow.height,
+            left:previousBaseWindow.left?previousBaseWindow.left:parseInt(process.env.REACT_APP_NEW_WINDOW_LEFT,10),
+            top:previousBaseWindow.top?previousBaseWindow.top:parseInt(process.env.REACT_APP_NEW_WINDOW_TOP,10),
+            width:previousBaseWindow.width?previousBaseWindow.width:parseInt(process.env.REACT_APP_NEW_WINDOW_WIDTH,10),
+            height:previousBaseWindow.height?previousBaseWindow.height:parseInt(process.env.REACT_APP_NEW_WINDOW_HEIGHT,10),
         }));
         if (process.env.NODE_ENV !== 'test'){
-            hist.push(previousBaseWindow.url);
+            hist.push(previousBaseWindow.url?previousBaseWindow.url:process.env.REACT_APP_DEFAULT_DASHBOARD_VIEW_URL);
         }
     }else{
         // switch to launchBar
         yield call(Window.asyncs.updateOptions,Window.actions.updateOptions({
             options:{
-                resizable:false
+                resizable:false,
             }
         }));
         previousBaseWindow.url = (new URL(window.location.href)).pathname;
@@ -308,6 +310,44 @@ export function* handleApplicationLaunchNewWindow(action) {
 
 }
 
+export function* handleGroupChanged(action){
+    const {
+        sourceWindowName, targetWindowName, memeberOf, reason
+    } = action.payload;
+
+
+    if (reason === Docking.types.GroupEventReason.JOIN){
+        if(sourceWindowName === window.name){
+            yield put(applicationNewSnackbar({
+                message:'Joined group',
+                variant:'primary'
+            }))
+        }else if (targetWindowName === window.name){
+            yield put(applicationNewSnackbar({
+                message:'Been joined',
+                variant:'rose'
+            }))
+        }
+    }else if (
+        reason === Docking.types.GroupEventReason.LEAVE &&
+        sourceWindowName === window.name
+    ){
+        yield put(applicationNewSnackbar({
+            message:'Left group',
+            variant:'primary'
+        }))
+    }else if (
+        reason === Docking.types.GroupEventReason.DISBAND &&
+        sourceWindowName === window.name
+    ){
+        yield put(applicationNewSnackbar({
+            message:'Got disbanded',
+            variant:'rose'
+        }))
+    }
+
+}
+
 export default function* (){
     yield takeLatest(APPLICATION_STARTED,handleApplicationLoading);
     yield takeLatest(APPLICATION_CHILD_STARTED,handleApplicationChildLoading);
@@ -318,4 +358,5 @@ export default function* (){
     yield takeLatest(APPLICATION_LAUNCH_BAR_TOGGLE,handleApplicationLaunchBarToggle);
     yield takeLatest(APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE,handleApplicationLaunchBarToggleCollapse);
     yield takeLatest(APPLICATION_LAUNCH_NEW_WINDOW,handleApplicationLaunchNewWindow);
+    yield takeEvery(Event.actionDicts.windowEventDictByName['group-changed'].type,handleGroupChanged);
 }

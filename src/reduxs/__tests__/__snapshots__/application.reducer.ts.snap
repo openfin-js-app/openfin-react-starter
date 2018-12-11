@@ -1,49 +1,111 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Application reducer APPLICATION_DRAWER_TOGGLE reduced correctly 1`] = `
+exports[`Application reducer With out parent state APPLICATION_DRAWER_TOGGLE reduced correctly 1`] = `
 Object {
   "computerName": "",
   "deviceUserId": null,
+  "docked": false,
   "drawerOpen": false,
   "launchBarCollapse": false,
   "loading": true,
   "machineId": null,
+  "offline": false,
   "openfinHostSpec": Object {},
   "openfinVersion": "n/a",
   "snackBarMsgInfo": Object {},
   "snackBarMsgQueue": Array [],
   "snackBarOpen": false,
   "username": "",
+  "winHeight": 0,
+  "winLeft": 0,
+  "winTop": 0,
+  "winWidth": 0,
   "windowsState": "normal",
 }
 `;
 
-exports[`Application reducer APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE reduced correctly - empty 1`] = `
+exports[`Application reducer With out parent state APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE reduced correctly - empty 1`] = `
 Object {
   "computerName": "",
   "deviceUserId": null,
+  "docked": false,
   "drawerOpen": true,
   "launchBarCollapse": true,
   "loading": true,
   "machineId": null,
+  "offline": false,
   "openfinHostSpec": Object {},
   "openfinVersion": "n/a",
   "snackBarMsgInfo": Object {},
   "snackBarMsgQueue": Array [],
   "snackBarOpen": false,
   "username": "",
+  "winHeight": 0,
+  "winLeft": 0,
+  "winTop": 0,
+  "winWidth": 0,
   "windowsState": "normal",
 }
 `;
 
-exports[`Application reducer APPLICATION_NEW_SNACKBAR reduced correctly 1`] = `
+exports[`Application reducer With out parent state APPLICATION_NETWORK_OFFLINE reduced correctly - empty 1`] = `
 Object {
   "computerName": "",
   "deviceUserId": null,
+  "docked": false,
   "drawerOpen": true,
   "launchBarCollapse": false,
   "loading": true,
   "machineId": null,
+  "offline": true,
+  "openfinHostSpec": Object {},
+  "openfinVersion": "n/a",
+  "snackBarMsgInfo": Object {},
+  "snackBarMsgQueue": Array [],
+  "snackBarOpen": false,
+  "username": "",
+  "winHeight": 0,
+  "winLeft": 0,
+  "winTop": 0,
+  "winWidth": 0,
+  "windowsState": "normal",
+}
+`;
+
+exports[`Application reducer With out parent state APPLICATION_NETWORK_ONLINE reduced correctly - empty 1`] = `
+Object {
+  "computerName": "",
+  "deviceUserId": null,
+  "docked": false,
+  "drawerOpen": true,
+  "launchBarCollapse": false,
+  "loading": true,
+  "machineId": null,
+  "offline": false,
+  "openfinHostSpec": Object {},
+  "openfinVersion": "n/a",
+  "snackBarMsgInfo": Object {},
+  "snackBarMsgQueue": Array [],
+  "snackBarOpen": false,
+  "username": "",
+  "winHeight": 0,
+  "winLeft": 0,
+  "winTop": 0,
+  "winWidth": 0,
+  "windowsState": "normal",
+}
+`;
+
+exports[`Application reducer With out parent state APPLICATION_NEW_SNACKBAR reduced correctly 1`] = `
+Object {
+  "computerName": "",
+  "deviceUserId": null,
+  "docked": false,
+  "drawerOpen": true,
+  "launchBarCollapse": false,
+  "loading": true,
+  "machineId": null,
+  "offline": false,
   "openfinHostSpec": Object {},
   "openfinVersion": "n/a",
   "snackBarMsgInfo": Object {},
@@ -55,29 +117,39 @@ Object {
   ],
   "snackBarOpen": false,
   "username": "",
+  "winHeight": 0,
+  "winLeft": 0,
+  "winTop": 0,
+  "winWidth": 0,
   "windowsState": "normal",
 }
 `;
 
-exports[`Application reducer APPLICATION_PROCESS_SNACKBAR_QUEUE reduced correctly - empty 1`] = `
+exports[`Application reducer With out parent state APPLICATION_PROCESS_SNACKBAR_QUEUE reduced correctly - empty 1`] = `
 Object {
   "computerName": "",
   "deviceUserId": null,
+  "docked": false,
   "drawerOpen": true,
   "launchBarCollapse": false,
   "loading": true,
   "machineId": null,
+  "offline": false,
   "openfinHostSpec": Object {},
   "openfinVersion": "n/a",
   "snackBarMsgInfo": Object {},
   "snackBarMsgQueue": Array [],
   "snackBarOpen": false,
   "username": "",
+  "winHeight": 0,
+  "winLeft": 0,
+  "winTop": 0,
+  "winWidth": 0,
   "windowsState": "normal",
 }
 `;
 
-exports[`Application reducer APPLICATION_PROCESS_SNACKBAR_QUEUE reduced correctly - nonempty 1`] = `
+exports[`Application reducer With out parent state APPLICATION_PROCESS_SNACKBAR_QUEUE reduced correctly - nonempty 1`] = `
 Object {
   "snackBarMsgInfo": Object {
     "message": "Snackbar message",
@@ -88,122 +160,256 @@ Object {
 }
 `;
 
-exports[`Application reducer APPLICATION_READY reduced correctly 1`] = `
+exports[`Application reducer With out parent state APPLICATION_READY reduced correctly 1`] = `
 Object {
   "computerName": "",
   "deviceUserId": null,
+  "docked": false,
   "drawerOpen": true,
   "launchBarCollapse": false,
   "loading": false,
   "machineId": null,
+  "offline": false,
   "openfinHostSpec": Object {},
   "openfinVersion": "n/a",
   "snackBarMsgInfo": Object {},
   "snackBarMsgQueue": Array [],
   "snackBarOpen": false,
   "username": "",
+  "winHeight": 0,
+  "winLeft": 0,
+  "winTop": 0,
+  "winWidth": 0,
   "windowsState": "normal",
 }
 `;
 
-exports[`Application reducer APPLICATION_SET_SNACKBAR_STATUS reduced correctly - empty 1`] = `
+exports[`Application reducer With out parent state APPLICATION_SET_SNACKBAR_STATUS reduced correctly - empty 1`] = `
 Object {
   "computerName": "",
   "deviceUserId": null,
+  "docked": false,
   "drawerOpen": true,
   "launchBarCollapse": false,
   "loading": true,
   "machineId": null,
+  "offline": false,
   "openfinHostSpec": Object {},
   "openfinVersion": "n/a",
   "snackBarMsgInfo": Object {},
   "snackBarMsgQueue": Array [],
   "snackBarOpen": true,
   "username": "",
+  "winHeight": 0,
+  "winLeft": 0,
+  "winTop": 0,
+  "winWidth": 0,
   "windowsState": "normal",
 }
 `;
 
-exports[`Application reducer System.actions.GET_DEVICE_USER_ID_RES reduced correctly 1`] = `
+exports[`Application reducer With out parent state Event.actionDicts.windowEventDictByName['bounds-changing'].type reduced correctly 1`] = `
+Object {
+  "computerName": "",
+  "deviceUserId": null,
+  "docked": false,
+  "drawerOpen": true,
+  "launchBarCollapse": false,
+  "loading": true,
+  "machineId": null,
+  "offline": false,
+  "openfinHostSpec": Object {},
+  "openfinVersion": "n/a",
+  "snackBarMsgInfo": Object {},
+  "snackBarMsgQueue": Array [],
+  "snackBarOpen": false,
+  "username": "",
+  "winHeight": 3,
+  "winLeft": 1,
+  "winTop": 0,
+  "winWidth": undefined,
+  "windowsState": "normal",
+}
+`;
+
+exports[`Application reducer With out parent state Event.actionDicts.windowEventDictByName['group-changed'].type action join reason and correct window name 1`] = `
+Object {
+  "computerName": "",
+  "deviceUserId": null,
+  "docked": true,
+  "drawerOpen": true,
+  "launchBarCollapse": false,
+  "loading": true,
+  "machineId": null,
+  "offline": false,
+  "openfinHostSpec": Object {},
+  "openfinVersion": "n/a",
+  "snackBarMsgInfo": Object {},
+  "snackBarMsgQueue": Array [],
+  "snackBarOpen": false,
+  "username": "",
+  "winHeight": 0,
+  "winLeft": 0,
+  "winTop": 0,
+  "winWidth": 0,
+  "windowsState": "normal",
+}
+`;
+
+exports[`Application reducer With out parent state Event.actionDicts.windowEventDictByName['group-changed'].type action leave reason and correct window name 1`] = `
+Object {
+  "computerName": "",
+  "deviceUserId": null,
+  "docked": false,
+  "drawerOpen": true,
+  "launchBarCollapse": false,
+  "loading": true,
+  "machineId": null,
+  "offline": false,
+  "openfinHostSpec": Object {},
+  "openfinVersion": "n/a",
+  "snackBarMsgInfo": Object {},
+  "snackBarMsgQueue": Array [],
+  "snackBarOpen": false,
+  "username": "",
+  "winHeight": 0,
+  "winLeft": 0,
+  "winTop": 0,
+  "winWidth": 0,
+  "windowsState": "normal",
+}
+`;
+
+exports[`Application reducer With out parent state Event.actionDicts.windowEventDictByName['group-changed'].type action leave reason and correct window name 2`] = `
+Object {
+  "computerName": "",
+  "deviceUserId": null,
+  "docked": false,
+  "drawerOpen": true,
+  "launchBarCollapse": false,
+  "loading": true,
+  "machineId": null,
+  "offline": false,
+  "openfinHostSpec": Object {},
+  "openfinVersion": "n/a",
+  "snackBarMsgInfo": Object {},
+  "snackBarMsgQueue": Array [],
+  "snackBarOpen": false,
+  "username": "",
+  "winHeight": 0,
+  "winLeft": 0,
+  "winTop": 0,
+  "winWidth": 0,
+  "windowsState": "normal",
+}
+`;
+
+exports[`Application reducer With out parent state System.actions.GET_DEVICE_USER_ID_RES reduced correctly 1`] = `
 Object {
   "computerName": "",
   "deviceUserId": "id",
+  "docked": false,
   "drawerOpen": true,
   "launchBarCollapse": false,
   "loading": true,
   "machineId": null,
+  "offline": false,
   "openfinHostSpec": Object {},
   "openfinVersion": "n/a",
   "snackBarMsgInfo": Object {},
   "snackBarMsgQueue": Array [],
   "snackBarOpen": false,
   "username": "",
+  "winHeight": 0,
+  "winLeft": 0,
+  "winTop": 0,
+  "winWidth": 0,
   "windowsState": "normal",
 }
 `;
 
-exports[`Application reducer System.actions.GET_ENVIRONMENT_VARIABLE_RES reduced correctly - computername 1`] = `
+exports[`Application reducer With out parent state System.actions.GET_ENVIRONMENT_VARIABLE_RES reduced correctly - computername 1`] = `
 Object {
   "computerName": "computernameVal",
   "deviceUserId": null,
+  "docked": false,
   "drawerOpen": true,
   "launchBarCollapse": false,
   "loading": true,
   "machineId": null,
+  "offline": false,
   "openfinHostSpec": Object {},
   "openfinVersion": "n/a",
   "snackBarMsgInfo": Object {},
   "snackBarMsgQueue": Array [],
   "snackBarOpen": false,
   "username": "",
+  "winHeight": 0,
+  "winLeft": 0,
+  "winTop": 0,
+  "winWidth": 0,
   "windowsState": "normal",
 }
 `;
 
-exports[`Application reducer System.actions.GET_ENVIRONMENT_VARIABLE_RES reduced correctly - unmatched 1`] = `
+exports[`Application reducer With out parent state System.actions.GET_ENVIRONMENT_VARIABLE_RES reduced correctly - unmatched 1`] = `
 Object {
   "computerName": "",
   "deviceUserId": null,
+  "docked": false,
   "drawerOpen": true,
   "launchBarCollapse": false,
   "loading": true,
   "machineId": null,
+  "offline": false,
   "openfinHostSpec": Object {},
   "openfinVersion": "n/a",
   "snackBarMsgInfo": Object {},
   "snackBarMsgQueue": Array [],
   "snackBarOpen": false,
   "username": "",
+  "winHeight": 0,
+  "winLeft": 0,
+  "winTop": 0,
+  "winWidth": 0,
   "windowsState": "normal",
 }
 `;
 
-exports[`Application reducer System.actions.GET_ENVIRONMENT_VARIABLE_RES reduced correctly - username 1`] = `
+exports[`Application reducer With out parent state System.actions.GET_ENVIRONMENT_VARIABLE_RES reduced correctly - username 1`] = `
 Object {
   "computerName": "",
   "deviceUserId": null,
+  "docked": false,
   "drawerOpen": true,
   "launchBarCollapse": false,
   "loading": true,
   "machineId": null,
+  "offline": false,
   "openfinHostSpec": Object {},
   "openfinVersion": "n/a",
   "snackBarMsgInfo": Object {},
   "snackBarMsgQueue": Array [],
   "snackBarOpen": false,
   "username": "usernameVal",
+  "winHeight": 0,
+  "winLeft": 0,
+  "winTop": 0,
+  "winWidth": 0,
   "windowsState": "normal",
 }
 `;
 
-exports[`Application reducer System.actions.GET_HOST_SPECS_RES reduced correctly 1`] = `
+exports[`Application reducer With out parent state System.actions.GET_HOST_SPECS_RES reduced correctly 1`] = `
 Object {
   "computerName": "",
   "deviceUserId": null,
+  "docked": false,
   "drawerOpen": true,
   "launchBarCollapse": false,
   "loading": true,
   "machineId": null,
+  "offline": false,
   "openfinHostSpec": Object {
     "type": "GET_HOST_SPECS_RES",
   },
@@ -212,60 +418,202 @@ Object {
   "snackBarMsgQueue": Array [],
   "snackBarOpen": false,
   "username": "",
+  "winHeight": 0,
+  "winLeft": 0,
+  "winTop": 0,
+  "winWidth": 0,
   "windowsState": "normal",
 }
 `;
 
-exports[`Application reducer System.actions.GET_MACHINE_ID_RES reduced correctly 1`] = `
+exports[`Application reducer With out parent state System.actions.GET_MACHINE_ID_RES reduced correctly 1`] = `
 Object {
   "computerName": "",
   "deviceUserId": null,
+  "docked": false,
   "drawerOpen": true,
   "launchBarCollapse": false,
   "loading": true,
   "machineId": "id",
+  "offline": false,
   "openfinHostSpec": Object {},
   "openfinVersion": "n/a",
   "snackBarMsgInfo": Object {},
   "snackBarMsgQueue": Array [],
   "snackBarOpen": false,
   "username": "",
+  "winHeight": 0,
+  "winLeft": 0,
+  "winTop": 0,
+  "winWidth": 0,
   "windowsState": "normal",
 }
 `;
 
-exports[`Application reducer System.actions.GET_VERSION_RES reduced correctly 1`] = `
+exports[`Application reducer With out parent state System.actions.GET_VERSION_RES reduced correctly 1`] = `
 Object {
   "computerName": "",
   "deviceUserId": null,
+  "docked": false,
   "drawerOpen": true,
   "launchBarCollapse": false,
   "loading": true,
   "machineId": null,
+  "offline": false,
   "openfinHostSpec": Object {},
   "openfinVersion": "versionStr",
   "snackBarMsgInfo": Object {},
   "snackBarMsgQueue": Array [],
   "snackBarOpen": false,
   "username": "",
+  "winHeight": 0,
+  "winLeft": 0,
+  "winTop": 0,
+  "winWidth": 0,
   "windowsState": "normal",
 }
 `;
 
-exports[`Application reducer Window.actions.GET_STATE_RES reduced correctly 1`] = `
+exports[`Application reducer With out parent state Window.actions.GET_BOUNDS_RES reduced correctly 1`] = `
 Object {
   "computerName": "",
   "deviceUserId": null,
+  "docked": false,
   "drawerOpen": true,
   "launchBarCollapse": false,
   "loading": true,
   "machineId": null,
+  "offline": false,
   "openfinHostSpec": Object {},
   "openfinVersion": "n/a",
   "snackBarMsgInfo": Object {},
   "snackBarMsgQueue": Array [],
   "snackBarOpen": false,
   "username": "",
+  "winHeight": 3,
+  "winLeft": 1,
+  "winTop": 0,
+  "winWidth": undefined,
+  "windowsState": "normal",
+}
+`;
+
+exports[`Application reducer With out parent state Window.actions.GET_STATE_RES reduced correctly 1`] = `
+Object {
+  "computerName": "",
+  "deviceUserId": null,
+  "docked": false,
+  "drawerOpen": true,
+  "launchBarCollapse": false,
+  "loading": true,
+  "machineId": null,
+  "offline": false,
+  "openfinHostSpec": Object {},
+  "openfinVersion": "n/a",
+  "snackBarMsgInfo": Object {},
+  "snackBarMsgQueue": Array [],
+  "snackBarOpen": false,
+  "username": "",
+  "winHeight": 0,
+  "winLeft": 0,
+  "winTop": 0,
+  "winWidth": 0,
   "windowsState": "windowState",
+}
+`;
+
+exports[`Application reducer With parent state System.actions.GET_DEVICE_USER_ID_RES reduced correctly 1`] = `
+Object {
+  "computerName": "",
+  "deviceUserId": "id",
+  "docked": false,
+  "drawerOpen": true,
+  "launchBarCollapse": false,
+  "loading": true,
+  "machineId": null,
+  "offline": false,
+  "openfinHostSpec": Object {},
+  "openfinVersion": "n/a",
+  "snackBarMsgInfo": Object {},
+  "snackBarMsgQueue": Array [],
+  "snackBarOpen": false,
+  "username": "",
+  "winHeight": 0,
+  "winLeft": 0,
+  "winTop": 0,
+  "winWidth": 0,
+  "windowsState": "normal",
+}
+`;
+
+exports[`Application reducer With parent state System.actions.GET_ENVIRONMENT_VARIABLE_RES reduced correctly - computername 1`] = `
+Object {
+  "computerName": "computernameVal",
+  "deviceUserId": null,
+  "docked": false,
+  "drawerOpen": true,
+  "launchBarCollapse": false,
+  "loading": true,
+  "machineId": null,
+  "offline": false,
+  "openfinHostSpec": Object {},
+  "openfinVersion": "n/a",
+  "snackBarMsgInfo": Object {},
+  "snackBarMsgQueue": Array [],
+  "snackBarOpen": false,
+  "username": "",
+  "winHeight": 0,
+  "winLeft": 0,
+  "winTop": 0,
+  "winWidth": 0,
+  "windowsState": "normal",
+}
+`;
+
+exports[`Application reducer With parent state System.actions.GET_ENVIRONMENT_VARIABLE_RES reduced correctly - username 1`] = `
+Object {
+  "computerName": "",
+  "deviceUserId": null,
+  "docked": false,
+  "drawerOpen": true,
+  "launchBarCollapse": false,
+  "loading": true,
+  "machineId": null,
+  "offline": false,
+  "openfinHostSpec": Object {},
+  "openfinVersion": "n/a",
+  "snackBarMsgInfo": Object {},
+  "snackBarMsgQueue": Array [],
+  "snackBarOpen": false,
+  "username": "usernameVal",
+  "winHeight": 0,
+  "winLeft": 0,
+  "winTop": 0,
+  "winWidth": 0,
+  "windowsState": "normal",
+}
+`;
+
+exports[`Application reducer With parent state System.actions.GET_MACHINE_ID_RES reduced correctly 1`] = `
+Object {
+  "computerName": "",
+  "deviceUserId": null,
+  "docked": false,
+  "drawerOpen": true,
+  "launchBarCollapse": false,
+  "loading": true,
+  "machineId": "id",
+  "offline": false,
+  "openfinHostSpec": Object {},
+  "openfinVersion": "n/a",
+  "snackBarMsgInfo": Object {},
+  "snackBarMsgQueue": Array [],
+  "snackBarOpen": false,
+  "username": "",
+  "winHeight": 0,
+  "winLeft": 0,
+  "winTop": 0,
+  "winWidth": 0,
+  "windowsState": "normal",
 }
 `;

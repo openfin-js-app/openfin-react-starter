@@ -10,7 +10,10 @@ jest.mock('../../dexie/db');
 describe('ConfigStore util', ()=>{
 
     beforeAll(()=>{
-        window.fin = new BrowserAdapter({silentMode:process.env.REACT_APP_ENV==='test'});
+        window.fin = new BrowserAdapter({
+            finUuic:process.env.REACT_APP_FIN_UUID,
+            silentMode:process.env.REACT_APP_ENV==='test'
+        });
     })
 
     it('default generator works with devToolsExtension',()=>{
@@ -18,8 +21,6 @@ describe('ConfigStore util', ()=>{
         window.devToolsExtension=()=>((f:any):any => (f));
 
         const store = configureStore(
-            ChannelType.STANDALONE,
-            "app-name-test-client-id",
             [],
         );
         expect(store).toBeTruthy();
@@ -30,8 +31,6 @@ describe('ConfigStore util', ()=>{
         delete window.devToolsExtension;
 
         const store = configureStore(
-            ChannelType.STANDALONE,
-            "app-name-test-client-id",
             [],
         );
         expect(store).toBeTruthy();

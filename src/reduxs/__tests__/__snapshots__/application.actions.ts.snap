@@ -57,6 +57,24 @@ Array [
 ]
 `;
 
+exports[`Application actions applicationNetworkOffline created and dispatched correctly 1`] = `
+Array [
+  Object {
+    "payload": Object {},
+    "type": "APPLICATION_NETWORK_OFF_LINE",
+  },
+]
+`;
+
+exports[`Application actions applicationNetworkOnline created and dispatched correctly 1`] = `
+Array [
+  Object {
+    "payload": Object {},
+    "type": "APPLICATION_NETWORK_ONLINE",
+  },
+]
+`;
+
 exports[`Application actions applicationNewSnackbar created and dispatched correctly 1`] = `
 Array [
   Object {

@@ -1,3 +1,5 @@
+import { Theme, createStyles } from '@material-ui/core/styles';
+
 import {
     appbarHeight,
     container,
@@ -10,7 +12,7 @@ import {
     dangerColor,
 } from '../../openfin-starter-constant';
 
-const headerStyle:any = (theme:any) =>({
+const headerStyle:any = (theme:Theme) =>createStyles({
     appBar:{
         backgroundColor:"transparent",
         boxShadow:"none",
@@ -19,7 +21,7 @@ const headerStyle:any = (theme:any) =>({
         position:"absolute",
         width:"calc(100% - 8px)",
         paddingTop:"0px",
-        zIndex:"1029",
+        zIndex:1029,
         color:"#555555",
         border:"0",
         borderRadius:"0px",
@@ -41,11 +43,12 @@ const headerStyle:any = (theme:any) =>({
         minHeight:appbarHeight,
     },
     menuBtn:{
-        transform:`scale(${appbarHeight/40})`,
+        marginRight:'4px',
         backgroundColor:"transparent",
         "-webkit-app-region":"no-drag",
         color:"inherit",
         height:appbarHeight,
+        minHeight:appbarHeight,
         width:appbarHeight,
         boxShadow:"none",
         "&:hover,&:focus":{

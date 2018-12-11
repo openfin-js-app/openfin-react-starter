@@ -1,3 +1,5 @@
+import { Theme, createStyles } from '@material-ui/core/styles';
+
 import green from '@material-ui/core/colors/green';
 import amber from '@material-ui/core/colors/amber';
 
@@ -5,7 +7,7 @@ import {
     primaryColor, warningColor, dangerColor, successColor, infoColor, roseColor
 } from '../../openfin-starter-constant';
 
-const snackbarContent = (theme:any) =>({
+const snackbarContent = (theme:Theme) => createStyles({
     primary:{
         backgroundColor:primaryColor,
     },

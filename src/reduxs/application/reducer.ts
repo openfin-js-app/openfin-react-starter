@@ -1,5 +1,5 @@
 import { handleActions, Action } from 'redux-actions';
-import { System, Window } from '@albertli90/redux-openfin';
+import { Docking, System, Window, Event } from '@albertli90/redux-openfin';
 
 import {
     IApplicationNewSnackbarOption,
@@ -14,14 +14,22 @@ import {
     APPLICATION_SET_SNACKBAR_STATUS,
     APPLICATION_PROCESS_SNACKBAR_QUEUE,
     APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE,
+    APPLICATION_NETWORK_ONLINE,
+    APPLICATION_NETWORK_OFFLINE,
 } from './actions';
 
 export const defaultState:Partial<IApplicationState>={
+    offline:false,
     username:'',
     computerName:'',
     machineId:null,
     deviceUserId:null,
     loading:true,
+    docked:false,
+    winTop:0,
+    winLeft:0,
+    winWidth:0,
+    winHeight:0,
     drawerOpen:true,
     launchBarCollapse:false,
     snackBarOpen:false,
@@ -38,11 +46,17 @@ export default (parentWindowState?:Partial<IApplicationState>)=>{
     if (parentWindowState){
         initState ={
             ...parentWindowState,
+            docked:false,
+            winTop:0,
+            winLeft:0,
+            winWidth:0,
+            winHeight:0,
             snackBarMsgInfo:{},
             snackBarMsgQueue:[],
             openfinHostSpec:{
                 ...parentWindowState.openfinHostSpec,
             },
+            windowsState:'normal',
         }
 
     }else{
@@ -104,6 +118,47 @@ export default (parentWindowState?:Partial<IApplicationState>)=>{
             };
 
         },
+        [Window.actions.GET_BOUNDS_RES]:(state,action)=>{
+            const payload = action.payload as any;
+            return {
+                ...state,
+                winTop:payload.top,
+                winLeft:payload.left,
+                winWidth:payload.width,
+                winHeight:payload.height,
+            };
+
+        },
+        [Event.actionDicts.windowEventDictByName['bounds-changing'].type]:(state,action)=>{
+            const payload = action.payload as any;
+            return {
+                ...state,
+                winTop:payload.top,
+                winLeft:payload.left,
+                winWidth:payload.width,
+                winHeight:payload.height,
+            };
+
+        },
+        [Event.actionDicts.windowEventDictByName['group-changed'].type]:(state,action)=>{
+            const {
+                sourceWindowName, targetWindowName, memeberOf, reason
+            } = action.payload;
+
+            if (reason === Docking.types.GroupEventReason.JOIN && sourceWindowName === window.name){
+                return {
+                    ...state,
+                    docked:true,
+                }
+            }else if(reason === Docking.types.GroupEventReason.LEAVE && sourceWindowName === window.name){
+                return {
+                    ...state,
+                    docked:false,
+                }
+            }
+
+            return state;
+        },
         [APPLICATION_READY]:(state,action)=>({
             ...state,
             loading:false,
@@ -148,6 +203,14 @@ export default (parentWindowState?:Partial<IApplicationState>)=>{
         [APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE]:(state,action)=>({
             ...state,
             launchBarCollapse:!state.launchBarCollapse,
-        })
+        }),
+        [APPLICATION_NETWORK_ONLINE]:(state,action)=>({
+            ...state,
+            offline:false,
+        }),
+        [APPLICATION_NETWORK_OFFLINE]:(state,action)=>({
+            ...state,
+            offline:true,
+        }),
     } as any,initState);
 }

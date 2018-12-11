@@ -1,7 +1,7 @@
 import { testSaga } from 'redux-saga-test-plan';
 import { delay } from 'redux-saga';
 import { all, call, put, take, takeLatest, takeEvery, fork, select, actionChannel } from 'redux-saga/effects';
-import { System, Event, Window } from '@albertli90/redux-openfin';
+import {System, Event, Window, Docking} from '@albertli90/redux-openfin';
 
 import { launchBarItems } from '../../layouts/LaunchBar/LaunchBarData';
 
@@ -29,6 +29,7 @@ import {
     getNewWindowTop,
     getNewWindowLeft,
     getNewWindowHeight,
+    getNewWindowWidth,
     // sub sagas
     handleApplicationLoading,
     handleApplicationChildLoading,
@@ -38,11 +39,12 @@ import {
     handleApplicationCloseSnackBar,
     handleApplicationLaunchBarToggle,
     handleApplicationLaunchBarToggleCollapse,
-    handleApplicationLaunchNewWindow, getNewWindowWidth,
+    handleApplicationLaunchNewWindow,
+    handleGroupChanged,
 } from '../sagas/application';
 
 import applicationSaga from '../sagas/application';
-import {APPLICATION_CHILD_STARTED} from "../index";
+import {APPLICATION_CHILD_STARTED, applicationNewSnackbar} from "../index";
 
 const LOADING_BANNER_WIDTH = parseInt(process.env.REACT_APP_LOADING_BANNER_WIDTH, 10);
 const LOADING_BANNER_HEIGHT = parseInt(process.env.REACT_APP_LOADING_BANNER_HEIGHT, 10);
@@ -279,6 +281,7 @@ describe('Application saga',()=>{
             testSaga(handleApplicationChildLoading)
                 .next()
                 .all([
+                    call(Window.asyncs.getBounds,Window.actions.getBounds({})),
                     put.resolve(configLoadFromDexie()),
                 ])
                 .next()
@@ -554,6 +557,100 @@ describe('Application saga',()=>{
 
     });
 
+    describe('handleGroupChanged saga',()=>{
+
+        it('self consume Docking.types.GroupEventReason.JOIN',()=>{
+            window.name = 'sourceWindowName';
+            testSaga(handleGroupChanged,{
+                payload:{
+                    sourceWindowName: 'sourceWindowName',
+                    targetWindowName: 'targetWindowName',
+                    memeberOf: 'nothing',
+                    reason: Docking.types.GroupEventReason.JOIN
+                }
+            })
+                .next()
+                .put(applicationNewSnackbar({
+                    message:'Joined group',
+                    variant:'primary'
+                }))
+                .next()
+                .isDone();
+        })
+
+        it('other consume Docking.types.GroupEventReason.JOIN',()=>{
+            window.name = 'targetWindowName';
+            testSaga(handleGroupChanged,{
+                payload:{
+                    sourceWindowName: 'sourceWindowName',
+                    targetWindowName: 'targetWindowName',
+                    memeberOf: 'nothing',
+                    reason: Docking.types.GroupEventReason.JOIN
+                }
+            })
+                .next()
+                .put(applicationNewSnackbar({
+                    message:'Been joined',
+                    variant:'rose'
+                }))
+                .next()
+                .isDone();
+        })
+
+        it('self consume Docking.types.GroupEventReason.LEAVE',()=>{
+            window.name = 'windowName';
+            testSaga(handleGroupChanged,{
+                payload:{
+                    sourceWindowName: 'windowName',
+                    targetWindowName: 'windowName',
+                    memeberOf: 'nothing',
+                    reason: Docking.types.GroupEventReason.LEAVE
+                }
+            })
+                .next()
+                .put(applicationNewSnackbar({
+                    message:'Left group',
+                    variant:'primary'
+                }))
+                .next()
+                .isDone();
+        })
+
+        it('self consume Docking.types.GroupEventReason.DISBAND',()=>{
+            window.name = 'sourceWindowName';
+            testSaga(handleGroupChanged,{
+                payload:{
+                    sourceWindowName: 'sourceWindowName',
+                    targetWindowName: 'targetWindowName',
+                    memeberOf: 'nothing',
+                    reason: Docking.types.GroupEventReason.DISBAND
+                }
+            })
+                .next()
+                .put(applicationNewSnackbar({
+                    message:'Got disbanded',
+                    variant:'rose'
+                }))
+                .next()
+                .isDone();
+        })
+
+        it('some other event',()=>{
+            window.name = 'someOtherWindowName';
+            testSaga(handleGroupChanged,{
+                payload:{
+                    sourceWindowName: 'sourceWindowName',
+                    targetWindowName: 'targetWindowName',
+                    memeberOf: 'nothing',
+                    reason: null,
+                }
+            })
+                .next()
+                .isDone();
+        })
+
+    })
+
     it('default function register all event',()=>{
         testSaga(applicationSaga)
             .next()
@@ -574,6 +671,8 @@ describe('Application saga',()=>{
             .takeLatestEffect(APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE,handleApplicationLaunchBarToggleCollapse)
             .next()
             .takeLatestEffect(APPLICATION_LAUNCH_NEW_WINDOW,handleApplicationLaunchNewWindow)
+            .next()
+            .takeEveryEffect(Event.actionDicts.windowEventDictByName['group-changed'].type,handleGroupChanged)
             .next()
             .isDone();
     })

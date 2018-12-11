@@ -19,7 +19,7 @@ import {
 } from '..';
 
 import {
-    findAll,saveOrUpdateOneByTabNameFieldName,
+    findAllOfCurrentVersion,saveOrUpdateOneByTabNameFieldName,
 } from '../../dexie/configDao';
 
 export const getNewWindowTop = state => state.config.application.newWinTop;
@@ -28,7 +28,7 @@ export const getNewWindowWidth = state => state.config.application.newWinWidth;
 export const getNewWindowHeight = state => state.config.application.newWinHeight;
 
 export function* handleConfigLoadFromDexie() {
-    const configs : IConfigDexie[] = yield call(findAll);
+    const configs : IConfigDexie[] = yield call(findAllOfCurrentVersion);
     for (const config of configs){
         yield put(configDoUpdateOneField({
             tabName:config.tabName,

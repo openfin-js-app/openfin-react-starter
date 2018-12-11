@@ -1,9 +1,7 @@
 import * as React from 'react';
-import * as shortid from 'shortid';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserAdapter } from '@albertli90/openfin-browser-adapter';
-import { ChannelType } from '@albertli90/redux-openfin/init';
 
 import './assets/css/main.css';
 
@@ -16,6 +14,8 @@ import {
     CLIENT_SET_VALUE,
     applicationStarted,
     applicationChildStarted,
+    applicationNetworkOnline,
+    applicationNetworkOffline,
 } from "./reduxs";
 
 declare const window:any;
@@ -25,27 +25,20 @@ const sharedActions = [
 ];
 
 if(!window.fin){
-    window.fin = new BrowserAdapter({silentMode:false});
+    window.fin = new BrowserAdapter({
+        finUuic:process.env.REACT_APP_FIN_UUID,
+        silentMode:false,
+    });
 }
 
-if(window.store == null && window.opener == null){
+if(window.name === process.env.REACT_APP_FIN_UUID){
     const store = configureStore(
-        ChannelType.PROVIDER,
-        "app-name-main-window",
         sharedActions,
     );
     window.store=store;
     store.dispatch(applicationStarted());
 }else{
-    const pathName = new URL(window.location.href).pathname;
-    const childWindowIndex = pathName.indexOf('childWindow');
-    let channelClientId = shortid.generate();
-    if (childWindowIndex > -1){
-        channelClientId = `app-name-${pathName.substring(childWindowIndex).replace('/','-')}`
-    }
     const store = configureStore(
-        ChannelType.CLIENT,
-        channelClientId,
         sharedActions,
         window.opener.store.getState()
     );
@@ -62,3 +55,11 @@ ReactDOM.render(
 );
 
 serviceWorker.unregister();
+
+
+window.addEventListener('online',()=>{
+    window.store.dispatch(applicationNetworkOnline());
+})
+window.addEventListener('offline',()=>{
+    window.store.dispatch(applicationNetworkOffline());
+})

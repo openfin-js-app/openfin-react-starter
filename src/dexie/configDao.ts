@@ -3,8 +3,16 @@ import db from './db';
 import { IConfigDexie } from '../reduxs';
 
 
+export const CONFIG_VERSION:number = 2;
+
 export async function findAll():Promise<IConfigDexie[]>{
     return  db.table('configs').toArray();
+}
+
+export async function findAllOfCurrentVersion():Promise<IConfigDexie[]> {
+    return db.table('configs')
+        .where({version:CONFIG_VERSION})
+        .toArray();
 }
 
 export async function saveOrUpdateOneByTabNameFieldName(tabName:string, fieldName:string, value:any):Promise<IConfigDexie> {
@@ -12,11 +20,11 @@ export async function saveOrUpdateOneByTabNameFieldName(tabName:string, fieldNam
     const configs = db.table('configs');
     await db.transaction('rw',configs,async()=>{
         const founds:IConfigDexie[] = await configs
-            .where({tabName,fieldName})
+            .where({tabName,fieldName,version:CONFIG_VERSION})
             .toArray();
         // console.log('configDao::saveOrUpdateOneByTabNameFieldName',founds.length,founds,tabName,fieldName,value);
         if (founds.length === 0){
-            one = {tabName,fieldName,value};
+            one = {tabName,fieldName,value,version:CONFIG_VERSION};
             const id = await configs.put(one);
             one = await configs.get(id);
         }else if (founds.length === 1){
@@ -25,7 +33,7 @@ export async function saveOrUpdateOneByTabNameFieldName(tabName:string, fieldNam
             one = await configs.get(one.id);
         }else{
             await configs.bulkDelete(founds.map(one => one.id));
-            one = {tabName,fieldName,value};
+            one = {tabName,fieldName,value,version:CONFIG_VERSION};
             const id = await configs.put(one);
             one = await configs.get(id);
         }

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
 import { createShallow, createMount } from '@material-ui/core/test-utils';
-import Button from '@material-ui/core/Button';
 import configurestore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router-dom';
 

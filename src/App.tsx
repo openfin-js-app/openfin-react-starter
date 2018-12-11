@@ -67,6 +67,13 @@ const theme = createMuiTheme({
                 fontSize:'0.5rem',
             },
         },
+        MuiFab:{
+            root:{
+                padding: '0px 0px',
+                width:'40px',
+                height:'40px',
+            }
+        },
         MuiIconButton:{
             root:{
                 padding: '0px 0px',

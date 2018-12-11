@@ -1,3 +1,5 @@
+import { Theme, createStyles } from '@material-ui/core/styles';
+
 import color from 'color';
 
 import {
@@ -8,7 +10,7 @@ import {
 const launchBtnHeight = '64';
 const launchBtnContainerMaxWidth = '576';
 
-const launchBarStyle:any = (theme:any) => ({
+const launchBarStyle:any = (theme:Theme) => createStyles({
     toolBar:{
         height:'64px',
         padding:'0 0',

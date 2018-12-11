@@ -37,6 +37,7 @@ const switchRoutes = (
 );
 
 interface IProps extends WithStyles<typeof style>{
+    docked:boolean,
     snackBarOpen:boolean,
     snackBarMsgInfo:Partial<ISnackBarMsg>,
     windowsState:string,
@@ -45,6 +46,7 @@ interface IProps extends WithStyles<typeof style>{
         handleSnackbarClose: (event:any,reason:string)=> void,
         handleSnackbarCloseBtnClick: ()=> void,
         handleSnackbarExited: ()=> void,
+        handleUndock: ()=> void,
         handleMinimize: ()=> void,
         handleMaximize: ()=> void,
         handleClose: ()=> void,
@@ -60,11 +62,11 @@ class ChildWindowLayout extends React.Component<IProps,{}>{
     render(){
         const {
             classes,
-            snackBarOpen, snackBarMsgInfo, windowsState,
+            docked,snackBarOpen, snackBarMsgInfo, windowsState,
             actions:{
                 handleSetAsForeground,
                 handleSnackbarClose, handleSnackbarCloseBtnClick, handleSnackbarExited,
-                handleMinimize, handleMaximize, handleClose,
+                handleUndock, handleMinimize, handleMaximize, handleClose,
             },
             ...rest
         } = this.props;
@@ -75,6 +77,8 @@ class ChildWindowLayout extends React.Component<IProps,{}>{
                     routes={childWindowRoutes}
                     windowsState={windowsState}
                     color={'info'}
+                    docked={docked}
+                    onUndock = {handleUndock}
                     onMinimize={handleMinimize}
                     onMaximize={handleMaximize}
                     onClose = {handleClose}
@@ -117,6 +121,7 @@ class ChildWindowLayout extends React.Component<IProps,{}>{
 
 export default connect(
     (state:IRootState) => ({
+        docked:state.application.docked,
         snackBarOpen:state.application.snackBarOpen,
         snackBarMsgInfo:state.application.snackBarMsgInfo,
         windowsState:state.application.windowsState,
@@ -128,6 +133,7 @@ export default connect(
             handleSnackbarCloseBtnClick: () => {dispatch(applicationSetSnackbarStatus({open:false}))},
             handleSnackbarExited: () => {dispatch(applicationProcessSnackbarQueue())},
             // openfin
+            handleUndock : () => {dispatch(Window.actions.leaveGroup({}))},
             handleMinimize: ()=>{dispatch(Window.actions.minimize({}))},
             handleMaximize: ()=>{dispatch(applicationToogleWindowState())},
             handleClose:()=>{dispatch(Window.actions.close({force:false}))},
