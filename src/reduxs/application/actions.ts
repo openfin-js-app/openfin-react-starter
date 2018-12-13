@@ -30,6 +30,11 @@ export const applicationCloseSnackbar:ActionFunctionAny<Action<IApplicationClose
     = createAction(APPLICATION_CLOSE_SNACKBAR, (option)=>(option));
 
 
+// snap dock
+export const APPLICATION_UPDATE_DOCK_STATUS = 'APPLICATION_UPDATE_DOCK_STATUS';
+export const applicationUpdateDockStatus:ActionFunctionAny<Action<{docked:boolean}>>
+    = createAction(APPLICATION_UPDATE_DOCK_STATUS, (docked:boolean)=>({docked}));
+
 // launch bar
 
 export const APPLICATION_LAUNCH_BAR_TOGGLE = 'APPLICATION_LAUNCH_BAR_TOGGLE';

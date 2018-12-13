@@ -208,6 +208,30 @@ Object {
 }
 `;
 
+exports[`Application reducer With out parent state APPLICATION_UPDATE_DOCK_STATUS reduced correctly 1`] = `
+Object {
+  "computerName": "",
+  "deviceUserId": null,
+  "docked": true,
+  "drawerOpen": true,
+  "launchBarCollapse": false,
+  "loading": true,
+  "machineId": null,
+  "offline": false,
+  "openfinHostSpec": Object {},
+  "openfinVersion": "n/a",
+  "snackBarMsgInfo": Object {},
+  "snackBarMsgQueue": Array [],
+  "snackBarOpen": false,
+  "username": "",
+  "winHeight": 0,
+  "winLeft": 0,
+  "winTop": 0,
+  "winWidth": 0,
+  "windowsState": "normal",
+}
+`;
+
 exports[`Application reducer With out parent state Event.actionDicts.windowEventDictByName['bounds-changing'].type reduced correctly 1`] = `
 Object {
   "computerName": "",

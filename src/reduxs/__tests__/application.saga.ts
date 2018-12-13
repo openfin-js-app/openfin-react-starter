@@ -11,6 +11,9 @@ import {
     APPLICATION_CLOSE_SNACKBAR,
     APPLICATION_TOGGLE_WINDOW_STATE,
     applicationReady,
+    APPLICATION_CHILD_STARTED,
+    applicationNewSnackbar,
+    applicationUpdateDockStatus,
     applicationSetSnackbarStatus,
     applicationProcessSnackbarQueue,
     APPLICATION_LAUNCH_BAR_TOGGLE,
@@ -44,7 +47,6 @@ import {
 } from '../sagas/application';
 
 import applicationSaga from '../sagas/application';
-import {APPLICATION_CHILD_STARTED, applicationNewSnackbar} from "../index";
 
 const LOADING_BANNER_WIDTH = parseInt(process.env.REACT_APP_LOADING_BANNER_WIDTH, 10);
 const LOADING_BANNER_HEIGHT = parseInt(process.env.REACT_APP_LOADING_BANNER_HEIGHT, 10);
@@ -277,13 +279,34 @@ describe('Application saga',()=>{
 
     describe('handleApplicationChildLoading saga',()=>{
 
-        it('basically works',()=>{
+        it('basically works when docked',()=>{
             testSaga(handleApplicationChildLoading)
                 .next()
                 .all([
                     call(Window.asyncs.getBounds,Window.actions.getBounds({})),
                     put.resolve(configLoadFromDexie()),
                 ])
+                .next()
+                .call(Window.asyncs.getGroup,Window.actions.getGroup({}))
+                .next({payload:{windows:[{},{}]}})
+                .put(applicationUpdateDockStatus(true))
+                .next()
+                .put.resolve(applicationReady())
+                .next()
+                .isDone();
+        })
+
+        it('basically works when undocked',()=>{
+            testSaga(handleApplicationChildLoading)
+                .next()
+                .all([
+                    call(Window.asyncs.getBounds,Window.actions.getBounds({})),
+                    put.resolve(configLoadFromDexie()),
+                ])
+                .next()
+                .call(Window.asyncs.getGroup,Window.actions.getGroup({}))
+                .next({payload:{windows:[]}})
+                .put(applicationUpdateDockStatus(false))
                 .next()
                 .put.resolve(applicationReady())
                 .next()

@@ -129,3 +129,14 @@ Array [
   },
 ]
 `;
+
+exports[`Application actions applicationUpdateDockStatus created and dispatched correctly 1`] = `
+Array [
+  Object {
+    "payload": Object {
+      "docked": true,
+    },
+    "type": "APPLICATION_UPDATE_DOCK_STATUS",
+  },
+]
+`;

@@ -164,6 +164,11 @@ describe('Application reducer',()=>{
 
         });
 
+        it('APPLICATION_UPDATE_DOCK_STATUS reduced correctly',()=>{
+            const action:any = Actions.applicationUpdateDockStatus(true);
+            expect(reducer(undefined,action)).toMatchSnapshot();
+        });
+
         it('APPLICATION_READY reduced correctly',()=>{
             const action:any = Actions.applicationReady();
             expect(reducer(undefined,action)).toMatchSnapshot();

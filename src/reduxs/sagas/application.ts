@@ -11,6 +11,7 @@ import {
     APPLICATION_CHILD_STARTED,
     APPLICATION_NEW_SNACKBAR,
     APPLICATION_CLOSE_SNACKBAR,
+    applicationUpdateDockStatus,
     APPLICATION_TOGGLE_WINDOW_STATE,
     applicationNewSnackbar,
     applicationReady,
@@ -23,6 +24,7 @@ import {
 } from '..';
 
 import { configUpdateNewWindowPosition } from '..';
+import { GetGroupResPayload} from "@albertli90/redux-openfin/window/types";
 
 const ENABLE_LOADING_VIEW=process.env.REACT_APP_ENABLE_LOADING_VIEW.toLowerCase() === 'true';
 
@@ -170,6 +172,15 @@ export function* handleApplicationChildLoading() {
         call(Window.asyncs.getBounds,Window.actions.getBounds({})),
         put.resolve(configLoadFromDexie()),
     ]);
+
+    const groupedWindowsRes = yield call(Window.asyncs.getGroup,Window.actions.getGroup({}));
+    const groupedWindows = (groupedWindowsRes.payload as GetGroupResPayload).windows;
+    if(groupedWindows && groupedWindows.length > 0){
+        yield put(applicationUpdateDockStatus(true));
+    }else{
+        yield put(applicationUpdateDockStatus(false));
+    }
+
     yield put.resolve(applicationReady());
 }
 
