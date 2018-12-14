@@ -110,7 +110,7 @@ class ConfigView extends React.Component<IProps,IState>{
                                     tabs.map((oneTab:IConfigTab, index:number)=>{
                                         if (globalFilterString===''|| oneTab._fieldLabels.toLowerCase().indexOf(globalFilterString.toLowerCase())>-1){
                                             return(
-                                                <ListItem button className={cx('active')} key={index} dense={true}
+                                                <ListItem button className={cx('active',classes.configLeftListItem)} key={index} dense={true}
                                                           onClick={this.handleTabItemClick(index)}
                                                 >
                                                     <ListItemIcon>

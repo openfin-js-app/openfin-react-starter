@@ -79,23 +79,10 @@ const theme = createMuiTheme({
                 padding: '0px 0px',
             }
         },
-        MuiInputAdornment:{
-            positionEnd:{
-                "& $p":{
-                    fontSize:'0.6rem',
-                },
-            },
-        },
         MuiListItem:{
             gutters:{
                 paddingTop:'2px',
                 paddingBottom:'2px',
-                "& $img":{
-                    height:'20px',
-                    width:'20px',
-                    marginRight:'16px',
-                    userSelect:'none',
-                }
             }
         },
         MuiSnackbarContent:{
