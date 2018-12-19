@@ -38,6 +38,33 @@ function getServedPath(appPackageJson) {
     return ensureSlash(servedUrl, true);
 }
 
+const moduleFileExtensions = [
+    'web.mjs',
+    'mjs',
+    'web.js',
+    'js',
+    'web.ts',
+    'ts',
+    'web.tsx',
+    'tsx',
+    'json',
+    'web.jsx',
+    'jsx',
+];
+
+// Resolve file paths in the same order as webpack
+const resolveModule = (resolveFn, filePath) => {
+    const extension = moduleFileExtensions.find(extension =>
+        fs.existsSync(resolveFn(`${filePath}.${extension}`))
+    );
+
+    if (extension) {
+        return resolveFn(`${filePath}.${extension}`);
+    }
+
+    return resolveFn(`${filePath}.js`);
+};
+
 const hasTSConfig = fs.existsSync(resolveApp('tsconfig.json'));
 const hasTSConfigProd = fs.existsSync(resolveApp('tsconfig.prod.json'));
 const hasTSLint = fs.existsSync(resolveApp('tslint.json'));
@@ -53,15 +80,11 @@ module.exports = {
     appScript:resolveApp('scripts'),
     appPublic: resolveApp('public'),
     appHtml: resolveApp('public/index.html'),
-    appIndexJs: isTypeScript
-        ? resolveApp('src/index.tsx')
-        : resolveApp('src/index.js'),
+    appIndexJs: resolveModule(resolveApp, 'src/index'),
     appPackageJson: resolveApp('package.json'),
     appSrc: resolveApp('src'),
     yarnLockFile: resolveApp('yarn.lock'),
-    testsSetup: isTypeScript
-        ? resolveApp('src/setupTests.ts')
-        : resolveApp('src/setupTests.js'),
+    testsSetup: resolveModule(resolveApp, 'src/setupTests'),
     proxySetup: resolveApp('src/setupProxy.js'),
     appNodeModules: resolveApp('node_modules'),
     appTSConfig: resolveApp('tsconfig.json'),
@@ -80,3 +103,5 @@ module.exports = {
 module.exports.useYarn = fs.existsSync(
     path.join(module.exports.appPath, 'yarn.lock')
 );
+
+module.exports.moduleFileExtensions = moduleFileExtensions;
