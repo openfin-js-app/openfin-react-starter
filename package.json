@@ -170,7 +170,7 @@
     "testURL": "http://localhost",
     "transform": {
       "^.+\\.tsx?$": "ts-jest",
-      "^.+\\.(ts|tsx|js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest",
+      "^.+\\.(ts|tsx|js|jsx|mjs)$": "<rootDir>/config/jest/babelTransform.js",
       "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
       "^(?!.*\\.(js|jsx|ts|tsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
     },
