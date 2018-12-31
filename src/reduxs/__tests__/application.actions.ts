@@ -67,6 +67,12 @@ describe('Application actions',()=>{
         expect(store.getActions()).toMatchSnapshot();
     });
 
+    // snap dock
+    it('applicationUpdateDockStatus created and dispatched correctly',()=>{
+        store.dispatch(Actions.applicationUpdateDockStatus(true));
+        expect(store.getActions()).toMatchSnapshot();
+    });
+
     // launch bar
 
     it('applicationLaunchBarToggle created and dispatched correctly',()=>{

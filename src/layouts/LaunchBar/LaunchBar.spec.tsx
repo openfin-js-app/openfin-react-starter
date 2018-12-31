@@ -14,8 +14,6 @@ const initialState = {
     }
 };
 
-let store;
-
 describe('LaunchBar Layout',()=>{
 
     let shallow;
@@ -32,10 +30,10 @@ describe('LaunchBar Layout',()=>{
 
     beforeEach(() => {
         shallow = createShallow();
-        store = mockStore(initialState);
     });
 
     it('render correctly and launch all non-disabled windows',()=>{
+        const store = mockStore(initialState);
         const wrapper = mount(<LaunchBar store={store}/>);
         wrapper.find(IconButton).forEach((iconBtn)=>{
             const props = iconBtn.props();
@@ -47,6 +45,7 @@ describe('LaunchBar Layout',()=>{
     });
 
     it('trigger all control panel btns',()=>{
+        const store = mockStore(initialState);
         const wrapper = mount(<LaunchBar store={store}/>);
         wrapper.find(Button).forEach((btn)=>{
             const props = btn.props();
@@ -58,7 +57,7 @@ describe('LaunchBar Layout',()=>{
     });
 
     it('render collapsed button container',()=>{
-        store =mockStore({
+        const store = mockStore({
             application:{
                 launchBarCollapse:true,
             }

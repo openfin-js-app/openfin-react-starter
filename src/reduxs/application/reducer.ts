@@ -13,6 +13,7 @@ import {
     APPLICATION_NEW_SNACKBAR,
     APPLICATION_SET_SNACKBAR_STATUS,
     APPLICATION_PROCESS_SNACKBAR_QUEUE,
+    APPLICATION_UPDATE_DOCK_STATUS,
     APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE,
     APPLICATION_NETWORK_ONLINE,
     APPLICATION_NETWORK_OFFLINE,
@@ -159,6 +160,10 @@ export default (parentWindowState?:Partial<IApplicationState>)=>{
 
             return state;
         },
+        [APPLICATION_UPDATE_DOCK_STATUS]:(state,action)=>({
+            ...state,
+            docked:action.payload.docked,
+        }),
         [APPLICATION_READY]:(state,action)=>({
             ...state,
             loading:false,
