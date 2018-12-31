@@ -39,11 +39,11 @@ async function launchApp(){
 
     const app = await fin.Application.create({
         "name":"Openfin starter [dev]",
-        "url":"http://localhost:3000/index.html",
-        "uuid":"openfin_react_ts_starter_development",
-        "applicationIcon":"http://localhost:3000/favicon.ico",
+        "url":`http://localhost:${DEFAULT_PORT}/index.html`,
+        "uuid":process.env.REACT_APP_FIN_UUID,
+        "applicationIcon":`http://localhost:${DEFAULT_PORT}/favicon.ico`,
         "autoShow":true,
-        "saveWindowsSate":true,
+        "saveWindowsSate":false,
         "resizable":true,
         "frame":false,
         "defaultCentered":true,
@@ -52,6 +52,9 @@ async function launchApp(){
         "minWidth":88,
         "minHeight":64
     });
+
+    log(chalk.green(`connecting tot http://localhost:${DEFAULT_PORT}`));
+
     await app.run();
 }
 

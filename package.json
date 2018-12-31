@@ -7,7 +7,6 @@
     "express": "^4.16.4",
     "hadouken-js-adapter": "^0.38.1",
     "morgan": "^1.9.0",
-    "openfin-launcher": "^1.4.4",
     "rimraf": "^2.6.2",
     "tcp-port-used": "^1.0.0"
   },
