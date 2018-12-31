@@ -9,8 +9,7 @@ const chalk = require('chalk');
 const log = console.log;
 const tcpPortUsed = require('tcp-port-used');
 
-const openfinLauncher = require('openfin-launcher');
-const openfinConfigPath = paths.appOpenfin+'/app.development.json';
+const { connect } = require('hadouken-js-adapter');
 
 require('../config/env');
 const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 3000;
@@ -27,15 +26,50 @@ async function startWebpackDevServer() {
         log(chalk.yellow(Buffer.from(data,'binary').toString()));
     });
 }
+
+async function launchApp(){
+    const fin = await connect({
+        uuid:'openfin_react_ts_starter',
+        runtime:{
+            version: process.env.HADOUKEN_VERSION,
+        }
+    });
+    const version = await fin.System.getVersion();
+    log(chalk.green("Connected to Hadouken version", version));
+
+    const app = await fin.Application.create({
+        "name":"Openfin starter [dev]",
+        "url":"http://localhost:3000/index.html",
+        "uuid":"openfin_react_ts_starter_development",
+        "applicationIcon":"http://localhost:3000/favicon.ico",
+        "autoShow":true,
+        "saveWindowsSate":true,
+        "resizable":true,
+        "frame":false,
+        "defaultCentered":true,
+        "defaultWidth":728,
+        "defaultHeight":450,
+        "minWidth":88,
+        "minHeight":64
+    });
+    await app.run();
+}
+
+
 startWebpackDevServer();
 
 tcpPortUsed.waitUntilUsed(DEFAULT_PORT,1000,240000)
     .then(
         ()=>{
             log(chalk.green('starting openfin'));
-            openfinLauncher.launchOpenFin({configPath:openfinConfigPath})
-                .then(()=>{process.exit()})
-                .catch(err =>log(chalk.red(err)));
+            launchApp().then(() => {
+                log(chalk.green('starting openfin success'));
+                console.log("success");
+            }).catch((err) => {
+                log(chalk.red("Error trying to connect,", err.message));
+                log(chalk.red(err.stack));
+            });
+
         },
         (err)=>{
             log(chalk.red(err));

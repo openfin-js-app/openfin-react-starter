@@ -3,12 +3,13 @@
   "version": "0.30.10",
   "private": true,
   "dependencies": {
-    "express": "^4.16.4",
-    "morgan": "^1.9.0",
     "chalk": "2.4.1",
-    "tcp-port-used": "^1.0.0",
+    "express": "^4.16.4",
+    "hadouken-js-adapter": "^0.38.1",
+    "morgan": "^1.9.0",
     "openfin-launcher": "^1.4.4",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.6.2",
+    "tcp-port-used": "^1.0.0"
   },
   "devDependencies": {
     "@albertli90/openfin-browser-adapter": "^0.30.4-beta",
@@ -198,7 +199,7 @@
       "mjs"
     ]
   },
-  "pkg":{
+  "pkg": {
     "scripts": "scripts/**/*.js",
     "assets": "build/**/*"
   }
