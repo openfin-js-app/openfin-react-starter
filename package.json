@@ -3,6 +3,14 @@
   "version": "0.30.10",
   "private": true,
   "dependencies": {
+    "express": "^4.16.4",
+    "morgan": "^1.9.0",
+    "chalk": "2.4.1",
+    "tcp-port-used": "^1.0.0",
+    "openfin-launcher": "^1.4.4",
+    "rimraf": "^2.6.2"
+  },
+  "devDependencies": {
     "@albertli90/openfin-browser-adapter": "^0.30.4-beta",
     "@albertli90/redux-openfin": "^0.30.4-beta",
     "@babel/core": "7.1.2",
@@ -43,7 +51,6 @@
     "babel-preset-react-app": "^6.1.0",
     "bfj": "6.1.1",
     "case-sensitive-paths-webpack-plugin": "2.1.2",
-    "chalk": "2.4.1",
     "classnames": "^2.2.6",
     "color": "^3.0.0",
     "css-loader": "1.0.0",
@@ -60,7 +67,6 @@
     "eslint-plugin-import": "2.14.0",
     "eslint-plugin-jsx-a11y": "6.1.2",
     "eslint-plugin-react": "7.11.1",
-    "express": "^4.16.4",
     "fake-indexeddb": "^2.0.4",
     "file-loader": "2.0.0",
     "fork-ts-checker-webpack-plugin": "^0.4.14",
@@ -77,9 +83,7 @@
     "material-ui-pickers": "^1.0.1",
     "mini-css-extract-plugin": "0.4.3",
     "moment": "^2.22.2",
-    "morgan": "^1.9.0",
     "object-assign": "4.1.1",
-    "openfin-launcher": "^1.4.4",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "pnp-webpack-plugin": "1.1.0",
     "postcss-flexbugs-fixes": "4.1.0",
@@ -105,11 +109,9 @@
     "redux-saga": "^0.16.0",
     "redux-saga-test-plan": "^3.7.0",
     "resolve": "1.8.1",
-    "rimraf": "^2.6.2",
     "sass-loader": "7.1.0",
     "shortid": "^2.2.13",
     "style-loader": "0.23.0",
-    "tcp-port-used": "^1.0.0",
     "terser-webpack-plugin": "1.1.0",
     "thread-loader": "1.1.5",
     "ts-jest": "^23.1.4",
@@ -195,5 +197,9 @@
       "node",
       "mjs"
     ]
+  },
+  "pkg":{
+    "scripts": "scripts/**/*.js",
+    "assets": "build/**/*"
   }
 }
