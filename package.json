@@ -199,7 +199,15 @@
     ]
   },
   "pkg": {
-    "scripts": "scripts/**/*.js",
-    "assets": "build/**/*"
+    "scripts": [
+      "scripts/**/*.js",
+      "config/**/*.js",
+      "package.json"
+    ],
+    "assets": [
+      "build/**/*",
+      "scripts/server.js",
+      "package.json"
+    ]
   }
 }

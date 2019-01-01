@@ -20,7 +20,12 @@ async function startServer() {
         log(chalk.cyan(Buffer.from(data,'binary').toString()));
     });
     expressServer.stderr.on('data',(data)=>{
-        log(chalk.red(Buffer.from(data,'binary').toString()));
+        try{
+            log(chalk.red(Buffer.from(data,'binary').toString()));
+        }catch(e){
+            log(chalk.red(data));
+
+        }
     });
     expressServer.on('close',(data)=>{
         log(chalk.yellow(Buffer.from(data,'binary').toString()));
