@@ -63,7 +63,7 @@ log(chalk.green('PWD',shell.pwd()));
 
 shell.mkdir('package');
 shell.cp('.env','package');
-shell.cp('.env.production','package');
+shell.cp(`.env.${process.env.REACT_APP_ENV}`,'package');
 shell.cp('-R','build','package');
 createPackageFile();
 

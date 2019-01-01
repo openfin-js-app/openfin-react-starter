@@ -134,7 +134,7 @@
     "build": "rimraf build && rimraf package && node scripts/build.js",
     "serve": "node scripts/server.js",
     "serve-openfin": "node scripts/server.openfin.js",
-    "package": "rimraf package && node scripts/package.js",
+    "package": "node scripts/package.js",
     "test": "node scripts/test.js"
   },
   "browserslist": {
