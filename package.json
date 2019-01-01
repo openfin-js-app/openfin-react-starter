@@ -85,6 +85,7 @@
     "moment": "^2.22.2",
     "object-assign": "4.1.1",
     "optimize-css-assets-webpack-plugin": "5.0.1",
+    "pkg": "^4.3.5",
     "pnp-webpack-plugin": "1.1.0",
     "postcss-flexbugs-fixes": "4.1.0",
     "postcss-loader": "3.0.0",
@@ -110,6 +111,7 @@
     "redux-saga-test-plan": "^3.7.0",
     "resolve": "1.8.1",
     "sass-loader": "7.1.0",
+    "shelljs": "^0.8.3",
     "shortid": "^2.2.13",
     "style-loader": "0.23.0",
     "terser-webpack-plugin": "1.1.0",
@@ -129,9 +131,10 @@
   "scripts": {
     "start": "node scripts/start.js",
     "start-openfin": "node scripts/start.openfin.js",
-    "build": "rimraf build && node scripts/build.js",
+    "build": "rimraf build && rimraf package && node scripts/build.js",
     "serve": "node scripts/server.js",
     "serve-openfin": "node scripts/server.openfin.js",
+    "package": "rimraf package && node scripts/package.js",
     "test": "node scripts/test.js"
   },
   "browserslist": {

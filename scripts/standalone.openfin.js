@@ -12,9 +12,11 @@ const { connect } = require('hadouken-js-adapter');
 
 require('../config/env');
 const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 3000;
+let expressServer = null;
+
 
 async function startServer() {
-    const expressServer = execFile(process.cwd()+'/openfin_starter_server');
+    expressServer = execFile(process.cwd()+`/${process.env.STANDALONE_SERVER_NAME}`);
     expressServer.stdout.on('data',(data)=>{
         log(chalk.cyan(Buffer.from(data,'binary').toString()));
     });
@@ -58,6 +60,13 @@ async function launchApp(){
     });
 
     log(chalk.green(`connecting tot http://localhost:${DEFAULT_PORT}`));
+
+    app.addListener('closed',()=>{
+        if (expressServer){
+            expressServer.kill('SIGINT');
+        }
+        process.exit(0);
+    });
 
     await app.run();
 }
