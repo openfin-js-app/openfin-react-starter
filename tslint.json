@@ -4,6 +4,7 @@
   "linterOptions":{
     "exclude":[
       "node_modules/**",
+      "package/**",
       "build/**",
       "coverage/**",
       "config/**",
