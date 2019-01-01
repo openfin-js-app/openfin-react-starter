@@ -201,12 +201,10 @@
   "pkg": {
     "scripts": [
       "scripts/**/*.js",
-      "config/**/*.js",
-      "package.json"
+      "config/**/*.js"
     ],
     "assets": [
       "build/**/*",
-      "scripts/server.js",
       "package.json"
     ]
   }
