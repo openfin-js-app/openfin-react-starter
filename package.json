@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "chalk": "2.4.1",
+    "dotenv": "6.0.0",
+    "dotenv-expand": "4.2.0",
     "express": "^4.16.4",
     "hadouken-js-adapter": "^0.38.1",
     "morgan": "^1.9.0",
@@ -55,8 +57,6 @@
     "color": "^3.0.0",
     "css-loader": "1.0.0",
     "dexie": "^2.0.4",
-    "dotenv": "6.0.0",
-    "dotenv-expand": "4.2.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
     "enzyme-to-json": "^3.3.5",
