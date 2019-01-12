@@ -1,10 +1,9 @@
 // Do this as the first thing so that any code reading it knows the right env.
-process.env.REACT_APP_ENV = 'development';
-process.env.BABEL_ENV = 'development';
-process.env.NODE_ENV = 'development';
+process.env.REACT_APP_ENV = 'production';
+process.env.BABEL_ENV = 'production';
+process.env.NODE_ENV = 'production';
 
-const paths = require('../config/paths');
-const spawn = require('child_process').spawn;
+const execFile = require('child_process').execFile;
 const chalk = require('chalk');
 const log = console.log;
 const tcpPortUsed = require('tcp-port-used');
@@ -13,16 +12,23 @@ const { connect } = require('hadouken-js-adapter');
 
 require('../config/env');
 const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 3000;
+let expressServer = null;
 
-async function startWebpackDevServer() {
-    const webDevServer = spawn('node',[paths.appScript+'/start.js']);
-    webDevServer.stdout.on('data',(data)=>{
+
+async function startServer() {
+    expressServer = execFile(process.cwd()+`/${process.env.STANDALONE_SERVER_NAME}`);
+    expressServer.stdout.on('data',(data)=>{
         log(chalk.cyan(Buffer.from(data,'binary').toString()));
     });
-    webDevServer.stderr.on('data',(data)=>{
-        log(chalk.magenta(Buffer.from(data,'binary').toString()));
+    expressServer.stderr.on('data',(data)=>{
+        try{
+            log(chalk.red(Buffer.from(data,'binary').toString()));
+        }catch(e){
+            log(chalk.red(data));
+
+        }
     });
-    webDevServer.on('close',(data)=>{
+    expressServer.on('close',(data)=>{
         log(chalk.yellow(Buffer.from(data,'binary').toString()));
     });
 }
@@ -38,7 +44,7 @@ async function launchApp(){
     log(chalk.green("Connected to Hadouken version", version));
 
     const app = await fin.Application.create({
-        "name":"Openfin starter [dev]",
+        "name":"Openfin starter",
         "url":`http://localhost:${DEFAULT_PORT}/index.html`,
         "uuid":process.env.REACT_APP_FIN_UUID,
         "applicationIcon":`http://localhost:${DEFAULT_PORT}/favicon.ico`,
@@ -55,11 +61,17 @@ async function launchApp(){
 
     log(chalk.green(`connecting tot http://localhost:${DEFAULT_PORT}`));
 
+    app.addListener('closed',()=>{
+        if (expressServer){
+            expressServer.kill('SIGINT');
+        }
+        process.exit(0);
+    });
+
     await app.run();
 }
 
-
-startWebpackDevServer();
+startServer();
 
 tcpPortUsed.waitUntilUsed(DEFAULT_PORT,1000,240000)
     .then(
@@ -72,7 +84,6 @@ tcpPortUsed.waitUntilUsed(DEFAULT_PORT,1000,240000)
                 log(chalk.red("Error trying to connect,", err.message));
                 log(chalk.red(err.stack));
             });
-
         },
         (err)=>{
             log(chalk.red(err));

@@ -152,7 +152,7 @@ describe('Application reducer',()=>{
                 expect(reducer(undefined,action)).toMatchSnapshot();
             })
 
-            it('leave reason and correct window name',()=>{
+            it('disband reason and correct window name',()=>{
                 const action:any = {type:Event.actionDicts.windowEventDictByName['group-changed'].type, payload:{
                         sourceWindowName:"",
                         reason:Docking.types.GroupEventReason.DISBAND,

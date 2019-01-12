@@ -256,6 +256,30 @@ Object {
 }
 `;
 
+exports[`Application reducer With out parent state Event.actionDicts.windowEventDictByName['group-changed'].type action disband reason and correct window name 1`] = `
+Object {
+  "computerName": "",
+  "deviceUserId": null,
+  "docked": false,
+  "drawerOpen": true,
+  "launchBarCollapse": false,
+  "loading": true,
+  "machineId": null,
+  "offline": false,
+  "openfinHostSpec": Object {},
+  "openfinVersion": "n/a",
+  "snackBarMsgInfo": Object {},
+  "snackBarMsgQueue": Array [],
+  "snackBarOpen": false,
+  "username": "",
+  "winHeight": 0,
+  "winLeft": 0,
+  "winTop": 0,
+  "winWidth": 0,
+  "windowsState": "normal",
+}
+`;
+
 exports[`Application reducer With out parent state Event.actionDicts.windowEventDictByName['group-changed'].type action join reason and correct window name 1`] = `
 Object {
   "computerName": "",
@@ -281,30 +305,6 @@ Object {
 `;
 
 exports[`Application reducer With out parent state Event.actionDicts.windowEventDictByName['group-changed'].type action leave reason and correct window name 1`] = `
-Object {
-  "computerName": "",
-  "deviceUserId": null,
-  "docked": false,
-  "drawerOpen": true,
-  "launchBarCollapse": false,
-  "loading": true,
-  "machineId": null,
-  "offline": false,
-  "openfinHostSpec": Object {},
-  "openfinVersion": "n/a",
-  "snackBarMsgInfo": Object {},
-  "snackBarMsgQueue": Array [],
-  "snackBarOpen": false,
-  "username": "",
-  "winHeight": 0,
-  "winLeft": 0,
-  "winTop": 0,
-  "winWidth": 0,
-  "windowsState": "normal",
-}
-`;
-
-exports[`Application reducer With out parent state Event.actionDicts.windowEventDictByName['group-changed'].type action leave reason and correct window name 2`] = `
 Object {
   "computerName": "",
   "deviceUserId": null,

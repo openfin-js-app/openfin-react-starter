@@ -151,7 +151,13 @@ export default (parentWindowState?:Partial<IApplicationState>)=>{
                     ...state,
                     docked:true,
                 }
-            }else if(reason === Docking.types.GroupEventReason.LEAVE && sourceWindowName === window.name){
+            }else if(
+                (
+                    reason === Docking.types.GroupEventReason.LEAVE ||
+                    reason === Docking.types.GroupEventReason.DISBAND
+                )
+                && sourceWindowName === window.name
+            ){
                 return {
                     ...state,
                     docked:false,
