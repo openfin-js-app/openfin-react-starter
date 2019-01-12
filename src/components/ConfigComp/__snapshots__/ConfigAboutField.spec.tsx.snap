@@ -31,7 +31,7 @@ exports[`ConfigAboutField comp renderred correctly 1`] = `
       variant="h6"
     >
       Version 
-      0.30.10
+      0.35.10
     </WithStyles(Typography)>
     <div
       className="ConfigAboutField-btnContainer-5"

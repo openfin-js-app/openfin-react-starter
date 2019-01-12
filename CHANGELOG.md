@@ -1,4 +1,7 @@
-## [0.30.10] 2018-11-22
+## [0.35.10] 2018-11-22
+- strictly follow al-cli comp structure
+
+## [0.30.20] 2018-11-22
 - Support snap & dock
 
 ## [0.20.15] 2018-11-22

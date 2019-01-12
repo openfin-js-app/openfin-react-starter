@@ -234,5 +234,5 @@ Openfin react starer in ts
 [LICENSE]: ./LICENSE.md
 [CHANGELOG]: ./CHANGELOG.md
 
-[version-badge]: https://img.shields.io/badge/version-0.30.10-blue.svg
+[version-badge]: https://img.shields.io/badge/version-0.35.10-blue.svg
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg
