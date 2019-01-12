@@ -1,8 +1,9 @@
 import { Theme, createStyles } from '@material-ui/core/styles';
 
 import {
+    windowBorder,
     primaryColor, infoColor, warningColor, dangerColor, successColor,
-    drawerWidth, appbarHeight, container,
+    drawerWidth, appbarHeight,
 } from '../../openfin-starter-constant';
 
 const appStyle:any = (theme:Theme) => createStyles({
@@ -12,34 +13,34 @@ const appStyle:any = (theme:Theme) => createStyles({
         height: "100%",
     },
     wrapperPrimary:{
-        borderTop: `4px solid ${primaryColor}`,
-        borderLeft: `4px solid ${primaryColor}`,
-        borderRight: `4px solid ${primaryColor}`,
-        borderBottom: `4px solid ${primaryColor}`,
+        borderTop: `${windowBorder}px solid ${primaryColor}`,
+        borderLeft: `${windowBorder}px solid ${primaryColor}`,
+        borderRight: `${windowBorder}px solid ${primaryColor}`,
+        borderBottom: `${windowBorder}px solid ${primaryColor}`,
     },
     wrapperInfo:{
-        borderTop: `4px solid ${infoColor}`,
-        borderLeft: `4px solid ${infoColor}`,
-        borderRight: `4px solid ${infoColor}`,
-        borderBottom: `4px solid ${infoColor}`,
+        borderTop: `${windowBorder}px solid ${infoColor}`,
+        borderLeft: `${windowBorder}px solid ${infoColor}`,
+        borderRight: `${windowBorder}px solid ${infoColor}`,
+        borderBottom: `${windowBorder}px solid ${infoColor}`,
     },
     wrapperWarning:{
-        borderTop: `4px solid ${warningColor}`,
-        borderLeft: `4px solid ${warningColor}`,
-        borderRight: `4px solid ${warningColor}`,
-        borderBottom: `4px solid ${warningColor}`,
+        borderTop: `${windowBorder}px solid ${warningColor}`,
+        borderLeft: `${windowBorder}px solid ${warningColor}`,
+        borderRight: `${windowBorder}px solid ${warningColor}`,
+        borderBottom: `${windowBorder}px solid ${warningColor}`,
     },
     wrapperDanger:{
-        borderTop: `4px solid ${dangerColor}`,
-        borderLeft: `4px solid ${dangerColor}`,
-        borderRight: `4px solid ${dangerColor}`,
-        borderBottom: `4px solid ${dangerColor}`,
+        borderTop: `${windowBorder}px solid ${dangerColor}`,
+        borderLeft: `${windowBorder}px solid ${dangerColor}`,
+        borderRight: `${windowBorder}px solid ${dangerColor}`,
+        borderBottom: `${windowBorder}px solid ${dangerColor}`,
     },
     wrapperSuccess:{
-        borderTop: `4px solid ${successColor}`,
-        borderLeft: `4px solid ${successColor}`,
-        borderRight: `4px solid ${successColor}`,
-        borderBottom: `4px solid ${successColor}`,
+        borderTop: `${windowBorder}px solid ${successColor}`,
+        borderLeft: `${windowBorder}px solid ${successColor}`,
+        borderRight: `${windowBorder}px solid ${successColor}`,
+        borderBottom: `${windowBorder}px solid ${successColor}`,
     },
 
     mainPanel:{
@@ -60,7 +61,7 @@ const appStyle:any = (theme:Theme) => createStyles({
     content:{
         position:'relative',
         marginTop:"0px",
-        padding:"0px 4px",
+        padding:`0px ${windowBorder}px`,
         height:"100%",
         overflowX:'hidden',
     },

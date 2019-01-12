@@ -4,12 +4,10 @@ import {
     defaultFont,
     dangerColor,
     primaryColor,
-    primaryBoxShadow,
     infoColor,
     successColor,
     warningColor,
     roseColor,
-    defaultBoxShadow,
 } from '../../openfin-starter-constant';
 
 const headerLinkStyle:any = (theme:Theme) => createStyles({
@@ -23,31 +21,26 @@ const headerLinkStyle:any = (theme:Theme) => createStyles({
     info:{
         backgroundColor: infoColor,
         color: '#ffffff',
-        ...defaultBoxShadow,
         borderRadius:"4px",
     },
     success:{
         backgroundColor: successColor,
         color: '#ffffff',
-        ...defaultBoxShadow,
         borderRadius:"4px",
     },
     warning:{
         backgroundColor: warningColor,
         color: '#ffffff',
-        ...defaultBoxShadow,
         borderRadius:"4px",
     },
     rose:{
         backgroundColor: roseColor,
         color: '#ffffff',
-        ...defaultBoxShadow,
         borderRadius:"4px",
     },
     danger:{
         backgroundColor: dangerColor,
         color: '#ffffff',
-        ...defaultBoxShadow,
         borderRadius:"4px",
     },
 });

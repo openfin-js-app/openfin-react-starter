@@ -5,7 +5,6 @@ import {
     container,
     defaultFont,
     primaryColor,
-    defaultBoxShadow,
     infoColor,
     successColor,
     warningColor,
@@ -77,27 +76,22 @@ const headerStyle:any = (theme:Theme) =>createStyles({
     primary:{
         backgroundColor:primaryColor,
         color:"#ffffff",
-        ...defaultBoxShadow,
     },
     info:{
         backgroundColor:infoColor,
         color:"#ffffff",
-        ...defaultBoxShadow,
     },
     success:{
         backgroundColor:successColor,
         color:"#ffffff",
-        ...defaultBoxShadow,
     },
     warning:{
         backgroundColor:warningColor,
         color:"#ffffff",
-        ...defaultBoxShadow,
     },
     danger:{
         backgroundColor:dangerColor,
         color:"#ffffff",
-        ...defaultBoxShadow,
     },
 });
 

@@ -7,7 +7,6 @@ import {
     boxShadow,
     defaultFont,
     primaryColor,
-    primaryBoxShadow,
     infoColor,
     successColor,
     warningColor,
@@ -98,10 +97,8 @@ const sidebarStyle:any = (theme:Theme) => createStyles({
     },
     primary:{
         backgroundColor:primaryColor,
-        ...primaryBoxShadow,
         "&:hover":{
             backgroundColor:primaryColor,
-            ...primaryBoxShadow,
         }
     },
     blue: {
