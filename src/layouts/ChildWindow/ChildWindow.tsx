@@ -84,7 +84,7 @@ class ChildWindowLayout extends React.Component<IProps,{}>{
                     onClose = {handleClose}
                     {...rest}
                 />
-                <div className={cx(classes.wrapper, 'info-top-to-bottom')}>
+                <div className={cx(classes.wrapper, classes.wrapperInfo)}>
                     <div className={cx(
                         classes.mainPanel,classes.mainPanelShift
                     )}

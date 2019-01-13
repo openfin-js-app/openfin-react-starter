@@ -54,8 +54,8 @@ class LoadingBarComponent extends React.Component<any,any>{
 const style:any={
     container:{
         position:'relative',
-        width:'100%',
-        height:'100%',
+        width:'100vw',
+        height:'100vh',
         overflow:'hidden',
         background:'linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%)',
     },
