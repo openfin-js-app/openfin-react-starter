@@ -1,6 +1,7 @@
 import { Theme, createStyles } from '@material-ui/core/styles';
 
 import {
+    windowBorder,
     appbarHeight,
     drawerWidth,
     transition,
@@ -18,19 +19,18 @@ const sidebarStyle:any = (theme:Theme) => createStyles({
         border:"none",
         backgroundColor:'transparent',
         position:"fixed",
-        top: appbarHeight +4,
+        top: appbarHeight + windowBorder,
         bottom:0,
         left:"0",
         zIndex: 1,
         ...boxShadow,
         width:drawerWidth,
         height:"100%",
-        borderLeft:`4px solid transparent`,
     },
     background:{
         position:"absolute",
         zIndex:1,
-        height: "calc(100% - 15px)",
+        height: `calc(100vh - ${appbarHeight}px)`,
         width: "100%",
         display:"block",
         top:"0",
@@ -92,7 +92,7 @@ const sidebarStyle:any = (theme:Theme) => createStyles({
         color:"#ffffff",
     },
     releaseTypo:{
-        zIndex:1250,
+        zIndex:theme.zIndex.drawer+5,
         padding:"2% 5%",
     },
     primary:{
@@ -143,9 +143,9 @@ const sidebarStyle:any = (theme:Theme) => createStyles({
     },
     sidebarWrapper: {
         position: "relative",
-        height: "calc(100% - 75px)",
+        height: `calc(100vh - ${appbarHeight+windowBorder+30}px)`,
         overflow: "auto",
-        width: drawerWidth-4,
+        width: drawerWidth,
         zIndex: 4,
         overflowScrolling: "touch"
     },

@@ -1,6 +1,7 @@
 import { Theme, createStyles } from '@material-ui/core/styles';
 
 import {
+    windowBorder,
     appbarHeight,
     container,
     defaultFont,
@@ -16,11 +17,11 @@ const headerStyle:any = (theme:Theme) =>createStyles({
         backgroundColor:"transparent",
         boxShadow:"none",
         borderBottom: "0",
-        margin:"4px 4px 0px 4px",
+        margin:`${windowBorder}px 0px 0px 0px`,
         position:"absolute",
-        width:"calc(100% - 8px)",
-        paddingTop:"0px",
-        zIndex:1029,
+        width:'100vw',
+        paddingTop:0,
+        zIndex:theme.zIndex.appBar+5,
         color:"#555555",
         border:"0",
         borderRadius:"0px",
@@ -42,7 +43,7 @@ const headerStyle:any = (theme:Theme) =>createStyles({
         minHeight:appbarHeight,
     },
     menuBtn:{
-        marginRight:'4px',
+        marginRight:windowBorder,
         backgroundColor:"transparent",
         "-webkit-app-region":"no-drag",
         color:"inherit",
@@ -75,6 +76,8 @@ const headerStyle:any = (theme:Theme) =>createStyles({
     },
     primary:{
         backgroundColor:primaryColor,
+        borderLeft: `${windowBorder}px solid ${infoColor}`,
+        borderRight: `${windowBorder}px solid ${infoColor}`,
         color:"#ffffff",
     },
     info:{

@@ -10,37 +10,22 @@ const appStyle:any = (theme:Theme) => createStyles({
     wrapper:{
         position:"relative",
         top:"0",
-        height: "100%",
+        height: "100vh",
     },
     wrapperPrimary:{
         borderTop: `${windowBorder}px solid ${primaryColor}`,
-        borderLeft: `${windowBorder}px solid ${primaryColor}`,
-        borderRight: `${windowBorder}px solid ${primaryColor}`,
-        borderBottom: `${windowBorder}px solid ${primaryColor}`,
     },
     wrapperInfo:{
         borderTop: `${windowBorder}px solid ${infoColor}`,
-        borderLeft: `${windowBorder}px solid ${infoColor}`,
-        borderRight: `${windowBorder}px solid ${infoColor}`,
-        borderBottom: `${windowBorder}px solid ${infoColor}`,
     },
     wrapperWarning:{
         borderTop: `${windowBorder}px solid ${warningColor}`,
-        borderLeft: `${windowBorder}px solid ${warningColor}`,
-        borderRight: `${windowBorder}px solid ${warningColor}`,
-        borderBottom: `${windowBorder}px solid ${warningColor}`,
     },
     wrapperDanger:{
         borderTop: `${windowBorder}px solid ${dangerColor}`,
-        borderLeft: `${windowBorder}px solid ${dangerColor}`,
-        borderRight: `${windowBorder}px solid ${dangerColor}`,
-        borderBottom: `${windowBorder}px solid ${dangerColor}`,
     },
     wrapperSuccess:{
         borderTop: `${windowBorder}px solid ${successColor}`,
-        borderLeft: `${windowBorder}px solid ${successColor}`,
-        borderRight: `${windowBorder}px solid ${successColor}`,
-        borderBottom: `${windowBorder}px solid ${successColor}`,
     },
 
     mainPanel:{
