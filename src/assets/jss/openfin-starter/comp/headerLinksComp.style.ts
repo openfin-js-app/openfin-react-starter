@@ -12,10 +12,14 @@ import {
 
 const headerLinkStyle:any = (theme:Theme) => createStyles({
     menuBtn:{
-        transform:`scale(${appbarHeight/40 * 0.8})`,
+        width:appbarHeight * 0.9,
+        height:appbarHeight * 0.9,
+        minHeight:appbarHeight * 0.9,
+        marginRight: appbarHeight * 0.5,
         "-webkit-app-region":"no-drag",
         "& span svg":{
-            fontSize: `${appbarHeight/26*36}px`,
+            width:appbarHeight * 0.85,
+            height:appbarHeight * 0.85,
         }
     },
     info:{

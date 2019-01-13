@@ -58,7 +58,7 @@ class HeaderComp extends React.Component<IProps,{}>{
 
         return(<AppBar className={cx(classes.appBar, classes[color])} draggable = {false}>
             <Toolbar className={classes.container}>
-                <div className={classes.flex}>
+                <div className={classes.preFlex}>
                     {handleDrawerToggle?
                         <Fab
                             className={classes.menuBtn}
@@ -74,15 +74,18 @@ class HeaderComp extends React.Component<IProps,{}>{
                         {"App name| "+ makeBrand(this.props)}
                     </Button>
                 </div>
-                <HeaderLinks
-                    windowsState={windowsState}
-                    docked = {docked}
-                    onSwitchToLaunchBar={onSwitchToLaunchBar}
-                    onUndock={onUndock}
-                    onMinimize={onMinimize}
-                    onMaximize={onMaximize}
-                    onClose={onClose}
-                />
+                <div className={classes.flex}/>
+                <div className={classes.postFlex}>
+                    <HeaderLinks
+                        windowsState={windowsState}
+                        docked = {docked}
+                        onSwitchToLaunchBar={onSwitchToLaunchBar}
+                        onUndock={onUndock}
+                        onMinimize={onMinimize}
+                        onMaximize={onMaximize}
+                        onClose={onClose}
+                    />
+                </div>
             </Toolbar>
         </AppBar>);
     }
