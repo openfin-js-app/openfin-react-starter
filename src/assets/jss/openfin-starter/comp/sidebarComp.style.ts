@@ -49,7 +49,7 @@ const sidebarStyle:any = (theme:Theme) => createStyles({
         }
     },
     list:{
-        marginTop:"20px",
+        marginTop:20,
         paddingLeft:"0",
         paddingTop:"0",
         paddingBottom:"0",
@@ -73,10 +73,11 @@ const sidebarStyle:any = (theme:Theme) => createStyles({
         ...defaultFont,
     },
     itemIcon:{
-        width:"24px",
-        height:"30px",
+        width:24,
+        height:24,
         float:"left",
-        marginRight:"15px",
+        marginTop:3,
+        marginRight:15,
         textAlign:"center",
         verticalAlign:"middle",
         color:"rgba(255,255,255,0.8)",
