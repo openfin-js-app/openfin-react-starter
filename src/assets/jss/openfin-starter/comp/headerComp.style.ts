@@ -59,12 +59,16 @@ const headerStyle:any = (theme:Theme) =>createStyles({
         backgroundColor:"transparent",
         "-webkit-app-region":"no-drag",
         color:"inherit",
+        width:appbarHeight,
         height:appbarHeight,
         minHeight:appbarHeight,
-        width:appbarHeight,
         boxShadow:"none",
         "&:hover,&:focus":{
             background:"transparent",
+        },
+        "& span svg":{
+            width:appbarHeight,
+            height:appbarHeight,
         }
     },
     companyLogImg:{
