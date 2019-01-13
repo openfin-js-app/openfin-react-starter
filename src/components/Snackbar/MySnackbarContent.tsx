@@ -47,7 +47,7 @@ class MySnackbarContentComp extends React.Component<Props,{}>{
 
         return(
             <SnackbarContent
-                className={cx(classes[variant],className)}
+                className={cx( classes.outmostContent, classes[variant],className)}
                 aria-describedby={"client-snackbar"}
                 message={
                     <span id={"client-snackbar"} className={classes.message}>

@@ -8,6 +8,11 @@ import {
 } from '../../openfin-starter-constant';
 
 const snackbarContent = (theme:Theme) => createStyles({
+    outmostContent:{
+        minWidth: 288,
+        maxWidth: 568,
+        borderRadius: 4,
+    },
     primary:{
         backgroundColor:primaryColor,
     },
