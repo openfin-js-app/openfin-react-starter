@@ -246,6 +246,8 @@ export function* handleApplicationLaunchBarToggle(){
             defaultTop:getBoundsActionPayload.top,
             defaultWidth:launchBarItems.length<10? launchBarItems.length*64+88:664,
             defaultHeight: 64,
+            minWidth:88,
+            minHeight:64,
         }));
         launchbarWindow = newWindowResAction.payload.window;
 

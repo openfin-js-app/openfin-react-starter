@@ -53,8 +53,8 @@ async function launchApp(){
         "frame":false,
         "defaultWidth":728,
         "defaultHeight":450,
-        "minWidth":88,
-        "minHeight":64
+        "minWidth":420,
+        "minHeight":300
     });
 
     log(chalk.green(`connecting tot http://localhost:${DEFAULT_PORT}`));
