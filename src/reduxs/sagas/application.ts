@@ -21,6 +21,7 @@ import {
     applicationProcessSnackbarQueue,
     APPLICATION_LAUNCH_BAR_TOGGLE,
     APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE,
+    APPLICATION_LAUNCH_BAR_CLOSE,
     APPLICATION_LAUNCH_NEW_WINDOW,
     configLoadFromDexie,
     configUpdateNewWindowPosition,
@@ -98,6 +99,8 @@ export function* handleRedirectFromLoadingView(monitorRect) {
         }
     }
 
+    yield call(delay,200);
+
     if (loadingWindow){
         loadingWindow.close()
     }
@@ -131,7 +134,7 @@ export function* handleApplicationLoading() {
         call(System.asyncs.getHostSpecs,System.actions.getHostSpecs({})),
         call(Window.asyncs.getState,Window.actions.getState({})),
         // delay for loading view render, could be removed
-        call(delay,5000),
+        call(delay,4800),
     ]);
 
     yield put.resolve(applicationReady());
@@ -166,16 +169,8 @@ export function* handleApplicationExit() {
 
     // ---------------------------------end of app codes -----------------------------------------------
 
-    if (window.name === LAUNCHBAR_VIEW_UUID){
-        const mainWindowAction:Action<WrapResPayload> = yield call(Window.asyncs.wrap,Window.actions.wrap({
-            appUuid: process.env.REACT_APP_FIN_UUID,
-            windowName: process.env.REACT_APP_FIN_UUID,
-        }));
-        const mainWindow = mainWindowAction.payload.window;
-        mainWindow.close(false);
-    }else{
-        yield put.resolve(Window.actions.close({force:true}));
-    }
+    yield put.resolve(Window.actions.close({force:true}));
+
 }
 
 export function* handleApplicationAddNewSnackBar() {
@@ -294,24 +289,58 @@ export function* handleApplicationLaunchBarToggleCollapse() {
             height:64,
         }));
     }
+}
 
+export function* handleApplicationLaunchBarClose() {
+    const mainWindowAction:Action<WrapResPayload> = yield call(Window.asyncs.wrap,Window.actions.wrap({
+        appUuid: process.env.REACT_APP_FIN_UUID,
+        windowName: process.env.REACT_APP_FIN_UUID,
+    }));
+    const mainWindow = mainWindowAction.payload.window;
+    mainWindow.close(false);
 }
 
 export function* handleApplicationLaunchNewWindow(action) {
-    const appJson = action.payload;
-    const defaultWidth = yield select(getNewWindowWidth);
-    const defaultHeight = yield select(getNewWindowHeight);
-    const defaultTop = yield select(getNewWindowTop);
-    const defaultLeft = yield select(getNewWindowLeft);
 
-    if(!appJson.defaultWidth){ appJson.defaultWidth = defaultWidth}
-    if(!appJson.defaultHeight){ appJson.defaultHeight = defaultHeight}
-    if(!appJson.defaultTop){ appJson.defaultTop = defaultTop}
-    if(!appJson.defaultLeft){ appJson.defaultLeft = defaultLeft}
+    if (window.name === process.env.REACT_APP_FIN_UUID){
 
-    yield call(Window.asyncs.newWindow,Window.actions.newWindow(appJson));
+        const appJson = action.payload;
+        const windowName = appJson.name;
 
-    yield put(configUpdateNewWindowPosition());
+        const wrapWindowAction:Action<WrapResPayload> = yield call(Window.asyncs.wrap,Window.actions.wrap({
+            appUuid: process.env.REACT_APP_FIN_UUID,
+            windowName,
+        }));
+
+        if (
+            wrapWindowAction.payload &&
+            wrapWindowAction.payload.window &&
+            wrapWindowAction.payload.window.nativeWindow
+        ){
+            // already created, not need to create anymore
+            const theWindow = wrapWindowAction.payload.window;
+            theWindow.show(true);
+            theWindow.bringToFront();
+        }else{
+            // not created, need to create one
+            const defaultWidth = yield select(getNewWindowWidth);
+            const defaultHeight = yield select(getNewWindowHeight);
+            const defaultTop = yield select(getNewWindowTop);
+            const defaultLeft = yield select(getNewWindowLeft);
+
+            if(!appJson.defaultWidth){ appJson.defaultWidth = defaultWidth}
+            if(!appJson.defaultHeight){ appJson.defaultHeight = defaultHeight}
+            if(!appJson.defaultTop){ appJson.defaultTop = defaultTop}
+            if(!appJson.defaultLeft){ appJson.defaultLeft = defaultLeft}
+
+            const newWindowResAction:Action<NewWindowResPayload> = yield call(Window.asyncs.newWindow,Window.actions.newWindow(appJson));
+            const newWindow = newWindowResAction.payload.window;
+            newWindow.bringToFront();
+
+            yield put(configUpdateNewWindowPosition());
+        }
+
+    }
 
 }
 
@@ -362,6 +391,7 @@ export default function* (){
     yield takeLatest(APPLICATION_CLOSE_SNACKBAR,handleApplicationCloseSnackBar);
     yield takeLatest(APPLICATION_LAUNCH_BAR_TOGGLE,handleApplicationLaunchBarToggle);
     yield takeLatest(APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE,handleApplicationLaunchBarToggleCollapse);
+    yield takeLatest(APPLICATION_LAUNCH_BAR_CLOSE,handleApplicationLaunchBarClose);
     yield takeLatest(APPLICATION_LAUNCH_NEW_WINDOW,handleApplicationLaunchNewWindow);
     yield takeEvery(Event.actionDicts.windowEventDictByName['group-changed'].type,handleGroupChanged);
 }

@@ -42,10 +42,12 @@ export const applicationUpdateDockStatus:ActionFunctionAny<Action<{docked:boolea
 export const APPLICATION_LAUNCH_BAR_TOGGLE = 'APPLICATION_LAUNCH_BAR_TOGGLE';
 export const APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE = 'APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE';
 export const APPLICATION_LAUNCH_NEW_WINDOW = 'APPLICATION_LAUNCH_NEW_WINDOW';
+export const APPLICATION_LAUNCH_BAR_CLOSE = 'APPLICATION_LAUNCH_BAR_CLOSE';
 export const applicationLaunchBarToggle:ActionFunctionAny<Action<void>> = createAction(APPLICATION_LAUNCH_BAR_TOGGLE);
 export const applicationLaunchBarToggleCollapse:ActionFunctionAny<Action<void>> = createAction(APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE);
 export const applicationLaunchNewWindow:ActionFunctionAny<Action<Partial<WindowOptions>>>
     = createAction(APPLICATION_LAUNCH_NEW_WINDOW,(appJson:Partial<WindowOptions>)=>(appJson));
+export const applicationLaunchBarClose:ActionFunctionAny<Action<void>> = createAction(APPLICATION_LAUNCH_BAR_CLOSE);
 
 // network
 export const APPLICATION_NETWORK_ONLINE = 'APPLICATION_NETWORK_ONLINE';

@@ -24,7 +24,7 @@ import appLogo from '../../assets/svg/app.svg';
 
 import {
     // actions
-    applicationLaunchBarToggle, applicationLaunchBarToggleCollapse, applicationLaunchNewWindow,
+    applicationLaunchBarToggle, applicationLaunchBarToggleCollapse, applicationLaunchNewWindow, applicationLaunchBarClose,
     // types
     IRootState,
 } from '../../reduxs';
@@ -148,7 +148,7 @@ export default connect(
             handleSwitchToMainWindow:()=>{dispatch(applicationLaunchBarToggle())},
             handleToggleCollapse:()=>{dispatch(applicationLaunchBarToggleCollapse())},
             handleMinimize:()=>{dispatch(Window.actions.minimize({}))},
-            handleClose:()=>{dispatch(Window.actions.close({force:false}))},
+            handleClose:()=>{dispatch(applicationLaunchBarClose())},
         }
     })
 )(withStyles(style)(LaunchBarComp));

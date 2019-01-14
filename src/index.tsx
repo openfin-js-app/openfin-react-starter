@@ -18,11 +18,9 @@ import {
     applicationNetworkOffline,
 } from "./reduxs";
 
-declare const window:any;
+import sharedActions from './reduxs/sharedActions'
 
-const sharedActions = [
-    CLIENT_SET_VALUE
-];
+declare const window:any;
 
 if(!window.fin){
     window.fin = new BrowserAdapter({
