@@ -57,7 +57,9 @@ const style:any={
         width:'100vw',
         height:'100vh',
         overflow:'hidden',
-        background:'linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%)',
+        background:'linear-gradient(141deg,  #4dd0e1, #26c6da, #00bcd4, #00acc1, #0097a7, #00838f, #006064)',
+        backgroundSize: '200%',
+        animation: 'gba 5s infinite',
     },
     appLogoImg:{
         position:'absolute',
