@@ -25,6 +25,7 @@ export interface IApplicationState {
     machineId:string,
     deviceUserId:string,
     loading:boolean,
+    loadingMsg:string,
     docked:boolean,
     winTop:number,
     winLeft:number,

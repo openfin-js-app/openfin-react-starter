@@ -9,6 +9,7 @@ import hist from '../../utils/history';
 import { launchBarItems } from '../../layouts/LaunchBar/LaunchBarData';
 
 import {
+    applicationSetLoadingMsg,
     APPLICATION_STARTED,
     APPLICATION_CHILD_STARTED,
     APPLICATION_NEW_SNACKBAR,
@@ -121,6 +122,8 @@ export function* handleApplicationLoading() {
         yield* handleRedirectToLoadingView(monitorRect) as any;
     }
 
+    yield put.resolve(applicationSetLoadingMsg('Init'));
+
     yield all([
         put.resolve(configLoadFromDexie()),
         call(System.asyncs.getMachineId,System.actions.getMachineId({})),
@@ -134,14 +137,29 @@ export function* handleApplicationLoading() {
         call(System.asyncs.getHostSpecs,System.actions.getHostSpecs({})),
         call(Window.asyncs.getState,Window.actions.getState({})),
         // delay for loading view render, could be removed
-        call(delay,4800),
+        call(delay,1000),
     ]);
 
+    yield put.resolve(applicationSetLoadingMsg('Delay 1 sec'));
+    yield call(delay,1000),
+    yield put.resolve(applicationSetLoadingMsg('Delay 2 sec'));
+    yield call(delay,1000),
+    yield put.resolve(applicationSetLoadingMsg('Delay 3 sec'));
+    yield call(delay,1000),
+    yield put.resolve(applicationSetLoadingMsg('Delay 4 sec'));
+    yield call(delay,800),
+    yield put.resolve(applicationSetLoadingMsg('Delay 5 sec'));
+
     yield put.resolve(applicationReady());
+
+    yield put.resolve(applicationSetLoadingMsg('Ready'));
 
     if (ENABLE_LOADING_VIEW && currentIsLoadingView){
         yield* handleRedirectFromLoadingView(monitorRect) as any;
     }
+
+    yield put(applicationSetLoadingMsg(''));
+
     yield call(Window.asyncs.bringToFront,Window.actions.bringToFront({}));
 }
 

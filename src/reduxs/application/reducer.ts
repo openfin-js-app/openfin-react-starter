@@ -8,6 +8,7 @@ import {
 } from './types';
 
 import {
+    APPLICATION_SET_LOADING_MSG,
     APPLICATION_READY,
     APPLICATION_DRAWER_TOGGLE,
     APPLICATION_NEW_SNACKBAR,
@@ -26,6 +27,7 @@ export const defaultState:Partial<IApplicationState>={
     machineId:null,
     deviceUserId:null,
     loading:true,
+    loadingMsg:"",
     docked:false,
     winTop:0,
     winLeft:0,
@@ -47,6 +49,7 @@ export default (parentWindowState?:Partial<IApplicationState>)=>{
     if (parentWindowState){
         initState ={
             ...parentWindowState,
+            loadingMsg:"",
             docked:false,
             winTop:0,
             winLeft:0,
@@ -170,6 +173,10 @@ export default (parentWindowState?:Partial<IApplicationState>)=>{
         [APPLICATION_UPDATE_DOCK_STATUS]:(state,action)=>({
             ...state,
             docked:action.payload.docked,
+        }),
+        [APPLICATION_SET_LOADING_MSG]: (state,action)=>({
+            ...state,
+            loadingMsg:action.payload.loadingMsg,
         }),
         [APPLICATION_READY]:(state,action)=>({
             ...state,

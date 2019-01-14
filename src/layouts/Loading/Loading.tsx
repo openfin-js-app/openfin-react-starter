@@ -90,6 +90,13 @@ const style:any={
         right:'15%',
 
     },
+    statusMsg:{
+        position:'absolute',
+        top:'calc( 66% + 20px )',
+        left:'calc( 15% + 20px )',
+        right:'calc( 15% + 20px )',
+        fontFamily:'"Arial Black", Gadget, sans-serif',
+    },
     companyLogImg:{
         position:'absolute',
         bottom:'40px',
@@ -102,11 +109,12 @@ export const LoadingBar = withStyles(style)(LoadingBarComponent);
 
 interface IProps extends WithStyles<typeof style> {
     loading:boolean,
+    loadingMsg:string,
 }
 
 class LoadingComponent extends React.Component<IProps,{}>{
     render(){
-        const {classes} = this.props;
+        const {classes, loadingMsg } = this.props;
 
         return(
             <div className={classes.container}>
@@ -115,6 +123,7 @@ class LoadingComponent extends React.Component<IProps,{}>{
                 <div className={classes.versionStr}>{process.env.REACT_APP_VERSION}</div>
                 <LoadingBar/>
                 <img src={companyLogo} className={classes.companyLogImg} />
+                <div className={classes.statusMsg}>{loadingMsg}</div>
                 <Particles
                     width={"100%"}
                     height={"100%"}
@@ -127,6 +136,7 @@ class LoadingComponent extends React.Component<IProps,{}>{
 export default connect(
     (state:any) => ({
         loading:state.application.loading,
+        loadingMsg:state.application.loadingMsg,
     }),
     dispatch => ({
         actions:{
