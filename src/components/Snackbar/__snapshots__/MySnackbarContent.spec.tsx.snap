@@ -9,19 +9,19 @@ exports[`MySnackbarContent comp renders correctly by default 1`] = `
       onClick={[MockFunction]}
     >
       <pure(CloseIcon)
-        className="MySnackbarContentComp-icon-7"
+        className="MySnackbarContentComp-icon-8"
       />
     </WithStyles(IconButton)>
   }
   aria-describedby="client-snackbar"
-  className="MySnackbarContentComp-primary-1"
+  className="MySnackbarContentComp-outmostContent-1 MySnackbarContentComp-primary-2"
   message={
     <span
-      className="MySnackbarContentComp-message-9"
+      className="MySnackbarContentComp-message-10"
       id="client-snackbar"
     >
       <pure(DesktopMacIcon)
-        className="MySnackbarContentComp-icon-7 MySnackbarContentComp-iconVariant-8"
+        className="MySnackbarContentComp-icon-8 MySnackbarContentComp-iconVariant-9"
       />
       message
     </span>
