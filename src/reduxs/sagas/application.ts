@@ -2,7 +2,7 @@ import {Action} from "redux-actions";
 import { buffers, delay } from 'redux-saga';
 import { all, call, put, take, takeLatest, takeEvery, fork, select, actionChannel } from 'redux-saga/effects';
 import { Docking ,System, Event, Window } from '@albertli90/redux-openfin';
-import { GetGroupResPayload, NewWindowResPayload } from "@albertli90/redux-openfin/window";
+import { GetGroupResPayload, NewWindowResPayload, WrapResPayload } from "@albertli90/redux-openfin/window";
 
 import hist from '../../utils/history';
 
@@ -28,6 +28,8 @@ import {
 
 const LOADING_VIEW_UUID='openfin-react-starter-loading-view';
 let loadingWindow = null;
+const LAUNCHBAR_VIEW_UUID='openfin-react-starter-launchbar-view';
+let launchbarWindow = null;
 
 const ENABLE_LOADING_VIEW=process.env.REACT_APP_ENABLE_LOADING_VIEW.toLowerCase() === 'true';
 
@@ -164,8 +166,16 @@ export function* handleApplicationExit() {
 
     // ---------------------------------end of app codes -----------------------------------------------
 
-
-    yield put.resolve(Window.actions.close({force:true}));
+    if (window.name === LAUNCHBAR_VIEW_UUID){
+        const mainWindowAction:Action<WrapResPayload> = yield call(Window.asyncs.wrap,Window.actions.wrap({
+            appUuid: process.env.REACT_APP_FIN_UUID,
+            windowName: process.env.REACT_APP_FIN_UUID,
+        }));
+        const mainWindow = mainWindowAction.payload.window;
+        mainWindow.close(false);
+    }else{
+        yield put.resolve(Window.actions.close({force:true}));
+    }
 }
 
 export function* handleApplicationAddNewSnackBar() {
@@ -201,55 +211,64 @@ export function* handleApplicationLaunchBarToggle(){
     const getBoundsAction = yield call(Window.asyncs.getBounds,Window.actions.getBounds({}));
     const getBoundsActionPayload = getBoundsAction.payload;
 
-    if (window.location.href.toLowerCase().endsWith('launchbar')){
-        // switch to main panel
-        yield call(Window.asyncs.updateOptions,Window.actions.updateOptions({
-            options:{
-                resizable:true,
-            }
-        }));
-        yield call(Window.asyncs.setBounds,Window.actions.setBounds({
-            left:previousBaseWindow.left?previousBaseWindow.left:parseInt(process.env.REACT_APP_NEW_WINDOW_LEFT,10),
-            top:previousBaseWindow.top?previousBaseWindow.top:parseInt(process.env.REACT_APP_NEW_WINDOW_TOP,10),
-            width:previousBaseWindow.width?previousBaseWindow.width:parseInt(process.env.REACT_APP_NEW_WINDOW_WIDTH,10),
-            height:previousBaseWindow.height?previousBaseWindow.height:parseInt(process.env.REACT_APP_NEW_WINDOW_HEIGHT,10),
-        }));
-        if (process.env.NODE_ENV !== 'test'){
-            hist.push(previousBaseWindow.url?previousBaseWindow.url:process.env.REACT_APP_DEFAULT_DASHBOARD_VIEW_URL);
-        }
+    const mainWindowAction:Action<WrapResPayload> = yield call(Window.asyncs.wrap,Window.actions.wrap({
+        appUuid: process.env.REACT_APP_FIN_UUID,
+        windowName: process.env.REACT_APP_FIN_UUID,
+    }));
+    const mainWindow = mainWindowAction.payload.window;
+
+    const launchbarWindowAction:Action<WrapResPayload> = yield call(Window.asyncs.wrap,Window.actions.wrap({
+        appUuid: process.env.REACT_APP_FIN_UUID,
+        windowName: LAUNCHBAR_VIEW_UUID,
+    }));
+
+
+    if (launchbarWindowAction.payload.window.nativeWindow){
+        launchbarWindow = launchbarWindowAction.payload.window;
     }else{
-        // switch to launchBar
-        yield call(Window.asyncs.updateOptions,Window.actions.updateOptions({
-            options:{
-                resizable:false,
-            }
+        launchbarWindow = null;
+    }
+
+    if (launchbarWindow){
+        // close launchbar and show main window
+        mainWindow.show(true);
+        launchbarWindow.close();
+    }else{
+        // show launchbar and hide main window
+        const newWindowResAction:Action<NewWindowResPayload> = yield call(Window.asyncs.newWindow,Window.actions.newWindow({
+            name:LAUNCHBAR_VIEW_UUID,
+            url:'/launchBar',
+            frame:false,
+            resizable:false,
+            state:'normal',
+            autoShow:true,
+            defaultLeft:getBoundsActionPayload.left,
+            defaultTop:getBoundsActionPayload.top,
+            defaultWidth:launchBarItems.length<10? launchBarItems.length*64+88:664,
+            defaultHeight: 64,
         }));
-        previousBaseWindow.url = (new URL(window.location.href)).pathname;
-        previousBaseWindow.top = getBoundsActionPayload.top;
-        previousBaseWindow.left = getBoundsActionPayload.left;
-        previousBaseWindow.width = getBoundsActionPayload.width;
-        previousBaseWindow.height = getBoundsActionPayload.height;
+        launchbarWindow = newWindowResAction.payload.window;
 
         if (launchBarCollapse){
-            yield call(Window.asyncs.setBounds,Window.actions.setBounds({
-                left:getBoundsActionPayload.left,
-                top:getBoundsActionPayload.top,
-                width:88,
-                height:64,
-            }));
+            launchbarWindow.setBounds(
+                getBoundsActionPayload.left,
+                getBoundsActionPayload.top,
+                88,
+                64,
+            );
         }else{
-            yield call(Window.asyncs.setBounds,Window.actions.setBounds({
-                left:getBoundsActionPayload.left,
-                top:getBoundsActionPayload.top,
-                width:launchBarItems.length<10? launchBarItems.length*64+88:664,
-                height:64,
-            }));
-        }
-        if (process.env.NODE_ENV !== 'test'){
-            hist.push('/launchBar');
+            launchbarWindow.setBounds(
+                getBoundsActionPayload.left,
+                getBoundsActionPayload.top,
+                launchBarItems.length<10? launchBarItems.length*64+88:664,
+                64,
+            );
         }
 
+        launchbarWindow.bringToFront();
+        mainWindow.hide();
     }
+
 }
 
 export function* handleApplicationLaunchBarToggleCollapse() {
