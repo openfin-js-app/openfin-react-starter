@@ -1,4 +1,5 @@
 import { Theme, createStyles } from '@material-ui/core/styles';
+import { lighten, darken } from '@material-ui/core/styles/colorManipulator';
 
 import color from 'color';
 
@@ -7,20 +8,25 @@ import {
     greyColor, dangerColor,
 } from '../../openfin-starter-constant';
 
-const launchBtnHeight = '64';
-const launchBtnContainerMaxWidth = '576';
+const launchBtnHeight = 64;
+const launchBtnContainerMaxWidth = 576;
 
 const launchBarStyle:any = (theme:Theme) => createStyles({
     toolBar:{
-        height:'64px',
+        height:64,
         padding:'0 0',
     },
     appLogoImg:{
-        width:'40px',
-        height:'40px',
-        margin:'12px',
+        width:40,
+        height:40,
+        margin:12,
         "-webkit-user-select":"none",
         "-webkit-app-region":"drag",
+    },
+    undockCtrlBtn:{
+        position:'absolute',
+        top:2,
+        left: launchBtnHeight-18,
     },
     buttonContainer:{
         maxWidth:`${launchBtnContainerMaxWidth}px`,
@@ -34,19 +40,19 @@ const launchBarStyle:any = (theme:Theme) => createStyles({
     baseButton:{
         color:'white',
         borderRadius:'0%',
-        height:`${launchBtnHeight}px`,
-        width:`${launchBtnHeight}px`,
+        height:launchBtnHeight,
+        width:launchBtnHeight,
         '& $svg':{
             fontSize:'50px',
         },
     },
     svgButton:{
         borderRadius:'0%',
-        height:`${launchBtnHeight}px`,
-        width:`${launchBtnHeight}px`,
+        height:launchBtnHeight,
+        width:launchBtnHeight,
         '& $img':{
-            height:'36px',
-            width:'36px',
+            height:36,
+            width:36,
         },
     },
     controlPanelContainer:{
@@ -55,62 +61,69 @@ const launchBarStyle:any = (theme:Theme) => createStyles({
         flexDirection:'column',
     },
     controlBtn:{
-        width:'16px',
-        height:'16px',
-        minHeight:'16px',
-        borderRadius:'4px',
+        width:16,
+        height:16,
+        minHeight:16,
+        borderRadius:4,
         '& $svg':{
-            width:'16px',
-            height:'16px',
+            width:16,
+            height:16,
         }
     },
     controlBtnPrimary:{
-        color:color(primaryColor).lighten(0.5).hex(),
-        backgroundColor:color(primaryColor).lighten(0.1).hex(),
-        "&:hover":{
-            color: primaryColor,
+        color: '#ffffff',
+        backgroundColor: primaryColor,
+        "&:hover,&:focus":{
+            background:primaryColor,
+            border:`1px solid ${lighten(primaryColor,0.5)}`
         },
     },
     controlBtnWarning:{
-        color:color(warningColor).lighten(0.5).hex(),
-        backgroundColor:color(warningColor).lighten(0.1).hex(),
-        "&:hover":{
-            color: warningColor,
+        color: '#ffffff',
+        backgroundColor: warningColor,
+        "&:hover,&:focus":{
+            background:warningColor,
+            border:`1px solid ${lighten(warningColor,0.5)}`
         },
     },
     controlBtnSuccess:{
-        color:color(successColor).lighten(0.5).hex(),
-        backgroundColor:color(successColor).lighten(0.1).hex(),
-        "&:hover":{
-            color: successColor,
+        color: '#ffffff',
+        backgroundColor: successColor,
+        "&:hover,&:focus":{
+            background:successColor,
+            border:`1px solid ${lighten(successColor,0.5)}`
         },
     },
     controlBtnInfo:{
-        color:color(infoColor).lighten(0.5).hex(),
-        backgroundColor:color(infoColor).lighten(0.1).hex(),
-        "&:hover":{
-            color: infoColor,
+        color: '#ffffff',
+        backgroundColor: infoColor,
+        "&:hover,&:focus":{
+            background:infoColor,
+            border:`1px solid ${lighten(infoColor,0.5)}`
         },
     },
     controlBtnRose:{
-        color:color(roseColor).lighten(0.5).hex(),
-        backgroundColor:color(roseColor).lighten(0.1).hex(),
-        "&:hover":{
-            color: roseColor,
+        color: '#ffffff',
+        backgroundColor: roseColor,
+        "&:hover,&:focus":{
+            background:roseColor,
+            border:`1px solid ${lighten(roseColor,0.5)}`
         },
     },
     controlBtnGrey:{
-        color:color(greyColor).lighten(0.5).hex(),
-        backgroundColor:color(greyColor).lighten(0.1).hex(),
-        "&:hover":{
-            color: greyColor,
+        color: '#ffffff',
+        backgroundColor: greyColor,
+        "&:hover,&:focus":{
+            background:greyColor,
+            border:`1px solid ${lighten(greyColor,0.5)}`
         },
     },
     controlBtnDanger:{
-        color:color(dangerColor).lighten(0.5).hex(),
-        backgroundColor:color(dangerColor).lighten(0.1).hex(),
-        "&:hover":{
-            color: dangerColor,
+        color: '#ffffff',
+        backgroundColor: dangerColor,
+        "&:hover,&:focus":{
+            background:dangerColor,
+            border:`1px solid ${lighten(dangerColor,0.5)}`
         },
     },
 });

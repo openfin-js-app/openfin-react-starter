@@ -11,7 +11,6 @@ import * as serviceWorker from './serviceWorker';
 
 import configureStore from './utils/configureStore';
 import {
-    CLIENT_SET_VALUE,
     applicationStarted,
     applicationChildStarted,
     applicationNetworkOnline,
