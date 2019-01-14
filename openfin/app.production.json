@@ -4,7 +4,7 @@
     "url":"http://localhost:8080/index.html",
     "uuid":"openfin_react_ts_starter_production",
     "applicationIcon":"http://localhost:8080/favicon.ico",
-    "autoShow":true,
+    "autoShow":false,
     "saveWindowsSate":true,
     "frame":false,
     "defaultCentered":true,

@@ -1,6 +1,8 @@
+import {Action} from "redux-actions";
 import { buffers, delay } from 'redux-saga';
 import { all, call, put, take, takeLatest, takeEvery, fork, select, actionChannel } from 'redux-saga/effects';
 import { Docking ,System, Event, Window } from '@albertli90/redux-openfin';
+import { GetGroupResPayload, NewWindowResPayload } from "@albertli90/redux-openfin/window";
 
 import hist from '../../utils/history';
 
@@ -21,10 +23,11 @@ import {
     APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE,
     APPLICATION_LAUNCH_NEW_WINDOW,
     configLoadFromDexie,
+    configUpdateNewWindowPosition,
 } from '..';
 
-import { configUpdateNewWindowPosition } from '..';
-import { GetGroupResPayload} from "@albertli90/redux-openfin/window/types";
+const LOADING_VIEW_UUID='openfin-react-starter-loading-view';
+let loadingWindow = null;
 
 const ENABLE_LOADING_VIEW=process.env.REACT_APP_ENABLE_LOADING_VIEW.toLowerCase() === 'true';
 
@@ -55,77 +58,48 @@ export function* handleRedirectToLoadingView(monitorRect) {
     const _LOADING_BANNER_WIDTH     = Math.min( LOADING_BANNER_WIDTH, WINDOW_WIDTH * 0.6387 );
     const _LOADING_BANNER_HEIGHT    = Math.min( LOADING_BANNER_HEIGHT, WINDOW_HEIGHT * 0.324074 );
 
-    yield call(Window.asyncs.updateOptions,Window.actions.updateOptions({
-        options:{resizable:false}
+    const newWindowResAction:Action<NewWindowResPayload> = yield call(Window.asyncs.newWindow,Window.actions.newWindow({
+        name:LOADING_VIEW_UUID,
+        url:'/loading',
+        frame:false,
+        resizable:false,
+        state:'normal',
+        autoShow:true,
+        defaultCentered:true,
+        defaultLeft:(monitorRect.right - monitorRect.left)/2 - _LOADING_BANNER_WIDTH/2,
+        defaultTop:(monitorRect.bottom - monitorRect.top)/2 - _LOADING_BANNER_HEIGHT/2,
+        defaultWidth:_LOADING_BANNER_WIDTH,
+        defaultHeight: _LOADING_BANNER_HEIGHT,
     }));
+    loadingWindow = newWindowResAction.payload.window;
 
-    yield call(Window.asyncs.setBounds,Window.actions.setBounds({
-        left:(monitorRect.right - monitorRect.left)/2 - _LOADING_BANNER_WIDTH/2,
-        top:(monitorRect.bottom - monitorRect.top)/2 - _LOADING_BANNER_HEIGHT/2,
-        width:_LOADING_BANNER_WIDTH,
-        height: _LOADING_BANNER_HEIGHT,
-    }));
+    loadingWindow.setBounds(
+        (monitorRect.right - monitorRect.left)/2 - _LOADING_BANNER_WIDTH/2,
+        (monitorRect.bottom - monitorRect.top)/2 - _LOADING_BANNER_HEIGHT/2,
+        _LOADING_BANNER_WIDTH,
+         _LOADING_BANNER_HEIGHT
+    );
+    loadingWindow.bringToFront();
+
 }
 
 export function* handleRedirectFromLoadingView(monitorRect) {
-
-    const WINDOW_WIDTH      = monitorRect.right - monitorRect.left;
-    const WINDOW_HEIGHT     = monitorRect.bottom - monitorRect.top;
-    const _DEFAULT_WIDTH    = Math.min( DEFAULT_WIDTH, WINDOW_WIDTH * 0.80 );
-    const _DEFAULT_HEIGHT   = Math.min( DEFAULT_HEIGHT, WINDOW_HEIGHT * 0.648148 );
 
     // after the sagas loaded, redirect to default page/view
     if (process.env.REACT_APP_DEFAULT_VIEW_URL && process.env.REACT_APP_DEFAULT_VIEW_URL.length > 0){
         if (process.env.NODE_ENV !== 'test'){
             hist.push(process.env.REACT_APP_DEFAULT_VIEW_URL);
         }
-        yield call(Window.asyncs.updateOptions,Window.actions.updateOptions({
-            options:{
-                resizable:true,
-            }
-        }));
-
-        yield call(Window.asyncs.setBounds,Window.actions.setBounds({
-            left:(monitorRect.right - monitorRect.left)/2 - _DEFAULT_WIDTH/2,
-            top:(monitorRect.bottom - monitorRect.top)/2 - _DEFAULT_HEIGHT/2,
-            width:_DEFAULT_WIDTH,
-            height: _DEFAULT_HEIGHT,
-        }));
-
     }else{
-        // switch to launchBar
-        const launchBarCollapse = yield select(getLaunchBarCollapse);
-
-        yield call(Window.asyncs.updateOptions,Window.actions.updateOptions({
-            options:{resizable:false}
-        }));
-
-        previousBaseWindow.url='/dashboard/view-one';
-        previousBaseWindow.top=(monitorRect.bottom - monitorRect.top)/2 - _DEFAULT_HEIGHT/2;
-        previousBaseWindow.left=(monitorRect.right - monitorRect.left)/2 - _DEFAULT_WIDTH/2;
-        previousBaseWindow.width=_DEFAULT_WIDTH;
-        previousBaseWindow.height=_DEFAULT_HEIGHT;
-
-        if(launchBarCollapse){
-            yield call(Window.asyncs.setBounds,Window.actions.setBounds({
-                left:(monitorRect.right - monitorRect.left)/2,
-                top:(monitorRect.bottom - monitorRect.top)/4,
-                width:88,
-                height:64,
-            }));
-        }else{
-            yield call(Window.asyncs.setBounds,Window.actions.setBounds({
-                left:(monitorRect.right - monitorRect.left)/2,
-                top:(monitorRect.bottom - monitorRect.top)/4,
-                width:launchBarItems.length<10?launchBarItems.length*64+88:664,
-                height:64,
-            }));
-        }
         if (process.env.NODE_ENV !== 'test'){
-            hist.push('/launchBar');
+            hist.push('/dashboard/view-one');
         }
-
     }
+
+    if (loadingWindow){
+        loadingWindow.close()
+    }
+    yield put(Window.actions.show({force:true}))
 }
 
 export function* handleApplicationLoading() {
@@ -137,8 +111,6 @@ export function* handleApplicationLoading() {
 
     const monitorInfoAction = yield call(System.asyncs.getMonitorInfo,System.actions.getMonitorInfo({}));
     const monitorRect = monitorInfoAction.payload.primaryMonitor.monitorRect;
-
-    yield call(Window.asyncs.setAsForeground,Window.actions.setAsForeground({}));
 
     if (ENABLE_LOADING_VIEW && currentIsLoadingView){
         yield* handleRedirectToLoadingView(monitorRect) as any;
@@ -165,6 +137,7 @@ export function* handleApplicationLoading() {
     if (ENABLE_LOADING_VIEW && currentIsLoadingView){
         yield* handleRedirectFromLoadingView(monitorRect) as any;
     }
+    yield call(Window.asyncs.bringToFront,Window.actions.bringToFront({}));
 }
 
 export function* handleApplicationChildLoading() {

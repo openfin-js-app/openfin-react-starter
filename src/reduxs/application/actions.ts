@@ -1,4 +1,6 @@
 import { createAction, ActionFunctionAny, Action } from 'redux-actions';
+import {WindowOptions} from '@albertli90/redux-openfin';
+
 import { IApplicationNewSnackbarOption, IApplicationSetSnackbarStatusOption, IApplicationCloseSnackBarOption } from './types';
 
 export const APPLICATION_STARTED:string = 'APPLICATION_STARTED';
@@ -42,8 +44,8 @@ export const APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE = 'APPLICATION_LAUNCH_BAR_TO
 export const APPLICATION_LAUNCH_NEW_WINDOW = 'APPLICATION_LAUNCH_NEW_WINDOW';
 export const applicationLaunchBarToggle:ActionFunctionAny<Action<void>> = createAction(APPLICATION_LAUNCH_BAR_TOGGLE);
 export const applicationLaunchBarToggleCollapse:ActionFunctionAny<Action<void>> = createAction(APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE);
-export const applicationLaunchNewWindow:ActionFunctionAny<Action<any>>
-    = createAction(APPLICATION_LAUNCH_NEW_WINDOW,(appJson:any)=>(appJson));
+export const applicationLaunchNewWindow:ActionFunctionAny<Action<Partial<WindowOptions>>>
+    = createAction(APPLICATION_LAUNCH_NEW_WINDOW,(appJson:Partial<WindowOptions>)=>(appJson));
 
 // network
 export const APPLICATION_NETWORK_ONLINE = 'APPLICATION_NETWORK_ONLINE';
