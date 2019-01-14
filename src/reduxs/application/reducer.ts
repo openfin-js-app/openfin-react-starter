@@ -52,6 +52,7 @@ export default (parentWindowState?:Partial<IApplicationState>)=>{
             winLeft:0,
             winWidth:0,
             winHeight:0,
+            snackBarOpen:false,
             snackBarMsgInfo:{},
             snackBarMsgQueue:[],
             openfinHostSpec:{
