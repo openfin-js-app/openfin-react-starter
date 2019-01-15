@@ -33,7 +33,8 @@ const configTabs:IConfigTab[]=[
             {
                 _type:FieldType.SUBHEADING,
                 _label:'Dark/Light Theme',
-                _cols: 12,
+                _cols: 2,
+                _rows:1,
             },
             {
                 _type:FieldType.CUSTOM_FIELD,
@@ -41,7 +42,7 @@ const configTabs:IConfigTab[]=[
                 _custom:<ConfigTheme/>,
                 _name:'theme',
                 _defaultValue:MuiTheme.DARK,
-                _cols:12,
+                _cols:10,
                 _rows:1,
             },
             {

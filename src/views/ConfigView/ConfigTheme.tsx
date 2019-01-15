@@ -27,6 +27,7 @@ class ConfigThemeView extends React.Component<IProps,{}>{
     render(){
 
         const {
+            classes,
             theme,
             actions:{
                 handleToggleThemeField,
@@ -34,14 +35,15 @@ class ConfigThemeView extends React.Component<IProps,{}>{
         } = this.props;
 
         return (
-            <React.Fragment>
-                ConfigTheme view works ~ {theme}
+            <div className={classes.container}>
                 <Switch
+                    className={classes.switchComp}
                     checked={theme === MuiTheme.DARK}
                     onChange={handleToggleThemeField}
                     value="themeVal"
                 />
-            </React.Fragment>
+                {theme}
+            </div>
         )
     }
 }
