@@ -4,6 +4,8 @@ import { Router, Route, Switch, Redirect } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
+import { primaryColor, infoColor, dangerColor} from './assets/jss/openfin-starter-constant';
+
 import indexRoutes from './routes/index';
 
 import hist from './utils/history';
@@ -16,17 +18,14 @@ const theme = createMuiTheme({
     },
     palette:{
         type:'dark',
-        background:{
-            default:'#303030'
-        },
         primary:{
-            main:'#23a4fb',
+            main:primaryColor,
         },
         secondary:{
-            main:'#b2b9c2',
+            main:infoColor,
         },
         error:{
-            main:'#ff2e58',
+            main:dangerColor,
         },
     },
     overrides:{

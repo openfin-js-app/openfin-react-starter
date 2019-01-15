@@ -92,24 +92,32 @@ const headerStyle:any = (theme:Theme) =>createStyles({
     },
     primary:{
         backgroundColor:primaryColor,
-        borderLeft: `${windowBorder}px solid ${infoColor}`,
-        borderRight: `${windowBorder}px solid ${infoColor}`,
+        borderLeft: `${windowBorder}px solid ${primaryColor}`,
+        borderRight: `${windowBorder}px solid ${primaryColor}`,
         color:"#ffffff",
     },
     info:{
         backgroundColor:infoColor,
+        borderLeft: `${windowBorder}px solid ${infoColor}`,
+        borderRight: `${windowBorder}px solid ${infoColor}`,
         color:"#ffffff",
     },
     success:{
         backgroundColor:successColor,
+        borderLeft: `${windowBorder}px solid ${successColor}`,
+        borderRight: `${windowBorder}px solid ${successColor}`,
         color:"#ffffff",
     },
     warning:{
         backgroundColor:warningColor,
+        borderLeft: `${windowBorder}px solid ${warningColor}`,
+        borderRight: `${windowBorder}px solid ${warningColor}`,
         color:"#ffffff",
     },
     danger:{
         backgroundColor:dangerColor,
+        borderLeft: `${windowBorder}px solid ${dangerColor}`,
+        borderRight: `${windowBorder}px solid ${dangerColor}`,
         color:"#ffffff",
     },
 });
