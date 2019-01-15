@@ -28,7 +28,7 @@ import { configUpdateNewWindowPosition } from '..';
 
 
 import {
-    //constants
+    // constants
     LOADING_VIEW_UUID,
     LAUNCHBAR_VIEW_UUID,
     // selectors

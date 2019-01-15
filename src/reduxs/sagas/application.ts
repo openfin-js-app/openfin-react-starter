@@ -233,16 +233,10 @@ export function* handleApplicationLaunchBarToggle(){
 
     if (launchbarWindowAction.payload.window.nativeWindow){
         launchbarWindow = launchbarWindowAction.payload.window;
-    }else{
-        launchbarWindow = null;
-    }
-
-    if (launchbarWindow){
-        // close launchbar and show main window
         mainWindow.show(true);
         launchbarWindow.close();
     }else{
-        // show launchbar and hide main window
+        launchbarWindow = null;
         const newWindowResAction:Action<NewWindowResPayload> = yield call(Window.asyncs.newWindow,Window.actions.newWindow({
             name:LAUNCHBAR_VIEW_UUID,
             url:'/launchBar',
