@@ -3,6 +3,10 @@ import { TextFieldProps } from '@material-ui/core/TextField';
 import {TimePickerModalProps} from "material-ui-pickers/TimePicker/TimePickerModal";
 import {DatePickerModalProps} from "material-ui-pickers/DatePicker/DatePickerModal";
 
+export enum MuiTheme{
+    LIGHT='light',
+    DARK='dark',
+}
 
 export enum FieldType{
     CUSTOM_FIELD = 1,

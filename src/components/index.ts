@@ -1,4 +1,4 @@
-
+// BEGIN_OF_AL_CLI_COMPONENTS
 export {default as ClientCounter} from './client/ClientCounter';
 export {default as ConfigField} from './ConfigComp/ConfigField';
 export {default as ConfigAboutField} from './ConfigComp/ConfigAboutField';
@@ -7,3 +7,4 @@ export {default as HeaderLinks} from './Header/HeaderLinks';
 export {default as Sidebar} from './Sidebar/Sidebar';
 export {default as SnackbarContent} from './Snackbar/MySnackbarContent';
 export {default as OfflineOverlay} from './Overlays/OfflineOverlay';
+// END_OF_AL_CLI_COMPONENTS

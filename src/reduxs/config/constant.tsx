@@ -1,11 +1,12 @@
 import * as React from 'react';
 import InputAdornment from '@material-ui/core/InputAdornment';
 
-import { IConfigTab, IConfigField, FieldType } from './types';
+import { IConfigTab, IConfigField, MuiTheme, FieldType } from './types';
 
 import SettingIcon from '@material-ui/icons/Settings';
 
 import ConfigJson from '../../views/ConfigView/ConfigJson';
+import ConfigTheme from '../../views/ConfigView/ConfigTheme';
 
 import { ConfigAboutField } from '../../components';
 
@@ -25,6 +26,20 @@ const configTabs:IConfigTab[]=[
         _svgUrl: controls,
         _icon: SettingIcon,
         _fields:[
+            {
+                _type:FieldType.SUBHEADING,
+                _label:'Dark/Light Theme',
+                _cols: 12,
+            },
+            {
+                _type:FieldType.CUSTOM_FIELD,
+                _label:'Theme',
+                _custom:<ConfigTheme/>,
+                _name:'theme',
+                _defaultValue:MuiTheme.DARK,
+                _cols:12,
+                _rows:1,
+            },
             {
                 _type:FieldType.SUBHEADING,
                 _label:'New Window Position',
