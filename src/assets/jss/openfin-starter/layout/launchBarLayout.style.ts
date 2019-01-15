@@ -1,8 +1,6 @@
 import { Theme, createStyles } from '@material-ui/core/styles';
 import { lighten, darken } from '@material-ui/core/styles/colorManipulator';
 
-import color from 'color';
-
 import {
     primaryColor, warningColor, successColor, infoColor, roseColor,
     greyColor, dangerColor,
@@ -32,7 +30,7 @@ const launchBarStyle:any = (theme:Theme) => createStyles({
         maxWidth:`${launchBtnContainerMaxWidth}px`,
         whiteSpace:'nowrap',
         height:`${launchBtnHeight}px`,
-        background: color(primaryColor).darken(0.2).hex(),
+        background: darken(primaryColor, 0.2),
     },
     buttonContainerCollapse:{
         width:'0px !important',
@@ -42,6 +40,9 @@ const launchBarStyle:any = (theme:Theme) => createStyles({
         borderRadius:'0%',
         height:launchBtnHeight,
         width:launchBtnHeight,
+        "&:hover":{
+            background: darken(primaryColor, 0.4),
+        },
         '& $svg':{
             fontSize:'50px',
         },
@@ -50,6 +51,9 @@ const launchBarStyle:any = (theme:Theme) => createStyles({
         borderRadius:'0%',
         height:launchBtnHeight,
         width:launchBtnHeight,
+        "&:hover":{
+            background: darken(primaryColor, 0.4),
+        },
         '& $img':{
             height:36,
             width:36,
