@@ -123,3 +123,47 @@ exports[`Application saga handleApplicationLaunchBarToggle saga redirect to non-
   ],
 }
 `;
+
+exports[`Application saga handleApplicationLaunchNewWindow saga bring up the old one 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      true,
+    ],
+  ],
+  "results": Array [
+    Object {
+      "isThrow": false,
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Application saga handleApplicationLaunchNewWindow saga bring up the old one 2`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [],
+  ],
+  "results": Array [
+    Object {
+      "isThrow": false,
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Application saga handleApplicationLaunchNewWindow saga do create a new one 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [],
+  ],
+  "results": Array [
+    Object {
+      "isThrow": false,
+      "value": undefined,
+    },
+  ],
+}
+`;

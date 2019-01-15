@@ -20,6 +20,7 @@ import {
     APPLICATION_LAUNCH_BAR_TOGGLE,
     APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE,
     APPLICATION_LAUNCH_NEW_WINDOW,
+    APPLICATION_LAUNCH_BAR_CLOSE,
     configLoadFromDexie,
 } from '..';
 
@@ -46,6 +47,7 @@ import {
     handleApplicationCloseSnackBar,
     handleApplicationLaunchBarToggle,
     handleApplicationLaunchBarToggleCollapse,
+    handleApplicationLaunchBarClose,
     handleApplicationLaunchNewWindow,
     handleGroupChanged,
 } from '../sagas/application';
@@ -563,31 +565,74 @@ describe('Application saga',()=>{
         const defaultTop = 3;
         const defaultLeft = 4;
 
-        it('use all default values',()=>{
-            const appJson = {};
-            testSaga(handleApplicationLaunchNewWindow,{payload:appJson})
-                .next()
-                .select(getNewWindowWidth)
-                .next(defaultWidth)
-                .select(getNewWindowHeight)
-                .next(defaultHeight)
-                .select(getNewWindowTop)
-                .next(defaultTop)
-                .select(getNewWindowLeft)
-                .next(defaultLeft)
-                .call(Window.asyncs.newWindow,Window.actions.newWindow(appJson))
-                .next()
-                .put(configUpdateNewWindowPosition())
+        it('child window receiving the msg',()=>{
+
+            window.name = 'some other name';
+
+            testSaga(handleApplicationLaunchNewWindow,{},)
                 .next()
                 .isDone();
+
+            window.name = process.env.REACT_APP_FIN_UUID;
+        })
+
+        it('bring up the old one',()=>{
+            const appJson = {
+                name:'windowsName'
+            };
+
+            const existWindow = {
+                nativeWindow:{},
+                show:jest.fn(),
+                bringToFront:jest.fn(),
+            };
+
+            window.name = process.env.REACT_APP_FIN_UUID;
+
+            testSaga(handleApplicationLaunchNewWindow,{payload:appJson})
+                .next()
+                .call(Window.asyncs.wrap,Window.actions.wrap({
+                    appUuid: process.env.REACT_APP_FIN_UUID,
+                    windowName:appJson.name,
+                }))
+                .next({
+                    payload:{
+                        window:existWindow,
+                    }
+                })
+                .isDone();
+
+            expect(existWindow.show).toMatchSnapshot();
+            expect(existWindow.bringToFront).toMatchSnapshot();
         });
 
-        it('use none of the default values',()=>{
+        it('do create a new one',()=>{
+
+            const appJson = {
+                name:'windowsName'
+            };
+
+            const existWindow = {
+                bringToFront:jest.fn(),
+            };
+
+            window.name = process.env.REACT_APP_FIN_UUID;
+
             const expectedAppJson = {
+                ...appJson,
                 defaultWidth, defaultHeight, defaultTop, defaultLeft,
             };
             testSaga(handleApplicationLaunchNewWindow,{payload:expectedAppJson})
                 .next()
+                .call(Window.asyncs.wrap,Window.actions.wrap({
+                    appUuid: process.env.REACT_APP_FIN_UUID,
+                    windowName:appJson.name,
+                }))
+                .next({
+                    payload:{
+                        window:existWindow,
+                    }
+                })
                 .select(getNewWindowWidth)
                 .next(defaultWidth)
                 .select(getNewWindowHeight)
@@ -597,10 +642,16 @@ describe('Application saga',()=>{
                 .select(getNewWindowLeft)
                 .next(defaultLeft)
                 .call(Window.asyncs.newWindow,Window.actions.newWindow(expectedAppJson))
-                .next()
+                .next({
+                    payload:{
+                        window:existWindow,
+                    }
+                })
                 .put(configUpdateNewWindowPosition())
                 .next()
                 .isDone();
+
+            expect(existWindow.bringToFront).toMatchSnapshot();
         })
 
     });
@@ -717,6 +768,8 @@ describe('Application saga',()=>{
             .takeLatestEffect(APPLICATION_LAUNCH_BAR_TOGGLE,handleApplicationLaunchBarToggle)
             .next()
             .takeLatestEffect(APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE,handleApplicationLaunchBarToggleCollapse)
+            .next()
+            .takeLatestEffect(APPLICATION_LAUNCH_BAR_CLOSE,handleApplicationLaunchBarClose)
             .next()
             .takeLatestEffect(APPLICATION_LAUNCH_NEW_WINDOW,handleApplicationLaunchNewWindow)
             .next()
