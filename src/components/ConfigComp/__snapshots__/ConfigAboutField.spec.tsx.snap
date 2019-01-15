@@ -54,7 +54,7 @@ exports[`ConfigAboutField comp renderred correctly 1`] = `
     <WithStyles(Typography)
       variant="subtitle1"
     >
-      Wentao Li © 2018
+      Wentao Li © 2019
     </WithStyles(Typography)>
   </div>
 </Fragment>

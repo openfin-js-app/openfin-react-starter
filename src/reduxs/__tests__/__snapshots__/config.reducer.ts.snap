@@ -4,8 +4,23 @@ exports[`Config reducer CONFIG_DO_UPDATE_ONE_FIELD reduced correctly - valid 1`]
 Object {
   "_tabs": Array [
     Object {
-      "_fieldLabels": "New Window PositionNew Window TopNew Window LeftNew Window WidthNew Window HeightNew Window Delta LeftNew Window Delta Height",
+      "_fieldLabels": "Dark/Light ThemeThemeNew Window PositionNew Window TopNew Window LeftNew Window WidthNew Window HeightNew Window Delta LeftNew Window Delta Height",
       "_fields": Array [
+        Object {
+          "_cols": 2,
+          "_label": "Dark/Light Theme",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <Connect(WithStyles(ConfigThemeView)) />,
+          "_defaultValue": "dark",
+          "_label": "Theme",
+          "_name": "theme",
+          "_rows": 1,
+          "_type": 1,
+        },
         Object {
           "_cols": 12,
           "_label": "New Window Position",
@@ -106,7 +121,8 @@ Object {
       "_label": "Application",
       "_name": "application",
       "_order": 0,
-      "_svgUrl": "controls_dark.svg",
+      "_svgUrl": "controls.svg",
+      "_svgUrl_dark": "controls_dark.svg",
     },
     Object {
       "_fieldLabels": "About openfin starter",
@@ -123,7 +139,8 @@ Object {
       "_label": "About",
       "_name": "about",
       "_order": 1,
-      "_svgUrl": "information-dark.svg",
+      "_svgUrl": "information.svg",
+      "_svgUrl_dark": "information-dark.svg",
     },
     Object {
       "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
@@ -210,7 +227,8 @@ Object {
       "_label": "Sample",
       "_name": "sample",
       "_order": 2,
-      "_svgUrl": "list-checked-dark.svg",
+      "_svgUrl": "check-box.svg",
+      "_svgUrl_dark": "list-checked-dark.svg",
     },
   ],
   "about": Object {},
@@ -221,6 +239,7 @@ Object {
     "newWinWidth": 640,
     "newWindDeltaHeight": 20,
     "newWindDeltaLeft": 20,
+    "theme": "dark",
   },
   "configGlobalFilterString": "",
   "sample": Object {
@@ -240,8 +259,23 @@ exports[`Config reducer CONFIG_RESET reduced correctly - all 1`] = `
 Object {
   "_tabs": Array [
     Object {
-      "_fieldLabels": "New Window PositionNew Window TopNew Window LeftNew Window WidthNew Window HeightNew Window Delta LeftNew Window Delta Height",
+      "_fieldLabels": "Dark/Light ThemeThemeNew Window PositionNew Window TopNew Window LeftNew Window WidthNew Window HeightNew Window Delta LeftNew Window Delta Height",
       "_fields": Array [
+        Object {
+          "_cols": 2,
+          "_label": "Dark/Light Theme",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <Connect(WithStyles(ConfigThemeView)) />,
+          "_defaultValue": "dark",
+          "_label": "Theme",
+          "_name": "theme",
+          "_rows": 1,
+          "_type": 1,
+        },
         Object {
           "_cols": 12,
           "_label": "New Window Position",
@@ -342,7 +376,8 @@ Object {
       "_label": "Application",
       "_name": "application",
       "_order": 0,
-      "_svgUrl": "controls_dark.svg",
+      "_svgUrl": "controls.svg",
+      "_svgUrl_dark": "controls_dark.svg",
     },
     Object {
       "_fieldLabels": "About openfin starter",
@@ -359,7 +394,8 @@ Object {
       "_label": "About",
       "_name": "about",
       "_order": 1,
-      "_svgUrl": "information-dark.svg",
+      "_svgUrl": "information.svg",
+      "_svgUrl_dark": "information-dark.svg",
     },
     Object {
       "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
@@ -446,7 +482,8 @@ Object {
       "_label": "Sample",
       "_name": "sample",
       "_order": 2,
-      "_svgUrl": "list-checked-dark.svg",
+      "_svgUrl": "check-box.svg",
+      "_svgUrl_dark": "list-checked-dark.svg",
     },
   ],
   "about": Object {},
@@ -457,6 +494,7 @@ Object {
     "newWinWidth": 640,
     "newWindDeltaHeight": 20,
     "newWindDeltaLeft": 20,
+    "theme": "dark",
   },
   "configGlobalFilterString": "",
   "sample": Object {
@@ -473,8 +511,23 @@ exports[`Config reducer CONFIG_RESET reduced correctly - application 1`] = `
 Object {
   "_tabs": Array [
     Object {
-      "_fieldLabels": "New Window PositionNew Window TopNew Window LeftNew Window WidthNew Window HeightNew Window Delta LeftNew Window Delta Height",
+      "_fieldLabels": "Dark/Light ThemeThemeNew Window PositionNew Window TopNew Window LeftNew Window WidthNew Window HeightNew Window Delta LeftNew Window Delta Height",
       "_fields": Array [
+        Object {
+          "_cols": 2,
+          "_label": "Dark/Light Theme",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <Connect(WithStyles(ConfigThemeView)) />,
+          "_defaultValue": "dark",
+          "_label": "Theme",
+          "_name": "theme",
+          "_rows": 1,
+          "_type": 1,
+        },
         Object {
           "_cols": 12,
           "_label": "New Window Position",
@@ -575,7 +628,8 @@ Object {
       "_label": "Application",
       "_name": "application",
       "_order": 0,
-      "_svgUrl": "controls_dark.svg",
+      "_svgUrl": "controls.svg",
+      "_svgUrl_dark": "controls_dark.svg",
     },
     Object {
       "_fieldLabels": "About openfin starter",
@@ -592,7 +646,8 @@ Object {
       "_label": "About",
       "_name": "about",
       "_order": 1,
-      "_svgUrl": "information-dark.svg",
+      "_svgUrl": "information.svg",
+      "_svgUrl_dark": "information-dark.svg",
     },
     Object {
       "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
@@ -679,7 +734,8 @@ Object {
       "_label": "Sample",
       "_name": "sample",
       "_order": 2,
-      "_svgUrl": "list-checked-dark.svg",
+      "_svgUrl": "check-box.svg",
+      "_svgUrl_dark": "list-checked-dark.svg",
     },
   ],
   "about": Object {},
@@ -690,6 +746,7 @@ Object {
     "newWinWidth": 640,
     "newWindDeltaHeight": 20,
     "newWindDeltaLeft": 20,
+    "theme": "dark",
   },
   "configGlobalFilterString": "",
   "sample": Object {
@@ -706,6 +763,7 @@ Object {
     "newWinWidth": 640,
     "newWindDeltaHeight": 20,
     "newWindDeltaLeft": 20,
+    "theme": "dark",
   },
 }
 `;
@@ -714,8 +772,23 @@ exports[`Config reducer CONFIG_UPDATE_GLOBAL_FILTER_STR reduced correctly 1`] = 
 Object {
   "_tabs": Array [
     Object {
-      "_fieldLabels": "New Window PositionNew Window TopNew Window LeftNew Window WidthNew Window HeightNew Window Delta LeftNew Window Delta Height",
+      "_fieldLabels": "Dark/Light ThemeThemeNew Window PositionNew Window TopNew Window LeftNew Window WidthNew Window HeightNew Window Delta LeftNew Window Delta Height",
       "_fields": Array [
+        Object {
+          "_cols": 2,
+          "_label": "Dark/Light Theme",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <Connect(WithStyles(ConfigThemeView)) />,
+          "_defaultValue": "dark",
+          "_label": "Theme",
+          "_name": "theme",
+          "_rows": 1,
+          "_type": 1,
+        },
         Object {
           "_cols": 12,
           "_label": "New Window Position",
@@ -816,7 +889,8 @@ Object {
       "_label": "Application",
       "_name": "application",
       "_order": 0,
-      "_svgUrl": "controls_dark.svg",
+      "_svgUrl": "controls.svg",
+      "_svgUrl_dark": "controls_dark.svg",
     },
     Object {
       "_fieldLabels": "About openfin starter",
@@ -833,7 +907,8 @@ Object {
       "_label": "About",
       "_name": "about",
       "_order": 1,
-      "_svgUrl": "information-dark.svg",
+      "_svgUrl": "information.svg",
+      "_svgUrl_dark": "information-dark.svg",
     },
     Object {
       "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
@@ -920,7 +995,8 @@ Object {
       "_label": "Sample",
       "_name": "sample",
       "_order": 2,
-      "_svgUrl": "list-checked-dark.svg",
+      "_svgUrl": "check-box.svg",
+      "_svgUrl_dark": "list-checked-dark.svg",
     },
   ],
   "about": Object {},
@@ -931,6 +1007,7 @@ Object {
     "newWinWidth": 640,
     "newWindDeltaHeight": 20,
     "newWindDeltaLeft": 20,
+    "theme": "dark",
   },
   "configGlobalFilterString": "configGlobalFilterString",
   "sample": Object {
@@ -947,8 +1024,23 @@ exports[`Config reducer CONFIG_UPDATE_NEW_WINDOW_POSITION_ADD_DELTA reduced corr
 Object {
   "_tabs": Array [
     Object {
-      "_fieldLabels": "New Window PositionNew Window TopNew Window LeftNew Window WidthNew Window HeightNew Window Delta LeftNew Window Delta Height",
+      "_fieldLabels": "Dark/Light ThemeThemeNew Window PositionNew Window TopNew Window LeftNew Window WidthNew Window HeightNew Window Delta LeftNew Window Delta Height",
       "_fields": Array [
+        Object {
+          "_cols": 2,
+          "_label": "Dark/Light Theme",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <Connect(WithStyles(ConfigThemeView)) />,
+          "_defaultValue": "dark",
+          "_label": "Theme",
+          "_name": "theme",
+          "_rows": 1,
+          "_type": 1,
+        },
         Object {
           "_cols": 12,
           "_label": "New Window Position",
@@ -1049,7 +1141,8 @@ Object {
       "_label": "Application",
       "_name": "application",
       "_order": 0,
-      "_svgUrl": "controls_dark.svg",
+      "_svgUrl": "controls.svg",
+      "_svgUrl_dark": "controls_dark.svg",
     },
     Object {
       "_fieldLabels": "About openfin starter",
@@ -1066,7 +1159,8 @@ Object {
       "_label": "About",
       "_name": "about",
       "_order": 1,
-      "_svgUrl": "information-dark.svg",
+      "_svgUrl": "information.svg",
+      "_svgUrl_dark": "information-dark.svg",
     },
     Object {
       "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
@@ -1153,7 +1247,8 @@ Object {
       "_label": "Sample",
       "_name": "sample",
       "_order": 2,
-      "_svgUrl": "list-checked-dark.svg",
+      "_svgUrl": "check-box.svg",
+      "_svgUrl_dark": "list-checked-dark.svg",
     },
   ],
   "about": Object {},
@@ -1164,6 +1259,7 @@ Object {
     "newWinWidth": 640,
     "newWindDeltaHeight": 20,
     "newWindDeltaLeft": 20,
+    "theme": "dark",
   },
   "configGlobalFilterString": "",
   "sample": Object {
@@ -1180,8 +1276,23 @@ exports[`Config reducer CONFIG_UPDATE_NEW_WINDOW_POSITION_RESET_LEFT reduced cor
 Object {
   "_tabs": Array [
     Object {
-      "_fieldLabels": "New Window PositionNew Window TopNew Window LeftNew Window WidthNew Window HeightNew Window Delta LeftNew Window Delta Height",
+      "_fieldLabels": "Dark/Light ThemeThemeNew Window PositionNew Window TopNew Window LeftNew Window WidthNew Window HeightNew Window Delta LeftNew Window Delta Height",
       "_fields": Array [
+        Object {
+          "_cols": 2,
+          "_label": "Dark/Light Theme",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <Connect(WithStyles(ConfigThemeView)) />,
+          "_defaultValue": "dark",
+          "_label": "Theme",
+          "_name": "theme",
+          "_rows": 1,
+          "_type": 1,
+        },
         Object {
           "_cols": 12,
           "_label": "New Window Position",
@@ -1282,7 +1393,8 @@ Object {
       "_label": "Application",
       "_name": "application",
       "_order": 0,
-      "_svgUrl": "controls_dark.svg",
+      "_svgUrl": "controls.svg",
+      "_svgUrl_dark": "controls_dark.svg",
     },
     Object {
       "_fieldLabels": "About openfin starter",
@@ -1299,7 +1411,8 @@ Object {
       "_label": "About",
       "_name": "about",
       "_order": 1,
-      "_svgUrl": "information-dark.svg",
+      "_svgUrl": "information.svg",
+      "_svgUrl_dark": "information-dark.svg",
     },
     Object {
       "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
@@ -1386,7 +1499,8 @@ Object {
       "_label": "Sample",
       "_name": "sample",
       "_order": 2,
-      "_svgUrl": "list-checked-dark.svg",
+      "_svgUrl": "check-box.svg",
+      "_svgUrl_dark": "list-checked-dark.svg",
     },
   ],
   "about": Object {},
@@ -1397,6 +1511,7 @@ Object {
     "newWinWidth": 640,
     "newWindDeltaHeight": 20,
     "newWindDeltaLeft": 20,
+    "theme": "dark",
   },
   "configGlobalFilterString": "",
   "sample": Object {
@@ -1413,8 +1528,23 @@ exports[`Config reducer CONFIG_UPDATE_NEW_WINDOW_POSITION_RESET_TOP reduced corr
 Object {
   "_tabs": Array [
     Object {
-      "_fieldLabels": "New Window PositionNew Window TopNew Window LeftNew Window WidthNew Window HeightNew Window Delta LeftNew Window Delta Height",
+      "_fieldLabels": "Dark/Light ThemeThemeNew Window PositionNew Window TopNew Window LeftNew Window WidthNew Window HeightNew Window Delta LeftNew Window Delta Height",
       "_fields": Array [
+        Object {
+          "_cols": 2,
+          "_label": "Dark/Light Theme",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <Connect(WithStyles(ConfigThemeView)) />,
+          "_defaultValue": "dark",
+          "_label": "Theme",
+          "_name": "theme",
+          "_rows": 1,
+          "_type": 1,
+        },
         Object {
           "_cols": 12,
           "_label": "New Window Position",
@@ -1515,7 +1645,8 @@ Object {
       "_label": "Application",
       "_name": "application",
       "_order": 0,
-      "_svgUrl": "controls_dark.svg",
+      "_svgUrl": "controls.svg",
+      "_svgUrl_dark": "controls_dark.svg",
     },
     Object {
       "_fieldLabels": "About openfin starter",
@@ -1532,7 +1663,8 @@ Object {
       "_label": "About",
       "_name": "about",
       "_order": 1,
-      "_svgUrl": "information-dark.svg",
+      "_svgUrl": "information.svg",
+      "_svgUrl_dark": "information-dark.svg",
     },
     Object {
       "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
@@ -1619,7 +1751,8 @@ Object {
       "_label": "Sample",
       "_name": "sample",
       "_order": 2,
-      "_svgUrl": "list-checked-dark.svg",
+      "_svgUrl": "check-box.svg",
+      "_svgUrl_dark": "list-checked-dark.svg",
     },
   ],
   "about": Object {},
@@ -1630,6 +1763,7 @@ Object {
     "newWinWidth": 640,
     "newWindDeltaHeight": 20,
     "newWindDeltaLeft": 20,
+    "theme": "dark",
   },
   "configGlobalFilterString": "",
   "sample": Object {
