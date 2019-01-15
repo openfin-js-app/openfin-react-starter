@@ -28,9 +28,9 @@ import {
     configUpdateNewWindowPosition,
 } from '..';
 
-const LOADING_VIEW_UUID='openfin-react-starter-loading-view';
+export const LOADING_VIEW_UUID='openfin-react-starter-loading-view';
 let loadingWindow = null;
-const LAUNCHBAR_VIEW_UUID='openfin-react-starter-launchbar-view';
+export const LAUNCHBAR_VIEW_UUID='openfin-react-starter-launchbar-view';
 let launchbarWindow = null;
 
 const ENABLE_LOADING_VIEW=process.env.REACT_APP_ENABLE_LOADING_VIEW.toLowerCase() === 'true';
@@ -40,13 +40,6 @@ const LOADING_BANNER_HEIGHT = parseInt(process.env.REACT_APP_LOADING_BANNER_HEIG
 const DEFAULT_WIDTH = parseInt(process.env.REACT_APP_DEFAULT_APP_WIDTH, 10);
 const DEFAULT_HEIGHT = parseInt(process.env.REACT_APP_DEFAULT_APP_HEIGHT, 10);
 
-const previousBaseWindow={
-    url:null,
-    top:null,
-    left:null,
-    width:null,
-    height:null,
-};
 
 export const getLaunchBarCollapse = state => state.application.launchBarCollapse;
 export const getWindowsState = state => state.application.windowsState;
@@ -122,7 +115,7 @@ export function* handleApplicationLoading() {
         yield* handleRedirectToLoadingView(monitorRect) as any;
     }
 
-    yield put.resolve(applicationSetLoadingMsg('Init'));
+    yield put.resolve(applicationSetLoadingMsg('Initialization'));
 
     yield all([
         put.resolve(configLoadFromDexie()),
@@ -140,6 +133,7 @@ export function* handleApplicationLoading() {
         call(delay,1000),
     ]);
 
+    // BEGIN OF DEMO PURPOSE CODES
     yield put.resolve(applicationSetLoadingMsg('Delay 1 sec'));
     yield call(delay,1000),
     yield put.resolve(applicationSetLoadingMsg('Delay 2 sec'));
@@ -149,6 +143,7 @@ export function* handleApplicationLoading() {
     yield put.resolve(applicationSetLoadingMsg('Delay 4 sec'));
     yield call(delay,800),
     yield put.resolve(applicationSetLoadingMsg('Delay 5 sec'));
+    // END OF DEMO PURPOSE CODES
 
     yield put.resolve(applicationReady());
 
