@@ -39,6 +39,7 @@ export interface IConfigTab {
     _label:string;
     _name:string;
     _svgUrl:string;
+    _svgUrl_dark?:string;
     _icon?:React.ComponentType<SvgIconProps>;
     _fields:IConfigField[];
     _fieldLabels?:string;

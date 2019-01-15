@@ -93,6 +93,7 @@ const style:any={
 
     },
     statusMsg:{
+        color:'white',
         position:'absolute',
         top:'calc( 66% + 20px )',
         left:'calc( 15% + 20px )',

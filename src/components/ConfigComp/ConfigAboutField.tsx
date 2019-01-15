@@ -52,7 +52,7 @@ class ConfigAboutField extends React.Component<IProps,{}>{
                     >Support</Button>
                 </div>
                 <Typography variant={"subtitle1"}>
-                    Wentao Li © 2018
+                    Wentao Li © 2019
                 </Typography>
 
             </div>

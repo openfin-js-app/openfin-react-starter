@@ -10,9 +10,12 @@ import ConfigTheme from '../../views/ConfigView/ConfigTheme';
 
 import { ConfigAboutField } from '../../components';
 
-import controls from'../../assets/svg/support/controls_dark.svg';
-import infomationSvg from '../../assets/svg/support/information-dark.svg';
-import listChecked from'../../assets/svg/other/list-checked-dark.svg';
+import controlsSvg from'../../assets/svg/support/controls.svg';
+import controlsDarkSvg from'../../assets/svg/support/controls_dark.svg';
+import infomationSvg from '../../assets/svg/support/information.svg';
+import infomationDarkSvg from '../../assets/svg/support/information-dark.svg';
+import listCheckedSvg from'../../assets/svg/other/check-box.svg';
+import listCheckedDarkSvg from'../../assets/svg/other/list-checked-dark.svg';
 
 function _getSampleDate() {
     return process.env.NODE_ENV === 'test'? new Date(2018,9,13,16,53,41): new Date();
@@ -23,7 +26,8 @@ const configTabs:IConfigTab[]=[
         _order: 0 ,
         _label: 'Application',
         _name:'application',
-        _svgUrl: controls,
+        _svgUrl: controlsSvg,
+        _svgUrl_dark: controlsDarkSvg,
         _icon: SettingIcon,
         _fields:[
             {
@@ -118,6 +122,7 @@ const configTabs:IConfigTab[]=[
         _label: 'About',
         _name:'about',
         _svgUrl: infomationSvg,
+        _svgUrl_dark: infomationDarkSvg,
         _icon: SettingIcon,
         _fields:[
             {
@@ -133,7 +138,8 @@ const configTabs:IConfigTab[]=[
         _order: 2,
         _label: 'Sample',
         _name:'sample',
-        _svgUrl: listChecked,
+        _svgUrl: listCheckedSvg,
+        _svgUrl_dark: listCheckedDarkSvg,
         _icon: SettingIcon,
         _fields:[
             {

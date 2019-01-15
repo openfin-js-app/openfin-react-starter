@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
-import { Scrollbars } from 'react-custom-scrollbars';
+import {connect} from 'react-redux';
+import {Scrollbars} from 'react-custom-scrollbars';
 import SplitterLayout from 'react-splitter-layout';
 
 import TextField from '@material-ui/core/TextField';
@@ -18,7 +18,7 @@ import Typography from '@material-ui/core/Typography';
 import SearchIcon from '@material-ui/icons/Search';
 import CheckIcon from '@material-ui/icons/Check';
 
-import { WithStyles, withStyles } from '@material-ui/core/styles';
+import {WithStyles, withStyles} from '@material-ui/core/styles';
 import cx from 'classnames';
 
 import {ConfigField as ConfigFieldComp} from '../../components';
@@ -26,14 +26,18 @@ import {ConfigField as ConfigFieldComp} from '../../components';
 import {configViewStyle as style} from '../../assets/jss/openfin-starter';
 
 import {
-    IConfigTab, IConfigField,
-    configUpdateOneField, configUpdateGlobalFilterStr,
-    IConfigState
+    configUpdateGlobalFilterStr,
+    configUpdateOneField,
+    IConfigField,
+    IConfigState,
+    IConfigTab,
+    MuiTheme
 } from '../../reduxs';
 
 interface IProps extends WithStyles<typeof style>{
     config:IConfigState,
     globalFilterString:string,
+    theme:MuiTheme
     actions:{
         handleGlobalFilterStrChange:React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
         handleUpdateOneField:( tabName:string, fieldName:string )=>(value:any)=>void,
@@ -49,6 +53,15 @@ class ConfigView extends React.Component<IProps,IState>{
     state = {
         currentTab:0,
     };
+
+
+    getTabIcon = (oneTab:IConfigTab)=>{
+        const { theme } = this.props;
+        if (theme === MuiTheme.DARK && oneTab._svgUrl_dark){
+            return oneTab._svgUrl_dark;
+        }
+        return oneTab._svgUrl;
+    }
 
     handleTabItemClick(currentTab){
         return function () {
@@ -114,7 +127,7 @@ class ConfigView extends React.Component<IProps,IState>{
                                                           onClick={this.handleTabItemClick(index)}
                                                 >
                                                     <ListItemIcon>
-                                                        {oneTab._svgUrl?<img src={oneTab._svgUrl}/>:<oneTab._icon/>}
+                                                        {oneTab._svgUrl?<img src={this.getTabIcon(oneTab)}/>:<oneTab._icon/>}
                                                     </ListItemIcon>
                                                     <ListItemText
                                                         primary={oneTab._label}
@@ -175,6 +188,7 @@ export default connect(
     (state:any)=>({
         config:state.config,
         globalFilterString:state.config.configGlobalFilterString,
+        theme:state.config.application.theme
     }),
     dispatch => ({
         actions:{

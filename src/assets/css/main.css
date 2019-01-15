@@ -1,7 +1,5 @@
 html,body {
-    height: 100%;
-    color:white;
-    background-color: #424242!important;
+    height: 100vh;
     margin: 0;
     padding: 0;
     position: relative;

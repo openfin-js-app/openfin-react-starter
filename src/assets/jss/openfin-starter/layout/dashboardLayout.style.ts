@@ -11,6 +11,8 @@ const appStyle:any = (theme:Theme) => createStyles({
         position:"relative",
         top:"0",
         height: "100vh",
+        color: theme.palette.text.primary,
+        backgroundColor: theme.palette.background.default,
     },
     wrapperPrimary:{
         borderTop: `${windowBorder}px solid ${primaryColor}`,
