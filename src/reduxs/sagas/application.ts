@@ -115,7 +115,7 @@ export function* handleApplicationLoading() {
         yield* handleRedirectToLoadingView(monitorRect) as any;
     }
 
-    yield put.resolve(applicationSetLoadingMsg('Initialization'));
+    yield put.resolve(applicationSetLoadingMsg('init'));
 
     yield all([
         put.resolve(configLoadFromDexie()),
@@ -134,20 +134,20 @@ export function* handleApplicationLoading() {
     ]);
 
     // BEGIN OF DEMO PURPOSE CODES
-    yield put.resolve(applicationSetLoadingMsg('Delay 1 sec'));
+    yield put.resolve(applicationSetLoadingMsg('delay1'));
     yield call(delay,1000),
-    yield put.resolve(applicationSetLoadingMsg('Delay 2 sec'));
+    yield put.resolve(applicationSetLoadingMsg('delay2'));
     yield call(delay,1000),
-    yield put.resolve(applicationSetLoadingMsg('Delay 3 sec'));
+    yield put.resolve(applicationSetLoadingMsg('delay3'));
     yield call(delay,1000),
-    yield put.resolve(applicationSetLoadingMsg('Delay 4 sec'));
+    yield put.resolve(applicationSetLoadingMsg('delay4'));
     yield call(delay,800),
-    yield put.resolve(applicationSetLoadingMsg('Delay 5 sec'));
+    yield put.resolve(applicationSetLoadingMsg('delay5'));
     // END OF DEMO PURPOSE CODES
 
     yield put.resolve(applicationReady());
 
-    yield put.resolve(applicationSetLoadingMsg('Ready'));
+    yield put.resolve(applicationSetLoadingMsg('ready'));
 
     if (ENABLE_LOADING_VIEW && currentIsLoadingView){
         yield* handleRedirectFromLoadingView(monitorRect) as any;

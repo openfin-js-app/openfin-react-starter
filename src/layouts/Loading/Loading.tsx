@@ -6,6 +6,8 @@ import { withStyles, WithStyles } from '@material-ui/core/styles';
 
 import LinearProgress from '@material-ui/core/LinearProgress';
 
+import { withNamespaces, WithNamespaces } from 'react-i18next';
+
 import appLogo from'../../assets/svg/app.svg';
 import companyLogo from'../../assets/svg/company.svg';
 
@@ -110,23 +112,25 @@ const style:any={
 
 export const LoadingBar = withStyles(style)(LoadingBarComponent);
 
-interface IProps extends WithStyles<typeof style> {
+interface IProps extends WithStyles<typeof style>, WithNamespaces {
     loading:boolean,
     loadingMsg:string,
 }
 
 class LoadingComponent extends React.Component<IProps,{}>{
     render(){
-        const {classes, loadingMsg } = this.props;
+        const {
+            classes, loadingMsg, t
+        } = this.props;
 
         return(
             <div className={classes.container}>
                 <img src={appLogo} className={classes.appLogoImg} />
-                <div className={classes.appName}>Openfin react starter</div>
+                <div className={classes.appName}>{t('appName')}</div>
                 <div className={classes.versionStr}>{process.env.REACT_APP_VERSION}</div>
                 <LoadingBar/>
                 <img src={companyLogo} className={classes.companyLogImg} />
-                <div className={classes.statusMsg}>{loadingMsg}</div>
+                <div className={classes.statusMsg}>{t(loadingMsg)}</div>
                 <Particles
                     width={"100%"}
                     height={"100%"}
@@ -146,4 +150,6 @@ export default connect(
 
         }
     })
-)(withStyles(style)(LoadingComponent));
+)(withStyles(style)(
+    withNamespaces('landing')(LoadingComponent)
+));
