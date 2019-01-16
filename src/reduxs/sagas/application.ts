@@ -6,6 +6,7 @@ import { GetGroupResPayload, NewWindowResPayload, WrapResPayload } from "@albert
 
 import hist from '../../utils/history';
 import i18n from '../../i18n';
+import { findOneFieldVal } from '../../dexie/configDao';
 
 import { launchBarItems } from '../../layouts/LaunchBar/LaunchBarData';
 
@@ -48,7 +49,6 @@ export const getNewWindowTop = state => state.config.application.newWinTop;
 export const getNewWindowLeft = state => state.config.application.newWinLeft;
 export const getNewWindowWidth = state => state.config.application.newWinWidth;
 export const getNewWindowHeight = state => state.config.application.newWinHeight;
-export const getLanguage = state => state.config.application.language;
 
 export function* handleRedirectToLoadingView(monitorRect) {
 
@@ -105,6 +105,11 @@ export function* handleRedirectFromLoadingView(monitorRect) {
 
 export function* handleApplicationLoading() {
 
+    const dbSavedLang = yield call(findOneFieldVal,'application','language');
+    if (dbSavedLang){
+        i18n.changeLanguage(dbSavedLang);
+    }
+
     const currentIsLoadingView =
         (new URL(window.location.href).pathname.indexOf('loading')>-1) ||
         (new URL(window.location.href).pathname.indexOf('index.html')>-1);
@@ -135,11 +140,6 @@ export function* handleApplicationLoading() {
         call(delay,1000),
     ]);
 
-    const currentLang = yield select(getLanguage);
-    if (currentLang){
-        i18n.changeLanguage(currentLang);
-    }
-
     // BEGIN OF DEMO PURPOSE CODES
     yield put.resolve(applicationSetLoadingMsg('delay1'));
     yield call(delay,1000),
@@ -166,6 +166,13 @@ export function* handleApplicationLoading() {
 }
 
 export function* handleApplicationChildLoading() {
+
+
+    const dbSavedLang = yield call(findOneFieldVal,'application','language');
+    if (dbSavedLang){
+        i18n.changeLanguage(dbSavedLang);
+    }
+
     yield all([
         call(Window.asyncs.getBounds,Window.actions.getBounds({})),
         put.resolve(configLoadFromDexie()),
