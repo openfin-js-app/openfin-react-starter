@@ -4,6 +4,7 @@ import { WithStyles, withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import Typography from '@material-ui/core/Typography';
 
 import cx from "classnames";
 import { connect } from 'react-redux';
@@ -42,13 +43,13 @@ class ConfigLangView extends React.Component<IProps,IState>{
         if (language === 'zh-CN'){
             return(<React.Fragment>
                 <img className={classes.flagImg} src={chFlag}/>
-                简体中文
+                <Typography variant='body1'>简体中文</Typography>
             </React.Fragment>)
         }
 
         return(<React.Fragment>
             <img className={classes.flagImg} src={usFlag}/>
-            English(US)
+            <Typography variant='body1'>English(US)</Typography>
         </React.Fragment>)
     };
 
@@ -93,11 +94,11 @@ class ConfigLangView extends React.Component<IProps,IState>{
                 >
                     <MenuItem onClick={this.handleLanguageChangeBtnClick('en-US')}>
                         <img className={classes.flagImg} src={usFlag}/>
-                        English(US)
+                        <Typography variant='body1'>English(US)</Typography>
                     </MenuItem>
                     <MenuItem onClick={this.handleLanguageChangeBtnClick('zh-CN')}>
                         <img className={classes.flagImg} src={chFlag}/>
-                        简体中文
+                        <Typography variant='body1'>简体中文</Typography>
                     </MenuItem>
                 </Menu>
             </div>
