@@ -4,11 +4,13 @@ import { WithStyles, withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+import { withNamespaces, WithNamespaces } from 'react-i18next';
+
 import { configAboutFieldStyle as style } from '../../assets/jss/openfin-starter';
 import appLogo from '../../assets/svg/app.svg';
 import companyLogo from '../../assets/svg/company.svg';
 
-interface IProps extends WithStyles<any>{
+interface IProps extends WithStyles<any>, WithNamespaces{
 
 }
 
@@ -25,7 +27,9 @@ class ConfigAboutField extends React.Component<IProps,{}>{
 
     render(){
 
-        const { classes } = this.props;
+        const {
+            classes, t,
+        } = this.props;
 
         return (<React.Fragment>
             <div className={classes.outmostContainer}>
@@ -34,22 +38,22 @@ class ConfigAboutField extends React.Component<IProps,{}>{
                     <img className={classes.companyImg} src = {companyLogo}/>
                 </div>
                 <Typography variant="h3">
-                    Openfin react starter
+                    {t('appName')}
                 </Typography>
                 <Typography variant="h5">
-                    React based openfin desktop template
+                    {t('appDesc')}
                 </Typography>
                 <Typography variant="h6">
-                    Version {process.env.REACT_APP_VERSION}
+                    {t('version')} {process.env.REACT_APP_VERSION}
                 </Typography>
 
                 <div className={classes.btnContainer}>
                     <Button variant="contained" color='primary'
                             onClick={this.handleReloadBtnClick}
-                    >Reload</Button>
+                    >{t('reload')}</Button>
                     <Button variant="contained" color='secondary'
                             onClick={this.handleSupportBtnClick}
-                    >Support</Button>
+                    >{t('support')}</Button>
                 </div>
                 <Typography variant={"subtitle1"}>
                     Wentao Li © 2019
@@ -61,4 +65,6 @@ class ConfigAboutField extends React.Component<IProps,{}>{
     }
 }
 
-export default withStyles(style)(ConfigAboutField);
+export default withStyles(style)(
+    withNamespaces('landing')(ConfigAboutField)
+);
