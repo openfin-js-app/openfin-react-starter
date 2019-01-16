@@ -7,6 +7,8 @@ import Typography from '@material-ui/core/Typography';
 import cx from "classnames";
 import { connect } from 'react-redux';
 
+import { withNamespaces, WithNamespaces } from 'react-i18next';
+
 import { configThemeViewStyle as style } from '../../assets/jss/openfin-starter';
 
 import {
@@ -14,7 +16,7 @@ import {
     configUpdateOneField,
 } from '../../reduxs'
 
-interface IProps extends WithStyles<typeof style>{
+interface IProps extends WithStyles<typeof style>, WithNamespaces{
     theme:MuiTheme,
     actions:{
         handleUpdateThemeField:(value:MuiTheme)=>void,
@@ -28,7 +30,7 @@ class ConfigThemeView extends React.Component<IProps,{}>{
     render(){
 
         const {
-            classes,
+            classes, t,
             theme,
             actions:{
                 handleToggleThemeField,
@@ -42,8 +44,8 @@ class ConfigThemeView extends React.Component<IProps,{}>{
                     onChange={handleToggleThemeField}
                     value="themeVal"
                 />
-                <Typography variant="body1" gutterBottom>
-                    {theme}
+                <Typography className={classes.themeSpan} variant="body1" gutterBottom>
+                    {t(`common.${theme}`)}
                 </Typography>
             </div>
         )
@@ -77,6 +79,8 @@ export default connect(
 
     })
     )(
-    withStyles(style)(ConfigThemeView)
+    withStyles(style)(
+        withNamespaces('config')(ConfigThemeView)
+    )
 );
 

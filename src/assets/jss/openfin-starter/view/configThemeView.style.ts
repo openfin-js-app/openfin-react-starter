@@ -9,6 +9,10 @@ const configThemeViewStyle = (theme:Theme)=> createStyles({
         justifyContent:'center',
         alignItems:'center',
     },
+    themeSpan:{
+        position:'relative',
+        top: 4,
+    }
 });
 
 export default configThemeViewStyle;
