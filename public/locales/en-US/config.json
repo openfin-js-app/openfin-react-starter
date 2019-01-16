@@ -1,0 +1,59 @@
+{
+  "common": {
+    "globalFilterPlaceholder": "Input to filter the configuration setting items",
+    "light": "Light theme",
+    "dark": "Dark theme",
+    "pixel": "Pixel"
+  },
+  "application": {
+    "label": "Application",
+    "theme": {
+      "label": "Dark/Light Theme"
+    },
+    "language": {
+      "label": "Language"
+    },
+    "newWinPos": {
+      "label": "New Window Position",
+      "newWinTop": "New Window Top",
+      "newWinLeft": "New Window Left",
+      "newWinWidth": "New Window Width",
+      "newWinHeight": "New Window Height",
+      "newWindDeltaLeft": "New Window Delta Left",
+      "newWindDeltaHeight": "New Window Delta Height"
+    }
+  },
+  "about": {
+    "label": "About"
+  },
+  "sample": {
+    "label": "Sample",
+    "vals": {
+      "label": "Sample value",
+      "string": {
+        "label": "STRING",
+        "field": "String value"
+      },
+      "currency": {
+        "label": "CURRENCY",
+        "field": "Currency value"
+      },
+      "date": {
+        "label": "DATE",
+        "field": "Date value"
+      },
+      "time": {
+        "label": "TIME",
+        "field": "Time value"
+      },
+      "dateTime": {
+        "label": "DATETIME",
+        "field": "Datetime value"
+      },
+      "customField": {
+        "label": "Custom field",
+        "field": "Custom field"
+      }
+    }
+  }
+}

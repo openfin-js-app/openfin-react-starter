@@ -13,6 +13,9 @@ import TextField from '@material-ui/core/TextField';
 import { FieldType } from '../../reduxs';
 
 import { WithStyles, withStyles } from '@material-ui/core/styles';
+
+import { withNamespaces, WithNamespaces } from 'react-i18next';
+
 import { configFieldCompStyle as style } from '../../assets/jss/openfin-starter';
 
 import NumberFormat from 'react-number-format';
@@ -37,7 +40,7 @@ function NumberFormatCustom(props) {
     );
 }
 
-interface IProps extends WithStyles<typeof style>{
+interface IProps extends WithStyles<typeof style>, WithNamespaces {
     _type:FieldType,
     _label:string,
     _props?:any,
@@ -78,7 +81,7 @@ class ConfigFieldComp extends React.Component<IProps,{}>{
     render(){
 
         const {
-            classes,
+            classes, t,
             _type, _label, _props, _custom,
             value
         } = this.props;
@@ -86,18 +89,18 @@ class ConfigFieldComp extends React.Component<IProps,{}>{
         switch (_type){
             case FieldType.TITLE:
                 return (<Typography variant={'h5'} gutterBottom>
-                    {_label}
+                    {t(_label)}
                 </Typography>);
             case FieldType.SUBHEADING:
                 return (<Typography className={classes.subheadingField} variant={'subtitle1'}>
-                    {_label}
+                    {t(_label)}
                 </Typography>);
             case FieldType.CUSTOM_FIELD:
                 return (_custom);
             case FieldType.CURRENCY:
                 return (
                     <TextField
-                        label={_label}
+                        label={t(_label)}
                         value={value}
                         onChange={this.handleTextFieldFloatChange}
                         id={`config_field_${shortid.generate()}`}
@@ -110,7 +113,7 @@ class ConfigFieldComp extends React.Component<IProps,{}>{
                 return (
                     <TextField
                         id={`config_field_${shortid.generate()}`}
-                        label={_label}
+                        label={t(_label)}
                         value={value}
                         onChange={this.handleTextFieldChange}
                         margin={"dense"}
@@ -123,7 +126,7 @@ class ConfigFieldComp extends React.Component<IProps,{}>{
                     className={classes.numberField}
                     id={`config_field_${shortid.generate()}`}
                     error={value?false:true}
-                    label={_label}
+                    label={t(_label)}
                     value={value}
                     onChange={this.handleTextFieldIntChange}
                     margin={"dense"}
@@ -134,7 +137,7 @@ class ConfigFieldComp extends React.Component<IProps,{}>{
                     <MuiPickersUtilsProvider utils={MomentUtils}>
                         <DatePicker
                             keyboard
-                            label={_label}
+                            label={t(_label)}
                             format="DD/MM/YYYY"
                             placeholder="DD/MM/YYYY"
                             mask={value => (value ? [/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/] : [])}
@@ -153,7 +156,7 @@ class ConfigFieldComp extends React.Component<IProps,{}>{
                         <TimePicker
                             seconds
                             format="hh:mm:ss A"
-                            label={_label}
+                            label={t(_label)}
                             value={value}
                             onChange={this.handleDateChange}
                             margin={"dense"}
@@ -167,7 +170,7 @@ class ConfigFieldComp extends React.Component<IProps,{}>{
                         <DateTimePicker
                             format="YYYY/MM/DD hh:mm A"
                             mask={[/\d/, /\d/, /\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, ' ', /\d/, /\d/, ':', /\d/, /\d/, ' ', /a|p/i, 'M']}
-                            label={_label}
+                            label={t(_label)}
                             value={value}
                             onChange={this.handleDateChange}
                             disableOpenOnEnter
@@ -179,10 +182,12 @@ class ConfigFieldComp extends React.Component<IProps,{}>{
             case FieldType.BODY1:
             default:
                 return (<Typography variant={"body1"} gutterBottom align={"right"}>
-                    {_label}
+                    {t(_label)}
                 </Typography>)
         }
     }
 }
 
-export default withStyles(style)(ConfigFieldComp);
+export default withStyles(style)(
+    withNamespaces('config')(ConfigFieldComp)
+);

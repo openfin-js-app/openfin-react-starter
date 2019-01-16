@@ -19,6 +19,9 @@ import SearchIcon from '@material-ui/icons/Search';
 import CheckIcon from '@material-ui/icons/Check';
 
 import {WithStyles, withStyles} from '@material-ui/core/styles';
+
+import { withNamespaces, WithNamespaces } from 'react-i18next';
+
 import cx from 'classnames';
 
 import {ConfigField as ConfigFieldComp} from '../../components';
@@ -34,7 +37,7 @@ import {
     MuiTheme
 } from '../../reduxs';
 
-interface IProps extends WithStyles<typeof style>{
+interface IProps extends WithStyles<typeof style>, WithNamespaces{
     config:IConfigState,
     globalFilterString:string,
     theme:MuiTheme
@@ -72,7 +75,7 @@ class ConfigView extends React.Component<IProps,IState>{
     render(){
 
         const {
-            classes,
+            classes, t,
             config,globalFilterString,
             actions:{
                 handleGlobalFilterStrChange,
@@ -106,7 +109,7 @@ class ConfigView extends React.Component<IProps,IState>{
                     InputLabelProps={{
                         shrink:true,
                     }}
-                    placeholder={'Input to filter the configutation setting items'}
+                    placeholder={t('common.globalFilterPlaceholder')}
                     fullWidth
                     onChange={handleGlobalFilterStrChange}
                     margin={'dense'}
@@ -130,7 +133,7 @@ class ConfigView extends React.Component<IProps,IState>{
                                                         {oneTab._svgUrl?<img src={this.getTabIcon(oneTab)}/>:<oneTab._icon/>}
                                                     </ListItemIcon>
                                                     <ListItemText
-                                                        primary={oneTab._label}
+                                                        primary={t(oneTab._label)}
                                                     />
                                                     {currentTab===index?
                                                         <ListItemSecondaryAction>
@@ -159,7 +162,7 @@ class ConfigView extends React.Component<IProps,IState>{
                             <GridList cellHeight={52} className={classes.configMainGridList} cols={12}>
                                 {filedShownCnt>0?
                                     tabs[currentTab]._fields.map((oneField:IConfigField, index:number)=>(
-                                        globalFilterString === '' || oneField._label.toLowerCase().indexOf(globalFilterString.toLowerCase())>-1?
+                                        globalFilterString === '' || t(oneField._label).toLowerCase().indexOf(globalFilterString.toLowerCase())>-1?
                                         <GridListTile key={index} cols={oneField._cols || 3} rows={oneField._rows || 1}>
                                             <ConfigFieldComp
                                                 value={config[tabName][oneField._name]}
@@ -203,4 +206,6 @@ export default connect(
             }
         }
     })
-)(withStyles(style)(ConfigView));
+)(withStyles(style)(
+    withNamespaces('config')(ConfigView)
+));
