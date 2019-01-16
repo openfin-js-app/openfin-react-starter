@@ -3,6 +3,9 @@ import { delay } from 'redux-saga';
 import { all, call, put, take, takeLatest, takeEvery, fork, select, actionChannel } from 'redux-saga/effects';
 import {System, Event, Window, Docking} from '@albertli90/redux-openfin';
 
+jest.mock('../../dexie/db');
+import {findOneFieldVal} from '../../dexie/configDao'
+
 import { launchBarItems } from '../../layouts/LaunchBar/LaunchBarData';
 
 import {
@@ -97,6 +100,8 @@ describe('Application saga',()=>{
 
             testSaga(handleApplicationLoading)
                 .next()
+                .call(findOneFieldVal,'application','language')
+                .next(null)
                 .call(System.asyncs.getMonitorInfo,System.actions.getMonitorInfo({}))
                 .next({payload:{primaryMonitor:{monitorRect}}})
                 .put.resolve(applicationSetLoadingMsg('init'))
@@ -155,6 +160,8 @@ describe('Application saga',()=>{
 
             testSaga(handleApplicationLoading)
                 .next()
+                .call(findOneFieldVal,'application','language')
+                .next('en-US')
                 .call(System.asyncs.getMonitorInfo,System.actions.getMonitorInfo({}))
                 .next({payload:{primaryMonitor:{monitorRect}}})
                 .call(Window.asyncs.newWindow,Window.actions.newWindow({
@@ -227,6 +234,8 @@ describe('Application saga',()=>{
         it('basically works when docked',()=>{
             testSaga(handleApplicationChildLoading)
                 .next()
+                .call(findOneFieldVal,'application','language')
+                .next(null)
                 .all([
                     call(Window.asyncs.getBounds,Window.actions.getBounds({})),
                     put.resolve(configLoadFromDexie()),
@@ -244,6 +253,8 @@ describe('Application saga',()=>{
         it('basically works when undocked',()=>{
             testSaga(handleApplicationChildLoading)
                 .next()
+                .call(findOneFieldVal,'application','language')
+                .next('en-US')
                 .all([
                     call(Window.asyncs.getBounds,Window.actions.getBounds({})),
                     put.resolve(configLoadFromDexie()),
