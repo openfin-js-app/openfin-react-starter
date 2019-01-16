@@ -5,6 +5,7 @@ import { Docking ,System, Event, Window } from '@albertli90/redux-openfin';
 import { GetGroupResPayload, NewWindowResPayload, WrapResPayload } from "@albertli90/redux-openfin/window";
 
 import hist from '../../utils/history';
+import i18n from '../../i18n';
 
 import { launchBarItems } from '../../layouts/LaunchBar/LaunchBarData';
 
@@ -47,6 +48,7 @@ export const getNewWindowTop = state => state.config.application.newWinTop;
 export const getNewWindowLeft = state => state.config.application.newWinLeft;
 export const getNewWindowWidth = state => state.config.application.newWinWidth;
 export const getNewWindowHeight = state => state.config.application.newWinHeight;
+export const getLanguage = state => state.config.application.language;
 
 export function* handleRedirectToLoadingView(monitorRect) {
 
@@ -132,6 +134,11 @@ export function* handleApplicationLoading() {
         // delay for loading view render, could be removed
         call(delay,1000),
     ]);
+
+    const currentLang = yield select(getLanguage);
+    if (currentLang){
+        i18n.changeLanguage(currentLang);
+    }
 
     // BEGIN OF DEMO PURPOSE CODES
     yield put.resolve(applicationSetLoadingMsg('delay1'));

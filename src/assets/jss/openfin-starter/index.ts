@@ -13,6 +13,7 @@ export {default as snackbarContentCompStyle} from './comp/snackbarContentComp.st
 export {default as reportViewStyle} from './view/reportView.style';
 export {default as configViewStyle} from './view/configView.style';
 export {default as configThemeViewStyle } from './view/configThemeView.style';
+export {default as configLangViewStyle } from './view/configLangView.style'
 // END_OF_AL_CLI_VIEW
 
 // BEGIN_OF_AL_CLI_LYT

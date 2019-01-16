@@ -89,7 +89,7 @@ class ConfigFieldComp extends React.Component<IProps,{}>{
                     {_label}
                 </Typography>);
             case FieldType.SUBHEADING:
-                return (<Typography className={classes.subheadingField} variant={'subtitle1'} gutterBottom>
+                return (<Typography className={classes.subheadingField} variant={'subtitle1'}>
                     {_label}
                 </Typography>);
             case FieldType.CUSTOM_FIELD:

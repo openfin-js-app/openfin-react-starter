@@ -2,6 +2,7 @@ import * as React from 'react';
 import { WithStyles, withStyles } from '@material-ui/core/styles';
 
 import Switch from '@material-ui/core/Switch';
+import Typography from '@material-ui/core/Typography';
 
 import cx from "classnames";
 import { connect } from 'react-redux';
@@ -37,12 +38,13 @@ class ConfigThemeView extends React.Component<IProps,{}>{
         return (
             <div className={classes.container}>
                 <Switch
-                    className={classes.switchComp}
                     checked={theme === MuiTheme.DARK}
                     onChange={handleToggleThemeField}
                     value="themeVal"
                 />
-                {theme}
+                <Typography variant="body1" gutterBottom>
+                    {theme}
+                </Typography>
             </div>
         )
     }

@@ -5,8 +5,11 @@ import { IConfigTab, IConfigField, MuiTheme, FieldType } from './types';
 
 import SettingIcon from '@material-ui/icons/Settings';
 
+import i18n from '../../i18n';
+
 import ConfigJson from '../../views/ConfigView/ConfigJson';
 import ConfigTheme from '../../views/ConfigView/ConfigTheme';
+import ConfigLang from '../../views/ConfigView/ConfigLang';
 
 import { ConfigAboutField } from '../../components';
 
@@ -42,6 +45,21 @@ const configTabs:IConfigTab[]=[
                 _custom:<ConfigTheme/>,
                 _name:'theme',
                 _defaultValue:MuiTheme.DARK,
+                _cols:10,
+                _rows:1,
+            },
+            {
+                _type:FieldType.SUBHEADING,
+                _label:'Language',
+                _cols: 2,
+                _rows:1,
+            },
+            {
+                _type:FieldType.CUSTOM_FIELD,
+                _label:'language',
+                _custom:<ConfigLang/>,
+                _name:'language',
+                _defaultValue:i18n.language,
                 _cols:10,
                 _rows:1,
             },
