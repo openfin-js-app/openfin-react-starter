@@ -10,6 +10,8 @@ import Fab from '@material-ui/core/Fab';
 import Menu from '@material-ui/icons/Menu';
 import ChevronLeft from '@material-ui/icons/ChevronLeft';
 
+import { withNamespaces, WithNamespaces } from 'react-i18next';
+
 import HeaderLinks from './HeaderLinks';
 
 import {MouseEventHandler} from "react";
@@ -19,7 +21,7 @@ import {RouteItem} from '../../routes';
 
 import appLogo from'../../assets/svg/app.svg';
 
-interface IProps extends WithStyles<any> {
+interface IProps extends WithStyles<any>, WithNamespaces {
     routes:RouteItem[],
     color:string,
     open?:boolean,
@@ -41,7 +43,7 @@ class HeaderComp extends React.Component<IProps,{}>{
     render(){
 
         const {
-            classes, color, windowsState,
+            classes, t, color, windowsState,
             handleDrawerToggle, docked,
             onSwitchToLaunchBar, onUndock, onMinimize, onMaximize, onClose,
         } = this.props;
@@ -71,7 +73,7 @@ class HeaderComp extends React.Component<IProps,{}>{
                     :null}
                     <img src={appLogo} className={classes.companyLogImg}/>
                     <Button href={"#"} className={classes.title}>
-                        {"App name| "+ makeBrand(this.props)}
+                        {t('appName')+"|"+ t(makeBrand(this.props))}
                     </Button>
                 </div>
                 <div className={classes.flex}/>
@@ -92,4 +94,6 @@ class HeaderComp extends React.Component<IProps,{}>{
 
 }
 
-export default withStyles(style)(HeaderComp);
+export default withStyles(style)(
+    withNamespaces('menu')(HeaderComp)
+);

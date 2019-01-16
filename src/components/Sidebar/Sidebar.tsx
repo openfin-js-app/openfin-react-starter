@@ -11,11 +11,13 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 
+import { withNamespaces, WithNamespaces } from 'react-i18next';
+
 import { sidebarCompStyle as style } from '../../assets/jss/openfin-starter'
 
 import {RouteItem, IRouteCompItem} from '../../routes';
 
-interface IProps extends WithStyles<typeof style>{
+interface IProps extends WithStyles<typeof style>, WithNamespaces{
     open:boolean,
     routes:RouteItem[],
     color:string,
@@ -30,7 +32,7 @@ class SidebarComp extends React.Component<IProps,{}>{
         }
 
         const {
-            classes, open, routes, color, image
+            classes,t, open, routes, color, image
         } = this.props;
 
         const links = (
@@ -54,7 +56,7 @@ class SidebarComp extends React.Component<IProps,{}>{
                                 <prop.icon/>
                             </ListItemIcon>
                             <ListItemText
-                                primary={prop.sidebarName}
+                                primary={t(prop.sidebarName)}
                                 className={classes.itemText + whiteFontClasses}
                                 disableTypography={true}
                             />
@@ -88,4 +90,6 @@ class SidebarComp extends React.Component<IProps,{}>{
     }
 }
 
-export default withStyles(style)(SidebarComp);
+export default withStyles(style)(
+    withNamespaces('menu')(SidebarComp)
+);

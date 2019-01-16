@@ -1,0 +1,23 @@
+{
+  "appName": "APP NAME",
+  "accessibility": {
+    "sidebar":"辅助功能",
+    "navbar":"辅助功能视图"
+  },
+  "viewOne": {
+    "sidebar":"视图壹",
+    "navbar":"视图 壹"
+  },
+  "viewTwo": {
+    "sidebar":"视图贰",
+    "navbar":"视图 贰"
+  },
+  "configuration": {
+    "sidebar":"设置",
+    "navbar":"设置视图"
+  },
+  "report": {
+    "sidebar":"系统汇报",
+    "navbar":"系统汇报视图"
+  }
+}
