@@ -8,6 +8,8 @@ RUN npm install
 
 COPY build build
 COPY config config
+COPY scripts/routers scripts/routers
+COPY scripts/utils scripts/utils
 COPY scripts/server.js scripts/server.js
 COPY .env* ./
 COPY .dockerignore ./
