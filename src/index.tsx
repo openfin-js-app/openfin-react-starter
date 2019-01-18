@@ -24,7 +24,7 @@ declare const window:any;
 
 if(!window.fin){
     window.fin = new BrowserAdapter({
-        finUuic:process.env.REACT_APP_FIN_UUID,
+        finUuid:process.env.REACT_APP_FIN_UUID,
         silentMode:false,
     });
 }
