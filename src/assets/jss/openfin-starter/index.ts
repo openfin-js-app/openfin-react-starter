@@ -14,9 +14,11 @@ export {default as reportViewStyle} from './view/reportView.style';
 export {default as configViewStyle} from './view/configView.style';
 export {default as configThemeViewStyle } from './view/configThemeView.style';
 export {default as configLangViewStyle } from './view/configLangView.style'
+export {default as sampleNotificationViewStyle } from './view/sampleNotificationView.style';
 // END_OF_AL_CLI_VIEW
 
 // BEGIN_OF_AL_CLI_LYT
 export {default as dashboardLayoutStyle } from './layout/dashboardLayout.style';
 export {default as launchBarLayoutStyle } from './layout/launchBarLayout.style';
+export {default as notificationStyle } from './layout/notification.style'
 // END_OF_AL_CLI_LYT
