@@ -21,8 +21,8 @@ const {
 const app = express();
 
 app.use(logger('dev'));
-app.use(express.static(paths.appBuild));
 app.use(configApis);
+app.use(express.static(paths.appBuild));
 
 app.use((req,res,next)=>{
     if (req.accepts('html')){

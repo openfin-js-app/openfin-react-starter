@@ -1,3 +1,5 @@
+const port = normalizePort(process.env.PORT || '3000');
+
 function normalizePort(val){
     var port = parseInt(val,10);
 
