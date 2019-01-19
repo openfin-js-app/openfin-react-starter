@@ -1,27 +1,30 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import {connect} from 'react-redux';
+import {Redirect, Route, Switch} from 'react-router-dom';
 import cx from 'classnames';
 
 import Snackbar from '@material-ui/core/Snackbar';
 
-import { WithStyles, withStyles } from '@material-ui/core/styles';
+import {WithStyles, withStyles} from '@material-ui/core/styles';
 
-import { Window } from '@albertli90/redux-openfin';
+import {Window} from '@albertli90/redux-openfin';
 
 import {
-    // acitons
-    applicationDrawerToggle, applicationToogleWindowState,
-    applicationSetSnackbarStatus, applicationProcessSnackbarQueue,
-    applicationCloseSnackbar, applicationLaunchBarToggle,
-    // types
-    IRootState,ISnackBarMsg,
+    applicationCloseSnackbar,
+    applicationDrawerToggle,
+    applicationLaunchBarToggle,
+    applicationProcessSnackbarQueue,
+    applicationSetSnackbarStatus,
+    applicationToogleWindowState,
+    IRootState,
+    ISnackBarMsg,
+    MuiTheme,
 } from '../../reduxs';
 
 import dashboardRoutes from '../../routes/Dashboard';
-import { Sidebar, Header, SnackbarContent, OfflineOverlay } from '../../components';
+import {Header, OfflineOverlay, Sidebar, SnackbarContent} from '../../components';
 
-import { dashboardLayoutStyle as style } from '../../assets/jss/openfin-starter';
+import {dashboardLayoutStyle as style} from '../../assets/jss/openfin-starter';
 
 const switchRoutes = (
     <Switch>
@@ -40,6 +43,7 @@ interface IProps extends WithStyles<typeof style>{
     snackBarOpen:boolean,
     snackBarMsgInfo:Partial<ISnackBarMsg>,
     windowsState:string,
+    theme:MuiTheme,
     actions:{
         handleDrawerToggle: ()=> void,
         handleSnackbarClose: (event:any,reason:string)=> void,
@@ -58,7 +62,7 @@ class DashbardLayout extends React.Component<IProps,{}>{
 
         const {
             classes,
-            offline,drawerOpen,
+            offline,drawerOpen, theme,
             snackBarOpen, snackBarMsgInfo, windowsState,
             actions:{
                 handleDrawerToggle,
@@ -98,7 +102,14 @@ class DashbardLayout extends React.Component<IProps,{}>{
                 )}
                 >
                     <div className={classes.container}>
-                        <div className={classes.content}>
+                        <div className={
+                            cx(
+                                classes.content,
+                                {
+                                    [classes.lightBoxShaddow]: theme === MuiTheme.LIGHT
+                                }
+                            )
+                        }>
                             {switchRoutes}
                         </div>
                     </div>
@@ -140,6 +151,7 @@ export default connect(
         snackBarOpen:state.application.snackBarOpen,
         snackBarMsgInfo:state.application.snackBarMsgInfo,
         windowsState:state.application.windowsState,
+        theme:state.config.application.theme,
     }),
     dispatch => ({
         actions:{

@@ -32,7 +32,6 @@ const configViewStyle:any = (theme:Theme)=> createStyles({
         display:'flex',
         flexWrap:'wrap',
         justifyContent:'space-around',
-        backgroundColor:theme.palette.background.paper,
     },
     configMainGridList:{
         width:'100%',

@@ -51,6 +51,10 @@ const appStyle:any = (theme:Theme) => createStyles({
         padding:`0px ${windowBorder}px`,
         height:"100%",
         overflowX:'hidden',
+        boxShadow:`inset 0 0 ${windowBorder}px #ffffff`,
+    },
+    lightBoxShaddow:{
+        boxShadow:`inset 0 0 ${windowBorder}px #000000`,
     },
     container:{
         position:'absolute',
