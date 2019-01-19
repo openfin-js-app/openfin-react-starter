@@ -14,6 +14,7 @@ import {
     applicationSetLoadingMsg,
     APPLICATION_STARTED,
     APPLICATION_CHILD_STARTED,
+    APPLICATION_NOTIFICATION_STARTED,
     APPLICATION_NEW_SNACKBAR,
     APPLICATION_CLOSE_SNACKBAR,
     applicationUpdateDockStatus,
@@ -187,6 +188,18 @@ export function* handleApplicationChildLoading() {
     }
 
     yield put.resolve(applicationReady());
+}
+
+export function* handleApplicationNotificationLoading() {
+    const dbSavedLang = yield call(findOneFieldVal,'application','language');
+    if (dbSavedLang){
+        i18n.changeLanguage(dbSavedLang);
+    }
+
+    yield all([
+        call(Window.asyncs.getBounds,Window.actions.getBounds({})),
+        put.resolve(configLoadFromDexie()),
+    ]);
 }
 
 export function* handleApplicationExit() {
@@ -406,6 +419,7 @@ export function* handleGroupChanged(action){
 export default function* (){
     yield takeLatest(APPLICATION_STARTED,handleApplicationLoading);
     yield takeLatest(APPLICATION_CHILD_STARTED,handleApplicationChildLoading);
+    yield takeLatest(APPLICATION_NOTIFICATION_STARTED,handleApplicationNotificationLoading);
     yield takeLatest(Event.actionDicts.windowEventDictByName['close-requested'].type,handleApplicationExit);
     yield takeLatest(APPLICATION_TOGGLE_WINDOW_STATE,handleToggleWindowState);
     yield takeLatest(APPLICATION_NEW_SNACKBAR,handleApplicationAddNewSnackBar);

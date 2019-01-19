@@ -14,6 +14,7 @@ import configureStore from './utils/configureStore';
 import {
     applicationStarted,
     applicationChildStarted,
+    applicationNotificationStarted,
     applicationNetworkOnline,
     applicationNetworkOffline,
 } from "./reduxs";
@@ -41,7 +42,11 @@ if(window.name === process.env.REACT_APP_FIN_UUID){
         window.opener.store.getState()
     );
     window.store=store;
-    store.dispatch(applicationChildStarted());
+    if (window.location.pathname.toLowerCase().indexOf('notification')>-1){
+        store.dispatch(applicationNotificationStarted());
+    }else{
+        store.dispatch(applicationChildStarted());
+    }
 }
 setPlatformClass(document.body,window.navigator.platform);
 ReactDOM.render(
