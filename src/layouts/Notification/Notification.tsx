@@ -12,7 +12,7 @@ import { Notification } from '@albertli90/redux-openfin';
 import cx from "classnames";
 
 import { notificationStyle as style } from '../../assets/jss/openfin-starter';
-import { IRootState } from '../../reduxs';
+import {IRootState, MuiTheme} from '../../reduxs';
 import notificationRoutes from "../../routes/notification";
 const switchRoutes = (
     <Switch>
@@ -26,6 +26,7 @@ const switchRoutes = (
 );
 
 interface IProps extends WithStyles<typeof style>{
+    theme:MuiTheme,
     actions:{
         handleSelfClose:()=>void,
     }
@@ -37,13 +38,21 @@ class NotificationLayout extends React.Component<IProps,{}>{
 
         const {
             classes,
+            theme,
             actions:{
                 handleSelfClose
             }
         } = this.props;
 
         return (
-            <div className={classes.container}>
+            <div className={
+                cx(
+                    classes.container,
+                    {
+                        [classes.lightBoxShaddow]: theme === MuiTheme.LIGHT
+                    }
+                )
+            }>
                 <IconButton className={classes.closeBtn}
                             onClick={handleSelfClose}
                 >
@@ -57,7 +66,7 @@ class NotificationLayout extends React.Component<IProps,{}>{
 
 export default connect(
     (state:IRootState)=>({
-
+        theme:state.config.application.theme,
     }),
     dispatch => ({
         actions:{
