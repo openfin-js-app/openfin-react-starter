@@ -11,11 +11,12 @@ import { launchBarItems } from '../../layouts/LaunchBar/LaunchBarData';
 import {
     applicationSetLoadingMsg,
     APPLICATION_STARTED,
+    APPLICATION_CHILD_STARTED,
+    APPLICATION_NOTIFICATION_STARTED,
     APPLICATION_NEW_SNACKBAR,
     APPLICATION_CLOSE_SNACKBAR,
     APPLICATION_TOGGLE_WINDOW_STATE,
     applicationReady,
-    APPLICATION_CHILD_STARTED,
     applicationNewSnackbar,
     applicationUpdateDockStatus,
     applicationSetSnackbarStatus,
@@ -44,6 +45,7 @@ import {
     // sub sagas
     handleApplicationLoading,
     handleApplicationChildLoading,
+    handleApplicationNotificationLoading,
     handleApplicationExit,
     handleToggleWindowState,
     handleApplicationAddNewSnackBar,
@@ -767,6 +769,8 @@ describe('Application saga',()=>{
             .takeLatestEffect(APPLICATION_STARTED,handleApplicationLoading)
             .next()
             .takeLatestEffect(APPLICATION_CHILD_STARTED,handleApplicationChildLoading)
+            .next()
+            .takeLatestEffect(APPLICATION_NOTIFICATION_STARTED,handleApplicationNotificationLoading)
             .next()
             .takeLatestEffect(Event.actionDicts.windowEventDictByName['close-requested'].type,handleApplicationExit)
             .next()

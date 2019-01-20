@@ -30,13 +30,13 @@ describe('AccessibilityView',()=>{
 
     it('render and fire 8 actions when 8 btn clicked',()=>{
        const wrapper = mount(<Accessibility store={store}/>);
-       expect(wrapper.find(Button)).toHaveLength(8);
+       expect(wrapper.find(Button)).toHaveLength(9);
        wrapper.find(Button).forEach((button)=>{
            const props = button.props();
            if ( typeof props.onClick === 'function'){
                props.onClick();
            }
        });
-       expect(store.getActions()).toHaveLength(8);
+       expect(store.getActions()).toHaveLength(9);
    })
 });

@@ -9,6 +9,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import Dashboard from './Dashboard';
 import ViewOne from '../../views/ViewOne/ViewOne';
 import {Sidebar, Header, SnackbarContent } from '../../components';
+import {MuiTheme} from "../../reduxs";
 
 const mockStore = configurestore();
 const initialState = {
@@ -29,6 +30,11 @@ const initialState = {
     },
     client:{
         count:0,
+    },
+    config:{
+        application:{
+            theme:MuiTheme.LIGHT,
+        }
     }
 };
 
@@ -99,6 +105,11 @@ describe('Dashboard layout',()=>{
             },
             client:{
                 count:0,
+            },
+            config:{
+                application:{
+                    theme:MuiTheme.DARK,
+                }
             }
         });
         const wrapper = mount(
