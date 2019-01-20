@@ -38,5 +38,5 @@ describe('AccessibilityView',()=>{
            }
        });
        expect(store.getActions()).toHaveLength(9);
-   })
+    })
 });
