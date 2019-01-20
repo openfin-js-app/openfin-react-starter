@@ -1,4 +1,6 @@
-const reportViewStyle:any = (theme:any) => ({
+import { Theme, createStyles } from '@material-ui/core/styles';
+
+const reportViewStyle:any = (theme:Theme) => createStyles({
     root:{
         width:'100%',
         height:'100%',

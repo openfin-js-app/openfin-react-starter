@@ -1,3 +1,4 @@
+import { Theme, createStyles } from '@material-ui/core/styles';
 import {
     appbarHeight,
     defaultFont,
@@ -7,13 +8,17 @@ import {
     infoColor,
     successColor,
     warningColor,
+    roseColor,
     defaultBoxShadow,
 } from '../../openfin-starter-constant';
 
-const headerLinkStyle:any = (theme:any) => ({
+const headerLinkStyle:any = (theme:Theme) => createStyles({
     menuBtn:{
         transform:`scale(${appbarHeight/40 * 0.8})`,
         "-webkit-app-region":"no-drag",
+        "& span svg":{
+            fontSize: `${appbarHeight/26*36}px`,
+        }
     },
     info:{
         backgroundColor: infoColor,
@@ -29,6 +34,12 @@ const headerLinkStyle:any = (theme:any) => ({
     },
     warning:{
         backgroundColor: warningColor,
+        color: '#ffffff',
+        ...defaultBoxShadow,
+        borderRadius:"4px",
+    },
+    rose:{
+        backgroundColor: roseColor,
         color: '#ffffff',
         ...defaultBoxShadow,
         borderRadius:"4px",

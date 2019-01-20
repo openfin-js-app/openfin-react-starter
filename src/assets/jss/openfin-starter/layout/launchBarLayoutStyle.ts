@@ -1,4 +1,6 @@
-import * as color from 'color';
+import { Theme, createStyles } from '@material-ui/core/styles';
+
+import color from 'color';
 
 import {
     primaryColor, warningColor, successColor, infoColor, roseColor,
@@ -8,7 +10,7 @@ import {
 const launchBtnHeight = '64';
 const launchBtnContainerMaxWidth = '576';
 
-const launchBarStyle:any = (theme:any) => ({
+const launchBarStyle:any = (theme:Theme) => createStyles({
     toolBar:{
         height:'64px',
         padding:'0 0',
@@ -56,6 +58,7 @@ const launchBarStyle:any = (theme:any) => ({
         width:'16px',
         height:'16px',
         minHeight:'16px',
+        borderRadius:'4px',
         '& $svg':{
             width:'16px',
             height:'16px',

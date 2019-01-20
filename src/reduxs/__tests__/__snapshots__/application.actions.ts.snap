@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Application actions applicationChildStarted created and dispatched correctly 1`] = `
+Array [
+  Object {
+    "type": "APPLICATION_CHILD_STARTED",
+  },
+]
+`;
+
+exports[`Application actions applicationCloseSnackbar created and dispatched correctly 1`] = `
+Array [
+  Object {
+    "payload": Object {
+      "event": Object {
+        "type": "sample event obj",
+      },
+      "reason": "reason",
+    },
+    "type": "APPLICATION_CLOSE_SNACKBAR",
+  },
+]
+`;
+
+exports[`Application actions applicationDrawerToggle created and dispatched correctly 1`] = `
+Array [
+  Object {
+    "type": "APPLICATION_DRAWER_TOGGLE",
+  },
+]
+`;
+
+exports[`Application actions applicationLaunchBarToggle created and dispatched correctly 1`] = `
+Array [
+  Object {
+    "type": "APPLICATION_LAUNCH_BAR_TOGGLE",
+  },
+]
+`;
+
+exports[`Application actions applicationLaunchBarToggleCollapse created and dispatched correctly 1`] = `
+Array [
+  Object {
+    "type": "APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE",
+  },
+]
+`;
+
+exports[`Application actions applicationLaunchNewWindow created and dispatched correctly 1`] = `
+Array [
+  Object {
+    "payload": Object {
+      "type": "mock up app json obj",
+    },
+    "type": "APPLICATION_LAUNCH_NEW_WINDOW",
+  },
+]
+`;
+
+exports[`Application actions applicationNetworkOffline created and dispatched correctly 1`] = `
+Array [
+  Object {
+    "payload": Object {},
+    "type": "APPLICATION_NETWORK_OFF_LINE",
+  },
+]
+`;
+
+exports[`Application actions applicationNetworkOnline created and dispatched correctly 1`] = `
+Array [
+  Object {
+    "payload": Object {},
+    "type": "APPLICATION_NETWORK_ONLINE",
+  },
+]
+`;
+
+exports[`Application actions applicationNewSnackbar created and dispatched correctly 1`] = `
+Array [
+  Object {
+    "payload": Object {
+      "message": "Snackbar message",
+      "variant": "primary",
+    },
+    "type": "APPLICATION_NEW_SNACKBAR",
+  },
+]
+`;
+
+exports[`Application actions applicationProcessSnackbarQueue created and dispatched correctly 1`] = `
+Array [
+  Object {
+    "type": "APPLICATION_PROCESS_SNACKBAR_QUEUE",
+  },
+]
+`;
+
+exports[`Application actions applicationReady created and dispatched correctly 1`] = `
+Array [
+  Object {
+    "type": "APPLICATION_READY",
+  },
+]
+`;
+
+exports[`Application actions applicationSetSnackbarStatus created and dispatched correctly 1`] = `
+Array [
+  Object {
+    "payload": Object {
+      "open": false,
+    },
+    "type": "APPLICATION_SET_SNACKBAR_STATUS",
+  },
+]
+`;
+
+exports[`Application actions applicationStarted created and dispatched correctly 1`] = `
+Array [
+  Object {
+    "type": "APPLICATION_STARTED",
+  },
+]
+`;
+
+exports[`Application actions applicationToogleWindowState created and dispatched correctly 1`] = `
+Array [
+  Object {
+    "type": "APPLICATION_TOGGLE_WINDOW_STATE",
+  },
+]
+`;
+
+exports[`Application actions applicationUpdateDockStatus created and dispatched correctly 1`] = `
+Array [
+  Object {
+    "payload": Object {
+      "docked": true,
+    },
+    "type": "APPLICATION_UPDATE_DOCK_STATUS",
+  },
+]
+`;

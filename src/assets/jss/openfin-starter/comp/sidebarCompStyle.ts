@@ -1,3 +1,5 @@
+import { Theme, createStyles } from '@material-ui/core/styles';
+
 import {
     appbarHeight,
     drawerWidth,
@@ -12,24 +14,24 @@ import {
     dangerColor,
 } from '../../openfin-starter-constant';
 
-const sidebarStyle:any = (theme:any) => ({
+const sidebarStyle:any = (theme:Theme) => createStyles({
     drawerPaper:{
         border:"none",
+        backgroundColor:'transparent',
         position:"fixed",
         top: appbarHeight +4,
         bottom:0,
         left:"0",
-        zIndex: "1",
+        zIndex: 1,
         ...boxShadow,
         width:drawerWidth,
         height:"100%",
-        borderLeft:`4px solid ${primaryColor}`,
+        borderLeft:`4px solid transparent`,
     },
     background:{
         position:"absolute",
-        zIndex:"1",
-        borderBottom:`4px solid ${primaryColor}`,
-        height: "calc(100% - 13px)",
+        zIndex:1,
+        height: "calc(100% - 15px)",
         width: "100%",
         display:"block",
         top:"0",
@@ -38,13 +40,13 @@ const sidebarStyle:any = (theme:any) => ({
         backgroundPosition:"center center",
         "&:after":{
             position:"absolute",
-            zIndex:"3",
+            zIndex:3,
             width: "100%",
             height:"100%",
             content:'""',
             display:"block",
             background:"#000",
-            opacity:".8",
+            opacity:0.8,
         }
     },
     list:{
@@ -144,10 +146,10 @@ const sidebarStyle:any = (theme:any) => ({
     },
     sidebarWrapper: {
         position: "relative",
-        height: "calc(100vh - 75px)",
+        height: "calc(100% - 75px)",
         overflow: "auto",
-        width: drawerWidth,
-        zIndex: "4",
+        width: drawerWidth-4,
+        zIndex: 4,
         overflowScrolling: "touch"
     },
 });

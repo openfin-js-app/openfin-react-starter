@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ViewOne render correctly 1`] = `
+Array [
+  Object {
+    "payload": Object {
+      "count": 1,
+    },
+    "type": "CLIENT_SET_VALUE",
+  },
+  Object {
+    "payload": Object {
+      "count": -1,
+    },
+    "type": "CLIENT_SET_VALUE",
+  },
+]
+`;

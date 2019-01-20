@@ -4,16 +4,21 @@ import { Router, Route, Switch, Redirect } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
-import indexRoutes, {RouteCompItem, RouteItem } from './routes/index';
+import indexRoutes from './routes/index';
 
 import hist from './utils/history';
 
 const theme = createMuiTheme({
     typography:{
-        htmlFontSize: 10,
+        useNextVariants:true,
         fontSize: 8,
+        htmlFontSize: 10,
     },
     palette:{
+        type:'dark',
+        background:{
+            default:'#303030'
+        },
         primary:{
             main:'#23a4fb',
         },
@@ -62,23 +67,22 @@ const theme = createMuiTheme({
                 fontSize:'0.5rem',
             },
         },
-        MuiInputAdornment:{
-            positionEnd:{
-                "& $p":{
-                    fontSize:'0.6rem',
-                },
-            },
+        MuiFab:{
+            root:{
+                padding: '0px 0px',
+                width:'40px',
+                height:'40px',
+            }
+        },
+        MuiIconButton:{
+            root:{
+                padding: '0px 0px',
+            }
         },
         MuiListItem:{
             gutters:{
-                paddingTop:'0px',
-                paddingBottom:'0px',
-                "& $img":{
-                    height:'24px',
-                    width:'24px',
-                    marginRight:'16px',
-                    userSelect:'none',
-                }
+                paddingTop:'2px',
+                paddingBottom:'2px',
             }
         },
         MuiSnackbarContent:{

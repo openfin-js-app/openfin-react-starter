@@ -10,11 +10,13 @@
     "frame":false,
     "defaultCentered":true,
     "defaultWidth":728,
-    "defaultHeight":450
+    "defaultHeight":450,
+    "minWidth":88,
+    "minHeight":64
   },
   "runtime":{
-    "arguments":"--v=1 --remote-debugging-port=9090 --enable-crash-reporting",
-    "version":"community"
+    "version":"9.61.37.46",
+    "arguments":"--v=1 --remote-debugging-port=9090 --enable-crash-reporting"
   },
   "shortcut":{
     "company":"Albert Leigh Corp",

@@ -1,0 +1,155 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfigField comp BODY1 field renders correctly 1`] = `
+<WithStyles(Typography)
+  align="right"
+  gutterBottom={true}
+  variant="body1"
+>
+  label
+</WithStyles(Typography)>
+`;
+
+exports[`ConfigField comp CURRENCY field renders correctly 1`] = `
+<TextField
+  InputProps={
+    Object {
+      "inputComponent": [Function],
+    }
+  }
+  id="config_field_id"
+  label="label"
+  margin="dense"
+  onChange={[Function]}
+  required={false}
+  select={false}
+  value={1}
+  variant="standard"
+/>
+`;
+
+exports[`ConfigField comp CUSTOM_FIELD field renders correctly 1`] = `
+<span>
+  Custom field
+</span>
+`;
+
+exports[`ConfigField comp DATE field renders correctly 1`] = `
+<MuiPickersUtilsProvider
+  utils={[Function]}
+>
+  <ForwardRef
+    animateYearScrolling={false}
+    disableOpenOnEnter={true}
+    format="DD/MM/YYYY"
+    keyboard={true}
+    label="label"
+    margin="dense"
+    mask={[Function]}
+    onChange={[Function]}
+    placeholder="DD/MM/YYYY"
+    value="01/01/1990"
+  />
+</MuiPickersUtilsProvider>
+`;
+
+exports[`ConfigField comp DATETIME field renders correctly 1`] = `
+<MuiPickersUtilsProvider
+  utils={[Function]}
+>
+  <ForwardRef
+    disableOpenOnEnter={true}
+    format="YYYY/MM/DD hh:mm A"
+    label="label"
+    margin="dense"
+    mask={
+      Array [
+        /\\\\d/,
+        /\\\\d/,
+        /\\\\d/,
+        /\\\\d/,
+        "/",
+        /\\\\d/,
+        /\\\\d/,
+        "/",
+        /\\\\d/,
+        /\\\\d/,
+        " ",
+        /\\\\d/,
+        /\\\\d/,
+        ":",
+        /\\\\d/,
+        /\\\\d/,
+        " ",
+        /a\\|p/i,
+        "M",
+      ]
+    }
+    onChange={[Function]}
+    value={1990-12-17T08:24:00.000Z}
+  />
+</MuiPickersUtilsProvider>
+`;
+
+exports[`ConfigField comp NUMBER field renders correctly 1`] = `
+<TextField
+  className="ConfigFieldComp-numberField-2"
+  error={false}
+  id="config_field_id"
+  label="label"
+  margin="dense"
+  onChange={[Function]}
+  required={false}
+  select={false}
+  type="number"
+  value={1}
+  variant="standard"
+/>
+`;
+
+exports[`ConfigField comp STRING field renders correctly 1`] = `
+<TextField
+  id="config_field_id"
+  label="label"
+  margin="dense"
+  onChange={[Function]}
+  required={false}
+  select={false}
+  value="string"
+  variant="standard"
+/>
+`;
+
+exports[`ConfigField comp SUBHEADING field renders correctly 1`] = `
+<WithStyles(Typography)
+  className="ConfigFieldComp-subheadingField-1"
+  gutterBottom={true}
+  variant="subtitle1"
+>
+  label
+</WithStyles(Typography)>
+`;
+
+exports[`ConfigField comp TIME field renders correctly 1`] = `
+<MuiPickersUtilsProvider
+  utils={[Function]}
+>
+  <ForwardRef
+    format="hh:mm:ss A"
+    label="label"
+    margin="dense"
+    onChange={[Function]}
+    seconds={true}
+    value={1990-12-17T08:24:00.000Z}
+  />
+</MuiPickersUtilsProvider>
+`;
+
+exports[`ConfigField comp TITLE field renders correctly 1`] = `
+<WithStyles(Typography)
+  gutterBottom={true}
+  variant="h5"
+>
+  label
+</WithStyles(Typography)>
+`;

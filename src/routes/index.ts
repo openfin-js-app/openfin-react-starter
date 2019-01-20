@@ -6,7 +6,7 @@ import LaunchBar from '../layouts/LaunchBar/LaunchBar';
 
 export * from './Base';
 
-const ENABLE_LOADING_VIEW = process.env['REACT_APP_ENABLE_LOADING_VIEW'].toLowerCase() === 'true';
+const ENABLE_LOADING_VIEW = process.env.REACT_APP_ENABLE_LOADING_VIEW.toLowerCase() === 'true';
 
 const indexRoutes:RouteItem[] = [
     {
@@ -27,7 +27,7 @@ const indexRoutes:RouteItem[] = [
     },
     {
         redirect: true, path:'/',
-        to: ENABLE_LOADING_VIEW?"/loading":process.env['REACT_APP_DEFAULT_VIEW_URL'],
+        to: ENABLE_LOADING_VIEW?"/loading":process.env.REACT_APP_DEFAULT_VIEW_URL,
         navbarName:"Redirect"
     }
 ];

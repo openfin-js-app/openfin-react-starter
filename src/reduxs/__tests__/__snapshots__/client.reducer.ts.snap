@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Client reducer With parent state System.actions.GET_MACHINE_ID_RES reduced correctly 1`] = `
+Object {
+  "count": 1,
+}
+`;
+
+exports[`Client reducer Without parent state System.actions.GET_MACHINE_ID_RES reduced correctly 1`] = `
+Object {
+  "count": 2,
+}
+`;

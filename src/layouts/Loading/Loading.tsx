@@ -1,14 +1,13 @@
 import * as React from 'react';
 import Particles from 'react-particles-js';
 import { connect } from 'react-redux';
-import * as cx from 'classnames';
 
-import {withStyles, StyleRules} from '@material-ui/core/styles';
+import { withStyles, WithStyles } from '@material-ui/core/styles';
 
 import LinearProgress from '@material-ui/core/LinearProgress';
 
-const appLogo = require('../../assets/svg/app.svg') as string;
-const companyLogo = require('../../assets/svg/company.svg') as string;
+import appLogo from'../../assets/svg/app.svg';
+import companyLogo from'../../assets/svg/company.svg';
 
 class LoadingBarComponent extends React.Component<any,any>{
 
@@ -99,9 +98,13 @@ const style:any={
     },
 };
 
-const LoadingBar = withStyles(style)(LoadingBarComponent);
+export const LoadingBar = withStyles(style)(LoadingBarComponent);
 
-class LoadingComponent extends React.Component<any,any>{
+interface IProps extends WithStyles<typeof style> {
+    loading:boolean,
+}
+
+class LoadingComponent extends React.Component<IProps,{}>{
     render(){
         const {classes} = this.props;
 
@@ -109,7 +112,7 @@ class LoadingComponent extends React.Component<any,any>{
             <div className={classes.container}>
                 <img src={appLogo} className={classes.appLogoImg} />
                 <div className={classes.appName}>Openfin react starter</div>
-                <div className={classes.versionStr}>{process.env['REACT_APP_VERSION']}</div>
+                <div className={classes.versionStr}>{process.env.REACT_APP_VERSION}</div>
                 <LoadingBar/>
                 <img src={companyLogo} className={classes.companyLogImg} />
                 <Particles

@@ -1,26 +1,25 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import * as cx from 'classnames';
+import cx from 'classnames';
 
 import Snackbar from '@material-ui/core/Snackbar';
-import IconButton from '@material-ui/core/IconButton';
 
-import CloseIcon from '@material-ui/icons/Close';
+import { WithStyles, withStyles } from '@material-ui/core/styles';
 
-import { withStyles } from '@material-ui/core/styles';
-
-import { Window } from '@albertli/redux-openfin';
+import { Window } from '@albertli90/redux-openfin';
 
 import {
+    // acitons
     applicationDrawerToggle, applicationToogleWindowState,
     applicationSetSnackbarStatus, applicationProcessSnackbarQueue,
     applicationCloseSnackbar, applicationLaunchBarToggle,
-} from '../../redux';
+    // types
+    IRootState,ISnackBarMsg,
+} from '../../reduxs';
 
-import { RouteItem, RouteCompItem, RouteRedirectItem } from '../../routes';
 import dashboardRoutes from '../../routes/Dashboard';
-import { Sidebar, Header, SnackbarContent } from '../../components';
+import { Sidebar, Header, SnackbarContent, OfflineOverlay } from '../../components';
 
 import { dashboardLayoutStyle as style } from '../../assets/jss/openfin-starter';
 
@@ -35,17 +34,36 @@ const switchRoutes = (
     </Switch>
 );
 
-class DashbardLayout extends React.Component<any,any>{
+interface IProps extends WithStyles<typeof style>{
+    offline:boolean,
+    drawerOpen:boolean,
+    snackBarOpen:boolean,
+    snackBarMsgInfo:Partial<ISnackBarMsg>,
+    windowsState:string,
+    actions:{
+        handleDrawerToggle: ()=> void,
+        handleSnackbarClose: (event:any,reason:string)=> void,
+        handleSnackbarCloseBtnClick: ()=> void,
+        handleSnackbarExited: ()=> void,
+        handleSwitchToLaunchBar: ()=> void,
+        handleMinimize: ()=> void,
+        handleMaximize: ()=> void,
+        handleClose: ()=> void,
+        handleDirectClose: ()=> void,
+    }
+}
+
+class DashbardLayout extends React.Component<IProps,{}>{
     render(){
 
         const {
             classes,
-            drawerOpen,
+            offline,drawerOpen,
             snackBarOpen, snackBarMsgInfo, windowsState,
             actions:{
                 handleDrawerToggle,
                 handleSnackbarClose, handleSnackbarCloseBtnClick, handleSnackbarExited,
-                handleSwitchToLaunchBar, handleMinimize, handleMaximize, handleClose,
+                handleSwitchToLaunchBar, handleMinimize, handleMaximize, handleClose, handleDirectClose,
             },
             ...rest
         } = this.props;
@@ -57,19 +75,19 @@ class DashbardLayout extends React.Component<any,any>{
                 handleDrawerToggle={handleDrawerToggle}
                 open={drawerOpen}
                 color={'primary'}
+                docked={false}
                 onSwitchToLaunchBar={handleSwitchToLaunchBar}
                 onMinimize={handleMinimize}
                 onMaximize={handleMaximize}
                 onClose = {handleClose}
                 {...rest}
             />
-            <div className={cx(classes.wrapper, classes.wrapperPrimary)}>
+            <div className={cx(classes.wrapper, 'primary-top-to-bottom')}>
                 <Sidebar
                     routes={dashboardRoutes}
                     open={drawerOpen}
                     color={"primary"}
                     image={'/img/sidebar-1.jpg'}
-                    handleDrawerToggle={handleDrawerToggle}
                     {...rest}
                 />
                 <div className={cx(
@@ -104,12 +122,20 @@ class DashbardLayout extends React.Component<any,any>{
                     message={snackBarMsgInfo.message}
                 />
             </Snackbar>
+            {
+                offline?
+                    <OfflineOverlay
+                        onClose={handleDirectClose}
+                    />
+                    :null
+            }
         </React.Fragment>);
     }
 }
 
 export default connect(
-    (state:any)=>({
+    (state:IRootState)=>({
+        offline:state.application.offline,
         drawerOpen:state.application.drawerOpen,
         snackBarOpen:state.application.snackBarOpen,
         snackBarMsgInfo:state.application.snackBarMsgInfo,
@@ -122,10 +148,11 @@ export default connect(
             handleSnackbarCloseBtnClick: () => {dispatch(applicationSetSnackbarStatus({open:false}))},
             handleSnackbarExited: () => {dispatch(applicationProcessSnackbarQueue())},
             // openfin
-            handleSwitchToLaunchBar:()=>{dispatch(applicationLaunchBarToggle({}))},
+            handleSwitchToLaunchBar:()=>{dispatch(applicationLaunchBarToggle())},
             handleMinimize: ()=>{dispatch(Window.actions.minimize({}))},
             handleMaximize: ()=>{dispatch(applicationToogleWindowState())},
             handleClose:()=>{dispatch(Window.actions.close({force:false}))},
+            handleDirectClose:()=>{dispatch(Window.actions.close({force:true}))},
         }
     })
 )(withStyles(style)(DashbardLayout));

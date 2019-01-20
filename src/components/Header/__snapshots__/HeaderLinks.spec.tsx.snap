@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeaderLinks comp renders correctly by default 1`] = `
+<Fragment>
+  <WithStyles(Fab)
+    aria-label="Switch to launch bar"
+    className="HeaderLinksComp-menuBtn-1 HeaderLinksComp-info-2"
+    color="inherit"
+    onClick={[MockFunction]}
+  >
+    <pure(OpenInNewIcon) />
+  </WithStyles(Fab)>
+  <WithStyles(Fab)
+    aria-label="Minimize"
+    className="HeaderLinksComp-menuBtn-1 HeaderLinksComp-success-3"
+    color="inherit"
+    onClick={[MockFunction]}
+  >
+    <pure(RemoveIcon) />
+  </WithStyles(Fab)>
+  <WithStyles(Fab)
+    aria-label="Maximize"
+    className="HeaderLinksComp-menuBtn-1 HeaderLinksComp-warning-4"
+    color="inherit"
+    onClick={[MockFunction]}
+  >
+    <pure(CropDinIcon) />
+  </WithStyles(Fab)>
+  <WithStyles(Fab)
+    aria-label="Close"
+    className="HeaderLinksComp-menuBtn-1 HeaderLinksComp-danger-6"
+    color="inherit"
+    onClick={[MockFunction]}
+  >
+    <pure(ClearIcon) />
+  </WithStyles(Fab)>
+</Fragment>
+`;

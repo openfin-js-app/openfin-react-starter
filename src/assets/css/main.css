@@ -1,7 +1,157 @@
+:root {
+    --primary-color: #23a4fb;
+    --warning-color: #ff9800;
+    --danger-color: #f44336;
+    --success-color: #4caf50;
+    --info-color: #00acc1;
+    --rose-color: #e91e63;
+    --grey-color: #999999;
+}
+
 html,body {
     height: 100%;
+    color:white;
+    background-color: #424242!important;
     margin: 0;
     padding: 0;
     position: relative;
     overflow-x: hidden;
+}
+
+.dark-thumb-vertical, .dark-thumb-horizontal{
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 3px;
+}
+
+.primary-top-to-bottom {
+    border-top: 4px solid var(--primary-color);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(var(--primary-color)), to(transparent));
+    background-image: -webkit-linear-gradient(var(--primary-color), transparent);
+    background-image:
+            -moz-linear-gradient(var(--primary-color), transparent),
+            -moz-linear-gradient(var(--primary-color), transparent);
+    background-image:
+            -o-linear-gradient(var(--primary-color), transparent),
+            -o-linear-gradient(var(--primary-color), transparent);
+    background-image:
+            linear-gradient(var(--primary-color), transparent),
+            linear-gradient(var(--primary-color), transparent);
+    -moz-background-size: 4px 100%;
+    background-size: 4px 100%;
+    background-position: 0 0, 100% 0;
+    background-repeat: no-repeat;
+}
+
+.warning-top-to-bottom {
+    border-top: 4px solid var(--warning-color);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(var(--warning-color)), to(transparent));
+    background-image: -webkit-linear-gradient(var(--warning-color), transparent);
+    background-image:
+            -moz-linear-gradient(var(--warning-color), transparent),
+            -moz-linear-gradient(var(--warning-color), transparent);
+    background-image:
+            -o-linear-gradient(var(--warning-color), transparent),
+            -o-linear-gradient(var(--warning-color), transparent);
+    background-image:
+            linear-gradient(var(--warning-color), transparent),
+            linear-gradient(var(--warning-color), transparent);
+    -moz-background-size: 4px 100%;
+    background-size: 4px 100%;
+    background-position: 0 0, 100% 0;
+    background-repeat: no-repeat;
+}
+
+.danger-top-to-bottom {
+    border-top: 4px solid var(--danger-color);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(var(--danger-color)), to(transparent));
+    background-image: -webkit-linear-gradient(var(--danger-color), transparent);
+    background-image:
+            -moz-linear-gradient(var(--danger-color), transparent),
+            -moz-linear-gradient(var(--danger-color), transparent);
+    background-image:
+            -o-linear-gradient(var(--danger-color), transparent),
+            -o-linear-gradient(var(--danger-color), transparent);
+    background-image:
+            linear-gradient(var(--danger-color), transparent),
+            linear-gradient(var(--danger-color), transparent);
+    -moz-background-size: 4px 100%;
+    background-size: 4px 100%;
+    background-position: 0 0, 100% 0;
+    background-repeat: no-repeat;
+}
+
+.success-top-to-bottom {
+    border-top: 4px solid var(--success-color);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(var(--success-color)), to(transparent));
+    background-image: -webkit-linear-gradient(var(--success-color), transparent);
+    background-image:
+            -moz-linear-gradient(var(--success-color), transparent),
+            -moz-linear-gradient(var(--success-color), transparent);
+    background-image:
+            -o-linear-gradient(var(--success-color), transparent),
+            -o-linear-gradient(var(--success-color), transparent);
+    background-image:
+            linear-gradient(var(--success-color), transparent),
+            linear-gradient(var(--success-color), transparent);
+    -moz-background-size: 4px 100%;
+    background-size: 4px 100%;
+    background-position: 0 0, 100% 0;
+    background-repeat: no-repeat;
+}
+
+.info-top-to-bottom {
+    border-top: 4px solid var(--info-color);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(var(--info-color)), to(transparent));
+    background-image: -webkit-linear-gradient(var(--info-color), transparent);
+    background-image:
+            -moz-linear-gradient(var(--info-color), transparent),
+            -moz-linear-gradient(var(--info-color), transparent);
+    background-image:
+            -o-linear-gradient(var(--info-color), transparent),
+            -o-linear-gradient(var(--info-color), transparent);
+    background-image:
+            linear-gradient(var(--info-color), transparent),
+            linear-gradient(var(--info-color), transparent);
+    -moz-background-size: 4px 100%;
+    background-size: 4px 100%;
+    background-position: 0 0, 100% 0;
+    background-repeat: no-repeat;
+}
+
+.rose-top-to-bottom {
+    border-top: 4px solid var(--rose-color);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(var(--rose-color)), to(transparent));
+    background-image: -webkit-linear-gradient(var(--rose-color), transparent);
+    background-image:
+            -moz-linear-gradient(var(--rose-color), transparent),
+            -moz-linear-gradient(var(--rose-color), transparent);
+    background-image:
+            -o-linear-gradient(var(--rose-color), transparent),
+            -o-linear-gradient(var(--rose-color), transparent);
+    background-image:
+            linear-gradient(var(--rose-color), transparent),
+            linear-gradient(var(--rose-color), transparent);
+    -moz-background-size: 4px 100%;
+    background-size: 4px 100%;
+    background-position: 0 0, 100% 0;
+    background-repeat: no-repeat;
+}
+
+.grey-top-to-bottom {
+    border-top: 4px solid var(--grey-color);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(var(--grey-color)), to(transparent));
+    background-image: -webkit-linear-gradient(var(--grey-color), transparent);
+    background-image:
+            -moz-linear-gradient(var(--grey-color), transparent),
+            -moz-linear-gradient(var(--grey-color), transparent);
+    background-image:
+            -o-linear-gradient(var(--grey-color), transparent),
+            -o-linear-gradient(var(--grey-color), transparent);
+    background-image:
+            linear-gradient(var(--grey-color), transparent),
+            linear-gradient(var(--grey-color), transparent);
+    -moz-background-size: 4px 100%;
+    background-size: 4px 100%;
+    background-position: 0 0, 100% 0;
+    background-repeat: no-repeat;
 }
