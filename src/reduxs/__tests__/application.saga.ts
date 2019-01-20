@@ -273,6 +273,36 @@ describe('Application saga',()=>{
 
     })
 
+    describe('handleApplicationNotificationLoading saga',()=>{
+
+        it('basically works by default',()=>{
+            testSaga(handleApplicationNotificationLoading)
+                .next()
+                .call(findOneFieldVal,'application','language')
+                .next(null)
+                .all([
+                    call(Window.asyncs.getBounds,Window.actions.getBounds({})),
+                    put.resolve(configLoadFromDexie()),
+                ])
+                .next()
+                .isDone();
+        })
+
+        it('basically works with preset',()=>{
+            testSaga(handleApplicationNotificationLoading)
+                .next()
+                .call(findOneFieldVal,'application','language')
+                .next('en-US')
+                .all([
+                    call(Window.asyncs.getBounds,Window.actions.getBounds({})),
+                    put.resolve(configLoadFromDexie()),
+                ])
+                .next()
+                .isDone();
+        })
+
+    })
+
     describe('handleApplicationExit saga', ()=>{
         it('basically works',()=>{
             testSaga(handleApplicationExit)
@@ -570,6 +600,33 @@ describe('Application saga',()=>{
         });
 
     });
+
+    describe('handleApplicationLaunchBarClose saga', ()=>{
+
+        it('basically works',()=>{
+
+            const close = jest.fn();
+
+            testSaga(handleApplicationLaunchBarClose)
+                .next()
+                .call(Window.asyncs.wrap,Window.actions.wrap({
+                    appUuid: process.env.REACT_APP_FIN_UUID,
+                    windowName: process.env.REACT_APP_FIN_UUID,
+                }))
+                .next({
+                    payload:{
+                        window:{
+                            close
+                        }
+                    }
+                })
+                .isDone();
+
+            expect(close).toHaveBeenCalled();
+
+        })
+
+    })
 
     describe('handleApplicationLaunchNewWindow saga', ()=>{
 
