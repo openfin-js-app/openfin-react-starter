@@ -34,7 +34,7 @@
     "@babel/preset-typescript": "^7.1.0",
     "@babel/runtime": "7.1.2",
     "@date-io/moment": "^1.0.1",
-    "@material-ui/core": "^3.8.3",
+    "@material-ui/core": "^3.9.0",
     "@material-ui/icons": "^3.0.2",
     "@svgr/webpack": "2.4.1",
     "@types/classnames": "^2.2.6",

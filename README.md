@@ -5,7 +5,7 @@ Openfin react starer in ts
 
 * Based on create-react-app structure
 * Integrate Jest and Enzyme test framework
-* Integrate Material-UI@3.8.3
+* Integrate Material-UI@3.9.0
 * Support basic frameless window features: move, minimize, maximize, close and resize
 * Support general sidebar
 * Support general primary/success/error/info/warning snackbar
