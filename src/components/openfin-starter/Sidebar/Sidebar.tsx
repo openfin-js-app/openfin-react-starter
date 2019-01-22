@@ -13,9 +13,9 @@ import ListItemText from "@material-ui/core/ListItemText";
 
 import { withNamespaces, WithNamespaces } from 'react-i18next';
 
-import { sidebarCompStyle as style } from '../../assets/jss/openfin-starter'
+import { sidebarCompStyle as style } from '../../../assets/jss/openfin-starter'
 
-import {RouteItem, IRouteCompItem} from '../../routes';
+import {RouteItem, IRouteCompItem} from '../../../routes';
 
 interface IProps extends WithStyles<typeof style>, WithNamespaces{
     open:boolean,

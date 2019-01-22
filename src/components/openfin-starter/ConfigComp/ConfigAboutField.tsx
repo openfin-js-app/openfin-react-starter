@@ -6,9 +6,9 @@ import Typography from '@material-ui/core/Typography';
 
 import { withNamespaces, WithNamespaces } from 'react-i18next';
 
-import { configAboutFieldStyle as style } from '../../assets/jss/openfin-starter';
-import appLogo from '../../assets/svg/app.svg';
-import companyLogo from '../../assets/svg/company.svg';
+import { configAboutFieldStyle as style } from '../../../assets/jss/openfin-starter';
+import appLogo from '../../../assets/svg/app.svg';
+import companyLogo from '../../../assets/svg/company.svg';
 
 interface IProps extends WithStyles<any>, WithNamespaces{
 

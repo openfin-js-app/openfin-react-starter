@@ -10,13 +10,13 @@ import DateTimePicker from 'material-ui-pickers/DateTimePicker';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 
-import { FieldType } from '../../reduxs';
+import { FieldType } from '../../../reduxs';
 
 import { WithStyles, withStyles } from '@material-ui/core/styles';
 
 import { withNamespaces, WithNamespaces } from 'react-i18next';
 
-import { configFieldCompStyle as style } from '../../assets/jss/openfin-starter';
+import { configFieldCompStyle as style } from '../../../assets/jss/openfin-starter';
 
 import NumberFormat from 'react-number-format';
 

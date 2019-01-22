@@ -12,7 +12,7 @@ import Clear from '@material-ui/icons/Clear';
 import AspectRatio from '@material-ui/icons/AspectRatio';
 import OpenInNew from '@material-ui/icons/OpenInNew';
 
-import { headerLinksCompStyle as style } from '../../assets/jss/openfin-starter'
+import { headerLinksCompStyle as style } from '../../../assets/jss/openfin-starter'
 
 interface IProps extends WithStyles<typeof style> {
     windowsState:string,

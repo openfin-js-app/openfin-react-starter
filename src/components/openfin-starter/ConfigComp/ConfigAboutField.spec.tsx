@@ -2,7 +2,7 @@ import * as React from 'react';
 import toJson from 'enzyme-to-json';
 import { createShallow, createMount } from '@material-ui/core/test-utils';
 
-import '../../i18n';
+import '../../../i18n';
 
 import Button from '@material-ui/core/Button';
 

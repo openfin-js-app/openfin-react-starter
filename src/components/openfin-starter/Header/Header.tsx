@@ -16,10 +16,10 @@ import HeaderLinks from './HeaderLinks';
 
 import {MouseEventHandler} from "react";
 
-import { headerCompStyle as style } from '../../assets/jss/openfin-starter';
-import {RouteItem} from '../../routes';
+import { headerCompStyle as style } from '../../../assets/jss/openfin-starter';
+import {RouteItem} from '../../../routes';
 
-import appLogo from'../../assets/svg/app.svg';
+import appLogo from '../../../assets/svg/app.svg';
 
 interface IProps extends WithStyles<any>, WithNamespaces {
     routes:RouteItem[],

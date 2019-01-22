@@ -15,7 +15,7 @@ import WarningIcon from '@material-ui/icons/Warning';
 import FaceIcon from '@material-ui/icons/Face'
 
 import { WithStyles, withStyles} from '@material-ui/core/styles';
-import { snackbarContentCompStyle as style } from '../../assets/jss/openfin-starter';
+import { snackbarContentCompStyle as style } from '../../../assets/jss/openfin-starter';
 
 const variantIcon ={
     primary: DesktopMacIcon,
