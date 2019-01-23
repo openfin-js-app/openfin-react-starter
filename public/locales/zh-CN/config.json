@@ -1,0 +1,59 @@
+{
+  "common": {
+    "globalFilterPlaceholder": "输入以过滤配置项",
+    "light": "浅色主题",
+    "dark": "深色主题",
+    "pixel": "像素"
+  },
+  "application": {
+    "label": "桌面应用",
+    "theme": {
+      "label": "深色/浅色 主题"
+    },
+    "language": {
+      "label": "语言"
+    },
+    "newWinPos": {
+      "label": "新窗口位置",
+      "newWinTop": "新窗口上坐标",
+      "newWinLeft": "新窗口左坐标",
+      "newWinWidth": "新窗口宽度",
+      "newWinHeight": "新窗口高度",
+      "newWindDeltaLeft": "新窗口左右位移",
+      "newWindDeltaHeight": "新窗口高度位移"
+    }
+  },
+  "about": {
+    "label": "关于"
+  },
+  "sample": {
+    "label": "样例设置",
+    "vals": {
+      "label": "样例项",
+      "string": {
+        "label": "字符串",
+        "field": "字符串 value"
+      },
+      "currency": {
+        "label": "金额",
+        "field": "金额值"
+      },
+      "date": {
+        "label": "日期",
+        "field": "日期值"
+      },
+      "time": {
+        "label": "时间",
+        "field": "时间值"
+      },
+      "dateTime": {
+        "label": "日期时间",
+        "field": "日期时间值"
+      },
+      "customField": {
+        "label": "自定义项",
+        "field": "自定义项值"
+      }
+    }
+  }
+}

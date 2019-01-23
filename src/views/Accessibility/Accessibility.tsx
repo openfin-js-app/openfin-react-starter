@@ -8,6 +8,8 @@ import Typography from '@material-ui/core/Typography';
 
 import { WithStyles, withStyles, createStyles } from '@material-ui/core/styles';
 
+import { Notification } from '@albertli90/redux-openfin';
+
 import { applicationNewSnackbar, applicationLaunchNewWindow } from '../../reduxs';
 
 import { buttonStyle } from '../../assets/jss/openfin-starter';
@@ -30,6 +32,7 @@ interface IProps extends WithStyles<typeof style>{
         handleOpenPrimarySnackBar:MouseEventHandler<any>,
         handleOpenSecondarySnackBar:MouseEventHandler<any>,
         handleOpenSnackBar:(name:string)=>MouseEventHandler<any>,
+        handleCreateNotification:MouseEventHandler<any>,
     },
 }
 
@@ -41,6 +44,7 @@ class AccessibilityView extends React.Component<IProps, {}>{
             actions:{
                 onOpenNewSelf,onOpenGoogle,
                 handleOpenSnackBar,
+                handleCreateNotification,
             }
         } = this.props;
 
@@ -77,6 +81,14 @@ class AccessibilityView extends React.Component<IProps, {}>{
                 <Button size={"small"} variant={"contained"} className={classes.rose}
                         onClick={handleOpenSnackBar('rose')}
                 >Rose</Button>
+
+                <hr/>
+
+                <Button variant="outlined" color="primary"
+                        onClick = {handleCreateNotification}
+                >
+                    Notification
+                </Button>
 
             </React.Fragment>
         )
@@ -121,6 +133,16 @@ export default connect(
                     variant:name,
                 }))
             },
+            handleCreateNotification:(event:MouseEvent<any>)=>{
+                dispatch(Notification.actions.createNotification({
+                    ignoreMouseOver:false,
+                    url:'/notification/sample',
+                    message:'my first notification msg',
+                    timeout: 10000,
+                    opacity: 1,
+                }))
+
+            }
         }
     })
 )(withStyles(style)(AccessibilityView))

@@ -1,3 +1,8 @@
+## [0.35.20] 2019-01-23
+- Support openfin runtime v9.61.38.40
+- Support new window style
+- Support Notification windows
+
 ## [0.30.10] 2018-11-22
 - Support snap & dock
 - Support IndexDb based config

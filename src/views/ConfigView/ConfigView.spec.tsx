@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Provider } from 'react-redux';
 import { createShallow, createMount } from '@material-ui/core/test-utils';
 import configurestore from 'redux-mock-store';
 
@@ -26,7 +27,11 @@ describe('ConfigView',()=>{
     });
 
     it('render correctly',()=>{
-        const wrapper = mount(<ConfigView store={store}/>);
+        const wrapper = mount(
+            <Provider store={store}>
+                <ConfigView/>
+            </Provider>
+        );
         expect(wrapper).toBeTruthy();
     });
 

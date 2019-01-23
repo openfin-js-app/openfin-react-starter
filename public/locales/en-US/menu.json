@@ -1,0 +1,23 @@
+{
+  "appName": "APP NAME",
+  "accessibility": {
+    "sidebar":"Accessibility",
+    "navbar":"View Accessibility"
+  },
+  "viewOne": {
+    "sidebar":"ViewOne",
+    "navbar":"View One"
+  },
+  "viewTwo": {
+    "sidebar":"ViewTwo",
+    "navbar":"View Two"
+  },
+  "configuration": {
+    "sidebar":"Configuration",
+    "navbar":"View Conf"
+  },
+  "report": {
+    "sidebar":"Sys Report",
+    "navbar":"View SysReport"
+  }
+}

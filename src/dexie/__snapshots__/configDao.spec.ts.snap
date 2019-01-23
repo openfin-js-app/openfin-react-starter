@@ -4,6 +4,10 @@ exports[`ConfigDao findAll async 1`] = `Array []`;
 
 exports[`ConfigDao findAllOfCurrentVersion async 1`] = `Array []`;
 
+exports[`ConfigDao findOneField async 1`] = `undefined`;
+
+exports[`ConfigDao findOneFieldVal with null async 1`] = `null`;
+
 exports[`ConfigDao saveOrUpdateOneByTabNameFieldName async 1`] = `
 Object {
   "fieldName": "fieldName",
@@ -72,6 +76,8 @@ Array [
   },
 ]
 `;
+
+exports[`ConfigDao with preset findOneFieldVal null async 1`] = `"value2"`;
 
 exports[`ConfigDao with preset saveOrUpdateOneByTabNameFieldName async update 1`] = `
 Object {

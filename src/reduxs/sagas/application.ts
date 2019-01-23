@@ -1,14 +1,20 @@
+import {Action} from "redux-actions";
 import { buffers, delay } from 'redux-saga';
 import { all, call, put, take, takeLatest, takeEvery, fork, select, actionChannel } from 'redux-saga/effects';
 import { Docking ,System, Event, Window } from '@albertli90/redux-openfin';
+import { GetGroupResPayload, NewWindowResPayload, WrapResPayload } from "@albertli90/redux-openfin/window";
 
 import hist from '../../utils/history';
+import i18n from '../../i18n';
+import { findOneFieldVal } from '../../dexie/configDao';
 
 import { launchBarItems } from '../../layouts/LaunchBar/LaunchBarData';
 
 import {
+    applicationSetLoadingMsg,
     APPLICATION_STARTED,
     APPLICATION_CHILD_STARTED,
+    APPLICATION_NOTIFICATION_STARTED,
     APPLICATION_NEW_SNACKBAR,
     APPLICATION_CLOSE_SNACKBAR,
     applicationUpdateDockStatus,
@@ -19,12 +25,16 @@ import {
     applicationProcessSnackbarQueue,
     APPLICATION_LAUNCH_BAR_TOGGLE,
     APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE,
+    APPLICATION_LAUNCH_BAR_CLOSE,
     APPLICATION_LAUNCH_NEW_WINDOW,
     configLoadFromDexie,
+    configUpdateNewWindowPosition,
 } from '..';
 
-import { configUpdateNewWindowPosition } from '..';
-import { GetGroupResPayload} from "@albertli90/redux-openfin/window/types";
+export const LOADING_VIEW_UUID='openfin-react-starter-loading-view';
+let loadingWindow = null;
+export const LAUNCHBAR_VIEW_UUID='openfin-react-starter-launchbar-view';
+let launchbarWindow = null;
 
 const ENABLE_LOADING_VIEW=process.env.REACT_APP_ENABLE_LOADING_VIEW.toLowerCase() === 'true';
 
@@ -33,13 +43,6 @@ const LOADING_BANNER_HEIGHT = parseInt(process.env.REACT_APP_LOADING_BANNER_HEIG
 const DEFAULT_WIDTH = parseInt(process.env.REACT_APP_DEFAULT_APP_WIDTH, 10);
 const DEFAULT_HEIGHT = parseInt(process.env.REACT_APP_DEFAULT_APP_HEIGHT, 10);
 
-const previousBaseWindow={
-    url:null,
-    top:null,
-    left:null,
-    width:null,
-    height:null,
-};
 
 export const getLaunchBarCollapse = state => state.application.launchBarCollapse;
 export const getWindowsState = state => state.application.windowsState;
@@ -55,80 +58,58 @@ export function* handleRedirectToLoadingView(monitorRect) {
     const _LOADING_BANNER_WIDTH     = Math.min( LOADING_BANNER_WIDTH, WINDOW_WIDTH * 0.6387 );
     const _LOADING_BANNER_HEIGHT    = Math.min( LOADING_BANNER_HEIGHT, WINDOW_HEIGHT * 0.324074 );
 
-    yield call(Window.asyncs.updateOptions,Window.actions.updateOptions({
-        options:{resizable:false}
+    const newWindowResAction:Action<NewWindowResPayload> = yield call(Window.asyncs.newWindow,Window.actions.newWindow({
+        name:LOADING_VIEW_UUID,
+        url:'/loading',
+        frame:false,
+        resizable:false,
+        state:'normal',
+        autoShow:true,
+        defaultCentered:true,
+        defaultLeft:(monitorRect.right - monitorRect.left)/2 - _LOADING_BANNER_WIDTH/2,
+        defaultTop:(monitorRect.bottom - monitorRect.top)/2 - _LOADING_BANNER_HEIGHT/2,
+        defaultWidth:_LOADING_BANNER_WIDTH,
+        defaultHeight: _LOADING_BANNER_HEIGHT,
     }));
+    loadingWindow = newWindowResAction.payload.window;
 
-    yield call(Window.asyncs.setBounds,Window.actions.setBounds({
-        left:(monitorRect.right - monitorRect.left)/2 - _LOADING_BANNER_WIDTH/2,
-        top:(monitorRect.bottom - monitorRect.top)/2 - _LOADING_BANNER_HEIGHT/2,
-        width:_LOADING_BANNER_WIDTH,
-        height: _LOADING_BANNER_HEIGHT,
-    }));
+    loadingWindow.setBounds(
+        (monitorRect.right - monitorRect.left)/2 - _LOADING_BANNER_WIDTH/2,
+        (monitorRect.bottom - monitorRect.top)/2 - _LOADING_BANNER_HEIGHT/2,
+        _LOADING_BANNER_WIDTH,
+         _LOADING_BANNER_HEIGHT
+    );
+    loadingWindow.bringToFront();
+
 }
 
 export function* handleRedirectFromLoadingView(monitorRect) {
-
-    const WINDOW_WIDTH      = monitorRect.right - monitorRect.left;
-    const WINDOW_HEIGHT     = monitorRect.bottom - monitorRect.top;
-    const _DEFAULT_WIDTH    = Math.min( DEFAULT_WIDTH, WINDOW_WIDTH * 0.80 );
-    const _DEFAULT_HEIGHT   = Math.min( DEFAULT_HEIGHT, WINDOW_HEIGHT * 0.648148 );
 
     // after the sagas loaded, redirect to default page/view
     if (process.env.REACT_APP_DEFAULT_VIEW_URL && process.env.REACT_APP_DEFAULT_VIEW_URL.length > 0){
         if (process.env.NODE_ENV !== 'test'){
             hist.push(process.env.REACT_APP_DEFAULT_VIEW_URL);
         }
-        yield call(Window.asyncs.updateOptions,Window.actions.updateOptions({
-            options:{
-                resizable:true,
-            }
-        }));
-
-        yield call(Window.asyncs.setBounds,Window.actions.setBounds({
-            left:(monitorRect.right - monitorRect.left)/2 - _DEFAULT_WIDTH/2,
-            top:(monitorRect.bottom - monitorRect.top)/2 - _DEFAULT_HEIGHT/2,
-            width:_DEFAULT_WIDTH,
-            height: _DEFAULT_HEIGHT,
-        }));
-
     }else{
-        // switch to launchBar
-        const launchBarCollapse = yield select(getLaunchBarCollapse);
-
-        yield call(Window.asyncs.updateOptions,Window.actions.updateOptions({
-            options:{resizable:false}
-        }));
-
-        previousBaseWindow.url='/dashboard/view-one';
-        previousBaseWindow.top=(monitorRect.bottom - monitorRect.top)/2 - _DEFAULT_HEIGHT/2;
-        previousBaseWindow.left=(monitorRect.right - monitorRect.left)/2 - _DEFAULT_WIDTH/2;
-        previousBaseWindow.width=_DEFAULT_WIDTH;
-        previousBaseWindow.height=_DEFAULT_HEIGHT;
-
-        if(launchBarCollapse){
-            yield call(Window.asyncs.setBounds,Window.actions.setBounds({
-                left:(monitorRect.right - monitorRect.left)/2,
-                top:(monitorRect.bottom - monitorRect.top)/4,
-                width:88,
-                height:64,
-            }));
-        }else{
-            yield call(Window.asyncs.setBounds,Window.actions.setBounds({
-                left:(monitorRect.right - monitorRect.left)/2,
-                top:(monitorRect.bottom - monitorRect.top)/4,
-                width:launchBarItems.length<10?launchBarItems.length*64+88:664,
-                height:64,
-            }));
-        }
         if (process.env.NODE_ENV !== 'test'){
-            hist.push('/launchBar');
+            hist.push('/dashboard/view-one');
         }
-
     }
+
+    yield call(delay,200);
+
+    if (loadingWindow){
+        loadingWindow.close()
+    }
+    yield put(Window.actions.show({force:true}))
 }
 
 export function* handleApplicationLoading() {
+
+    const dbSavedLang = yield call(findOneFieldVal,'application','language');
+    if (dbSavedLang){
+        i18n.changeLanguage(dbSavedLang);
+    }
 
     const currentIsLoadingView =
         (new URL(window.location.href).pathname.indexOf('loading')>-1) ||
@@ -138,11 +119,11 @@ export function* handleApplicationLoading() {
     const monitorInfoAction = yield call(System.asyncs.getMonitorInfo,System.actions.getMonitorInfo({}));
     const monitorRect = monitorInfoAction.payload.primaryMonitor.monitorRect;
 
-    yield call(Window.asyncs.setAsForeground,Window.actions.setAsForeground({}));
-
     if (ENABLE_LOADING_VIEW && currentIsLoadingView){
         yield* handleRedirectToLoadingView(monitorRect) as any;
     }
+
+    yield put.resolve(applicationSetLoadingMsg('init'));
 
     yield all([
         put.resolve(configLoadFromDexie()),
@@ -157,17 +138,42 @@ export function* handleApplicationLoading() {
         call(System.asyncs.getHostSpecs,System.actions.getHostSpecs({})),
         call(Window.asyncs.getState,Window.actions.getState({})),
         // delay for loading view render, could be removed
-        call(delay,5000),
+        call(delay,1000),
     ]);
 
+    // BEGIN OF DEMO PURPOSE CODES
+    yield put.resolve(applicationSetLoadingMsg('delay1'));
+    yield call(delay,1000),
+    yield put.resolve(applicationSetLoadingMsg('delay2'));
+    yield call(delay,1000),
+    yield put.resolve(applicationSetLoadingMsg('delay3'));
+    yield call(delay,1000),
+    yield put.resolve(applicationSetLoadingMsg('delay4'));
+    yield call(delay,800),
+    yield put.resolve(applicationSetLoadingMsg('delay5'));
+    // END OF DEMO PURPOSE CODES
+
     yield put.resolve(applicationReady());
+
+    yield put.resolve(applicationSetLoadingMsg('ready'));
 
     if (ENABLE_LOADING_VIEW && currentIsLoadingView){
         yield* handleRedirectFromLoadingView(monitorRect) as any;
     }
+
+    yield put(applicationSetLoadingMsg(''));
+
+    yield call(Window.asyncs.bringToFront,Window.actions.bringToFront({}));
 }
 
 export function* handleApplicationChildLoading() {
+
+
+    const dbSavedLang = yield call(findOneFieldVal,'application','language');
+    if (dbSavedLang){
+        i18n.changeLanguage(dbSavedLang);
+    }
+
     yield all([
         call(Window.asyncs.getBounds,Window.actions.getBounds({})),
         put.resolve(configLoadFromDexie()),
@@ -184,6 +190,18 @@ export function* handleApplicationChildLoading() {
     yield put.resolve(applicationReady());
 }
 
+export function* handleApplicationNotificationLoading() {
+    const dbSavedLang = yield call(findOneFieldVal,'application','language');
+    if (dbSavedLang){
+        i18n.changeLanguage(dbSavedLang);
+    }
+
+    yield all([
+        call(Window.asyncs.getBounds,Window.actions.getBounds({})),
+        put.resolve(configLoadFromDexie()),
+    ]);
+}
+
 export function* handleApplicationExit() {
     // -------------------------------start of app codes -----------------------------------------------
 
@@ -191,8 +209,8 @@ export function* handleApplicationExit() {
 
     // ---------------------------------end of app codes -----------------------------------------------
 
-
     yield put.resolve(Window.actions.close({force:true}));
+
 }
 
 export function* handleApplicationAddNewSnackBar() {
@@ -228,55 +246,60 @@ export function* handleApplicationLaunchBarToggle(){
     const getBoundsAction = yield call(Window.asyncs.getBounds,Window.actions.getBounds({}));
     const getBoundsActionPayload = getBoundsAction.payload;
 
-    if (window.location.href.toLowerCase().endsWith('launchbar')){
-        // switch to main panel
-        yield call(Window.asyncs.updateOptions,Window.actions.updateOptions({
-            options:{
-                resizable:true,
-            }
-        }));
-        yield call(Window.asyncs.setBounds,Window.actions.setBounds({
-            left:previousBaseWindow.left?previousBaseWindow.left:parseInt(process.env.REACT_APP_NEW_WINDOW_LEFT,10),
-            top:previousBaseWindow.top?previousBaseWindow.top:parseInt(process.env.REACT_APP_NEW_WINDOW_TOP,10),
-            width:previousBaseWindow.width?previousBaseWindow.width:parseInt(process.env.REACT_APP_NEW_WINDOW_WIDTH,10),
-            height:previousBaseWindow.height?previousBaseWindow.height:parseInt(process.env.REACT_APP_NEW_WINDOW_HEIGHT,10),
-        }));
-        if (process.env.NODE_ENV !== 'test'){
-            hist.push(previousBaseWindow.url?previousBaseWindow.url:process.env.REACT_APP_DEFAULT_DASHBOARD_VIEW_URL);
-        }
+    const mainWindowAction:Action<WrapResPayload> = yield call(Window.asyncs.wrap,Window.actions.wrap({
+        appUuid: process.env.REACT_APP_FIN_UUID,
+        windowName: process.env.REACT_APP_FIN_UUID,
+    }));
+    const mainWindow = mainWindowAction.payload.window;
+
+    const launchbarWindowAction:Action<WrapResPayload> = yield call(Window.asyncs.wrap,Window.actions.wrap({
+        appUuid: process.env.REACT_APP_FIN_UUID,
+        windowName: LAUNCHBAR_VIEW_UUID,
+    }));
+
+
+    if (launchbarWindowAction.payload.window.nativeWindow){
+        launchbarWindow = launchbarWindowAction.payload.window;
+        mainWindow.show(true);
+        launchbarWindow.close();
     }else{
-        // switch to launchBar
-        yield call(Window.asyncs.updateOptions,Window.actions.updateOptions({
-            options:{
-                resizable:false,
-            }
+        launchbarWindow = null;
+        const newWindowResAction:Action<NewWindowResPayload> = yield call(Window.asyncs.newWindow,Window.actions.newWindow({
+            name:LAUNCHBAR_VIEW_UUID,
+            url:'/launchBar',
+            frame:false,
+            resizable:false,
+            state:'normal',
+            autoShow:true,
+            defaultLeft:getBoundsActionPayload.left,
+            defaultTop:getBoundsActionPayload.top,
+            defaultWidth:launchBarItems.length<10? launchBarItems.length*64+88:664,
+            defaultHeight: 64,
+            minWidth:88,
+            minHeight:64,
         }));
-        previousBaseWindow.url = (new URL(window.location.href)).pathname;
-        previousBaseWindow.top = getBoundsActionPayload.top;
-        previousBaseWindow.left = getBoundsActionPayload.left;
-        previousBaseWindow.width = getBoundsActionPayload.width;
-        previousBaseWindow.height = getBoundsActionPayload.height;
+        launchbarWindow = newWindowResAction.payload.window;
 
         if (launchBarCollapse){
-            yield call(Window.asyncs.setBounds,Window.actions.setBounds({
-                left:getBoundsActionPayload.left,
-                top:getBoundsActionPayload.top,
-                width:88,
-                height:64,
-            }));
+            launchbarWindow.setBounds(
+                getBoundsActionPayload.left,
+                getBoundsActionPayload.top,
+                88,
+                64,
+            );
         }else{
-            yield call(Window.asyncs.setBounds,Window.actions.setBounds({
-                left:getBoundsActionPayload.left,
-                top:getBoundsActionPayload.top,
-                width:launchBarItems.length<10? launchBarItems.length*64+88:664,
-                height:64,
-            }));
-        }
-        if (process.env.NODE_ENV !== 'test'){
-            hist.push('/launchBar');
+            launchbarWindow.setBounds(
+                getBoundsActionPayload.left,
+                getBoundsActionPayload.top,
+                launchBarItems.length<10? launchBarItems.length*64+88:664,
+                64,
+            );
         }
 
+        launchbarWindow.bringToFront();
+        mainWindow.hide();
     }
+
 }
 
 export function* handleApplicationLaunchBarToggleCollapse() {
@@ -300,24 +323,58 @@ export function* handleApplicationLaunchBarToggleCollapse() {
             height:64,
         }));
     }
+}
 
+export function* handleApplicationLaunchBarClose() {
+    const mainWindowAction:Action<WrapResPayload> = yield call(Window.asyncs.wrap,Window.actions.wrap({
+        appUuid: process.env.REACT_APP_FIN_UUID,
+        windowName: process.env.REACT_APP_FIN_UUID,
+    }));
+    const mainWindow = mainWindowAction.payload.window;
+    mainWindow.close(false);
 }
 
 export function* handleApplicationLaunchNewWindow(action) {
-    const appJson = action.payload;
-    const defaultWidth = yield select(getNewWindowWidth);
-    const defaultHeight = yield select(getNewWindowHeight);
-    const defaultTop = yield select(getNewWindowTop);
-    const defaultLeft = yield select(getNewWindowLeft);
 
-    if(!appJson.defaultWidth){ appJson.defaultWidth = defaultWidth}
-    if(!appJson.defaultHeight){ appJson.defaultHeight = defaultHeight}
-    if(!appJson.defaultTop){ appJson.defaultTop = defaultTop}
-    if(!appJson.defaultLeft){ appJson.defaultLeft = defaultLeft}
+    if (window.name === process.env.REACT_APP_FIN_UUID){
 
-    yield call(Window.asyncs.newWindow,Window.actions.newWindow(appJson));
+        const appJson = action.payload;
+        const windowName = appJson.name;
 
-    yield put(configUpdateNewWindowPosition());
+        const wrapWindowAction:Action<WrapResPayload> = yield call(Window.asyncs.wrap,Window.actions.wrap({
+            appUuid: process.env.REACT_APP_FIN_UUID,
+            windowName,
+        }));
+
+        if (
+            wrapWindowAction.payload &&
+            wrapWindowAction.payload.window &&
+            wrapWindowAction.payload.window.nativeWindow
+        ){
+            // already created, not need to create anymore
+            const theWindow = wrapWindowAction.payload.window;
+            theWindow.show(true);
+            theWindow.bringToFront();
+        }else{
+            // not created, need to create one
+            const defaultWidth = yield select(getNewWindowWidth);
+            const defaultHeight = yield select(getNewWindowHeight);
+            const defaultTop = yield select(getNewWindowTop);
+            const defaultLeft = yield select(getNewWindowLeft);
+
+            if(!appJson.defaultWidth){ appJson.defaultWidth = defaultWidth}
+            if(!appJson.defaultHeight){ appJson.defaultHeight = defaultHeight}
+            if(!appJson.defaultTop){ appJson.defaultTop = defaultTop}
+            if(!appJson.defaultLeft){ appJson.defaultLeft = defaultLeft}
+
+            const newWindowResAction:Action<NewWindowResPayload> = yield call(Window.asyncs.newWindow,Window.actions.newWindow(appJson));
+            const newWindow = newWindowResAction.payload.window;
+            newWindow.bringToFront();
+
+            yield put(configUpdateNewWindowPosition());
+        }
+
+    }
 
 }
 
@@ -362,12 +419,14 @@ export function* handleGroupChanged(action){
 export default function* (){
     yield takeLatest(APPLICATION_STARTED,handleApplicationLoading);
     yield takeLatest(APPLICATION_CHILD_STARTED,handleApplicationChildLoading);
+    yield takeLatest(APPLICATION_NOTIFICATION_STARTED,handleApplicationNotificationLoading);
     yield takeLatest(Event.actionDicts.windowEventDictByName['close-requested'].type,handleApplicationExit);
     yield takeLatest(APPLICATION_TOGGLE_WINDOW_STATE,handleToggleWindowState);
     yield takeLatest(APPLICATION_NEW_SNACKBAR,handleApplicationAddNewSnackBar);
     yield takeLatest(APPLICATION_CLOSE_SNACKBAR,handleApplicationCloseSnackBar);
     yield takeLatest(APPLICATION_LAUNCH_BAR_TOGGLE,handleApplicationLaunchBarToggle);
     yield takeLatest(APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE,handleApplicationLaunchBarToggleCollapse);
+    yield takeLatest(APPLICATION_LAUNCH_BAR_CLOSE,handleApplicationLaunchBarClose);
     yield takeLatest(APPLICATION_LAUNCH_NEW_WINDOW,handleApplicationLaunchNewWindow);
     yield takeEvery(Event.actionDicts.windowEventDictByName['group-changed'].type,handleGroupChanged);
 }

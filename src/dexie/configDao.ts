@@ -15,6 +15,18 @@ export async function findAllOfCurrentVersion():Promise<IConfigDexie[]> {
         .toArray();
 }
 
+export async function findOneField(tabName:string,fieldName:string):Promise<IConfigDexie> {
+    const configs = db.table('configs');
+    return await configs.where({
+        tabName,fieldName, version:CONFIG_VERSION,
+    }).first();
+}
+
+export async function findOneFieldVal(tabName:string,fieldName:string):Promise<any> {
+    const oneItem:IConfigDexie = await findOneField(tabName,fieldName);
+    return oneItem?oneItem.value:null;
+}
+
 export async function saveOrUpdateOneByTabNameFieldName(tabName:string, fieldName:string, value:any):Promise<IConfigDexie> {
     let one:IConfigDexie = null;
     const configs = db.table('configs');

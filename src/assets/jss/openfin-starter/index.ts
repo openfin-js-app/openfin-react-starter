@@ -1,15 +1,24 @@
-// component styles
-export {default as buttonStyle} from './comp/buttonStyle';
-export {default as configFieldCompStyle} from './comp/configFieldCompStyle';
-export {default as configAboutFieldStyle} from './comp/configAboutFieldStyle';
-export {default as headerCompStyle} from './comp/headerCompStyle';
-export {default as offlineOverlayStyle} from './comp/offlineOverlayStyle';
-export {default as headerLinksCompStyle} from './comp/headerLinksCompStyle';
-export {default as sidebarCompStyle} from './comp/sidebarCompStyle';
-export {default as snackbarContentCompStyle} from './comp/snackbarContentCompStyle';
-// view styles
-export {default as reportViewStyle} from './view/reportViewStyle';
-export {default as configViewStyle} from './view/configViewStyle';
-// layout styles
-export {default as dashboardLayoutStyle } from './layout/dashboardLayoutStyle';
-export {default as launchBarLayoutStyle } from './layout/launchBarLayoutStyle';
+// BEGIN_OF_AL_CLI_COMP
+export {default as buttonStyle} from './comp/button.style';
+export {default as configFieldCompStyle} from './comp/configFieldComp.style';
+export {default as configAboutFieldStyle} from './comp/configAboutField.style';
+export {default as headerCompStyle} from './comp/headerComp.style';
+export {default as offlineOverlayStyle} from './comp/offlineOverlay.style';
+export {default as headerLinksCompStyle} from './comp/headerLinksComp.style';
+export {default as sidebarCompStyle} from './comp/sidebarComp.style';
+export {default as snackbarContentCompStyle} from './comp/snackbarContentComp.style';
+// END_OF_AL_CLI_COMP
+
+// BEGIN_OF_AL_CLI_VIEW
+export {default as reportViewStyle} from './view/reportView.style';
+export {default as configViewStyle} from './view/configView.style';
+export {default as configThemeViewStyle } from './view/configThemeView.style';
+export {default as configLangViewStyle } from './view/configLangView.style'
+export {default as sampleNotificationViewStyle } from './view/sampleNotificationView.style';
+// END_OF_AL_CLI_VIEW
+
+// BEGIN_OF_AL_CLI_LYT
+export {default as dashboardLayoutStyle } from './layout/dashboardLayout.style';
+export {default as launchBarLayoutStyle } from './layout/launchBarLayout.style';
+export {default as notificationStyle } from './layout/notification.style'
+// END_OF_AL_CLI_LYT
