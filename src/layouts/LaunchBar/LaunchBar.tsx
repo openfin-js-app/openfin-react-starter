@@ -12,6 +12,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Fab from '@material-ui/core/Fab';
 import IconButton from '@material-ui/core/IconButton';
 
+import AllOutIcon from '@material-ui/icons/AllOut';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import ClearIcon from '@material-ui/icons/Clear';
@@ -24,7 +25,7 @@ import appLogo from '../../assets/svg/app.svg';
 
 import {
     // actions
-    applicationLaunchBarToggle, applicationLaunchBarToggleCollapse, applicationLaunchNewWindow,
+    applicationLaunchBarToggle, applicationLaunchBarToggleCollapse, applicationLaunchNewWindow, applicationLaunchBarClose,
     // types
     IRootState,
 } from '../../reduxs';
@@ -32,8 +33,10 @@ import {
 import { launchBarItems } from './LaunchBarData';
 
 interface IProps extends WithStyles<typeof style>{
+    docked:boolean,
     launchBarCollapse:boolean,
     actions:{
+        handleUndock: ()=> void,
         handleLaunchBarItemBtnClick: (appJson:any)=>()=>void,
         handleSwitchToMainWindow: ()=>void,
         handleToggleCollapse: ()=>void,
@@ -46,8 +49,10 @@ class LaunchBarComp extends React.Component<IProps,{}>{
     render(){
 
         const {
-            classes, launchBarCollapse,
+            classes,
+            docked, launchBarCollapse,
             actions:{
+                handleUndock,
                 handleLaunchBarItemBtnClick,
                 handleToggleCollapse,
                 handleSwitchToMainWindow,
@@ -67,6 +72,21 @@ class LaunchBarComp extends React.Component<IProps,{}>{
                 <AppBar position={"static"}>
                     <Toolbar className={classes.toolBar}>
                         <img src={appLogo} className={classes.appLogoImg}/>
+                        {
+                            docked && handleUndock ?
+                                <Fab
+                                    className={cx(
+                                        classes.undockCtrlBtn,
+                                        classes.controlBtn,
+                                        classes.controlBtnRose
+                                    )}
+                                    color='inherit' aria-label={'undock'}
+                                    onClick={handleUndock}
+                                >
+                                    <AllOutIcon/>
+                                </Fab>
+                                :null
+                        }
                         <Scrollbars
                             className={cx(
                                 classes.buttonContainer,
@@ -140,15 +160,17 @@ class LaunchBarComp extends React.Component<IProps,{}>{
 
 export default connect(
     (state:IRootState)=>({
+        docked:state.application.docked,
         launchBarCollapse:state.application.launchBarCollapse,
     }),
     dispatch => ({
         actions:{
+            handleUndock : () => {dispatch(Window.actions.leaveGroup({}))},
             handleLaunchBarItemBtnClick:(appJson)=>()=>{dispatch(applicationLaunchNewWindow(appJson))},
             handleSwitchToMainWindow:()=>{dispatch(applicationLaunchBarToggle())},
             handleToggleCollapse:()=>{dispatch(applicationLaunchBarToggleCollapse())},
             handleMinimize:()=>{dispatch(Window.actions.minimize({}))},
-            handleClose:()=>{dispatch(Window.actions.close({force:false}))},
+            handleClose:()=>{dispatch(applicationLaunchBarClose())},
         }
     })
 )(withStyles(style)(LaunchBarComp));

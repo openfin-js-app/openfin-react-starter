@@ -4,16 +4,46 @@ exports[`Config reducer CONFIG_DO_UPDATE_ONE_FIELD reduced correctly - valid 1`]
 Object {
   "_tabs": Array [
     Object {
-      "_fieldLabels": "New Window PositionNew Window TopNew Window LeftNew Window WidthNew Window HeightNew Window Delta LeftNew Window Delta Height",
+      "_fieldLabels": "application.theme.labelThemeapplication.language.labellanguageapplication.newWinPos.labelapplication.newWinPos.newWinTopapplication.newWinPos.newWinLeftapplication.newWinPos.newWinWidthapplication.newWinPos.newWinHeightapplication.newWinPos.newWindDeltaLeftapplication.newWinPos.newWindDeltaHeight",
       "_fields": Array [
         Object {
+          "_cols": 2,
+          "_label": "application.theme.label",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <Connect(WithStyles(LoadNamespace(ConfigThemeView))) />,
+          "_defaultValue": "dark",
+          "_label": "Theme",
+          "_name": "theme",
+          "_rows": 1,
+          "_type": 1,
+        },
+        Object {
+          "_cols": 2,
+          "_label": "application.language.label",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <Connect(WithStyles(ConfigLangView)) />,
+          "_defaultValue": undefined,
+          "_label": "language",
+          "_name": "language",
+          "_rows": 1,
+          "_type": 1,
+        },
+        Object {
           "_cols": 12,
-          "_label": "New Window Position",
+          "_label": "application.newWinPos.label",
           "_type": 9,
         },
         Object {
           "_defaultValue": 10,
-          "_label": "New Window Top",
+          "_label": "application.newWinPos.newWinTop",
           "_name": "newWinTop",
           "_props": Object {
             "InputProps": Object {
@@ -28,7 +58,7 @@ Object {
         },
         Object {
           "_defaultValue": 300,
-          "_label": "New Window Left",
+          "_label": "application.newWinPos.newWinLeft",
           "_name": "newWinLeft",
           "_props": Object {
             "InputProps": Object {
@@ -43,7 +73,7 @@ Object {
         },
         Object {
           "_defaultValue": 640,
-          "_label": "New Window Width",
+          "_label": "application.newWinPos.newWinWidth",
           "_name": "newWinWidth",
           "_props": Object {
             "InputProps": Object {
@@ -58,7 +88,7 @@ Object {
         },
         Object {
           "_defaultValue": 320,
-          "_label": "New Window Height",
+          "_label": "application.newWinPos.newWinHeight",
           "_name": "newWinHeight",
           "_props": Object {
             "InputProps": Object {
@@ -73,7 +103,7 @@ Object {
         },
         Object {
           "_defaultValue": 20,
-          "_label": "New Window Delta Left",
+          "_label": "application.newWinPos.newWindDeltaLeft",
           "_name": "newWindDeltaLeft",
           "_props": Object {
             "InputProps": Object {
@@ -88,7 +118,7 @@ Object {
         },
         Object {
           "_defaultValue": 20,
-          "_label": "New Window Delta Height",
+          "_label": "application.newWinPos.newWindDeltaHeight",
           "_name": "newWindDeltaHeight",
           "_props": Object {
             "InputProps": Object {
@@ -103,114 +133,117 @@ Object {
         },
       ],
       "_icon": [Function],
-      "_label": "Application",
+      "_label": "application.label",
       "_name": "application",
       "_order": 0,
-      "_svgUrl": "controls_dark.svg",
+      "_svgUrl": "controls.svg",
+      "_svgUrl_dark": "controls_dark.svg",
     },
     Object {
       "_fieldLabels": "About openfin starter",
       "_fields": Array [
         Object {
           "_cols": 12,
-          "_custom": <WithStyles(ConfigAboutField) />,
+          "_custom": <WithStyles(LoadNamespace(ConfigAboutField)) />,
           "_label": "About openfin starter",
           "_rows": 12,
           "_type": 1,
         },
       ],
       "_icon": [Function],
-      "_label": "About",
+      "_label": "about.label",
       "_name": "about",
       "_order": 1,
-      "_svgUrl": "information-dark.svg",
+      "_svgUrl": "information.svg",
+      "_svgUrl_dark": "information-dark.svg",
     },
     Object {
-      "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
+      "_fieldLabels": "sample.vals.labelsample.vals.string.labelsample.vals.string.fieldsample.vals.currency.labelsample.vals.currency.fieldsample.vals.date.labelsample.vals.date.fieldsample.vals.time.labelsample.vals.time.fieldsample.vals.dateTime.labelsample.vals.dateTime.fieldsample.vals.customField.labelsample.vals.customField.field",
       "_fields": Array [
         Object {
           "_cols": 12,
-          "_label": "Sample value",
+          "_label": "sample.vals.label",
           "_type": 9,
         },
         Object {
           "_cols": 4,
-          "_label": "STRING",
+          "_label": "sample.vals.string.label",
           "_type": 9,
         },
         Object {
           "_cols": 8,
           "_defaultValue": "",
-          "_label": "String value",
+          "_label": "sample.vals.string.field",
           "_name": "strValue",
           "_type": 2,
         },
         Object {
           "_cols": 4,
-          "_label": "CURRENCY",
+          "_label": "sample.vals.currency.label",
           "_type": 9,
         },
         Object {
           "_cols": 8,
           "_defaultValue": 123456789,
-          "_label": "Currency value",
+          "_label": "sample.vals.currency.field",
           "_name": "crrValue",
           "_type": 7,
         },
         Object {
           "_cols": 4,
-          "_label": "DATE",
+          "_label": "sample.vals.date.label",
           "_type": 9,
         },
         Object {
           "_cols": 8,
           "_defaultValue": 2018-10-13T20:53:41.000Z,
-          "_label": "Date value",
+          "_label": "sample.vals.date.field",
           "_name": "dateValue",
           "_type": 4,
         },
         Object {
           "_cols": 4,
-          "_label": "TIME",
+          "_label": "sample.vals.time.label",
           "_type": 9,
         },
         Object {
           "_cols": 8,
           "_defaultValue": 2018-10-13T20:53:41.000Z,
-          "_label": "Time value",
+          "_label": "sample.vals.time.field",
           "_name": "timeValue",
           "_type": 5,
         },
         Object {
           "_cols": 4,
-          "_label": "DATETIME",
+          "_label": "sample.vals.dateTime.label",
           "_type": 9,
         },
         Object {
           "_cols": 8,
           "_defaultValue": 2018-10-13T20:53:41.000Z,
-          "_label": "Datetime value",
+          "_label": "sample.vals.dateTime.field",
           "_name": "datetimeValue",
           "_type": 3,
         },
         Object {
           "_cols": 12,
-          "_label": "Custom field",
+          "_label": "sample.vals.customField.label",
           "_type": 9,
         },
         Object {
           "_cols": 12,
           "_custom": <Connect(ConfigJsonView) />,
-          "_label": "Custom value",
+          "_label": "sample.vals.customField.field",
           "_rows": 6,
           "_type": 1,
         },
       ],
       "_icon": [Function],
-      "_label": "Sample",
+      "_label": "sample.label",
       "_name": "sample",
       "_order": 2,
-      "_svgUrl": "list-checked-dark.svg",
+      "_svgUrl": "check-box.svg",
+      "_svgUrl_dark": "list-checked-dark.svg",
     },
   ],
   "about": Object {},
@@ -221,6 +254,7 @@ Object {
     "newWinWidth": 640,
     "newWindDeltaHeight": 20,
     "newWindDeltaLeft": 20,
+    "theme": "dark",
   },
   "configGlobalFilterString": "",
   "sample": Object {
@@ -240,16 +274,46 @@ exports[`Config reducer CONFIG_RESET reduced correctly - all 1`] = `
 Object {
   "_tabs": Array [
     Object {
-      "_fieldLabels": "New Window PositionNew Window TopNew Window LeftNew Window WidthNew Window HeightNew Window Delta LeftNew Window Delta Height",
+      "_fieldLabels": "application.theme.labelThemeapplication.language.labellanguageapplication.newWinPos.labelapplication.newWinPos.newWinTopapplication.newWinPos.newWinLeftapplication.newWinPos.newWinWidthapplication.newWinPos.newWinHeightapplication.newWinPos.newWindDeltaLeftapplication.newWinPos.newWindDeltaHeight",
       "_fields": Array [
         Object {
+          "_cols": 2,
+          "_label": "application.theme.label",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <Connect(WithStyles(LoadNamespace(ConfigThemeView))) />,
+          "_defaultValue": "dark",
+          "_label": "Theme",
+          "_name": "theme",
+          "_rows": 1,
+          "_type": 1,
+        },
+        Object {
+          "_cols": 2,
+          "_label": "application.language.label",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <Connect(WithStyles(ConfigLangView)) />,
+          "_defaultValue": undefined,
+          "_label": "language",
+          "_name": "language",
+          "_rows": 1,
+          "_type": 1,
+        },
+        Object {
           "_cols": 12,
-          "_label": "New Window Position",
+          "_label": "application.newWinPos.label",
           "_type": 9,
         },
         Object {
           "_defaultValue": 10,
-          "_label": "New Window Top",
+          "_label": "application.newWinPos.newWinTop",
           "_name": "newWinTop",
           "_props": Object {
             "InputProps": Object {
@@ -264,7 +328,7 @@ Object {
         },
         Object {
           "_defaultValue": 300,
-          "_label": "New Window Left",
+          "_label": "application.newWinPos.newWinLeft",
           "_name": "newWinLeft",
           "_props": Object {
             "InputProps": Object {
@@ -279,7 +343,7 @@ Object {
         },
         Object {
           "_defaultValue": 640,
-          "_label": "New Window Width",
+          "_label": "application.newWinPos.newWinWidth",
           "_name": "newWinWidth",
           "_props": Object {
             "InputProps": Object {
@@ -294,7 +358,7 @@ Object {
         },
         Object {
           "_defaultValue": 320,
-          "_label": "New Window Height",
+          "_label": "application.newWinPos.newWinHeight",
           "_name": "newWinHeight",
           "_props": Object {
             "InputProps": Object {
@@ -309,7 +373,7 @@ Object {
         },
         Object {
           "_defaultValue": 20,
-          "_label": "New Window Delta Left",
+          "_label": "application.newWinPos.newWindDeltaLeft",
           "_name": "newWindDeltaLeft",
           "_props": Object {
             "InputProps": Object {
@@ -324,7 +388,7 @@ Object {
         },
         Object {
           "_defaultValue": 20,
-          "_label": "New Window Delta Height",
+          "_label": "application.newWinPos.newWindDeltaHeight",
           "_name": "newWindDeltaHeight",
           "_props": Object {
             "InputProps": Object {
@@ -339,114 +403,117 @@ Object {
         },
       ],
       "_icon": [Function],
-      "_label": "Application",
+      "_label": "application.label",
       "_name": "application",
       "_order": 0,
-      "_svgUrl": "controls_dark.svg",
+      "_svgUrl": "controls.svg",
+      "_svgUrl_dark": "controls_dark.svg",
     },
     Object {
       "_fieldLabels": "About openfin starter",
       "_fields": Array [
         Object {
           "_cols": 12,
-          "_custom": <WithStyles(ConfigAboutField) />,
+          "_custom": <WithStyles(LoadNamespace(ConfigAboutField)) />,
           "_label": "About openfin starter",
           "_rows": 12,
           "_type": 1,
         },
       ],
       "_icon": [Function],
-      "_label": "About",
+      "_label": "about.label",
       "_name": "about",
       "_order": 1,
-      "_svgUrl": "information-dark.svg",
+      "_svgUrl": "information.svg",
+      "_svgUrl_dark": "information-dark.svg",
     },
     Object {
-      "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
+      "_fieldLabels": "sample.vals.labelsample.vals.string.labelsample.vals.string.fieldsample.vals.currency.labelsample.vals.currency.fieldsample.vals.date.labelsample.vals.date.fieldsample.vals.time.labelsample.vals.time.fieldsample.vals.dateTime.labelsample.vals.dateTime.fieldsample.vals.customField.labelsample.vals.customField.field",
       "_fields": Array [
         Object {
           "_cols": 12,
-          "_label": "Sample value",
+          "_label": "sample.vals.label",
           "_type": 9,
         },
         Object {
           "_cols": 4,
-          "_label": "STRING",
+          "_label": "sample.vals.string.label",
           "_type": 9,
         },
         Object {
           "_cols": 8,
           "_defaultValue": "",
-          "_label": "String value",
+          "_label": "sample.vals.string.field",
           "_name": "strValue",
           "_type": 2,
         },
         Object {
           "_cols": 4,
-          "_label": "CURRENCY",
+          "_label": "sample.vals.currency.label",
           "_type": 9,
         },
         Object {
           "_cols": 8,
           "_defaultValue": 123456789,
-          "_label": "Currency value",
+          "_label": "sample.vals.currency.field",
           "_name": "crrValue",
           "_type": 7,
         },
         Object {
           "_cols": 4,
-          "_label": "DATE",
+          "_label": "sample.vals.date.label",
           "_type": 9,
         },
         Object {
           "_cols": 8,
           "_defaultValue": 2018-10-13T20:53:41.000Z,
-          "_label": "Date value",
+          "_label": "sample.vals.date.field",
           "_name": "dateValue",
           "_type": 4,
         },
         Object {
           "_cols": 4,
-          "_label": "TIME",
+          "_label": "sample.vals.time.label",
           "_type": 9,
         },
         Object {
           "_cols": 8,
           "_defaultValue": 2018-10-13T20:53:41.000Z,
-          "_label": "Time value",
+          "_label": "sample.vals.time.field",
           "_name": "timeValue",
           "_type": 5,
         },
         Object {
           "_cols": 4,
-          "_label": "DATETIME",
+          "_label": "sample.vals.dateTime.label",
           "_type": 9,
         },
         Object {
           "_cols": 8,
           "_defaultValue": 2018-10-13T20:53:41.000Z,
-          "_label": "Datetime value",
+          "_label": "sample.vals.dateTime.field",
           "_name": "datetimeValue",
           "_type": 3,
         },
         Object {
           "_cols": 12,
-          "_label": "Custom field",
+          "_label": "sample.vals.customField.label",
           "_type": 9,
         },
         Object {
           "_cols": 12,
           "_custom": <Connect(ConfigJsonView) />,
-          "_label": "Custom value",
+          "_label": "sample.vals.customField.field",
           "_rows": 6,
           "_type": 1,
         },
       ],
       "_icon": [Function],
-      "_label": "Sample",
+      "_label": "sample.label",
       "_name": "sample",
       "_order": 2,
-      "_svgUrl": "list-checked-dark.svg",
+      "_svgUrl": "check-box.svg",
+      "_svgUrl_dark": "list-checked-dark.svg",
     },
   ],
   "about": Object {},
@@ -457,6 +524,7 @@ Object {
     "newWinWidth": 640,
     "newWindDeltaHeight": 20,
     "newWindDeltaLeft": 20,
+    "theme": "dark",
   },
   "configGlobalFilterString": "",
   "sample": Object {
@@ -473,16 +541,46 @@ exports[`Config reducer CONFIG_RESET reduced correctly - application 1`] = `
 Object {
   "_tabs": Array [
     Object {
-      "_fieldLabels": "New Window PositionNew Window TopNew Window LeftNew Window WidthNew Window HeightNew Window Delta LeftNew Window Delta Height",
+      "_fieldLabels": "application.theme.labelThemeapplication.language.labellanguageapplication.newWinPos.labelapplication.newWinPos.newWinTopapplication.newWinPos.newWinLeftapplication.newWinPos.newWinWidthapplication.newWinPos.newWinHeightapplication.newWinPos.newWindDeltaLeftapplication.newWinPos.newWindDeltaHeight",
       "_fields": Array [
         Object {
+          "_cols": 2,
+          "_label": "application.theme.label",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <Connect(WithStyles(LoadNamespace(ConfigThemeView))) />,
+          "_defaultValue": "dark",
+          "_label": "Theme",
+          "_name": "theme",
+          "_rows": 1,
+          "_type": 1,
+        },
+        Object {
+          "_cols": 2,
+          "_label": "application.language.label",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <Connect(WithStyles(ConfigLangView)) />,
+          "_defaultValue": undefined,
+          "_label": "language",
+          "_name": "language",
+          "_rows": 1,
+          "_type": 1,
+        },
+        Object {
           "_cols": 12,
-          "_label": "New Window Position",
+          "_label": "application.newWinPos.label",
           "_type": 9,
         },
         Object {
           "_defaultValue": 10,
-          "_label": "New Window Top",
+          "_label": "application.newWinPos.newWinTop",
           "_name": "newWinTop",
           "_props": Object {
             "InputProps": Object {
@@ -497,7 +595,7 @@ Object {
         },
         Object {
           "_defaultValue": 300,
-          "_label": "New Window Left",
+          "_label": "application.newWinPos.newWinLeft",
           "_name": "newWinLeft",
           "_props": Object {
             "InputProps": Object {
@@ -512,7 +610,7 @@ Object {
         },
         Object {
           "_defaultValue": 640,
-          "_label": "New Window Width",
+          "_label": "application.newWinPos.newWinWidth",
           "_name": "newWinWidth",
           "_props": Object {
             "InputProps": Object {
@@ -527,7 +625,7 @@ Object {
         },
         Object {
           "_defaultValue": 320,
-          "_label": "New Window Height",
+          "_label": "application.newWinPos.newWinHeight",
           "_name": "newWinHeight",
           "_props": Object {
             "InputProps": Object {
@@ -542,7 +640,7 @@ Object {
         },
         Object {
           "_defaultValue": 20,
-          "_label": "New Window Delta Left",
+          "_label": "application.newWinPos.newWindDeltaLeft",
           "_name": "newWindDeltaLeft",
           "_props": Object {
             "InputProps": Object {
@@ -557,7 +655,7 @@ Object {
         },
         Object {
           "_defaultValue": 20,
-          "_label": "New Window Delta Height",
+          "_label": "application.newWinPos.newWindDeltaHeight",
           "_name": "newWindDeltaHeight",
           "_props": Object {
             "InputProps": Object {
@@ -572,114 +670,117 @@ Object {
         },
       ],
       "_icon": [Function],
-      "_label": "Application",
+      "_label": "application.label",
       "_name": "application",
       "_order": 0,
-      "_svgUrl": "controls_dark.svg",
+      "_svgUrl": "controls.svg",
+      "_svgUrl_dark": "controls_dark.svg",
     },
     Object {
       "_fieldLabels": "About openfin starter",
       "_fields": Array [
         Object {
           "_cols": 12,
-          "_custom": <WithStyles(ConfigAboutField) />,
+          "_custom": <WithStyles(LoadNamespace(ConfigAboutField)) />,
           "_label": "About openfin starter",
           "_rows": 12,
           "_type": 1,
         },
       ],
       "_icon": [Function],
-      "_label": "About",
+      "_label": "about.label",
       "_name": "about",
       "_order": 1,
-      "_svgUrl": "information-dark.svg",
+      "_svgUrl": "information.svg",
+      "_svgUrl_dark": "information-dark.svg",
     },
     Object {
-      "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
+      "_fieldLabels": "sample.vals.labelsample.vals.string.labelsample.vals.string.fieldsample.vals.currency.labelsample.vals.currency.fieldsample.vals.date.labelsample.vals.date.fieldsample.vals.time.labelsample.vals.time.fieldsample.vals.dateTime.labelsample.vals.dateTime.fieldsample.vals.customField.labelsample.vals.customField.field",
       "_fields": Array [
         Object {
           "_cols": 12,
-          "_label": "Sample value",
+          "_label": "sample.vals.label",
           "_type": 9,
         },
         Object {
           "_cols": 4,
-          "_label": "STRING",
+          "_label": "sample.vals.string.label",
           "_type": 9,
         },
         Object {
           "_cols": 8,
           "_defaultValue": "",
-          "_label": "String value",
+          "_label": "sample.vals.string.field",
           "_name": "strValue",
           "_type": 2,
         },
         Object {
           "_cols": 4,
-          "_label": "CURRENCY",
+          "_label": "sample.vals.currency.label",
           "_type": 9,
         },
         Object {
           "_cols": 8,
           "_defaultValue": 123456789,
-          "_label": "Currency value",
+          "_label": "sample.vals.currency.field",
           "_name": "crrValue",
           "_type": 7,
         },
         Object {
           "_cols": 4,
-          "_label": "DATE",
+          "_label": "sample.vals.date.label",
           "_type": 9,
         },
         Object {
           "_cols": 8,
           "_defaultValue": 2018-10-13T20:53:41.000Z,
-          "_label": "Date value",
+          "_label": "sample.vals.date.field",
           "_name": "dateValue",
           "_type": 4,
         },
         Object {
           "_cols": 4,
-          "_label": "TIME",
+          "_label": "sample.vals.time.label",
           "_type": 9,
         },
         Object {
           "_cols": 8,
           "_defaultValue": 2018-10-13T20:53:41.000Z,
-          "_label": "Time value",
+          "_label": "sample.vals.time.field",
           "_name": "timeValue",
           "_type": 5,
         },
         Object {
           "_cols": 4,
-          "_label": "DATETIME",
+          "_label": "sample.vals.dateTime.label",
           "_type": 9,
         },
         Object {
           "_cols": 8,
           "_defaultValue": 2018-10-13T20:53:41.000Z,
-          "_label": "Datetime value",
+          "_label": "sample.vals.dateTime.field",
           "_name": "datetimeValue",
           "_type": 3,
         },
         Object {
           "_cols": 12,
-          "_label": "Custom field",
+          "_label": "sample.vals.customField.label",
           "_type": 9,
         },
         Object {
           "_cols": 12,
           "_custom": <Connect(ConfigJsonView) />,
-          "_label": "Custom value",
+          "_label": "sample.vals.customField.field",
           "_rows": 6,
           "_type": 1,
         },
       ],
       "_icon": [Function],
-      "_label": "Sample",
+      "_label": "sample.label",
       "_name": "sample",
       "_order": 2,
-      "_svgUrl": "list-checked-dark.svg",
+      "_svgUrl": "check-box.svg",
+      "_svgUrl_dark": "list-checked-dark.svg",
     },
   ],
   "about": Object {},
@@ -690,6 +791,7 @@ Object {
     "newWinWidth": 640,
     "newWindDeltaHeight": 20,
     "newWindDeltaLeft": 20,
+    "theme": "dark",
   },
   "configGlobalFilterString": "",
   "sample": Object {
@@ -706,6 +808,7 @@ Object {
     "newWinWidth": 640,
     "newWindDeltaHeight": 20,
     "newWindDeltaLeft": 20,
+    "theme": "dark",
   },
 }
 `;
@@ -714,16 +817,46 @@ exports[`Config reducer CONFIG_UPDATE_GLOBAL_FILTER_STR reduced correctly 1`] = 
 Object {
   "_tabs": Array [
     Object {
-      "_fieldLabels": "New Window PositionNew Window TopNew Window LeftNew Window WidthNew Window HeightNew Window Delta LeftNew Window Delta Height",
+      "_fieldLabels": "application.theme.labelThemeapplication.language.labellanguageapplication.newWinPos.labelapplication.newWinPos.newWinTopapplication.newWinPos.newWinLeftapplication.newWinPos.newWinWidthapplication.newWinPos.newWinHeightapplication.newWinPos.newWindDeltaLeftapplication.newWinPos.newWindDeltaHeight",
       "_fields": Array [
         Object {
+          "_cols": 2,
+          "_label": "application.theme.label",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <Connect(WithStyles(LoadNamespace(ConfigThemeView))) />,
+          "_defaultValue": "dark",
+          "_label": "Theme",
+          "_name": "theme",
+          "_rows": 1,
+          "_type": 1,
+        },
+        Object {
+          "_cols": 2,
+          "_label": "application.language.label",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <Connect(WithStyles(ConfigLangView)) />,
+          "_defaultValue": undefined,
+          "_label": "language",
+          "_name": "language",
+          "_rows": 1,
+          "_type": 1,
+        },
+        Object {
           "_cols": 12,
-          "_label": "New Window Position",
+          "_label": "application.newWinPos.label",
           "_type": 9,
         },
         Object {
           "_defaultValue": 10,
-          "_label": "New Window Top",
+          "_label": "application.newWinPos.newWinTop",
           "_name": "newWinTop",
           "_props": Object {
             "InputProps": Object {
@@ -738,7 +871,7 @@ Object {
         },
         Object {
           "_defaultValue": 300,
-          "_label": "New Window Left",
+          "_label": "application.newWinPos.newWinLeft",
           "_name": "newWinLeft",
           "_props": Object {
             "InputProps": Object {
@@ -753,7 +886,7 @@ Object {
         },
         Object {
           "_defaultValue": 640,
-          "_label": "New Window Width",
+          "_label": "application.newWinPos.newWinWidth",
           "_name": "newWinWidth",
           "_props": Object {
             "InputProps": Object {
@@ -768,7 +901,7 @@ Object {
         },
         Object {
           "_defaultValue": 320,
-          "_label": "New Window Height",
+          "_label": "application.newWinPos.newWinHeight",
           "_name": "newWinHeight",
           "_props": Object {
             "InputProps": Object {
@@ -783,7 +916,7 @@ Object {
         },
         Object {
           "_defaultValue": 20,
-          "_label": "New Window Delta Left",
+          "_label": "application.newWinPos.newWindDeltaLeft",
           "_name": "newWindDeltaLeft",
           "_props": Object {
             "InputProps": Object {
@@ -798,7 +931,7 @@ Object {
         },
         Object {
           "_defaultValue": 20,
-          "_label": "New Window Delta Height",
+          "_label": "application.newWinPos.newWindDeltaHeight",
           "_name": "newWindDeltaHeight",
           "_props": Object {
             "InputProps": Object {
@@ -813,114 +946,117 @@ Object {
         },
       ],
       "_icon": [Function],
-      "_label": "Application",
+      "_label": "application.label",
       "_name": "application",
       "_order": 0,
-      "_svgUrl": "controls_dark.svg",
+      "_svgUrl": "controls.svg",
+      "_svgUrl_dark": "controls_dark.svg",
     },
     Object {
       "_fieldLabels": "About openfin starter",
       "_fields": Array [
         Object {
           "_cols": 12,
-          "_custom": <WithStyles(ConfigAboutField) />,
+          "_custom": <WithStyles(LoadNamespace(ConfigAboutField)) />,
           "_label": "About openfin starter",
           "_rows": 12,
           "_type": 1,
         },
       ],
       "_icon": [Function],
-      "_label": "About",
+      "_label": "about.label",
       "_name": "about",
       "_order": 1,
-      "_svgUrl": "information-dark.svg",
+      "_svgUrl": "information.svg",
+      "_svgUrl_dark": "information-dark.svg",
     },
     Object {
-      "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
+      "_fieldLabels": "sample.vals.labelsample.vals.string.labelsample.vals.string.fieldsample.vals.currency.labelsample.vals.currency.fieldsample.vals.date.labelsample.vals.date.fieldsample.vals.time.labelsample.vals.time.fieldsample.vals.dateTime.labelsample.vals.dateTime.fieldsample.vals.customField.labelsample.vals.customField.field",
       "_fields": Array [
         Object {
           "_cols": 12,
-          "_label": "Sample value",
+          "_label": "sample.vals.label",
           "_type": 9,
         },
         Object {
           "_cols": 4,
-          "_label": "STRING",
+          "_label": "sample.vals.string.label",
           "_type": 9,
         },
         Object {
           "_cols": 8,
           "_defaultValue": "",
-          "_label": "String value",
+          "_label": "sample.vals.string.field",
           "_name": "strValue",
           "_type": 2,
         },
         Object {
           "_cols": 4,
-          "_label": "CURRENCY",
+          "_label": "sample.vals.currency.label",
           "_type": 9,
         },
         Object {
           "_cols": 8,
           "_defaultValue": 123456789,
-          "_label": "Currency value",
+          "_label": "sample.vals.currency.field",
           "_name": "crrValue",
           "_type": 7,
         },
         Object {
           "_cols": 4,
-          "_label": "DATE",
+          "_label": "sample.vals.date.label",
           "_type": 9,
         },
         Object {
           "_cols": 8,
           "_defaultValue": 2018-10-13T20:53:41.000Z,
-          "_label": "Date value",
+          "_label": "sample.vals.date.field",
           "_name": "dateValue",
           "_type": 4,
         },
         Object {
           "_cols": 4,
-          "_label": "TIME",
+          "_label": "sample.vals.time.label",
           "_type": 9,
         },
         Object {
           "_cols": 8,
           "_defaultValue": 2018-10-13T20:53:41.000Z,
-          "_label": "Time value",
+          "_label": "sample.vals.time.field",
           "_name": "timeValue",
           "_type": 5,
         },
         Object {
           "_cols": 4,
-          "_label": "DATETIME",
+          "_label": "sample.vals.dateTime.label",
           "_type": 9,
         },
         Object {
           "_cols": 8,
           "_defaultValue": 2018-10-13T20:53:41.000Z,
-          "_label": "Datetime value",
+          "_label": "sample.vals.dateTime.field",
           "_name": "datetimeValue",
           "_type": 3,
         },
         Object {
           "_cols": 12,
-          "_label": "Custom field",
+          "_label": "sample.vals.customField.label",
           "_type": 9,
         },
         Object {
           "_cols": 12,
           "_custom": <Connect(ConfigJsonView) />,
-          "_label": "Custom value",
+          "_label": "sample.vals.customField.field",
           "_rows": 6,
           "_type": 1,
         },
       ],
       "_icon": [Function],
-      "_label": "Sample",
+      "_label": "sample.label",
       "_name": "sample",
       "_order": 2,
-      "_svgUrl": "list-checked-dark.svg",
+      "_svgUrl": "check-box.svg",
+      "_svgUrl_dark": "list-checked-dark.svg",
     },
   ],
   "about": Object {},
@@ -931,6 +1067,7 @@ Object {
     "newWinWidth": 640,
     "newWindDeltaHeight": 20,
     "newWindDeltaLeft": 20,
+    "theme": "dark",
   },
   "configGlobalFilterString": "configGlobalFilterString",
   "sample": Object {
@@ -947,16 +1084,46 @@ exports[`Config reducer CONFIG_UPDATE_NEW_WINDOW_POSITION_ADD_DELTA reduced corr
 Object {
   "_tabs": Array [
     Object {
-      "_fieldLabels": "New Window PositionNew Window TopNew Window LeftNew Window WidthNew Window HeightNew Window Delta LeftNew Window Delta Height",
+      "_fieldLabels": "application.theme.labelThemeapplication.language.labellanguageapplication.newWinPos.labelapplication.newWinPos.newWinTopapplication.newWinPos.newWinLeftapplication.newWinPos.newWinWidthapplication.newWinPos.newWinHeightapplication.newWinPos.newWindDeltaLeftapplication.newWinPos.newWindDeltaHeight",
       "_fields": Array [
         Object {
+          "_cols": 2,
+          "_label": "application.theme.label",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <Connect(WithStyles(LoadNamespace(ConfigThemeView))) />,
+          "_defaultValue": "dark",
+          "_label": "Theme",
+          "_name": "theme",
+          "_rows": 1,
+          "_type": 1,
+        },
+        Object {
+          "_cols": 2,
+          "_label": "application.language.label",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <Connect(WithStyles(ConfigLangView)) />,
+          "_defaultValue": undefined,
+          "_label": "language",
+          "_name": "language",
+          "_rows": 1,
+          "_type": 1,
+        },
+        Object {
           "_cols": 12,
-          "_label": "New Window Position",
+          "_label": "application.newWinPos.label",
           "_type": 9,
         },
         Object {
           "_defaultValue": 10,
-          "_label": "New Window Top",
+          "_label": "application.newWinPos.newWinTop",
           "_name": "newWinTop",
           "_props": Object {
             "InputProps": Object {
@@ -971,7 +1138,7 @@ Object {
         },
         Object {
           "_defaultValue": 300,
-          "_label": "New Window Left",
+          "_label": "application.newWinPos.newWinLeft",
           "_name": "newWinLeft",
           "_props": Object {
             "InputProps": Object {
@@ -986,7 +1153,7 @@ Object {
         },
         Object {
           "_defaultValue": 640,
-          "_label": "New Window Width",
+          "_label": "application.newWinPos.newWinWidth",
           "_name": "newWinWidth",
           "_props": Object {
             "InputProps": Object {
@@ -1001,7 +1168,7 @@ Object {
         },
         Object {
           "_defaultValue": 320,
-          "_label": "New Window Height",
+          "_label": "application.newWinPos.newWinHeight",
           "_name": "newWinHeight",
           "_props": Object {
             "InputProps": Object {
@@ -1016,7 +1183,7 @@ Object {
         },
         Object {
           "_defaultValue": 20,
-          "_label": "New Window Delta Left",
+          "_label": "application.newWinPos.newWindDeltaLeft",
           "_name": "newWindDeltaLeft",
           "_props": Object {
             "InputProps": Object {
@@ -1031,7 +1198,7 @@ Object {
         },
         Object {
           "_defaultValue": 20,
-          "_label": "New Window Delta Height",
+          "_label": "application.newWinPos.newWindDeltaHeight",
           "_name": "newWindDeltaHeight",
           "_props": Object {
             "InputProps": Object {
@@ -1046,114 +1213,117 @@ Object {
         },
       ],
       "_icon": [Function],
-      "_label": "Application",
+      "_label": "application.label",
       "_name": "application",
       "_order": 0,
-      "_svgUrl": "controls_dark.svg",
+      "_svgUrl": "controls.svg",
+      "_svgUrl_dark": "controls_dark.svg",
     },
     Object {
       "_fieldLabels": "About openfin starter",
       "_fields": Array [
         Object {
           "_cols": 12,
-          "_custom": <WithStyles(ConfigAboutField) />,
+          "_custom": <WithStyles(LoadNamespace(ConfigAboutField)) />,
           "_label": "About openfin starter",
           "_rows": 12,
           "_type": 1,
         },
       ],
       "_icon": [Function],
-      "_label": "About",
+      "_label": "about.label",
       "_name": "about",
       "_order": 1,
-      "_svgUrl": "information-dark.svg",
+      "_svgUrl": "information.svg",
+      "_svgUrl_dark": "information-dark.svg",
     },
     Object {
-      "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
+      "_fieldLabels": "sample.vals.labelsample.vals.string.labelsample.vals.string.fieldsample.vals.currency.labelsample.vals.currency.fieldsample.vals.date.labelsample.vals.date.fieldsample.vals.time.labelsample.vals.time.fieldsample.vals.dateTime.labelsample.vals.dateTime.fieldsample.vals.customField.labelsample.vals.customField.field",
       "_fields": Array [
         Object {
           "_cols": 12,
-          "_label": "Sample value",
+          "_label": "sample.vals.label",
           "_type": 9,
         },
         Object {
           "_cols": 4,
-          "_label": "STRING",
+          "_label": "sample.vals.string.label",
           "_type": 9,
         },
         Object {
           "_cols": 8,
           "_defaultValue": "",
-          "_label": "String value",
+          "_label": "sample.vals.string.field",
           "_name": "strValue",
           "_type": 2,
         },
         Object {
           "_cols": 4,
-          "_label": "CURRENCY",
+          "_label": "sample.vals.currency.label",
           "_type": 9,
         },
         Object {
           "_cols": 8,
           "_defaultValue": 123456789,
-          "_label": "Currency value",
+          "_label": "sample.vals.currency.field",
           "_name": "crrValue",
           "_type": 7,
         },
         Object {
           "_cols": 4,
-          "_label": "DATE",
+          "_label": "sample.vals.date.label",
           "_type": 9,
         },
         Object {
           "_cols": 8,
           "_defaultValue": 2018-10-13T20:53:41.000Z,
-          "_label": "Date value",
+          "_label": "sample.vals.date.field",
           "_name": "dateValue",
           "_type": 4,
         },
         Object {
           "_cols": 4,
-          "_label": "TIME",
+          "_label": "sample.vals.time.label",
           "_type": 9,
         },
         Object {
           "_cols": 8,
           "_defaultValue": 2018-10-13T20:53:41.000Z,
-          "_label": "Time value",
+          "_label": "sample.vals.time.field",
           "_name": "timeValue",
           "_type": 5,
         },
         Object {
           "_cols": 4,
-          "_label": "DATETIME",
+          "_label": "sample.vals.dateTime.label",
           "_type": 9,
         },
         Object {
           "_cols": 8,
           "_defaultValue": 2018-10-13T20:53:41.000Z,
-          "_label": "Datetime value",
+          "_label": "sample.vals.dateTime.field",
           "_name": "datetimeValue",
           "_type": 3,
         },
         Object {
           "_cols": 12,
-          "_label": "Custom field",
+          "_label": "sample.vals.customField.label",
           "_type": 9,
         },
         Object {
           "_cols": 12,
           "_custom": <Connect(ConfigJsonView) />,
-          "_label": "Custom value",
+          "_label": "sample.vals.customField.field",
           "_rows": 6,
           "_type": 1,
         },
       ],
       "_icon": [Function],
-      "_label": "Sample",
+      "_label": "sample.label",
       "_name": "sample",
       "_order": 2,
-      "_svgUrl": "list-checked-dark.svg",
+      "_svgUrl": "check-box.svg",
+      "_svgUrl_dark": "list-checked-dark.svg",
     },
   ],
   "about": Object {},
@@ -1164,6 +1334,7 @@ Object {
     "newWinWidth": 640,
     "newWindDeltaHeight": 20,
     "newWindDeltaLeft": 20,
+    "theme": "dark",
   },
   "configGlobalFilterString": "",
   "sample": Object {
@@ -1180,16 +1351,46 @@ exports[`Config reducer CONFIG_UPDATE_NEW_WINDOW_POSITION_RESET_LEFT reduced cor
 Object {
   "_tabs": Array [
     Object {
-      "_fieldLabels": "New Window PositionNew Window TopNew Window LeftNew Window WidthNew Window HeightNew Window Delta LeftNew Window Delta Height",
+      "_fieldLabels": "application.theme.labelThemeapplication.language.labellanguageapplication.newWinPos.labelapplication.newWinPos.newWinTopapplication.newWinPos.newWinLeftapplication.newWinPos.newWinWidthapplication.newWinPos.newWinHeightapplication.newWinPos.newWindDeltaLeftapplication.newWinPos.newWindDeltaHeight",
       "_fields": Array [
         Object {
+          "_cols": 2,
+          "_label": "application.theme.label",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <Connect(WithStyles(LoadNamespace(ConfigThemeView))) />,
+          "_defaultValue": "dark",
+          "_label": "Theme",
+          "_name": "theme",
+          "_rows": 1,
+          "_type": 1,
+        },
+        Object {
+          "_cols": 2,
+          "_label": "application.language.label",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <Connect(WithStyles(ConfigLangView)) />,
+          "_defaultValue": undefined,
+          "_label": "language",
+          "_name": "language",
+          "_rows": 1,
+          "_type": 1,
+        },
+        Object {
           "_cols": 12,
-          "_label": "New Window Position",
+          "_label": "application.newWinPos.label",
           "_type": 9,
         },
         Object {
           "_defaultValue": 10,
-          "_label": "New Window Top",
+          "_label": "application.newWinPos.newWinTop",
           "_name": "newWinTop",
           "_props": Object {
             "InputProps": Object {
@@ -1204,7 +1405,7 @@ Object {
         },
         Object {
           "_defaultValue": 300,
-          "_label": "New Window Left",
+          "_label": "application.newWinPos.newWinLeft",
           "_name": "newWinLeft",
           "_props": Object {
             "InputProps": Object {
@@ -1219,7 +1420,7 @@ Object {
         },
         Object {
           "_defaultValue": 640,
-          "_label": "New Window Width",
+          "_label": "application.newWinPos.newWinWidth",
           "_name": "newWinWidth",
           "_props": Object {
             "InputProps": Object {
@@ -1234,7 +1435,7 @@ Object {
         },
         Object {
           "_defaultValue": 320,
-          "_label": "New Window Height",
+          "_label": "application.newWinPos.newWinHeight",
           "_name": "newWinHeight",
           "_props": Object {
             "InputProps": Object {
@@ -1249,7 +1450,7 @@ Object {
         },
         Object {
           "_defaultValue": 20,
-          "_label": "New Window Delta Left",
+          "_label": "application.newWinPos.newWindDeltaLeft",
           "_name": "newWindDeltaLeft",
           "_props": Object {
             "InputProps": Object {
@@ -1264,7 +1465,7 @@ Object {
         },
         Object {
           "_defaultValue": 20,
-          "_label": "New Window Delta Height",
+          "_label": "application.newWinPos.newWindDeltaHeight",
           "_name": "newWindDeltaHeight",
           "_props": Object {
             "InputProps": Object {
@@ -1279,114 +1480,117 @@ Object {
         },
       ],
       "_icon": [Function],
-      "_label": "Application",
+      "_label": "application.label",
       "_name": "application",
       "_order": 0,
-      "_svgUrl": "controls_dark.svg",
+      "_svgUrl": "controls.svg",
+      "_svgUrl_dark": "controls_dark.svg",
     },
     Object {
       "_fieldLabels": "About openfin starter",
       "_fields": Array [
         Object {
           "_cols": 12,
-          "_custom": <WithStyles(ConfigAboutField) />,
+          "_custom": <WithStyles(LoadNamespace(ConfigAboutField)) />,
           "_label": "About openfin starter",
           "_rows": 12,
           "_type": 1,
         },
       ],
       "_icon": [Function],
-      "_label": "About",
+      "_label": "about.label",
       "_name": "about",
       "_order": 1,
-      "_svgUrl": "information-dark.svg",
+      "_svgUrl": "information.svg",
+      "_svgUrl_dark": "information-dark.svg",
     },
     Object {
-      "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
+      "_fieldLabels": "sample.vals.labelsample.vals.string.labelsample.vals.string.fieldsample.vals.currency.labelsample.vals.currency.fieldsample.vals.date.labelsample.vals.date.fieldsample.vals.time.labelsample.vals.time.fieldsample.vals.dateTime.labelsample.vals.dateTime.fieldsample.vals.customField.labelsample.vals.customField.field",
       "_fields": Array [
         Object {
           "_cols": 12,
-          "_label": "Sample value",
+          "_label": "sample.vals.label",
           "_type": 9,
         },
         Object {
           "_cols": 4,
-          "_label": "STRING",
+          "_label": "sample.vals.string.label",
           "_type": 9,
         },
         Object {
           "_cols": 8,
           "_defaultValue": "",
-          "_label": "String value",
+          "_label": "sample.vals.string.field",
           "_name": "strValue",
           "_type": 2,
         },
         Object {
           "_cols": 4,
-          "_label": "CURRENCY",
+          "_label": "sample.vals.currency.label",
           "_type": 9,
         },
         Object {
           "_cols": 8,
           "_defaultValue": 123456789,
-          "_label": "Currency value",
+          "_label": "sample.vals.currency.field",
           "_name": "crrValue",
           "_type": 7,
         },
         Object {
           "_cols": 4,
-          "_label": "DATE",
+          "_label": "sample.vals.date.label",
           "_type": 9,
         },
         Object {
           "_cols": 8,
           "_defaultValue": 2018-10-13T20:53:41.000Z,
-          "_label": "Date value",
+          "_label": "sample.vals.date.field",
           "_name": "dateValue",
           "_type": 4,
         },
         Object {
           "_cols": 4,
-          "_label": "TIME",
+          "_label": "sample.vals.time.label",
           "_type": 9,
         },
         Object {
           "_cols": 8,
           "_defaultValue": 2018-10-13T20:53:41.000Z,
-          "_label": "Time value",
+          "_label": "sample.vals.time.field",
           "_name": "timeValue",
           "_type": 5,
         },
         Object {
           "_cols": 4,
-          "_label": "DATETIME",
+          "_label": "sample.vals.dateTime.label",
           "_type": 9,
         },
         Object {
           "_cols": 8,
           "_defaultValue": 2018-10-13T20:53:41.000Z,
-          "_label": "Datetime value",
+          "_label": "sample.vals.dateTime.field",
           "_name": "datetimeValue",
           "_type": 3,
         },
         Object {
           "_cols": 12,
-          "_label": "Custom field",
+          "_label": "sample.vals.customField.label",
           "_type": 9,
         },
         Object {
           "_cols": 12,
           "_custom": <Connect(ConfigJsonView) />,
-          "_label": "Custom value",
+          "_label": "sample.vals.customField.field",
           "_rows": 6,
           "_type": 1,
         },
       ],
       "_icon": [Function],
-      "_label": "Sample",
+      "_label": "sample.label",
       "_name": "sample",
       "_order": 2,
-      "_svgUrl": "list-checked-dark.svg",
+      "_svgUrl": "check-box.svg",
+      "_svgUrl_dark": "list-checked-dark.svg",
     },
   ],
   "about": Object {},
@@ -1397,6 +1601,7 @@ Object {
     "newWinWidth": 640,
     "newWindDeltaHeight": 20,
     "newWindDeltaLeft": 20,
+    "theme": "dark",
   },
   "configGlobalFilterString": "",
   "sample": Object {
@@ -1413,16 +1618,46 @@ exports[`Config reducer CONFIG_UPDATE_NEW_WINDOW_POSITION_RESET_TOP reduced corr
 Object {
   "_tabs": Array [
     Object {
-      "_fieldLabels": "New Window PositionNew Window TopNew Window LeftNew Window WidthNew Window HeightNew Window Delta LeftNew Window Delta Height",
+      "_fieldLabels": "application.theme.labelThemeapplication.language.labellanguageapplication.newWinPos.labelapplication.newWinPos.newWinTopapplication.newWinPos.newWinLeftapplication.newWinPos.newWinWidthapplication.newWinPos.newWinHeightapplication.newWinPos.newWindDeltaLeftapplication.newWinPos.newWindDeltaHeight",
       "_fields": Array [
         Object {
+          "_cols": 2,
+          "_label": "application.theme.label",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <Connect(WithStyles(LoadNamespace(ConfigThemeView))) />,
+          "_defaultValue": "dark",
+          "_label": "Theme",
+          "_name": "theme",
+          "_rows": 1,
+          "_type": 1,
+        },
+        Object {
+          "_cols": 2,
+          "_label": "application.language.label",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <Connect(WithStyles(ConfigLangView)) />,
+          "_defaultValue": undefined,
+          "_label": "language",
+          "_name": "language",
+          "_rows": 1,
+          "_type": 1,
+        },
+        Object {
           "_cols": 12,
-          "_label": "New Window Position",
+          "_label": "application.newWinPos.label",
           "_type": 9,
         },
         Object {
           "_defaultValue": 10,
-          "_label": "New Window Top",
+          "_label": "application.newWinPos.newWinTop",
           "_name": "newWinTop",
           "_props": Object {
             "InputProps": Object {
@@ -1437,7 +1672,7 @@ Object {
         },
         Object {
           "_defaultValue": 300,
-          "_label": "New Window Left",
+          "_label": "application.newWinPos.newWinLeft",
           "_name": "newWinLeft",
           "_props": Object {
             "InputProps": Object {
@@ -1452,7 +1687,7 @@ Object {
         },
         Object {
           "_defaultValue": 640,
-          "_label": "New Window Width",
+          "_label": "application.newWinPos.newWinWidth",
           "_name": "newWinWidth",
           "_props": Object {
             "InputProps": Object {
@@ -1467,7 +1702,7 @@ Object {
         },
         Object {
           "_defaultValue": 320,
-          "_label": "New Window Height",
+          "_label": "application.newWinPos.newWinHeight",
           "_name": "newWinHeight",
           "_props": Object {
             "InputProps": Object {
@@ -1482,7 +1717,7 @@ Object {
         },
         Object {
           "_defaultValue": 20,
-          "_label": "New Window Delta Left",
+          "_label": "application.newWinPos.newWindDeltaLeft",
           "_name": "newWindDeltaLeft",
           "_props": Object {
             "InputProps": Object {
@@ -1497,7 +1732,7 @@ Object {
         },
         Object {
           "_defaultValue": 20,
-          "_label": "New Window Delta Height",
+          "_label": "application.newWinPos.newWindDeltaHeight",
           "_name": "newWindDeltaHeight",
           "_props": Object {
             "InputProps": Object {
@@ -1512,114 +1747,117 @@ Object {
         },
       ],
       "_icon": [Function],
-      "_label": "Application",
+      "_label": "application.label",
       "_name": "application",
       "_order": 0,
-      "_svgUrl": "controls_dark.svg",
+      "_svgUrl": "controls.svg",
+      "_svgUrl_dark": "controls_dark.svg",
     },
     Object {
       "_fieldLabels": "About openfin starter",
       "_fields": Array [
         Object {
           "_cols": 12,
-          "_custom": <WithStyles(ConfigAboutField) />,
+          "_custom": <WithStyles(LoadNamespace(ConfigAboutField)) />,
           "_label": "About openfin starter",
           "_rows": 12,
           "_type": 1,
         },
       ],
       "_icon": [Function],
-      "_label": "About",
+      "_label": "about.label",
       "_name": "about",
       "_order": 1,
-      "_svgUrl": "information-dark.svg",
+      "_svgUrl": "information.svg",
+      "_svgUrl_dark": "information-dark.svg",
     },
     Object {
-      "_fieldLabels": "Sample valueSTRINGString valueCURRENCYCurrency valueDATEDate valueTIMETime valueDATETIMEDatetime valueCustom fieldCustom value",
+      "_fieldLabels": "sample.vals.labelsample.vals.string.labelsample.vals.string.fieldsample.vals.currency.labelsample.vals.currency.fieldsample.vals.date.labelsample.vals.date.fieldsample.vals.time.labelsample.vals.time.fieldsample.vals.dateTime.labelsample.vals.dateTime.fieldsample.vals.customField.labelsample.vals.customField.field",
       "_fields": Array [
         Object {
           "_cols": 12,
-          "_label": "Sample value",
+          "_label": "sample.vals.label",
           "_type": 9,
         },
         Object {
           "_cols": 4,
-          "_label": "STRING",
+          "_label": "sample.vals.string.label",
           "_type": 9,
         },
         Object {
           "_cols": 8,
           "_defaultValue": "",
-          "_label": "String value",
+          "_label": "sample.vals.string.field",
           "_name": "strValue",
           "_type": 2,
         },
         Object {
           "_cols": 4,
-          "_label": "CURRENCY",
+          "_label": "sample.vals.currency.label",
           "_type": 9,
         },
         Object {
           "_cols": 8,
           "_defaultValue": 123456789,
-          "_label": "Currency value",
+          "_label": "sample.vals.currency.field",
           "_name": "crrValue",
           "_type": 7,
         },
         Object {
           "_cols": 4,
-          "_label": "DATE",
+          "_label": "sample.vals.date.label",
           "_type": 9,
         },
         Object {
           "_cols": 8,
           "_defaultValue": 2018-10-13T20:53:41.000Z,
-          "_label": "Date value",
+          "_label": "sample.vals.date.field",
           "_name": "dateValue",
           "_type": 4,
         },
         Object {
           "_cols": 4,
-          "_label": "TIME",
+          "_label": "sample.vals.time.label",
           "_type": 9,
         },
         Object {
           "_cols": 8,
           "_defaultValue": 2018-10-13T20:53:41.000Z,
-          "_label": "Time value",
+          "_label": "sample.vals.time.field",
           "_name": "timeValue",
           "_type": 5,
         },
         Object {
           "_cols": 4,
-          "_label": "DATETIME",
+          "_label": "sample.vals.dateTime.label",
           "_type": 9,
         },
         Object {
           "_cols": 8,
           "_defaultValue": 2018-10-13T20:53:41.000Z,
-          "_label": "Datetime value",
+          "_label": "sample.vals.dateTime.field",
           "_name": "datetimeValue",
           "_type": 3,
         },
         Object {
           "_cols": 12,
-          "_label": "Custom field",
+          "_label": "sample.vals.customField.label",
           "_type": 9,
         },
         Object {
           "_cols": 12,
           "_custom": <Connect(ConfigJsonView) />,
-          "_label": "Custom value",
+          "_label": "sample.vals.customField.field",
           "_rows": 6,
           "_type": 1,
         },
       ],
       "_icon": [Function],
-      "_label": "Sample",
+      "_label": "sample.label",
       "_name": "sample",
       "_order": 2,
-      "_svgUrl": "list-checked-dark.svg",
+      "_svgUrl": "check-box.svg",
+      "_svgUrl_dark": "list-checked-dark.svg",
     },
   ],
   "about": Object {},
@@ -1630,6 +1868,7 @@ Object {
     "newWinWidth": 640,
     "newWindDeltaHeight": 20,
     "newWindDeltaLeft": 20,
+    "theme": "dark",
   },
   "configGlobalFilterString": "",
   "sample": Object {

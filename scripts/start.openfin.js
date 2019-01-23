@@ -42,15 +42,14 @@ async function launchApp(){
         "url":`http://localhost:${DEFAULT_PORT}/index.html`,
         "uuid":process.env.REACT_APP_FIN_UUID,
         "applicationIcon":`http://localhost:${DEFAULT_PORT}/favicon.ico`,
-        "autoShow":true,
+        "autoShow":false,
         "saveWindowsSate":false,
         "resizable":true,
         "frame":false,
-        "defaultCentered":true,
         "defaultWidth":728,
         "defaultHeight":450,
-        "minWidth":88,
-        "minHeight":64
+        "minWidth":420,
+        "minHeight":300
     });
 
     log(chalk.green(`connecting tot http://localhost:${DEFAULT_PORT}`));

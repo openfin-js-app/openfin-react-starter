@@ -11,7 +11,7 @@ describe('ConfigStore util', ()=>{
 
     beforeAll(()=>{
         window.fin = new BrowserAdapter({
-            finUuic:process.env.REACT_APP_FIN_UUID,
+            finUuid:process.env.REACT_APP_FIN_UUID,
             silentMode:process.env.REACT_APP_ENV==='test'
         });
     })

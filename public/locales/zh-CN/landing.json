@@ -1,0 +1,14 @@
+{
+  "appName": "基于React Openfin模板",
+  "appDesc": "基于React的Openfin轻量级桌面应用模板",
+  "version": "版本号",
+  "reload": "重新加载",
+  "support": "技术支持",
+  "init": "初始化...",
+  "ready": "完成初始化",
+  "delay1": "延迟 1 秒后",
+  "delay2": "延迟 2 秒后",
+  "delay3": "延迟 3 秒后",
+  "delay4": "延迟 4 秒后",
+  "delay5": "延迟 5 秒后"
+}

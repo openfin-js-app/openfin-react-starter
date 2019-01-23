@@ -3,6 +3,10 @@ import { TextFieldProps } from '@material-ui/core/TextField';
 import {TimePickerModalProps} from "material-ui-pickers/TimePicker/TimePickerModal";
 import {DatePickerModalProps} from "material-ui-pickers/DatePicker/DatePickerModal";
 
+export enum MuiTheme{
+    LIGHT='light',
+    DARK='dark',
+}
 
 export enum FieldType{
     CUSTOM_FIELD = 1,
@@ -35,6 +39,7 @@ export interface IConfigTab {
     _label:string;
     _name:string;
     _svgUrl:string;
+    _svgUrl_dark?:string;
     _icon?:React.ComponentType<SvgIconProps>;
     _fields:IConfigField[];
     _fieldLabels?:string;

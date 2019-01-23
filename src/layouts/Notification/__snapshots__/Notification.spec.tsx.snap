@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard layout render in default state correctly 1`] = `
+Array [
+  Object {
+    "error": false,
+    "payload": Object {},
+    "type": "REDUX_OPENFIN::NOTIFICATION_CLOSE",
+  },
+]
+`;

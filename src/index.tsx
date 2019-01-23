@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import './i18n';
 import { Provider } from 'react-redux';
 import { BrowserAdapter } from '@albertli90/openfin-browser-adapter';
 
@@ -11,22 +12,20 @@ import * as serviceWorker from './serviceWorker';
 
 import configureStore from './utils/configureStore';
 import {
-    CLIENT_SET_VALUE,
     applicationStarted,
     applicationChildStarted,
+    applicationNotificationStarted,
     applicationNetworkOnline,
     applicationNetworkOffline,
 } from "./reduxs";
 
-declare const window:any;
+import sharedActions from './reduxs/sharedActions'
 
-const sharedActions = [
-    CLIENT_SET_VALUE
-];
+declare const window:any;
 
 if(!window.fin){
     window.fin = new BrowserAdapter({
-        finUuic:process.env.REACT_APP_FIN_UUID,
+        finUuid:process.env.REACT_APP_FIN_UUID,
         silentMode:false,
     });
 }
@@ -43,7 +42,11 @@ if(window.name === process.env.REACT_APP_FIN_UUID){
         window.opener.store.getState()
     );
     window.store=store;
-    store.dispatch(applicationChildStarted());
+    if (window.location.pathname.toLowerCase().indexOf('notification')>-1){
+        store.dispatch(applicationNotificationStarted());
+    }else{
+        store.dispatch(applicationChildStarted());
+    }
 }
 setPlatformClass(document.body,window.navigator.platform);
 ReactDOM.render(

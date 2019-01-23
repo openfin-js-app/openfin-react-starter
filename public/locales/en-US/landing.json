@@ -1,0 +1,14 @@
+{
+  "appName": "Openfin react starter",
+  "appDesc": "React based Openfin desktop template",
+  "version": "Version",
+  "reload": "Reload",
+  "support": "Support",
+  "init": "Initialization",
+  "ready": "Ready",
+  "delay1": "Delay after 1 second",
+  "delay2": "Delay after 2 second",
+  "delay3": "Delay after 3 second",
+  "delay4": "Delay after 4 second",
+  "delay5": "Delay after 5 second"
+}

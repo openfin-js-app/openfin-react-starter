@@ -6,6 +6,8 @@ import { withStyles, WithStyles } from '@material-ui/core/styles';
 
 import LinearProgress from '@material-ui/core/LinearProgress';
 
+import { withNamespaces, WithNamespaces } from 'react-i18next';
+
 import appLogo from'../../assets/svg/app.svg';
 import companyLogo from'../../assets/svg/company.svg';
 
@@ -54,10 +56,12 @@ class LoadingBarComponent extends React.Component<any,any>{
 const style:any={
     container:{
         position:'relative',
-        width:'100%',
-        height:'100%',
+        width:'100vw',
+        height:'100vh',
         overflow:'hidden',
-        background:'linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%)',
+        background:'linear-gradient(141deg,  #4dd0e1, #26c6da, #00bcd4, #00acc1, #0097a7, #00838f, #006064)',
+        backgroundSize: '200%',
+        animation: 'gba 5s infinite',
     },
     appLogoImg:{
         position:'absolute',
@@ -90,6 +94,14 @@ const style:any={
         right:'15%',
 
     },
+    statusMsg:{
+        color:'white',
+        position:'absolute',
+        top:'calc( 66% + 20px )',
+        left:'calc( 15% + 20px )',
+        right:'calc( 15% + 20px )',
+        fontFamily:'"Arial Black", Gadget, sans-serif',
+    },
     companyLogImg:{
         position:'absolute',
         bottom:'40px',
@@ -100,21 +112,25 @@ const style:any={
 
 export const LoadingBar = withStyles(style)(LoadingBarComponent);
 
-interface IProps extends WithStyles<typeof style> {
+interface IProps extends WithStyles<typeof style>, WithNamespaces {
     loading:boolean,
+    loadingMsg:string,
 }
 
 class LoadingComponent extends React.Component<IProps,{}>{
     render(){
-        const {classes} = this.props;
+        const {
+            classes, loadingMsg, t
+        } = this.props;
 
         return(
             <div className={classes.container}>
                 <img src={appLogo} className={classes.appLogoImg} />
-                <div className={classes.appName}>Openfin react starter</div>
+                <div className={classes.appName}>{t('appName')}</div>
                 <div className={classes.versionStr}>{process.env.REACT_APP_VERSION}</div>
                 <LoadingBar/>
                 <img src={companyLogo} className={classes.companyLogImg} />
+                <div className={classes.statusMsg}>{t(loadingMsg)}</div>
                 <Particles
                     width={"100%"}
                     height={"100%"}
@@ -127,10 +143,13 @@ class LoadingComponent extends React.Component<IProps,{}>{
 export default connect(
     (state:any) => ({
         loading:state.application.loading,
+        loadingMsg:state.application.loadingMsg,
     }),
     dispatch => ({
         actions:{
 
         }
     })
-)(withStyles(style)(LoadingComponent));
+)(withStyles(style)(
+    withNamespaces('landing')(LoadingComponent)
+));
