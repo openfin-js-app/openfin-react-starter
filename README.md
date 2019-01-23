@@ -3,6 +3,8 @@
 
 Openfin react starer in ts
 
+![](https://albertleigh.github.io/openfin-react-latest/img/screenshoot.gif)
+
 * Based on create-react-app structure
 * Integrate Jest and Enzyme test framework
 * Integrate Material-UI@3.9.0

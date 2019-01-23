@@ -1,4 +1,4 @@
-## [0.35.20] 2019-01-20
+## [0.35.20] 2019-01-23
 - Support openfin runtime v9.61.38.40
 - Support new window style
 - Support Notification windows
