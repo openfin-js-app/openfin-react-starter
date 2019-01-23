@@ -1,7 +1,7 @@
 # Openfin react starter
 [![version][version-badge]][CHANGELOG] [![license][license-badge]][LICENSE]
 
-Openfin react starer in ts
+Openfin react starter in ts
 
 ![](https://albertleigh.github.io/openfin-react-latest/img/screenshoot.gif)
 
