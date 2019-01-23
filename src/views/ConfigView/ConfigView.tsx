@@ -162,7 +162,7 @@ class ConfigView extends React.Component<IProps,IState>{
                             <GridList cellHeight={52} className={classes.configMainGridList} cols={12}>
                                 {filedShownCnt>0?
                                     tabs[currentTab]._fields.map((oneField:IConfigField, index:number)=>(
-                                        globalFilterString === '' || t(oneField._label).toLowerCase().indexOf(globalFilterString.toLowerCase())>-1?
+                                        globalFilterString === '' || ( t(oneField._label) as string ).toLowerCase().indexOf(globalFilterString.toLowerCase())>-1?
                                         <GridListTile key={index} cols={oneField._cols || 3} rows={oneField._rows || 1}>
                                             <ConfigFieldComp
                                                 value={config[tabName][oneField._name]}
