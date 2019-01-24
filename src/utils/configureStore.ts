@@ -1,6 +1,6 @@
 import { applyMiddleware, createStore, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import { createOpenfinMiddleware } from '@albertli90/redux-openfin';
+import { createOpenfinMiddleware } from 'redux-openfin';
 
 import rootReducer, {IRootState} from '../reduxs';
 import rootSaga from '../reduxs/sagas';

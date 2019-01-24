@@ -7,7 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 
 import CloseIcon from '@material-ui/icons/Close';
 
-import { Notification } from '@albertli90/redux-openfin';
+import { Notification } from 'redux-openfin';
 
 import cx from "classnames";
 

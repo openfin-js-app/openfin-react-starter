@@ -1,3 +1,6 @@
+## [0.35.21] 2019-01-24
+- adopt non-scope deps
+
 ## [0.35.20] 2019-01-23
 - Support openfin runtime v9.61.38.40
 - Support new window style

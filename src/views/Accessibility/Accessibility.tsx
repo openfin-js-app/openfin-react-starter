@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 
 import { WithStyles, withStyles, createStyles } from '@material-ui/core/styles';
 
-import { Notification } from '@albertli90/redux-openfin';
+import { Notification } from 'redux-openfin';
 
 import { applicationNewSnackbar, applicationLaunchNewWindow } from '../../reduxs';
 

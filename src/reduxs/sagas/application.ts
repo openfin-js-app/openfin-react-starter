@@ -1,8 +1,8 @@
 import {Action} from "redux-actions";
 import { buffers, delay } from 'redux-saga';
 import { all, call, put, take, takeLatest, takeEvery, fork, select, actionChannel } from 'redux-saga/effects';
-import { Docking ,System, Event, Window } from '@albertli90/redux-openfin';
-import { GetGroupResPayload, NewWindowResPayload, WrapResPayload } from "@albertli90/redux-openfin/window";
+import { Docking ,System, Event, Window } from 'redux-openfin';
+import { GetGroupResPayload, NewWindowResPayload, WrapResPayload } from "redux-openfin/window";
 
 import hist from '../../utils/history';
 import i18n from '../../i18n';

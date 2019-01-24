@@ -7,7 +7,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 
 import {WithStyles, withStyles} from '@material-ui/core/styles';
 
-import {Window} from '@albertli90/redux-openfin';
+import {Window} from 'redux-openfin';
 
 import {
     applicationCloseSnackbar,

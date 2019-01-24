@@ -1,6 +1,6 @@
 {
   "name": "openfin-react-starter",
-  "version": "0.35.20",
+  "version": "0.35.21",
   "private": true,
   "homepage": "https://albertleigh.github.io/openfin-react-latest",
   "dependencies": {
@@ -14,8 +14,6 @@
     "tcp-port-used": "^1.0.0"
   },
   "devDependencies": {
-    "@albertli90/openfin-browser-adapter": "^0.35.20",
-    "@albertli90/redux-openfin": "^0.35.20",
     "@babel/core": "7.1.2",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/plugin-proposal-decorators": "^7.1.2",
@@ -91,6 +89,7 @@
     "mini-css-extract-plugin": "0.4.3",
     "moment": "^2.23.0",
     "object-assign": "4.1.1",
+    "openfin-browser-adapter": "^0.35.21",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "pkg": "^4.3.5",
     "pnp-webpack-plugin": "1.1.0",
@@ -116,6 +115,7 @@
     "redux": "^4.0.0",
     "redux-actions": "^2.6.1",
     "redux-mock-store": "^1.5.3",
+    "redux-openfin": "^0.35.21",
     "redux-saga": "^0.16.2",
     "redux-saga-test-plan": "^3.7.0",
     "resolve": "1.8.1",

@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import './i18n';
 import { Provider } from 'react-redux';
-import { BrowserAdapter } from '@albertli90/openfin-browser-adapter';
+import { BrowserAdapter } from 'openfin-browser-adapter';
 
 import './assets/css/main.css';
 
