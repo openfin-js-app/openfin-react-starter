@@ -1,8 +1,8 @@
 import { testSaga } from 'redux-saga-test-plan';
 import { delay } from 'redux-saga';
 import { all, call, put, take, takeLatest, takeEvery, fork, select, actionChannel } from 'redux-saga/effects';
-import { System, Event, Window } from '@albertli90/redux-openfin';
-import { SHARED_ACTION_ORIGIN_TAG } from '@albertli90/redux-openfin/channel';
+import { System, Event, Window } from 'redux-openfin';
+import { SHARED_ACTION_ORIGIN_TAG } from 'redux-openfin/channel';
 
 import {
     CLIENT_SET_VALUE,

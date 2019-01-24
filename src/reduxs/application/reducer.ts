@@ -1,5 +1,5 @@
 import { handleActions, Action } from 'redux-actions';
-import { Docking, System, Window, Event } from '@albertli90/redux-openfin';
+import { Docking, System, Window, Event } from 'redux-openfin';
 
 import {
     IApplicationNewSnackbarOption,

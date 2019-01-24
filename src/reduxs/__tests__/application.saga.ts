@@ -1,7 +1,7 @@
 import { testSaga } from 'redux-saga-test-plan';
 import { delay } from 'redux-saga';
 import { all, call, put, take, takeLatest, takeEvery, fork, select, actionChannel } from 'redux-saga/effects';
-import {System, Event, Window, Docking} from '@albertli90/redux-openfin';
+import {System, Event, Window, Docking} from 'redux-openfin';
 
 jest.mock('../../dexie/db');
 import {findOneFieldVal} from '../../dexie/configDao'

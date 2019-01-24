@@ -21,7 +21,7 @@ import childWindowRoutes from '../../routes/ChildWindow';
 import { Header,SnackbarContent } from '../../components';
 
 import { dashboardLayoutStyle as style } from '../../assets/jss/openfin-starter';
-import {Window} from "@albertli90/redux-openfin";
+import {Window} from "redux-openfin";
 
 declare const window:any;
 

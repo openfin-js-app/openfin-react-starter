@@ -1,4 +1,4 @@
-import {Docking, Event, System, Window} from '@albertli90/redux-openfin';
+import {Docking, Event, System, Window} from 'redux-openfin';
 import * as Actions from '../application/actions';
 import reducerCreator, {defaultState} from '../application/reducer';
 
