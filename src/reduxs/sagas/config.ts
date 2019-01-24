@@ -1,6 +1,6 @@
 import { buffers, delay } from 'redux-saga';
 import {put, call, select, take, takeLatest, takeEvery } from 'redux-saga/effects';
-import {System, Window} from "@albertli90/redux-openfin";
+import {System, Window} from "redux-openfin";
 
 import {
     CONFIG_LOAD_FROM_DEXIE,

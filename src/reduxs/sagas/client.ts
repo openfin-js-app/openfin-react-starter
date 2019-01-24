@@ -1,5 +1,5 @@
 import { put, takeEvery } from 'redux-saga/effects';
-import { SHARED_ACTION_ORIGIN_TAG } from '@albertli90/redux-openfin/channel';
+import { SHARED_ACTION_ORIGIN_TAG } from 'redux-openfin/channel';
 
 import {
     CLIENT_SET_VALUE,

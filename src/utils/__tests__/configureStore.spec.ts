@@ -1,5 +1,5 @@
-import { ChannelType } from '@albertli90/redux-openfin/init';
-import { BrowserAdapter } from '@albertli90/openfin-browser-adapter';
+import { ChannelType } from 'redux-openfin/init';
+import { BrowserAdapter } from 'openfin-browser-adapter';
 import configureStore from '../configureStore';
 
 declare const window:any;

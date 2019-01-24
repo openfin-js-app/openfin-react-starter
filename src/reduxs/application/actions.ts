@@ -1,5 +1,5 @@
 import { createAction, ActionFunctionAny, Action } from 'redux-actions';
-import {WindowOptions} from '@albertli90/redux-openfin';
+import {WindowOptions} from 'redux-openfin';
 
 import { IApplicationNewSnackbarOption, IApplicationSetSnackbarStatusOption, IApplicationCloseSnackBarOption } from './types';
 
