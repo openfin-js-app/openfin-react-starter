@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { IConfigRuntimeState } from './types';
+import { I18Language, IConfigRuntimeState } from './types';
 
 interface IWithConfig {
     config:Partial<IConfigRuntimeState>,
-    actions:{
-        handleToggleThemeField:()=>void
-    }
+    actions:Partial<{
+        onToggleThemeField:()=>void,
+        onUpdateLangField:(lang:I18Language)=>void,
+    }>
 }
 
 interface IWithConfigContext {

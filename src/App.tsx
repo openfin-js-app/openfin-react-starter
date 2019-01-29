@@ -11,7 +11,7 @@ import indexRoutes from './routes/index';
 
 import hist from './utils/history';
 
-import {MuiTheme, IRootState, IConfigRuntimeState, configUpdateOneField, ConfigContextProvider} from './reduxs'
+import {MuiTheme, I18Language, IRootState, IConfigRuntimeState, configUpdateOneField, ConfigContextProvider} from './reduxs'
 
 interface IProps{
     loading:boolean,
@@ -20,6 +20,7 @@ interface IProps{
     actions:{
         handleUpdateThemeField:(value:MuiTheme)=>void,
         handleToggleThemeField:()=>void,
+        handleUpdateLangField:(lang:I18Language)=>void,
     },
     [key:number]:any,
     [key:string]:any,
@@ -134,7 +135,12 @@ class App extends React.Component<IProps,IState>{
 
     render(){
 
-        const { config, actions:{handleToggleThemeField}} = this.props;
+        const {
+            config,
+            actions:{
+                handleToggleThemeField, handleUpdateLangField
+            }
+        } = this.props;
 
         return (
             <React.Fragment>
@@ -145,7 +151,8 @@ class App extends React.Component<IProps,IState>{
                             {
                                 config,
                                 actions:{
-                                    handleToggleThemeField
+                                    onToggleThemeField:handleToggleThemeField,
+                                    onUpdateLangField:handleUpdateLangField
                                 }
                             }
 
@@ -178,6 +185,12 @@ export default connect(
             handleUpdateThemeField: (value:MuiTheme)=>{
                 dispatch(configUpdateOneField({
                     name:'application.theme',
+                    value,
+                }))
+            },
+            handleUpdateLangField: (value:I18Language)=>{
+                dispatch(configUpdateOneField({
+                    name:'application.language',
                     value,
                 }))
             }

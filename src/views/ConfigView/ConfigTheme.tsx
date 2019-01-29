@@ -20,7 +20,7 @@ import {
     withConfigContext
 } from '../../reduxs/config/context'
 
-interface IProps extends WithStyles<typeof style>, WithNamespaces,WithConfigContext{
+interface IProps extends WithStyles<typeof style>, WithNamespaces, WithConfigContext{
     actions:{
     },
 }
@@ -35,7 +35,7 @@ class ConfigThemeView extends React.Component<IProps,{}>{
             configContext:{
                 config,
                 actions:{
-                    handleToggleThemeField
+                    onToggleThemeField
                 }
             }
         } = this.props;
@@ -44,7 +44,7 @@ class ConfigThemeView extends React.Component<IProps,{}>{
             <div className={classes.container}>
                 <Switch
                     checked={config.application.theme === MuiTheme.DARK}
-                    onChange={handleToggleThemeField}
+                    onChange={onToggleThemeField}
                     value="themeVal"
                 />
                 <Typography className={classes.themeSpan} variant="body1" gutterBottom>

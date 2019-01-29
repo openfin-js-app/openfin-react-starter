@@ -9,7 +9,7 @@ export enum MuiTheme{
 }
 
 export enum I18Language{
-    en_US_='en-US',
+    en_US='en-US',
     zh_CN ='zh-CN',
 }
 
@@ -82,7 +82,7 @@ export interface IConfigUpdateGlobalFilterStrOption {
 export interface IConfigRuntimeState{
     application:Partial<{
         theme:MuiTheme,
-        language:string,
+        language:I18Language,
         newWinTop:number,
         newWinLeft:number,
         newWinWidth:number,
