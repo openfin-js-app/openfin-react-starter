@@ -13,14 +13,15 @@ import { configThemeViewStyle as style } from '../../assets/jss/openfin-starter'
 
 import {
     MuiTheme,
-    configUpdateOneField,
 } from '../../reduxs'
 
-interface IProps extends WithStyles<typeof style>, WithNamespaces{
-    theme:MuiTheme,
+import {
+    WithConfigContext,
+    withConfigContext
+} from '../../reduxs/config/context'
+
+interface IProps extends WithStyles<typeof style>, WithNamespaces,WithConfigContext{
     actions:{
-        handleUpdateThemeField:(value:MuiTheme)=>void,
-        handleToggleThemeField:()=>void,
     },
 }
 
@@ -31,21 +32,23 @@ class ConfigThemeView extends React.Component<IProps,{}>{
 
         const {
             classes, t,
-            theme,
-            actions:{
-                handleToggleThemeField,
+            configContext:{
+                config,
+                actions:{
+                    handleToggleThemeField
+                }
             }
         } = this.props;
 
         return (
             <div className={classes.container}>
                 <Switch
-                    checked={theme === MuiTheme.DARK}
+                    checked={config.application.theme === MuiTheme.DARK}
                     onChange={handleToggleThemeField}
                     value="themeVal"
                 />
                 <Typography className={classes.themeSpan} variant="body1" gutterBottom>
-                    {t(`common.${theme}`)}
+                    {t(`common.${config.application.theme}`)}
                 </Typography>
             </div>
         )
@@ -54,33 +57,14 @@ class ConfigThemeView extends React.Component<IProps,{}>{
 
 export default connect(
     (state:IRootState)=>({
-        theme:state.config.application.theme
     }),
     dispatch => ({
         actions:{
-            handleUpdateThemeField: (value:MuiTheme)=>{
-                dispatch(configUpdateOneField({
-                    name:'application.theme',
-                    value,
-                }))
-            }
         }
     }),
-    (stateProps,actionProps)=>({
-        ...stateProps,
-        actions:{
-            ...actionProps.actions,
-            handleToggleThemeField: ()=>{
-                actionProps.actions.handleUpdateThemeField(
-                    stateProps.theme === MuiTheme.DARK ?MuiTheme.LIGHT:MuiTheme.DARK
-                )
-            }
-        }
-
-    })
     )(
     withStyles(style)(
-        withNamespaces('config')(ConfigThemeView)
+        withNamespaces('config')(withConfigContext(ConfigThemeView))
     )
 );
 

@@ -11,11 +11,16 @@ import indexRoutes from './routes/index';
 
 import hist from './utils/history';
 
-import {MuiTheme, IRootState } from './reduxs'
+import {MuiTheme, IRootState, IConfigRuntimeState, configUpdateOneField, ConfigContextProvider} from './reduxs'
 
 interface IProps{
     loading:boolean,
+    config:IConfigRuntimeState,
     theme:MuiTheme,
+    actions:{
+        handleUpdateThemeField:(value:MuiTheme)=>void,
+        handleToggleThemeField:()=>void,
+    },
     [key:number]:any,
     [key:string]:any,
 }
@@ -129,21 +134,33 @@ class App extends React.Component<IProps,IState>{
 
     render(){
 
+        const { config, actions:{handleToggleThemeField}} = this.props;
+
         return (
             <React.Fragment>
                 <CssBaseline/>
                 <Router history={hist}>
                     <MuiThemeProvider theme={this.createMuiTheme()}>
-                        <Switch>
+                        <ConfigContextProvider value={
                             {
-                                indexRoutes.map((prop:any,key)=>{
-                                    if (prop.redirect)
-                                        return <Redirect from={prop.path} to={prop.to} key={key}/>;
-                                    return <Route path={prop.path} component={prop.component} key={key}/>;
-
-                                })
+                                config,
+                                actions:{
+                                    handleToggleThemeField
+                                }
                             }
-                        </Switch>
+
+                        }>
+                            <Switch>
+                                {
+                                    indexRoutes.map((prop:any,key)=>{
+                                        if (prop.redirect)
+                                            return <Redirect from={prop.path} to={prop.to} key={key}/>;
+                                        return <Route path={prop.path} component={prop.component} key={key}/>;
+
+                                    })
+                                }
+                            </Switch>
+                        </ConfigContextProvider>
                     </MuiThemeProvider>
                 </Router>
             </React.Fragment>
@@ -153,10 +170,29 @@ class App extends React.Component<IProps,IState>{
 
 export default connect(
     (state:IRootState)=>({
+        config:state.config,
         theme:state.config.application.theme
     }),
     dispatch => ({
         actions:{
+            handleUpdateThemeField: (value:MuiTheme)=>{
+                dispatch(configUpdateOneField({
+                    name:'application.theme',
+                    value,
+                }))
+            }
         }
     }),
+    (stateProps,actionProps)=>({
+        ...stateProps,
+        actions:{
+            ...actionProps.actions,
+            handleToggleThemeField: ()=>{
+                actionProps.actions.handleUpdateThemeField(
+                    stateProps.theme === MuiTheme.DARK ?MuiTheme.LIGHT:MuiTheme.DARK
+                )
+            }
+        }
+
+    })
 )(App);
