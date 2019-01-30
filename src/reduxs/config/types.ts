@@ -80,7 +80,7 @@ export interface IConfigUpdateGlobalFilterStrOption {
 }
 
 export interface IConfigRuntimeState{
-    application:Partial<{
+    application?:Partial<{
         theme:MuiTheme,
         language:I18Language,
         newWinTop:number,
@@ -90,7 +90,7 @@ export interface IConfigRuntimeState{
         newWindDeltaLeft:number,
         newWindDeltaHeight:number,
     }>,
-    sample:Partial<{
+    sample?:Partial<{
         strValue:string,
         crrValue:number,
         dateValue:Date,

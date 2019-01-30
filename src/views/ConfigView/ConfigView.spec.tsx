@@ -5,6 +5,8 @@ import configurestore from 'redux-mock-store';
 
 import ConfigView from './ConfigView';
 
+import GlobalContext from '../../GlobalContext';
+
 import { defaultState } from '../../reduxs/config/reducer';
 
 const mockStore = configurestore();
@@ -29,7 +31,9 @@ describe('ConfigView',()=>{
     it('render correctly',()=>{
         const wrapper = mount(
             <Provider store={store}>
-                <ConfigView/>
+                <GlobalContext config={initialState.config}>
+                    <ConfigView/>
+                </GlobalContext>
             </Provider>
         );
         expect(wrapper).toBeTruthy();

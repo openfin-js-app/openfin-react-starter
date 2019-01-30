@@ -14,7 +14,7 @@ Object {
         },
         Object {
           "_cols": 10,
-          "_custom": <Connect(WithStyles(LoadNamespace(ConfigThemeView))) />,
+          "_custom": <Connect(WithStyles(LoadNamespace(ComponentWithConfig))) />,
           "_defaultValue": "dark",
           "_label": "Theme",
           "_name": "theme",
@@ -29,7 +29,7 @@ Object {
         },
         Object {
           "_cols": 10,
-          "_custom": <Connect(WithStyles(ConfigLangView)) />,
+          "_custom": <Connect(WithStyles(ComponentWithConfig)) />,
           "_defaultValue": undefined,
           "_label": "language",
           "_name": "language",
@@ -284,7 +284,7 @@ Object {
         },
         Object {
           "_cols": 10,
-          "_custom": <Connect(WithStyles(LoadNamespace(ConfigThemeView))) />,
+          "_custom": <Connect(WithStyles(LoadNamespace(ComponentWithConfig))) />,
           "_defaultValue": "dark",
           "_label": "Theme",
           "_name": "theme",
@@ -299,7 +299,7 @@ Object {
         },
         Object {
           "_cols": 10,
-          "_custom": <Connect(WithStyles(ConfigLangView)) />,
+          "_custom": <Connect(WithStyles(ComponentWithConfig)) />,
           "_defaultValue": undefined,
           "_label": "language",
           "_name": "language",
@@ -551,7 +551,7 @@ Object {
         },
         Object {
           "_cols": 10,
-          "_custom": <Connect(WithStyles(LoadNamespace(ConfigThemeView))) />,
+          "_custom": <Connect(WithStyles(LoadNamespace(ComponentWithConfig))) />,
           "_defaultValue": "dark",
           "_label": "Theme",
           "_name": "theme",
@@ -566,7 +566,7 @@ Object {
         },
         Object {
           "_cols": 10,
-          "_custom": <Connect(WithStyles(ConfigLangView)) />,
+          "_custom": <Connect(WithStyles(ComponentWithConfig)) />,
           "_defaultValue": undefined,
           "_label": "language",
           "_name": "language",
@@ -827,7 +827,7 @@ Object {
         },
         Object {
           "_cols": 10,
-          "_custom": <Connect(WithStyles(LoadNamespace(ConfigThemeView))) />,
+          "_custom": <Connect(WithStyles(LoadNamespace(ComponentWithConfig))) />,
           "_defaultValue": "dark",
           "_label": "Theme",
           "_name": "theme",
@@ -842,7 +842,7 @@ Object {
         },
         Object {
           "_cols": 10,
-          "_custom": <Connect(WithStyles(ConfigLangView)) />,
+          "_custom": <Connect(WithStyles(ComponentWithConfig)) />,
           "_defaultValue": undefined,
           "_label": "language",
           "_name": "language",
@@ -1094,7 +1094,7 @@ Object {
         },
         Object {
           "_cols": 10,
-          "_custom": <Connect(WithStyles(LoadNamespace(ConfigThemeView))) />,
+          "_custom": <Connect(WithStyles(LoadNamespace(ComponentWithConfig))) />,
           "_defaultValue": "dark",
           "_label": "Theme",
           "_name": "theme",
@@ -1109,7 +1109,7 @@ Object {
         },
         Object {
           "_cols": 10,
-          "_custom": <Connect(WithStyles(ConfigLangView)) />,
+          "_custom": <Connect(WithStyles(ComponentWithConfig)) />,
           "_defaultValue": undefined,
           "_label": "language",
           "_name": "language",
@@ -1361,7 +1361,7 @@ Object {
         },
         Object {
           "_cols": 10,
-          "_custom": <Connect(WithStyles(LoadNamespace(ConfigThemeView))) />,
+          "_custom": <Connect(WithStyles(LoadNamespace(ComponentWithConfig))) />,
           "_defaultValue": "dark",
           "_label": "Theme",
           "_name": "theme",
@@ -1376,7 +1376,7 @@ Object {
         },
         Object {
           "_cols": 10,
-          "_custom": <Connect(WithStyles(ConfigLangView)) />,
+          "_custom": <Connect(WithStyles(ComponentWithConfig)) />,
           "_defaultValue": undefined,
           "_label": "language",
           "_name": "language",
@@ -1628,7 +1628,7 @@ Object {
         },
         Object {
           "_cols": 10,
-          "_custom": <Connect(WithStyles(LoadNamespace(ConfigThemeView))) />,
+          "_custom": <Connect(WithStyles(LoadNamespace(ComponentWithConfig))) />,
           "_defaultValue": "dark",
           "_label": "Theme",
           "_name": "theme",
@@ -1643,7 +1643,7 @@ Object {
         },
         Object {
           "_cols": 10,
-          "_custom": <Connect(WithStyles(ConfigLangView)) />,
+          "_custom": <Connect(WithStyles(ComponentWithConfig)) />,
           "_defaultValue": undefined,
           "_label": "language",
           "_name": "language",

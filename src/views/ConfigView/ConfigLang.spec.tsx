@@ -1,28 +1,31 @@
 import * as React from 'react';
+import { Provider } from 'react-redux';
 
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import Typography from '@material-ui/core/Typography';
 
 import { createShallow, createMount } from '@material-ui/core/test-utils';
 import configurestore from 'redux-mock-store';
 
 import ConfigLang from './ConfigLang';
 
+import GlobalContext from '../../GlobalContext';
+import {I18Language} from "../../reduxs";
+
 const mockStore = configurestore();
 const zhState = {
     config:{
         application:{
-            language:'zh-CN'
-        }
+            language:I18Language.zh_CN
+        },
     },
 };
 const enState = {
     config:{
         application:{
-            language:'en-US'
-        }
+            language:I18Language.en_US
+        },
     },
 };
 
@@ -46,8 +49,17 @@ describe('ConfigLang',()=>{
     it('render en-US correctly and switch to zh-CN',()=>{
 
         const store = mockStore(enState);
-
-        const wrapper = mount(<ConfigLang store={store}/>);
+        const handleUpdateLangField = jest.fn();
+        const wrapper = mount(
+            <Provider store={store}>
+                <GlobalContext
+                    config={enState.config}
+                    onUpdateLangField={handleUpdateLangField}
+                >
+                    <ConfigLang/>
+                </GlobalContext>
+            </Provider>
+        );
 
         const btns = wrapper.find(Button);
         expect(btns).toHaveLength(1);
@@ -65,17 +77,28 @@ describe('ConfigLang',()=>{
 
         menuItems.at(1).simulate('click');
 
-        expect(wrapper.find(ConfigLang)).toMatchSnapshot();
+        expect(handleUpdateLangField).toHaveBeenCalled();
+        expect(handleUpdateLangField.mock.calls).toMatchSnapshot();
 
     })
 
     it('render zh-CN correctly',()=>{
 
         const store = mockStore(zhState);
+        const handleUpdateLangField = jest.fn();
 
-        const wrapper = mount(<ConfigLang store={store}/>);
+        const wrapper = mount(
+            <Provider store={store}>
+                <GlobalContext
+                    config={enState.config}
+                    onUpdateLangField={handleUpdateLangField}
+                >
+                    <ConfigLang/>
+                </GlobalContext>
+            </Provider>
+        );
 
-        expect(wrapper.find(ConfigLang)).toMatchSnapshot();
+        expect(wrapper.find(ConfigLang)).toBeTruthy();
 
     })
 

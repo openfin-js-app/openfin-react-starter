@@ -5,6 +5,8 @@ import { connect } from 'react-redux'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
+import GlobalContext from './GlobalContext';
+
 import { primaryColor, infoColor, dangerColor} from './assets/jss/openfin-starter-constant';
 
 import indexRoutes from './routes/index';
@@ -145,31 +147,26 @@ class App extends React.Component<IProps,IState>{
         return (
             <React.Fragment>
                 <CssBaseline/>
-                <Router history={hist}>
-                    <MuiThemeProvider theme={this.createMuiTheme()}>
-                        <ConfigContextProvider value={
-                            {
-                                config,
-                                actions:{
-                                    onToggleThemeField:handleToggleThemeField,
-                                    onUpdateLangField:handleUpdateLangField
-                                }
-                            }
+                    <Router history={hist}>
+                        <MuiThemeProvider theme={this.createMuiTheme()}>
+                            <GlobalContext
+                                config={config}
+                                onToggleThemeField={handleToggleThemeField}
+                                onUpdateLangField={handleUpdateLangField}
+                            >
+                                <Switch>
+                                    {
+                                        indexRoutes.map((prop:any,key)=>{
+                                            if (prop.redirect)
+                                                return <Redirect from={prop.path} to={prop.to} key={key}/>;
+                                            return <Route path={prop.path} component={prop.component} key={key}/>;
 
-                        }>
-                            <Switch>
-                                {
-                                    indexRoutes.map((prop:any,key)=>{
-                                        if (prop.redirect)
-                                            return <Redirect from={prop.path} to={prop.to} key={key}/>;
-                                        return <Route path={prop.path} component={prop.component} key={key}/>;
-
-                                    })
-                                }
-                            </Switch>
-                        </ConfigContextProvider>
-                    </MuiThemeProvider>
-                </Router>
+                                        })
+                                    }
+                                </Switch>
+                            </GlobalContext>
+                        </MuiThemeProvider>
+                    </Router>
             </React.Fragment>
         );
     }
@@ -177,6 +174,7 @@ class App extends React.Component<IProps,IState>{
 
 export default connect(
     (state:IRootState)=>({
+        loading:state.application.loading,
         config:state.config,
         theme:state.config.application.theme
     }),
