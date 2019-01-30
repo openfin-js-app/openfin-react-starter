@@ -28,7 +28,15 @@ router.get('/app.json',(req,res)=>{
         baseUrl+='/';
     }
 
-    log(chalk.cyan('baseUrl',baseUrl));
+    if (!baseUrl.startsWith('http')){
+        if (req.connection.secure){
+            baseUrl = 'https://'+baseUrl;
+        }else{
+            baseUrl = 'http://'+baseUrl;
+        }
+    }
+
+    // log(chalk.cyan('baseUrl',baseUrl));
 
     res.json({
             "startup_app":{
