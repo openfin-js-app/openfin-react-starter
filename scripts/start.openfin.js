@@ -46,6 +46,8 @@ async function launchApp(){
         "saveWindowsSate":false,
         "resizable":true,
         "frame":false,
+        "defaultTop":parseInt(process.env.REACT_APP_NEW_WINDOW_TOP,10),
+        "defaultLeft":parseInt(process.env.REACT_APP_NEW_WINDOW_LEFT,10),
         "defaultWidth":728,
         "defaultHeight":450,
         "minWidth":420,
