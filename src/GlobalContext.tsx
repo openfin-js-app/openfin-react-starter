@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { connect } from 'react-redux'
 
-import { I18Language, IConfigRuntimeState, ConfigContextProvider} from './reduxs'
+import { I18Language, IConfigRuntimeState } from './reduxs'
+
+import { ConfigContextProvider } from './reduxs/config/context';
 
 interface IProps {
     config:IConfigRuntimeState,

@@ -10,7 +10,7 @@ interface IWithConfig {
 }
 
 interface IWithConfigContext {
-    configContext:Partial<IWithConfig>
+    configContext?:Partial<IWithConfig>
 }
 
 

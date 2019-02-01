@@ -13,7 +13,7 @@ import indexRoutes from './routes/index';
 
 import hist from './utils/history';
 
-import {MuiTheme, I18Language, IRootState, IConfigRuntimeState, configUpdateOneField, ConfigContextProvider} from './reduxs'
+import {MuiTheme, I18Language, IRootState, IConfigRuntimeState, configUpdateOneField} from './reduxs'
 
 interface IProps{
     loading:boolean,

@@ -15,7 +15,6 @@ export * from './application/types';
 export * from './client/actions';
 export * from './client/types';
 export * from './config/actions';
-export * from './config/context';
 export * from './config/types';
 
 export interface IRootState {
