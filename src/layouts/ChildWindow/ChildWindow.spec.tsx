@@ -5,6 +5,7 @@ import configurestore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router';
 
 import ChildWindow from './ChildWindow';
+import GlobalContext from '../../GlobalContext';
 import ViewOne from '../../views/ViewOne/ViewOne';
 import {Header, SnackbarContent} from '../../components';
 import { rootDefaultState } from '../../reduxs'
@@ -39,7 +40,9 @@ describe('ChildWindow layout',()=>{
         const wrapper = mount(
             <Provider store={store}>
                 <MemoryRouter initialEntries={['/childWindow/view-one']}>
-                    <ChildWindow store={store} location={{pathname:'/childWindow/view-one'}}/>
+                    <GlobalContext config={rootDefaultState.config}>
+                        <ChildWindow store={store} location={{pathname:'/childWindow/view-one'}}/>
+                    </GlobalContext>
                 </MemoryRouter>
             </Provider>
         );
@@ -56,7 +59,7 @@ describe('ChildWindow layout',()=>{
     })
 
     it('render SnackbarContent and could be closed correctly',()=>{
-        const store = mockStore({
+        const initState = {
             application:{
                 username:'',
                 computerName:'',
@@ -77,12 +80,16 @@ describe('ChildWindow layout',()=>{
             },
             client:{
                 count:0,
-            }
-        });
+            },
+            config:rootDefaultState.config,
+        }
+        const store = mockStore(initState);
         const wrapper = mount(
             <Provider store={store}>
                 <MemoryRouter initialEntries={['/childWindow/view-one']}>
-                    <ChildWindow store={store} location={{pathname:'/childWindow/view-one'}}/>
+                    <GlobalContext config={rootDefaultState.config}>
+                        <ChildWindow store={store} location={{pathname:'/childWindow/view-one'}}/>
+                    </GlobalContext>
                 </MemoryRouter>
             </Provider>
         );

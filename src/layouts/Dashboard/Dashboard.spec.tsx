@@ -7,6 +7,7 @@ import { MemoryRouter } from 'react-router-dom';
 import Snackbar from '@material-ui/core/Snackbar';
 
 import Dashboard from './Dashboard';
+import GlobalContext from '../../GlobalContext';
 import ViewOne from '../../views/ViewOne/ViewOne';
 import {Sidebar, Header, SnackbarContent } from '../../components';
 import {MuiTheme} from "../../reduxs";
@@ -63,7 +64,11 @@ describe('Dashboard layout',()=>{
         const wrapper = mount(
             <Provider store={store}>
                 <MemoryRouter initialEntries={['/dashboard/view-one']}>
-                    <Dashboard store={store} location={{pathname:'/dashboard/view-one'}}/>
+                    <GlobalContext
+                        config={initialState.config}
+                    >
+                        <Dashboard store={store} location={{pathname:'/dashboard/view-one'}}/>
+                    </GlobalContext>
                 </MemoryRouter>
             </Provider>
 
@@ -84,7 +89,7 @@ describe('Dashboard layout',()=>{
     })
 
     it('render SnackbarContent and could be closed correctly',()=>{
-        const store = mockStore({
+        const initialState = {
             application:{
                 username:'',
                 computerName:'',
@@ -111,11 +116,17 @@ describe('Dashboard layout',()=>{
                     theme:MuiTheme.DARK,
                 }
             }
-        });
+        };
+
+        const store = mockStore(initialState);
         const wrapper = mount(
             <Provider store={store}>
                 <MemoryRouter initialEntries={['/dashboard/view-one']}>
-                    <Dashboard store={store} location={{pathname:'/dashboard/view-one'}}/>
+                    <GlobalContext
+                        config={initialState.config}
+                    >
+                        <Dashboard store={store} location={{pathname:'/dashboard/view-one'}}/>
+                    </GlobalContext>
                 </MemoryRouter>
             </Provider>
         );
