@@ -5,7 +5,7 @@ Openfin react starter in ts
 
 ![](https://albertleigh.github.io/openfin-react-latest/img/screenshoot.gif)
 
-* Based on create-react-app structure
+* Based on create-react-app@2.1.3 ejected structure
 * Integrate Jest and Enzyme test framework
 * Integrate Material-UI@3.9.0
 * Support basic frameless window features: move, minimize, maximize, close and resize
