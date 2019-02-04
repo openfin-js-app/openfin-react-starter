@@ -219,5 +219,8 @@
       "build/**/*",
       "package.json"
     ]
+  },
+  "resolutions": {
+    "terser": "3.14.1"
   }
 }
