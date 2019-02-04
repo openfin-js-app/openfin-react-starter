@@ -21,19 +21,20 @@ export default (
         }
     });
     const sagaMiddleware = createSagaMiddleware();
-    const devtools = window.devToolsExtension?window.devToolsExtension():(f:any):any => (f);
 
-    const middleware = compose(
+    const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+    const enhancers = composeEnhancers(
         applyMiddleware(
             sagaMiddleware,
             openfinMiddleware,
         ),
-        devtools
     );
+    const devtools = window.devToolsExtension?window.devToolsExtension():(f:any):any => (f);
+
 
     const store = createStore(
         rootReducer(parentState),
-        middleware,
+        enhancers,
     );
 
     sagaMiddleware.run(rootSaga);

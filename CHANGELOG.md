@@ -1,3 +1,7 @@
+## [0.35.40] 2019-02-04
+- Support HOC Config Context
+- Refactor scaffolding codes to adopt the ejected create-react-app of version 2.1.3
+
 ## [0.35.21] 2019-01-24
 - adopt non-scope deps
 

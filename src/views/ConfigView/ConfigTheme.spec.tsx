@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Provider } from 'react-redux';
 
 import Switch from '@material-ui/core/Switch';
 
@@ -6,8 +7,9 @@ import { createShallow, createMount } from '@material-ui/core/test-utils';
 import configurestore from 'redux-mock-store';
 
 import ConfigTheme from './ConfigTheme';
+
+import GlobalContext from '../../GlobalContext';
 import {MuiTheme} from "../../reduxs";
-import Button from "@material-ui/core/Button";
 
 const mockStore = configurestore();
 
@@ -15,7 +17,7 @@ const darkState = {
     config:{
         application:{
             theme:MuiTheme.DARK
-        }
+        },
     },
 };
 
@@ -23,7 +25,7 @@ const lightState = {
     config:{
         application:{
             theme:MuiTheme.LIGHT
-        }
+        },
     },
 };
 
@@ -47,15 +49,25 @@ describe('ConfigLang',()=>{
     it('render dark correctly and switch to light',()=>{
 
         const store = mockStore(darkState);
-        const wrapper = mount(<ConfigTheme store={store}/>);
+        const handleToggleThemeField = jest.fn();
+        const wrapper = mount(
+            <Provider store={store}>
+                <GlobalContext
+                    config={darkState.config}
+                    onToggleThemeField={handleToggleThemeField}
+                >
+                    <ConfigTheme/>
+                </GlobalContext>
+            </Provider>
+        );
 
         const switches = wrapper.find(Switch);
         expect(switches).toHaveLength(1);
 
         switches.at(0).props().onChange();
 
-        expect(wrapper.find(ConfigTheme)).toMatchSnapshot();
-        expect(store.getActions()).toMatchSnapshot();
+        expect(handleToggleThemeField).toHaveBeenCalled();
+        expect(handleToggleThemeField.mock.calls).toMatchSnapshot();
 
 
     })
@@ -63,15 +75,25 @@ describe('ConfigLang',()=>{
     it('render light correctly and switch to dark',()=>{
 
         const store = mockStore(lightState);
-        const wrapper = mount(<ConfigTheme store={store}/>);
+        const handleToggleThemeField = jest.fn();
+        const wrapper = mount(
+            <Provider store={store}>
+                <GlobalContext
+                    config={lightState.config}
+                    onToggleThemeField={handleToggleThemeField}
+                >
+                    <ConfigTheme/>
+                </GlobalContext>
+            </Provider>
+        );
 
         const switches = wrapper.find(Switch);
         expect(switches).toHaveLength(1);
 
         switches.at(0).props().onChange();
 
-        expect(wrapper.find(ConfigTheme)).toMatchSnapshot();
-        expect(store.getActions()).toMatchSnapshot();
+        expect(handleToggleThemeField).toHaveBeenCalled();
+        expect(handleToggleThemeField.mock.calls).toMatchSnapshot();
 
 
     })

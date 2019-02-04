@@ -18,9 +18,10 @@ Openfin react starter in ts
 * Support IndexDB based client side config
 * Support snap&dock out of box
 * Support Notification Window
+* Support HOC Config context
 
 [LICENSE]: ./LICENSE.md
 [CHANGELOG]: ./CHANGELOG.md
 
-[version-badge]: https://img.shields.io/badge/version-0.35.21-blue.svg
+[version-badge]: https://img.shields.io/badge/version-0.35.40-blue.svg
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg

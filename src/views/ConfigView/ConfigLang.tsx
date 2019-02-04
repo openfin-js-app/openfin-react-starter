@@ -16,20 +16,20 @@ import i18n from '../../i18n';
 import usFlag from '../../assets/svg/nationals/united-states.svg';
 import chFlag from '../../assets/svg/nationals/china.svg';
 
-interface IProps extends WithStyles<typeof style>{
-    language:string,
-    actions:{
-        handleUpdateLangField:(lang:string)=>void,
-    }
+import { I18Language, IRootState } from '../../reduxs';
 
+import {
+    WithConfigContext,
+    withConfigContext
+} from '../../reduxs/config/context'
+
+interface IProps extends WithStyles<typeof style>, WithConfigContext{
 
 }
 
 interface IState {
     anchorEl:any,
 }
-
-import {configUpdateOneField, IRootState } from '../../reduxs';
 
 class ConfigLangView extends React.Component<IProps,IState>{
 
@@ -38,9 +38,11 @@ class ConfigLangView extends React.Component<IProps,IState>{
     };
 
     getBtnContent = ()=>{
-        const { classes, language } = this.props;
+        const { classes, configContext } = this.props;
 
-        if (language === 'zh-CN'){
+        const language:I18Language = configContext.config.application.language;
+
+        if (language === I18Language.zh_CN){
             return(<React.Fragment>
                 <img className={classes.flagImg} src={chFlag}/>
                 <Typography variant='body1'>简体中文</Typography>
@@ -61,20 +63,24 @@ class ConfigLangView extends React.Component<IProps,IState>{
         this.setState({ anchorEl: null });
     };
 
-    handleLanguageChangeBtnClick = (lang:string)=>()=>{
-        const { actions:{
-            handleUpdateLangField
-        } } = this.props;
+    handleLanguageChangeBtnClick = (lang:I18Language)=>()=>{
+        const {
+            configContext:{
+                actions:{
+                    onUpdateLangField
+                }
+            }
+        } = this.props;
         i18n.changeLanguage(lang);
-        handleUpdateLangField(lang);
+        onUpdateLangField(lang);
         this.setState({ anchorEl: null });
     }
 
     render(){
 
-        const { classes, actions:{
-            handleUpdateLangField
-        } } = this.props;
+        const {
+            classes,
+        } = this.props;
         const { anchorEl } = this.state;
 
         return (
@@ -92,11 +98,11 @@ class ConfigLangView extends React.Component<IProps,IState>{
                     open={Boolean(anchorEl)}
                     onClose={this.handleClose}
                 >
-                    <MenuItem onClick={this.handleLanguageChangeBtnClick('en-US')}>
+                    <MenuItem onClick={this.handleLanguageChangeBtnClick(I18Language.en_US)}>
                         <img className={classes.flagImg} src={usFlag}/>
                         <Typography variant='body1'>English(US)</Typography>
                     </MenuItem>
-                    <MenuItem onClick={this.handleLanguageChangeBtnClick('zh-CN')}>
+                    <MenuItem onClick={this.handleLanguageChangeBtnClick(I18Language.zh_CN)}>
                         <img className={classes.flagImg} src={chFlag}/>
                         <Typography variant='body1'>简体中文</Typography>
                     </MenuItem>
@@ -108,21 +114,16 @@ class ConfigLangView extends React.Component<IProps,IState>{
 
 export default connect(
     (state:IRootState)=>({
-        language:state.config.application.language,
     }),
     dispatch => ({
         actions:{
-            handleUpdateLangField: (value:string)=>{
-                dispatch(configUpdateOneField({
-                    name:'application.language',
-                    value,
-                }))
-            }
 
         }
     })
 
     )(
-    withStyles(style)(ConfigLangView)
+    withStyles(style)(
+        withConfigContext(ConfigLangView)
+    )
 );
 

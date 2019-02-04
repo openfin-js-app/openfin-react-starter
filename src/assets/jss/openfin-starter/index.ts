@@ -3,8 +3,9 @@ export {default as buttonStyle} from './comp/button.style';
 export {default as configFieldCompStyle} from './comp/configFieldComp.style';
 export {default as configAboutFieldStyle} from './comp/configAboutField.style';
 export {default as headerCompStyle} from './comp/headerComp.style';
-export {default as offlineOverlayStyle} from './comp/offlineOverlay.style';
 export {default as headerLinksCompStyle} from './comp/headerLinksComp.style';
+export {default as headerThemeSwitcherCompStyle } from '../openfin-starter/comp/headerThemeSwitcherComp.style'
+export {default as offlineOverlayStyle} from './comp/offlineOverlay.style';
 export {default as sidebarCompStyle} from './comp/sidebarComp.style';
 export {default as snackbarContentCompStyle} from './comp/snackbarContentComp.style';
 // END_OF_AL_CLI_COMP

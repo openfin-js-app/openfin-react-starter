@@ -1,4 +1,4 @@
-import { ChannelType } from 'redux-openfin/init';
+import { compose } from 'redux';
 import { BrowserAdapter } from 'openfin-browser-adapter';
 import configureStore from '../configureStore';
 
@@ -18,7 +18,7 @@ describe('ConfigStore util', ()=>{
 
     it('default generator works with devToolsExtension',()=>{
 
-        window.devToolsExtension=()=>((f:any):any => (f));
+        window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__= compose;
 
         const store = configureStore(
             [],
@@ -28,7 +28,7 @@ describe('ConfigStore util', ()=>{
 
     it('default generator works without devToolsExtension',()=>{
 
-        delete window.devToolsExtension;
+        delete window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
 
         const store = configureStore(
             [],

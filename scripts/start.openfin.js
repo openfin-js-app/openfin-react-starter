@@ -32,6 +32,7 @@ async function launchApp(){
         uuid:'openfin_react_ts_starter',
         runtime:{
             version: process.env.HADOUKEN_VERSION,
+            arguments:"--v=1 --remote-debugging-port=9090 --enable-crash-reporting"
         }
     });
     const version = await fin.System.getVersion();
@@ -46,6 +47,8 @@ async function launchApp(){
         "saveWindowsSate":false,
         "resizable":true,
         "frame":false,
+        "defaultTop":parseInt(process.env.REACT_APP_NEW_WINDOW_TOP,10),
+        "defaultLeft":parseInt(process.env.REACT_APP_NEW_WINDOW_LEFT,10),
         "defaultWidth":728,
         "defaultHeight":450,
         "minWidth":420,

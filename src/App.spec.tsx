@@ -1,11 +1,13 @@
 import * as React from 'react';
+import { Provider } from 'react-redux';
+
 import { createShallow, createMount, createRender } from '@material-ui/core/test-utils';
-import Button from '@material-ui/core/Button';
 import configurestore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router-dom';
-import toJson from 'enzyme-to-json';
 
-import { rootDefaultState } from './reduxs';
+import GlobalContext from './GlobalContext';
+
+import {I18Language, rootDefaultState} from './reduxs';
 
 import App from './App';
 
@@ -33,12 +35,23 @@ describe('App entry',()=>{
     });
 
     it('it renders correctly by default',()=>{
-        const wrapper = render(
-            <MemoryRouter initialEntries={['/']}>
-                <App store={store} location={{pathname:'/'}}
-                />
-            </MemoryRouter>
+        const wrapper = mount(
+            <Provider store={store}>
+                <MemoryRouter initialEntries={['/']}>
+                    <App location={{pathname:'/'}}
+                    />
+                </MemoryRouter>
+            </Provider>
         )
+
+        const gCtx = wrapper.find(GlobalContext);
+
+        expect(gCtx).toHaveLength(1);
+        gCtx.at(0).props().onToggleThemeField();
+        gCtx.at(0).props().onUpdateLangField(I18Language.en_US);
+
+        expect(store.getActions()).toMatchSnapshot();
+
         expect(wrapper).toBeTruthy();
     })
 

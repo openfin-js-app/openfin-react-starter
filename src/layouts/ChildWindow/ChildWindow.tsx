@@ -12,7 +12,7 @@ import {
     applicationSetSnackbarStatus, applicationProcessSnackbarQueue,
     applicationCloseSnackbar,
     // types
-    IRootState,ISnackBarMsg,
+    IRootState, ISnackBarMsg, MuiTheme,
 } from '../../reduxs';
 
 
@@ -41,6 +41,7 @@ interface IProps extends WithStyles<typeof style>{
     snackBarOpen:boolean,
     snackBarMsgInfo:Partial<ISnackBarMsg>,
     windowsState:string,
+    theme:MuiTheme,
     actions:{
         handleSetAsForeground: ()=> void,
         handleSnackbarClose: (event:any,reason:string)=> void,
@@ -62,7 +63,7 @@ class ChildWindowLayout extends React.Component<IProps,{}>{
     render(){
         const {
             classes,
-            docked,snackBarOpen, snackBarMsgInfo, windowsState,
+            docked,snackBarOpen, snackBarMsgInfo, windowsState, theme,
             actions:{
                 handleSetAsForeground,
                 handleSnackbarClose, handleSnackbarCloseBtnClick, handleSnackbarExited,
@@ -90,7 +91,14 @@ class ChildWindowLayout extends React.Component<IProps,{}>{
                     )}
                     >
                         <div className={classes.container}>
-                            <div className={classes.content}>
+                            <div className={
+                                cx(
+                                    classes.content,
+                                    {
+                                        [classes.lightBoxShaddow]: theme === MuiTheme.LIGHT
+                                    }
+                                )
+                            }>
                                 {switchRoutes}
                             </div>
                         </div>
@@ -125,6 +133,7 @@ export default connect(
         snackBarOpen:state.application.snackBarOpen,
         snackBarMsgInfo:state.application.snackBarMsgInfo,
         windowsState:state.application.windowsState,
+        theme:state.config.application.theme,
     }),
     dispatch => ({
         actions:{
