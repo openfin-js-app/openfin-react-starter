@@ -38,7 +38,8 @@ const headerStyle:any = (theme:Theme) =>createStyles({
         minHeight:appbarHeight,
     },
     preFlex:{
-        position:'relative',
+        display:'flex',
+        flexWrap:'nowrap',
         top: -windowBorder/2,
         height:appbarHeight,
         minHeight:appbarHeight,
@@ -55,7 +56,9 @@ const headerStyle:any = (theme:Theme) =>createStyles({
         minHeight:appbarHeight,
     },
     menuBtn:{
-        marginRight:windowBorder,
+        position:'relative',
+        top: -windowBorder/2,
+        marginLeft:appbarHeight * 0.4,
         backgroundColor:"transparent",
         "-webkit-app-region":"no-drag",
         color:"inherit",
@@ -72,9 +75,8 @@ const headerStyle:any = (theme:Theme) =>createStyles({
         }
     },
     companyLogImg:{
-        position:"absolute",
-        top:appbarHeight * 0.1,
         height: appbarHeight * 0.8,
+        marginLeft:appbarHeight * 0.4,
         "-webkit-app-region":"no-drag",
     },
     title:{
@@ -85,7 +87,7 @@ const headerStyle:any = (theme:Theme) =>createStyles({
         color:"inherit",
         height:appbarHeight,
         minHeight:appbarHeight,
-        marginLeft:appbarHeight * 0.5,
+        marginLeft:appbarHeight * 0.2,
         "&:hover,&:focus":{
             background:"transparent",
         }

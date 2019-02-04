@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App entry it renders correctly by default 1`] = `
+Array [
+  Object {
+    "payload": Object {
+      "name": "application.theme",
+      "value": "light",
+    },
+    "type": "CONFIG_UPDATE_ONE_FIELD",
+  },
+  Object {
+    "payload": Object {
+      "name": "application.language",
+      "value": "en-US",
+    },
+    "type": "CONFIG_UPDATE_ONE_FIELD",
+  },
+]
+`;

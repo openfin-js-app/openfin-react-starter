@@ -13,6 +13,7 @@ import ChevronLeft from '@material-ui/icons/ChevronLeft';
 import { withNamespaces, WithNamespaces } from 'react-i18next';
 
 import HeaderLinks from './HeaderLinks';
+import HeaderThemeSwitcher from './HeaderThemeSwitcher';
 
 import {MouseEventHandler} from "react";
 
@@ -61,6 +62,7 @@ class HeaderComp extends React.Component<IProps,{}>{
         return(<AppBar className={cx(classes.appBar, classes[color])} draggable = {false}>
             <Toolbar className={classes.container}>
                 <div className={classes.preFlex}>
+                    <HeaderThemeSwitcher/>
                     {handleDrawerToggle?
                         <Fab
                             className={classes.menuBtn}
