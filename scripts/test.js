@@ -50,5 +50,9 @@ if (
   argv.push(hasSourceControl ? '--watch' : '--watchAll');
 }
 
+if (argv.indexOf('--e2e')!== -1){
+  argv[argv.indexOf('--e2e')]='--config=jest.e2e.config.json';
+}
+
 
 jest.run(argv);

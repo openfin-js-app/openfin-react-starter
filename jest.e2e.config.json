@@ -1,0 +1,52 @@
+{
+    "collectCoverageFrom": [
+        "src/**/*.{ts,tsx,js,jsx,mjs}",
+        "!src/**/*.d.ts",
+        "!src/serviceWorker.js",
+        "!src/index.tsx"
+    ],
+    "setupFiles": [
+        "<rootDir>/config/polyfills.js",
+        "<rootDir>/config/jest/setupTests.js"
+    ],
+    "testMatch": [
+        "e2e/**/__tests__/**/*.{ts,tsx,js,jsx,mjs}",
+        "e2e/**/?(*.)(spec|test).{ts,tsx,js,jsx,mjs}"
+    ],
+    "snapshotSerializers": [
+        "enzyme-to-json/serializer"
+    ],
+    "roots": [
+        "<rootDir>/src"
+    ],
+    "globals": {},
+    "testEnvironment": "jest-environment-jsdom-global",
+    "testURL": "http://localhost",
+    "transform": {
+        "^.+\\.tsx?$": "ts-jest",
+        "^.+\\.(ts|tsx|js|jsx|mjs)$": "<rootDir>/config/jest/babelTransform.js",
+        "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
+        "^(?!.*\\.(js|jsx|ts|tsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+    },
+    "transformIgnorePatterns": [
+        "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|ts|tsx)$",
+        "^.+\\.module\\.(css|sass|scss)$"
+    ],
+    "moduleNameMapper": {
+        "^react-native$": "react-native-web",
+        "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
+    },
+    "moduleFileExtensions": [
+        "web.js",
+        "js",
+        "web.ts",
+        "ts",
+        "web.tsx",
+        "tsx",
+        "json",
+        "web.jsx",
+        "jsx",
+        "node",
+        "mjs"
+    ]
+}
