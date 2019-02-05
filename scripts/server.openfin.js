@@ -37,6 +37,7 @@ async function launchApp(){
         uuid:'openfin_react_ts_starter',
         runtime:{
             version: process.env.HADOUKEN_VERSION,
+            arguments:"--v=1 --remote-debugging-port=9022 --enable-crash-reporting"
         }
     });
     const version = await fin.System.getVersion();

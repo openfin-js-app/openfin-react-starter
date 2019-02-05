@@ -10,14 +10,14 @@
         "<rootDir>/config/jest/setupTests.js"
     ],
     "testMatch": [
-        "e2e/**/__tests__/**/*.{ts,tsx,js,jsx,mjs}",
-        "e2e/**/?(*.)(spec|test).{ts,tsx,js,jsx,mjs}"
+        "**/__tests__/**/*.{ts,tsx,js,jsx,mjs}",
+        "**/?(*.)(spec|test).{ts,tsx,js,jsx,mjs}"
     ],
     "snapshotSerializers": [
         "enzyme-to-json/serializer"
     ],
     "roots": [
-        "<rootDir>/src"
+        "<rootDir>/e2e"
     ],
     "globals": {},
     "testEnvironment": "jest-environment-jsdom-global",
