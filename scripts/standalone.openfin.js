@@ -61,7 +61,7 @@ async function launchApp(){
         "minHeight":300
     });
 
-    log(chalk.green(`connecting tot http://localhost:${DEFAULT_PORT}`));
+    log(chalk.green(`connecting to http://localhost:${DEFAULT_PORT}`));
 
     app.addListener('closed',()=>{
         if (expressServer){
