@@ -7,7 +7,7 @@ Openfin react starter in ts
 
 * Based on create-react-app@2.1.3 ejected structure
 * Integrate Jest and Enzyme test framework
-* Integrate Material-UI@3.9.0
+* Integrate Material-UI@3.9.2
 * Support basic frameless window features: move, minimize, maximize, close and resize
 * Support general sidebar
 * Support general primary/success/error/info/warning snackbar
@@ -23,5 +23,5 @@ Openfin react starter in ts
 [LICENSE]: ./LICENSE.md
 [CHANGELOG]: ./CHANGELOG.md
 
-[version-badge]: https://img.shields.io/badge/version-0.35.40-blue.svg
+[version-badge]: https://img.shields.io/badge/version-0.35.60-blue.svg
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg

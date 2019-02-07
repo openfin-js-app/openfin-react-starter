@@ -1,3 +1,7 @@
+## [0.35.60] 2019-02-06
+- Refactor openfin launcher scripts to avoid zombie processes
+- Upgrade to depends on mat-ui@3.9.2
+
 ## [0.35.40] 2019-02-04
 - Support HOC Config Context
 - Refactor scaffolding codes to adopt the ejected create-react-app of version 2.1.3
