@@ -13,9 +13,10 @@ const { connect } = require('hadouken-js-adapter');
 
 require('../config/env');
 const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 3000;
+let webDevServer = null;
 
 async function startWebpackDevServer() {
-    const webDevServer = spawn('node',[paths.appScript+'/start.js']);
+    webDevServer = spawn('node',[paths.appScript+'/start.js']);
     webDevServer.stdout.on('data',(data)=>{
         log(chalk.cyan(Buffer.from(data,'binary').toString()));
     });
@@ -55,7 +56,14 @@ async function launchApp(){
         "minHeight":300
     });
 
-    log(chalk.green(`connecting tot http://localhost:${DEFAULT_PORT}`));
+    log(chalk.green(`connecting to http://localhost:${DEFAULT_PORT}`));
+
+    app.addListener('closed',()=>{
+        if (webDevServer){
+            webDevServer.kill('SIGINT');
+        }
+        process.exit(0);
+    });
 
     await app.run();
 }

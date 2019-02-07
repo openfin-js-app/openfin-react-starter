@@ -1,5 +1,6 @@
 ## [0.35.60] 2019-02-06
-- support e2e test via puppeteer
+- Refactor openfin launcher scripts to avoid zombie processes
+- Upgrade to depends on mat-ui@3.9.2
 
 ## [0.35.40] 2019-02-04
 - Support HOC Config Context
