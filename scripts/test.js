@@ -43,6 +43,7 @@ function isInMercurialRepository() {
 if (
   !process.env.CI &&
   argv.indexOf('--coverage') === -1 &&
+  argv.indexOf('--no-watch') === -1 &&
   argv.indexOf('--watchAll') === -1
 ) {
   // https://github.com/facebook/create-react-app/issues/5210
@@ -50,5 +51,9 @@ if (
   argv.push(hasSourceControl ? '--watch' : '--watchAll');
 }
 
+// Jest doesn't have this option so we'll remove it
+if (argv.indexOf('--no-watch') !== -1) {
+  argv = argv.filter(arg => arg !== '--no-watch');
+}
 
 jest.run(argv);
