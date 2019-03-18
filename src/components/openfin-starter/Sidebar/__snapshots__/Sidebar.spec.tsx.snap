@@ -1,7 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Sidebar comp renders correctly by default 1`] = `
-<ContextConsumer>
-  <Component />
-</ContextConsumer>
+<Fragment>
+  <WithStyles(Drawer)
+    anchor="left"
+    classes={
+      Object {
+        "paper": "SidebarComp-drawerPaper-1",
+      }
+    }
+    open={true}
+    variant="persistent"
+  >
+    <div
+      className="SidebarComp-sidebarWrapper-15"
+    >
+      <WithStyles(List)
+        className="SidebarComp-list-3"
+      />
+    </div>
+    <WithStyles(Typography)
+      align="right"
+      className="SidebarComp-releaseTypo-9 SidebarComp-whiteFont-8"
+      gutterBottom={true}
+      variant="body2"
+    />
+  </WithStyles(Drawer)>
+</Fragment>
 `;

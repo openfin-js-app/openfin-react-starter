@@ -14,7 +14,7 @@ import { FieldType } from '../../../reduxs';
 
 import { WithStyles, withStyles } from '@material-ui/core/styles';
 
-import { withNamespaces, WithNamespaces } from 'react-i18next';
+import { withTranslation, WithTranslation } from 'react-i18next';
 
 import { configFieldCompStyle as style } from '../../../assets/jss/openfin-starter';
 
@@ -40,7 +40,7 @@ function NumberFormatCustom(props) {
     );
 }
 
-interface IProps extends WithStyles<typeof style>, WithNamespaces {
+interface IProps extends WithStyles<typeof style>, WithTranslation {
     _type:FieldType,
     _label:string,
     _props?:any,
@@ -189,5 +189,5 @@ class ConfigFieldComp extends React.Component<IProps,{}>{
 }
 
 export default withStyles(style)(
-    withNamespaces('config')(ConfigFieldComp)
+    withTranslation('config')(ConfigFieldComp)
 );

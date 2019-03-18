@@ -4,13 +4,13 @@ import { WithStyles, withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-import { withNamespaces, WithNamespaces } from 'react-i18next';
+import { withTranslation, WithTranslation } from 'react-i18next';
 
 import { configAboutFieldStyle as style } from '../../../assets/jss/openfin-starter';
 import appLogo from '../../../assets/svg/app.svg';
 import companyLogo from '../../../assets/svg/company.svg';
 
-interface IProps extends WithStyles<any>, WithNamespaces{
+interface IProps extends WithStyles<any>, WithTranslation{
 
 }
 
@@ -66,5 +66,5 @@ class ConfigAboutField extends React.Component<IProps,{}>{
 }
 
 export default withStyles(style)(
-    withNamespaces('landing')(ConfigAboutField)
+    withTranslation('landing')(ConfigAboutField)
 );

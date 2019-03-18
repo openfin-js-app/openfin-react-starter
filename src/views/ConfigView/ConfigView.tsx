@@ -20,7 +20,7 @@ import CheckIcon from '@material-ui/icons/Check';
 
 import {WithStyles, withStyles} from '@material-ui/core/styles';
 
-import { withNamespaces, WithNamespaces } from 'react-i18next';
+import { withTranslation, WithTranslation } from 'react-i18next';
 
 import cx from 'classnames';
 
@@ -37,7 +37,7 @@ import {
     MuiTheme
 } from '../../reduxs';
 
-interface IProps extends WithStyles<typeof style>, WithNamespaces{
+interface IProps extends WithStyles<typeof style>, WithTranslation{
     config:IConfigState,
     globalFilterString:string,
     theme:MuiTheme
@@ -207,5 +207,5 @@ export default connect(
         }
     })
 )(withStyles(style)(
-    withNamespaces('config')(ConfigView)
+    withTranslation('config')(ConfigView)
 ));

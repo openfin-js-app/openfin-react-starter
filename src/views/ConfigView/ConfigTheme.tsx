@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import cx from "classnames";
 import { connect } from 'react-redux';
 
-import { withNamespaces, WithNamespaces } from 'react-i18next';
+import { withTranslation, WithTranslation } from 'react-i18next';
 
 import { configThemeViewStyle as style } from '../../assets/jss/openfin-starter';
 
@@ -20,7 +20,7 @@ import {
     withConfigContext
 } from '../../reduxs/config/context'
 
-interface IProps extends WithStyles<typeof style>, WithNamespaces, WithConfigContext{
+interface IProps extends WithStyles<typeof style>, WithTranslation, WithConfigContext{
     actions:{
     },
 }
@@ -64,7 +64,7 @@ export default connect(
     }),
     )(
     withStyles(style)(
-        withNamespaces('config')(withConfigContext(ConfigThemeView))
+        withTranslation('config')(withConfigContext(ConfigThemeView))
     )
 );
 
