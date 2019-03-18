@@ -167,7 +167,8 @@
     ],
     "setupFiles": [
       "<rootDir>/config/polyfills.js",
-      "<rootDir>/config/jest/setupTests.js"
+      "<rootDir>/config/jest/setupTests.js",
+      "<rootDir>/config/jest/jestMockUps.js"
     ],
     "testMatch": [
       "**/__tests__/**/*.{ts,tsx,js,jsx,mjs}",
