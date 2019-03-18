@@ -78,7 +78,7 @@
     "i18next-browser-languagedetector": "^3.0.1",
     "i18next-xhr-backend": "^2.0.1",
     "identity-obj-proxy": "3.0.0",
-    "jest": "23.6.0",
+    "jest": "24.5.0",
     "jest-environment-jsdom": "^24.5.0",
     "jest-environment-jsdom-global": "^1.2.0",
     "jest-pnp-resolver": "1.0.2",
@@ -125,7 +125,7 @@
     "style-loader": "0.23.1",
     "terser-webpack-plugin": "1.2.2",
     "thread-loader": "1.1.5",
-    "ts-jest": "^23.10.5",
+    "ts-jest": "^24.0.0",
     "tslint": "^5.14.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-react": "^3.6.0",
@@ -163,6 +163,7 @@
       "src/**/*.{ts,tsx,js,jsx,mjs}",
       "!src/**/*.d.ts",
       "!src/serviceWorker.js",
+      "!src/i18n.ts",
       "!src/index.tsx"
     ],
     "setupFiles": [

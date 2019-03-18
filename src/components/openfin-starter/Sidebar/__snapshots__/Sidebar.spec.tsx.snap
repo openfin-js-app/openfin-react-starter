@@ -24,7 +24,9 @@ exports[`Sidebar comp renders correctly by default 1`] = `
       className="SidebarComp-releaseTypo-9 SidebarComp-whiteFont-8"
       gutterBottom={true}
       variant="body2"
-    />
+    >
+      0.40.10
+    </WithStyles(Typography)>
   </WithStyles(Drawer)>
 </Fragment>
 `;
