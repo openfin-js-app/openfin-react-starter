@@ -34,16 +34,13 @@ describe('ConfigLang',()=>{
     let shallow;
     let mount;
 
-    beforeAll(() => {
-        mount = createMount();
-    });
-
-    afterAll(() => {
-        mount.cleanUp();
-    });
-
     beforeEach(() => {
+        mount = createMount();
         shallow = createShallow();
+    });
+
+    afterEach(()=>{
+        mount.cleanUp();
     });
 
     it('render dark correctly and switch to light',()=>{

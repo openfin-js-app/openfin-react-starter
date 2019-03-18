@@ -145,7 +145,7 @@
     "serve": "node scripts/server.js",
     "serve-openfin": "node scripts/server.openfin.js",
     "package": "node scripts/package.js",
-    "test": "node scripts/test.js"
+    "test": "jest --clearCache && node scripts/test.js"
   },
   "browserslist": {
     "development": [
