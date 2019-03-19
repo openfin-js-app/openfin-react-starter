@@ -1,5 +1,5 @@
-import { buffers, delay } from 'redux-saga';
-import {put, call, select, take, takeLatest, takeEvery } from 'redux-saga/effects';
+import { buffers } from 'redux-saga';
+import { call, delay, select, put, putResolve, take, takeLatest, takeEvery } from 'redux-saga/effects';
 import {System, Window} from "redux-openfin";
 
 import {
@@ -42,7 +42,7 @@ export function* handleConfigUpdateOneField(action) {
     const {name,value} = action.payload as IConfigUpdateOneFieldOption;
     const paths = name.split('.');
     if (paths.length === 2){
-        yield put.resolve(configDoUpdateOneField({
+        yield putResolve(configDoUpdateOneField({
             tabName:paths[0],
             fieldName:paths[1],
             value,
@@ -76,13 +76,13 @@ export function* handleConfigUpdateNewWindowPosition() {
         ((newWinLeft+newWinWidth)<virtualScreen.right) &&
         ((newWinTop+newWinHeight)<virtualScreen.bottom)
     ){
-        yield put.resolve(configUpdateNewWindowPositionAddDelta());
+        yield putResolve(configUpdateNewWindowPositionAddDelta());
     }else{
         if ((newWinLeft+newWinWidth)>=virtualScreen.right){
-            yield put.resolve(configUpdateNewWindowPositionResetLeft());
+            yield putResolve(configUpdateNewWindowPositionResetLeft());
         }
         if ((newWinTop+newWinHeight)>=virtualScreen.bottom){
-            yield put.resolve(configUpdateNewWindowPositionResetTop());
+            yield putResolve(configUpdateNewWindowPositionResetTop());
         }
     }
 

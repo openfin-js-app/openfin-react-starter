@@ -1,3 +1,10 @@
+## [0.40.10] 2019-03-17
+- Refactor scaffolding codes to adopt the ejected create-react-app of version 2.1.8
+- Upgrade to depend upon redux-saga of version 1.0.2
+- Upgrade to depend upon jest of version 14+
+- Upgrade to depend upon i18next of version 15.0.7
+
+
 ## [0.35.60] 2019-02-06
 - Refactor openfin launcher scripts to avoid zombie processes
 - Upgrade to depends on mat-ui@3.9.2

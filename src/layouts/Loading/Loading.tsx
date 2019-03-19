@@ -6,7 +6,7 @@ import { withStyles, WithStyles } from '@material-ui/core/styles';
 
 import LinearProgress from '@material-ui/core/LinearProgress';
 
-import { withNamespaces, WithNamespaces } from 'react-i18next';
+import { withTranslation, WithTranslation } from 'react-i18next';
 
 import appLogo from'../../assets/svg/app.svg';
 import companyLogo from'../../assets/svg/company.svg';
@@ -112,7 +112,7 @@ const style:any={
 
 export const LoadingBar = withStyles(style)(LoadingBarComponent);
 
-interface IProps extends WithStyles<typeof style>, WithNamespaces {
+interface IProps extends WithStyles<typeof style>, WithTranslation {
     loading:boolean,
     loadingMsg:string,
 }
@@ -151,5 +151,5 @@ export default connect(
         }
     })
 )(withStyles(style)(
-    withNamespaces('landing')(LoadingComponent)
+    withTranslation('landing')(LoadingComponent)
 ));

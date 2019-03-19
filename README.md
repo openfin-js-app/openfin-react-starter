@@ -5,7 +5,7 @@ Openfin react starter in ts
 
 ![](https://albertleigh.github.io/openfin-react-latest/img/screenshoot.gif)
 
-* Based on create-react-app@2.1.3 ejected structure
+* Based on create-react-app@2.1.8 ejected structure
 * Integrate Jest and Enzyme test framework
 * Integrate Material-UI@3.9.2
 * Support basic frameless window features: move, minimize, maximize, close and resize
@@ -23,5 +23,5 @@ Openfin react starter in ts
 [LICENSE]: ./LICENSE.md
 [CHANGELOG]: ./CHANGELOG.md
 
-[version-badge]: https://img.shields.io/badge/version-0.35.60-blue.svg
+[version-badge]: https://img.shields.io/badge/version-0.40.10-blue.svg
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg

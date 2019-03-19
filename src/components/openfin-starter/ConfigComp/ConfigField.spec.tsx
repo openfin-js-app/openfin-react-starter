@@ -17,17 +17,13 @@ describe('ConfigField comp',()=>{
     let shallow;
     let mount;
 
-    beforeAll(() => {
-        mount = createMount();
-    });
-
-    afterAll(() => {
-        mount.cleanUp();
-    });
-
-
     beforeEach(() => {
+        mount = createMount();
         shallow = createShallow();
+    });
+
+    afterEach(()=>{
+        mount.cleanUp();
     });
 
     it('TITLE field renders correctly',()=>{
