@@ -1,6 +1,5 @@
 import { testSaga } from 'redux-saga-test-plan';
-import { delay } from 'redux-saga';
-import { all, call, put, take, takeLatest, takeEvery, fork, select, actionChannel } from 'redux-saga/effects';
+import { all, call, delay, put, take, takeLatest, takeEvery, fork, select, actionChannel } from 'redux-saga/effects';
 import { System, Event, Window } from 'redux-openfin';
 import { SHARED_ACTION_ORIGIN_TAG } from 'redux-openfin/channel';
 
@@ -46,7 +45,7 @@ describe('Client saga',()=>{
     it('default function register all event',()=>{
         testSaga(clientSaga)
             .next()
-            .takeEveryEffect(CLIENT_SET_VALUE,handleTakingClientSetValue)
+            .takeEvery(CLIENT_SET_VALUE,handleTakingClientSetValue)
             .next()
             .isDone();
     })

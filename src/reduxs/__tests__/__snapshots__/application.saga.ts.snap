@@ -9,7 +9,7 @@ exports[`Application saga handleApplicationLaunchBarToggle saga redirect back to
   ],
   "results": Array [
     Object {
-      "isThrow": false,
+      "type": "return",
       "value": undefined,
     },
   ],
@@ -23,7 +23,7 @@ exports[`Application saga handleApplicationLaunchBarToggle saga redirect back to
   ],
   "results": Array [
     Object {
-      "isThrow": false,
+      "type": "return",
       "value": undefined,
     },
   ],
@@ -37,7 +37,7 @@ exports[`Application saga handleApplicationLaunchBarToggle saga redirect to coll
   ],
   "results": Array [
     Object {
-      "isThrow": false,
+      "type": "return",
       "value": undefined,
     },
   ],
@@ -51,7 +51,7 @@ exports[`Application saga handleApplicationLaunchBarToggle saga redirect to coll
   ],
   "results": Array [
     Object {
-      "isThrow": false,
+      "type": "return",
       "value": undefined,
     },
   ],
@@ -70,7 +70,7 @@ exports[`Application saga handleApplicationLaunchBarToggle saga redirect to coll
   ],
   "results": Array [
     Object {
-      "isThrow": false,
+      "type": "return",
       "value": undefined,
     },
   ],
@@ -84,7 +84,7 @@ exports[`Application saga handleApplicationLaunchBarToggle saga redirect to non-
   ],
   "results": Array [
     Object {
-      "isThrow": false,
+      "type": "return",
       "value": undefined,
     },
   ],
@@ -98,7 +98,7 @@ exports[`Application saga handleApplicationLaunchBarToggle saga redirect to non-
   ],
   "results": Array [
     Object {
-      "isThrow": false,
+      "type": "return",
       "value": undefined,
     },
   ],
@@ -117,7 +117,7 @@ exports[`Application saga handleApplicationLaunchBarToggle saga redirect to non-
   ],
   "results": Array [
     Object {
-      "isThrow": false,
+      "type": "return",
       "value": undefined,
     },
   ],
@@ -133,7 +133,7 @@ exports[`Application saga handleApplicationLaunchNewWindow saga bring up the old
   ],
   "results": Array [
     Object {
-      "isThrow": false,
+      "type": "return",
       "value": undefined,
     },
   ],
@@ -147,7 +147,7 @@ exports[`Application saga handleApplicationLaunchNewWindow saga bring up the old
   ],
   "results": Array [
     Object {
-      "isThrow": false,
+      "type": "return",
       "value": undefined,
     },
   ],
@@ -161,7 +161,7 @@ exports[`Application saga handleApplicationLaunchNewWindow saga do create a new 
   ],
   "results": Array [
     Object {
-      "isThrow": false,
+      "type": "return",
       "value": undefined,
     },
   ],

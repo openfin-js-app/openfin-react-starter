@@ -10,7 +10,7 @@ import Fab from '@material-ui/core/Fab';
 import Menu from '@material-ui/icons/Menu';
 import ChevronLeft from '@material-ui/icons/ChevronLeft';
 
-import { withNamespaces, WithNamespaces } from 'react-i18next';
+import { withTranslation, WithTranslation } from 'react-i18next';
 
 import HeaderLinks from './HeaderLinks';
 import HeaderThemeSwitcher from './HeaderThemeSwitcher';
@@ -22,7 +22,7 @@ import {RouteItem} from '../../../routes';
 
 import appLogo from '../../../assets/svg/app.svg';
 
-interface IProps extends WithStyles<any>, WithNamespaces {
+interface IProps extends WithStyles<any>, WithTranslation {
     routes:RouteItem[],
     color:string,
     open?:boolean,
@@ -97,5 +97,5 @@ class HeaderComp extends React.Component<IProps,{}>{
 }
 
 export default withStyles(style)(
-    withNamespaces('menu')(HeaderComp)
+    withTranslation('menu')(HeaderComp)
 );

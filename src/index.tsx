@@ -1,8 +1,11 @@
 import * as React from 'react';
+import {Suspense} from 'react';
 import * as ReactDOM from 'react-dom';
 import './i18n';
 import { Provider } from 'react-redux';
 import { BrowserAdapter } from 'openfin-browser-adapter';
+
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import './assets/css/main.css';
 
@@ -51,7 +54,9 @@ if(window.name === process.env.REACT_APP_FIN_UUID){
 setPlatformClass(document.body,window.navigator.platform);
 ReactDOM.render(
     <Provider store = {window.store}>
-        <App/>
+        <Suspense fallback={<CircularProgress/>}>
+            <App/>
+        </Suspense>
     </Provider>
     ,
     document.getElementById('root')

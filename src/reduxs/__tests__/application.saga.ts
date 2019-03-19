@@ -1,6 +1,5 @@
 import { testSaga } from 'redux-saga-test-plan';
-import { delay } from 'redux-saga';
-import { all, call, put, take, takeLatest, takeEvery, fork, select, actionChannel } from 'redux-saga/effects';
+import { all, call, delay, put, putResolve, take, takeLatest, takeEvery, fork, select, actionChannel } from 'redux-saga/effects';
 import {System, Event, Window, Docking} from 'redux-openfin';
 
 jest.mock('../../dexie/db');
@@ -73,10 +72,10 @@ const previousBaseWindow={
 };
 
 const loadingAllActions = [
-    put.resolve(configLoadFromDexie()),
+    putResolve(configLoadFromDexie()),
     call(System.asyncs.getMachineId,System.actions.getMachineId({})),
     // getDeviceUserId might fail, thus use flux syntax........
-    put.resolve(System.actions.getDeviceUserId({})),
+    putResolve(System.actions.getDeviceUserId({})),
     take(System.actions.GET_DEVICE_USER_ID_RES),
     call(System.asyncs.getEnvironmentVariable,System.actions.getEnvironmentVariable({env:'USERNAME'})),
     call(System.asyncs.getEnvironmentVariable,System.actions.getEnvironmentVariable({env:'computername'})),
@@ -85,7 +84,7 @@ const loadingAllActions = [
     call(System.asyncs.getHostSpecs,System.actions.getHostSpecs({})),
     call(Window.asyncs.getState,Window.actions.getState({})),
     // delay for loading view render, could be removed
-    call(delay,1000),
+    delay(1000),
 ];
 
 declare const jsdom:any;
@@ -106,31 +105,39 @@ describe('Application saga',()=>{
                 .next(null)
                 .call(System.asyncs.getMonitorInfo,System.actions.getMonitorInfo({}))
                 .next({payload:{primaryMonitor:{monitorRect}}})
-                .put.resolve(applicationSetLoadingMsg('init'))
+                // @ts-ignore
+                .putResolve(applicationSetLoadingMsg('init'))
                 .next()
                 .all(loadingAllActions)
                 .next()
-                .put.resolve(applicationSetLoadingMsg('delay1'))
+                // @ts-ignore
+                .putResolve(applicationSetLoadingMsg('delay1'))
                 .next()
-                .call(delay,1000)
+                .delay(1000)
                 .next()
-                .put.resolve(applicationSetLoadingMsg('delay2'))
+                // @ts-ignore
+                .putResolve(applicationSetLoadingMsg('delay2'))
                 .next()
-                .call(delay,1000)
+                .delay(1000)
                 .next()
-                .put.resolve(applicationSetLoadingMsg('delay3'))
+                // @ts-ignore
+                .putResolve(applicationSetLoadingMsg('delay3'))
                 .next()
-                .call(delay,1000)
+                .delay(1000)
                 .next()
-                .put.resolve(applicationSetLoadingMsg('delay4'))
+                // @ts-ignore
+                .putResolve(applicationSetLoadingMsg('delay4'))
                 .next()
-                .call(delay,800)
+                .delay(800)
                 .next()
-                .put.resolve(applicationSetLoadingMsg('delay5'))
+                // @ts-ignore
+                .putResolve(applicationSetLoadingMsg('delay5'))
                 .next()
-                .put.resolve(applicationReady())
+                // @ts-ignore
+                .putResolve(applicationReady())
                 .next()
-                .put.resolve(applicationSetLoadingMsg('ready'))
+                // @ts-ignore
+                .putResolve(applicationSetLoadingMsg('ready'))
                 .next()
                 .put(applicationSetLoadingMsg(''))
                 .next()
@@ -188,33 +195,41 @@ describe('Application saga',()=>{
                         }
                     }
                 })
-                .put.resolve(applicationSetLoadingMsg('init'))
+                // @ts-ignore
+                .putResolve(applicationSetLoadingMsg('init'))
                 .next()
                 .all(loadingAllActions)
                 .next()
-                .put.resolve(applicationSetLoadingMsg('delay1'))
+                // @ts-ignore
+                .putResolve(applicationSetLoadingMsg('delay1'))
                 .next()
-                .call(delay,1000)
+                .delay(1000)
                 .next()
-                .put.resolve(applicationSetLoadingMsg('delay2'))
+                // @ts-ignore
+                .putResolve(applicationSetLoadingMsg('delay2'))
                 .next()
-                .call(delay,1000)
+                .delay(1000)
                 .next()
-                .put.resolve(applicationSetLoadingMsg('delay3'))
+                // @ts-ignore
+                .putResolve(applicationSetLoadingMsg('delay3'))
                 .next()
-                .call(delay,1000)
+                .delay(1000)
                 .next()
-                .put.resolve(applicationSetLoadingMsg('delay4'))
+                // @ts-ignore
+                .putResolve(applicationSetLoadingMsg('delay4'))
                 .next()
-                .call(delay,800)
+                .delay(800)
                 .next()
-                .put.resolve(applicationSetLoadingMsg('delay5'))
+                // @ts-ignore
+                .putResolve(applicationSetLoadingMsg('delay5'))
                 .next()
-                .put.resolve(applicationReady())
+                // @ts-ignore
+                .putResolve(applicationReady())
                 .next()
-                .put.resolve(applicationSetLoadingMsg('ready'))
+                // @ts-ignore
+                .putResolve(applicationSetLoadingMsg('ready'))
                 .next()
-                .call(delay,200)
+                .delay(200)
                 .next()
                 .put(Window.actions.show({force:true}))
                 .next()
@@ -240,14 +255,15 @@ describe('Application saga',()=>{
                 .next(null)
                 .all([
                     call(Window.asyncs.getBounds,Window.actions.getBounds({})),
-                    put.resolve(configLoadFromDexie()),
+                    putResolve(configLoadFromDexie()),
                 ])
                 .next()
                 .call(Window.asyncs.getGroup,Window.actions.getGroup({}))
                 .next({payload:{windows:[{},{}]}})
                 .put(applicationUpdateDockStatus(true))
                 .next()
-                .put.resolve(applicationReady())
+                // @ts-ignore
+                .putResolve(applicationReady())
                 .next()
                 .isDone();
         })
@@ -259,14 +275,15 @@ describe('Application saga',()=>{
                 .next('en-US')
                 .all([
                     call(Window.asyncs.getBounds,Window.actions.getBounds({})),
-                    put.resolve(configLoadFromDexie()),
+                    putResolve(configLoadFromDexie()),
                 ])
                 .next()
                 .call(Window.asyncs.getGroup,Window.actions.getGroup({}))
                 .next({payload:{windows:[]}})
                 .put(applicationUpdateDockStatus(false))
                 .next()
-                .put.resolve(applicationReady())
+                // @ts-ignore
+                .putResolve(applicationReady())
                 .next()
                 .isDone();
         })
@@ -282,7 +299,7 @@ describe('Application saga',()=>{
                 .next(null)
                 .all([
                     call(Window.asyncs.getBounds,Window.actions.getBounds({})),
-                    put.resolve(configLoadFromDexie()),
+                    putResolve(configLoadFromDexie()),
                 ])
                 .next()
                 .isDone();
@@ -295,7 +312,7 @@ describe('Application saga',()=>{
                 .next('en-US')
                 .all([
                     call(Window.asyncs.getBounds,Window.actions.getBounds({})),
-                    put.resolve(configLoadFromDexie()),
+                    putResolve(configLoadFromDexie()),
                 ])
                 .next()
                 .isDone();
@@ -307,7 +324,8 @@ describe('Application saga',()=>{
         it('basically works',()=>{
             testSaga(handleApplicationExit)
                 .next()
-                .put.resolve(Window.actions.close({force:true}))
+                // @ts-ignore
+                .putResolve(Window.actions.close({force:true}))
                 .next()
                 .isDone();
         })
@@ -823,29 +841,29 @@ describe('Application saga',()=>{
     it('default function register all event',()=>{
         testSaga(applicationSaga)
             .next()
-            .takeLatestEffect(APPLICATION_STARTED,handleApplicationLoading)
+            .takeLatest(APPLICATION_STARTED,handleApplicationLoading)
             .next()
-            .takeLatestEffect(APPLICATION_CHILD_STARTED,handleApplicationChildLoading)
+            .takeLatest(APPLICATION_CHILD_STARTED,handleApplicationChildLoading)
             .next()
-            .takeLatestEffect(APPLICATION_NOTIFICATION_STARTED,handleApplicationNotificationLoading)
+            .takeLatest(APPLICATION_NOTIFICATION_STARTED,handleApplicationNotificationLoading)
             .next()
-            .takeLatestEffect(Event.actionDicts.windowEventDictByName['close-requested'].type,handleApplicationExit)
+            .takeLatest(Event.actionDicts.windowEventDictByName['close-requested'].type,handleApplicationExit)
             .next()
-            .takeLatestEffect(APPLICATION_TOGGLE_WINDOW_STATE,handleToggleWindowState)
+            .takeLatest(APPLICATION_TOGGLE_WINDOW_STATE,handleToggleWindowState)
             .next()
-            .takeLatestEffect(APPLICATION_NEW_SNACKBAR,handleApplicationAddNewSnackBar)
+            .takeLatest(APPLICATION_NEW_SNACKBAR,handleApplicationAddNewSnackBar)
             .next()
-            .takeLatestEffect(APPLICATION_CLOSE_SNACKBAR,handleApplicationCloseSnackBar)
+            .takeLatest(APPLICATION_CLOSE_SNACKBAR,handleApplicationCloseSnackBar)
             .next()
-            .takeLatestEffect(APPLICATION_LAUNCH_BAR_TOGGLE,handleApplicationLaunchBarToggle)
+            .takeLatest(APPLICATION_LAUNCH_BAR_TOGGLE,handleApplicationLaunchBarToggle)
             .next()
-            .takeLatestEffect(APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE,handleApplicationLaunchBarToggleCollapse)
+            .takeLatest(APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE,handleApplicationLaunchBarToggleCollapse)
             .next()
-            .takeLatestEffect(APPLICATION_LAUNCH_BAR_CLOSE,handleApplicationLaunchBarClose)
+            .takeLatest(APPLICATION_LAUNCH_BAR_CLOSE,handleApplicationLaunchBarClose)
             .next()
-            .takeLatestEffect(APPLICATION_LAUNCH_NEW_WINDOW,handleApplicationLaunchNewWindow)
+            .takeLatest(APPLICATION_LAUNCH_NEW_WINDOW,handleApplicationLaunchNewWindow)
             .next()
-            .takeEveryEffect(Event.actionDicts.windowEventDictByName['group-changed'].type,handleGroupChanged)
+            .takeEvery(Event.actionDicts.windowEventDictByName['group-changed'].type,handleGroupChanged)
             .next()
             .isDone();
     })

@@ -1,7 +1,6 @@
-import { delay } from 'redux-saga';
 import { testSaga,expectSaga } from 'redux-saga-test-plan';
 import * as matchers from 'redux-saga-test-plan/matchers'
-import {call, put, select, take, takeEvery, takeLatest,} from 'redux-saga/effects';
+import {call, delay, put, select, take, takeEvery, takeLatest,} from 'redux-saga/effects';
 
 import {
     CONFIG_UPDATE_NEW_WINDOW_POSITION,
@@ -56,7 +55,8 @@ describe('Config saga',()=>{
 
             testSaga(handleConfigUpdateOneField,{payload:{name:'tabName.fieldName',value:'value'}})
                 .next()
-                .put.resolve(configDoUpdateOneField({
+                // @ts-ignore
+                .putResolve(configDoUpdateOneField({
                     tabName:'tabName',fieldName:'fieldName',value:'value'
                 }))
                 .next()
@@ -98,7 +98,8 @@ describe('Config saga',()=>{
                 .next(newWinLeft)
                 .call(System.asyncs.getMonitorInfo,System.actions.getMonitorInfo({}))
                 .next({payload:{ virtualScreen }})
-                .put.resolve(configUpdateNewWindowPositionAddDelta())
+                // @ts-ignore
+                .putResolve(configUpdateNewWindowPositionAddDelta())
                 .next()
                 .isDone();
         });
@@ -122,7 +123,8 @@ describe('Config saga',()=>{
                 .next(newWinLeft)
                 .call(System.asyncs.getMonitorInfo,System.actions.getMonitorInfo({}))
                 .next({payload:{ virtualScreen }})
-                .put.resolve(configUpdateNewWindowPositionResetLeft())
+                // @ts-ignore
+                .putResolve(configUpdateNewWindowPositionResetLeft())
                 .next()
                 .isDone();
         });
@@ -146,7 +148,8 @@ describe('Config saga',()=>{
                 .next(newWinLeft)
                 .call(System.asyncs.getMonitorInfo,System.actions.getMonitorInfo({}))
                 .next({payload:{ virtualScreen }})
-                .put.resolve(configUpdateNewWindowPositionResetTop())
+                // @ts-ignore
+                .putResolve(configUpdateNewWindowPositionResetTop())
                 .next()
                 .isDone();
         });
@@ -155,13 +158,13 @@ describe('Config saga',()=>{
     it('default function register all event',()=>{
         testSaga(configSaga)
             .next()
-            .takeEveryEffect(CONFIG_LOAD_FROM_DEXIE, handleConfigLoadFromDexie)
+            .takeEvery(CONFIG_LOAD_FROM_DEXIE, handleConfigLoadFromDexie)
             .next()
-            .takeEveryEffect(CONFIG_UPDATE_ONE_FIELD, handleConfigUpdateOneField)
+            .takeEvery(CONFIG_UPDATE_ONE_FIELD, handleConfigUpdateOneField)
             .next()
-            .takeLatestEffect(CONFIG_DO_UPDATE_ONE_FIELD_IN_DEXIE, handleConfigUpdateOneFieldInDexie)
+            .takeLatest(CONFIG_DO_UPDATE_ONE_FIELD_IN_DEXIE, handleConfigUpdateOneFieldInDexie)
             .next()
-            .takeLatestEffect(CONFIG_UPDATE_NEW_WINDOW_POSITION,handleConfigUpdateNewWindowPosition)
+            .takeLatest(CONFIG_UPDATE_NEW_WINDOW_POSITION,handleConfigUpdateNewWindowPosition)
             .next()
             .isDone();
     })

@@ -1,6 +1,6 @@
 import {Action} from "redux-actions";
-import { buffers, delay } from 'redux-saga';
-import { all, call, put, take, takeLatest, takeEvery, fork, select, actionChannel } from 'redux-saga/effects';
+import { buffers } from 'redux-saga';
+import { all, call, delay, put, putResolve, take, takeLatest, takeEvery, fork, select, actionChannel } from 'redux-saga/effects';
 import { Docking ,System, Event, Window } from 'redux-openfin';
 import { GetGroupResPayload, NewWindowResPayload, WrapResPayload } from "redux-openfin/window";
 
@@ -96,7 +96,7 @@ export function* handleRedirectFromLoadingView(monitorRect) {
         }
     }
 
-    yield call(delay,200);
+    yield delay(200);
 
     if (loadingWindow){
         loadingWindow.close()
@@ -123,13 +123,13 @@ export function* handleApplicationLoading() {
         yield* handleRedirectToLoadingView(monitorRect) as any;
     }
 
-    yield put.resolve(applicationSetLoadingMsg('init'));
+    yield putResolve(applicationSetLoadingMsg('init'));
 
     yield all([
-        put.resolve(configLoadFromDexie()),
+        putResolve(configLoadFromDexie()),
         call(System.asyncs.getMachineId,System.actions.getMachineId({})),
         // getDeviceUserId might fail, thus use flux syntax........
-        put.resolve(System.actions.getDeviceUserId({})),
+        putResolve(System.actions.getDeviceUserId({})),
         take(System.actions.GET_DEVICE_USER_ID_RES),
         call(System.asyncs.getEnvironmentVariable,System.actions.getEnvironmentVariable({env:'USERNAME'})),
         call(System.asyncs.getEnvironmentVariable,System.actions.getEnvironmentVariable({env:'computername'})),
@@ -138,24 +138,24 @@ export function* handleApplicationLoading() {
         call(System.asyncs.getHostSpecs,System.actions.getHostSpecs({})),
         call(Window.asyncs.getState,Window.actions.getState({})),
         // delay for loading view render, could be removed
-        call(delay,1000),
+        delay(1000),
     ]);
 
     // BEGIN OF DEMO PURPOSE CODES
-    yield put.resolve(applicationSetLoadingMsg('delay1'));
-    yield call(delay,1000),
-    yield put.resolve(applicationSetLoadingMsg('delay2'));
-    yield call(delay,1000),
-    yield put.resolve(applicationSetLoadingMsg('delay3'));
-    yield call(delay,1000),
-    yield put.resolve(applicationSetLoadingMsg('delay4'));
-    yield call(delay,800),
-    yield put.resolve(applicationSetLoadingMsg('delay5'));
+    yield putResolve(applicationSetLoadingMsg('delay1'));
+    yield delay(1000),
+    yield putResolve(applicationSetLoadingMsg('delay2'));
+    yield delay(1000),
+    yield putResolve(applicationSetLoadingMsg('delay3'));
+    yield delay(1000),
+    yield putResolve(applicationSetLoadingMsg('delay4'));
+    yield delay(800),
+    yield putResolve(applicationSetLoadingMsg('delay5'));
     // END OF DEMO PURPOSE CODES
 
-    yield put.resolve(applicationReady());
+    yield putResolve(applicationReady());
 
-    yield put.resolve(applicationSetLoadingMsg('ready'));
+    yield putResolve(applicationSetLoadingMsg('ready'));
 
     if (ENABLE_LOADING_VIEW && currentIsLoadingView){
         yield* handleRedirectFromLoadingView(monitorRect) as any;
@@ -176,7 +176,7 @@ export function* handleApplicationChildLoading() {
 
     yield all([
         call(Window.asyncs.getBounds,Window.actions.getBounds({})),
-        put.resolve(configLoadFromDexie()),
+        putResolve(configLoadFromDexie()),
     ]);
 
     const groupedWindowsRes = yield call(Window.asyncs.getGroup,Window.actions.getGroup({}));
@@ -187,7 +187,7 @@ export function* handleApplicationChildLoading() {
         yield put(applicationUpdateDockStatus(false));
     }
 
-    yield put.resolve(applicationReady());
+    yield putResolve(applicationReady());
 }
 
 export function* handleApplicationNotificationLoading() {
@@ -198,7 +198,7 @@ export function* handleApplicationNotificationLoading() {
 
     yield all([
         call(Window.asyncs.getBounds,Window.actions.getBounds({})),
-        put.resolve(configLoadFromDexie()),
+        putResolve(configLoadFromDexie()),
     ]);
 }
 
@@ -209,7 +209,7 @@ export function* handleApplicationExit() {
 
     // ---------------------------------end of app codes -----------------------------------------------
 
-    yield put.resolve(Window.actions.close({force:true}));
+    yield putResolve(Window.actions.close({force:true}));
 
 }
 
