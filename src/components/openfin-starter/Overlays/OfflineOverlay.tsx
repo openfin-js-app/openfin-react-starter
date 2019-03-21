@@ -13,40 +13,40 @@ interface IProps extends WithStyles<typeof style>{
     onClose:(...args:any[])=>void
 }
 
-class OfflineOverlayComp extends React.Component<IProps,{}>{
+const OfflineOverlayComp:React.FunctionComponent<IProps> = (
+    {
+        classes, onClose,
+    }
+)=>{
 
-    handleReloadBtnClick = ()=>{
+    const handleReloadBtnClick = ()=>{
         location.reload();
     }
 
-    render(){
+    return(<div className={classes.outmostContainer}>
 
-        const { classes, onClose } = this.props;
+        <img className={cx(classes.bannerImg, classes.oneRow)} src={noInternetConn}/>
+        <Typography
+            className={classes.oneRow}
+            variant="h4" gutterBottom align="center"
+        >
+            Network disconnected
+        </Typography>
 
-        return(<div className={classes.outmostContainer}>
-
-            <img className={cx(classes.bannerImg, classes.oneRow)} src={noInternetConn}/>
-            <Typography
-                className={classes.oneRow}
-                variant="h4" gutterBottom align="center"
+        <div className={cx(classes.controlBtnContainer)}>
+            <Button variant="outlined" color="primary" className={classes.button}
+                    onClick={handleReloadBtnClick}
             >
-                Network disconnected
-            </Typography>
+                Reload
+            </Button>
+            <Button variant="outlined" color="secondary" className={classes.button}
+                    onClick={onClose}
+            >
+                Exit
+            </Button>
+        </div>
+    </div>)
 
-            <div className={cx(classes.controlBtnContainer)}>
-                <Button variant="outlined" color="primary" className={classes.button}
-                        onClick={this.handleReloadBtnClick}
-                >
-                    Reload
-                </Button>
-                <Button variant="outlined" color="secondary" className={classes.button}
-                        onClick={onClose}
-                >
-                    Exit
-                </Button>
-            </div>
-        </div>)
-    }
 }
 
 export default withStyles(style)(OfflineOverlayComp);
