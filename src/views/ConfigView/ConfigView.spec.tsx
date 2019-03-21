@@ -18,13 +18,15 @@ const store = mockStore(initialState);
 
 describe('ConfigView',()=>{
 
+    let shallow;
     let mount;
 
-    beforeAll(() => {
+    beforeEach(() => {
         mount = createMount();
+        shallow = createShallow();
     });
 
-    afterAll(() => {
+    afterEach(()=>{
         mount.cleanUp();
     });
 
