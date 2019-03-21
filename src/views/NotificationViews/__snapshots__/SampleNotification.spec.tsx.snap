@@ -447,29 +447,9 @@ exports[`SampleNotificationView check the content of typography 1`] = `
 `;
 
 exports[`SampleNotificationView render correctly by default 1`] = `
-<WithStyles(SampleNotificationView)
-  actions={Object {}}
-  count={0}
-  store={
+<ContextProvider
+  value={
     Object {
-      "clearActions": [Function],
-      "dispatch": [Function],
-      "getActions": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-    }
-  }
-  storeSubscription={
-    Subscription {
-      "listeners": Object {
-        "clear": [Function],
-        "get": [Function],
-        "notify": [Function],
-        "subscribe": [Function],
-      },
-      "onStateChange": [Function],
-      "parentSub": undefined,
       "store": Object {
         "clearActions": [Function],
         "dispatch": [Function],
@@ -478,8 +458,14 @@ exports[`SampleNotificationView render correctly by default 1`] = `
         "replaceReducer": [Function],
         "subscribe": [Function],
       },
-      "unsubscribe": [Function],
+      "storeState": Object {
+        "client": Object {
+          "count": 0,
+        },
+      },
     }
   }
-/>
+>
+  <Connect(WithStyles(SampleNotificationView)) />
+</ContextProvider>
 `;

@@ -16,25 +16,24 @@ interface IProps extends WithStyles<typeof style>{
 
 import { IRootState } from '../../reduxs';
 
-class SampleNotificationView extends React.Component<IProps,{}>{
-    render(){
-
-        const {
-            classes, count,
-        } = this.props;
-
-        return (
-            <div className={classes.container}>
-
-                <img className={classes.appImg} src={appSvg}/>
-
-                <Typography variant='h2'>
-                    Cnt:{count}
-                </Typography>
-
-            </div>
-        )
+const SampleNotificationView:React.FunctionComponent<IProps> = (
+    {
+        classes, count,
     }
+)=>{
+
+    return (
+        <div className={classes.container}>
+
+            <img className={classes.appImg} src={appSvg}/>
+
+            <Typography variant='h2'>
+                Cnt:{count}
+            </Typography>
+
+        </div>
+    )
+
 }
 
 export default connect(

@@ -1,5 +1,5 @@
 import * as React from 'react';
-
+import { Provider } from 'react-redux';
 import Typography from '@material-ui/core/Typography';
 
 import { createShallow, createMount } from '@material-ui/core/test-utils';
@@ -22,26 +22,30 @@ describe('SampleNotificationView',()=>{
     let shallow;
     let mount;
 
-    beforeAll(() => {
-        mount = createMount();
-    });
-
-    afterAll(() => {
-        mount.cleanUp();
-    });
-
-
     beforeEach(() => {
+        mount = createMount();
         shallow = createShallow();
     });
 
+    afterEach(()=>{
+        mount.cleanUp();
+    });
+
     it('render correctly by default',()=>{
-        const wrapper = shallow(<SampleNotification store={store}/>);
+        const wrapper = shallow(
+            <Provider store={store}>
+                <SampleNotification/>
+            </Provider>
+        );
         expect(wrapper).toMatchSnapshot();
     })
 
     it('check the content of typography',()=>{
-        const wrapper = mount(<SampleNotification store={store}/>);
+        const wrapper = mount(
+            <Provider store={store}>
+                <SampleNotification/>
+            </Provider>
+        );
         expect(wrapper.find(Typography)).toMatchSnapshot();
     })
 
