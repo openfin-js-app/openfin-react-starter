@@ -24,61 +24,58 @@ interface IProps extends WithStyles<typeof style> {
     onClose:MouseEventHandler<any>,
 }
 
-class HeaderLinksComp extends React.Component<IProps,{}>{
-
-    render(){
-
-        const {
-            classes, windowsState, docked,
-            onSwitchToLaunchBar,
-            onUndock,
-            onMinimize, onMaximize, onClose
-        } = this.props;
-
-        return (<React.Fragment>
-            {
-                onSwitchToLaunchBar?
-                    <Fab className={cx(classes.menuBtn,classes.info)}
-                            color="inherit"
-                            aria-label="Switch to launch bar"
-                            onClick={onSwitchToLaunchBar}
-                    >
-                        <OpenInNew/>
-                    </Fab>:null
-            }
-            {
-                docked && onUndock ?
-                    <Fab className={cx(classes.menuBtn,classes.rose)}
-                            color="inherit"
-                            aria-label="Undock from the group"
-                            onClick={onUndock}
-                    >
-                        <AllOutIcon/>
-                    </Fab>:null
-            }
-            <Fab className={cx(classes.menuBtn,classes.success)}
-                    color="inherit"
-                    aria-label="Minimize"
-                    onClick={onMinimize}
-            >
-                <Remove/>
-            </Fab>
-            <Fab className={cx(classes.menuBtn,classes.warning)}
-                    color="inherit"
-                    aria-label="Maximize"
-                    onClick={onMaximize}
-            >
-                {windowsState==='normal'?<CropDin/>:<AspectRatio/>}
-            </Fab>
-            <Fab className={cx(classes.menuBtn,classes.danger)}
-                    color="inherit"
-                    aria-label="Close"
-                    onClick={onClose}
-            >
-                <Clear/>
-            </Fab>
-        </React.Fragment>);
+const HeaderLinksComp:React.FunctionComponent<IProps> = (
+    {
+        classes, windowsState, docked,
+        onSwitchToLaunchBar,
+        onUndock,
+        onMinimize, onMaximize, onClose
     }
+)=>{
+
+    return (<React.Fragment>
+        {
+            onSwitchToLaunchBar?
+                <Fab className={cx(classes.menuBtn,classes.info)}
+                     color="inherit"
+                     aria-label="Switch to launch bar"
+                     onClick={onSwitchToLaunchBar}
+                >
+                    <OpenInNew/>
+                </Fab>:null
+        }
+        {
+            docked && onUndock ?
+                <Fab className={cx(classes.menuBtn,classes.rose)}
+                     color="inherit"
+                     aria-label="Undock from the group"
+                     onClick={onUndock}
+                >
+                    <AllOutIcon/>
+                </Fab>:null
+        }
+        <Fab className={cx(classes.menuBtn,classes.success)}
+             color="inherit"
+             aria-label="Minimize"
+             onClick={onMinimize}
+        >
+            <Remove/>
+        </Fab>
+        <Fab className={cx(classes.menuBtn,classes.warning)}
+             color="inherit"
+             aria-label="Maximize"
+             onClick={onMaximize}
+        >
+            {windowsState==='normal'?<CropDin/>:<AspectRatio/>}
+        </Fab>
+        <Fab className={cx(classes.menuBtn,classes.danger)}
+             color="inherit"
+             aria-label="Close"
+             onClick={onClose}
+        >
+            <Clear/>
+        </Fab>
+    </React.Fragment>);
 
 }
 

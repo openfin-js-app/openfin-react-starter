@@ -9,18 +9,14 @@ describe('HeaderLinks comp',()=>{
     let shallow;
     let mount;
 
-    beforeAll(() => {
+    beforeEach(() => {
+        shallow = createShallow();
         mount = createMount();
     });
 
-    afterAll(() => {
+    afterEach(()=>{
         mount.cleanUp();
-    });
-
-
-    beforeEach(() => {
-        shallow = createShallow();
-    });
+    })
 
     it('renders correctly by default',()=>{
 
