@@ -19,13 +19,18 @@ exports[`ConfigAboutField comp renderred correctly 1`] = `
     </div>
     <WithStyles(Typography)
       variant="h3"
-    />
+    >
+      appName
+    </WithStyles(Typography)>
     <WithStyles(Typography)
       variant="h5"
-    />
+    >
+      appDesc
+    </WithStyles(Typography)>
     <WithStyles(Typography)
       variant="h6"
     >
+      version
        
       0.40.10
     </WithStyles(Typography)>
@@ -36,12 +41,16 @@ exports[`ConfigAboutField comp renderred correctly 1`] = `
         color="primary"
         onClick={[Function]}
         variant="contained"
-      />
+      >
+        reload
+      </WithStyles(Button)>
       <WithStyles(Button)
         color="secondary"
         onClick={[Function]}
         variant="contained"
-      />
+      >
+        support
+      </WithStyles(Button)>
     </div>
     <WithStyles(Typography)
       variant="subtitle1"

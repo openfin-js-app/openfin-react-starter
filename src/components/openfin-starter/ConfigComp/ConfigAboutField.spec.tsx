@@ -1,8 +1,8 @@
 import * as React from 'react';
 import toJson from 'enzyme-to-json';
-import { createShallow, createMount } from '@material-ui/core/test-utils';
-
 import '../../../i18n';
+
+import { createShallow, createMount } from '@material-ui/core/test-utils';
 
 import Button from '@material-ui/core/Button';
 
@@ -13,17 +13,14 @@ describe('ConfigAboutField comp',  () => {
     let shallow;
     let mount;
 
-    beforeAll(() => {
+    beforeEach(() => {
+        shallow = createShallow();
         mount = createMount();
     });
 
-    afterAll(() => {
+    afterEach(()=>{
         mount.cleanUp();
-    });
-
-    beforeEach(() => {
-        shallow = createShallow();
-    });
+    })
 
     it('renderred correctly',()=>{
         const wrapper = shallow(<ConfigAboutField/>)
