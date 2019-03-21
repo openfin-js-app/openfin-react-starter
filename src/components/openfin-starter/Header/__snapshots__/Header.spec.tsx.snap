@@ -20,7 +20,7 @@ exports[`Header comp renders correctly when sidebar closed 1`] = `
         className="HeaderComp-title-8"
         href="#"
       >
-        |
+        appName|null
       </WithStyles(Button)>
     </div>
     <div
@@ -60,7 +60,7 @@ exports[`Header comp renders correctly when sidebar opened 1`] = `
         className="HeaderComp-title-8"
         href="#"
       >
-        |
+        appName|null
       </WithStyles(Button)>
     </div>
     <div

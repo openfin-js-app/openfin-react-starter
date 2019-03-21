@@ -10,7 +10,7 @@ import Fab from '@material-ui/core/Fab';
 import Menu from '@material-ui/icons/Menu';
 import ChevronLeft from '@material-ui/icons/ChevronLeft';
 
-import { withTranslation, WithTranslation } from 'react-i18next';
+import {useTranslation, withTranslation, WithTranslation} from 'react-i18next';
 
 import HeaderLinks from './HeaderLinks';
 import HeaderThemeSwitcher from './HeaderThemeSwitcher';
@@ -22,7 +22,7 @@ import {RouteItem} from '../../../routes';
 
 import appLogo from '../../../assets/svg/app.svg';
 
-interface IProps extends WithStyles<any>, WithTranslation {
+interface IProps extends WithStyles<any> {
     routes:RouteItem[],
     color:string,
     open?:boolean,
@@ -39,63 +39,63 @@ interface IProps extends WithStyles<any>, WithTranslation {
     [key:number]:any,
 }
 
-class HeaderComp extends React.Component<IProps,{}>{
+function makeBrand(props:any) {
+    let name = null;
+    props.routes.forEach((prop:RouteItem):any => {
+        if (prop.path === props.location.pathname){
+            name = prop.navbarName;
+        }
+    });
+    return name;
+}
 
-    render(){
+const HeaderComp:React.FunctionComponent<IProps> = (
+    props
+) => {
 
-        const {
-            classes, t, color, windowsState,
+    const {
+            classes, color, windowsState,
             handleDrawerToggle, docked,
             onSwitchToLaunchBar, onUndock, onMinimize, onMaximize, onClose,
-        } = this.props;
+    } = props;
 
-        function makeBrand(props:any) {
-            let name = null;
-            props.routes.forEach((prop:RouteItem):any => {
-                if (prop.path === props.location.pathname){
-                    name = prop.navbarName;
-                }
-            });
-            return name;
-        }
+    const { t, i18n } = useTranslation('menu', { useSuspense: false });
 
-        return(<AppBar className={cx(classes.appBar, classes[color])} draggable = {false}>
-            <Toolbar className={classes.container}>
-                <div className={classes.preFlex}>
-                    <HeaderThemeSwitcher/>
-                    {handleDrawerToggle?
-                        <Fab
-                            className={classes.menuBtn}
-                            color={"inherit"}
-                            aria-label={"open drawer"}
-                            onClick={handleDrawerToggle}
-                        >
-                                {this.props.open?<ChevronLeft/>:<Menu/>}
-                        </Fab>
+    return(<AppBar className={cx(classes.appBar, classes[color])} draggable = {false}>
+        <Toolbar className={classes.container}>
+            <div className={classes.preFlex}>
+                <HeaderThemeSwitcher/>
+                {handleDrawerToggle?
+                    <Fab
+                        className={classes.menuBtn}
+                        color={"inherit"}
+                        aria-label={"open drawer"}
+                        onClick={handleDrawerToggle}
+                    >
+                        {props.open?<ChevronLeft/>:<Menu/>}
+                    </Fab>
                     :null}
-                    <img src={appLogo} className={classes.companyLogImg}/>
-                    <Button href={"#"} className={classes.title}>
-                        {t('appName')+"|"+ t(makeBrand(this.props))}
-                    </Button>
-                </div>
-                <div className={classes.flex}/>
-                <div className={classes.postFlex}>
-                    <HeaderLinks
-                        windowsState={windowsState}
-                        docked = {docked}
-                        onSwitchToLaunchBar={onSwitchToLaunchBar}
-                        onUndock={onUndock}
-                        onMinimize={onMinimize}
-                        onMaximize={onMaximize}
-                        onClose={onClose}
-                    />
-                </div>
-            </Toolbar>
-        </AppBar>);
-    }
-
+                <img src={appLogo} className={classes.companyLogImg}/>
+                <Button href={"#"} className={classes.title}>
+                    {t('appName')+"|"+ t(makeBrand(props))}
+                </Button>
+            </div>
+            <div className={classes.flex}/>
+            <div className={classes.postFlex}>
+                <HeaderLinks
+                    windowsState={windowsState}
+                    docked = {docked}
+                    onSwitchToLaunchBar={onSwitchToLaunchBar}
+                    onUndock={onUndock}
+                    onMinimize={onMinimize}
+                    onMaximize={onMaximize}
+                    onClose={onClose}
+                />
+            </div>
+        </Toolbar>
+    </AppBar>);
 }
 
 export default withStyles(style)(
-    withTranslation('menu')(HeaderComp)
+    HeaderComp
 );

@@ -9,11 +9,12 @@ describe('Header comp',()=>{
     let shallow;
     let mount;
 
-    beforeAll(() => {
+    beforeEach(() => {
         mount = createMount();
+        shallow = createShallow();
     });
 
-    afterAll(() => {
+    afterEach(()=>{
         mount.cleanUp();
     });
 
