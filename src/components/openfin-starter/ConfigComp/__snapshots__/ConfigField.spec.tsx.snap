@@ -5,7 +5,9 @@ exports[`ConfigField comp BODY1 field renders correctly 1`] = `
   align="right"
   gutterBottom={true}
   variant="body1"
-/>
+>
+  label
+</WithStyles(Typography)>
 `;
 
 exports[`ConfigField comp CURRENCY field renders correctly 1`] = `
@@ -16,7 +18,7 @@ exports[`ConfigField comp CURRENCY field renders correctly 1`] = `
     }
   }
   id="config_field_id"
-  label=""
+  label="label"
   margin="dense"
   onChange={[Function]}
   required={false}
@@ -41,7 +43,7 @@ exports[`ConfigField comp DATE field renders correctly 1`] = `
     disableOpenOnEnter={true}
     format="DD/MM/YYYY"
     keyboard={true}
-    label=""
+    label="label"
     margin="dense"
     mask={[Function]}
     onChange={[Function]}
@@ -58,7 +60,7 @@ exports[`ConfigField comp DATETIME field renders correctly 1`] = `
   <ForwardRef
     disableOpenOnEnter={true}
     format="YYYY/MM/DD hh:mm A"
-    label=""
+    label="label"
     margin="dense"
     mask={
       Array [
@@ -94,7 +96,7 @@ exports[`ConfigField comp NUMBER field renders correctly 1`] = `
   className="ConfigFieldComp-numberField-2"
   error={false}
   id="config_field_id"
-  label=""
+  label="label"
   margin="dense"
   onChange={[Function]}
   required={false}
@@ -108,7 +110,7 @@ exports[`ConfigField comp NUMBER field renders correctly 1`] = `
 exports[`ConfigField comp STRING field renders correctly 1`] = `
 <TextField
   id="config_field_id"
-  label=""
+  label="label"
   margin="dense"
   onChange={[Function]}
   required={false}
@@ -122,7 +124,9 @@ exports[`ConfigField comp SUBHEADING field renders correctly 1`] = `
 <WithStyles(Typography)
   className="ConfigFieldComp-subheadingField-1"
   variant="subtitle1"
-/>
+>
+  label
+</WithStyles(Typography)>
 `;
 
 exports[`ConfigField comp TIME field renders correctly 1`] = `
@@ -131,7 +135,7 @@ exports[`ConfigField comp TIME field renders correctly 1`] = `
 >
   <ForwardRef
     format="hh:mm:ss A"
-    label=""
+    label="label"
     margin="dense"
     onChange={[Function]}
     seconds={true}
@@ -144,5 +148,7 @@ exports[`ConfigField comp TITLE field renders correctly 1`] = `
 <WithStyles(Typography)
   gutterBottom={true}
   variant="h5"
-/>
+>
+  label
+</WithStyles(Typography)>
 `;
