@@ -29,7 +29,7 @@ const lightState = {
     },
 };
 
-describe('ConfigLang',()=>{
+describe('Config Theme',()=>{
 
     let shallow;
     let mount;

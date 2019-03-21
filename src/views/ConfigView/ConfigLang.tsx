@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState }from 'react';
 import { WithStyles, withStyles } from '@material-ui/core/styles';
 
 import Button from '@material-ui/core/Button';
@@ -27,18 +28,15 @@ interface IProps extends WithStyles<typeof style>, WithConfigContext{
 
 }
 
-interface IState {
-    anchorEl:any,
-}
+const ConfigLangView:React.FunctionComponent<IProps> = (
+    {
+        classes, configContext
+    }
+)=>{
 
-class ConfigLangView extends React.Component<IProps,IState>{
+    const [anchorEl, setAnchorEl] = useState<null | HTMLElement | ((element: HTMLElement) => HTMLElement)>(null);
 
-    state = {
-        anchorEl: null,
-    };
-
-    getBtnContent = ()=>{
-        const { classes, configContext } = this.props;
+    const getBtnContent = ()=>{
 
         const language:I18Language = configContext.config.application.language;
 
@@ -55,61 +53,51 @@ class ConfigLangView extends React.Component<IProps,IState>{
         </React.Fragment>)
     };
 
-    handleClick = event => {
-        this.setState({ anchorEl: event.currentTarget });
+    const handleClick = event => {
+        setAnchorEl(event.currentTarget);
     };
 
-    handleClose = () => {
-        this.setState({ anchorEl: null });
+    const handleClose = () => {
+        setAnchorEl(null);
     };
 
-    handleLanguageChangeBtnClick = (lang:I18Language)=>()=>{
+    const handleLanguageChangeBtnClick = (lang:I18Language)=>()=>{
         const {
-            configContext:{
-                actions:{
-                    onUpdateLangField
-                }
-            }
-        } = this.props;
+            onUpdateLangField
+        } = configContext.actions;
         i18n.changeLanguage(lang);
         onUpdateLangField(lang);
-        this.setState({ anchorEl: null });
+        setAnchorEl(null);
     }
 
-    render(){
 
-        const {
-            classes,
-        } = this.props;
-        const { anchorEl } = this.state;
+    return (
+        <div className={classes.container}>
+            <Button
+                aria-owns={anchorEl ? 'language-menu' : undefined}
+                aria-haspopup="true"
+                onClick={handleClick}
+            >
+                {getBtnContent()}
+            </Button>
+            <Menu
+                id="language-menu"
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+            >
+                <MenuItem onClick={handleLanguageChangeBtnClick(I18Language.en_US)}>
+                    <img className={classes.flagImg} src={usFlag}/>
+                    <Typography variant='body1'>English(US)</Typography>
+                </MenuItem>
+                <MenuItem onClick={handleLanguageChangeBtnClick(I18Language.zh_CN)}>
+                    <img className={classes.flagImg} src={chFlag}/>
+                    <Typography variant='body1'>简体中文</Typography>
+                </MenuItem>
+            </Menu>
+        </div>
+    )
 
-        return (
-            <div className={classes.container}>
-                <Button
-                    aria-owns={anchorEl ? 'language-menu' : undefined}
-                    aria-haspopup="true"
-                    onClick={this.handleClick}
-                >
-                    {this.getBtnContent()}
-                </Button>
-                <Menu
-                    id="language-menu"
-                    anchorEl={anchorEl}
-                    open={Boolean(anchorEl)}
-                    onClose={this.handleClose}
-                >
-                    <MenuItem onClick={this.handleLanguageChangeBtnClick(I18Language.en_US)}>
-                        <img className={classes.flagImg} src={usFlag}/>
-                        <Typography variant='body1'>English(US)</Typography>
-                    </MenuItem>
-                    <MenuItem onClick={this.handleLanguageChangeBtnClick(I18Language.zh_CN)}>
-                        <img className={classes.flagImg} src={chFlag}/>
-                        <Typography variant='body1'>简体中文</Typography>
-                    </MenuItem>
-                </Menu>
-            </div>
-        )
-    }
 }
 
 export default connect(

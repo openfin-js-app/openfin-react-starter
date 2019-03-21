@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { act } from 'react-dom/test-utils';
+
 import { Provider } from 'react-redux';
 
 import Button from '@material-ui/core/Button';
@@ -34,16 +36,13 @@ describe('ConfigLang',()=>{
     let shallow;
     let mount;
 
-    beforeAll(() => {
-        mount = createMount();
-    });
-
-    afterAll(() => {
-        mount.cleanUp();
-    });
-
     beforeEach(() => {
+        mount = createMount();
         shallow = createShallow();
+    });
+
+    afterEach(()=>{
+        mount.cleanUp();
     });
 
     it('render en-US correctly and switch to zh-CN',()=>{
@@ -60,7 +59,6 @@ describe('ConfigLang',()=>{
                 </GlobalContext>
             </Provider>
         );
-
         const btns = wrapper.find(Button);
         expect(btns).toHaveLength(1);
 

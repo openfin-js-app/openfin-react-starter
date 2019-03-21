@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ConfigLang render dark correctly and switch to light 1`] = `
+exports[`Config Theme render dark correctly and switch to light 1`] = `
 Array [
   Array [],
 ]
 `;
 
-exports[`ConfigLang render light correctly and switch to dark 1`] = `
+exports[`Config Theme render light correctly and switch to dark 1`] = `
 Array [
   Array [],
 ]

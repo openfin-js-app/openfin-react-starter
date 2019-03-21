@@ -27,32 +27,31 @@ interface IProps extends WithStyles<typeof style>, WithTranslation, WithConfigCo
 
 import { IRootState } from '../../reduxs';
 
-class ConfigThemeView extends React.Component<IProps,{}>{
-    render(){
-
-        const {
-            classes, t,
-            configContext:{
-                config,
-                actions:{
-                    onToggleThemeField
-                }
+const ConfigThemeView:React.FunctionComponent<IProps> = (
+    {
+        classes, t,
+        configContext:{
+            config,
+            actions:{
+                onToggleThemeField
             }
-        } = this.props;
-
-        return (
-            <div className={classes.container}>
-                <Switch
-                    checked={config.application.theme === MuiTheme.DARK}
-                    onChange={onToggleThemeField}
-                    value="themeVal"
-                />
-                <Typography className={classes.themeSpan} variant="body1" gutterBottom>
-                    {t(`common.${config.application.theme}`)}
-                </Typography>
-            </div>
-        )
+        }
     }
+)=>{
+
+    return (
+        <div className={classes.container}>
+            <Switch
+                checked={config.application.theme === MuiTheme.DARK}
+                onChange={onToggleThemeField}
+                value="themeVal"
+            />
+            <Typography className={classes.themeSpan} variant="body1" gutterBottom>
+                {t(`common.${config.application.theme}`)}
+            </Typography>
+        </div>
+    )
+
 }
 
 export default connect(

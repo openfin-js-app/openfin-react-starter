@@ -10,19 +10,20 @@ interface IProps {
     theme:MuiTheme,
 }
 
-class ConfigJsonView extends React.Component<IProps,{}>{
-    render(){
-        const {config, theme } = this.props;
-        return(
-            <Scrollbars
-                renderThumbVertical={props => <div className={"dark-thumb-vertical"} {...props}/>}
-            >
-                <ReactJson src={config} theme={
-                    theme===MuiTheme.DARK?'monokai':'rjv-default'
-                }/>
-            </Scrollbars>
-        )
+const ConfigJsonView:React.FunctionComponent<IProps> = (
+    {
+        config, theme,
     }
+) => {
+    return(
+        <Scrollbars
+            renderThumbVertical={props => <div className={"dark-thumb-vertical"} {...props}/>}
+        >
+            <ReactJson src={config} theme={
+                theme===MuiTheme.DARK?'monokai':'rjv-default'
+            }/>
+        </Scrollbars>
+    )
 }
 
 export default connect(
