@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Provider } from 'react-redux';
 import { createShallow, createMount } from '@material-ui/core/test-utils';
 import Button from '@material-ui/core/Button';
 import configurestore from 'redux-mock-store';
@@ -15,21 +16,21 @@ describe('AccessibilityView',()=>{
     let shallow;
     let mount;
 
-    beforeAll(() => {
-        mount = createMount();
-    });
-
-    afterAll(() => {
-        mount.cleanUp();
-    });
-
-
     beforeEach(() => {
+        mount = createMount();
         shallow = createShallow();
     });
 
+    afterEach(()=>{
+        mount.cleanUp();
+    });
+
     it('render and fire 8 actions when 8 btn clicked',()=>{
-       const wrapper = mount(<Accessibility store={store}/>);
+       const wrapper = mount(
+           <Provider store={store}>
+               <Accessibility/>
+           </Provider>
+       );
        expect(wrapper.find(Button)).toHaveLength(9);
        wrapper.find(Button).forEach((button)=>{
            const props = button.props();

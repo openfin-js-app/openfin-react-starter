@@ -10,7 +10,7 @@ import { WithStyles, withStyles, createStyles } from '@material-ui/core/styles';
 
 import { Notification } from 'redux-openfin';
 
-import { applicationNewSnackbar, applicationLaunchNewWindow } from '../../reduxs';
+import { IRootState, applicationNewSnackbar, applicationLaunchNewWindow } from '../../reduxs';
 
 import { buttonStyle } from '../../assets/jss/openfin-starter';
 
@@ -29,74 +29,69 @@ interface IProps extends WithStyles<typeof style>{
     actions:{
         onOpenNewSelf:MouseEventHandler<any>,
         onOpenGoogle:MouseEventHandler<any>,
-        handleOpenPrimarySnackBar:MouseEventHandler<any>,
-        handleOpenSecondarySnackBar:MouseEventHandler<any>,
         handleOpenSnackBar:(name:string)=>MouseEventHandler<any>,
         handleCreateNotification:MouseEventHandler<any>,
     },
 }
 
-class AccessibilityView extends React.Component<IProps, {}>{
-    render():any{
-
-        const {
-            classes,
-            actions:{
-                onOpenNewSelf,onOpenGoogle,
-                handleOpenSnackBar,
-                handleCreateNotification,
-            }
-        } = this.props;
-
-        return(
-            <React.Fragment>
-                <Typography
-                    variant={"h5"} gutterBottom
-                >
-                    Accessibility view works
-                </Typography>
-
-                <Button size={"large"} variant={"contained"} color={"primary"} onClick={onOpenNewSelf}
-                >Report</Button>
-                <Button size={"large"} variant={"contained"} color={"secondary"} onClick={onOpenGoogle}
-                >Google</Button>
-
-                <hr/>
-
-                <Button size={"small"} variant={"contained"} className={classes.primary}
-                        onClick={handleOpenSnackBar('primary')}
-                >Primary</Button>
-                <Button size={"small"} variant={"contained"} className={classes.info}
-                        onClick={handleOpenSnackBar('info')}
-                >Info</Button>
-                <Button size={"small"} variant={"contained"} className={classes.success}
-                        onClick={handleOpenSnackBar('success')}
-                >Success</Button>
-                <Button size={"small"} variant={"contained"} className={classes.warning}
-                        onClick={handleOpenSnackBar('warning')}
-                >Warning</Button>
-                <Button size={"small"} variant={"contained"} className={classes.danger}
-                        onClick={handleOpenSnackBar('error')}
-                >Danger</Button>
-                <Button size={"small"} variant={"contained"} className={classes.rose}
-                        onClick={handleOpenSnackBar('rose')}
-                >Rose</Button>
-
-                <hr/>
-
-                <Button variant="outlined" color="primary"
-                        onClick = {handleCreateNotification}
-                >
-                    Notification
-                </Button>
-
-            </React.Fragment>
-        )
+const AccessibilityView:React.FunctionComponent<IProps> = (
+    {
+        classes,
+        actions:{
+            onOpenNewSelf,onOpenGoogle,
+            handleOpenSnackBar,
+            handleCreateNotification,
+        }
     }
+)=>{
+    return(
+        <React.Fragment>
+            <Typography
+                variant={"h5"} gutterBottom
+            >
+                Accessibility view works
+            </Typography>
+
+            <Button size={"large"} variant={"contained"} color={"primary"} onClick={onOpenNewSelf}
+            >Report</Button>
+            <Button size={"large"} variant={"contained"} color={"secondary"} onClick={onOpenGoogle}
+            >Google</Button>
+
+            <hr/>
+
+            <Button size={"small"} variant={"contained"} className={classes.primary}
+                    onClick={handleOpenSnackBar('primary')}
+            >Primary</Button>
+            <Button size={"small"} variant={"contained"} className={classes.info}
+                    onClick={handleOpenSnackBar('info')}
+            >Info</Button>
+            <Button size={"small"} variant={"contained"} className={classes.success}
+                    onClick={handleOpenSnackBar('success')}
+            >Success</Button>
+            <Button size={"small"} variant={"contained"} className={classes.warning}
+                    onClick={handleOpenSnackBar('warning')}
+            >Warning</Button>
+            <Button size={"small"} variant={"contained"} className={classes.danger}
+                    onClick={handleOpenSnackBar('error')}
+            >Danger</Button>
+            <Button size={"small"} variant={"contained"} className={classes.rose}
+                    onClick={handleOpenSnackBar('rose')}
+            >Rose</Button>
+
+            <hr/>
+
+            <Button variant="outlined" color="primary"
+                    onClick = {handleCreateNotification}
+            >
+                Notification
+            </Button>
+
+        </React.Fragment>
+    )
 }
 
 export default connect(
-    (state:any)=>({
+    (state:IRootState)=>({
 
     }),
     dispatch => ({
