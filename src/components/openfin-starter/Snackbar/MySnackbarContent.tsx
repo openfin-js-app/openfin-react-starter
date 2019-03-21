@@ -36,40 +36,39 @@ interface IMySnackbarContentProps{
 
 type Props = IMySnackbarContentProps & WithStyles<typeof style> & SnackbarContentProps
 
-class MySnackbarContentComp extends React.Component<Props,{}>{
-    render(){
-
-        const {
-            classes, className, message, onClose, variant, ...other
-        } = this.props;
-
-        const Icon = variantIcon[variant];
-
-        return(
-            <SnackbarContent
-                className={cx( classes.outmostContent, classes[variant],className)}
-                aria-describedby={"client-snackbar"}
-                message={
-                    <span id={"client-snackbar"} className={classes.message}>
-                        <Icon className={cx( classes.icon, classes.iconVariant )} />
-                        {message}
-                    </span>
-                }
-                action={
-                    <IconButton
-                        key={"close"}
-                        aria-label={"Close"}
-                        color={"inherit"}
-                        className={classes.close}
-                        onClick={onClose}
-                    >
-                        <CloseIcon className={classes.icon}/>
-                    </IconButton>
-                }
-                {...other}
-            />
-        );
+const MySnackbarContentComp:React.FunctionComponent<Props> = (
+    {
+        classes, className, message, onClose, variant, ...other
     }
+)=>{
+
+    const Icon = variantIcon[variant];
+
+    return(
+        <SnackbarContent
+            className={cx( classes.outmostContent, classes[variant],className)}
+            aria-describedby={"client-snackbar"}
+            message={
+                <span id={"client-snackbar"} className={classes.message}>
+                        <Icon className={cx( classes.icon, classes.iconVariant )} />
+                    {message}
+                    </span>
+            }
+            action={
+                <IconButton
+                    key={"close"}
+                    aria-label={"Close"}
+                    color={"inherit"}
+                    className={classes.close}
+                    onClick={onClose}
+                >
+                    <CloseIcon className={classes.icon}/>
+                </IconButton>
+            }
+            {...other}
+        />
+    );
+
 }
 
 export default withStyles(style)(MySnackbarContentComp);
