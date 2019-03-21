@@ -21,7 +21,7 @@ import CheckIcon from '@material-ui/icons/Check';
 
 import {WithStyles, withStyles} from '@material-ui/core/styles';
 
-import { withTranslation, WithTranslation } from 'react-i18next';
+import {useTranslation, withTranslation, WithTranslation} from 'react-i18next';
 
 import cx from 'classnames';
 
@@ -38,7 +38,7 @@ import {
     MuiTheme
 } from '../../reduxs';
 
-interface IProps extends WithStyles<typeof style>, WithTranslation{
+interface IProps extends WithStyles<typeof style>{
     config:IConfigState,
     globalFilterString:string,
     theme:MuiTheme
@@ -53,7 +53,7 @@ const ConfigView:React.FunctionComponent<IProps> = (
 )=>{
 
     const {
-        classes, t, theme,
+        classes, theme,
         config,globalFilterString,
         actions:{
             handleGlobalFilterStrChange,
@@ -62,6 +62,7 @@ const ConfigView:React.FunctionComponent<IProps> = (
     } = props;
 
     const [ currentTab, setCurrentTab] = useState<number>(0);
+    const { t, i18n } = useTranslation('config', { useSuspense: false });
 
     const getTabIcon = (oneTab:IConfigTab)=>{
         if (theme === MuiTheme.DARK && oneTab._svgUrl_dark){
@@ -197,5 +198,5 @@ export default connect(
         }
     })
 )(withStyles(style)(
-    withTranslation('config')(ConfigView)
+    ConfigView
 ));
