@@ -10,7 +10,7 @@ import Fab from '@material-ui/core/Fab';
 import Menu from '@material-ui/icons/Menu';
 import ChevronLeft from '@material-ui/icons/ChevronLeft';
 
-import {useTranslation, withTranslation, WithTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 import HeaderLinks from './HeaderLinks';
 import HeaderThemeSwitcher from './HeaderThemeSwitcher';

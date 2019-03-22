@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import cx from "classnames";
 import { connect } from 'react-redux';
 
-import { withTranslation, WithTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 import { configThemeViewStyle as style } from '../../assets/jss/openfin-starter';
 
@@ -20,7 +20,7 @@ import {
     withConfigContext
 } from '../../reduxs/config/context'
 
-interface IProps extends WithStyles<typeof style>, WithTranslation, WithConfigContext{
+interface IProps extends WithStyles<typeof style>, WithConfigContext{
     actions:{
     },
 }
@@ -29,7 +29,7 @@ import { IRootState } from '../../reduxs';
 
 const ConfigThemeView:React.FunctionComponent<IProps> = (
     {
-        classes, t,
+        classes,
         configContext:{
             config,
             actions:{
@@ -38,6 +38,8 @@ const ConfigThemeView:React.FunctionComponent<IProps> = (
         }
     }
 )=>{
+
+    const { t, i18n } = useTranslation('config', { useSuspense: false });
 
     return (
         <div className={classes.container}>
@@ -63,7 +65,7 @@ export default connect(
     }),
     )(
     withStyles(style)(
-        withTranslation('config')(withConfigContext(ConfigThemeView))
+        withConfigContext(ConfigThemeView)
     )
 );
 

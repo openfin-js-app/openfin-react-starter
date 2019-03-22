@@ -11,7 +11,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 
-import {useTranslation, withTranslation, WithTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 import { sidebarCompStyle as style } from '../../../assets/jss/openfin-starter'
 

@@ -4,7 +4,7 @@ import { WithStyles, withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-import { withTranslation, WithTranslation, useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 import { configAboutFieldStyle as style } from '../../../assets/jss/openfin-starter';
 import appLogo from '../../../assets/svg/app.svg';

@@ -14,7 +14,7 @@ import { FieldType } from '../../../reduxs';
 
 import { WithStyles, withStyles } from '@material-ui/core/styles';
 
-import {useTranslation, withTranslation, WithTranslation} from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 
 import { configFieldCompStyle as style } from '../../../assets/jss/openfin-starter';
 

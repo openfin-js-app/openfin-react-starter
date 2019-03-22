@@ -21,7 +21,7 @@ import CheckIcon from '@material-ui/icons/Check';
 
 import {WithStyles, withStyles} from '@material-ui/core/styles';
 
-import {useTranslation, withTranslation, WithTranslation} from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 
 import cx from 'classnames';
 
