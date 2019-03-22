@@ -34,36 +34,32 @@ interface IProps extends WithStyles<typeof style>{
     location?:any,
 }
 
-
-class NotificationLayout extends React.Component<IProps,{}>{
-    render(){
-
-        const {
-            classes,
-            theme,
-            actions:{
-                handleSelfClose
-            }
-        } = this.props;
-
-        return (
-            <div className={
-                cx(
-                    classes.container,
-                    {
-                        [classes.lightBoxShaddow]: theme === MuiTheme.LIGHT
-                    }
-                )
-            }>
-                <IconButton className={classes.closeBtn}
-                            onClick={handleSelfClose}
-                >
-                    <CloseIcon fontSize='small'/>
-                </IconButton>
-                {switchRoutes}
-            </div>
-        )
+const NotificationLayout:React.FunctionComponent<IProps> = (
+    {
+        classes,
+        theme,
+        actions:{
+            handleSelfClose
+        }
     }
+)=>{
+    return (
+        <div className={
+            cx(
+                classes.container,
+                {
+                    [classes.lightBoxShaddow]: theme === MuiTheme.LIGHT
+                }
+            )
+        }>
+            <IconButton className={classes.closeBtn}
+                        onClick={handleSelfClose}
+            >
+                <CloseIcon fontSize='small'/>
+            </IconButton>
+            {switchRoutes}
+        </div>
+    )
 }
 
 export default connect(

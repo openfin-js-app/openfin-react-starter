@@ -9,3 +9,13 @@ Array [
   },
 ]
 `;
+
+exports[`Notification layout render in default state correctly 1`] = `
+Array [
+  Object {
+    "error": false,
+    "payload": Object {},
+    "type": "REDUX_OPENFIN::NOTIFICATION_CLOSE",
+  },
+]
+`;

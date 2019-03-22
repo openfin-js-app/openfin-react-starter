@@ -20,7 +20,7 @@ const initialState = {
     }
 };
 
-describe('Dashboard layout',()=>{
+describe('Notification layout',()=>{
 
     let shallow;
     let mount;
