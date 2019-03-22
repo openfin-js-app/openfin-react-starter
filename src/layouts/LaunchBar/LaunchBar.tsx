@@ -45,30 +45,29 @@ interface IProps extends WithStyles<typeof style>{
     }
 }
 
-class LaunchBarComp extends React.Component<IProps,{}>{
-    render(){
+const LaunchBarComp:React.FunctionComponent<IProps> = (
+    {
+        classes,
+        docked, launchBarCollapse,
+        actions:{
+            handleUndock,
+            handleLaunchBarItemBtnClick,
+            handleToggleCollapse,
+            handleSwitchToMainWindow,
+            handleMinimize,
+            handleClose,
+        }
+    }
+)=>{
 
-        const {
-            classes,
-            docked, launchBarCollapse,
-            actions:{
-                handleUndock,
-                handleLaunchBarItemBtnClick,
-                handleToggleCollapse,
-                handleSwitchToMainWindow,
-                handleMinimize,
-                handleClose,
-            }
-        } = this.props;
+    const collapse = launchBarCollapse;
 
-        const collapse = launchBarCollapse;
+    // const _launchBarItems = launchBarItems;
 
-        // const _launchBarItems = launchBarItems;
+    const buttonContainerWidth = launchBarItems.length<10?launchBarItems.length*64:576;
 
-        const buttonContainerWidth = launchBarItems.length<10?launchBarItems.length*64:576;
-
-        return (
-            <span>
+    return (
+        <span>
                 <AppBar position={"static"}>
                     <Toolbar className={classes.toolBar}>
                         <img src={appLogo} className={classes.appLogoImg}/>
@@ -101,17 +100,17 @@ class LaunchBarComp extends React.Component<IProps,{}>{
                             {launchBarItems.map((item,index)=>{
                                 if (item.icon){
                                     return <IconButton key={index}
-                                       className={classes.baseButton}
-                                       disabled={item.disabled}
-                                       onClick={handleLaunchBarItemBtnClick(item.appJson)}
+                                                       className={classes.baseButton}
+                                                       disabled={item.disabled}
+                                                       onClick={handleLaunchBarItemBtnClick(item.appJson)}
                                     >
-                                            {React.createElement(item.icon)}
+                                        {React.createElement(item.icon)}
                                     </IconButton>
                                 }else{
                                     return <IconButton key={index}
-                                       className={classes.svgButton}
-                                       disabled={item.disabled}
-                                       onClick={handleLaunchBarItemBtnClick(item.appJson)}
+                                                       className={classes.svgButton}
+                                                       disabled={item.disabled}
+                                                       onClick={handleLaunchBarItemBtnClick(item.appJson)}
                                     >
                                         <img src={item.svg}/>
                                     </IconButton>
@@ -154,8 +153,7 @@ class LaunchBarComp extends React.Component<IProps,{}>{
                     </Toolbar>
                 </AppBar>
             </span>
-        );
-    }
+    );
 }
 
 export default connect(

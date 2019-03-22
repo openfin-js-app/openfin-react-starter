@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Provider } from 'react-redux';
 import { createShallow, createMount } from '@material-ui/core/test-utils';
 import configurestore from 'redux-mock-store';
 
@@ -34,7 +35,11 @@ describe('LaunchBar Layout',()=>{
 
     it('render correctly and launch all non-disabled windows',()=>{
         const store = mockStore(initialState);
-        const wrapper = mount(<LaunchBar store={store}/>);
+        const wrapper = mount(
+            <Provider store={store}>
+                <LaunchBar/>
+            </Provider>
+        );
         wrapper.find(IconButton).forEach((iconBtn)=>{
             const props = iconBtn.props();
             if ( props.disabled === false && typeof props.onClick === 'function'){
@@ -46,7 +51,11 @@ describe('LaunchBar Layout',()=>{
 
     it('trigger all control panel btns',()=>{
         const store = mockStore(initialState);
-        const wrapper = mount(<LaunchBar store={store}/>);
+        const wrapper = mount(
+            <Provider store={store}>
+                <LaunchBar/>
+            </Provider>
+        );
         wrapper.find(Button).forEach((btn)=>{
             const props = btn.props();
             if ( typeof props.onClick === 'function'){
@@ -62,7 +71,11 @@ describe('LaunchBar Layout',()=>{
                 launchBarCollapse:true,
             }
         });
-        const wrapper = mount(<LaunchBar store={store}/>);
+        const wrapper = mount(
+            <Provider store={store}>
+                <LaunchBar/>
+            </Provider>
+        );
         expect(wrapper).toBeTruthy();
     });
 
