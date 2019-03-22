@@ -7,6 +7,7 @@ import configurestore from 'redux-mock-store';
 import ViewTwo from './ViewTwo';
 
 import {rootDefaultState} from '../../reduxs';
+import {Provider} from "react-redux";
 
 const mockStore = configurestore();
 
@@ -17,23 +18,23 @@ describe('ViewTwo',()=>{
     let shallow;
     let mount;
 
-    beforeAll(() => {
-        mount = createMount();
-    });
-
-    afterAll(() => {
-        mount.cleanUp();
-    });
-
-
     beforeEach(() => {
+        mount = createMount();
         shallow = createShallow();
+    });
+
+    afterEach(()=>{
+        mount.cleanUp();
     });
 
 
     it ('render correctly',()=>{
 
-        const wrapper = mount(<ViewTwo store={store}/>);
+        const wrapper = mount(
+            <Provider store={store}>
+                <ViewTwo/>
+            </Provider>
+        );
         expect(wrapper.find(Button)).toHaveLength(2);
 
         wrapper.find(Button).forEach((button)=>{
