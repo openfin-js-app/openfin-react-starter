@@ -63,7 +63,7 @@ describe('Dashboard layout',()=>{
                     <GlobalContext
                         config={initialState.config}
                     >
-                        <Dashboard store={store} location={{pathname:'/dashboard/view-one'}}/>
+                        <Dashboard location={{pathname:'/dashboard/view-one'}}/>
                     </GlobalContext>
                 </MemoryRouter>
             </Provider>
@@ -121,7 +121,7 @@ describe('Dashboard layout',()=>{
                     <GlobalContext
                         config={initialState.config}
                     >
-                        <Dashboard store={store} location={{pathname:'/dashboard/view-one'}}/>
+                        <Dashboard location={{pathname:'/dashboard/view-one'}}/>
                     </GlobalContext>
                 </MemoryRouter>
             </Provider>
