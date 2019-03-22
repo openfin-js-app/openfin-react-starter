@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useEffect } from 'react'
 import { connect } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import cx from 'classnames';
@@ -54,77 +55,77 @@ interface IProps extends WithStyles<typeof style>{
     }
 }
 
-class ChildWindowLayout extends React.Component<IProps,{}>{
-
-    componentDidMount(){
-        this.props.actions.handleSetAsForeground();
+const ChildWindowLayout:React.FunctionComponent<IProps> = (
+    {
+        classes,
+        docked,snackBarOpen, snackBarMsgInfo, windowsState, theme,
+        actions:{
+            handleSetAsForeground,
+            handleSnackbarClose, handleSnackbarCloseBtnClick, handleSnackbarExited,
+            handleUndock, handleMinimize, handleMaximize, handleClose,
+        },
+        ...rest
     }
+) => {
 
-    render(){
-        const {
-            classes,
-            docked,snackBarOpen, snackBarMsgInfo, windowsState, theme,
-            actions:{
-                handleSetAsForeground,
-                handleSnackbarClose, handleSnackbarCloseBtnClick, handleSnackbarExited,
-                handleUndock, handleMinimize, handleMaximize, handleClose,
-            },
-            ...rest
-        } = this.props;
+    useEffect(()=>{
+        handleSetAsForeground();
+        // return ()=>{
+        //
+        // }
+    });
 
-        return(
-            <React.Fragment>
-                <Header
-                    routes={childWindowRoutes}
-                    windowsState={windowsState}
-                    color={'info'}
-                    docked={docked}
-                    onUndock = {handleUndock}
-                    onMinimize={handleMinimize}
-                    onMaximize={handleMaximize}
-                    onClose = {handleClose}
-                    {...rest}
-                />
-                <div className={cx(classes.wrapper, classes.wrapperInfo)}>
-                    <div className={cx(
-                        classes.mainPanel,classes.mainPanelShift
-                    )}
-                    >
-                        <div className={classes.container}>
-                            <div className={
-                                cx(
-                                    classes.content,
-                                    {
-                                        [classes.lightBoxShaddow]: theme === MuiTheme.LIGHT
-                                    }
-                                )
-                            }>
-                                {switchRoutes}
-                            </div>
+    return(
+        <React.Fragment>
+            <Header
+                routes={childWindowRoutes}
+                windowsState={windowsState}
+                color={'info'}
+                docked={docked}
+                onUndock = {handleUndock}
+                onMinimize={handleMinimize}
+                onMaximize={handleMaximize}
+                onClose = {handleClose}
+                {...rest}
+            />
+            <div className={cx(classes.wrapper, classes.wrapperInfo)}>
+                <div className={cx(
+                    classes.mainPanel,classes.mainPanelShift
+                )}
+                >
+                    <div className={classes.container}>
+                        <div className={
+                            cx(
+                                classes.content,
+                                {
+                                    [classes.lightBoxShaddow]: theme === MuiTheme.LIGHT
+                                }
+                            )
+                        }>
+                            {switchRoutes}
                         </div>
                     </div>
                 </div>
-                <Snackbar
-                    key={snackBarMsgInfo.key}
-                    anchorOrigin={{
-                        vertical:'bottom',
-                        horizontal:'center'
-                    }}
-                    open={snackBarOpen}
-                    autoHideDuration={6000}
-                    onClose={handleSnackbarClose}
-                    onExited={handleSnackbarExited}
-                >
-                    <SnackbarContent
-                        onClose={handleSnackbarCloseBtnClick}
-                        variant={snackBarMsgInfo.variant}
-                        message={snackBarMsgInfo.message}
-                    />
-                </Snackbar>
-            </React.Fragment>
-        );
-    }
-
+            </div>
+            <Snackbar
+                key={snackBarMsgInfo.key}
+                anchorOrigin={{
+                    vertical:'bottom',
+                    horizontal:'center'
+                }}
+                open={snackBarOpen}
+                autoHideDuration={6000}
+                onClose={handleSnackbarClose}
+                onExited={handleSnackbarExited}
+            >
+                <SnackbarContent
+                    onClose={handleSnackbarCloseBtnClick}
+                    variant={snackBarMsgInfo.variant}
+                    message={snackBarMsgInfo.message}
+                />
+            </Snackbar>
+        </React.Fragment>
+    );
 }
 
 export default connect(

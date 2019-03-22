@@ -37,7 +37,7 @@ describe('ChildWindow layout',()=>{
             <Provider store={store}>
                 <MemoryRouter initialEntries={['/childWindow/view-one']}>
                     <GlobalContext config={rootDefaultState.config}>
-                        <ChildWindow store={store} location={{pathname:'/childWindow/view-one'}}/>
+                        <ChildWindow location={{pathname:'/childWindow/view-one'}}/>
                     </GlobalContext>
                 </MemoryRouter>
             </Provider>
@@ -84,7 +84,7 @@ describe('ChildWindow layout',()=>{
             <Provider store={store}>
                 <MemoryRouter initialEntries={['/childWindow/view-one']}>
                     <GlobalContext config={rootDefaultState.config}>
-                        <ChildWindow store={store} location={{pathname:'/childWindow/view-one'}}/>
+                        <ChildWindow location={{pathname:'/childWindow/view-one'}}/>
                     </GlobalContext>
                 </MemoryRouter>
             </Provider>
