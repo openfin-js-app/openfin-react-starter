@@ -44,7 +44,7 @@ describe('Dashboard layout',()=>{
         const wrapper = mount(
             <Provider store={store}>
                 <MemoryRouter initialEntries={['/notification']}>
-                    <Notification store={store} location={{pathname:'/notification'}}/>
+                    <Notification location={{pathname:'/notification'}}/>
                 </MemoryRouter>
             </Provider>
         );

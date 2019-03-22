@@ -1,59 +1,19 @@
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import Particles from 'react-particles-js';
 import { connect } from 'react-redux';
 
-import { withStyles, WithStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
 
+import { Theme, createStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
 
-import { withTranslation, WithTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 
 import appLogo from'../../assets/svg/app.svg';
 import companyLogo from'../../assets/svg/company.svg';
 
-class LoadingBarComponent extends React.Component<any,any>{
-
-    state = {
-        completed:0,
-        count:0,
-    };
-
-    timer = null;
-
-    componentDidMount(){
-        this.timer = setInterval(this.progress, 500);
-    }
-
-    componentWillUnmount(){
-        clearInterval(this.timer);
-    }
-
-    progress = ()=>{
-        const {completed, count} = this.state;
-        if(completed === 100){
-            this.setState({completed:0, count: 0 });
-        }else{
-            this.setState({
-               completed: Math.min( Math.round(100*count/(count+2)),100),
-               count: count +1,
-            });
-        }
-    };
-
-    render(){
-      const { classes } = this.props;
-      return(
-          <LinearProgress
-              className={classes.loadingProgressBar}
-              variant={"determinate"}
-              value={this.state.completed}
-          />
-      );
-    }
-
-}
-
-const style:any={
+const style = (theme:Theme) => createStyles({
     container:{
         position:'relative',
         width:'100vw',
@@ -108,36 +68,86 @@ const style:any={
         right:'60px',
         width:'40px',
     },
-};
+});
 
-export const LoadingBar = withStyles(style)(LoadingBarComponent);
+const useStyles = makeStyles(style);
 
-interface IProps extends WithStyles<typeof style>, WithTranslation {
+interface ILoadingBarComponentState{
+    completed:number,
+    count:number,
+}
+
+export const LoadingBarComponent:React.FunctionComponent<{}> = (
+    {}
+)=>{
+
+    const classes = useStyles();
+
+    const [state,setState] = useState<ILoadingBarComponentState>({
+        completed:0,
+        count:0,
+    });
+
+    let timer = null;
+
+    const progress = ()=>{
+        const {completed, count} = state;
+        if(completed === 100){
+            setState({completed:0, count: 0 });
+        }else{
+            setState({
+                completed: Math.min( Math.round(100*count/(count+2)),100),
+                count: count +1,
+            });
+        }
+    };
+
+    useEffect(()=>{
+        timer = setInterval(progress, 500);
+        return ()=>{
+            clearInterval(timer);
+        }
+    });
+
+    return(
+        <LinearProgress
+            className={classes.loadingProgressBar}
+            variant={"determinate"}
+            value={state.completed}
+        />
+    );
+
+}
+
+interface IProps{
     loading:boolean,
     loadingMsg:string,
 }
 
-class LoadingComponent extends React.Component<IProps,{}>{
-    render(){
-        const {
-            classes, loadingMsg, t
-        } = this.props;
-
-        return(
-            <div className={classes.container}>
-                <img src={appLogo} className={classes.appLogoImg} />
-                <div className={classes.appName}>{t('appName')}</div>
-                <div className={classes.versionStr}>{process.env.REACT_APP_VERSION}</div>
-                <LoadingBar/>
-                <img src={companyLogo} className={classes.companyLogImg} />
-                <div className={classes.statusMsg}>{t(loadingMsg)}</div>
-                <Particles
-                    width={"100%"}
-                    height={"100%"}
-                />
-            </div>
-        );
+const LoadingComponent:React.FunctionComponent<IProps> = (
+    {
+        loadingMsg,
     }
+) => {
+
+    const classes = useStyles();
+
+    const { t, i18n } = useTranslation('landing', { useSuspense: false });
+
+    return(
+        <div className={classes.container}>
+            <img src={appLogo} className={classes.appLogoImg} />
+            <div className={classes.appName}>{t('appName')}</div>
+            <div className={classes.versionStr}>{process.env.REACT_APP_VERSION}</div>
+            <LoadingBarComponent/>
+            <img src={companyLogo} className={classes.companyLogImg} />
+            <div className={classes.statusMsg}>{t(loadingMsg)}</div>
+            <Particles
+                width={"100%"}
+                height={"100%"}
+            />
+        </div>
+    );
 }
 
 export default connect(
@@ -150,6 +160,4 @@ export default connect(
 
         }
     })
-)(withStyles(style)(
-    withTranslation('landing')(LoadingComponent)
-));
+)(LoadingComponent);

@@ -30,6 +30,8 @@ interface IProps extends WithStyles<typeof style>{
     actions:{
         handleSelfClose:()=>void,
     }
+    // for testing
+    location?:any,
 }
 
 

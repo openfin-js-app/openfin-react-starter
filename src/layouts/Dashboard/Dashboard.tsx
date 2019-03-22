@@ -55,6 +55,8 @@ interface IProps extends WithStyles<typeof style>{
         handleClose: ()=> void,
         handleDirectClose: ()=> void,
     }
+    // for testing
+    location?:any,
 }
 
 const DashbardLayout:React.FunctionComponent<IProps> = (

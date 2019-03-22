@@ -53,6 +53,8 @@ interface IProps extends WithStyles<typeof style>{
         handleMaximize: ()=> void,
         handleClose: ()=> void,
     }
+    // for testing
+    location?:any,
 }
 
 const ChildWindowLayout:React.FunctionComponent<IProps> = (
