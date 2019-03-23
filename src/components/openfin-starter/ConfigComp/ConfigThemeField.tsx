@@ -8,19 +8,19 @@ import { makeStyles } from '@material-ui/styles';
 
 import { useTranslation } from 'react-i18next';
 
-import { configThemeViewStyle as style } from '../../assets/jss/openfin-starter';
+import { configThemeFieldCompStyle as style } from '../../../assets/jss/openfin-starter';
 
 import {
     MuiTheme,
-} from '../../reduxs'
+} from '../../../reduxs'
 
 import {
     ConfigContext
-} from '../../reduxs/config/context'
+} from '../../../reduxs/config/context'
 
 const useStyles = makeStyles(style);
 
-const ConfigThemeView:React.FunctionComponent<{}> = (
+const ConfigThemeField:React.FunctionComponent<{}> = (
     {}
 )=>{
 
@@ -50,5 +50,5 @@ const ConfigThemeView:React.FunctionComponent<{}> = (
 
 }
 
-export default ConfigThemeView;
+export default ConfigThemeField;
 

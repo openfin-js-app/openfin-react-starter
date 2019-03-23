@@ -1,6 +1,6 @@
 import { Theme, createStyles } from '@material-ui/core/styles';
 
-const configThemeViewStyle = (theme:Theme)=> createStyles({
+const configThemeFieldCompStyle = (theme:Theme)=> createStyles({
     container:{
         width:'100%',
         height:'100%',
@@ -15,4 +15,4 @@ const configThemeViewStyle = (theme:Theme)=> createStyles({
     }
 });
 
-export default configThemeViewStyle;
+export default configThemeFieldCompStyle;

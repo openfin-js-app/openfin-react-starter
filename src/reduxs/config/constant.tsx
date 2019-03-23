@@ -8,10 +8,9 @@ import SettingIcon from '@material-ui/icons/Settings';
 import i18n from '../../i18n';
 
 import ConfigJson from '../../views/ConfigView/ConfigJson';
-import ConfigTheme from '../../views/ConfigView/ConfigTheme';
 import ConfigLang from '../../views/ConfigView/ConfigLang';
 
-import { ConfigAboutField } from '../../components';
+import { ConfigAboutField, ConfigThemeField } from '../../components';
 
 import controlsSvg from'../../assets/svg/support/controls.svg';
 import controlsDarkSvg from'../../assets/svg/support/controls_dark.svg';
@@ -42,7 +41,7 @@ const configTabs:IConfigTab[]=[
             {
                 _type:FieldType.CUSTOM_FIELD,
                 _label:'Theme',
-                _custom:<ConfigTheme/>,
+                _custom:<ConfigThemeField/>,
                 _name:'theme',
                 _defaultValue:MuiTheme.DARK,
                 _cols:10,
