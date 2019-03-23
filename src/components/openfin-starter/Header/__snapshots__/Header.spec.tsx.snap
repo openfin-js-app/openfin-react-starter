@@ -1,81 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header comp renders correctly when sidebar closed 1`] = `
-<WithStyles(AppBar)
-  className="HeaderComp-appBar-1 HeaderComp-primary-9"
-  draggable={false}
->
-  <WithStyles(Toolbar)
-    className="HeaderComp-container-2"
-  >
-    <div
-      className="HeaderComp-preFlex-3"
-    >
-      <WithStyles(ComponentWithConfig) />
-      <img
-        className="HeaderComp-companyLogImg-7"
-        src="app.svg"
-      />
-      <WithStyles(Button)
-        className="HeaderComp-title-8"
-        href="#"
-      >
-        appName|null
-      </WithStyles(Button)>
-    </div>
-    <div
-      className="HeaderComp-flex-4"
-    />
-    <div
-      className="HeaderComp-postFlex-5"
-    >
-      <WithStyles(HeaderLinksComp)
-        onClose={[MockFunction]}
-        onMaximize={[MockFunction]}
-        onMinimize={[MockFunction]}
-        onSwitchToLaunchBar={[MockFunction]}
-      />
-    </div>
-  </WithStyles(Toolbar)>
-</WithStyles(AppBar)>
+<ContextConsumer>
+  <Component />
+</ContextConsumer>
 `;
 
 exports[`Header comp renders correctly when sidebar opened 1`] = `
-<WithStyles(AppBar)
-  className="HeaderComp-appBar-1 HeaderComp-primary-9"
-  draggable={false}
->
-  <WithStyles(Toolbar)
-    className="HeaderComp-container-2"
-  >
-    <div
-      className="HeaderComp-preFlex-3"
-    >
-      <WithStyles(ComponentWithConfig) />
-      <img
-        className="HeaderComp-companyLogImg-7"
-        src="app.svg"
-      />
-      <WithStyles(Button)
-        className="HeaderComp-title-8"
-        href="#"
-      >
-        appName|null
-      </WithStyles(Button)>
-    </div>
-    <div
-      className="HeaderComp-flex-4"
-    />
-    <div
-      className="HeaderComp-postFlex-5"
-    >
-      <WithStyles(HeaderLinksComp)
-        onClose={[MockFunction]}
-        onMaximize={[MockFunction]}
-        onMinimize={[MockFunction]}
-        onSwitchToLaunchBar={[MockFunction]}
-      />
-    </div>
-  </WithStyles(Toolbar)>
-</WithStyles(AppBar)>
+<ContextConsumer>
+  <Component />
+</ContextConsumer>
 `;

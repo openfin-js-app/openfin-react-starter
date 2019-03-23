@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { WithStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
 
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
@@ -10,15 +10,13 @@ import { configAboutFieldStyle as style } from '../../../assets/jss/openfin-star
 import appLogo from '../../../assets/svg/app.svg';
 import companyLogo from '../../../assets/svg/company.svg';
 
-interface IProps extends WithStyles<any>{
+const useStyles = makeStyles(style);
 
-}
-
-const ConfigAboutField:React.FunctionComponent<IProps> = (
-    {
-        classes
-    }
+const ConfigAboutField:React.FunctionComponent<{}> = (
+    {}
 )=>{
+
+    const classes = useStyles();
 
     const { t, i18n } = useTranslation('landing', { useSuspense: false });
 
@@ -62,6 +60,4 @@ const ConfigAboutField:React.FunctionComponent<IProps> = (
     </React.Fragment>)
 }
 
-export default withStyles(style)(
-    ConfigAboutField
-);
+export default ConfigAboutField;

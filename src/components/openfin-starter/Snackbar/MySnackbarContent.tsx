@@ -14,7 +14,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import WarningIcon from '@material-ui/icons/Warning';
 import FaceIcon from '@material-ui/icons/Face'
 
-import { WithStyles, withStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
 import { snackbarContentCompStyle as style } from '../../../assets/jss/openfin-starter';
 
 const variantIcon ={
@@ -34,13 +34,17 @@ interface IMySnackbarContentProps{
     variant:string,
 }
 
-type Props = IMySnackbarContentProps & WithStyles<typeof style> & SnackbarContentProps
+type Props = IMySnackbarContentProps & SnackbarContentProps
+
+const useStyles = makeStyles(style);
 
 const MySnackbarContentComp:React.FunctionComponent<Props> = (
     {
-        classes, className, message, onClose, variant, ...other
+        className, message, onClose, variant, ...other
     }
 )=>{
+
+    const classes = useStyles();
 
     const Icon = variantIcon[variant];
 
@@ -59,7 +63,6 @@ const MySnackbarContentComp:React.FunctionComponent<Props> = (
                     key={"close"}
                     aria-label={"Close"}
                     color={"inherit"}
-                    className={classes.close}
                     onClick={onClose}
                 >
                     <CloseIcon className={classes.icon}/>
@@ -71,4 +74,4 @@ const MySnackbarContentComp:React.FunctionComponent<Props> = (
 
 }
 
-export default withStyles(style)(MySnackbarContentComp);
+export default MySnackbarContentComp;

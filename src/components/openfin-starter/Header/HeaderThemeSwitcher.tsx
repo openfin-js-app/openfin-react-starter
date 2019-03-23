@@ -1,6 +1,6 @@
 import * as React from 'react';
 import cx from 'classnames';
-import { WithStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
 
 import {
     MuiTheme,
@@ -13,13 +13,10 @@ import {
 
 import { headerThemeSwitcherCompStyle as style } from '../../../assets/jss/openfin-starter';
 
-interface IProps extends WithStyles<typeof style>, WithConfigContext {
+const useStyles = makeStyles(style);
 
-}
-
-const HeaderThemeSwitcherComp:React.FunctionComponent<IProps> = (
+const HeaderThemeSwitcherComp:React.FunctionComponent<WithConfigContext> = (
     {
-        classes,
         configContext:{
             config,
             actions:{
@@ -28,6 +25,9 @@ const HeaderThemeSwitcherComp:React.FunctionComponent<IProps> = (
         }
     }
 )=>{
+
+    const classes = useStyles();
+
     return(
         <div
             className={cx(
@@ -41,6 +41,4 @@ const HeaderThemeSwitcherComp:React.FunctionComponent<IProps> = (
     )
 }
 
-export default withStyles(style)(
-    withConfigContext(HeaderThemeSwitcherComp)
-);
+export default withConfigContext(HeaderThemeSwitcherComp);

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { MouseEventHandler } from "react";
 import cx from 'classnames';
 
-import { WithStyles, withStyles } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
 import Fab from '@material-ui/core/Fab';
 
 import AllOutIcon from '@material-ui/icons/AllOut';
@@ -14,7 +14,7 @@ import OpenInNew from '@material-ui/icons/OpenInNew';
 
 import { headerLinksCompStyle as style } from '../../../assets/jss/openfin-starter'
 
-interface IProps extends WithStyles<typeof style> {
+interface IProps {
     windowsState:string,
     docked?:boolean,
     onUndock?:MouseEventHandler<any>,
@@ -24,14 +24,18 @@ interface IProps extends WithStyles<typeof style> {
     onClose:MouseEventHandler<any>,
 }
 
+const useStyles = makeStyles(style);
+
 const HeaderLinksComp:React.FunctionComponent<IProps> = (
     {
-        classes, windowsState, docked,
+        windowsState, docked,
         onSwitchToLaunchBar,
         onUndock,
         onMinimize, onMaximize, onClose
     }
 )=>{
+
+    const classes = useStyles();
 
     return (<React.Fragment>
         {
@@ -79,4 +83,4 @@ const HeaderLinksComp:React.FunctionComponent<IProps> = (
 
 }
 
-export default withStyles(style)(HeaderLinksComp);
+export default HeaderLinksComp;

@@ -12,7 +12,7 @@ import {
     dangerColor,
 } from '../../openfin-starter-constant';
 
-const headerStyle:any = (theme:Theme) =>createStyles({
+const headerStyle = (theme:Theme) =>createStyles({
     appBar:{
         backgroundColor:"transparent",
         boxShadow:"none",

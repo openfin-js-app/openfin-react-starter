@@ -1,8 +1,12 @@
 import * as React from 'react';
 import toJson from 'enzyme-to-json';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 import { createShallow, createMount } from '@material-ui/core/test-utils';
 
 import Header from './Header';
+
+const muiTheme = createMuiTheme({});
 
 describe('Header comp',()=>{
 
@@ -18,44 +22,47 @@ describe('Header comp',()=>{
         mount.cleanUp();
     });
 
-
-    beforeEach(() => {
-        shallow = createShallow();
-    });
-
     it('renders correctly when sidebar opened',()=>{
 
-        const wrapper = shallow(<Header
-            routes={[]}
-            color = {'primary'}
-            open = {true}
-            windowState = {'normal'}
-            onSwitchToLaunchBar={jest.fn()}
-            onMinimize={jest.fn()}
-            onMaximize={jest.fn()}
-            onClose={jest.fn()}
-        />);
+        const wrapper = shallow(
+            <ThemeProvider theme={muiTheme}>
+                <Header
+                    routes={[]}
+                    color = {'primary'}
+                    open = {true}
+                    windowsState = {'normal'}
+                    onSwitchToLaunchBar={jest.fn()}
+                    onMinimize={jest.fn()}
+                    onMaximize={jest.fn()}
+                    onClose={jest.fn()}
+                />
+            </ThemeProvider>
+        );
 
-        const component = wrapper.dive();
-        expect(toJson(component)).toMatchSnapshot();
+        // const component = wrapper.dive();
+        expect(toJson(wrapper)).toMatchSnapshot();
 
     })
 
     it('renders correctly when sidebar closed',()=>{
 
-        const wrapper = shallow(<Header
-            routes={[]}
-            color = {'primary'}
-            open = {false}
-            windowState = {'normal'}
-            onSwitchToLaunchBar={jest.fn()}
-            onMinimize={jest.fn()}
-            onMaximize={jest.fn()}
-            onClose={jest.fn()}
-        />);
+        const wrapper = shallow(
+            <ThemeProvider theme={muiTheme}>
+                <Header
+                    routes={[]}
+                    color = {'primary'}
+                    open = {false}
+                    windowsState = {'normal'}
+                    onSwitchToLaunchBar={jest.fn()}
+                    onMinimize={jest.fn()}
+                    onMaximize={jest.fn()}
+                    onClose={jest.fn()}
+                />
+            </ThemeProvider>
+        );
 
-        const component = wrapper.dive();
-        expect(toJson(component)).toMatchSnapshot();
+        // const component = wrapper.dive();
+        expect(toJson(wrapper)).toMatchSnapshot();
 
     })
 

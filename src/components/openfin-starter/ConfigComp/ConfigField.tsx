@@ -12,7 +12,7 @@ import TextField from '@material-ui/core/TextField';
 
 import { FieldType } from '../../../reduxs';
 
-import { WithStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
 
 import {useTranslation} from 'react-i18next';
 
@@ -40,7 +40,7 @@ function NumberFormatCustom(props) {
     );
 }
 
-interface IProps extends WithStyles<typeof style> {
+interface IProps{
     _type:FieldType,
     _label:string,
     _props?:any,
@@ -49,15 +49,18 @@ interface IProps extends WithStyles<typeof style> {
     onChange?:(value:any)=>void
 }
 
+const useStyles = makeStyles(style);
+
 const ConfigFieldComp:React.FunctionComponent<IProps> = (
     {
-        classes,
         _type, _label, _props, _custom,
         value,
 
         onChange
     }
 )=>{
+
+    const classes = useStyles();
 
     const { t, i18n } = useTranslation('config', { useSuspense: false });
 
@@ -188,6 +191,4 @@ const ConfigFieldComp:React.FunctionComponent<IProps> = (
     }
 }
 
-export default withStyles(style)(
-    ConfigFieldComp
-);
+export default ConfigFieldComp;

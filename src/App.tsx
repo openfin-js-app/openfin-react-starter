@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 
 import GlobalContext from './GlobalContext';
 
@@ -136,27 +137,31 @@ const App:React.FunctionComponent<IProps> = (
         }
     }
 )=>{
+
+    const muiTheme = buildMuiTheme(theme);
     return (
         <React.Fragment>
             <CssBaseline/>
             <Router history={hist}>
-                <MuiThemeProvider theme={buildMuiTheme(theme)}>
-                    <GlobalContext
-                        config={config}
-                        onToggleThemeField={handleToggleThemeField}
-                        onUpdateLangField={handleUpdateLangField}
-                    >
-                        <Switch>
-                            {
-                                indexRoutes.map((prop:any,key)=>{
-                                    if (prop.redirect)
-                                        return <Redirect from={prop.path} to={prop.to} key={key}/>;
-                                    return <Route path={prop.path} component={prop.component} key={key}/>;
+                <MuiThemeProvider theme={muiTheme}>
+                    <ThemeProvider theme={muiTheme}>
+                        <GlobalContext
+                            config={config}
+                            onToggleThemeField={handleToggleThemeField}
+                            onUpdateLangField={handleUpdateLangField}
+                        >
+                            <Switch>
+                                {
+                                    indexRoutes.map((prop:any,key)=>{
+                                        if (prop.redirect)
+                                            return <Redirect from={prop.path} to={prop.to} key={key}/>;
+                                        return <Route path={prop.path} component={prop.component} key={key}/>;
 
-                                })
-                            }
-                        </Switch>
-                    </GlobalContext>
+                                    })
+                                }
+                            </Switch>
+                        </GlobalContext>
+                    </ThemeProvider>
                 </MuiThemeProvider>
             </Router>
         </React.Fragment>

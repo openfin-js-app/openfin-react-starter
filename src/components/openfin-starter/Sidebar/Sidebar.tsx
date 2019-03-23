@@ -2,7 +2,7 @@ import * as React from 'react';
 import { NavLink } from 'react-router-dom';
 import cx from 'classnames';
 
-import { WithStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
 
 import Drawer from "@material-ui/core/Drawer";
 import Typography from "@material-ui/core/Typography";
@@ -17,12 +17,14 @@ import { sidebarCompStyle as style } from '../../../assets/jss/openfin-starter'
 
 import {RouteItem, IRouteCompItem} from '../../../routes';
 
-interface IProps extends WithStyles<typeof style> {
+interface IProps {
     open:boolean,
     routes:RouteItem[],
     color:string,
     image:string,
 }
+
+const useStyles = makeStyles(style);
 
 function activeRoute(routeName:string, props:any){
     return props.location.pathname.indexOf(routeName) > -1;
@@ -32,8 +34,10 @@ const SidebarComp:React.FunctionComponent<IProps> = (
     props
 )=>{
     const {
-        classes, open, routes, color, image
+        open, routes, color, image
     } = props;
+
+    const classes = useStyles();
 
     const { t, i18n } = useTranslation('menu', { useSuspense: false });
 
@@ -91,6 +95,4 @@ const SidebarComp:React.FunctionComponent<IProps> = (
     </React.Fragment>);
 }
 
-export default withStyles(style)(
-    SidebarComp
-);
+export default SidebarComp;

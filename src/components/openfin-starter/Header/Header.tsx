@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cx from 'classnames';
 
-import { WithStyles, withStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
@@ -22,7 +22,7 @@ import {RouteItem} from '../../../routes';
 
 import appLogo from '../../../assets/svg/app.svg';
 
-interface IProps extends WithStyles<any> {
+interface IProps{
     routes:RouteItem[],
     color:string,
     open?:boolean,
@@ -49,12 +49,16 @@ function makeBrand(props:any) {
     return name;
 }
 
+const useStyles = makeStyles(style);
+
 const HeaderComp:React.FunctionComponent<IProps> = (
     props
 ) => {
 
+    const classes = useStyles();
+
     const {
-            classes, color, windowsState,
+            color, windowsState,
             handleDrawerToggle, docked,
             onSwitchToLaunchBar, onUndock, onMinimize, onMaximize, onClose,
     } = props;
@@ -96,6 +100,4 @@ const HeaderComp:React.FunctionComponent<IProps> = (
     </AppBar>);
 }
 
-export default withStyles(style)(
-    HeaderComp
-);
+export default HeaderComp;

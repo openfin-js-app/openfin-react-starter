@@ -144,7 +144,7 @@ Object {
       "_fields": Array [
         Object {
           "_cols": 12,
-          "_custom": <WithStyles(ConfigAboutField) />,
+          "_custom": <ConfigAboutField />,
           "_label": "About openfin starter",
           "_rows": 12,
           "_type": 1,
@@ -414,7 +414,7 @@ Object {
       "_fields": Array [
         Object {
           "_cols": 12,
-          "_custom": <WithStyles(ConfigAboutField) />,
+          "_custom": <ConfigAboutField />,
           "_label": "About openfin starter",
           "_rows": 12,
           "_type": 1,
@@ -681,7 +681,7 @@ Object {
       "_fields": Array [
         Object {
           "_cols": 12,
-          "_custom": <WithStyles(ConfigAboutField) />,
+          "_custom": <ConfigAboutField />,
           "_label": "About openfin starter",
           "_rows": 12,
           "_type": 1,
@@ -957,7 +957,7 @@ Object {
       "_fields": Array [
         Object {
           "_cols": 12,
-          "_custom": <WithStyles(ConfigAboutField) />,
+          "_custom": <ConfigAboutField />,
           "_label": "About openfin starter",
           "_rows": 12,
           "_type": 1,
@@ -1224,7 +1224,7 @@ Object {
       "_fields": Array [
         Object {
           "_cols": 12,
-          "_custom": <WithStyles(ConfigAboutField) />,
+          "_custom": <ConfigAboutField />,
           "_label": "About openfin starter",
           "_rows": 12,
           "_type": 1,
@@ -1491,7 +1491,7 @@ Object {
       "_fields": Array [
         Object {
           "_cols": 12,
-          "_custom": <WithStyles(ConfigAboutField) />,
+          "_custom": <ConfigAboutField />,
           "_label": "About openfin starter",
           "_rows": 12,
           "_type": 1,
@@ -1758,7 +1758,7 @@ Object {
       "_fields": Array [
         Object {
           "_cols": 12,
-          "_custom": <WithStyles(ConfigAboutField) />,
+          "_custom": <ConfigAboutField />,
           "_label": "About openfin starter",
           "_rows": 12,
           "_type": 1,
