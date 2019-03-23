@@ -13,8 +13,9 @@ interface IWithConfigContext {
     configContext?:Partial<IWithConfig>
 }
 
+export const ConfigContext = React.createContext<Partial<IWithConfig>|null>(null);
 
-const { Provider, Consumer } = React.createContext<Partial<IWithConfig>|null>(null);
+const { Provider, Consumer } = ConfigContext;
 
 type Omit<T, K> = Pick<T, Exclude<keyof T, K>>
 

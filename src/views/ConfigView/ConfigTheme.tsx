@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { WithStyles, withStyles } from '@material-ui/core/styles';
+import { useContext } from 'react';
 
 import Switch from '@material-ui/core/Switch';
 import Typography from '@material-ui/core/Typography';
 
-import cx from "classnames";
-import { connect } from 'react-redux';
+import { makeStyles } from '@material-ui/styles';
 
 import { useTranslation } from 'react-i18next';
 
@@ -16,30 +15,25 @@ import {
 } from '../../reduxs'
 
 import {
-    WithConfigContext,
-    withConfigContext
+    ConfigContext
 } from '../../reduxs/config/context'
 
-interface IProps extends WithStyles<typeof style>, WithConfigContext{
-    actions:{
-    },
-}
+const useStyles = makeStyles(style);
 
-import { IRootState } from '../../reduxs';
-
-const ConfigThemeView:React.FunctionComponent<IProps> = (
-    {
-        classes,
-        configContext:{
-            config,
-            actions:{
-                onToggleThemeField
-            }
-        }
-    }
+const ConfigThemeView:React.FunctionComponent<{}> = (
+    {}
 )=>{
 
+    const classes = useStyles();
+
     const { t, i18n } = useTranslation('config', { useSuspense: false });
+
+    const {
+        config,
+        actions:{
+            onToggleThemeField
+        }
+    } = useContext(ConfigContext);
 
     return (
         <div className={classes.container}>
@@ -56,16 +50,5 @@ const ConfigThemeView:React.FunctionComponent<IProps> = (
 
 }
 
-export default connect(
-    (state:IRootState)=>({
-    }),
-    dispatch => ({
-        actions:{
-        }
-    }),
-    )(
-    withStyles(style)(
-        withConfigContext(ConfigThemeView)
-    )
-);
+export default ConfigThemeView;
 
