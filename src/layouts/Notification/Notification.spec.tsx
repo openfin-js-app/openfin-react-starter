@@ -3,12 +3,16 @@ import { Provider } from 'react-redux';
 
 import IconButton from '@material-ui/core/IconButton';
 
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 import { createShallow, createMount } from '@material-ui/core/test-utils';
 import configurestore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router-dom';
 
 import Notification from './Notification';
 import {MuiTheme} from "../../reduxs";
+
+const muiTheme = createMuiTheme({});
 
 const mockStore = configurestore();
 
@@ -42,11 +46,13 @@ describe('Notification layout',()=>{
 
         const store = mockStore(initialState);
         const wrapper = mount(
-            <Provider store={store}>
-                <MemoryRouter initialEntries={['/notification']}>
-                    <Notification location={{pathname:'/notification'}}/>
-                </MemoryRouter>
-            </Provider>
+            <ThemeProvider theme={muiTheme}>
+                <Provider store={store}>
+                    <MemoryRouter initialEntries={['/notification']}>
+                        <Notification location={{pathname:'/notification'}}/>
+                    </MemoryRouter>
+                </Provider>
+            </ThemeProvider>
         );
 
         expect(wrapper.find(Notification)).toHaveLength(1);

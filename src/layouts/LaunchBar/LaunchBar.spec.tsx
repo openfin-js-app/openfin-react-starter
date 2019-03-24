@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 import { createShallow, createMount } from '@material-ui/core/test-utils';
 import configurestore from 'redux-mock-store';
 
@@ -7,6 +9,8 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 
 import LaunchBar from './LaunchBar';
+
+const muiTheme = createMuiTheme({});
 
 const mockStore = configurestore();
 const initialState = {
@@ -36,9 +40,11 @@ describe('LaunchBar Layout',()=>{
     it('render correctly and launch all non-disabled windows',()=>{
         const store = mockStore(initialState);
         const wrapper = mount(
-            <Provider store={store}>
-                <LaunchBar/>
-            </Provider>
+            <ThemeProvider theme={muiTheme}>
+                <Provider store={store}>
+                    <LaunchBar/>
+                </Provider>
+            </ThemeProvider>
         );
         wrapper.find(IconButton).forEach((iconBtn)=>{
             const props = iconBtn.props();
@@ -52,9 +58,11 @@ describe('LaunchBar Layout',()=>{
     it('trigger all control panel btns',()=>{
         const store = mockStore(initialState);
         const wrapper = mount(
-            <Provider store={store}>
-                <LaunchBar/>
-            </Provider>
+            <ThemeProvider theme={muiTheme}>
+                <Provider store={store}>
+                    <LaunchBar/>
+                </Provider>
+            </ThemeProvider>
         );
         wrapper.find(Button).forEach((btn)=>{
             const props = btn.props();
@@ -72,9 +80,11 @@ describe('LaunchBar Layout',()=>{
             }
         });
         const wrapper = mount(
-            <Provider store={store}>
-                <LaunchBar/>
-            </Provider>
+            <ThemeProvider theme={muiTheme}>
+                <Provider store={store}>
+                    <LaunchBar/>
+                </Provider>
+            </ThemeProvider>
         );
         expect(wrapper).toBeTruthy();
     });

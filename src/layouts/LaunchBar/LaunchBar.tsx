@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import cx from 'classnames';
 import { Scrollbars } from 'react-custom-scrollbars';
 
-import { WithStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
 
 import { Window } from 'redux-openfin';
 
@@ -32,7 +32,7 @@ import {
 
 import { launchBarItems } from './LaunchBarData';
 
-interface IProps extends WithStyles<typeof style>{
+interface IProps {
     docked:boolean,
     launchBarCollapse:boolean,
     actions:{
@@ -45,9 +45,10 @@ interface IProps extends WithStyles<typeof style>{
     }
 }
 
+const useStyles = makeStyles(style);
+
 const LaunchBarComp:React.FunctionComponent<IProps> = (
     {
-        classes,
         docked, launchBarCollapse,
         actions:{
             handleUndock,
@@ -59,6 +60,8 @@ const LaunchBarComp:React.FunctionComponent<IProps> = (
         }
     }
 )=>{
+
+    const classes = useStyles();
 
     const collapse = launchBarCollapse;
 
@@ -171,4 +174,4 @@ export default connect(
             handleClose:()=>{dispatch(applicationLaunchBarClose())},
         }
     })
-)(withStyles(style)(LaunchBarComp));
+)(LaunchBarComp);

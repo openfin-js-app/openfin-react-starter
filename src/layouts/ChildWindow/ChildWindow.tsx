@@ -5,7 +5,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import cx from 'classnames';
 import Snackbar from '@material-ui/core/Snackbar';
 
-import { WithStyles ,withStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
 
 import {
     // acitons
@@ -37,7 +37,7 @@ const switchRoutes = (
     </Switch>
 );
 
-interface IProps extends WithStyles<typeof style>{
+interface IProps {
     docked:boolean,
     snackBarOpen:boolean,
     snackBarMsgInfo:Partial<ISnackBarMsg>,
@@ -57,9 +57,10 @@ interface IProps extends WithStyles<typeof style>{
     location?:any,
 }
 
+const useStyles = makeStyles(style);
+
 const ChildWindowLayout:React.FunctionComponent<IProps> = (
     {
-        classes,
         docked,snackBarOpen, snackBarMsgInfo, windowsState, theme,
         actions:{
             handleSetAsForeground,
@@ -69,6 +70,8 @@ const ChildWindowLayout:React.FunctionComponent<IProps> = (
         ...rest
     }
 ) => {
+
+    const classes = useStyles();
 
     useEffect(()=>{
         handleSetAsForeground();
@@ -151,4 +154,4 @@ export default connect(
             handleClose:()=>{dispatch(Window.actions.close({force:false}))},
         }
     })
-)(withStyles(style)(ChildWindowLayout));
+)(ChildWindowLayout);

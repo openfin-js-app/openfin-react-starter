@@ -5,7 +5,7 @@ import cx from 'classnames';
 
 import Snackbar from '@material-ui/core/Snackbar';
 
-import {WithStyles, withStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
 
 import {Window} from 'redux-openfin';
 
@@ -37,7 +37,7 @@ const switchRoutes = (
     </Switch>
 );
 
-interface IProps extends WithStyles<typeof style>{
+interface IProps {
     offline:boolean,
     drawerOpen:boolean,
     snackBarOpen:boolean,
@@ -59,9 +59,10 @@ interface IProps extends WithStyles<typeof style>{
     location?:any,
 }
 
+const useStyles = makeStyles(style);
+
 const DashbardLayout:React.FunctionComponent<IProps> = (
     {
-        classes,
         offline,drawerOpen, theme,
         snackBarOpen, snackBarMsgInfo, windowsState,
         actions:{
@@ -72,6 +73,9 @@ const DashbardLayout:React.FunctionComponent<IProps> = (
         ...rest
     }
 )=>{
+
+    const classes = useStyles();
+
     return(<React.Fragment>
         <Header
             routes={dashboardRoutes}
@@ -166,4 +170,4 @@ export default connect(
             handleDirectClose:()=>{dispatch(Window.actions.close({force:true}))},
         }
     })
-)(withStyles(style)(DashbardLayout));
+)(DashbardLayout);
