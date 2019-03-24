@@ -1,5 +1,8 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
+
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 import { createShallow, createMount } from '@material-ui/core/test-utils';
 import Button from '@material-ui/core/Button';
 import configurestore from 'redux-mock-store';
@@ -9,6 +12,7 @@ import Accessibility from './Accessibility';
 const mockStore = configurestore();
 const initialState = {};
 
+const muiTheme = createMuiTheme({});
 const store = mockStore(initialState);
 
 describe('AccessibilityView',()=>{
@@ -28,7 +32,9 @@ describe('AccessibilityView',()=>{
     it('render and fire 8 actions when 8 btn clicked',()=>{
        const wrapper = mount(
            <Provider store={store}>
-               <Accessibility/>
+               <ThemeProvider theme={muiTheme}>
+                <Accessibility/>
+               </ThemeProvider>
            </Provider>
        );
        expect(wrapper.find(Button)).toHaveLength(9);

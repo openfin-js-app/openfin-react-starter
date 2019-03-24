@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { WithStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
 
 import Typography from '@material-ui/core/Typography';
 
@@ -10,17 +10,21 @@ import { sampleNotificationViewStyle as style } from '../../assets/jss/openfin-s
 
 import appSvg from '../../assets/svg/app.svg';
 
-interface IProps extends WithStyles<typeof style>{
+interface IProps{
     count:number,
 }
 
 import { IRootState } from '../../reduxs';
 
+const useStyles = makeStyles(style);
+
 const SampleNotificationView:React.FunctionComponent<IProps> = (
     {
-        classes, count,
+        count,
     }
 )=>{
+
+    const classes = useStyles();
 
     return (
         <div className={classes.container}>
@@ -47,6 +51,6 @@ export default connect(
     })
 
     )(
-    withStyles(style)(SampleNotificationView)
+    SampleNotificationView
 );
 

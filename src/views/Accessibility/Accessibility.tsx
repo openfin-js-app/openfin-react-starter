@@ -6,7 +6,8 @@ import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-import { WithStyles, withStyles, createStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
+import { createStyles } from '@material-ui/core/styles';
 
 import { Notification } from 'redux-openfin';
 
@@ -25,7 +26,7 @@ const style = createStyles({
     simple: buttonStyle.simple,
 });
 
-interface IProps extends WithStyles<typeof style>{
+interface IProps{
     actions:{
         onOpenNewSelf:MouseEventHandler<any>,
         onOpenGoogle:MouseEventHandler<any>,
@@ -34,9 +35,10 @@ interface IProps extends WithStyles<typeof style>{
     },
 }
 
+const useStyles = makeStyles(style);
+
 const AccessibilityView:React.FunctionComponent<IProps> = (
     {
-        classes,
         actions:{
             onOpenNewSelf,onOpenGoogle,
             handleOpenSnackBar,
@@ -44,6 +46,9 @@ const AccessibilityView:React.FunctionComponent<IProps> = (
         }
     }
 )=>{
+
+    const classes = useStyles();
+
     return(
         <React.Fragment>
             <Typography
@@ -140,4 +145,4 @@ export default connect(
             }
         }
     })
-)(withStyles(style)(AccessibilityView))
+)(AccessibilityView)

@@ -1,5 +1,8 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
+
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 import { createShallow, createMount } from '@material-ui/core/test-utils';
 import configurestore from 'redux-mock-store';
 
@@ -16,7 +19,7 @@ const initialState = {
         openfinHostSpec:{type:'openfinHostSpec sample obj'},
     }
 };
-
+const muiTheme = createMuiTheme({});
 const store = mockStore(initialState);
 
 describe('ReportView',()=>{
@@ -36,7 +39,9 @@ describe('ReportView',()=>{
     it('render correctly',()=>{
         const wrapper = mount(
             <Provider store={store}>
-                <ReportView/>
+                <ThemeProvider theme={muiTheme}>
+                    <ReportView/>
+                </ThemeProvider>
             </Provider>
         );
         expect(wrapper).toBeTruthy();

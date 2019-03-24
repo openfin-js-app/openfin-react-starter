@@ -1,5 +1,8 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
+
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 import { createShallow, createMount } from '@material-ui/core/test-utils';
 import configurestore from 'redux-mock-store';
 
@@ -10,6 +13,7 @@ import GlobalContext from '../../GlobalContext';
 import { defaultState } from '../../reduxs/config/reducer';
 
 const mockStore = configurestore();
+const muiTheme = createMuiTheme({});
 const initialState = {
     config:defaultState,
 };
@@ -34,7 +38,9 @@ describe('ConfigView',()=>{
         const wrapper = mount(
             <Provider store={store}>
                 <GlobalContext config={initialState.config}>
-                    <ConfigView/>
+                    <ThemeProvider theme={muiTheme}>
+                        <ConfigView/>
+                    </ThemeProvider>
                 </GlobalContext>
             </Provider>
         );

@@ -7,9 +7,10 @@ import SettingIcon from '@material-ui/icons/Settings';
 
 import i18n from '../../i18n';
 
-import {
-    ConfigAboutField, ConfigThemeField, ConfigLangField, ConfigJsonField
-} from '../../components';
+import ConfigAboutField from '../../components/openfin-starter/ConfigComp/ConfigAboutField';
+import ConfigThemeField from '../../components/openfin-starter/ConfigComp/ConfigThemeField';
+import ConfigLangField from '../../components/openfin-starter/ConfigComp/ConfigLangField';
+import ConfigJsonField from '../../components/openfin-starter/ConfigComp/ConfigJsonField';
 
 import controlsSvg from'../../assets/svg/support/controls.svg';
 import controlsDarkSvg from'../../assets/svg/support/controls_dark.svg';

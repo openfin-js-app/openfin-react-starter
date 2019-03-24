@@ -19,7 +19,7 @@ import Typography from '@material-ui/core/Typography';
 import SearchIcon from '@material-ui/icons/Search';
 import CheckIcon from '@material-ui/icons/Check';
 
-import {WithStyles, withStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
 
 import {useTranslation} from 'react-i18next';
 
@@ -38,7 +38,7 @@ import {
     MuiTheme
 } from '../../reduxs';
 
-interface IProps extends WithStyles<typeof style>{
+interface IProps {
     config:IConfigState,
     globalFilterString:string,
     theme:MuiTheme
@@ -48,18 +48,22 @@ interface IProps extends WithStyles<typeof style>{
     }
 }
 
+const useStyles = makeStyles(style);
+
 const ConfigView:React.FunctionComponent<IProps> = (
     props
 )=>{
 
     const {
-        classes, theme,
+        theme,
         config,globalFilterString,
         actions:{
             handleGlobalFilterStrChange,
             handleUpdateOneField,
         }
     } = props;
+
+    const classes = useStyles();
 
     const [ currentTab, setCurrentTab] = useState<number>(0);
     const { t, i18n } = useTranslation('config', { useSuspense: false });
@@ -197,6 +201,4 @@ export default connect(
             }
         }
     })
-)(withStyles(style)(
-    ConfigView
-));
+)(ConfigView);
