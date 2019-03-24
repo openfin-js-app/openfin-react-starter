@@ -7,10 +7,10 @@ import configurestore from 'redux-mock-store';
 
 import ReactJson from 'react-json-view';
 
-import GlobalContext from '../../GlobalContext';
-import { defaultState } from '../../reduxs/config/reducer';
+import GlobalContext from '../../../GlobalContext';
+import { defaultState } from '../../../reduxs/config/reducer';
 
-import ConfigJson from './ConfigJson';
+import ConfigJsonField from './ConfigJsonField';
 
 const theme = createMuiTheme({});
 const mockStore = configurestore();
@@ -20,7 +20,7 @@ const initialState = {
 
 const store = mockStore(initialState);
 
-describe('ConfigJson',()=>{
+describe('ConfigJsonField',()=>{
 
     let shallow;
     let mount;
@@ -41,7 +41,7 @@ describe('ConfigJson',()=>{
                     config={defaultState}
                 >
                     <ThemeProvider theme={theme}>
-                        <ConfigJson/>
+                        <ConfigJsonField/>
                     </ThemeProvider>
                 </GlobalContext>
             </Provider>

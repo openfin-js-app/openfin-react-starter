@@ -4,15 +4,10 @@ import {useContext} from "react";
 import {Scrollbars} from 'react-custom-scrollbars';
 import ReactJson from 'react-json-view';
 
-import {MuiTheme} from "../../reduxs";
-import { ConfigContext } from "../../reduxs/config/context";
+import {MuiTheme} from "../../../reduxs";
+import { ConfigContext } from "../../../reduxs/config/context";
 
-interface IProps {
-    config:any,
-    theme:MuiTheme,
-}
-
-const ConfigJsonView:React.FunctionComponent<{}> = (
+const ConfigJsonField:React.FunctionComponent<{}> = (
     {}
 ) => {
 
@@ -20,7 +15,7 @@ const ConfigJsonView:React.FunctionComponent<{}> = (
         config
     } = useContext(ConfigContext);
 
-    const theme = config.application.theme;
+    const theme:MuiTheme = config.application.theme;
 
     return(
         <Scrollbars
@@ -33,4 +28,4 @@ const ConfigJsonView:React.FunctionComponent<{}> = (
     )
 }
 
-export default ConfigJsonView;
+export default ConfigJsonField;
