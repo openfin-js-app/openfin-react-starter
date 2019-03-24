@@ -10,22 +10,22 @@ import Typography from '@material-ui/core/Typography';
 
 import cx from "classnames";
 
-import { configLangViewStyle as style } from '../../assets/jss/openfin-starter';
+import { configLangFieldCompStyle as style } from '../../../assets/jss/openfin-starter';
 
-import i18n from '../../i18n';
+import i18n from '../../../i18n';
 
-import usFlag from '../../assets/svg/nationals/united-states.svg';
-import chFlag from '../../assets/svg/nationals/china.svg';
+import usFlag from '../../../assets/svg/nationals/united-states.svg';
+import chFlag from '../../../assets/svg/nationals/china.svg';
 
-import { I18Language } from '../../reduxs';
+import { I18Language } from '../../../reduxs';
 
 import {
     ConfigContext
-} from '../../reduxs/config/context'
+} from '../../../reduxs/config/context'
 
 const useStyles = makeStyles(style);
 
-const ConfigLangView:React.FunctionComponent<{}> = (
+const ConfigLangField:React.FunctionComponent<{}> = (
     {}
 )=>{
 
@@ -101,5 +101,5 @@ const ConfigLangView:React.FunctionComponent<{}> = (
 
 }
 
-export default ConfigLangView;
+export default ConfigLangField;
 

@@ -12,10 +12,10 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { createShallow, createMount } from '@material-ui/core/test-utils';
 import configurestore from 'redux-mock-store';
 
-import ConfigLang from './ConfigLang';
+import ConfigLangField from './ConfigLangField';
 
-import GlobalContext from '../../GlobalContext';
-import {I18Language} from "../../reduxs";
+import GlobalContext from '../../../GlobalContext';
+import {I18Language} from "../../../reduxs";
 
 const theme = createMuiTheme({});
 const mockStore = configurestore();
@@ -34,7 +34,7 @@ const enState = {
     },
 };
 
-describe('ConfigLang',()=>{
+describe('ConfigLangField',()=>{
 
     let shallow;
     let mount;
@@ -59,7 +59,7 @@ describe('ConfigLang',()=>{
                     onUpdateLangField={handleUpdateLangField}
                 >
                     <ThemeProvider theme={theme}>
-                        <ConfigLang/>
+                        <ConfigLangField/>
                     </ThemeProvider>
                 </GlobalContext>
             </Provider>
@@ -97,13 +97,13 @@ describe('ConfigLang',()=>{
                     onUpdateLangField={handleUpdateLangField}
                 >
                     <ThemeProvider theme={theme}>
-                        <ConfigLang/>
+                        <ConfigLangField/>
                     </ThemeProvider>
                 </GlobalContext>
             </Provider>
         );
 
-        expect(wrapper.find(ConfigLang)).toBeTruthy();
+        expect(wrapper.find(ConfigLangField)).toBeTruthy();
 
     })
 
