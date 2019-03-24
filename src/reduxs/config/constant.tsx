@@ -7,11 +7,10 @@ import SettingIcon from '@material-ui/icons/Settings';
 
 import i18n from '../../i18n';
 
-import ConfigJson from '../../views/ConfigView/ConfigJson';
-import ConfigTheme from '../../views/ConfigView/ConfigTheme';
-import ConfigLang from '../../views/ConfigView/ConfigLang';
-
-import { ConfigAboutField } from '../../components';
+import ConfigAboutField from '../../components/openfin-starter/ConfigComp/ConfigAboutField';
+import ConfigThemeField from '../../components/openfin-starter/ConfigComp/ConfigThemeField';
+import ConfigLangField from '../../components/openfin-starter/ConfigComp/ConfigLangField';
+import ConfigJsonField from '../../components/openfin-starter/ConfigComp/ConfigJsonField';
 
 import controlsSvg from'../../assets/svg/support/controls.svg';
 import controlsDarkSvg from'../../assets/svg/support/controls_dark.svg';
@@ -42,7 +41,7 @@ const configTabs:IConfigTab[]=[
             {
                 _type:FieldType.CUSTOM_FIELD,
                 _label:'Theme',
-                _custom:<ConfigTheme/>,
+                _custom:<ConfigThemeField/>,
                 _name:'theme',
                 _defaultValue:MuiTheme.DARK,
                 _cols:10,
@@ -57,7 +56,7 @@ const configTabs:IConfigTab[]=[
             {
                 _type:FieldType.CUSTOM_FIELD,
                 _label:'language',
-                _custom:<ConfigLang/>,
+                _custom:<ConfigLangField/>,
                 _name:'language',
                 _defaultValue:i18n.language,
                 _cols:10,
@@ -234,7 +233,7 @@ const configTabs:IConfigTab[]=[
             {
                 _type:FieldType.CUSTOM_FIELD,
                 _label:'sample.vals.customField.field',
-                _custom:<ConfigJson/>,
+                _custom:<ConfigJsonField/>,
                 _cols:12,
                 _rows:6,
             }

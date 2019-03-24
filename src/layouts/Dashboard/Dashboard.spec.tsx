@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 import { createShallow, createMount } from '@material-ui/core/test-utils';
 import configurestore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router-dom';
@@ -11,6 +13,8 @@ import GlobalContext from '../../GlobalContext';
 import ViewOne from '../../views/ViewOne/ViewOne';
 import {Sidebar, Header, SnackbarContent } from '../../components';
 import {MuiTheme} from "../../reduxs";
+
+const muiTheme = createMuiTheme({});
 
 const mockStore = configurestore();
 const initialState = {
@@ -58,15 +62,17 @@ describe('Dashboard layout',()=>{
     it('render in normal state correctly by default',()=>{
         const store = mockStore(initialState);
         const wrapper = mount(
-            <Provider store={store}>
-                <MemoryRouter initialEntries={['/dashboard/view-one']}>
-                    <GlobalContext
-                        config={initialState.config}
-                    >
-                        <Dashboard store={store} location={{pathname:'/dashboard/view-one'}}/>
-                    </GlobalContext>
-                </MemoryRouter>
-            </Provider>
+            <ThemeProvider theme={muiTheme}>
+                <Provider store={store}>
+                    <MemoryRouter initialEntries={['/dashboard/view-one']}>
+                        <GlobalContext
+                            config={initialState.config}
+                        >
+                            <Dashboard location={{pathname:'/dashboard/view-one'}}/>
+                        </GlobalContext>
+                    </MemoryRouter>
+                </Provider>
+            </ThemeProvider>
 
         );
         expect(wrapper.find(ViewOne)).toHaveLength(1);
@@ -116,15 +122,17 @@ describe('Dashboard layout',()=>{
 
         const store = mockStore(initialState);
         const wrapper = mount(
-            <Provider store={store}>
-                <MemoryRouter initialEntries={['/dashboard/view-one']}>
-                    <GlobalContext
-                        config={initialState.config}
-                    >
-                        <Dashboard store={store} location={{pathname:'/dashboard/view-one'}}/>
-                    </GlobalContext>
-                </MemoryRouter>
-            </Provider>
+            <ThemeProvider theme={muiTheme}>
+                <Provider store={store}>
+                    <MemoryRouter initialEntries={['/dashboard/view-one']}>
+                        <GlobalContext
+                            config={initialState.config}
+                        >
+                            <Dashboard location={{pathname:'/dashboard/view-one'}}/>
+                        </GlobalContext>
+                    </MemoryRouter>
+                </Provider>
+            </ThemeProvider>
         );
         expect(wrapper.find(ViewOne)).toHaveLength(1);
         expect(wrapper.find(Dashboard)).toHaveLength(1);

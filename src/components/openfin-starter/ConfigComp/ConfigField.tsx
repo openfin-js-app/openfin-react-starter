@@ -12,9 +12,9 @@ import TextField from '@material-ui/core/TextField';
 
 import { FieldType } from '../../../reduxs';
 
-import { WithStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
 
-import { withTranslation, WithTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 
 import { configFieldCompStyle as style } from '../../../assets/jss/openfin-starter';
 
@@ -40,7 +40,7 @@ function NumberFormatCustom(props) {
     );
 }
 
-interface IProps extends WithStyles<typeof style>, WithTranslation {
+interface IProps{
     _type:FieldType,
     _label:string,
     _props?:any,
@@ -49,145 +49,146 @@ interface IProps extends WithStyles<typeof style>, WithTranslation {
     onChange?:(value:any)=>void
 }
 
+const useStyles = makeStyles(style);
 
-class ConfigFieldComp extends React.Component<IProps,{}>{
+const ConfigFieldComp:React.FunctionComponent<IProps> = (
+    {
+        _type, _label, _props, _custom,
+        value,
 
-    handleTextFieldChange = event =>{
-        if (this.props.onChange){
-            this.props.onChange(event.target.value);
+        onChange
+    }
+)=>{
+
+    const classes = useStyles();
+
+    const { t, i18n } = useTranslation('config', { useSuspense: false });
+
+    const handleTextFieldChange = event =>{
+        if (onChange){
+            onChange(event.target.value);
         }
     };
 
-    handleTextFieldIntChange = event =>{
-        if (this.props.onChange){
+    const handleTextFieldIntChange = event =>{
+        if (onChange){
             const value = event.target.value;
-            this.props.onChange(value?parseInt(value,10):'');
+            onChange(value?parseInt(value,10):'');
         }
     };
 
-    handleTextFieldFloatChange = event =>{
-        if (this.props.onChange){
+    const handleTextFieldFloatChange = event =>{
+        if (onChange){
             const value = event.target.value;
-            this.props.onChange(value?parseFloat(value):'');
+            onChange(value?parseFloat(value):'');
         }
     };
 
-    handleDateChange = (date) =>{
-        if (this.props.onChange){
-            this.props.onChange(date._d);
+    const handleDateChange = (date) =>{
+        if (onChange){
+            onChange(date._d);
         }
     };
 
-    render(){
-
-        const {
-            classes, t,
-            _type, _label, _props, _custom,
-            value
-        } = this.props;
-
-        switch (_type){
-            case FieldType.TITLE:
-                return (<Typography variant={'h5'} gutterBottom>
-                    {t(_label)}
-                </Typography>);
-            case FieldType.SUBHEADING:
-                return (<Typography className={classes.subheadingField} variant={'subtitle1'}>
-                    {t(_label)}
-                </Typography>);
-            case FieldType.CUSTOM_FIELD:
-                return (_custom);
-            case FieldType.CURRENCY:
-                return (
-                    <TextField
-                        label={t(_label)}
-                        value={value}
-                        onChange={this.handleTextFieldFloatChange}
-                        id={`config_field_${shortid.generate()}`}
-                        InputProps={{inputComponent:NumberFormatCustom}}
-                        margin={"dense"}
-                        {..._props}
-                    />
-                );
-            case FieldType.STRING:
-                return (
-                    <TextField
-                        id={`config_field_${shortid.generate()}`}
-                        label={t(_label)}
-                        value={value}
-                        onChange={this.handleTextFieldChange}
-                        margin={"dense"}
-                        {..._props}
-                    />
-                );
-            case FieldType.NUMBER:
-                return(<TextField
-                    type={"number"}
-                    className={classes.numberField}
-                    id={`config_field_${shortid.generate()}`}
-                    error={value?false:true}
+    switch (_type){
+        case FieldType.TITLE:
+            return (<Typography variant={'h5'} gutterBottom>
+                {t(_label)}
+            </Typography>);
+        case FieldType.SUBHEADING:
+            return (<Typography className={classes.subheadingField} variant={'subtitle1'}>
+                {t(_label)}
+            </Typography>);
+        case FieldType.CUSTOM_FIELD:
+            return (_custom);
+        case FieldType.CURRENCY:
+            return (
+                <TextField
                     label={t(_label)}
                     value={value}
-                    onChange={this.handleTextFieldIntChange}
+                    onChange={handleTextFieldFloatChange}
+                    id={`config_field_${shortid.generate()}`}
+                    InputProps={{inputComponent:NumberFormatCustom}}
                     margin={"dense"}
                     {..._props}
-                />);
-            case FieldType.DATE:
-                return(
-                    <MuiPickersUtilsProvider utils={MomentUtils}>
-                        <DatePicker
-                            keyboard
-                            label={t(_label)}
-                            format="DD/MM/YYYY"
-                            placeholder="DD/MM/YYYY"
-                            mask={value => (value ? [/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/] : [])}
-                            value={value}
-                            onChange={this.handleDateChange}
-                            disableOpenOnEnter
-                            animateYearScrolling={false}
-                            margin={"dense"}
-                            {..._props}
-                        />
-                    </MuiPickersUtilsProvider>
-                );
-            case FieldType.TIME:
-                return(
-                    <MuiPickersUtilsProvider utils={MomentUtils}>
-                        <TimePicker
-                            seconds
-                            format="hh:mm:ss A"
-                            label={t(_label)}
-                            value={value}
-                            onChange={this.handleDateChange}
-                            margin={"dense"}
-                            {..._props}
-                        />
-                    </MuiPickersUtilsProvider>
-                );
-            case FieldType.DATETIME:
-                return(
-                    <MuiPickersUtilsProvider utils={MomentUtils}>
-                        <DateTimePicker
-                            format="YYYY/MM/DD hh:mm A"
-                            mask={[/\d/, /\d/, /\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, ' ', /\d/, /\d/, ':', /\d/, /\d/, ' ', /a|p/i, 'M']}
-                            label={t(_label)}
-                            value={value}
-                            onChange={this.handleDateChange}
-                            disableOpenOnEnter
-                            margin={"dense"}
-                            {..._props}
-                        />
-                    </MuiPickersUtilsProvider>
-                );
-            case FieldType.BODY1:
-            default:
-                return (<Typography variant={"body1"} gutterBottom align={"right"}>
-                    {t(_label)}
-                </Typography>)
-        }
+                />
+            );
+        case FieldType.STRING:
+            return (
+                <TextField
+                    id={`config_field_${shortid.generate()}`}
+                    label={t(_label)}
+                    value={value}
+                    onChange={handleTextFieldChange}
+                    margin={"dense"}
+                    {..._props}
+                />
+            );
+        case FieldType.NUMBER:
+            return(<TextField
+                type={"number"}
+                className={classes.numberField}
+                id={`config_field_${shortid.generate()}`}
+                error={value?false:true}
+                label={t(_label)}
+                value={value}
+                onChange={handleTextFieldIntChange}
+                margin={"dense"}
+                {..._props}
+            />);
+        case FieldType.DATE:
+            return(
+                <MuiPickersUtilsProvider utils={MomentUtils}>
+                    <DatePicker
+                        keyboard
+                        label={t(_label)}
+                        format="DD/MM/YYYY"
+                        placeholder="DD/MM/YYYY"
+                        mask={value => (value ? [/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/] : [])}
+                        value={value}
+                        onChange={handleDateChange}
+                        disableOpenOnEnter
+                        animateYearScrolling={false}
+                        margin={"dense"}
+                        {..._props}
+                    />
+                </MuiPickersUtilsProvider>
+            );
+        case FieldType.TIME:
+            return(
+                <MuiPickersUtilsProvider utils={MomentUtils}>
+                    <TimePicker
+                        seconds
+                        format="hh:mm:ss A"
+                        label={t(_label)}
+                        value={value}
+                        onChange={handleDateChange}
+                        margin={"dense"}
+                        {..._props}
+                    />
+                </MuiPickersUtilsProvider>
+            );
+        case FieldType.DATETIME:
+            return(
+                <MuiPickersUtilsProvider utils={MomentUtils}>
+                    <DateTimePicker
+                        format="YYYY/MM/DD hh:mm A"
+                        mask={[/\d/, /\d/, /\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, ' ', /\d/, /\d/, ':', /\d/, /\d/, ' ', /a|p/i, 'M']}
+                        label={t(_label)}
+                        value={value}
+                        onChange={handleDateChange}
+                        disableOpenOnEnter
+                        margin={"dense"}
+                        {..._props}
+                    />
+                </MuiPickersUtilsProvider>
+            );
+        case FieldType.BODY1:
+        default:
+            return (<Typography variant={"body1"} gutterBottom align={"right"}>
+                {t(_label)}
+            </Typography>)
     }
 }
 
-export default withStyles(style)(
-    withTranslation('config')(ConfigFieldComp)
-);
+export default ConfigFieldComp;

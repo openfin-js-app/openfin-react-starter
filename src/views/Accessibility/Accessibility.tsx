@@ -6,11 +6,12 @@ import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-import { WithStyles, withStyles, createStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
+import { createStyles } from '@material-ui/core/styles';
 
 import { Notification } from 'redux-openfin';
 
-import { applicationNewSnackbar, applicationLaunchNewWindow } from '../../reduxs';
+import { IRootState, applicationNewSnackbar, applicationLaunchNewWindow } from '../../reduxs';
 
 import { buttonStyle } from '../../assets/jss/openfin-starter';
 
@@ -25,78 +26,77 @@ const style = createStyles({
     simple: buttonStyle.simple,
 });
 
-interface IProps extends WithStyles<typeof style>{
+interface IProps{
     actions:{
         onOpenNewSelf:MouseEventHandler<any>,
         onOpenGoogle:MouseEventHandler<any>,
-        handleOpenPrimarySnackBar:MouseEventHandler<any>,
-        handleOpenSecondarySnackBar:MouseEventHandler<any>,
         handleOpenSnackBar:(name:string)=>MouseEventHandler<any>,
         handleCreateNotification:MouseEventHandler<any>,
     },
 }
 
-class AccessibilityView extends React.Component<IProps, {}>{
-    render():any{
+const useStyles = makeStyles(style);
 
-        const {
-            classes,
-            actions:{
-                onOpenNewSelf,onOpenGoogle,
-                handleOpenSnackBar,
-                handleCreateNotification,
-            }
-        } = this.props;
-
-        return(
-            <React.Fragment>
-                <Typography
-                    variant={"h5"} gutterBottom
-                >
-                    Accessibility view works
-                </Typography>
-
-                <Button size={"large"} variant={"contained"} color={"primary"} onClick={onOpenNewSelf}
-                >Report</Button>
-                <Button size={"large"} variant={"contained"} color={"secondary"} onClick={onOpenGoogle}
-                >Google</Button>
-
-                <hr/>
-
-                <Button size={"small"} variant={"contained"} className={classes.primary}
-                        onClick={handleOpenSnackBar('primary')}
-                >Primary</Button>
-                <Button size={"small"} variant={"contained"} className={classes.info}
-                        onClick={handleOpenSnackBar('info')}
-                >Info</Button>
-                <Button size={"small"} variant={"contained"} className={classes.success}
-                        onClick={handleOpenSnackBar('success')}
-                >Success</Button>
-                <Button size={"small"} variant={"contained"} className={classes.warning}
-                        onClick={handleOpenSnackBar('warning')}
-                >Warning</Button>
-                <Button size={"small"} variant={"contained"} className={classes.danger}
-                        onClick={handleOpenSnackBar('error')}
-                >Danger</Button>
-                <Button size={"small"} variant={"contained"} className={classes.rose}
-                        onClick={handleOpenSnackBar('rose')}
-                >Rose</Button>
-
-                <hr/>
-
-                <Button variant="outlined" color="primary"
-                        onClick = {handleCreateNotification}
-                >
-                    Notification
-                </Button>
-
-            </React.Fragment>
-        )
+const AccessibilityView:React.FunctionComponent<IProps> = (
+    {
+        actions:{
+            onOpenNewSelf,onOpenGoogle,
+            handleOpenSnackBar,
+            handleCreateNotification,
+        }
     }
+)=>{
+
+    const classes = useStyles();
+
+    return(
+        <React.Fragment>
+            <Typography
+                variant={"h5"} gutterBottom
+            >
+                Accessibility view works
+            </Typography>
+
+            <Button size={"large"} variant={"contained"} color={"primary"} onClick={onOpenNewSelf}
+            >Report</Button>
+            <Button size={"large"} variant={"contained"} color={"secondary"} onClick={onOpenGoogle}
+            >Google</Button>
+
+            <hr/>
+
+            <Button size={"small"} variant={"contained"} className={classes.primary}
+                    onClick={handleOpenSnackBar('primary')}
+            >Primary</Button>
+            <Button size={"small"} variant={"contained"} className={classes.info}
+                    onClick={handleOpenSnackBar('info')}
+            >Info</Button>
+            <Button size={"small"} variant={"contained"} className={classes.success}
+                    onClick={handleOpenSnackBar('success')}
+            >Success</Button>
+            <Button size={"small"} variant={"contained"} className={classes.warning}
+                    onClick={handleOpenSnackBar('warning')}
+            >Warning</Button>
+            <Button size={"small"} variant={"contained"} className={classes.danger}
+                    onClick={handleOpenSnackBar('error')}
+            >Danger</Button>
+            <Button size={"small"} variant={"contained"} className={classes.rose}
+                    onClick={handleOpenSnackBar('rose')}
+            >Rose</Button>
+
+            <hr/>
+
+            <Button variant="outlined" color="primary"
+                    onClick = {handleCreateNotification}
+            >
+                Notification
+            </Button>
+
+        </React.Fragment>
+    )
 }
 
 export default connect(
-    (state:any)=>({
+    (state:IRootState)=>({
 
     }),
     dispatch => ({
@@ -145,4 +145,4 @@ export default connect(
             }
         }
     })
-)(withStyles(style)(AccessibilityView))
+)(AccessibilityView)

@@ -4,6 +4,13 @@ jest.mock('react-i18next', () => ({
         Component.defaultProps = { ...Component.defaultProps, t: () => "" };
         return Component;
     },
+    useTranslation: (ns, options) => {
+        return {
+            t: (label)=>label,
+            i18n: {},
+            ready: true,
+        }
+    }
 }));
 
 jest.mock('../../src/i18n');

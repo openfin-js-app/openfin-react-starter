@@ -12,7 +12,7 @@ import {
     roseColor,
 } from '../../openfin-starter-constant';
 
-const headerLinkStyle:any = (theme:Theme) => createStyles({
+const headerLinkStyle = (theme:Theme) => createStyles({
     menuBtn:{
         width:appbarHeight * 0.9,
         height:appbarHeight * 0.9,

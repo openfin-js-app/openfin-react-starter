@@ -1,38 +1,42 @@
 import * as React from 'react';
 import toJson from 'enzyme-to-json';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 import { createShallow, createMount } from '@material-ui/core/test-utils';
 
 import Sidebar from './Sidebar';
+
+const muiTheme = createMuiTheme({});
 
 describe('Sidebar comp',()=>{
 
     let shallow;
     let mount;
 
-    beforeAll(() => {
+    beforeEach(() => {
+        shallow = createShallow();
         mount = createMount();
     });
 
-    afterAll(() => {
+    afterEach(()=>{
         mount.cleanUp();
-    });
-
-
-    beforeEach(() => {
-        shallow = createShallow();
-    });
+    })
 
     it('renders correctly by default',()=>{
 
-        const wrapper = shallow(<Sidebar
-            open={true}
-            routes={[]}
-            color = {'primary'}
-            image = {undefined}
-        />);
+        const wrapper = shallow(
+            <ThemeProvider theme={muiTheme}>
+                <Sidebar
+                    open={true}
+                    routes={[]}
+                    color = {'primary'}
+                    image = {undefined}
+                />
+            </ThemeProvider>
+        );
 
-        const component = wrapper.dive();
-        expect(toJson(component)).toMatchSnapshot();
+        // const component = wrapper.dive();
+        expect(toJson(wrapper)).toMatchSnapshot();
 
     })
 

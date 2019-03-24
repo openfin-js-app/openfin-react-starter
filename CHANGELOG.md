@@ -1,3 +1,6 @@
+## [0.70.10] 2019-03-26
+- Embrace react hook api
+
 ## [0.40.10] 2019-03-17
 - Refactor scaffolding codes to adopt the ejected create-react-app of version 2.1.8
 - Upgrade to depend upon redux-saga of version 1.0.2

@@ -14,7 +14,7 @@ import {
     dangerColor,
 } from '../../openfin-starter-constant';
 
-const sidebarStyle:any = (theme:Theme) => createStyles({
+const sidebarStyle = (theme:Theme) => createStyles({
     drawerPaper:{
         border:"none",
         backgroundColor:'transparent',

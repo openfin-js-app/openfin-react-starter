@@ -1,34 +1,39 @@
 import * as React from 'react';
 import toJson from 'enzyme-to-json';
-import { createShallow, createMount } from '@material-ui/core/test-utils';
-
 import '../../../i18n';
+
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+import { createShallow, createMount } from '@material-ui/core/test-utils';
 
 import Button from '@material-ui/core/Button';
 
 import ConfigAboutField from './ConfigAboutField';
+
+const theme = createMuiTheme({});
 
 describe('ConfigAboutField comp',  () => {
 
     let shallow;
     let mount;
 
-    beforeAll(() => {
+    beforeEach(() => {
+        shallow = createShallow();
         mount = createMount();
     });
 
-    afterAll(() => {
+    afterEach(()=>{
         mount.cleanUp();
-    });
-
-    beforeEach(() => {
-        shallow = createShallow();
-    });
+    })
 
     it('renderred correctly',()=>{
-        const wrapper = shallow(<ConfigAboutField/>)
-        const comp = wrapper.dive();
-        expect(toJson(comp)).toMatchSnapshot();
+        const wrapper = shallow(
+            <ThemeProvider theme={theme}>
+                <ConfigAboutField/>
+            </ThemeProvider>
+        );
+        // const comp = wrapper.dive();
+        expect(toJson(wrapper)).toMatchSnapshot();
     })
 
     it('function correctly',()=>{
@@ -44,7 +49,11 @@ describe('ConfigAboutField comp',  () => {
             expect(l).toMatchSnapshot();
         })
 
-        const wrapper = mount(<ConfigAboutField/>);
+        const wrapper = mount(
+            <ThemeProvider theme={theme}>
+                <ConfigAboutField/>
+            </ThemeProvider>
+        );
         expect(wrapper.find(Button)).toHaveLength(2);
         wrapper.find(Button).forEach((button)=>{
             const props = button.props();

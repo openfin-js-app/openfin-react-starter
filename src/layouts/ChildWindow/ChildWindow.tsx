@@ -1,10 +1,11 @@
 import * as React from 'react';
+import { useEffect } from 'react'
 import { connect } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import cx from 'classnames';
 import Snackbar from '@material-ui/core/Snackbar';
 
-import { WithStyles ,withStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
 
 import {
     // acitons
@@ -36,7 +37,7 @@ const switchRoutes = (
     </Switch>
 );
 
-interface IProps extends WithStyles<typeof style>{
+interface IProps {
     docked:boolean,
     snackBarOpen:boolean,
     snackBarMsgInfo:Partial<ISnackBarMsg>,
@@ -52,79 +53,84 @@ interface IProps extends WithStyles<typeof style>{
         handleMaximize: ()=> void,
         handleClose: ()=> void,
     }
+    // for testing
+    location?:any,
 }
 
-class ChildWindowLayout extends React.Component<IProps,{}>{
+const useStyles = makeStyles(style);
 
-    componentDidMount(){
-        this.props.actions.handleSetAsForeground();
+const ChildWindowLayout:React.FunctionComponent<IProps> = (
+    {
+        docked,snackBarOpen, snackBarMsgInfo, windowsState, theme,
+        actions:{
+            handleSetAsForeground,
+            handleSnackbarClose, handleSnackbarCloseBtnClick, handleSnackbarExited,
+            handleUndock, handleMinimize, handleMaximize, handleClose,
+        },
+        ...rest
     }
+) => {
 
-    render(){
-        const {
-            classes,
-            docked,snackBarOpen, snackBarMsgInfo, windowsState, theme,
-            actions:{
-                handleSetAsForeground,
-                handleSnackbarClose, handleSnackbarCloseBtnClick, handleSnackbarExited,
-                handleUndock, handleMinimize, handleMaximize, handleClose,
-            },
-            ...rest
-        } = this.props;
+    const classes = useStyles();
 
-        return(
-            <React.Fragment>
-                <Header
-                    routes={childWindowRoutes}
-                    windowsState={windowsState}
-                    color={'info'}
-                    docked={docked}
-                    onUndock = {handleUndock}
-                    onMinimize={handleMinimize}
-                    onMaximize={handleMaximize}
-                    onClose = {handleClose}
-                    {...rest}
-                />
-                <div className={cx(classes.wrapper, classes.wrapperInfo)}>
-                    <div className={cx(
-                        classes.mainPanel,classes.mainPanelShift
-                    )}
-                    >
-                        <div className={classes.container}>
-                            <div className={
-                                cx(
-                                    classes.content,
-                                    {
-                                        [classes.lightBoxShaddow]: theme === MuiTheme.LIGHT
-                                    }
-                                )
-                            }>
-                                {switchRoutes}
-                            </div>
+    useEffect(()=>{
+        handleSetAsForeground();
+        // return ()=>{
+        //
+        // }
+    });
+
+    return(
+        <React.Fragment>
+            <Header
+                routes={childWindowRoutes}
+                windowsState={windowsState}
+                color={'info'}
+                docked={docked}
+                onUndock = {handleUndock}
+                onMinimize={handleMinimize}
+                onMaximize={handleMaximize}
+                onClose = {handleClose}
+                {...rest}
+            />
+            <div className={cx(classes.wrapper, classes.wrapperInfo)}>
+                <div className={cx(
+                    classes.mainPanel,classes.mainPanelShift
+                )}
+                >
+                    <div className={classes.container}>
+                        <div className={
+                            cx(
+                                classes.content,
+                                {
+                                    [classes.lightBoxShaddow]: theme === MuiTheme.LIGHT
+                                }
+                            )
+                        }>
+                            {switchRoutes}
                         </div>
                     </div>
                 </div>
-                <Snackbar
-                    key={snackBarMsgInfo.key}
-                    anchorOrigin={{
-                        vertical:'bottom',
-                        horizontal:'center'
-                    }}
-                    open={snackBarOpen}
-                    autoHideDuration={6000}
-                    onClose={handleSnackbarClose}
-                    onExited={handleSnackbarExited}
-                >
-                    <SnackbarContent
-                        onClose={handleSnackbarCloseBtnClick}
-                        variant={snackBarMsgInfo.variant}
-                        message={snackBarMsgInfo.message}
-                    />
-                </Snackbar>
-            </React.Fragment>
-        );
-    }
-
+            </div>
+            <Snackbar
+                key={snackBarMsgInfo.key}
+                anchorOrigin={{
+                    vertical:'bottom',
+                    horizontal:'center'
+                }}
+                open={snackBarOpen}
+                autoHideDuration={6000}
+                onClose={handleSnackbarClose}
+                onExited={handleSnackbarExited}
+            >
+                <SnackbarContent
+                    onClose={handleSnackbarCloseBtnClick}
+                    variant={snackBarMsgInfo.variant}
+                    message={snackBarMsgInfo.message}
+                />
+            </Snackbar>
+        </React.Fragment>
+    );
 }
 
 export default connect(
@@ -148,4 +154,4 @@ export default connect(
             handleClose:()=>{dispatch(Window.actions.close({force:false}))},
         }
     })
-)(withStyles(style)(ChildWindowLayout));
+)(ChildWindowLayout);

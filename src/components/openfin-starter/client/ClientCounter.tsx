@@ -10,39 +10,38 @@ interface IProps {
     onChange:(count:number)=>void
 }
 
-export default class ClientCounterComp extends React.Component<IProps,{}>{
+const ClientCounterComp:React.FunctionComponent<IProps> = (
+    {
+        count,onChange,
+    }
+)=>{
 
-
-    handleIncBtnClick = ()=>{
-        this.props.onChange(
-            this.props.count+1
+    const handleIncBtnClick = ()=>{
+        onChange(
+            count+1
         )
     }
 
-    handleDecBtnClick = ()=>{
-        this.props.onChange(
-            this.props.count-1
+    const handleDecBtnClick = ()=>{
+        onChange(
+            count-1
         )
     }
 
-    render(){
+    return(<React.Fragment>
+        <span>{count}</span>
+        <Button variant="contained" color="primary"
+                onClick={handleIncBtnClick}
+        >
+            Increase
+        </Button>
+        <Button variant="contained" color="secondary"
+                onClick={handleDecBtnClick}
+        >
+            Decrease
+        </Button>
+    </React.Fragment>)
 
-        const {
-            count, onChange
-        } = this.props;
-
-        return(<React.Fragment>
-            <span>{count}</span>
-            <Button variant="contained" color="primary"
-                    onClick={this.handleIncBtnClick}
-            >
-                Increase
-            </Button>
-            <Button variant="contained" color="secondary"
-                    onClick={this.handleDecBtnClick}
-            >
-                Decrease
-            </Button>
-        </React.Fragment>)
-    }
 }
+
+export default ClientCounterComp;

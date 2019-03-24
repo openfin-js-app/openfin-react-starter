@@ -6,10 +6,10 @@ import Switch from '@material-ui/core/Switch';
 import { createShallow, createMount } from '@material-ui/core/test-utils';
 import configurestore from 'redux-mock-store';
 
-import ConfigTheme from './ConfigTheme';
+import ConfigThemeField from './ConfigThemeField';
 
-import GlobalContext from '../../GlobalContext';
-import {MuiTheme} from "../../reduxs";
+import GlobalContext from '../../../GlobalContext';
+import {MuiTheme} from "../../../reduxs";
 
 const mockStore = configurestore();
 
@@ -29,7 +29,7 @@ const lightState = {
     },
 };
 
-describe('ConfigLang',()=>{
+describe('Config Theme',()=>{
 
     let shallow;
     let mount;
@@ -53,7 +53,7 @@ describe('ConfigLang',()=>{
                     config={darkState.config}
                     onToggleThemeField={handleToggleThemeField}
                 >
-                    <ConfigTheme/>
+                    <ConfigThemeField/>
                 </GlobalContext>
             </Provider>
         );
@@ -79,7 +79,7 @@ describe('ConfigLang',()=>{
                     config={lightState.config}
                     onToggleThemeField={handleToggleThemeField}
                 >
-                    <ConfigTheme/>
+                    <ConfigThemeField/>
                 </GlobalContext>
             </Provider>
         );

@@ -5,7 +5,7 @@ import cx from 'classnames';
 
 import Snackbar from '@material-ui/core/Snackbar';
 
-import {WithStyles, withStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
 
 import {Window} from 'redux-openfin';
 
@@ -37,7 +37,7 @@ const switchRoutes = (
     </Switch>
 );
 
-interface IProps extends WithStyles<typeof style>{
+interface IProps {
     offline:boolean,
     drawerOpen:boolean,
     snackBarOpen:boolean,
@@ -55,93 +55,96 @@ interface IProps extends WithStyles<typeof style>{
         handleClose: ()=> void,
         handleDirectClose: ()=> void,
     }
+    // for testing
+    location?:any,
 }
 
-class DashbardLayout extends React.Component<IProps,{}>{
-    render(){
+const useStyles = makeStyles(style);
 
-        const {
-            classes,
-            offline,drawerOpen, theme,
-            snackBarOpen, snackBarMsgInfo, windowsState,
-            actions:{
-                handleDrawerToggle,
-                handleSnackbarClose, handleSnackbarCloseBtnClick, handleSnackbarExited,
-                handleSwitchToLaunchBar, handleMinimize, handleMaximize, handleClose, handleDirectClose,
-            },
-            ...rest
-        } = this.props;
+const DashbardLayout:React.FunctionComponent<IProps> = (
+    {
+        offline,drawerOpen, theme,
+        snackBarOpen, snackBarMsgInfo, windowsState,
+        actions:{
+            handleDrawerToggle,
+            handleSnackbarClose, handleSnackbarCloseBtnClick, handleSnackbarExited,
+            handleSwitchToLaunchBar, handleMinimize, handleMaximize, handleClose, handleDirectClose,
+        },
+        ...rest
+    }
+)=>{
 
-        return(<React.Fragment>
-            <Header
+    const classes = useStyles();
+
+    return(<React.Fragment>
+        <Header
+            routes={dashboardRoutes}
+            windowsState={windowsState}
+            handleDrawerToggle={handleDrawerToggle}
+            open={drawerOpen}
+            color={'primary'}
+            docked={false}
+            onSwitchToLaunchBar={handleSwitchToLaunchBar}
+            onMinimize={handleMinimize}
+            onMaximize={handleMaximize}
+            onClose = {handleClose}
+            {...rest}
+        />
+        <div className={cx(classes.wrapper, classes.wrapperPrimary)}>
+            <Sidebar
                 routes={dashboardRoutes}
-                windowsState={windowsState}
-                handleDrawerToggle={handleDrawerToggle}
                 open={drawerOpen}
-                color={'primary'}
-                docked={false}
-                onSwitchToLaunchBar={handleSwitchToLaunchBar}
-                onMinimize={handleMinimize}
-                onMaximize={handleMaximize}
-                onClose = {handleClose}
+                color={"primary"}
+                image={'/img/sidebar-1.jpg'}
                 {...rest}
             />
-            <div className={cx(classes.wrapper, classes.wrapperPrimary)}>
-                <Sidebar
-                    routes={dashboardRoutes}
-                    open={drawerOpen}
-                    color={"primary"}
-                    image={'/img/sidebar-1.jpg'}
-                    {...rest}
-                />
-                <div className={cx(
-                    classes.mainPanel,
-                    {
-                        [classes.mainPanelShift]:!drawerOpen
-                    }
-                )}
-                >
-                    <div className={classes.container}>
-                        <div className={
-                            cx(
-                                classes.content,
-                                {
-                                    [classes.lightBoxShaddow]: theme === MuiTheme.LIGHT
-                                }
-                            )
-                        }>
-                            {switchRoutes}
-                        </div>
+            <div className={cx(
+                classes.mainPanel,
+                {
+                    [classes.mainPanelShift]:!drawerOpen
+                }
+            )}
+            >
+                <div className={classes.container}>
+                    <div className={
+                        cx(
+                            classes.content,
+                            {
+                                [classes.lightBoxShaddow]: theme === MuiTheme.LIGHT
+                            }
+                        )
+                    }>
+                        {switchRoutes}
                     </div>
                 </div>
             </div>
-            {/*snackbar*/}
-            <Snackbar
-                key={snackBarMsgInfo.key}
-                anchorOrigin={{
-                    vertical:'bottom',
-                    horizontal:'center'
-                }}
-                open={snackBarOpen}
-                autoHideDuration={6000}
-                onClose={handleSnackbarClose}
-                onExited={handleSnackbarExited}
-            >
-                <SnackbarContent
-                    onClose={handleSnackbarCloseBtnClick}
-                    variant={snackBarMsgInfo.variant}
-                    message={snackBarMsgInfo.message}
+        </div>
+        {/*snackbar*/}
+        <Snackbar
+            key={snackBarMsgInfo.key}
+            anchorOrigin={{
+                vertical:'bottom',
+                horizontal:'center'
+            }}
+            open={snackBarOpen}
+            autoHideDuration={6000}
+            onClose={handleSnackbarClose}
+            onExited={handleSnackbarExited}
+        >
+            <SnackbarContent
+                onClose={handleSnackbarCloseBtnClick}
+                variant={snackBarMsgInfo.variant}
+                message={snackBarMsgInfo.message}
+            />
+        </Snackbar>
+        {
+            offline?
+                <OfflineOverlay
+                    onClose={handleDirectClose}
                 />
-            </Snackbar>
-            {
-                offline?
-                    <OfflineOverlay
-                        onClose={handleDirectClose}
-                    />
-                    :null
-            }
-        </React.Fragment>);
-    }
+                :null
+        }
+    </React.Fragment>);
 }
 
 export default connect(
@@ -167,4 +170,4 @@ export default connect(
             handleDirectClose:()=>{dispatch(Window.actions.close({force:true}))},
         }
     })
-)(withStyles(style)(DashbardLayout));
+)(DashbardLayout);

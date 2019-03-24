@@ -5,11 +5,11 @@ import { Scrollbars } from 'react-custom-scrollbars';
 
 import Typography from '@material-ui/core/Typography';
 
-import { WithStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
 
 import { reportViewStyle as style } from '../../assets/jss/openfin-starter';
 
-interface IProps extends WithStyles<typeof style>{
+interface IProps {
     username:string,
     computerName:string,
     machineId:string,
@@ -22,37 +22,39 @@ interface IProps extends WithStyles<typeof style>{
     winHeight:number,
 }
 
-class ReportView extends React.Component<IProps,{}>{
-    render (){
-        const {
-            classes,
-            username, computerName, machineId, deviceUserId,
-            version, hostSpec,
-            winTop,winLeft,winWidth,winHeight,
-        } = this.props;
+const useStyles = makeStyles(style);
 
-        return(<div className={classes.root}>
-            <Scrollbars
-                renderThumbVertical={props => <div className={"dark-thumb-vertical"} {...props}/>}
-            >
-                <div className={classes.mainContainer}>
-                    <Typography variant={"subtitle1"} gutterBottom>
-                        Openfin {version} - {username} @ {computerName}
-                    </Typography>
-                    <Typography variant={"body1"}>
-                        X:&lt;{winLeft}&gt;|Y:&lt;{winTop}&gt;|W&lt;{winWidth}&gt;H&lt;{winHeight}&gt;
-                    </Typography>
-                    <Typography variant={"body1"}>
-                        MachineId:{machineId}
-                    </Typography>
-                    <Typography variant={"body2"}>
-                        DeviceUserId:{deviceUserId}
-                    </Typography>
-                    <ReactJson src={hostSpec} theme={"monokai"}/>
-                </div>
-            </Scrollbars>
-        </div>);
+const ReportView:React.FunctionComponent<IProps> = (
+    {
+        username, computerName, machineId, deviceUserId,
+        version, hostSpec,
+        winTop,winLeft,winWidth,winHeight,
     }
+)=>{
+
+    const classes = useStyles();
+
+    return(<div className={classes.root}>
+        <Scrollbars
+            renderThumbVertical={props => <div className={"dark-thumb-vertical"} {...props}/>}
+        >
+            <div className={classes.mainContainer}>
+                <Typography variant={"subtitle1"} gutterBottom>
+                    Openfin {version} - {username} @ {computerName}
+                </Typography>
+                <Typography variant={"body1"}>
+                    X:&lt;{winLeft}&gt;|Y:&lt;{winTop}&gt;|W&lt;{winWidth}&gt;H&lt;{winHeight}&gt;
+                </Typography>
+                <Typography variant={"body1"}>
+                    MachineId:{machineId}
+                </Typography>
+                <Typography variant={"body2"}>
+                    DeviceUserId:{deviceUserId}
+                </Typography>
+                <ReactJson src={hostSpec} theme={"monokai"}/>
+            </div>
+        </Scrollbars>
+    </div>);
 }
 
 export default connect(
@@ -73,4 +75,4 @@ export default connect(
 
         }
     })
-)(withStyles(style)(ReportView));
+)(ReportView);

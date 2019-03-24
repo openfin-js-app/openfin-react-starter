@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { WithStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
 
 import Typography from '@material-ui/core/Typography';
 
@@ -10,31 +10,34 @@ import { sampleNotificationViewStyle as style } from '../../assets/jss/openfin-s
 
 import appSvg from '../../assets/svg/app.svg';
 
-interface IProps extends WithStyles<typeof style>{
+interface IProps{
     count:number,
 }
 
 import { IRootState } from '../../reduxs';
 
-class SampleNotificationView extends React.Component<IProps,{}>{
-    render(){
+const useStyles = makeStyles(style);
 
-        const {
-            classes, count,
-        } = this.props;
-
-        return (
-            <div className={classes.container}>
-
-                <img className={classes.appImg} src={appSvg}/>
-
-                <Typography variant='h2'>
-                    Cnt:{count}
-                </Typography>
-
-            </div>
-        )
+const SampleNotificationView:React.FunctionComponent<IProps> = (
+    {
+        count,
     }
+)=>{
+
+    const classes = useStyles();
+
+    return (
+        <div className={classes.container}>
+
+            <img className={classes.appImg} src={appSvg}/>
+
+            <Typography variant='h2'>
+                Cnt:{count}
+            </Typography>
+
+        </div>
+    )
+
 }
 
 export default connect(
@@ -48,6 +51,6 @@ export default connect(
     })
 
     )(
-    withStyles(style)(SampleNotificationView)
+    SampleNotificationView
 );
 

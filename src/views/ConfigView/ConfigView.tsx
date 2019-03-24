@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState }from 'react';
 import {connect} from 'react-redux';
 import {Scrollbars} from 'react-custom-scrollbars';
 import SplitterLayout from 'react-splitter-layout';
@@ -18,9 +19,9 @@ import Typography from '@material-ui/core/Typography';
 import SearchIcon from '@material-ui/icons/Search';
 import CheckIcon from '@material-ui/icons/Check';
 
-import {WithStyles, withStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
 
-import { withTranslation, WithTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 
 import cx from 'classnames';
 
@@ -37,7 +38,7 @@ import {
     MuiTheme
 } from '../../reduxs';
 
-interface IProps extends WithStyles<typeof style>, WithTranslation{
+interface IProps {
     config:IConfigState,
     globalFilterString:string,
     theme:MuiTheme
@@ -47,122 +48,117 @@ interface IProps extends WithStyles<typeof style>, WithTranslation{
     }
 }
 
-interface IState {
-    currentTab:number,
-}
+const useStyles = makeStyles(style);
 
-class ConfigView extends React.Component<IProps,IState>{
+const ConfigView:React.FunctionComponent<IProps> = (
+    props
+)=>{
 
-    state = {
-        currentTab:0,
-    };
+    const {
+        theme,
+        config,globalFilterString,
+        actions:{
+            handleGlobalFilterStrChange,
+            handleUpdateOneField,
+        }
+    } = props;
 
+    const classes = useStyles();
 
-    getTabIcon = (oneTab:IConfigTab)=>{
-        const { theme } = this.props;
+    const [ currentTab, setCurrentTab] = useState<number>(0);
+    const { t, i18n } = useTranslation('config', { useSuspense: false });
+
+    const getTabIcon = (oneTab:IConfigTab)=>{
         if (theme === MuiTheme.DARK && oneTab._svgUrl_dark){
             return oneTab._svgUrl_dark;
         }
         return oneTab._svgUrl;
     }
 
-    handleTabItemClick(currentTab){
-        return function () {
-            this.setState({currentTab})
-        }.bind(this);
+    function handleTabItemClick(tabNumber:number){
+        return ()=> {
+            setCurrentTab(tabNumber)
+        };
     }
 
-    render(){
+    const tabs:IConfigTab[] = config._tabs;
+    const tabName = tabs[currentTab]._name;
 
-        const {
-            classes, t,
-            config,globalFilterString,
-            actions:{
-                handleGlobalFilterStrChange,
-                handleUpdateOneField,
-            }
-        } = this.props;
+    const tabShownCnt = tabs.filter(
+        oneTab => (globalFilterString === '' || oneTab._fieldLabels.toLowerCase().indexOf(globalFilterString.toLowerCase())>-1)
+    ).length;
+    const filedShownCnt = tabs[currentTab]._fields.filter(
+        oneField => (globalFilterString === '' || oneField._label.toLowerCase().indexOf(globalFilterString.toLowerCase())>-1)
+    ).length;
 
-        const {currentTab} = this.state;
-
-        const tabs:IConfigTab[] = config._tabs;
-        const tabName = tabs[currentTab]._name;
-
-        const tabShownCnt = tabs.filter(
-            oneTab => (globalFilterString === '' || oneTab._fieldLabels.toLowerCase().indexOf(globalFilterString.toLowerCase())>-1)
-        ).length;
-        const filedShownCnt = tabs[currentTab]._fields.filter(
-            oneField => (globalFilterString === '' || oneField._label.toLowerCase().indexOf(globalFilterString.toLowerCase())>-1)
-        ).length;
-
-        return (<React.Fragment>
-            <div className={classes.topInputContainer}>
-                <TextField
-                    id={'filter-string-input'}
-                    InputProps={{
-                        startAdornment:(
-                            <InputAdornment position={'start'}>
-                                <SearchIcon/>
-                            </InputAdornment>
-                        )
-                    }}
-                    InputLabelProps={{
-                        shrink:true,
-                    }}
-                    placeholder={t('common.globalFilterPlaceholder')}
-                    fullWidth
-                    onChange={handleGlobalFilterStrChange}
-                    margin={'dense'}
-                />
-            </div>
-            <div className={classes.configContainer}>
-                <SplitterLayout primaryMinSize={200} secondaryMinSize={600} secondaryInitialSize={800}>
-                    <div className={classes.configLeftSection}>
-                        <Scrollbars
-                            renderThumbVertical={props => <div className={"dark-thumb-vertical"} {...props}/>}
-                        >
-                            <List>
-                                {tabShownCnt>0?
-                                    tabs.map((oneTab:IConfigTab, index:number)=>{
-                                        if (globalFilterString===''|| oneTab._fieldLabels.toLowerCase().indexOf(globalFilterString.toLowerCase())>-1){
-                                            return(
-                                                <ListItem button className={cx('active',classes.configLeftListItem)} key={index} dense={true}
-                                                          onClick={this.handleTabItemClick(index)}
-                                                >
-                                                    <ListItemIcon>
-                                                        {oneTab._svgUrl?<img src={this.getTabIcon(oneTab)}/>:<oneTab._icon/>}
-                                                    </ListItemIcon>
-                                                    <ListItemText
-                                                        primary={t(oneTab._label)}
-                                                    />
-                                                    {currentTab===index?
-                                                        <ListItemSecondaryAction>
-                                                            <CheckIcon/>
-                                                        </ListItemSecondaryAction>
-                                                        :null}
-                                                </ListItem>
-                                            );
-                                        }else{
-                                            return null;
-                                        }
-                                    }):
-                                    <Paper>
-                                        <Typography variant='body2'>
-                                            Not found ...
-                                        </Typography>
-                                    </Paper>
-                                }
-                            </List>
-                        </Scrollbars>
-                    </div>
+    return (<React.Fragment>
+        <div className={classes.topInputContainer}>
+            <TextField
+                id={'filter-string-input'}
+                InputProps={{
+                    startAdornment:(
+                        <InputAdornment position={'start'}>
+                            <SearchIcon/>
+                        </InputAdornment>
+                    )
+                }}
+                InputLabelProps={{
+                    shrink:true,
+                }}
+                placeholder={t('common.globalFilterPlaceholder')}
+                fullWidth
+                onChange={handleGlobalFilterStrChange}
+                margin={'dense'}
+            />
+        </div>
+        <div className={classes.configContainer}>
+            <SplitterLayout primaryMinSize={200} secondaryMinSize={400} secondaryInitialSize={600}>
+                <div className={classes.configLeftSection}>
                     <Scrollbars
                         renderThumbVertical={props => <div className={"dark-thumb-vertical"} {...props}/>}
                     >
-                        <div className={classes.configMainSection}>
-                            <GridList cellHeight={52} className={classes.configMainGridList} cols={12}>
-                                {filedShownCnt>0?
-                                    tabs[currentTab]._fields.map((oneField:IConfigField, index:number)=>(
-                                        globalFilterString === '' || ( t(oneField._label) as string ).toLowerCase().indexOf(globalFilterString.toLowerCase())>-1?
+                        <List>
+                            {tabShownCnt>0?
+                                tabs.map((oneTab:IConfigTab, index:number)=>{
+                                    if (globalFilterString===''|| oneTab._fieldLabels.toLowerCase().indexOf(globalFilterString.toLowerCase())>-1){
+                                        return(
+                                            <ListItem button className={cx('active',classes.configLeftListItem)} key={index} dense={true}
+                                                      onClick={handleTabItemClick(index)}
+                                            >
+                                                <ListItemIcon>
+                                                    {oneTab._svgUrl?<img src={getTabIcon(oneTab)}/>:<oneTab._icon/>}
+                                                </ListItemIcon>
+                                                <ListItemText
+                                                    primary={t(oneTab._label)}
+                                                />
+                                                {currentTab===index?
+                                                    <ListItemSecondaryAction>
+                                                        <CheckIcon/>
+                                                    </ListItemSecondaryAction>
+                                                    :null}
+                                            </ListItem>
+                                        );
+                                    }else{
+                                        return null;
+                                    }
+                                }):
+                                <Paper>
+                                    <Typography variant='body2'>
+                                        Not found ...
+                                    </Typography>
+                                </Paper>
+                            }
+                        </List>
+                    </Scrollbars>
+                </div>
+                <Scrollbars
+                    renderThumbVertical={props => <div className={"dark-thumb-vertical"} {...props}/>}
+                >
+                    <div className={classes.configMainSection}>
+                        <GridList cellHeight={52} className={classes.configMainGridList} cols={12}>
+                            {filedShownCnt>0?
+                                tabs[currentTab]._fields.map((oneField:IConfigField, index:number)=>(
+                                    globalFilterString === '' || ( t(oneField._label) as string ).toLowerCase().indexOf(globalFilterString.toLowerCase())>-1?
                                         <GridListTile key={index} cols={oneField._cols || 3} rows={oneField._rows || 1}>
                                             <ConfigFieldComp
                                                 value={config[tabName][oneField._name]}
@@ -170,21 +166,20 @@ class ConfigView extends React.Component<IProps,IState>{
                                                 {...oneField}
                                             />
                                         </GridListTile>:null
-                                    )):
-                                    <Paper style={{width:'100%'}}>
-                                        <Typography variant='body2'>
-                                            Not found ...
-                                        </Typography>
-                                    </Paper>
-                                }
-                            </GridList>
-                        </div>
-                        <div style={{marginBottom:'100px'}}/>
-                    </Scrollbars>
-                </SplitterLayout>
-            </div>
-        </React.Fragment>);
-    }
+                                )):
+                                <Paper style={{width:'100%'}}>
+                                    <Typography variant='body2'>
+                                        Not found ...
+                                    </Typography>
+                                </Paper>
+                            }
+                        </GridList>
+                    </div>
+                    <div style={{marginBottom:'100px'}}/>
+                </Scrollbars>
+            </SplitterLayout>
+        </div>
+    </React.Fragment>);
 }
 
 export default connect(
@@ -206,6 +201,4 @@ export default connect(
             }
         }
     })
-)(withStyles(style)(
-    withTranslation('config')(ConfigView)
-));
+)(ConfigView);

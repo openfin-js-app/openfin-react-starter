@@ -1,4 +1,8 @@
 import * as React from 'react';
+import { Provider } from 'react-redux';
+
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 import { createShallow, createMount } from '@material-ui/core/test-utils';
 import Button from '@material-ui/core/Button';
 import configurestore from 'redux-mock-store';
@@ -10,6 +14,7 @@ import {rootDefaultState} from '../../reduxs';
 
 const mockStore = configurestore();
 
+const muiTheme = createMuiTheme({});
 const store = mockStore(rootDefaultState);
 
 describe('ViewOne',()=>{
@@ -17,23 +22,25 @@ describe('ViewOne',()=>{
     let shallow;
     let mount;
 
-    beforeAll(() => {
-        mount = createMount();
-    });
-
-    afterAll(() => {
-        mount.cleanUp();
-    });
-
-
     beforeEach(() => {
+        mount = createMount();
         shallow = createShallow();
+    });
+
+    afterEach(()=>{
+        mount.cleanUp();
     });
 
 
     it ('render correctly',()=>{
 
-        const wrapper = mount(<ViewOne store={store}/>);
+        const wrapper = mount(
+            <Provider store={store}>
+                <ThemeProvider theme={muiTheme}>
+                    <ViewOne/>
+                </ThemeProvider>
+            </Provider>
+        );
         expect(wrapper.find(Button)).toHaveLength(2);
 
         wrapper.find(Button).forEach((button)=>{

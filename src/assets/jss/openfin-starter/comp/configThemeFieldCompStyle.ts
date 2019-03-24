@@ -1,6 +1,6 @@
 import { Theme, createStyles } from '@material-ui/core/styles';
 
-const configLangViewStyle = (theme:Theme)=> createStyles({
+const configThemeFieldCompStyle = (theme:Theme)=> createStyles({
     container:{
         width:'100%',
         height:'100%',
@@ -9,10 +9,10 @@ const configLangViewStyle = (theme:Theme)=> createStyles({
         justifyContent:'center',
         alignItems:'center',
     },
-    flagImg:{
-        height:24,
-        marginRight: theme.spacing.unit*2
+    themeSpan:{
+        position:'relative',
+        top: 4,
     }
 });
 
-export default configLangViewStyle;
+export default configThemeFieldCompStyle;

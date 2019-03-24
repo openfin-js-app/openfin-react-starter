@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Config Theme render dark correctly and switch to light 1`] = `
+Array [
+  Array [],
+]
+`;
+
+exports[`Config Theme render light correctly and switch to dark 1`] = `
+Array [
+  Array [],
+]
+`;

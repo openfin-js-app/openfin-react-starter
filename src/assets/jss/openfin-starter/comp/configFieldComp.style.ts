@@ -1,6 +1,6 @@
 import { Theme, createStyles } from '@material-ui/core/styles';
 
-const configFieldStyle:any = (theme:Theme)=>createStyles({
+const configFieldStyle = (theme:Theme)=>createStyles({
     subheadingField:{
         height:'100%',
         display:'flex',

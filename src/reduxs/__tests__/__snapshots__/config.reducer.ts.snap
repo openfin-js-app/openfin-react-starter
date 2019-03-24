@@ -14,7 +14,7 @@ Object {
         },
         Object {
           "_cols": 10,
-          "_custom": <Connect(WithStyles(ComponentWithConfig)) />,
+          "_custom": <ConfigThemeField />,
           "_defaultValue": "dark",
           "_label": "Theme",
           "_name": "theme",
@@ -29,7 +29,7 @@ Object {
         },
         Object {
           "_cols": 10,
-          "_custom": <Connect(WithStyles(ComponentWithConfig)) />,
+          "_custom": <ConfigLangField />,
           "_defaultValue": undefined,
           "_label": "language",
           "_name": "language",
@@ -144,7 +144,7 @@ Object {
       "_fields": Array [
         Object {
           "_cols": 12,
-          "_custom": <WithStyles(ConfigAboutField) />,
+          "_custom": <ConfigAboutField />,
           "_label": "About openfin starter",
           "_rows": 12,
           "_type": 1,
@@ -232,7 +232,7 @@ Object {
         },
         Object {
           "_cols": 12,
-          "_custom": <Connect(ConfigJsonView) />,
+          "_custom": <ConfigJsonField />,
           "_label": "sample.vals.customField.field",
           "_rows": 6,
           "_type": 1,
@@ -284,7 +284,7 @@ Object {
         },
         Object {
           "_cols": 10,
-          "_custom": <Connect(WithStyles(ComponentWithConfig)) />,
+          "_custom": <ConfigThemeField />,
           "_defaultValue": "dark",
           "_label": "Theme",
           "_name": "theme",
@@ -299,7 +299,7 @@ Object {
         },
         Object {
           "_cols": 10,
-          "_custom": <Connect(WithStyles(ComponentWithConfig)) />,
+          "_custom": <ConfigLangField />,
           "_defaultValue": undefined,
           "_label": "language",
           "_name": "language",
@@ -414,7 +414,7 @@ Object {
       "_fields": Array [
         Object {
           "_cols": 12,
-          "_custom": <WithStyles(ConfigAboutField) />,
+          "_custom": <ConfigAboutField />,
           "_label": "About openfin starter",
           "_rows": 12,
           "_type": 1,
@@ -502,7 +502,7 @@ Object {
         },
         Object {
           "_cols": 12,
-          "_custom": <Connect(ConfigJsonView) />,
+          "_custom": <ConfigJsonField />,
           "_label": "sample.vals.customField.field",
           "_rows": 6,
           "_type": 1,
@@ -551,7 +551,7 @@ Object {
         },
         Object {
           "_cols": 10,
-          "_custom": <Connect(WithStyles(ComponentWithConfig)) />,
+          "_custom": <ConfigThemeField />,
           "_defaultValue": "dark",
           "_label": "Theme",
           "_name": "theme",
@@ -566,7 +566,7 @@ Object {
         },
         Object {
           "_cols": 10,
-          "_custom": <Connect(WithStyles(ComponentWithConfig)) />,
+          "_custom": <ConfigLangField />,
           "_defaultValue": undefined,
           "_label": "language",
           "_name": "language",
@@ -681,7 +681,7 @@ Object {
       "_fields": Array [
         Object {
           "_cols": 12,
-          "_custom": <WithStyles(ConfigAboutField) />,
+          "_custom": <ConfigAboutField />,
           "_label": "About openfin starter",
           "_rows": 12,
           "_type": 1,
@@ -769,7 +769,7 @@ Object {
         },
         Object {
           "_cols": 12,
-          "_custom": <Connect(ConfigJsonView) />,
+          "_custom": <ConfigJsonField />,
           "_label": "sample.vals.customField.field",
           "_rows": 6,
           "_type": 1,
@@ -827,7 +827,7 @@ Object {
         },
         Object {
           "_cols": 10,
-          "_custom": <Connect(WithStyles(ComponentWithConfig)) />,
+          "_custom": <ConfigThemeField />,
           "_defaultValue": "dark",
           "_label": "Theme",
           "_name": "theme",
@@ -842,7 +842,7 @@ Object {
         },
         Object {
           "_cols": 10,
-          "_custom": <Connect(WithStyles(ComponentWithConfig)) />,
+          "_custom": <ConfigLangField />,
           "_defaultValue": undefined,
           "_label": "language",
           "_name": "language",
@@ -957,7 +957,7 @@ Object {
       "_fields": Array [
         Object {
           "_cols": 12,
-          "_custom": <WithStyles(ConfigAboutField) />,
+          "_custom": <ConfigAboutField />,
           "_label": "About openfin starter",
           "_rows": 12,
           "_type": 1,
@@ -1045,7 +1045,7 @@ Object {
         },
         Object {
           "_cols": 12,
-          "_custom": <Connect(ConfigJsonView) />,
+          "_custom": <ConfigJsonField />,
           "_label": "sample.vals.customField.field",
           "_rows": 6,
           "_type": 1,
@@ -1094,7 +1094,7 @@ Object {
         },
         Object {
           "_cols": 10,
-          "_custom": <Connect(WithStyles(ComponentWithConfig)) />,
+          "_custom": <ConfigThemeField />,
           "_defaultValue": "dark",
           "_label": "Theme",
           "_name": "theme",
@@ -1109,7 +1109,7 @@ Object {
         },
         Object {
           "_cols": 10,
-          "_custom": <Connect(WithStyles(ComponentWithConfig)) />,
+          "_custom": <ConfigLangField />,
           "_defaultValue": undefined,
           "_label": "language",
           "_name": "language",
@@ -1224,7 +1224,7 @@ Object {
       "_fields": Array [
         Object {
           "_cols": 12,
-          "_custom": <WithStyles(ConfigAboutField) />,
+          "_custom": <ConfigAboutField />,
           "_label": "About openfin starter",
           "_rows": 12,
           "_type": 1,
@@ -1312,7 +1312,7 @@ Object {
         },
         Object {
           "_cols": 12,
-          "_custom": <Connect(ConfigJsonView) />,
+          "_custom": <ConfigJsonField />,
           "_label": "sample.vals.customField.field",
           "_rows": 6,
           "_type": 1,
@@ -1361,7 +1361,7 @@ Object {
         },
         Object {
           "_cols": 10,
-          "_custom": <Connect(WithStyles(ComponentWithConfig)) />,
+          "_custom": <ConfigThemeField />,
           "_defaultValue": "dark",
           "_label": "Theme",
           "_name": "theme",
@@ -1376,7 +1376,7 @@ Object {
         },
         Object {
           "_cols": 10,
-          "_custom": <Connect(WithStyles(ComponentWithConfig)) />,
+          "_custom": <ConfigLangField />,
           "_defaultValue": undefined,
           "_label": "language",
           "_name": "language",
@@ -1491,7 +1491,7 @@ Object {
       "_fields": Array [
         Object {
           "_cols": 12,
-          "_custom": <WithStyles(ConfigAboutField) />,
+          "_custom": <ConfigAboutField />,
           "_label": "About openfin starter",
           "_rows": 12,
           "_type": 1,
@@ -1579,7 +1579,7 @@ Object {
         },
         Object {
           "_cols": 12,
-          "_custom": <Connect(ConfigJsonView) />,
+          "_custom": <ConfigJsonField />,
           "_label": "sample.vals.customField.field",
           "_rows": 6,
           "_type": 1,
@@ -1628,7 +1628,7 @@ Object {
         },
         Object {
           "_cols": 10,
-          "_custom": <Connect(WithStyles(ComponentWithConfig)) />,
+          "_custom": <ConfigThemeField />,
           "_defaultValue": "dark",
           "_label": "Theme",
           "_name": "theme",
@@ -1643,7 +1643,7 @@ Object {
         },
         Object {
           "_cols": 10,
-          "_custom": <Connect(WithStyles(ComponentWithConfig)) />,
+          "_custom": <ConfigLangField />,
           "_defaultValue": undefined,
           "_label": "language",
           "_name": "language",
@@ -1758,7 +1758,7 @@ Object {
       "_fields": Array [
         Object {
           "_cols": 12,
-          "_custom": <WithStyles(ConfigAboutField) />,
+          "_custom": <ConfigAboutField />,
           "_label": "About openfin starter",
           "_rows": 12,
           "_type": 1,
@@ -1846,7 +1846,7 @@ Object {
         },
         Object {
           "_cols": 12,
-          "_custom": <Connect(ConfigJsonView) />,
+          "_custom": <ConfigJsonField />,
           "_label": "sample.vals.customField.field",
           "_rows": 6,
           "_type": 1,

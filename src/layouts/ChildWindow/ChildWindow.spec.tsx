@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 import { createShallow, createMount } from '@material-ui/core/test-utils';
 import configurestore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router';
@@ -10,6 +12,8 @@ import ViewOne from '../../views/ViewOne/ViewOne';
 import {Header, SnackbarContent} from '../../components';
 import { rootDefaultState } from '../../reduxs'
 import Snackbar from "@material-ui/core/Snackbar";
+
+const muiTheme = createMuiTheme({});
 
 const mockStore = configurestore();
 
@@ -34,13 +38,15 @@ describe('ChildWindow layout',()=>{
     it ('render in normal state correctly by default',()=>{
         const store = mockStore(rootDefaultState);
         const wrapper = mount(
-            <Provider store={store}>
-                <MemoryRouter initialEntries={['/childWindow/view-one']}>
-                    <GlobalContext config={rootDefaultState.config}>
-                        <ChildWindow store={store} location={{pathname:'/childWindow/view-one'}}/>
-                    </GlobalContext>
-                </MemoryRouter>
-            </Provider>
+            <ThemeProvider theme={muiTheme}>
+                <Provider store={store}>
+                    <MemoryRouter initialEntries={['/childWindow/view-one']}>
+                        <GlobalContext config={rootDefaultState.config}>
+                            <ChildWindow location={{pathname:'/childWindow/view-one'}}/>
+                        </GlobalContext>
+                    </MemoryRouter>
+                </Provider>
+            </ThemeProvider>
         );
         expect(wrapper.find(ViewOne)).toHaveLength(1);
         expect(wrapper.find(ChildWindow)).toHaveLength(1);
@@ -81,13 +87,15 @@ describe('ChildWindow layout',()=>{
         }
         const store = mockStore(initState);
         const wrapper = mount(
-            <Provider store={store}>
-                <MemoryRouter initialEntries={['/childWindow/view-one']}>
-                    <GlobalContext config={rootDefaultState.config}>
-                        <ChildWindow store={store} location={{pathname:'/childWindow/view-one'}}/>
-                    </GlobalContext>
-                </MemoryRouter>
-            </Provider>
+            <ThemeProvider theme={muiTheme}>
+                <Provider store={store}>
+                    <MemoryRouter initialEntries={['/childWindow/view-one']}>
+                        <GlobalContext config={rootDefaultState.config}>
+                            <ChildWindow location={{pathname:'/childWindow/view-one'}}/>
+                        </GlobalContext>
+                    </MemoryRouter>
+                </Provider>
+            </ThemeProvider>
         );
         expect(wrapper.find(ViewOne)).toHaveLength(1);
         expect(wrapper.find(ChildWindow)).toHaveLength(1);

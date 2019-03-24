@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import {Redirect, Route, Switch} from "react-router";
-import { WithStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
 
 import IconButton from '@material-ui/core/IconButton';
 
@@ -25,43 +25,45 @@ const switchRoutes = (
     </Switch>
 );
 
-interface IProps extends WithStyles<typeof style>{
+interface IProps {
     theme:MuiTheme,
     actions:{
         handleSelfClose:()=>void,
     }
+    // for testing
+    location?:any,
 }
 
+const useStyles = makeStyles(style);
 
-class NotificationLayout extends React.Component<IProps,{}>{
-    render(){
-
-        const {
-            classes,
-            theme,
-            actions:{
-                handleSelfClose
-            }
-        } = this.props;
-
-        return (
-            <div className={
-                cx(
-                    classes.container,
-                    {
-                        [classes.lightBoxShaddow]: theme === MuiTheme.LIGHT
-                    }
-                )
-            }>
-                <IconButton className={classes.closeBtn}
-                            onClick={handleSelfClose}
-                >
-                    <CloseIcon fontSize='small'/>
-                </IconButton>
-                {switchRoutes}
-            </div>
-        )
+const NotificationLayout:React.FunctionComponent<IProps> = (
+    {
+        theme,
+        actions:{
+            handleSelfClose
+        }
     }
+)=>{
+
+    const classes = useStyles();
+
+    return (
+        <div className={
+            cx(
+                classes.container,
+                {
+                    [classes.lightBoxShaddow]: theme === MuiTheme.LIGHT
+                }
+            )
+        }>
+            <IconButton className={classes.closeBtn}
+                        onClick={handleSelfClose}
+            >
+                <CloseIcon fontSize='small'/>
+            </IconButton>
+            {switchRoutes}
+        </div>
+    )
 }
 
 export default connect(
@@ -77,6 +79,6 @@ export default connect(
     })
 
     )(
-    withStyles(style)(NotificationLayout)
+    NotificationLayout
 );
 

@@ -1,6 +1,10 @@
 import * as React from 'react';
+import { act } from 'react-dom/test-utils';
+
 import { Provider } from 'react-redux';
 
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -8,11 +12,12 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { createShallow, createMount } from '@material-ui/core/test-utils';
 import configurestore from 'redux-mock-store';
 
-import ConfigLang from './ConfigLang';
+import ConfigLangField from './ConfigLangField';
 
-import GlobalContext from '../../GlobalContext';
-import {I18Language} from "../../reduxs";
+import GlobalContext from '../../../GlobalContext';
+import {I18Language} from "../../../reduxs";
 
+const theme = createMuiTheme({});
 const mockStore = configurestore();
 const zhState = {
     config:{
@@ -29,21 +34,18 @@ const enState = {
     },
 };
 
-describe('ConfigLang',()=>{
+describe('ConfigLangField',()=>{
 
     let shallow;
     let mount;
 
-    beforeAll(() => {
-        mount = createMount();
-    });
-
-    afterAll(() => {
-        mount.cleanUp();
-    });
-
     beforeEach(() => {
+        mount = createMount();
         shallow = createShallow();
+    });
+
+    afterEach(()=>{
+        mount.cleanUp();
     });
 
     it('render en-US correctly and switch to zh-CN',()=>{
@@ -56,11 +58,12 @@ describe('ConfigLang',()=>{
                     config={enState.config}
                     onUpdateLangField={handleUpdateLangField}
                 >
-                    <ConfigLang/>
+                    <ThemeProvider theme={theme}>
+                        <ConfigLangField/>
+                    </ThemeProvider>
                 </GlobalContext>
             </Provider>
         );
-
         const btns = wrapper.find(Button);
         expect(btns).toHaveLength(1);
 
@@ -93,12 +96,14 @@ describe('ConfigLang',()=>{
                     config={enState.config}
                     onUpdateLangField={handleUpdateLangField}
                 >
-                    <ConfigLang/>
+                    <ThemeProvider theme={theme}>
+                        <ConfigLangField/>
+                    </ThemeProvider>
                 </GlobalContext>
             </Provider>
         );
 
-        expect(wrapper.find(ConfigLang)).toBeTruthy();
+        expect(wrapper.find(ConfigLangField)).toBeTruthy();
 
     })
 
