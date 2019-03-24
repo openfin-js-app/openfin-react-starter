@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { useState }from 'react';
-import { WithStyles, withStyles } from '@material-ui/core/styles';
+import { useContext, useState }from 'react';
+
+import { makeStyles } from '@material-ui/styles';
 
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
@@ -8,7 +9,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Typography from '@material-ui/core/Typography';
 
 import cx from "classnames";
-import { connect } from 'react-redux';
 
 import { configLangViewStyle as style } from '../../assets/jss/openfin-starter';
 
@@ -17,28 +17,32 @@ import i18n from '../../i18n';
 import usFlag from '../../assets/svg/nationals/united-states.svg';
 import chFlag from '../../assets/svg/nationals/china.svg';
 
-import { I18Language, IRootState } from '../../reduxs';
+import { I18Language } from '../../reduxs';
 
 import {
-    WithConfigContext,
-    withConfigContext
+    ConfigContext
 } from '../../reduxs/config/context'
 
-interface IProps extends WithStyles<typeof style>, WithConfigContext{
+const useStyles = makeStyles(style);
 
-}
-
-const ConfigLangView:React.FunctionComponent<IProps> = (
-    {
-        classes, configContext
-    }
+const ConfigLangView:React.FunctionComponent<{}> = (
+    {}
 )=>{
+
+    const {
+        config,
+        actions:{
+            onUpdateLangField
+        }
+    } = useContext(ConfigContext);
+
+    const classes = useStyles();
 
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement | ((element: HTMLElement) => HTMLElement)>(null);
 
     const getBtnContent = ()=>{
 
-        const language:I18Language = configContext.config.application.language;
+        const language:I18Language = config.application.language;
 
         if (language === I18Language.zh_CN){
             return(<React.Fragment>
@@ -62,9 +66,6 @@ const ConfigLangView:React.FunctionComponent<IProps> = (
     };
 
     const handleLanguageChangeBtnClick = (lang:I18Language)=>()=>{
-        const {
-            onUpdateLangField
-        } = configContext.actions;
         i18n.changeLanguage(lang);
         onUpdateLangField(lang);
         setAnchorEl(null);
@@ -100,18 +101,5 @@ const ConfigLangView:React.FunctionComponent<IProps> = (
 
 }
 
-export default connect(
-    (state:IRootState)=>({
-    }),
-    dispatch => ({
-        actions:{
-
-        }
-    })
-
-    )(
-    withStyles(style)(
-        withConfigContext(ConfigLangView)
-    )
-);
+export default ConfigLangView;
 

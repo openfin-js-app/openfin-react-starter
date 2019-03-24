@@ -3,6 +3,8 @@ import { act } from 'react-dom/test-utils';
 
 import { Provider } from 'react-redux';
 
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -15,6 +17,7 @@ import ConfigLang from './ConfigLang';
 import GlobalContext from '../../GlobalContext';
 import {I18Language} from "../../reduxs";
 
+const theme = createMuiTheme({});
 const mockStore = configurestore();
 const zhState = {
     config:{
@@ -55,7 +58,9 @@ describe('ConfigLang',()=>{
                     config={enState.config}
                     onUpdateLangField={handleUpdateLangField}
                 >
-                    <ConfigLang/>
+                    <ThemeProvider theme={theme}>
+                        <ConfigLang/>
+                    </ThemeProvider>
                 </GlobalContext>
             </Provider>
         );
@@ -91,7 +96,9 @@ describe('ConfigLang',()=>{
                     config={enState.config}
                     onUpdateLangField={handleUpdateLangField}
                 >
-                    <ConfigLang/>
+                    <ThemeProvider theme={theme}>
+                        <ConfigLang/>
+                    </ThemeProvider>
                 </GlobalContext>
             </Provider>
         );
