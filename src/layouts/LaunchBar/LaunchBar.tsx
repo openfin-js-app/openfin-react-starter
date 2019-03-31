@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+import { useContext } from 'react';
+import { ApplicationContext } from "react-openfin";
+
 import cx from 'classnames';
+
 import { Scrollbars } from 'react-custom-scrollbars';
 
 import { makeStyles } from '@material-ui/styles';
-
-import { Window } from 'redux-openfin';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -23,45 +24,24 @@ import { launchBarLayoutStyle as style } from '../../assets/jss/openfin-starter'
 
 import appLogo from '../../assets/svg/app.svg';
 
-import {
-    // actions
-    applicationLaunchBarToggle, applicationLaunchBarToggleCollapse, applicationLaunchNewWindow, applicationLaunchBarClose,
-    // types
-    IRootState,
-} from '../../reduxs';
-
 import { launchBarItems } from './LaunchBarData';
-
-interface IProps {
-    docked:boolean,
-    launchBarCollapse:boolean,
-    actions:{
-        handleUndock: ()=> void,
-        handleLaunchBarItemBtnClick: (appJson:any)=>()=>void,
-        handleSwitchToMainWindow: ()=>void,
-        handleToggleCollapse: ()=>void,
-        handleMinimize: ()=>void,
-        handleClose: ()=>void,
-    }
-}
 
 const useStyles = makeStyles(style);
 
-const LaunchBarComp:React.FunctionComponent<IProps> = (
-    {
-        docked, launchBarCollapse,
-        actions:{
-            handleUndock,
-            handleLaunchBarItemBtnClick,
-            handleToggleCollapse,
-            handleSwitchToMainWindow,
-            handleMinimize,
-            handleClose,
-        }
-    }
+const LaunchBarComp:React.FunctionComponent<{}> = (
+    {}
 )=>{
 
     const classes = useStyles();
+
+    const {
+        state:{
+            docked, launchBarCollapse,
+        },
+        actions:{
+            onUndock, launchNewWin, onLaunchBarToggle, onLaunchBarToggleCollapse, onMinimize, onLaunchBarClose,
+        }
+    } = useContext(ApplicationContext);
 
     const collapse = launchBarCollapse;
 
@@ -69,13 +49,17 @@ const LaunchBarComp:React.FunctionComponent<IProps> = (
 
     const buttonContainerWidth = launchBarItems.length<10?launchBarItems.length*64:576;
 
+    const handleLaunchBarItemBtnClick = (item) => ()=> {
+        launchNewWin(item.appJson);
+    };
+
     return (
         <span>
                 <AppBar position={"static"}>
                     <Toolbar className={classes.toolBar}>
                         <img src={appLogo} className={classes.appLogoImg}/>
                         {
-                            docked && handleUndock ?
+                            docked && onUndock ?
                                 <Fab
                                     className={cx(
                                         classes.undockCtrlBtn,
@@ -83,7 +67,7 @@ const LaunchBarComp:React.FunctionComponent<IProps> = (
                                         classes.controlBtnRose
                                     )}
                                     color='inherit' aria-label={'undock'}
-                                    onClick={handleUndock}
+                                    onClick={onUndock}
                                 >
                                     <AllOutIcon/>
                                 </Fab>
@@ -105,7 +89,7 @@ const LaunchBarComp:React.FunctionComponent<IProps> = (
                                     return <IconButton key={index}
                                                        className={classes.baseButton}
                                                        disabled={item.disabled}
-                                                       onClick={handleLaunchBarItemBtnClick(item.appJson)}
+                                                       onClick={handleLaunchBarItemBtnClick(item)}
                                     >
                                         {React.createElement(item.icon)}
                                     </IconButton>
@@ -113,7 +97,7 @@ const LaunchBarComp:React.FunctionComponent<IProps> = (
                                     return <IconButton key={index}
                                                        className={classes.svgButton}
                                                        disabled={item.disabled}
-                                                       onClick={handleLaunchBarItemBtnClick(item.appJson)}
+                                                       onClick={handleLaunchBarItemBtnClick(item)}
                                     >
                                         <img src={item.svg}/>
                                     </IconButton>
@@ -124,7 +108,7 @@ const LaunchBarComp:React.FunctionComponent<IProps> = (
                             <Fab
                                 className={cx(classes.controlBtn, classes.controlBtnInfo)}
                                 color='secondary' aria-label={'collapse'}
-                                onClick={handleToggleCollapse}
+                                onClick={onLaunchBarToggleCollapse}
                             >
                                 {collapse?
                                     <ArrowForwardIcon/>:
@@ -134,21 +118,21 @@ const LaunchBarComp:React.FunctionComponent<IProps> = (
                             <Fab
                                 className={cx(classes.controlBtn, classes.controlBtnSuccess)}
                                 color='secondary' aria-label={'minimize'}
-                                onClick={handleMinimize}
+                                onClick={onMinimize}
                             >
                                 <RemoveIcon/>
                             </Fab>
                             <Fab
                                 className={cx(classes.controlBtn, classes.controlBtnWarning)}
                                 color='secondary' aria-label={'expand'}
-                                onClick={handleSwitchToMainWindow}
+                                onClick={onLaunchBarToggle}
                             >
                                 <ZoomOutMapIcon/>
                             </Fab>
                             <Fab
                                 className={cx(classes.controlBtn, classes.controlBtnDanger)}
                                 color='secondary' aria-label={'close'}
-                                onClick={handleClose}
+                                onClick={onLaunchBarClose}
                             >
                                 <ClearIcon/>
                             </Fab>
@@ -159,19 +143,4 @@ const LaunchBarComp:React.FunctionComponent<IProps> = (
     );
 }
 
-export default connect(
-    (state:IRootState)=>({
-        docked:state.application.docked,
-        launchBarCollapse:state.application.launchBarCollapse,
-    }),
-    dispatch => ({
-        actions:{
-            handleUndock : () => {dispatch(Window.actions.leaveGroup({}))},
-            handleLaunchBarItemBtnClick:(appJson)=>()=>{dispatch(applicationLaunchNewWindow(appJson))},
-            handleSwitchToMainWindow:()=>{dispatch(applicationLaunchBarToggle())},
-            handleToggleCollapse:()=>{dispatch(applicationLaunchBarToggleCollapse())},
-            handleMinimize:()=>{dispatch(Window.actions.minimize({}))},
-            handleClose:()=>{dispatch(applicationLaunchBarClose())},
-        }
-    })
-)(LaunchBarComp);
+export default LaunchBarComp;

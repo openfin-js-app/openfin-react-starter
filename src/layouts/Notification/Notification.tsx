@@ -1,18 +1,15 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+import { useContext } from 'react';
 import {Redirect, Route, Switch} from "react-router";
+import { ApplicationContext, ConfigContext, MuiTheme } from 'react-openfin';
 import { makeStyles } from '@material-ui/styles';
 
 import IconButton from '@material-ui/core/IconButton';
-
 import CloseIcon from '@material-ui/icons/Close';
-
-import { Notification } from 'redux-openfin';
 
 import cx from "classnames";
 
 import { notificationStyle as style } from '../../assets/jss/openfin-starter';
-import {IRootState, MuiTheme} from '../../reduxs';
 import notificationRoutes from "../../routes/notification";
 const switchRoutes = (
     <Switch>
@@ -26,10 +23,6 @@ const switchRoutes = (
 );
 
 interface IProps {
-    theme:MuiTheme,
-    actions:{
-        handleSelfClose:()=>void,
-    }
     // for testing
     location?:any,
 }
@@ -37,15 +30,24 @@ interface IProps {
 const useStyles = makeStyles(style);
 
 const NotificationLayout:React.FunctionComponent<IProps> = (
-    {
-        theme,
-        actions:{
-            handleSelfClose
-        }
-    }
+    {}
 )=>{
 
     const classes = useStyles();
+
+    const {
+        actions:{
+            onNotificationClose,
+        }
+    } = useContext(ApplicationContext);
+
+    const {
+        config:{
+            application:{
+                theme
+            }
+        }
+    } = useContext(ConfigContext);
 
     return (
         <div className={
@@ -57,7 +59,7 @@ const NotificationLayout:React.FunctionComponent<IProps> = (
             )
         }>
             <IconButton className={classes.closeBtn}
-                        onClick={handleSelfClose}
+                        onClick={onNotificationClose}
             >
                 <CloseIcon fontSize='small'/>
             </IconButton>
@@ -66,19 +68,5 @@ const NotificationLayout:React.FunctionComponent<IProps> = (
     )
 }
 
-export default connect(
-    (state:IRootState)=>({
-        theme:state.config.application.theme,
-    }),
-    dispatch => ({
-        actions:{
-            handleSelfClose:()=>{
-                dispatch(Notification.actions.close({}));
-            }
-        }
-    })
-
-    )(
-    NotificationLayout
-);
+export default NotificationLayout;
 

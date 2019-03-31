@@ -1,30 +1,15 @@
 import * as React from 'react';
-import { useEffect } from 'react'
-import { connect } from 'react-redux';
+import { useContext, useEffect } from 'react';
+import { ApplicationContext, ConfigContext, MuiTheme } from 'react-openfin';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import cx from 'classnames';
 import Snackbar from '@material-ui/core/Snackbar';
-
 import { makeStyles } from '@material-ui/styles';
-
-import {
-    // acitons
-    applicationToogleWindowState,
-    applicationSetSnackbarStatus, applicationProcessSnackbarQueue,
-    applicationCloseSnackbar,
-    // types
-    IRootState, ISnackBarMsg, MuiTheme,
-} from '../../reduxs';
-
-
 import childWindowRoutes from '../../routes/ChildWindow';
 
 import { Header,SnackbarContent } from '../../components';
 
 import { dashboardLayoutStyle as style } from '../../assets/jss/openfin-starter';
-import {Window} from "redux-openfin";
-
-declare const window:any;
 
 const switchRoutes = (
     <Switch>
@@ -38,21 +23,6 @@ const switchRoutes = (
 );
 
 interface IProps {
-    docked:boolean,
-    snackBarOpen:boolean,
-    snackBarMsgInfo:Partial<ISnackBarMsg>,
-    windowsState:string,
-    theme:MuiTheme,
-    actions:{
-        handleSetAsForeground: ()=> void,
-        handleSnackbarClose: (event:any,reason:string)=> void,
-        handleSnackbarCloseBtnClick: ()=> void,
-        handleSnackbarExited: ()=> void,
-        handleUndock: ()=> void,
-        handleMinimize: ()=> void,
-        handleMaximize: ()=> void,
-        handleClose: ()=> void,
-    }
     // for testing
     location?:any,
 }
@@ -61,20 +31,35 @@ const useStyles = makeStyles(style);
 
 const ChildWindowLayout:React.FunctionComponent<IProps> = (
     {
-        docked,snackBarOpen, snackBarMsgInfo, windowsState, theme,
-        actions:{
-            handleSetAsForeground,
-            handleSnackbarClose, handleSnackbarCloseBtnClick, handleSnackbarExited,
-            handleUndock, handleMinimize, handleMaximize, handleClose,
-        },
         ...rest
     }
 ) => {
 
     const classes = useStyles();
 
+    const {
+        state:{
+            docked,
+            snackBarOpen, snackBarMsgInfo, windowsState,
+        },
+        actions:{
+            onSetAsForeground,
+            onSnackBarClose, onSnackBarCloseBtnClick, onSnackBarExited,
+            onUndock, onMinimize, onToggleWinState, onWinClose
+        }
+    } = useContext(ApplicationContext);
+
+    const {
+        config:{
+            application:{
+                theme
+            }
+
+        }
+    } = useContext(ConfigContext);
+
     useEffect(()=>{
-        handleSetAsForeground();
+        onSetAsForeground();
         // return ()=>{
         //
         // }
@@ -87,10 +72,10 @@ const ChildWindowLayout:React.FunctionComponent<IProps> = (
                 windowsState={windowsState}
                 color={'info'}
                 docked={docked}
-                onUndock = {handleUndock}
-                onMinimize={handleMinimize}
-                onMaximize={handleMaximize}
-                onClose = {handleClose}
+                onUndock = {onUndock}
+                onMinimize={onMinimize}
+                onMaximize={onToggleWinState}
+                onClose = {onWinClose}
                 {...rest}
             />
             <div className={cx(classes.wrapper, classes.wrapperInfo)}>
@@ -120,11 +105,11 @@ const ChildWindowLayout:React.FunctionComponent<IProps> = (
                 }}
                 open={snackBarOpen}
                 autoHideDuration={6000}
-                onClose={handleSnackbarClose}
-                onExited={handleSnackbarExited}
+                onClose={onSnackBarClose}
+                onExited={onSnackBarExited}
             >
                 <SnackbarContent
-                    onClose={handleSnackbarCloseBtnClick}
+                    onClose={onSnackBarCloseBtnClick}
                     variant={snackBarMsgInfo.variant}
                     message={snackBarMsgInfo.message}
                 />
@@ -133,25 +118,4 @@ const ChildWindowLayout:React.FunctionComponent<IProps> = (
     );
 }
 
-export default connect(
-    (state:IRootState) => ({
-        docked:state.application.docked,
-        snackBarOpen:state.application.snackBarOpen,
-        snackBarMsgInfo:state.application.snackBarMsgInfo,
-        windowsState:state.application.windowsState,
-        theme:state.config.application.theme,
-    }),
-    dispatch => ({
-        actions:{
-            handleSetAsForeground: () => {dispatch(Window.actions.setAsForeground({}))},
-            handleSnackbarClose: (event,reason) => {dispatch(applicationCloseSnackbar({event,reason}))},
-            handleSnackbarCloseBtnClick: () => {dispatch(applicationSetSnackbarStatus({open:false}))},
-            handleSnackbarExited: () => {dispatch(applicationProcessSnackbarQueue())},
-            // openfin
-            handleUndock : () => {dispatch(Window.actions.leaveGroup({}))},
-            handleMinimize: ()=>{dispatch(Window.actions.minimize({}))},
-            handleMaximize: ()=>{dispatch(applicationToogleWindowState())},
-            handleClose:()=>{dispatch(Window.actions.close({force:false}))},
-        }
-    })
-)(ChildWindowLayout);
+export default ChildWindowLayout;

@@ -1,14 +1,12 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import Particles from 'react-particles-js';
-import { connect } from 'react-redux';
+import { ApplicationContext } from 'react-openfin';
+import {useTranslation} from 'react-i18next';
 
 import { makeStyles } from '@material-ui/styles';
-
 import { Theme, createStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
-
-import {useTranslation} from 'react-i18next';
 
 import appLogo from'../../assets/svg/app.svg';
 import companyLogo from'../../assets/svg/company.svg';
@@ -119,20 +117,19 @@ export const LoadingBarComponent:React.FunctionComponent<{}> = (
 
 }
 
-interface IProps{
-    loading:boolean,
-    loadingMsg:string,
-}
-
-const LoadingComponent:React.FunctionComponent<IProps> = (
-    {
-        loadingMsg,
-    }
+const LoadingComponent:React.FunctionComponent<{}> = (
+    {}
 ) => {
 
     const classes = useStyles();
 
     const { t, i18n } = useTranslation('landing', { useSuspense: false });
+
+    const {
+        state:{
+            loading,loadingMsg,
+        }
+    } = useContext(ApplicationContext);
 
     return(
         <div className={classes.container}>
@@ -150,14 +147,4 @@ const LoadingComponent:React.FunctionComponent<IProps> = (
     );
 }
 
-export default connect(
-    (state:any) => ({
-        loading:state.application.loading,
-        loadingMsg:state.application.loadingMsg,
-    }),
-    dispatch => ({
-        actions:{
-
-        }
-    })
-)(LoadingComponent);
+export default LoadingComponent;
