@@ -1,6 +1,11 @@
 import * as React from 'react';
-import { useState }from 'react';
-import {connect} from 'react-redux';
+import { useState, useContext }from 'react';
+import {
+    ConfigContext,
+    IConfigField,
+    IConfigTab,
+    MuiTheme,
+} from 'react-openfin';
 import {Scrollbars} from 'react-custom-scrollbars';
 import SplitterLayout from 'react-splitter-layout';
 
@@ -29,41 +34,24 @@ import {ConfigField as ConfigFieldComp} from '../../components';
 
 import {configViewStyle as style} from '../../assets/jss/openfin-starter';
 
-import {
-    configUpdateGlobalFilterStr,
-    configUpdateOneField,
-    IConfigField,
-    IConfigState,
-    IConfigTab,
-    MuiTheme
-} from '../../reduxs';
-
-interface IProps {
-    config:IConfigState,
-    globalFilterString:string,
-    theme:MuiTheme
-    actions:{
-        handleGlobalFilterStrChange:React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
-        handleUpdateOneField:( tabName:string, fieldName:string )=>(value:any)=>void,
-    }
-}
-
 const useStyles = makeStyles(style);
 
-const ConfigView:React.FunctionComponent<IProps> = (
-    props
+const ConfigView:React.FunctionComponent<{}> = (
+    {}
 )=>{
 
-    const {
-        theme,
-        config,globalFilterString,
-        actions:{
-            handleGlobalFilterStrChange,
-            handleUpdateOneField,
-        }
-    } = props;
-
     const classes = useStyles();
+
+    const {
+        config,
+        actions:{
+            onUpdateGlobalFilterString,
+            onUpdateOneField,
+        }
+    } = useContext(ConfigContext);
+
+    const theme = config.application.theme;
+    const globalFilterString = config.configGlobalFilterString;
 
     const [ currentTab, setCurrentTab] = useState<number>(0);
     const { t, i18n } = useTranslation('config', { useSuspense: false });
@@ -90,6 +78,13 @@ const ConfigView:React.FunctionComponent<IProps> = (
     const filedShownCnt = tabs[currentTab]._fields.filter(
         oneField => (globalFilterString === '' || oneField._label.toLowerCase().indexOf(globalFilterString.toLowerCase())>-1)
     ).length;
+
+    const handleGlobalFilterStrChange = (event)=>{
+        onUpdateGlobalFilterString(event.target.value);
+    }
+    const handleUpdateOneField = (tabName:string, fieldName:string)=>(value)=>{
+        onUpdateOneField(tabName, fieldName, value);
+    }
 
     return (<React.Fragment>
         <div className={classes.topInputContainer}>
@@ -182,23 +177,4 @@ const ConfigView:React.FunctionComponent<IProps> = (
     </React.Fragment>);
 }
 
-export default connect(
-    (state:any)=>({
-        config:state.config,
-        globalFilterString:state.config.configGlobalFilterString,
-        theme:state.config.application.theme
-    }),
-    dispatch => ({
-        actions:{
-            handleGlobalFilterStrChange:(event)=>{
-                dispatch(configUpdateGlobalFilterStr({configGlobalFilterString:event.target.value}))
-            },
-            handleUpdateOneField: (tabName:string, fieldName:string)=>(value)=>{
-                dispatch(configUpdateOneField({
-                    name:`${tabName}.${fieldName}`,
-                    value,
-                }))
-            }
-        }
-    })
-)(ConfigView);
+export default ConfigView;

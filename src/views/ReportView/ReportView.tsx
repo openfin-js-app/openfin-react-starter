@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+import { useContext } from 'react';
+import { ApplicationContext } from 'react-openfin';
 import ReactJson from 'react-json-view';
 import { Scrollbars } from 'react-custom-scrollbars';
 
@@ -9,30 +10,21 @@ import { makeStyles } from '@material-ui/styles';
 
 import { reportViewStyle as style } from '../../assets/jss/openfin-starter';
 
-interface IProps {
-    username:string,
-    computerName:string,
-    machineId:string,
-    deviceUserId:string,
-    version:string,
-    hostSpec:any,
-    winTop:number,
-    winLeft:number,
-    winWidth:number,
-    winHeight:number,
-}
-
 const useStyles = makeStyles(style);
 
-const ReportView:React.FunctionComponent<IProps> = (
-    {
-        username, computerName, machineId, deviceUserId,
-        version, hostSpec,
-        winTop,winLeft,winWidth,winHeight,
-    }
+const ReportView:React.FunctionComponent<{}> = (
+    {}
 )=>{
 
     const classes = useStyles();
+
+    const {
+        state:{
+            username, computerName, machineId, deviceUserId,
+            openfinVersion, openfinHostSpec,
+            winTop, winLeft, winWidth, winHeight,
+        }
+    } = useContext(ApplicationContext);
 
     return(<div className={classes.root}>
         <Scrollbars
@@ -40,7 +32,7 @@ const ReportView:React.FunctionComponent<IProps> = (
         >
             <div className={classes.mainContainer}>
                 <Typography variant={"subtitle1"} gutterBottom>
-                    Openfin {version} - {username} @ {computerName}
+                    Openfin {openfinVersion} - {username} @ {computerName}
                 </Typography>
                 <Typography variant={"body1"}>
                     X:&lt;{winLeft}&gt;|Y:&lt;{winTop}&gt;|W&lt;{winWidth}&gt;H&lt;{winHeight}&gt;
@@ -51,28 +43,10 @@ const ReportView:React.FunctionComponent<IProps> = (
                 <Typography variant={"body2"}>
                     DeviceUserId:{deviceUserId}
                 </Typography>
-                <ReactJson src={hostSpec} theme={"monokai"}/>
+                <ReactJson src={openfinHostSpec} theme={"monokai"}/>
             </div>
         </Scrollbars>
     </div>);
 }
 
-export default connect(
-    (state:any)=>({
-        username:state.application.username,
-        computerName:state.application.computerName,
-        machineId:state.application.machineId,
-        deviceUserId:state.application.deviceUserId,
-        version:state.application.openfinVersion,
-        hostSpec:state.application.openfinHostSpec,
-        winTop : state.application.winTop,
-        winLeft : state.application.winLeft,
-        winWidth : state.application.winWidth,
-        winHeight : state.application.winHeight,
-    }),
-    dispatch => ({
-        actions:{
-
-        }
-    })
-)(ReportView);
+export default ReportView;

@@ -1,17 +1,13 @@
 import * as React from 'react';
-import { MouseEventHandler, MouseEvent } from "react";
+import { useContext, MouseEventHandler, MouseEvent } from "react";
 import * as shortid from 'shortid';
-import { connect } from 'react-redux';
+import { ApplicationContext } from 'react-openfin';
 
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 import { makeStyles } from '@material-ui/styles';
 import { createStyles } from '@material-ui/core/styles';
-
-import { Notification } from 'redux-openfin';
-
-import { IRootState, applicationNewSnackbar, applicationLaunchNewWindow } from '../../reduxs';
 
 import { buttonStyle } from '../../assets/jss/openfin-starter';
 
@@ -38,16 +34,58 @@ interface IProps{
 const useStyles = makeStyles(style);
 
 const AccessibilityView:React.FunctionComponent<IProps> = (
-    {
-        actions:{
-            onOpenNewSelf,onOpenGoogle,
-            handleOpenSnackBar,
-            handleCreateNotification,
-        }
-    }
+    {}
 )=>{
 
     const classes = useStyles();
+
+    const {
+        actions:{
+            launchNewWin,
+            launchNewNotification,
+            onNewSnackBar,
+        }
+    } = useContext(ApplicationContext);
+
+    const handleLaunchNewSelf = ()=>{
+        launchNewWin({
+            name:`openfin-react-starter-child-accessibility-${shortid.generate()}`,
+            url:'/childWindow/report',
+            frame:false,
+            resizable:true,
+            state:'normal',
+            autoShow:true
+        })
+    }
+
+    const handleLaunchGoogle = ()=>{
+        launchNewWin({
+            name:`openfin-react-starter-child-google-${shortid.generate()}`,
+            url:'https://www.google.com/',
+            frame:true,
+            resizable:true,
+            state:'normal',
+            autoShow:true
+        })
+    }
+
+    const handleOpenSnackBar = (name:'primary' | 'success' | 'warning' | 'error' | 'info' | 'rose')=>()=>{
+        onNewSnackBar({
+            message:`Message to ${name} snackbar`,
+            variant:name,
+        });
+    }
+
+    const handleLaunchNotification = ()=>{
+        launchNewNotification({
+            ignoreMouseOver:false,
+            url:'/notification/sample',
+            message:'my first notification msg',
+            timeout: 10000,
+            opacity: 1,
+        })
+
+    }
 
     return(
         <React.Fragment>
@@ -57,9 +95,9 @@ const AccessibilityView:React.FunctionComponent<IProps> = (
                 Accessibility view works
             </Typography>
 
-            <Button size={"large"} variant={"contained"} color={"primary"} onClick={onOpenNewSelf}
+            <Button size={"large"} variant={"contained"} color={"primary"} onClick={handleLaunchNewSelf}
             >Report</Button>
-            <Button size={"large"} variant={"contained"} color={"secondary"} onClick={onOpenGoogle}
+            <Button size={"large"} variant={"contained"} color={"secondary"} onClick={handleLaunchGoogle}
             >Google</Button>
 
             <hr/>
@@ -86,7 +124,7 @@ const AccessibilityView:React.FunctionComponent<IProps> = (
             <hr/>
 
             <Button variant="outlined" color="primary"
-                    onClick = {handleCreateNotification}
+                    onClick = {handleLaunchNotification}
             >
                 Notification
             </Button>
@@ -95,54 +133,4 @@ const AccessibilityView:React.FunctionComponent<IProps> = (
     )
 }
 
-export default connect(
-    (state:IRootState)=>({
-
-    }),
-    dispatch => ({
-        actions:{
-            onOpenNewSelf:()=>{
-                dispatch(applicationLaunchNewWindow({
-                    name:`openfin-react-starter-child-accessibility-${shortid.generate()}`,
-                    url:'/childWindow/report',
-                    frame:false,
-                    resizable:true,
-                    state:'normal',
-                    autoShow:true,
-                    callback:(window:any)=>{
-                        console.log('onOpenNewSelf::callback', window);
-                    }
-                }));
-            },
-            onOpenGoogle:()=>{
-                dispatch(applicationLaunchNewWindow({
-                    name:`openfin-react-starter-child-google-${shortid.generate()}`,
-                    url:'https://www.google.com/',
-                    frame:true,
-                    resizable:true,
-                    state:'normal',
-                    autoShow:true,
-                    callback:(window:any)=>{
-                        console.log('onOpenGoogle::callback', window);
-                    }
-                }));
-            },
-            handleOpenSnackBar:(name)=>(event:MouseEvent<any>)=>{
-                dispatch(applicationNewSnackbar({
-                    message:`Message to ${name} snackbar`,
-                    variant:name,
-                }))
-            },
-            handleCreateNotification:(event:MouseEvent<any>)=>{
-                dispatch(Notification.actions.createNotification({
-                    ignoreMouseOver:false,
-                    url:'/notification/sample',
-                    message:'my first notification msg',
-                    timeout: 10000,
-                    opacity: 1,
-                }))
-
-            }
-        }
-    })
-)(AccessibilityView)
+export default AccessibilityView;
