@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useContext } from 'react';
+import { ConfigContext ,MuiTheme} from 'react-openfin';
 
 import Switch from '@material-ui/core/Switch';
 import Typography from '@material-ui/core/Typography';
@@ -9,14 +10,6 @@ import { makeStyles } from '@material-ui/styles';
 import { useTranslation } from 'react-i18next';
 
 import { configThemeFieldCompStyle as style } from '../../../assets/jss/openfin-starter';
-
-import {
-    MuiTheme,
-} from '../../../reduxs'
-
-import {
-    ConfigContext
-} from '../../../reduxs/config/context'
 
 const useStyles = makeStyles(style);
 

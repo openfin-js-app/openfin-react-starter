@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as shortid from 'shortid';
+import { FieldType } from 'react-openfin';
 
 import MuiPickersUtilsProvider from 'material-ui-pickers/MuiPickersUtilsProvider';
 import MomentUtils from '@date-io/moment'
@@ -9,8 +10,6 @@ import DateTimePicker from 'material-ui-pickers/DateTimePicker';
 
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-
-import { FieldType } from '../../../reduxs';
 
 import { makeStyles } from '@material-ui/styles';
 

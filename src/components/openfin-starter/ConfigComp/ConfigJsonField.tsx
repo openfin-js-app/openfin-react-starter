@@ -1,11 +1,8 @@
 import * as React from 'react';
 import {useContext} from "react";
-
+import { ConfigContext, MuiTheme } from "react-openfin";
 import {Scrollbars} from 'react-custom-scrollbars';
 import ReactJson from 'react-json-view';
-
-import {MuiTheme} from "../../../reduxs";
-import { ConfigContext } from "../../../reduxs/config/context";
 
 const ConfigJsonField:React.FunctionComponent<{}> = (
     {}

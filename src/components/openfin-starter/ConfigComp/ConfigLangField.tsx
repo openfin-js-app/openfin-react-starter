@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useContext, useState }from 'react';
+import { ConfigContext, I18Language } from 'react-openfin';
 
 import { makeStyles } from '@material-ui/styles';
 
@@ -16,12 +17,6 @@ import i18n from '../../../i18n';
 
 import usFlag from '../../../assets/svg/nationals/united-states.svg';
 import chFlag from '../../../assets/svg/nationals/china.svg';
-
-import { I18Language } from '../../../reduxs';
-
-import {
-    ConfigContext
-} from '../../../reduxs/config/context'
 
 const useStyles = makeStyles(style);
 
@@ -44,7 +39,7 @@ const ConfigLangField:React.FunctionComponent<{}> = (
 
         const language:I18Language = config.application.language;
 
-        if (language === I18Language.zh_CN){
+        if (language === 'zh-CN'){
             return(<React.Fragment>
                 <img className={classes.flagImg} src={chFlag}/>
                 <Typography variant='body1'>简体中文</Typography>
@@ -87,11 +82,11 @@ const ConfigLangField:React.FunctionComponent<{}> = (
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
-                <MenuItem onClick={handleLanguageChangeBtnClick(I18Language.en_US)}>
+                <MenuItem onClick={handleLanguageChangeBtnClick('en-US')}>
                     <img className={classes.flagImg} src={usFlag}/>
                     <Typography variant='body1'>English(US)</Typography>
                 </MenuItem>
-                <MenuItem onClick={handleLanguageChangeBtnClick(I18Language.zh_CN)}>
+                <MenuItem onClick={handleLanguageChangeBtnClick('zh-CN')}>
                     <img className={classes.flagImg} src={chFlag}/>
                     <Typography variant='body1'>简体中文</Typography>
                 </MenuItem>
