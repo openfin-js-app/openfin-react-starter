@@ -24,7 +24,7 @@ import { launchBarLayoutStyle as style } from '../../assets/jss/openfin-starter'
 
 import appLogo from '../../assets/svg/app.svg';
 
-import { launchBarItems } from './LaunchBarData';
+import { launchBarItems } from '../../constants/launchBarItems';
 
 const useStyles = makeStyles(style);
 

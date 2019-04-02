@@ -49,7 +49,7 @@ const AccessibilityView:React.FunctionComponent<IProps> = (
 
     const handleLaunchNewSelf = ()=>{
         launchNewWin({
-            name:`openfin-react-starter-child-accessibility-${shortid.generate()}`,
+            name:`${process.env.REACT_APP_FIN_UUID}-child-accessibility-${shortid.generate()}`,
             url:'/childWindow/report',
             frame:false,
             resizable:true,
@@ -60,7 +60,7 @@ const AccessibilityView:React.FunctionComponent<IProps> = (
 
     const handleLaunchGoogle = ()=>{
         launchNewWin({
-            name:`openfin-react-starter-child-google-${shortid.generate()}`,
+            name:`${process.env.REACT_APP_FIN_UUID}-child-google-${shortid.generate()}`,
             url:'https://www.google.com/',
             frame:true,
             resizable:true,

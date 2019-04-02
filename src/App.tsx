@@ -1,33 +1,18 @@
 import * as React from 'react';
+import { useContext, useEffect, useLayoutEffect, useCallback, useMemo } from 'react';
 import { Router, Route, Switch, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux'
+import { ApplicationContext, ConfigContext, MuiTheme } from 'react-openfin';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 
-import GlobalContext from './GlobalContext';
 
 import { primaryColor, infoColor, dangerColor} from './assets/jss/openfin-starter-constant';
 
 import indexRoutes from './routes/index';
 
 import hist from './utils/history';
-
-import {MuiTheme, I18Language, IRootState, IConfigRuntimeState, configUpdateOneField} from './reduxs'
-
-interface IProps{
-    loading:boolean,
-    config:IConfigRuntimeState,
-    theme:MuiTheme,
-    actions:{
-        handleUpdateThemeField:(value:MuiTheme)=>void,
-        handleToggleThemeField:()=>void,
-        handleUpdateLangField:(lang:I18Language)=>void,
-    },
-    [key:number]:any,
-    [key:string]:any,
-}
 
 const buildMuiTheme = (theme:MuiTheme)=>{
     return createMuiTheme({
@@ -128,39 +113,60 @@ const buildMuiTheme = (theme:MuiTheme)=>{
 };
 
 
-const App:React.FunctionComponent<IProps> = (
+const App:React.FunctionComponent<{}> = (
     {
-        config,
-        theme,
-        actions:{
-            handleToggleThemeField, handleUpdateLangField
-        }
     }
 )=>{
 
+    const {
+        state:{
+            loading,
+        },
+        actions:{
+            onApplicationStart,
+            onChildWinStart,
+            onNotificationStart,
+        }
+    } = useContext(ApplicationContext);
+
+    useEffect(()=>{
+        console.log("App Entry::initCb");
+        if (window.name === process.env.REACT_APP_FIN_UUID){
+            onApplicationStart();
+        }else if (window.location && window.location.pathname.toLowerCase().indexOf('notification')>-1){
+            onNotificationStart();
+        }else{
+            onChildWinStart();
+        }
+    },[]);
+
+    const {
+        config:{
+            application:{
+                theme
+            }
+        }
+    } = useContext(ConfigContext);
+
+
     const muiTheme = buildMuiTheme(theme);
+
     return (
         <React.Fragment>
             <CssBaseline/>
             <Router history={hist}>
                 <MuiThemeProvider theme={muiTheme}>
                     <ThemeProvider theme={muiTheme}>
-                        <GlobalContext
-                            config={config}
-                            onToggleThemeField={handleToggleThemeField}
-                            onUpdateLangField={handleUpdateLangField}
-                        >
-                            <Switch>
-                                {
-                                    indexRoutes.map((prop:any,key)=>{
-                                        if (prop.redirect)
-                                            return <Redirect from={prop.path} to={prop.to} key={key}/>;
-                                        return <Route path={prop.path} component={prop.component} key={key}/>;
+                        <Switch>
+                            {
+                                indexRoutes.map((prop:any,key)=>{
+                                    if (prop.redirect)
+                                        return <Redirect from={prop.path} to={prop.to} key={key}/>;
+                                    return <Route path={prop.path} component={prop.component} key={key}/>;
 
-                                    })
-                                }
-                            </Switch>
-                        </GlobalContext>
+                                })
+                            }
+                        </Switch>
                     </ThemeProvider>
                 </MuiThemeProvider>
             </Router>
@@ -169,38 +175,5 @@ const App:React.FunctionComponent<IProps> = (
 }
 
 
-export default connect(
-    (state:IRootState)=>({
-        loading:state.application.loading,
-        config:state.config,
-        theme:state.config.application.theme
-    }),
-    dispatch => ({
-        actions:{
-            handleUpdateThemeField: (value:MuiTheme)=>{
-                dispatch(configUpdateOneField({
-                    name:'application.theme',
-                    value,
-                }))
-            },
-            handleUpdateLangField: (value:I18Language)=>{
-                dispatch(configUpdateOneField({
-                    name:'application.language',
-                    value,
-                }))
-            }
-        }
-    }),
-    (stateProps,actionProps)=>({
-        ...stateProps,
-        actions:{
-            ...actionProps.actions,
-            handleToggleThemeField: ()=>{
-                actionProps.actions.handleUpdateThemeField(
-                    stateProps.theme === MuiTheme.DARK ?MuiTheme.LIGHT:MuiTheme.DARK
-                )
-            }
-        }
+export default App;
 
-    })
-)(App);

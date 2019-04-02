@@ -1,6 +1,6 @@
 import { applyMiddleware, createStore, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import { createOpenfinMiddleware } from 'redux-openfin';
+import { createReactOpenfinMiddleware } from 'react-openfin';
 
 import rootReducer, {IRootState} from '../reduxs';
 import rootSaga from '../reduxs/sagas';
@@ -12,25 +12,16 @@ export default (
         parentState?:IRootState
 )=>{
 
-    const openfinMiddleware = createOpenfinMiddleware(window.fin,{
-        finUuid:process.env.REACT_APP_FIN_UUID,
-        sharedActions,
-        // channelRandomSuffix:process.env.NODE_ENV === 'development',
-        autoDocking:process.env.REACT_APP_ENABLE_AUTO_DOCKING === 'true',
-        dockingOptions:{
-        }
-    });
     const sagaMiddleware = createSagaMiddleware();
+    const reactOpenfinMiddleware = createReactOpenfinMiddleware();
 
     const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
     const enhancers = composeEnhancers(
         applyMiddleware(
             sagaMiddleware,
-            openfinMiddleware,
+            reactOpenfinMiddleware,
         ),
     );
-    const devtools = window.devToolsExtension?window.devToolsExtension():(f:any):any => (f);
-
 
     const store = createStore(
         rootReducer(parentState),

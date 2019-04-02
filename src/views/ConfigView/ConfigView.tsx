@@ -30,6 +30,7 @@ import {useTranslation} from 'react-i18next';
 
 import cx from 'classnames';
 
+import tabs from '../../constants/configTabs';
 import {ConfigField as ConfigFieldComp} from '../../components';
 
 import {configViewStyle as style} from '../../assets/jss/openfin-starter';
@@ -69,7 +70,7 @@ const ConfigView:React.FunctionComponent<{}> = (
         };
     }
 
-    const tabs:IConfigTab[] = config._tabs;
+    // const tabs:IConfigTab[] = config._tabs;
     const tabName = tabs[currentTab]._name;
 
     const tabShownCnt = tabs.filter(

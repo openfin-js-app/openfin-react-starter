@@ -1,23 +1,23 @@
 import * as React from 'react';
 import InputAdornment from '@material-ui/core/InputAdornment';
 
-import { IConfigTab, IConfigField, MuiTheme, FieldType } from './types';
+import { IConfigTab, IConfigField, MuiTheme, FieldType } from 'react-openfin';
 
 import SettingIcon from '@material-ui/icons/Settings';
 
-import i18n from '../../i18n';
+import i18n from '../i18n';
 
-import ConfigAboutField from '../../components/openfin-starter/ConfigComp/ConfigAboutField';
-import ConfigThemeField from '../../components/openfin-starter/ConfigComp/ConfigThemeField';
-import ConfigLangField from '../../components/openfin-starter/ConfigComp/ConfigLangField';
-import ConfigJsonField from '../../components/openfin-starter/ConfigComp/ConfigJsonField';
+import ConfigAboutField from '../components/openfin-starter/ConfigComp/ConfigAboutField';
+import ConfigThemeField from '../components/openfin-starter/ConfigComp/ConfigThemeField';
+import ConfigLangField from '../components/openfin-starter/ConfigComp/ConfigLangField';
+import ConfigJsonField from '../components/openfin-starter/ConfigComp/ConfigJsonField';
 
-import controlsSvg from'../../assets/svg/support/controls.svg';
-import controlsDarkSvg from'../../assets/svg/support/controls_dark.svg';
-import infomationSvg from '../../assets/svg/support/information.svg';
-import infomationDarkSvg from '../../assets/svg/support/information-dark.svg';
-import listCheckedSvg from'../../assets/svg/other/check-box.svg';
-import listCheckedDarkSvg from'../../assets/svg/other/list-checked-dark.svg';
+import controlsSvg from'../assets/svg/support/controls.svg';
+import controlsDarkSvg from'../assets/svg/support/controls_dark.svg';
+import infomationSvg from '../assets/svg/support/information.svg';
+import infomationDarkSvg from '../assets/svg/support/information-dark.svg';
+import listCheckedSvg from'../assets/svg/other/check-box.svg';
+import listCheckedDarkSvg from'../assets/svg/other/list-checked-dark.svg';
 
 function _getSampleDate() {
     return process.env.NODE_ENV === 'test'? new Date(2018,9,13,16,53,41): new Date();
