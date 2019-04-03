@@ -24,6 +24,16 @@ import launchBarItems from './constants/launchBarItems';
 
 declare const window:any;
 
+InitializeReactOpenfin({
+    fin:window.fin,
+    finUuid: process.env.REACT_APP_FIN_UUID,
+    sharedActions,
+    i18n,
+    hist,
+    configTabs,
+    launchBarItems,
+});
+
 if(window.name === process.env.REACT_APP_FIN_UUID){
     window.store=configureStore(
         sharedActions,
@@ -34,17 +44,6 @@ if(window.name === process.env.REACT_APP_FIN_UUID){
         window.opener.store.getState()
     );
 }
-
-InitializeReactOpenfin({
-    fin:window.fin,
-    finUuid: process.env.REACT_APP_FIN_UUID,
-    sharedActions,
-    i18n,
-    hist,
-    clientReduxStore:window.store,
-    configTabs,
-    launchBarItems,
-});
 
 setPlatformClass(document.body,window.navigator.platform);
 

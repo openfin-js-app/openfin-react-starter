@@ -4,7 +4,11 @@ import { SHARED_ACTION_ORIGIN_TAG } from 'redux-openfin/channel';
 import {
     applicationNewSnackbar,
     APPLICATION_AWAIT,
+    APPLICATION_CHILD_AWAIT,
+    APPLICATION_NOTIFICATION_AWAIT,
     applicationReady,
+    applicationChildReady,
+    applicationNotificationReady,
     APPLICATION_CUR_WIN_CLOSING,
     applicationCurWinReadyToClose,
 } from 'react-openfin/reduxs';
@@ -14,11 +18,9 @@ import {
 } from '..';
 
 export function* handleTakingClientSetValue(action) {
-    const payload:any = action.payload;
-
     if (action[SHARED_ACTION_ORIGIN_TAG] !== window[SHARED_ACTION_ORIGIN_TAG]){
         yield put(applicationNewSnackbar({
-            message:`Received msg from ${payload[SHARED_ACTION_ORIGIN_TAG]}`,
+            message:`Received msg from ${action[SHARED_ACTION_ORIGIN_TAG]}`,
             variant:'info'
         }))
     }else{
@@ -29,9 +31,15 @@ export function* handleTakingClientSetValue(action) {
     }
 }
 
-export function* handleAppStarting(action){
-    console.log('client saga :: handleAppStarting',action);
-    yield putResolve(applicationReady({}));
+export function* handleStarting(action){
+    console.log('client saga :: handlStarting',action);
+    if (action.type === APPLICATION_AWAIT){
+        yield putResolve(applicationReady({}));
+    }else if(action.type === APPLICATION_NOTIFICATION_AWAIT){
+        yield putResolve(applicationNotificationReady({}));
+    }else if(action.type === APPLICATION_CHILD_AWAIT){
+        yield putResolve(applicationChildReady({}));
+    }
 }
 
 export function* handleAppClosing(action){
@@ -42,6 +50,8 @@ export function* handleAppClosing(action){
 
 export default function *() {
     yield takeEvery(CLIENT_SET_VALUE,handleTakingClientSetValue);
-    yield takeLatest(APPLICATION_AWAIT, handleAppStarting);
+    yield takeLatest(APPLICATION_AWAIT, handleStarting);
+    yield takeLatest(APPLICATION_CHILD_AWAIT, handleStarting);
+    yield takeLatest(APPLICATION_NOTIFICATION_AWAIT, handleStarting);
     yield takeLatest(APPLICATION_CUR_WIN_CLOSING, handleAppClosing);
 }
