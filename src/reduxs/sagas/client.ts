@@ -34,6 +34,7 @@ export function* handleTakingClientSetValue(action) {
 export function* handleStarting(action){
     console.log('client saga :: handlStarting',action);
     if (action.type === APPLICATION_AWAIT){
+        yield delay(3000);
         yield putResolve(applicationReady({}));
     }else if(action.type === APPLICATION_NOTIFICATION_AWAIT){
         yield putResolve(applicationNotificationReady({}));
@@ -44,7 +45,6 @@ export function* handleStarting(action){
 
 export function* handleAppClosing(action){
     console.log('client saga::handleAppClosing');
-    yield delay(500);
     yield putResolve(applicationCurWinReadyToClose());
 }
 

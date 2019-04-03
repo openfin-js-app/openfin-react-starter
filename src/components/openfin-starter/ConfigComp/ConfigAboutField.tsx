@@ -53,7 +53,7 @@ const ConfigAboutField:React.FunctionComponent<{}> = (
                 >{t('support')}</Button>
             </div>
             <Typography variant={"subtitle1"}>
-                Wentao Li © 2019
+                {t('copyright')}
             </Typography>
 
         </div>

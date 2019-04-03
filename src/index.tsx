@@ -2,8 +2,7 @@ import * as React from 'react';
 import {Suspense} from 'react';
 import * as ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
-import { InitializeReactOpenfin } from 'react-openfin';
-import { ReactOpenfin } from 'react-openfin';
+import { InitializeReactOpenfin, ReactOpenfin } from 'react-openfin';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
 
