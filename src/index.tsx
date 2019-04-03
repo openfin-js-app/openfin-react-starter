@@ -2,8 +2,8 @@ import * as React from 'react';
 import {Suspense} from 'react';
 import * as ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
-import {InitializeReactOpenfin, ReactOpenfinProvider} from 'react-openfin';
-import {BrowserAdapter} from 'openfin-browser-adapter';
+import { InitializeReactOpenfin } from 'react-openfin/init';
+import { ReactOpenfin } from 'react-openfin';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
 
@@ -24,13 +24,16 @@ import launchBarItems from './constants/launchBarItems';
 
 declare const window:any;
 
-if(!window.fin){
-    window.fin = new BrowserAdapter({
-        finUuid:process.env.REACT_APP_FIN_UUID,
-        // todo: set silentMode to false
-        silentMode:true,
-    });
-}
+InitializeReactOpenfin({
+    fin:window.fin,
+    finUuid: process.env.REACT_APP_FIN_UUID,
+    sharedActions,
+    i18n,
+    hist,
+    clientReduxStore:window.store,
+    configTabs,
+    launchBarItems,
+});
 
 if(window.name === process.env.REACT_APP_FIN_UUID){
     window.store=configureStore(
@@ -43,27 +46,16 @@ if(window.name === process.env.REACT_APP_FIN_UUID){
     );
 }
 
-
-InitializeReactOpenfin({
-    fin:window.fin,
-    finUuid: process.env.REACT_APP_FIN_UUID,
-    sharedActions,
-    i18n,
-    hist,
-    clientReduxStore:window.store,
-    configTabs,
-    launchBarItems,
-});
 setPlatformClass(document.body,window.navigator.platform);
 
 ReactDOM.render(
-    <ReactOpenfinProvider>
+    <ReactOpenfin>
         <Provider store = {window.store}>
             <Suspense fallback={<CircularProgress/>}>
                 <App/>
             </Suspense>
         </Provider>
-    </ReactOpenfinProvider>
+    </ReactOpenfin>
     ,
     document.getElementById('root')
 );
