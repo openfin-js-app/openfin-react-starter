@@ -1,4 +1,4 @@
-import { RouteItem } from './Base';
+import { RouteItem } from 'react-openfin-mat-impl';
 
 import SampleNotification from '../views/NotificationViews/SampleNotification';
 

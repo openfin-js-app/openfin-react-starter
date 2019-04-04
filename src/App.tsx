@@ -10,7 +10,7 @@ import { ThemeProvider } from '@material-ui/styles';
 
 import { primaryColor, infoColor, dangerColor} from './assets/jss/openfin-starter-constant';
 
-import indexRoutes from './routes/index';
+import indexRoutes from './routes';
 
 import hist from './utils/history';
 
