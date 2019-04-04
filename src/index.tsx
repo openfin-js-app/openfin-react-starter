@@ -3,6 +3,7 @@ import {Suspense} from 'react';
 import * as ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import { InitializeReactOpenfin, ReactOpenfin } from 'react-openfin';
+import { I18nextProvider } from 'react-i18next';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
 
@@ -50,7 +51,9 @@ ReactDOM.render(
     <ReactOpenfin>
         <Provider store = {window.store}>
             <Suspense fallback={<CircularProgress/>}>
-                <App/>
+                <I18nextProvider i18n={i18n}>
+                    <App/>
+                </I18nextProvider>
             </Suspense>
         </Provider>
     </ReactOpenfin>
