@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "https://albertleigh.github.io/openfin-react-latest/precache-manifest.804e2fa22b7e267f83036641b7b6c5a2.js"
+  "https://openfin-js-app.github.io/openfin-react-starter/precache-manifest.2dd48197effe9aa99dec8f8664029653.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("https://albertleigh.github.io/openfin-react-latest/index.html", {
+workbox.routing.registerNavigationRoute("https://openfin-js-app.github.io/openfin-react-starter/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
