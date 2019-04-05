@@ -1,5 +1,7 @@
-## [0.70.10] 2019-03-26
-- Embrace react hook api
+## [0.70.10.beta] 2019-04-05
+- Embrace react hook apis
+- Initially integrate react-openfin
+- Initially integrate react-openfin-mat-impl
 
 ## [0.40.10] 2019-03-17
 - Refactor scaffolding codes to adopt the ejected create-react-app of version 2.1.8
