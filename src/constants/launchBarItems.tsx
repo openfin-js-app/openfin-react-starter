@@ -6,9 +6,9 @@ import BugReportIcon from '@material-ui/icons/BugReport';
 import LanguageIcon from '@material-ui/icons/Language';
 import ReportIcon from '@material-ui/icons/Report';
 
-import svgNumberOne from'../../assets/svg/other/number-1.svg';
-import svgNumberTwo from'../../assets/svg/other/number-2.svg';
-import googleSearch from'../../assets/svg/other/google-search.svg';
+import svgNumberOne from '../assets/svg/other/number-1.svg';
+import svgNumberTwo from '../assets/svg/other/number-2.svg';
+import googleSearch from '../assets/svg/other/google-search.svg';
 
 export interface IlaunchBarItemType {
     icon:any,
@@ -23,7 +23,7 @@ export const sampleItems:IlaunchBarItemType[]=[
         disabled:false,
         svg:null,
         appJson:{
-            name:'openfin-react-starter-child-accessibility',
+            name:`${process.env.REACT_APP_FIN_UUID}-child-accessibility`,
             url:'/childWindow/accessibility',
             frame:false,
             resizable:true,
@@ -38,7 +38,7 @@ export const sampleItems:IlaunchBarItemType[]=[
         disabled:false,
         svg:svgNumberOne,
         appJson:{
-            name:'openfin-react-starter-child-view-one',
+            name:`${process.env.REACT_APP_FIN_UUID}-child-view-one`,
             url:'/childWindow/view-one',
             frame:false,
             resizable:true,
@@ -53,7 +53,7 @@ export const sampleItems:IlaunchBarItemType[]=[
         disabled:false,
         svg:svgNumberTwo,
         appJson:{
-            name:'openfin-react-starter-child-view-two',
+            name:`${process.env.REACT_APP_FIN_UUID}-child-view-two`,
             url:'/childWindow/view-two',
             frame:false,
             resizable:true,
@@ -68,7 +68,7 @@ export const sampleItems:IlaunchBarItemType[]=[
         disabled:false,
         svg:null,
         appJson:{
-            name:'openfin-react-starter-child-report',
+            name:`${process.env.REACT_APP_FIN_UUID}-child-report`,
             url:'/childWindow/report',
             frame:false,
             resizable:true,
@@ -83,15 +83,12 @@ export const sampleItems:IlaunchBarItemType[]=[
         disabled:false,
         svg:googleSearch,
         appJson:{
-            name:'openfin-react-starter-child-google',
+            name:`${process.env.REACT_APP_FIN_UUID}-child-google`,
             url:'https://www.google.com/',
             frame:true,
             resizable:true,
             state:'normal',
             autoShow:true,
-            callback:(window:any)=>{
-                console.log('onOpenNewSelf::callback', window);
-            }
         },
     },
 ];
@@ -133,3 +130,5 @@ export const launchBarItems = [
     ...sampleItems,
     ...disabledItems,
 ];
+
+export default launchBarItems;

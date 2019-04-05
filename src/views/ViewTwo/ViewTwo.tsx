@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { useContext } from 'react';
+import { ApplicationContext } from 'react-openfin';
 import { connect } from 'react-redux';
 
 import {
@@ -12,10 +14,6 @@ import {
 
 interface IProps {
     clientCount:number,
-    winTop:number;
-    winLeft:number;
-    winWidth:number;
-    winHeight:number;
     actions:{
         handleUpdateClientCount:(count:number)=>void
     }
@@ -25,12 +23,18 @@ interface IProps {
 const ViewTwo:React.FunctionComponent<IProps> = (
     {
         clientCount,
-        winTop,winLeft,winWidth,winHeight,
         actions:{
             handleUpdateClientCount
         }
     }
 )=>{
+
+    const {
+        state:{
+            winTop, winLeft, winWidth, winHeight,
+        }
+    } = useContext(ApplicationContext);
+
     return(
         <React.Fragment>
             <div><span>ViewTwo works</span></div>
@@ -46,10 +50,6 @@ const ViewTwo:React.FunctionComponent<IProps> = (
 export default connect(
     (state:IRootState)=>({
         clientCount : state.client.count,
-        winTop : state.application.winTop,
-        winLeft : state.application.winLeft,
-        winWidth : state.application.winWidth,
-        winHeight : state.application.winHeight,
     }),
     dispatch => ({
         actions:{

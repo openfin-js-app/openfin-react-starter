@@ -1,11 +1,14 @@
 import * as React from 'react';
 import {Suspense} from 'react';
 import * as ReactDOM from 'react-dom';
-import './i18n';
-import { Provider } from 'react-redux';
-import { BrowserAdapter } from 'openfin-browser-adapter';
+import {Provider} from 'react-redux';
+import { InitializeReactOpenfin, ReactOpenfin } from 'react-openfin';
+import { I18nextProvider } from 'react-i18next';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
+
+import i18n from './i18n';
+import hist from './utils/history';
 
 import './assets/css/main.css';
 
@@ -14,60 +17,48 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import configureStore from './utils/configureStore';
-import {
-    applicationStarted,
-    applicationChildStarted,
-    applicationNotificationStarted,
-    applicationNetworkOnline,
-    applicationNetworkOffline,
-} from "./reduxs";
 
 import sharedActions from './reduxs/sharedActions'
+import configTabs from './constants/configTabs';
+import launchBarItems from './constants/launchBarItems';
 
 declare const window:any;
 
-if(!window.fin){
-    window.fin = new BrowserAdapter({
-        finUuid:process.env.REACT_APP_FIN_UUID,
-        silentMode:false,
-    });
-}
+InitializeReactOpenfin({
+    fin:window.fin,
+    finUuid: process.env.REACT_APP_FIN_UUID,
+    sharedActions,
+    i18n,
+    hist,
+    configTabs,
+    launchBarItems,
+});
 
 if(window.name === process.env.REACT_APP_FIN_UUID){
-    const store = configureStore(
+    window.store=configureStore(
         sharedActions,
     );
-    window.store=store;
-    store.dispatch(applicationStarted());
 }else{
-    const store = configureStore(
+    window.store=configureStore(
         sharedActions,
         window.opener.store.getState()
     );
-    window.store=store;
-    if (window.location.pathname.toLowerCase().indexOf('notification')>-1){
-        store.dispatch(applicationNotificationStarted());
-    }else{
-        store.dispatch(applicationChildStarted());
-    }
 }
+
 setPlatformClass(document.body,window.navigator.platform);
+
 ReactDOM.render(
-    <Provider store = {window.store}>
-        <Suspense fallback={<CircularProgress/>}>
-            <App/>
-        </Suspense>
-    </Provider>
+    <ReactOpenfin>
+        <Provider store = {window.store}>
+            <Suspense fallback={<CircularProgress/>}>
+                <I18nextProvider i18n={i18n}>
+                    <App/>
+                </I18nextProvider>
+            </Suspense>
+        </Provider>
+    </ReactOpenfin>
     ,
     document.getElementById('root')
 );
 
 serviceWorker.unregister();
-
-
-window.addEventListener('online',()=>{
-    window.store.dispatch(applicationNetworkOnline());
-})
-window.addEventListener('offline',()=>{
-    window.store.dispatch(applicationNetworkOffline());
-})

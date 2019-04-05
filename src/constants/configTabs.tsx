@@ -1,23 +1,27 @@
 import * as React from 'react';
 import InputAdornment from '@material-ui/core/InputAdornment';
 
-import { IConfigTab, IConfigField, MuiTheme, FieldType } from './types';
+import { IConfigTab, MuiTheme, FieldType } from 'react-openfin';
+import {
+    ConfigAboutField,
+    ConfigThemeField,
+    ConfigLangField,
+    ConfigJsonField,
+    ConfigView,
+} from 'react-openfin-mat-impl';
 
 import SettingIcon from '@material-ui/icons/Settings';
 
-import i18n from '../../i18n';
+import i18n from '../i18n';
 
-import ConfigAboutField from '../../components/openfin-starter/ConfigComp/ConfigAboutField';
-import ConfigThemeField from '../../components/openfin-starter/ConfigComp/ConfigThemeField';
-import ConfigLangField from '../../components/openfin-starter/ConfigComp/ConfigLangField';
-import ConfigJsonField from '../../components/openfin-starter/ConfigComp/ConfigJsonField';
-
-import controlsSvg from'../../assets/svg/support/controls.svg';
-import controlsDarkSvg from'../../assets/svg/support/controls_dark.svg';
-import infomationSvg from '../../assets/svg/support/information.svg';
-import infomationDarkSvg from '../../assets/svg/support/information-dark.svg';
-import listCheckedSvg from'../../assets/svg/other/check-box.svg';
-import listCheckedDarkSvg from'../../assets/svg/other/list-checked-dark.svg';
+import appSvg from '../assets/svg/app.svg';
+import companySvg from '../assets/svg/company.svg';
+import controlsSvg from'../assets/svg/support/controls.svg';
+import controlsDarkSvg from'../assets/svg/support/controls_dark.svg';
+import infomationSvg from '../assets/svg/support/information.svg';
+import infomationDarkSvg from '../assets/svg/support/information-dark.svg';
+import listCheckedSvg from'../assets/svg/other/check-box.svg';
+import listCheckedDarkSvg from'../assets/svg/other/list-checked-dark.svg';
 
 function _getSampleDate() {
     return process.env.NODE_ENV === 'test'? new Date(2018,9,13,16,53,41): new Date();
@@ -146,7 +150,12 @@ const configTabs:IConfigTab[]=[
             {
                 _type:FieldType.CUSTOM_FIELD,
                 _label:'About openfin starter',
-                _custom:<ConfigAboutField/>,
+                _custom:
+                    <ConfigAboutField
+                        appLogo={appSvg}
+                        companyLogo={companySvg}
+                    />
+                ,
                 _cols:12,
                 _rows:12,
             }
@@ -240,5 +249,9 @@ const configTabs:IConfigTab[]=[
         ]
     }
 ];
+
+export const MyConfigView:React.FunctionComponent<{}> = ({})=>{
+    return (<ConfigView tabs={configTabs}/>)
+}
 
 export default configTabs;
