@@ -1,0 +1,34 @@
+{
+  "start": {
+    "installer": "安装包",
+    "sampleInstaller": "様例安装包",
+    "winInstallerGenerator": "Openfin 提供 Window系统安装包生气器 来部署应用。",
+    "linuxInstallerGenerator": "目前Openfin 并不提供 Mac&Linux 下安装包",
+    "linuxInstallerGeneratorAlternative": "但 代码生成工具al-cli提供一种封装方案，在代码生成工具al-cli部分有介绍。"
+  },
+  "developer": {
+    "title": "写给开发者",
+    "subTitle": "简单来讲，我们只是给开发人员提供一种基于React开发Openfin 桌面APP的解决方案,来简化开发。",
+    "webDeployTitle": "Web伺服器 部署",
+    "webDeployDesc": "默认下，静态前端文件将被部署到一个Web伺服器。通过Openfin提供的安装包来安装客户端。安装的客户端内嵌chromium浏览器，以加载静态页面。",
+    "standaloneDeployTitle": "独立部署",
+    "standaloneDeployDesc": "或者, 也可以通过独立部署本地Web伺服器与本地客户端，通过常规网络开发方法来呼叫外部API."
+  },
+  "faq": {
+
+    "title": "常问问题",
+
+    "whyTs": "为啥用typescript?",
+    "whyTsAns1": "这恐怕是最常被问到的问题。为啥用typescript, 为啥不typeless 为啥不用flow?",
+    "whyTsAns2": "好吧...",
+    "whyTsAns3": "并不是所以开发团队都会在开始阶段定下API结构，而其通常并不只有一个开发人员参与项目。基于模板复用角度，编译时检测可以帮助不同程度的开发人员有效合作，并在API结构演变过程中提供类型编译时检测，提高代码可读性，有效避免运行时类型不匹错误。",
+    "whyTsAns4": "Typescript代码能自我解释变量类型，天然自我记录文档。而且，绝大部分复用库都支持Typescript definition. 开发经历比无类型开发更好。",
+    "whyTsAns5": "Typescript 并不需要所有代码属于强类型，开发人员可以决定类型强度。",
+    "whyTsAns6": "至于flow, 根据过往开发经验， 有些公司并不提供自由的开发环境。在为数不多的IDE中，flow插件往往由于各种原因导致内存溢出问题。所以，本团队将首先支持typescript,将在后续开发中考虑支持flow。",
+
+    "willResActionEmitted": "即使只有promise api 被调用，相应action依然会被促发么?",
+    "willResActionEmittedAns1": "默认情况下 会",
+    "willResActionEmittedAns2": "但如有需要,可以通过在生成middleware时配置IConfig 对象，设置ignoreStore项为true 来关闭."
+
+  }
+}

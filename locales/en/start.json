@@ -1,0 +1,34 @@
+{
+  "start": {
+    "installer": "Installer",
+    "sampleInstaller": "Sample installer",
+    "winInstallerGenerator": "Openfin provides an installer generator for window platform to deploy your application.",
+    "linuxInstallerGenerator": "Current installers upon mac and linux platform are not supported by Openfin.",
+    "linuxInstallerGeneratorAlternative": "However, an alternative standalone solution is provided via al-cli. Plz check scaffolding al-cli section for more info."
+  },
+  "developer": {
+    "title": "For Developers",
+    "subTitle": "Simply speaking, we just provide a solution suite for developers to make building openfin embedded react js app much easier.",
+    "webDeployTitle": "Web-based deployment",
+    "webDeployDesc": "Be default, the static files should be deployed via a web server and openfin will provide an installer, through which we could install the app we built upon windows platform only.",
+    "standaloneDeployTitle": "Standalone deployment",
+    "standaloneDeployDesc": "Alternatively, a standalone package solution is also provided by al-cli, packaged binaries could be deployed into client host. Through the embedded browser, compiled codes could seize outside api via standard web development methodology."
+  },
+  "faq": {
+
+    "title": "FAQ",
+
+    "whyTs": "Why typescript?",
+    "whyTsAns1": "This might be most frequently asked question. Why typescript, why not typeless or flow?",
+    "whyTsAns2": "Well...",
+    "whyTsAns3": "For certain teams, api schema might not be settled at the initial stage and there might be multi developers participating in the project. From the template perspective, compile-time type check can help the various-levels developers work together and effectively, provide type-check throughout schema evolving, increase codes readabilities and could act as one protection to avoid unexpected run-time type mismatch errors.",
+    "whyTsAns4": "Typescript codes are also of some self-explain ability. They are naturally self-documented. Moreover, most libs provide type definition of their apis, codes experiences using typescript will be much better than typeless.",
+    "whyTsAns5": "And, typescript doesn't require to have all codes typed, it is up to the developers to decide how deep the type would be.",
+    "whyTsAns6": "As for flow, some companies might disallow you develop outside their internal DEV environment. Their supported IDEs are not that friendly with flow, usually causing a lot of memory-leaking problems. Thus, typescript will be our first primary supported static check language other than flow, and will consider to support flow at the latter stage.",
+
+    "willResActionEmitted": "Will response action still be dispatched into redux even only the promise api called?",
+    "willResActionEmittedAns1": "The answer is, by default it will",
+    "willResActionEmittedAns2": "But you can disable it by setting the ignoreStore to true in the IConfig object when you create the middleware, if you really need to."
+
+  }
+}

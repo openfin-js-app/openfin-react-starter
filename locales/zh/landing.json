@@ -1,0 +1,58 @@
+{
+  "Welcome React TS":"欢迎 react in TS zh",
+  "header":{
+    "tabsName":{
+      "welcome":"欢迎",
+      "scaffolding":"al-cli",
+      "snapDock":"窗口合并",
+      "crossWin":"窗口通信",
+      "genConf":"通用设置",
+      "allCust":"All React",
+      "support":"开发支持与感谢"
+    },
+    "toolTip":{
+      "toggleTheme":"更改主题",
+      "github":"Github",
+      "changeLanguage":"改变语言"
+    }
+  },
+  "welcomeSec":{
+    "title":"Openfin React 解决方案",
+    "subtitle":"Openfin 桌面 App React 模板",
+    "startBtn":"开始"
+  },
+  "scaffoldingSec":{
+    "title":"代码生成工具: al-cli",
+    "desc":"提供一个代码生成工具，并同时可以生成样本项目，减轻开发人员负担。同时也提供一建议的设计模式，开发人员可灵活选择采用与否。"
+  },
+  "snapDockSec":{
+    "title":"自带Snap&Dock功能",
+    "win1":"窗口 1",
+    "win2":"窗口 2",
+    "desc":"模板自带Openfin Snap & Dock功能，开发人员无需多加处理。可以通过Undock按钮来脱离窗口群组。窗口群组内的窗口在拖拽时会同时移动，也会自行调整大小。"
+  },
+  "crossWin":{
+    "title":"支持窗口以Redux actions通信",
+    "win":"窗口",
+    "desc":"提供窗口之间通信机制，得以Redux actions形式来传送，简化开发。"
+  },
+  "genConf":{
+    "title":"通用设置服务",
+    "application":"应用",
+    "desc":"提供客户端通用设置服务。 用户可以输入或更改配置。 通过其，开发人员可以根据客户配置来相应需求，简化开发。"
+  },
+  "allCust":{
+    "title":"全React组建，可以全定制",
+    "desc":"所有组件样式结构都可灵活更改，全React组建。使开发简易。"
+  },
+  "support":{
+    "contributors":"开发人员: ",
+    "contributorNames":{
+      "albertleigh":"李文涛"
+    },
+    "credits":"感谢: ",
+    "support":"技术支持: ",
+    "flatIconPhase1":"图标提供者",
+    "flatIconPhase2":"来自"
+  }
+}

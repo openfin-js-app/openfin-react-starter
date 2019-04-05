@@ -1,0 +1,95 @@
+{
+  "common": {
+    "or":"或者",
+    "yes": "是",
+    "no": "否",
+    "type": "类型"
+  },
+  "install": {
+    "title": "代码生成工具（脚手架工具）",
+    "subtitle": "代码生成工具（脚手架工具） al-cli is 可以用来生成 样板代码 和 様例工程。 同时，一个开发模式 lyt/view/comp 被建议。 但并不强制开发人员遵守。",
+    "install": {
+      "title": "安装",
+      "step1": "全局安装代码生成工具",
+      "step2": "完成后，运行",
+      "step3": "将会列印参数信息到控制台"
+    }
+  },
+  "genrPrj": {
+    "title": "生成様例工程",
+    "reactTs": {
+      "title": "基于 create-react-app的Typescript様例工程",
+      "subtitle": "进入工程路径 例如 /home/User/Workspaces",
+      "step1":"生成工程代码并安装依赖库",
+      "step1B":"生成工程代码但跳过安装依赖库",
+      "step2":"一旦完成，会生成如下结构工程",
+      "step3":"进入项目路径，不出意外，可以如下启动。"
+    },
+    "openfinReactTs": {
+      "title": "Openfin react TS 様例工程",
+      "subtitle": "进入工程路径 例如 /home/User/Workspaces",
+      "step1":"生成工程代码并安装依赖库",
+      "step1B":"生成工程代码但跳过安装依赖库",
+      "step2":"进入项目路径，不出意外，可以如下启动。"
+    }
+  },
+  "standalonePkg": {
+    "title": "独立打包",
+    "build": {
+      "title": "Build",
+      "step1": "在打包前，必须提前生成静态文件",
+      "step2": "一旦完成，会得到生成的文件总结"
+    },
+    "pkg": {
+      "title": "打包",
+      "step1": "一旦生成了静态文件，可以通过以下命令来打包",
+      "step2": "打包输出路径: package",
+      "step3": "不出意外，基于你指定系统的包会在输出路径如下",
+      "step4": "可以在输出文件下，执行如下命令来启动独立客户端"
+    }
+  },
+  "genrTpl": {
+    "title": "生成模板",
+    "diff": {
+      "title": "Layout, View 与 Component 的区别",
+      "subtitle": "生成工具支持3种模板: Component, View and Layout",
+      "desc": "3种模板都是react component. 一般认为, lyt 和 view 会连接 redux. 但是 lyt 可以当作入口组件， view 是嵌入lyt的复用组件. view 组件应利用全部外部空间. Comps 是不连接redux的复用组件.",
+      "table": {
+        "col1": "是否连接Redux",
+        "col2": "是否是入口组件",
+        "col3": "是否为复用组件",
+        "row1": "Component 组件模板 (comp)",
+        "row2": "View 组件模板 (view)",
+        "row3": "Layout 组件模板 (lyt)"
+      }
+    },
+    "comp": {
+      "title": "生成 Comp 模板",
+      "step1": "进入到工作路径，例如 /home/User/Workspaces/sample-app",
+      "step2": "然后输入",
+      "step3": "工具会确认comp名称 其様例名称及其路径。建议初次使用默认值，可一路按回车选用。",
+      "step4": "为了更好理解生成的模板结构，我们来建立另一个Comp模板 NewTwo 来作比较。",
+      "step5": "一旦完成, al-cli 会按以下结构生成模板。",
+      "step6": "生成的 NewOne NewTwo 的样式文件如下",
+      "step7": "样式文件会通过索引文件index.ts输出。",
+      "step8": "在生成的模板中，通过索引文件来引入隔离的样式文件。",
+      "step9": "类似的，生成的模板也通过一索引文件index.ts输出。",
+      "step10": "所有的样式组件文件都被置于工程同名文件夹下(sample-app)。这样的好处是，不同工程的组件样式可以通过复制粘贴到另一个工程名路径来复用。 相比于直接更改组件来使其满足需求并发布到容器，这样更快捷。同时也方便因地制宜的快速更改。"
+    },
+    "view": {
+      "title": "生成 View 模板",
+      "step1": "类似地，基于之前的步骤，我们来建立两个新的view组件。",
+      "step2": "一旦完成，al-cli会以如下结构来生成文件。",
+      "step3": "类似地，我们也会注入隔离的样式对象进入两个view 组件。",
+      "step4": "而其样式文件亦会通过索引文件index.ts输出。",
+      "step5": "然后注入两个view 组件。"
+    },
+    "lyt": {
+      "title": "生成 layout 模板",
+      "step1": "类似地，亦基于之前的步骤，我们来建立两个新的lyt组件。",
+      "step2": "不出意外，一旦完成，al-cli会生成如下结构的文件。",
+      "step3": "Lyt组件和他们隔离的样式。"
+    }
+  }
+
+}

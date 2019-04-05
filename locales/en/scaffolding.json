@@ -1,0 +1,95 @@
+{
+  "common": {
+    "or":"or",
+    "yes": "Yes",
+    "no": "No",
+    "type": "Type"
+  },
+  "install": {
+    "title": "Scaffolding tool",
+    "subtitle": "An scaffolding tool called al-cli is provided to help developers to generate boilerplate codes and sample projects. Along with it, a simple design pattern lyt/view/comp is also recommended. But developers are not required to follow it to utilized the templates.",
+    "install": {
+      "title": "Installation",
+      "step1": "Initially, install the scaffolding tool globally",
+      "step2": "Once installed, run",
+      "step3": "will dump the help info into the console"
+    }
+  },
+  "genrPrj": {
+    "title": "Generate sample projects",
+    "reactTs": {
+      "title": "Typescript template project based on create-react-app",
+      "subtitle": "To generate the sample project, change directory into your Workspace folder like /home/User/Workspaces",
+      "step1":"Generate project with node_modules",
+      "step1B":"Generate but skip installing node_modules",
+      "step2":"Once done, one sample typescript template project will be created like this:",
+      "step3":"Redirect to the project directory and, make no mistake, you could start the sample project."
+    },
+    "openfinReactTs": {
+      "title": "Openfin react TS template project",
+      "subtitle": "To generate the openfin sample project, change directory into your Workspace folder like /home/User/Workspaces",
+      "step1":"Generate project with node_modules",
+      "step1B":"Generate but skip to install  node_modules",
+      "step2": "Redirect to the project folder and, make no mistake, you could start the sample project."
+    }
+  },
+  "standalonePkg": {
+    "title": "Standalone binary packaging",
+    "build": {
+      "title": "Build",
+      "step1": "Before packaging, the static files should be built in advance, change directory into your project folder.",
+      "step2": "Once done, you should got the summary of all the files built."
+    },
+    "pkg": {
+      "title": "Package",
+      "step1": "Once static files built, we could generate packaged binary via",
+      "step2": "Output directory: package",
+      "step3": "Make no mistake, a package folder will be created containing the binary depending on the platform you built.",
+      "step4": "To execute the binary, just execute openfin_starter at the package folder."
+    }
+  },
+  "genrTpl": {
+    "title": "Generate templates",
+    "diff": {
+      "title": "Diff between Layout, View and Component",
+      "subtitle": "The scaffolding tool support to generate three types of templates: Component, View and Layout",
+      "desc": "All three templates are react component. Generally speaking, both lyt and view connects to redux. But lyt can act as the entry comp and view is the reusable unit inside lyt. View comp's outermost container should be set to use up all the space. Comps are reusable non-redux-connected units among view or lyt.",
+      "table": {
+        "col1": "Connected to Redux",
+        "col2": "Entry components",
+        "col3": "Reusable components",
+        "row1": "Component template (comp)",
+        "row2": "View template (view)",
+        "row3": "Layout template (lyt)"
+      }
+    },
+    "comp": {
+      "title": "Generate component template",
+      "step1": "change directory into your project folder of your workspace, like /home/User/Workspaces/sample-app",
+      "step2": "then type in",
+      "step3": "The client should pop up to confirm all the component name, style name and their paths. Suggest not to change for now if not sure, we could press enter all the way down to use default values for the first time.",
+      "step4": "To fully understand the structure of the generated components template, let's create an another component called NewTwo to compare.",
+      "step5": "Once done, al-cli will create all the files in a structure like this.",
+      "step6": "styles of NewOne and NewTwo comps are like",
+      "step7": "and the two styles are exported via a router index.ts",
+      "step8": "And among the generated components, the isolated style are import via the router index",
+      "step9": "Similarly, the generated components are also exported via a comp router index",
+      "step10": "You might notice, we suggest put styles and comps under the folder of the project name (sample-app), it is b/c, sometimes, it's much more easy to directly copy&paste some internal comps or styles into another folder of another project name for sharing instead of making them general enough to be capable to be shared. As it might be difficult to ask the author to export via pkg manager and maintain stable versions, or sometimes, even they exported, the requirements on our sides might force us have to modify little bit to support new specific features rather than directly using them."
+    },
+    "view": {
+      "title": "Generate view template",
+      "step1": "Similarly, let's create two new view components based on the previous results.",
+      "step2": "Once done, al-cli will create the files like these",
+      "step3": "Similar we have the isolated style objects for two views",
+      "step4": "and the two styles are also exported via a router index.ts",
+      "step5": "then the styles will be injected into two views created."
+    },
+    "lyt": {
+      "title": "Generate layout template",
+      "step1": "Similarly, we could also create two new lyt components based on the previous results.",
+      "step2": "Make no mistake, once done, al-cli will create all the files in a structure like these.",
+      "step3": "Lyt components and their isolated styles"
+    }
+  }
+
+}

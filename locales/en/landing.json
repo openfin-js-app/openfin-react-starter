@@ -1,0 +1,58 @@
+{
+  "Welcome React TS":"Welcome to React Ts in en",
+  "header":{
+    "tabsName":{
+      "welcome":"Welcome",
+      "scaffolding":"al-cli",
+      "snapDock":"Snap&Dock",
+      "crossWin":"Cross-Win Comm",
+      "genConf":"Configuration",
+      "allCust":"All React",
+      "support":"Contrib&Cred"
+    },
+    "toolTip":{
+      "toggleTheme":"Toggle light/dark theme",
+      "github":"Github",
+      "changeLanguage":"Change language"
+    }
+  },
+  "welcomeSec":{
+    "title":"Openfin React Starter",
+    "subtitle":"Desktop app template in React via Openfin",
+    "startBtn":"Get Started"
+  },
+  "scaffoldingSec":{
+    "title":"Scaffolding tool: al-cli",
+    "desc":"A scaffolding tool is provided to help to generate template project or boilerplate codes, making developers life easier. Even thought developers donot have to follow, a component design pattern is also suggested alone with the scaffolding tool."
+  },
+  "snapDockSec":{
+    "title":"Out of box Snap&Dock",
+    "win1":"Window 1",
+    "win2":"Window 2",
+    "desc":"Openfin Snap & Dock feature is provided out of box, which could be transparent to developers. An undock button will be provided to let user undock out of the groups if the window is docked. Snapped windows will move together when dragged and will resize between themselves when user try to resize anyone."
+  },
+  "crossWin":{
+    "title":"Windows communicate in Redux actions",
+    "win":"Win",
+    "desc":"Provide the mechanism to support cross-window communication in Redux actions, which make multi-windows developing much easier."
+  },
+  "genConf":{
+    "title":"General configuration service",
+    "application":"Application",
+    "desc":"A general client side configuration service is provided. User could input or modify as they expected. Basing on it, developers could configure the application to response accordingly."
+  },
+  "allCust":{
+    "title":"All Customizable, All in React",
+    "desc":"All components, styles and structure are flexible and customizable, all in react. Easy to change, make developers life easier."
+  },
+  "support":{
+    "contributors":"Contributors: ",
+    "contributorNames":{
+      "albertleigh":"Albert Leigh"
+    },
+    "credits":"Credits: ",
+    "support":"Support: ",
+    "flatIconPhase1":"Icon made by ",
+    "flatIconPhase2":" from "
+  }
+}

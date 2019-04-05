@@ -1,0 +1,37 @@
+{
+  "openfinReactStarter": "Openfin react starter",
+
+  "start":"Get started",
+  "startInstallation":"Installer",
+  "startDevelopers":"For developers",
+  "startFaq":"FAQ",
+
+  "scaffolding":"AL-CLI",
+  "scaffoldingInstall":"Installation",
+  "scaffoldingGenrPrj":"Generating projects",
+  "scaffoldingStandalonePkg":"Standalone Package",
+  "scaffoldingGenrTpl":"Generating templates",
+
+  "browserAdaptor":"Browser Adaptor",
+  "browserAdaptorInstall":"Install BA",
+  "browserAdaptorUsecases":"BA user cases",
+
+  "reduxOpenfin":"Redux Openfin",
+  "reduxOpenfinInstall":"Install redux-openfin",
+  "reduxOpenfinCommPatt":"Common pattern",
+  "reduxOpenfinSupportApis":"Supported Apis",
+  "reduxOpenfinSharedActions":"Sharing actions",
+  "reduxOpenfinSnapDock":"Snap&dock",
+
+  "starterBase":"Starter kit",
+  "starterBaseFeatures":"Features",
+  "starterBaseReduxs":"Reduxs",
+  "starterBaseComps":"Components",
+  "starterBaseRoutes":"Routes",
+  "starterBaseWhyTs":"Why typescript?",
+
+  "about":"About",
+  "aboutCollaborators":"Collaborators",
+  "aboutThanks":"Thanks"
+
+}

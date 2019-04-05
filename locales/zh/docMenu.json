@@ -1,0 +1,37 @@
+{
+  "openfinReactStarter": "Openfin react 模板",
+
+  "start":"开始",
+  "startInstallation":"安装包",
+  "startDevelopers":"给开发者",
+  "startFaq":"FAQ",
+
+  "scaffolding":"代码生成工具 AL-CLI",
+  "scaffoldingInstall":"安装代码生成工具",
+  "scaffoldingGenrPrj":"生成模板工程",
+  "scaffoldingStandalonePkg":"Openfin-react-ts 独立打包",
+  "scaffoldingGenrTpl":"生成模板代码",
+
+  "browserAdaptor":"浏览器适配器",
+  "browserAdaptorInstall":"安装适配器",
+  "browserAdaptorUsecases":"适配器用例",
+
+  "reduxOpenfin":"Redux Openfin",
+  "reduxOpenfinInstall":"安装redux-openfin",
+  "reduxOpenfinCommPatt":"常用模式",
+  "reduxOpenfinSupportApis":"支持Apis",
+  "reduxOpenfinSharedActions":"Actions通信",
+  "reduxOpenfinSnapDock":"Snap&dock",
+
+  "starterBase":"模板工程代码解析",
+  "starterBaseFeatures":"功能",
+  "starterBaseReduxs":"Reduxs",
+  "starterBaseComps":"自带组件",
+  "starterBaseRoutes":"路径样式",
+  "starterBaseWhyTs":"为什么typescript?",
+
+  "about":"关于",
+  "aboutCollaborators":"开发人员",
+  "aboutThanks":"感谢"
+
+}
