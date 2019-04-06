@@ -8,22 +8,31 @@ import {
     LaunchBarLyt,
 } from 'react-openfin-mat-impl';
 
+
+import { ClientPrefix } from '../components'
+import launchBarItems from '../constants/launchBarItems';
+
 import dashboardRoutes from './Dashboard';
 import childrenRoutes from './ChildWindow';
 import notificationRoutes from './notification';
-import launchBarItems from '../constants/launchBarItems';
 
 import appLogo from '../assets/svg/app.svg';
 import companyLogo from '../assets/svg/company.svg';
 
 const ENABLE_LOADING_VIEW = process.env.REACT_APP_ENABLE_LOADING_VIEW.toLowerCase() === 'true';
 
-const Loading:React.FunctionComponent<{}> = ({})=>{
-    return (<LoadingLyt appLogo={appLogo} companyLogo={companyLogo} version={process.env.REACT_APP_VERSION}/>)
-}
+// Layouts
+const Loading:React.FunctionComponent<{}> = ({})=>(
+    <LoadingLyt appLogo={appLogo} companyLogo={companyLogo} version={process.env.REACT_APP_VERSION}/>
+)
 
 const Dashboard:React.FunctionComponent<{}> = ({...rest}) => {
-    return (<DashboardLyt appLogo={appLogo} routes={dashboardRoutes} {...rest}/>)
+    return (<DashboardLyt
+        appLogo={appLogo}
+        routes={dashboardRoutes}
+        headerPrefixElements={<ClientPrefix {...rest} />}
+        {...rest}
+    />)
 }
 
 const ChildWindow:React.FunctionComponent<{}> = ({...rest}) => {
