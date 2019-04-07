@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Client actions clientSetValue action 1`] = `
+Object {
+  "payload": Object {
+    "count": 1,
+  },
+  "type": "CLIENT_SET_VALUE",
+}
+`;
