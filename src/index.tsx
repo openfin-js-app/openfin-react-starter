@@ -3,6 +3,9 @@ import {Suspense} from 'react';
 import * as ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import { InitializeReactOpenfin, ReactOpenfin } from 'react-openfin';
+// README
+// alternative sample color settings uncomment to set the result 1#
+// import { InitalizaeReactOpenfinMatImpl } from 'react-openfin-mat-impl';
 import { I18nextProvider } from 'react-i18next';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -33,6 +36,16 @@ InitializeReactOpenfin({
     configTabs,
     launchBarItems,
 });
+
+// README
+// alternative sample color settings uncomment to set the result 2#
+// InitalizaeReactOpenfinMatImpl({
+//     primaryColor: '#d50000',
+//     successColor:'#ab47bc',
+//     infoColor:'#ff5722',
+//     warningColor:'#cddc39',
+//     dangerColor:'#ec407a',
+// })
 
 if(window.name === process.env.REACT_APP_FIN_UUID){
     window.store=configureStore(
