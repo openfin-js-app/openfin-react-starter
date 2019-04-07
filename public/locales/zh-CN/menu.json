@@ -19,5 +19,8 @@
   "report": {
     "sidebar":"系统汇报",
     "navbar":"系统汇报视图"
+  },
+  "staticMenu": {
+    "logout": "登出"
   }
 }

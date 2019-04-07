@@ -1,4 +1,8 @@
 import * as React from 'react';
+import { useContext } from 'react';
+
+import { ApplicationContext } from 'react-openfin';
+
 import {
     RouteItem,
     LoadingLyt,
@@ -8,6 +12,7 @@ import {
     LaunchBarLyt,
 } from 'react-openfin-mat-impl';
 
+import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 
 import { ClientPrefix } from '../components'
 import launchBarItems from '../constants/launchBarItems';
@@ -27,9 +32,31 @@ const Loading:React.FunctionComponent<{}> = ({})=>(
 )
 
 const Dashboard:React.FunctionComponent<{}> = ({...rest}) => {
+
+    const {
+        actions:{
+            onNewSnackBar
+        }
+    } = useContext(ApplicationContext);
+
+
+    const handleLogoutBtnClick = ()=>{
+        onNewSnackBar({
+            variant:'rose',
+            message:'User clicked the logout btn',
+            vertical:'top',
+            horizontal:'right',
+        })
+    }
+
     return (<DashboardLyt
         appLogo={appLogo}
         routes={dashboardRoutes}
+        menuItems={[{
+            icon:<ExitToAppIcon/>,
+            label:'staticMenu.logout',
+            onClick: handleLogoutBtnClick,
+        }]}
         headerPrefixElements={<ClientPrefix {...rest} />}
         {...rest}
     />)
