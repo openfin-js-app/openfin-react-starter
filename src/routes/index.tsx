@@ -44,6 +44,8 @@ const Dashboard:React.FunctionComponent<{}> = ({...rest}) => {
         onNewSnackBar({
             variant:'rose',
             message:'User clicked the logout btn',
+            // README
+            // vertical and horizontal fields are optional
             vertical:'top',
             horizontal:'right',
         })
@@ -52,12 +54,20 @@ const Dashboard:React.FunctionComponent<{}> = ({...rest}) => {
     return (<DashboardLyt
         appLogo={appLogo}
         routes={dashboardRoutes}
+        // README
+        // uncomment to hide the btn to switch to the launchbar
+        // hideSwitchToLaunchbar
         menuItems={[{
             icon:<ExitToAppIcon/>,
             label:'staticMenu.logout',
             onClick: handleLogoutBtnClick,
         }]}
+        // README
+        // comment to use the default prefix upon the header
         headerPrefixElements={<ClientPrefix {...rest} />}
+        // README
+        // uncomment to add custom suffix element upon the header
+        // headerSuffixElements={...}
         {...rest}
     />)
 }
