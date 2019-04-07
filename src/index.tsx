@@ -3,7 +3,7 @@ import {Suspense} from 'react';
 import * as ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import { InitializeReactOpenfin, ReactOpenfin } from 'react-openfin';
-// README
+// !!!README!!!
 // alternative sample color settings uncomment to set the result 1#
 // import { InitalizaeReactOpenfinMatImpl } from 'react-openfin-mat-impl';
 import { I18nextProvider } from 'react-i18next';
@@ -35,9 +35,30 @@ InitializeReactOpenfin({
     hist,
     configTabs,
     launchBarItems,
+    config:{
+        // !!!README!!!
+        //
+        // // default url to switch to
+        // defaultViewUrl:'/someUrl',
+        //
+        // !!!README!!!
+        // // protection fuse timeout specified over here
+        // // onAppAwaitDelayTime is the fuse timout time to switch from loading view
+        // onAppAwaitDelayTime: 4000,
+        //
+        // // onAppChildAwaitDelayTime is the fuse timout time to switch to target child url
+        // onAppChildAwaitDelayTime: 200,
+        //
+        // // onAppNotificationAwaitDelayTime is the fuse timout time to switch to target notification url
+        // onAppNotificationAwaitDelayTime: 200,
+        //
+        // // onAppClosingAwaitDelayTime is the fuse timout time to shutdown the whole application
+        // onAppClosingAwaitDelayTime: 200,
+
+    }
 });
 
-// README
+// !!!README!!!
 // alternative sample color settings uncomment to set the result 2#
 // InitalizaeReactOpenfinMatImpl({
 //     primaryColor: '#d50000',

@@ -54,7 +54,7 @@ const Dashboard:React.FunctionComponent<{}> = ({...rest}) => {
     return (<DashboardLyt
         appLogo={appLogo}
         routes={dashboardRoutes}
-        // README
+        // !!!README!!!
         // uncomment to hide the btn to switch to the launchbar
         // hideSwitchToLaunchbar
         menuItems={[{
@@ -62,10 +62,10 @@ const Dashboard:React.FunctionComponent<{}> = ({...rest}) => {
             label:'staticMenu.logout',
             onClick: handleLogoutBtnClick,
         }]}
-        // README
+        // !!!README!!!
         // comment to use the default prefix upon the header
         headerPrefixElements={<ClientPrefix {...rest} />}
-        // README
+        // !!!README!!!
         // uncomment to add custom suffix element upon the header
         // headerSuffixElements={...}
         {...rest}
