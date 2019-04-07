@@ -4,9 +4,13 @@ import { System, Event, Window } from 'redux-openfin';
 import { SHARED_ACTION_ORIGIN_TAG } from 'redux-openfin/channel';
 import {
     APPLICATION_AWAIT,
+    applicationReady,
     APPLICATION_CHILD_AWAIT,
+    applicationChildReady,
     APPLICATION_NOTIFICATION_AWAIT,
+    applicationNotificationReady,
     APPLICATION_CUR_WIN_CLOSING,
+    applicationCurWinReadyToClose,
     applicationNewSnackbar,
 } from 'react-openfin/reduxs';
 
@@ -47,6 +51,55 @@ describe('Client saga',()=>{
                 .isDone();
         })
     });
+
+    describe('handleStarting saga',()=>{
+
+        it('onAppAwait',()=>{
+            const action = { type: APPLICATION_AWAIT };
+            testSaga(handleStarting,action)
+                .next()
+                // @ts-ignore
+                .delay(3000)
+                .next()
+                .putResolve(applicationReady({}))
+                .next()
+                .isDone();
+        })
+
+        it('onNotificationAwait',()=>{
+            const action = { type: APPLICATION_NOTIFICATION_AWAIT };
+            testSaga(handleStarting,action)
+                .next()
+                // @ts-ignore
+                .putResolve(applicationNotificationReady({}))
+                .next()
+                .isDone();
+        })
+
+        it('onChildAwait',()=>{
+            const action = { type: APPLICATION_CHILD_AWAIT };
+            testSaga(handleStarting,action)
+                .next()
+                // @ts-ignore
+                .putResolve(applicationChildReady({}))
+                .next()
+                .isDone();
+        })
+
+    })
+
+    describe('handleAppClosing saga',()=>{
+
+        it('onClosing',()=>{
+            testSaga(handleAppClosing,{})
+                .next()
+                // @ts-ignore
+                .putResolve(applicationCurWinReadyToClose())
+                .next()
+                .isDone();
+        })
+
+    })
 
     it('default function register all event',()=>{
         testSaga(clientSaga)
