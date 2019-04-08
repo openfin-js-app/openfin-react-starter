@@ -31,7 +31,7 @@ const Loading:React.FunctionComponent<{}> = ({})=>(
     <LoadingLyt appLogo={appLogo} companyLogo={companyLogo} version={process.env.REACT_APP_VERSION}/>
 )
 
-const Dashboard:React.FunctionComponent<{}> = ({...rest}) => {
+export const Dashboard:React.FunctionComponent<{}> = ({...rest}) => {
 
     const {
         actions:{
@@ -72,15 +72,15 @@ const Dashboard:React.FunctionComponent<{}> = ({...rest}) => {
     />)
 }
 
-const ChildWindow:React.FunctionComponent<{}> = ({...rest}) => {
+export const ChildWindow:React.FunctionComponent<{}> = ({...rest}) => {
     return (<ChildWindowLyt appLogo={appLogo} routes={childrenRoutes} {...rest}/>)
 }
 
-const Notification:React.FunctionComponent<{}> = ({})=>{
+export const Notification:React.FunctionComponent<{}> = ({})=>{
     return (<NotificationLyt routes={notificationRoutes}/>)
 }
 
-const LaunchBar:React.FunctionComponent<{}> = ({})=>{
+export const LaunchBar:React.FunctionComponent<{}> = ({})=>{
     return (<LaunchBarLyt appLogo={appLogo} items={launchBarItems}/>)
 }
 
