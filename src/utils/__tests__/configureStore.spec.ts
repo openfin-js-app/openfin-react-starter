@@ -1,12 +1,6 @@
 import { compose } from 'redux';
 import { BrowserAdapter } from 'openfin-browser-adapter';
 
-import Dexie from 'dexie';
-import indexedDB from 'fake-indexeddb';
-
-Dexie.dependencies.indexedDB = indexedDB;
-Dexie.dependencies.IDBKeyRange = require('fake-indexeddb/lib/FDBKeyRange');
-
 import configureStore from '../configureStore';
 declare const window:any;
 
