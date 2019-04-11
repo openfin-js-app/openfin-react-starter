@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ClientPrefix comp childWindow view-one 1`] = `"http://localhost/childwindow/view-one"`;
+
+exports[`ClientPrefix comp childWindow view-two 1`] = `"http://localhost/childwindow/view-two"`;
+
+exports[`ClientPrefix comp dashboard accessibility 1`] = `"http://localhost/dashboard/accessibility"`;
+
+exports[`ClientPrefix comp dashboard view-one 1`] = `"http://localhost/dashboard/view-one"`;
+
+exports[`ClientPrefix comp dashboard view-two 1`] = `"http://localhost/dashboard/view-two"`;

@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Global routes default routes 1`] = `
+Array [
+  Object {
+    "component": [Function],
+    "path": "/loading",
+  },
+  Object {
+    "component": [Function],
+    "path": "/dashboard",
+  },
+  Object {
+    "component": [Function],
+    "path": "/childWindow",
+  },
+  Object {
+    "component": [Function],
+    "path": "/notification",
+  },
+  Object {
+    "component": [Function],
+    "path": "/launchBar",
+  },
+  Object {
+    "navbarName": "Redirect",
+    "path": "/",
+    "redirect": true,
+    "to": "/loading",
+  },
+]
+`;

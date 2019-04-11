@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Client reducer With parent state CLIENT_SET_VALUE 1`] = `
+Object {
+  "count": 1,
+}
+`;
+
+exports[`Client reducer Without parent state CLIENT_SET_VALUE 1`] = `
+Object {
+  "count": 1,
+}
+`;

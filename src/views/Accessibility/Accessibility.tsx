@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { useContext, MouseEventHandler, MouseEvent } from "react";
+import { useContext } from "react";
 import * as shortid from 'shortid';
 import { ApplicationContext } from 'react-openfin';
 
+import { buttonStyle } from 'react-openfin-mat-impl/assets/jss';
+
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-
 import { makeStyles } from '@material-ui/styles';
-import { createStyles } from '@material-ui/core/styles';
 
-import { buttonStyle } from '../../assets/jss/openfin-starter';
+import { createStyles } from '@material-ui/core/styles';
 
 const style = createStyles({
     primary: buttonStyle.primary,
@@ -22,18 +22,9 @@ const style = createStyles({
     simple: buttonStyle.simple,
 });
 
-interface IProps{
-    actions:{
-        onOpenNewSelf:MouseEventHandler<any>,
-        onOpenGoogle:MouseEventHandler<any>,
-        handleOpenSnackBar:(name:string)=>MouseEventHandler<any>,
-        handleCreateNotification:MouseEventHandler<any>,
-    },
-}
-
 const useStyles = makeStyles(style);
 
-const AccessibilityView:React.FunctionComponent<IProps> = (
+const AccessibilityView:React.FunctionComponent<{}> = (
     {}
 )=>{
 

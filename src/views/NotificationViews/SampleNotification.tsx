@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import cx from "classnames";
 import { connect } from 'react-redux';
 
-import { sampleNotificationViewStyle as style } from '../../assets/jss/openfin-starter';
+import { sampleNotificationViewStyle as style } from '../../assets/jss/sample-name';
 
 import appSvg from '../../assets/svg/app.svg';
 

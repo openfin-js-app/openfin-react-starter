@@ -1,3 +1,5 @@
+import {ILaunchBarItem} from 'react-openfin';
+
 import AccessibilityIcon from '@material-ui/icons/Accessibility';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
@@ -10,14 +12,7 @@ import svgNumberOne from '../assets/svg/other/number-1.svg';
 import svgNumberTwo from '../assets/svg/other/number-2.svg';
 import googleSearch from '../assets/svg/other/google-search.svg';
 
-export interface IlaunchBarItemType {
-    icon:any,
-    disabled:boolean,
-    svg:string,
-    appJson:any,
-}
-
-export const sampleItems:IlaunchBarItemType[]=[
+export const sampleItems:ILaunchBarItem[]=[
     {
         icon:AccessibilityIcon,
         disabled:false,
@@ -62,6 +57,10 @@ export const sampleItems:IlaunchBarItemType[]=[
             minWidth:415,
             minHeight:100,
         },
+        // !!!README!!!
+        // to hide a launch bar item like basing on entitlement,
+        // set shown field to false or a cb returning false
+        // shown:()=>{return false},
     },
     {
         icon:ReportIcon,
@@ -93,7 +92,7 @@ export const sampleItems:IlaunchBarItemType[]=[
     },
 ];
 
-export const disabledItems:IlaunchBarItemType[]=[
+export const disabledItems:ILaunchBarItem[]=[
     {
         icon:AccountBoxIcon,
         disabled:true,

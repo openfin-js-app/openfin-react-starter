@@ -13,6 +13,8 @@ export default (
 )=>{
 
     const sagaMiddleware = createSagaMiddleware();
+    // !!!README!!!
+    // use the built-in middleware to communicate with react-openfin for advanced features
     const reactOpenfinMiddleware = createReactOpenfinMiddleware();
 
     const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
