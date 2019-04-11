@@ -1,4 +1,4 @@
-## [0.70.10.beta] 2019-04-05
+## [0.70.20] 2019-04-11
 - Embrace react hook apis
 - Initially integrate react-openfin
 - Initially integrate react-openfin-mat-impl
