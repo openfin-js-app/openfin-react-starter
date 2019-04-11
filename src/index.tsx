@@ -16,6 +16,7 @@ import hist from './utils/history';
 import './assets/css/main.css';
 
 import setPlatformClass from './utils/setPlatformClass';
+import CtxProviders from './providers';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
@@ -86,7 +87,9 @@ ReactDOM.render(
         <Provider store = {window.store}>
             <Suspense fallback={<CircularProgress/>}>
                 <I18nextProvider i18n={i18n}>
-                    <App/>
+                    <CtxProviders>
+                        <App/>
+                    </CtxProviders>
                 </I18nextProvider>
             </Suspense>
         </Provider>

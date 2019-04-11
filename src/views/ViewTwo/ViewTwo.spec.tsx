@@ -6,6 +6,7 @@ import { createShallow, createMount } from '@material-ui/core/test-utils';
 import Button from '@material-ui/core/Button';
 import configurestore from 'redux-mock-store';
 
+import CtxProviders from '../../providers'
 
 import ViewTwo from './ViewTwo';
 
@@ -48,7 +49,9 @@ describe('ViewTwo',()=>{
         const wrapper = mount(
             <ReactOpenfin>
                 <Provider store={store}>
-                    <ViewTwo/>
+                    <CtxProviders>
+                        <ViewTwo/>
+                    </CtxProviders>
                 </Provider>
             </ReactOpenfin>
         );
