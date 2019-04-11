@@ -33,6 +33,10 @@ const dashboardRoutes:RouteItem[]=[
         navbarName:"viewTwo.navbar",
         icon: ChatIcon,
         component: ViewTwo,
+        // !!!README!!!
+        // to hide a view like basing on entitlement,
+        // set shown field to false or a cb returning false
+        // shown:()=>{return false},
     },
     {
         path:'/dashboard/config',

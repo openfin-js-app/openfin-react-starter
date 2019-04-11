@@ -57,6 +57,10 @@ export const sampleItems:ILaunchBarItem[]=[
             minWidth:415,
             minHeight:100,
         },
+        // !!!README!!!
+        // to hide a launch bar item like basing on entitlement,
+        // set shown field to false or a cb returning false
+        // shown:()=>{return false},
     },
     {
         icon:ReportIcon,
