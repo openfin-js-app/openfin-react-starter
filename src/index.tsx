@@ -30,6 +30,9 @@ declare const window:any;
 
 InitializeReactOpenfin({
     fin:window.fin,
+    // !!!README!!!
+    // uncomment to shut the browser adaptor up
+    // finMockupForceSilentMode: true,
     finUuid: process.env.REACT_APP_FIN_UUID,
     sharedActions,
     i18n,
