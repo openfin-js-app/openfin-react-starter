@@ -4,13 +4,13 @@ import ChatIcon from '@material-ui/icons/Chat';
 import ReportIcon from '@material-ui/icons/Report';
 import SettingsIcon from '@material-ui/icons/Settings';
 
-import { RouteItem } from './Base';
+import { RouteItem, ReportView } from 'react-openfin-mat-impl';
+
+import { MyConfigView } from '../constants/configTabs';
 
 import Accessibility from '../views/Accessibility/Accessibility';
 import ViewOne from '../views/ViewOne/ViewOne';
 import ViewTwo from "../views/ViewTwo/ViewTwo";
-import ReportView from "../views/ReportView/ReportView";
-import ConfigView from '../views/ConfigView/ConfigView';
 
 const dashboardRoutes:RouteItem[]=[
     {
@@ -33,13 +33,17 @@ const dashboardRoutes:RouteItem[]=[
         navbarName:"viewTwo.navbar",
         icon: ChatIcon,
         component: ViewTwo,
+        // !!!README!!!
+        // to hide a view like basing on entitlement,
+        // set shown field to false or a cb returning false
+        // shown:()=>{return false},
     },
     {
         path:'/dashboard/config',
         sidebarName:"configuration.sidebar",
         navbarName:"configuration.navbar",
         icon: SettingsIcon,
-        component: ConfigView,
+        component: MyConfigView,
     },
     {
         path:'/dashboard/report',

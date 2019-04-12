@@ -1,11 +1,8 @@
 import { compose } from 'redux';
 import { BrowserAdapter } from 'openfin-browser-adapter';
+
 import configureStore from '../configureStore';
-
 declare const window:any;
-
-
-jest.mock('../../dexie/db');
 
 describe('ConfigStore util', ()=>{
 

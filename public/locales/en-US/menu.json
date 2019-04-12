@@ -19,5 +19,8 @@
   "report": {
     "sidebar":"Sys Report",
     "navbar":"View SysReport"
+  },
+  "staticMenu": {
+    "logout": "Logout"
   }
 }

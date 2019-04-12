@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`ConfigLang render en-US correctly and switch to zh-CN 1`] = `
-Array [
-  Array [
-    "zh-CN",
-  ],
-]
-`;

@@ -3,12 +3,11 @@ import BusinessIcon from '@material-ui/icons/Business';
 import ChatIcon from '@material-ui/icons/Chat';
 import ReportIcon from '@material-ui/icons/Report';
 
-import { RouteItem } from './Base';
+import { RouteItem, ReportView } from 'react-openfin-mat-impl';
 
 import Accessibility from '../views/Accessibility/Accessibility';
 import ViewOne from '../views/ViewOne/ViewOne';
 import ViewTwo from '../views/ViewTwo/ViewTwo';
-import ReportView from '../views/ReportView/ReportView';
 
 const childRoutes:RouteItem[]=[
     {

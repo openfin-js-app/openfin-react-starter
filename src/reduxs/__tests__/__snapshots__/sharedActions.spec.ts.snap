@@ -2,8 +2,6 @@
 
 exports[`shared actions all shared actions 1`] = `
 Array [
-  "APPLICATION_SET_LOADING_MSG",
-  "APPLICATION_LAUNCH_NEW_WINDOW",
   "CLIENT_SET_VALUE",
 ]
 `;
