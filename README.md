@@ -22,7 +22,6 @@ Openfin react starter in ts
 * Support snap&dock out of box
 * Support Notification Window
 * Support HOC Config context
-* Support HOC Config context
 * Embrace react hook apis
 
 [LICENSE]: ./LICENSE.md
