@@ -42,6 +42,8 @@ InitializeReactOpenfin({
     config:{
         // !!!README!!!
         //
+        // // uncomment to hide drawer on start
+        // defaultDashboardDrawerShown: false,
         // // default url to switch to
         // defaultViewUrl:'/someUrl',
         //

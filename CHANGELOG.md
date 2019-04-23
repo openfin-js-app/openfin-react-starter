@@ -1,3 +1,6 @@
+## [0.70.40] 2019-04-23
+- Integrate react-openfin-scripts@^0.40.20 to simplify the scaffolding process
+
 ## [0.70.20] 2019-04-11
 - Embrace react hook apis
 - Initially integrate react-openfin
