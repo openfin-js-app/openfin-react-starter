@@ -47,9 +47,6 @@ describe('ClientPrefix comp',()=>{
 
         const pathname = '/dashboard/accessibility';
 
-        jsdom.reconfigure({url:`http://localhost${pathname}`});
-
-        expect(window.location.href.toLowerCase()).toMatchSnapshot();
 
         const wrapper = mount(
             <ReactOpenfin>
@@ -77,10 +74,6 @@ describe('ClientPrefix comp',()=>{
 
         const pathname = '/dashboard/view-one';
 
-        jsdom.reconfigure({url:`http://localhost${pathname}`});
-
-        expect(window.location.href.toLowerCase()).toMatchSnapshot();
-
         const wrapper = mount(
             <ReactOpenfin>
                 <Provider store = {store}>
@@ -106,10 +99,6 @@ describe('ClientPrefix comp',()=>{
     it('dashboard view-two',()=>{
 
         const pathname = '/dashboard/view-two';
-
-        jsdom.reconfigure({url:`http://localhost${pathname}`});
-
-        expect(window.location.href.toLowerCase()).toMatchSnapshot();
 
         const wrapper = mount(
             <ReactOpenfin>
@@ -137,10 +126,6 @@ describe('ClientPrefix comp',()=>{
 
         const pathname = '/childWindow/view-one';
 
-        jsdom.reconfigure({url:`http://localhost${pathname}`});
-
-        expect(window.location.href.toLowerCase()).toMatchSnapshot();
-
         const wrapper = mount(
             <ReactOpenfin>
                 <Provider store = {store}>
@@ -166,10 +151,6 @@ describe('ClientPrefix comp',()=>{
     it('childWindow view-two',()=>{
 
         const pathname = '/childWindow/view-two';
-
-        jsdom.reconfigure({url:`http://localhost${pathname}`});
-
-        expect(window.location.href.toLowerCase()).toMatchSnapshot();
 
         const wrapper = mount(
             <ReactOpenfin>
