@@ -16,7 +16,8 @@ const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 3000;
 let expressServer = null;
 
 async function startServer() {
-    expressServer = spawn('node',[paths.appScript+'/server.js']);
+    const env = Object.create(process.env);
+    expressServer = spawn( 'node',[paths.appScript+'/server.js'], env );
     expressServer.stdout.on('data',(data)=>{
         log(chalk.cyan(Buffer.from(data,'binary').toString()));
     });
