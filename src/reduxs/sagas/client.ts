@@ -13,6 +13,9 @@ import {
     applicationNotificationReady,
     APPLICATION_CUR_WIN_CLOSING,
     applicationCurWinReadyToClose,
+    APPLICATION_LAUNCH_BAR_TOGGLED,
+    // types
+    APPLICATION_LAUNCH_BAR_STATUS,
 } from 'react-openfin/reduxs';
 
 import {
@@ -79,6 +82,18 @@ export function* handleAppClosing(action){
     yield putResolve(applicationCurWinReadyToClose());
 }
 
+export function* handleLaunchbarToggled(action) {
+    const { status } = action.payload;
+
+    if (status === APPLICATION_LAUNCH_BAR_STATUS.SWITCH_TO_MAIN_WIN){
+        yield put(applicationNewSnackbar({
+            message:`Switch to Main Window`,
+            variant:'primary'
+        }))
+    }
+
+}
+
 export default function *() {
     yield takeEvery(CLIENT_SET_VALUE,handleTakingClientSetValue);
 
@@ -88,4 +103,5 @@ export default function *() {
     yield takeLatest(APPLICATION_CHILD_AWAIT, handleStarting);
     yield takeLatest(APPLICATION_NOTIFICATION_AWAIT, handleStarting);
     yield takeLatest(APPLICATION_CUR_WIN_CLOSING, handleAppClosing);
+    yield takeLatest(APPLICATION_LAUNCH_BAR_TOGGLED, handleLaunchbarToggled);
 }
