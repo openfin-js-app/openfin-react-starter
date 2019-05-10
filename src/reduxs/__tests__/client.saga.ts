@@ -12,13 +12,18 @@ import {
     APPLICATION_CUR_WIN_CLOSING,
     applicationCurWinReadyToClose,
     applicationNewSnackbar,
+    APPLICATION_LAUNCH_BAR_TOGGLED,
+    APPLICATION_LAUNCH_BAR_STATUS,
 } from 'react-openfin/reduxs';
 
 import {
     CLIENT_SET_VALUE,
 } from '..';
 
-import { handleTakingClientSetValue, handleStarting, handleAppClosing, default as clientSaga } from '../sagas/client';
+import {
+    handleTakingClientSetValue, handleStarting, handleAppClosing, handleLaunchbarToggled,
+    default as clientSaga
+} from '../sagas/client';
 
 describe('Client saga',()=>{
 
@@ -101,6 +106,29 @@ describe('Client saga',()=>{
 
     })
 
+    describe('handleLaunchbarToggled saga',()=>{
+
+        it('on SWITCH_TO_MAIN_WIN',()=>{
+            const action = {payload:{status:APPLICATION_LAUNCH_BAR_STATUS.SWITCH_TO_MAIN_WIN}}
+            testSaga(handleLaunchbarToggled,action)
+                .next()
+                .put(applicationNewSnackbar({
+                    message:`Switch to Main Window`,
+                    variant:'primary'
+                }))
+                .next()
+                .isDone();
+        })
+
+        it('on SWITCH_TO_LAUNCHBAR',()=>{
+            const action = {payload:{status:APPLICATION_LAUNCH_BAR_STATUS.SWITCH_TO_LAUNCHBAR}}
+            testSaga(handleLaunchbarToggled,action)
+                .next()
+                .isDone();
+        })
+
+    })
+
     it('default function register all event',()=>{
         testSaga(clientSaga)
             .next()
@@ -113,6 +141,8 @@ describe('Client saga',()=>{
             .takeLatest(APPLICATION_NOTIFICATION_AWAIT,handleStarting)
             .next()
             .takeLatest(APPLICATION_CUR_WIN_CLOSING,handleAppClosing)
+            .next()
+            .takeLatest(APPLICATION_LAUNCH_BAR_TOGGLED,handleLaunchbarToggled)
             .next()
             .isDone();
     })
