@@ -99,7 +99,7 @@ describe('Client saga',()=>{
             testSaga(handleAppClosing,{})
                 .next()
                 // @ts-ignore
-                .putResolve(applicationCurWinReadyToClose())
+                .putResolve(applicationCurWinReadyToClose({}))
                 .next()
                 .isDone();
         })

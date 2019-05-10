@@ -79,7 +79,11 @@ export function* handleStarting(action){
 
 export function* handleAppClosing(action){
     console.log('client saga::handleAppClosing');
-    yield putResolve(applicationCurWinReadyToClose());
+    yield putResolve(applicationCurWinReadyToClose({
+        // !!!README!!!
+        // should set skipClosing to truthy if wanna skip to close current window
+        // skipClosing : some truthy condition
+    }));
 }
 
 export function* handleLaunchbarToggled(action) {
