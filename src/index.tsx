@@ -75,12 +75,9 @@ InitializeReactOpenfin({
 // })
 
 if(window.name === process.env.REACT_APP_FIN_UUID){
-    window.store=configureStore(
-        sharedActions,
-    );
+    window.store=configureStore();
 }else{
     window.store=configureStore(
-        sharedActions,
         window.opener.store.getState()
     );
 }

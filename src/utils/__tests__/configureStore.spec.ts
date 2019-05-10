@@ -17,9 +17,7 @@ describe('ConfigStore util', ()=>{
 
         window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__= compose;
 
-        const store = configureStore(
-            [],
-        );
+        const store = configureStore();
         expect(store).toBeTruthy();
     });
 
@@ -27,9 +25,7 @@ describe('ConfigStore util', ()=>{
 
         delete window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
 
-        const store = configureStore(
-            [],
-        );
+        const store = configureStore();
         expect(store).toBeTruthy();
     });
 
