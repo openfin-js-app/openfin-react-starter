@@ -14,7 +14,7 @@ const ClientLaunchFirstAppBar:React.FunctionComponent<{}>=(
     props
 )=>{
 
-    const classes = useStyles();
+    const classes = useStyles({});
 
     return (<div className={classes.outmostContainer}>
         <img src={appLogo} className={classes.appLogoImg}/>

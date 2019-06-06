@@ -2,19 +2,19 @@
 
 exports[`ClientLaunchFirstAppBar render correctly by default 1`] = `
 <div
-  className="Hook-outmostContainer-1xszbs5"
+  className="makeStyles-outmostContainer-1"
 >
   <img
-    className="Hook-appLogoImg-1yqdp6t"
+    className="makeStyles-appLogoImg-2"
     src="app.svg"
   />
-  <WithStyles(IconButton)
+  <WithStyles(ForwardRef(IconButton))
     aria-label="ThumbUp"
-    className="Hook-testBtn-ug58h2"
+    className="makeStyles-testBtn-3"
   >
-    <pure(ThumbUpIcon)
+    <ThumbUpIcon
       fontSize="small"
     />
-  </WithStyles(IconButton)>
+  </WithStyles(ForwardRef(IconButton))>
 </div>
 `;

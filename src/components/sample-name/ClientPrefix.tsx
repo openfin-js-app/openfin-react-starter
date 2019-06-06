@@ -49,7 +49,7 @@ const ClientPrefix:React.FunctionComponent<IProps> = (
 
     const { location } = props;
 
-    const classes = useStyles();
+    const classes = useStyles({});
 
     const {
         actions:{

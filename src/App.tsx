@@ -50,7 +50,7 @@ const App:React.FunctionComponent<{}> = (
     } = useContext(ConfigContext);
 
 
-    const muiTheme = buildMuiTheme(theme);
+    const muiTheme = buildMuiTheme({},theme);
 
     return (
         <React.Fragment>
