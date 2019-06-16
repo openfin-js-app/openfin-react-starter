@@ -1,4 +1,4 @@
-## [0.90.20] 2019-06-10
+## [1.0.0] 2019-06-16
 - Update dependencies to
     - @material-ui/core @ ^4.0.2
     - create-react-app @ 3.0.1
