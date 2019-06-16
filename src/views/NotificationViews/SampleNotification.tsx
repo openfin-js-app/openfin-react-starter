@@ -24,7 +24,7 @@ const SampleNotificationView:React.FunctionComponent<IProps> = (
     }
 )=>{
 
-    const classes = useStyles();
+    const classes = useStyles({});
 
     return (
         <div className={classes.container}>

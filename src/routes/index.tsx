@@ -14,7 +14,7 @@ import {
 
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 
-import { ClientPrefix } from '../components'
+import { ClientPrefix, ClientLaunchFirstAppBar } from '../components'
 import launchBarItems from '../constants/launchBarItems';
 
 import dashboardRoutes from './Dashboard';
@@ -80,8 +80,8 @@ export const Notification:React.FunctionComponent<{}> = ({})=>{
     return (<NotificationLyt routes={notificationRoutes}/>)
 }
 
-export const LaunchBar:React.FunctionComponent<{}> = ({})=>{
-    return (<LaunchBarLyt appLogo={appLogo} items={launchBarItems}/>)
+export const LaunchBar:React.FunctionComponent<{}> = ()=>{
+    return (<LaunchBarLyt appLogo={appLogo} items={launchBarItems} firstAppBar={<ClientLaunchFirstAppBar/>}/>)
 }
 
 const indexRoutes:RouteItem[] = [

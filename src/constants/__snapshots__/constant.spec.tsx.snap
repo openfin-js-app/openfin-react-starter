@@ -45,11 +45,11 @@ Array [
         "_name": "newWinTop",
         "_props": Object {
           "InputProps": Object {
-            "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+            "endAdornment": <ForwardRef(WithStyles)
               position="end"
             >
               Pixel
-            </WithStyles(WithFormControlContext(InputAdornment))>,
+            </ForwardRef(WithStyles)>,
           },
         },
         "_type": 6,
@@ -60,11 +60,11 @@ Array [
         "_name": "newWinLeft",
         "_props": Object {
           "InputProps": Object {
-            "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+            "endAdornment": <ForwardRef(WithStyles)
               position="end"
             >
               Pixel
-            </WithStyles(WithFormControlContext(InputAdornment))>,
+            </ForwardRef(WithStyles)>,
           },
         },
         "_type": 6,
@@ -75,11 +75,11 @@ Array [
         "_name": "newWinWidth",
         "_props": Object {
           "InputProps": Object {
-            "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+            "endAdornment": <ForwardRef(WithStyles)
               position="end"
             >
               Pixel
-            </WithStyles(WithFormControlContext(InputAdornment))>,
+            </ForwardRef(WithStyles)>,
           },
         },
         "_type": 6,
@@ -90,11 +90,11 @@ Array [
         "_name": "newWinHeight",
         "_props": Object {
           "InputProps": Object {
-            "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+            "endAdornment": <ForwardRef(WithStyles)
               position="end"
             >
               Pixel
-            </WithStyles(WithFormControlContext(InputAdornment))>,
+            </ForwardRef(WithStyles)>,
           },
         },
         "_type": 6,
@@ -105,11 +105,11 @@ Array [
         "_name": "newWindDeltaLeft",
         "_props": Object {
           "InputProps": Object {
-            "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+            "endAdornment": <ForwardRef(WithStyles)
               position="end"
             >
               Pixel
-            </WithStyles(WithFormControlContext(InputAdornment))>,
+            </ForwardRef(WithStyles)>,
           },
         },
         "_type": 6,
@@ -120,17 +120,26 @@ Array [
         "_name": "newWindDeltaHeight",
         "_props": Object {
           "InputProps": Object {
-            "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+            "endAdornment": <ForwardRef(WithStyles)
               position="end"
             >
               Pixel
-            </WithStyles(WithFormControlContext(InputAdornment))>,
+            </ForwardRef(WithStyles)>,
           },
         },
         "_type": 6,
       },
     ],
-    "_icon": [Function],
+    "_icon": Object {
+      "$$typeof": Symbol(react.memo),
+      "compare": null,
+      "displayName": "SettingsIcon",
+      "muiName": "SvgIcon",
+      "type": Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "render": [Function],
+      },
+    },
     "_label": "application.label",
     "_name": "application",
     "_order": 0,
@@ -150,7 +159,16 @@ Array [
         "_type": 1,
       },
     ],
-    "_icon": [Function],
+    "_icon": Object {
+      "$$typeof": Symbol(react.memo),
+      "compare": null,
+      "displayName": "SettingsIcon",
+      "muiName": "SvgIcon",
+      "type": Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "render": [Function],
+      },
+    },
     "_label": "about.label",
     "_name": "about",
     "_order": 1,
@@ -237,7 +255,16 @@ Array [
         "_type": 1,
       },
     ],
-    "_icon": [Function],
+    "_icon": Object {
+      "$$typeof": Symbol(react.memo),
+      "compare": null,
+      "displayName": "SettingsIcon",
+      "muiName": "SvgIcon",
+      "type": Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "render": [Function],
+      },
+    },
     "_label": "sample.label",
     "_name": "sample",
     "_order": 2,
@@ -261,7 +288,16 @@ Array [
       "url": "/childWindow/accessibility",
     },
     "disabled": false,
-    "icon": [Function],
+    "icon": Object {
+      "$$typeof": Symbol(react.memo),
+      "compare": null,
+      "displayName": "AccessibilityIcon",
+      "muiName": "SvgIcon",
+      "type": Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "render": [Function],
+      },
+    },
     "svg": null,
   },
   Object {
@@ -306,7 +342,16 @@ Array [
       "url": "/childWindow/report",
     },
     "disabled": false,
-    "icon": [Function],
+    "icon": Object {
+      "$$typeof": Symbol(react.memo),
+      "compare": null,
+      "displayName": "ReportIcon",
+      "muiName": "SvgIcon",
+      "type": Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "render": [Function],
+      },
+    },
     "svg": null,
   },
   Object {
@@ -325,31 +370,76 @@ Array [
   Object {
     "appJson": Object {},
     "disabled": true,
-    "icon": [Function],
+    "icon": Object {
+      "$$typeof": Symbol(react.memo),
+      "compare": null,
+      "displayName": "AccountBoxIcon",
+      "muiName": "SvgIcon",
+      "type": Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "render": [Function],
+      },
+    },
     "svg": null,
   },
   Object {
     "appJson": Object {},
     "disabled": true,
-    "icon": [Function],
+    "icon": Object {
+      "$$typeof": Symbol(react.memo),
+      "compare": null,
+      "displayName": "BookmarkIcon",
+      "muiName": "SvgIcon",
+      "type": Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "render": [Function],
+      },
+    },
     "svg": null,
   },
   Object {
     "appJson": Object {},
     "disabled": true,
-    "icon": [Function],
+    "icon": Object {
+      "$$typeof": Symbol(react.memo),
+      "compare": null,
+      "displayName": "BackupIcon",
+      "muiName": "SvgIcon",
+      "type": Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "render": [Function],
+      },
+    },
     "svg": null,
   },
   Object {
     "appJson": Object {},
     "disabled": true,
-    "icon": [Function],
+    "icon": Object {
+      "$$typeof": Symbol(react.memo),
+      "compare": null,
+      "displayName": "BugReportIcon",
+      "muiName": "SvgIcon",
+      "type": Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "render": [Function],
+      },
+    },
     "svg": null,
   },
   Object {
     "appJson": Object {},
     "disabled": true,
-    "icon": [Function],
+    "icon": Object {
+      "$$typeof": Symbol(react.memo),
+      "compare": null,
+      "displayName": "LanguageIcon",
+      "muiName": "SvgIcon",
+      "type": Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "render": [Function],
+      },
+    },
     "svg": null,
   },
 ]

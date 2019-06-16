@@ -1,77 +1,44 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SampleNotificationView check the content of typography 1`] = `
-<WithStyles(Typography)
+<WithStyles(ForwardRef(Typography))
   variant="h2"
 >
-  <Typography
-    align="inherit"
+  <ForwardRef(Typography)
     classes={
       Object {
-        "alignCenter": "MuiTypography-alignCenter-24",
-        "alignJustify": "MuiTypography-alignJustify-26",
-        "alignLeft": "MuiTypography-alignLeft-23",
-        "alignRight": "MuiTypography-alignRight-25",
-        "body1": "MuiTypography-body1-10",
-        "body2": "MuiTypography-body2-9",
-        "button": "MuiTypography-button-12",
-        "caption": "MuiTypography-caption-11",
-        "colorError": "MuiTypography-colorError-35",
-        "colorInherit": "MuiTypography-colorInherit-30",
-        "colorPrimary": "MuiTypography-colorPrimary-31",
-        "colorSecondary": "MuiTypography-colorSecondary-32",
-        "colorTextPrimary": "MuiTypography-colorTextPrimary-33",
-        "colorTextSecondary": "MuiTypography-colorTextSecondary-34",
-        "display1": "MuiTypography-display1-5",
-        "display2": "MuiTypography-display2-4",
-        "display3": "MuiTypography-display3-3",
-        "display4": "MuiTypography-display4-2",
-        "gutterBottom": "MuiTypography-gutterBottom-28",
-        "h1": "MuiTypography-h1-13",
-        "h2": "MuiTypography-h2-14",
-        "h3": "MuiTypography-h3-15",
-        "h4": "MuiTypography-h4-16",
-        "h5": "MuiTypography-h5-17",
-        "h6": "MuiTypography-h6-18",
-        "headline": "MuiTypography-headline-6",
-        "inline": "MuiTypography-inline-36",
-        "noWrap": "MuiTypography-noWrap-27",
-        "overline": "MuiTypography-overline-21",
-        "paragraph": "MuiTypography-paragraph-29",
-        "root": "MuiTypography-root-1",
-        "srOnly": "MuiTypography-srOnly-22",
-        "subheading": "MuiTypography-subheading-8",
-        "subtitle1": "MuiTypography-subtitle1-19",
-        "subtitle2": "MuiTypography-subtitle2-20",
-        "title": "MuiTypography-title-7",
+        "alignCenter": "MuiTypography-alignCenter",
+        "alignJustify": "MuiTypography-alignJustify",
+        "alignLeft": "MuiTypography-alignLeft",
+        "alignRight": "MuiTypography-alignRight",
+        "body1": "MuiTypography-body1",
+        "body2": "MuiTypography-body2",
+        "button": "MuiTypography-button",
+        "caption": "MuiTypography-caption",
+        "colorError": "MuiTypography-colorError",
+        "colorInherit": "MuiTypography-colorInherit",
+        "colorPrimary": "MuiTypography-colorPrimary",
+        "colorSecondary": "MuiTypography-colorSecondary",
+        "colorTextPrimary": "MuiTypography-colorTextPrimary",
+        "colorTextSecondary": "MuiTypography-colorTextSecondary",
+        "displayBlock": "MuiTypography-displayBlock",
+        "displayInline": "MuiTypography-displayInline",
+        "gutterBottom": "MuiTypography-gutterBottom",
+        "h1": "MuiTypography-h1",
+        "h2": "MuiTypography-h2",
+        "h3": "MuiTypography-h3",
+        "h4": "MuiTypography-h4",
+        "h5": "MuiTypography-h5",
+        "h6": "MuiTypography-h6",
+        "noWrap": "MuiTypography-noWrap",
+        "overline": "MuiTypography-overline",
+        "paragraph": "MuiTypography-paragraph",
+        "root": "MuiTypography-root",
+        "srOnly": "MuiTypography-srOnly",
+        "subtitle1": "MuiTypography-subtitle1",
+        "subtitle2": "MuiTypography-subtitle2",
       }
     }
-    color="default"
-    gutterBottom={false}
-    headlineMapping={
-      Object {
-        "body1": "p",
-        "body2": "p",
-        "display1": "h1",
-        "display2": "h1",
-        "display3": "h1",
-        "display4": "h1",
-        "h1": "h1",
-        "h2": "h2",
-        "h3": "h3",
-        "h4": "h4",
-        "h5": "h5",
-        "h6": "h6",
-        "headline": "h1",
-        "subheading": "h3",
-        "subtitle1": "h6",
-        "subtitle2": "h6",
-        "title": "h2",
-      }
-    }
-    inline={false}
-    noWrap={false}
-    paragraph={false}
     theme={
       Object {
         "breakpoints": Object {
@@ -204,9 +171,7 @@ exports[`SampleNotificationView check the content of typography 1`] = `
         "shape": Object {
           "borderRadius": 4,
         },
-        "spacing": Object {
-          "unit": 8,
-        },
+        "spacing": [Function],
         "transitions": Object {
           "create": [Function],
           "duration": Object {
@@ -228,14 +193,6 @@ exports[`SampleNotificationView check the content of typography 1`] = `
         },
         "typography": Object {
           "body1": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
-            "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-            "fontSize": "0.875rem",
-            "fontWeight": 400,
-            "lineHeight": "1.46429em",
-          },
-          "body1Next": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
             "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
             "fontSize": "1rem",
             "fontWeight": 400,
@@ -243,29 +200,13 @@ exports[`SampleNotificationView check the content of typography 1`] = `
             "lineHeight": 1.5,
           },
           "body2": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
-            "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-            "fontSize": "0.875rem",
-            "fontWeight": 500,
-            "lineHeight": "1.71429em",
-          },
-          "body2Next": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
             "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
             "fontSize": "0.875rem",
             "fontWeight": 400,
             "letterSpacing": "0.01071em",
-            "lineHeight": 1.5,
+            "lineHeight": 1.43,
           },
           "button": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
-            "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-            "fontSize": "0.875rem",
-            "fontWeight": 500,
-            "textTransform": "uppercase",
-          },
-          "buttonNext": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
             "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
             "fontSize": "0.875rem",
             "fontWeight": 500,
@@ -274,60 +215,19 @@ exports[`SampleNotificationView check the content of typography 1`] = `
             "textTransform": "uppercase",
           },
           "caption": Object {
-            "color": "rgba(0, 0, 0, 0.54)",
-            "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-            "fontSize": "0.75rem",
-            "fontWeight": 400,
-            "lineHeight": "1.375em",
-          },
-          "captionNext": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
             "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
             "fontSize": "0.75rem",
             "fontWeight": 400,
             "letterSpacing": "0.03333em",
             "lineHeight": 1.66,
           },
-          "display1": Object {
-            "color": "rgba(0, 0, 0, 0.54)",
-            "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-            "fontSize": "2.125rem",
-            "fontWeight": 400,
-            "lineHeight": "1.20588em",
-          },
-          "display2": Object {
-            "color": "rgba(0, 0, 0, 0.54)",
-            "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-            "fontSize": "2.8125rem",
-            "fontWeight": 400,
-            "lineHeight": "1.13333em",
-            "marginLeft": "-.02em",
-          },
-          "display3": Object {
-            "color": "rgba(0, 0, 0, 0.54)",
-            "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-            "fontSize": "3.5rem",
-            "fontWeight": 400,
-            "letterSpacing": "-.02em",
-            "lineHeight": "1.30357em",
-            "marginLeft": "-.02em",
-          },
-          "display4": Object {
-            "color": "rgba(0, 0, 0, 0.54)",
-            "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-            "fontSize": "7rem",
-            "fontWeight": 300,
-            "letterSpacing": "-.04em",
-            "lineHeight": "1.14286em",
-            "marginLeft": "-.04em",
-          },
           "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
           "fontSize": 14,
+          "fontWeightBold": 700,
           "fontWeightLight": 300,
           "fontWeightMedium": 500,
           "fontWeightRegular": 400,
           "h1": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
             "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
             "fontSize": "6rem",
             "fontWeight": 300,
@@ -335,7 +235,6 @@ exports[`SampleNotificationView check the content of typography 1`] = `
             "lineHeight": 1,
           },
           "h2": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
             "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
             "fontSize": "3.75rem",
             "fontWeight": 300,
@@ -343,7 +242,6 @@ exports[`SampleNotificationView check the content of typography 1`] = `
             "lineHeight": 1,
           },
           "h3": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
             "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
             "fontSize": "3rem",
             "fontWeight": 400,
@@ -351,7 +249,6 @@ exports[`SampleNotificationView check the content of typography 1`] = `
             "lineHeight": 1.04,
           },
           "h4": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
             "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
             "fontSize": "2.125rem",
             "fontWeight": 400,
@@ -359,7 +256,6 @@ exports[`SampleNotificationView check the content of typography 1`] = `
             "lineHeight": 1.17,
           },
           "h5": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
             "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
             "fontSize": "1.5rem",
             "fontWeight": 400,
@@ -367,22 +263,14 @@ exports[`SampleNotificationView check the content of typography 1`] = `
             "lineHeight": 1.33,
           },
           "h6": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
             "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
             "fontSize": "1.25rem",
             "fontWeight": 500,
             "letterSpacing": "0.0075em",
             "lineHeight": 1.6,
           },
-          "headline": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
-            "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-            "fontSize": "1.5rem",
-            "fontWeight": 400,
-            "lineHeight": "1.35417em",
-          },
+          "htmlFontSize": 16,
           "overline": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
             "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
             "fontSize": "0.75rem",
             "fontWeight": 400,
@@ -392,15 +280,7 @@ exports[`SampleNotificationView check the content of typography 1`] = `
           },
           "pxToRem": [Function],
           "round": [Function],
-          "subheading": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
-            "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-            "fontSize": "1rem",
-            "fontWeight": 400,
-            "lineHeight": "1.5em",
-          },
           "subtitle1": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
             "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
             "fontSize": "1rem",
             "fontWeight": 400,
@@ -408,21 +288,12 @@ exports[`SampleNotificationView check the content of typography 1`] = `
             "lineHeight": 1.75,
           },
           "subtitle2": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
             "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
             "fontSize": "0.875rem",
             "fontWeight": 500,
             "letterSpacing": "0.00714em",
             "lineHeight": 1.57,
           },
-          "title": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
-            "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-            "fontSize": "1.3125rem",
-            "fontWeight": 500,
-            "lineHeight": "1.16667em",
-          },
-          "useNextVariants": false,
         },
         "zIndex": Object {
           "appBar": 1100,
@@ -437,13 +308,13 @@ exports[`SampleNotificationView check the content of typography 1`] = `
     variant="h2"
   >
     <h2
-      className="MuiTypography-root-1 MuiTypography-h2-14"
+      className="MuiTypography-root MuiTypography-h2"
     >
       Cnt:
       0
     </h2>
-  </Typography>
-</WithStyles(Typography)>
+  </ForwardRef(Typography)>
+</WithStyles(ForwardRef(Typography))>
 `;
 
 exports[`SampleNotificationView render correctly by default 1`] = `
@@ -599,9 +470,7 @@ exports[`SampleNotificationView render correctly by default 1`] = `
         "shape": Object {
           "borderRadius": 4,
         },
-        "spacing": Object {
-          "unit": 8,
-        },
+        "spacing": [Function],
         "transitions": Object {
           "create": [Function],
           "duration": Object {
@@ -623,14 +492,6 @@ exports[`SampleNotificationView render correctly by default 1`] = `
         },
         "typography": Object {
           "body1": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
-            "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-            "fontSize": "0.875rem",
-            "fontWeight": 400,
-            "lineHeight": "1.46429em",
-          },
-          "body1Next": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
             "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
             "fontSize": "1rem",
             "fontWeight": 400,
@@ -638,29 +499,13 @@ exports[`SampleNotificationView render correctly by default 1`] = `
             "lineHeight": 1.5,
           },
           "body2": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
-            "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-            "fontSize": "0.875rem",
-            "fontWeight": 500,
-            "lineHeight": "1.71429em",
-          },
-          "body2Next": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
             "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
             "fontSize": "0.875rem",
             "fontWeight": 400,
             "letterSpacing": "0.01071em",
-            "lineHeight": 1.5,
+            "lineHeight": 1.43,
           },
           "button": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
-            "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-            "fontSize": "0.875rem",
-            "fontWeight": 500,
-            "textTransform": "uppercase",
-          },
-          "buttonNext": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
             "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
             "fontSize": "0.875rem",
             "fontWeight": 500,
@@ -669,60 +514,19 @@ exports[`SampleNotificationView render correctly by default 1`] = `
             "textTransform": "uppercase",
           },
           "caption": Object {
-            "color": "rgba(0, 0, 0, 0.54)",
-            "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-            "fontSize": "0.75rem",
-            "fontWeight": 400,
-            "lineHeight": "1.375em",
-          },
-          "captionNext": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
             "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
             "fontSize": "0.75rem",
             "fontWeight": 400,
             "letterSpacing": "0.03333em",
             "lineHeight": 1.66,
           },
-          "display1": Object {
-            "color": "rgba(0, 0, 0, 0.54)",
-            "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-            "fontSize": "2.125rem",
-            "fontWeight": 400,
-            "lineHeight": "1.20588em",
-          },
-          "display2": Object {
-            "color": "rgba(0, 0, 0, 0.54)",
-            "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-            "fontSize": "2.8125rem",
-            "fontWeight": 400,
-            "lineHeight": "1.13333em",
-            "marginLeft": "-.02em",
-          },
-          "display3": Object {
-            "color": "rgba(0, 0, 0, 0.54)",
-            "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-            "fontSize": "3.5rem",
-            "fontWeight": 400,
-            "letterSpacing": "-.02em",
-            "lineHeight": "1.30357em",
-            "marginLeft": "-.02em",
-          },
-          "display4": Object {
-            "color": "rgba(0, 0, 0, 0.54)",
-            "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-            "fontSize": "7rem",
-            "fontWeight": 300,
-            "letterSpacing": "-.04em",
-            "lineHeight": "1.14286em",
-            "marginLeft": "-.04em",
-          },
           "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
           "fontSize": 14,
+          "fontWeightBold": 700,
           "fontWeightLight": 300,
           "fontWeightMedium": 500,
           "fontWeightRegular": 400,
           "h1": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
             "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
             "fontSize": "6rem",
             "fontWeight": 300,
@@ -730,7 +534,6 @@ exports[`SampleNotificationView render correctly by default 1`] = `
             "lineHeight": 1,
           },
           "h2": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
             "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
             "fontSize": "3.75rem",
             "fontWeight": 300,
@@ -738,7 +541,6 @@ exports[`SampleNotificationView render correctly by default 1`] = `
             "lineHeight": 1,
           },
           "h3": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
             "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
             "fontSize": "3rem",
             "fontWeight": 400,
@@ -746,7 +548,6 @@ exports[`SampleNotificationView render correctly by default 1`] = `
             "lineHeight": 1.04,
           },
           "h4": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
             "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
             "fontSize": "2.125rem",
             "fontWeight": 400,
@@ -754,7 +555,6 @@ exports[`SampleNotificationView render correctly by default 1`] = `
             "lineHeight": 1.17,
           },
           "h5": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
             "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
             "fontSize": "1.5rem",
             "fontWeight": 400,
@@ -762,22 +562,14 @@ exports[`SampleNotificationView render correctly by default 1`] = `
             "lineHeight": 1.33,
           },
           "h6": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
             "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
             "fontSize": "1.25rem",
             "fontWeight": 500,
             "letterSpacing": "0.0075em",
             "lineHeight": 1.6,
           },
-          "headline": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
-            "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-            "fontSize": "1.5rem",
-            "fontWeight": 400,
-            "lineHeight": "1.35417em",
-          },
+          "htmlFontSize": 16,
           "overline": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
             "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
             "fontSize": "0.75rem",
             "fontWeight": 400,
@@ -787,15 +579,7 @@ exports[`SampleNotificationView render correctly by default 1`] = `
           },
           "pxToRem": [Function],
           "round": [Function],
-          "subheading": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
-            "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-            "fontSize": "1rem",
-            "fontWeight": 400,
-            "lineHeight": "1.5em",
-          },
           "subtitle1": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
             "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
             "fontSize": "1rem",
             "fontWeight": 400,
@@ -803,21 +587,12 @@ exports[`SampleNotificationView render correctly by default 1`] = `
             "lineHeight": 1.75,
           },
           "subtitle2": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
             "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
             "fontSize": "0.875rem",
             "fontWeight": 500,
             "letterSpacing": "0.00714em",
             "lineHeight": 1.57,
           },
-          "title": Object {
-            "color": "rgba(0, 0, 0, 0.87)",
-            "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-            "fontSize": "1.3125rem",
-            "fontWeight": 500,
-            "lineHeight": "1.16667em",
-          },
-          "useNextVariants": false,
         },
         "zIndex": Object {
           "appBar": 1100,

@@ -13,7 +13,7 @@ const sampleNotificationViewStyle = (theme:Theme)=> createStyles({
     appImg:{
         width:50,
         height:50,
-        marginRight: theme.spacing.unit*2,
+        marginRight: theme.spacing(2),
     }
 
 });

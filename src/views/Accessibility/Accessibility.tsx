@@ -28,7 +28,7 @@ const AccessibilityView:React.FunctionComponent<{}> = (
     {}
 )=>{
 
-    const classes = useStyles();
+    const classes = useStyles({});
 
     const {
         actions:{

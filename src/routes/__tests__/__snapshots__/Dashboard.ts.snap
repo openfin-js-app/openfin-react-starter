@@ -4,35 +4,80 @@ exports[`Dashboard routes default routes 1`] = `
 Array [
   Object {
     "component": [Function],
-    "icon": [Function],
+    "icon": Object {
+      "$$typeof": Symbol(react.memo),
+      "compare": null,
+      "displayName": "AccessibilityIcon",
+      "muiName": "SvgIcon",
+      "type": Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "render": [Function],
+      },
+    },
     "navbarName": "accessibility.navbar",
     "path": "/dashboard/accessibility",
     "sidebarName": "accessibility.sidebar",
   },
   Object {
     "component": [Function],
-    "icon": [Function],
+    "icon": Object {
+      "$$typeof": Symbol(react.memo),
+      "compare": null,
+      "displayName": "BusinessIcon",
+      "muiName": "SvgIcon",
+      "type": Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "render": [Function],
+      },
+    },
     "navbarName": "viewOne.navbar",
     "path": "/dashboard/view-one",
     "sidebarName": "viewOne.sidebar",
   },
   Object {
     "component": [Function],
-    "icon": [Function],
+    "icon": Object {
+      "$$typeof": Symbol(react.memo),
+      "compare": null,
+      "displayName": "ChatIcon",
+      "muiName": "SvgIcon",
+      "type": Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "render": [Function],
+      },
+    },
     "navbarName": "viewTwo.navbar",
     "path": "/dashboard/view-two",
     "sidebarName": "viewTwo.sidebar",
   },
   Object {
     "component": [Function],
-    "icon": [Function],
+    "icon": Object {
+      "$$typeof": Symbol(react.memo),
+      "compare": null,
+      "displayName": "SettingsIcon",
+      "muiName": "SvgIcon",
+      "type": Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "render": [Function],
+      },
+    },
     "navbarName": "configuration.navbar",
     "path": "/dashboard/config",
     "sidebarName": "configuration.sidebar",
   },
   Object {
     "component": [Function],
-    "icon": [Function],
+    "icon": Object {
+      "$$typeof": Symbol(react.memo),
+      "compare": null,
+      "displayName": "ReportIcon",
+      "muiName": "SvgIcon",
+      "type": Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "render": [Function],
+      },
+    },
     "navbarName": "report.navbar",
     "path": "/dashboard/report",
     "sidebarName": "report.sidebar",

@@ -8,7 +8,6 @@ import rootSaga from '../reduxs/sagas';
 declare const window:any;
 
 export default (
-        sharedActions:string[],
         parentState?:IRootState
 )=>{
 

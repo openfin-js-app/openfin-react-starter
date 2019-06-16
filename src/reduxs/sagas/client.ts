@@ -13,6 +13,9 @@ import {
     applicationNotificationReady,
     APPLICATION_CUR_WIN_CLOSING,
     applicationCurWinReadyToClose,
+    APPLICATION_LAUNCH_BAR_TOGGLED,
+    // types
+    APPLICATION_LAUNCH_BAR_STATUS,
 } from 'react-openfin/reduxs';
 
 import {
@@ -76,7 +79,23 @@ export function* handleStarting(action){
 
 export function* handleAppClosing(action){
     console.log('client saga::handleAppClosing');
-    yield putResolve(applicationCurWinReadyToClose());
+    yield putResolve(applicationCurWinReadyToClose({
+        // !!!README!!!
+        // should set skipClosing to truthy if wanna skip to close current window
+        // skipClosing : some truthy condition
+    }));
+}
+
+export function* handleLaunchbarToggled(action) {
+    const { status } = action.payload;
+
+    if (status === APPLICATION_LAUNCH_BAR_STATUS.SWITCH_TO_MAIN_WIN){
+        yield put(applicationNewSnackbar({
+            message:`Switch to Main Window`,
+            variant:'primary'
+        }))
+    }
+
 }
 
 export default function *() {
@@ -88,4 +107,5 @@ export default function *() {
     yield takeLatest(APPLICATION_CHILD_AWAIT, handleStarting);
     yield takeLatest(APPLICATION_NOTIFICATION_AWAIT, handleStarting);
     yield takeLatest(APPLICATION_CUR_WIN_CLOSING, handleAppClosing);
+    yield takeLatest(APPLICATION_LAUNCH_BAR_TOGGLED, handleLaunchbarToggled);
 }

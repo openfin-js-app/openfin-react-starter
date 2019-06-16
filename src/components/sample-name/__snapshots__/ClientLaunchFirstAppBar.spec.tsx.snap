@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ClientLaunchFirstAppBar render correctly by default 1`] = `
+<div
+  className="makeStyles-outmostContainer-1"
+>
+  <img
+    className="makeStyles-appLogoImg-2"
+    src="app.svg"
+  />
+  <WithStyles(ForwardRef(IconButton))
+    aria-label="ThumbUp"
+    className="makeStyles-testBtn-3"
+  >
+    <ThumbUpIcon
+      fontSize="small"
+    />
+  </WithStyles(ForwardRef(IconButton))>
+</div>
+`;

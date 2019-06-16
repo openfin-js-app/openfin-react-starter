@@ -11,7 +11,7 @@ const clientPrefixCompStyle = (theme:Theme)=> createStyles({
         textTransform:"none",
         color:"inherit",
         height:constant.appbarHeight,
-        minHeight:constant.appbarHeight,
+        maxHeight:constant.appbarHeight,
         marginLeft:constant.appbarHeight * 0.2,
         "&:hover,&:focus":{
             background:"transparent",
@@ -20,15 +20,11 @@ const clientPrefixCompStyle = (theme:Theme)=> createStyles({
     success: {
         ...buttonStyle.success,
         marginLeft:constant.appbarHeight * 0.2,
-        position:"relative",
-        top: -constant.windowBorder/2,
         "-webkit-app-region":"no-drag",
     },
     warning: {
         ...buttonStyle.warning,
         marginLeft:constant.appbarHeight * 0.2,
-        position:"relative",
-        top: -constant.windowBorder/2,
         "-webkit-app-region":"no-drag",
     },
 });
