@@ -1,6 +1,6 @@
 {
   "name": "openfin-react-starter",
-  "version": "0.90.20",
+  "version": "1.0.0-beta.25",
   "private": true,
   "homepage": "https://albertleigh.github.io/openfin-react-latest",
   "dependencies": {
@@ -17,7 +17,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-i18next": "=10.11.0",
-    "react-openfin-mat-impl": "0.90.3-beta",
+    "react-openfin-mat-impl": "1.0.0-beta.25",
     "react-redux": "^6.0.1",
     "redux": "^4.0.1",
     "redux-actions": "^2.6.5",
