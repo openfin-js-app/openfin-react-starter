@@ -1,3 +1,5 @@
+## [1.1.0] 2019-06-19
+- Support PUBLIC_URL
 ## [1.0.1] 2019-06-16
 - Update dependencies to
     - @material-ui/core @ ^4.0.2
