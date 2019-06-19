@@ -24,6 +24,15 @@ Openfin react starter in ts
 * Support HOC Config context
 * Embrace react hook apis
 
+### Steps to dockernized it
+
+docker build -t companyScope/openfin-react-starter:1.1.0 .
+
+### Steps to start the container
+
+docker run -itd  --name sample-openfin-starter -p 80:8080 winslow90/openfin-react-starter:1.1.0
+
+
 [LICENSE]: ./LICENSE.md
 [CHANGELOG]: ./CHANGELOG.md
 

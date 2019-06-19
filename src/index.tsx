@@ -42,6 +42,9 @@ InitializeReactOpenfin({
     config:{
         // !!!README!!!
         //
+        // uncomment to switch to PUBLIC_URL otherthan /
+        // publicUrl: process.env.PUBLIC_URL,
+        //
         // // uncomment to hide drawer on start
         // defaultDashboardDrawerShown: false,
         // // default url to switch to

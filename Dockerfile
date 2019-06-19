@@ -1,19 +1,12 @@
-FROM node:10.15.0-alpine
+FROM node:12.4.0-alpine
 
 WORKDIR /usr/src/openfin-react-starter
 
-COPY package/package.json ./package.json
+COPY . .
 
 RUN npm install
-
-COPY build build
-COPY config config
-COPY scripts/routers scripts/routers
-COPY scripts/utils scripts/utils
-COPY scripts/server.js scripts/server.js
-COPY .env* ./
-COPY .dockerignore ./
+RUN npm run build
 
 EXPOSE 8080
 
-CMD ["node", "scripts/server.js"]
+CMD ["npm","run","serve"]
