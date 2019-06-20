@@ -9,6 +9,8 @@ import Accessibility from '../views/Accessibility/Accessibility';
 import ViewOne from '../views/ViewOne/ViewOne';
 import ViewTwo from '../views/ViewTwo/ViewTwo';
 
+import { mapToPublicPathname } from './utils';
+
 const childRoutes:RouteItem[]=[
     {
         path:'/childWindow/accessibility',
@@ -40,4 +42,4 @@ const childRoutes:RouteItem[]=[
     },
 ];
 
-export default childRoutes;
+export default childRoutes.map(mapToPublicPathname);

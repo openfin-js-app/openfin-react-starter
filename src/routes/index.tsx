@@ -17,6 +17,8 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 import { ClientPrefix, ClientLaunchFirstAppBar } from '../components'
 import launchBarItems from '../constants/launchBarItems';
 
+import { mapToPublicPathname } from './utils';
+
 import dashboardRoutes from './Dashboard';
 import childrenRoutes from './ChildWindow';
 import notificationRoutes from './notification';
@@ -107,9 +109,9 @@ const indexRoutes:RouteItem[] = [
     },
     {
         redirect: true, path:'/',
-        to: ENABLE_LOADING_VIEW?"/loading":process.env.REACT_APP_DEFAULT_VIEW_URL,
+        to: ENABLE_LOADING_VIEW?process.env.PUBLIC_URL+"/loading":process.env.REACT_APP_DEFAULT_VIEW_URL,
         navbarName:"Redirect"
     }
 ];
 
-export default indexRoutes;
+export default indexRoutes.map(mapToPublicPathname);

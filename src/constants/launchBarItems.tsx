@@ -19,7 +19,7 @@ export const sampleItems:ILaunchBarItem[]=[
         svg:null,
         appJson:{
             name:`${process.env.REACT_APP_FIN_UUID}-child-accessibility`,
-            url:'/childWindow/accessibility',
+            url:`${process.env.PUBLIC_URL}/childWindow/accessibility`,
             frame:false,
             resizable:true,
             state:'normal',
@@ -34,7 +34,7 @@ export const sampleItems:ILaunchBarItem[]=[
         svg:svgNumberOne,
         appJson:{
             name:`${process.env.REACT_APP_FIN_UUID}-child-view-one`,
-            url:'/childWindow/view-one',
+            url:`${process.env.PUBLIC_URL}/childWindow/view-one`,
             frame:false,
             resizable:true,
             state:'normal',
@@ -49,7 +49,7 @@ export const sampleItems:ILaunchBarItem[]=[
         svg:svgNumberTwo,
         appJson:{
             name:`${process.env.REACT_APP_FIN_UUID}-child-view-two`,
-            url:'/childWindow/view-two',
+            url:`${process.env.PUBLIC_URL}/childWindow/view-two`,
             frame:false,
             resizable:true,
             state:'normal',
@@ -68,7 +68,7 @@ export const sampleItems:ILaunchBarItem[]=[
         svg:null,
         appJson:{
             name:`${process.env.REACT_APP_FIN_UUID}-child-report`,
-            url:'/childWindow/report',
+            url:`${process.env.PUBLIC_URL}/childWindow/report`,
             frame:false,
             resizable:true,
             state:'normal',

@@ -2,6 +2,8 @@ import { RouteItem } from 'react-openfin-mat-impl';
 
 import SampleNotification from '../views/NotificationViews/SampleNotification';
 
+import { mapToPublicPathname } from './utils';
+
 const notificationRoutes:RouteItem[]=[
     {
         path:'/notification/sample',
@@ -9,4 +11,4 @@ const notificationRoutes:RouteItem[]=[
     }
 ]
 
-export default notificationRoutes;
+export default notificationRoutes.map(mapToPublicPathname);
