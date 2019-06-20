@@ -114,4 +114,4 @@ const indexRoutes:RouteItem[] = [
     }
 ];
 
-export default indexRoutes.map(mapToPublicPathname);;
+export default indexRoutes.map(mapToPublicPathname);
