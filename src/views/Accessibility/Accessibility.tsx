@@ -41,7 +41,7 @@ const AccessibilityView:React.FunctionComponent<{}> = (
     const handleLaunchNewSelf = ()=>{
         launchNewWin({
             name:`${process.env.REACT_APP_FIN_UUID}-child-accessibility-${shortid.generate()}`,
-            url:'/childWindow/report',
+            url:`${process.env.PUBLIC_URL}/childWindow/report`,
             frame:false,
             resizable:true,
             state:'normal',
@@ -70,7 +70,7 @@ const AccessibilityView:React.FunctionComponent<{}> = (
     const handleLaunchNotification = ()=>{
         launchNewNotification({
             ignoreMouseOver:false,
-            url:'/notification/sample',
+            url:`${process.env.PUBLIC_URL}/notification/sample`,
             message:'my first notification msg',
             timeout: 10000,
             opacity: 1,

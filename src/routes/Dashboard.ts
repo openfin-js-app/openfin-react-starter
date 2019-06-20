@@ -12,6 +12,8 @@ import Accessibility from '../views/Accessibility/Accessibility';
 import ViewOne from '../views/ViewOne/ViewOne';
 import ViewTwo from "../views/ViewTwo/ViewTwo";
 
+import { mapToPublicPathname } from './utils';
+
 const dashboardRoutes:RouteItem[]=[
     {
         path:'/dashboard/accessibility',
@@ -54,4 +56,4 @@ const dashboardRoutes:RouteItem[]=[
     },
 ];
 
-export default dashboardRoutes;
+export default dashboardRoutes.map(mapToPublicPathname);
